@@ -16,6 +16,9 @@
 <meta name="twitter:title" content="Mobile Physiotherapie Grausam">
 <meta name="twitter:description" content="Physiotherapie Hausbesuche im Raum Heidelberg bis Karlsruhe.">
 <link rel="canonical" href="https://healthymovement-21.github.io/Mobile-Physiotherapie-Grausam/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -77,7 +80,7 @@ html{scroll-behavior:smooth;}
 body{font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;background:var(--white);color:var(--text);line-height:1.6;}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 6%;height:62px;display:flex;align-items:center;justify-content:space-between;}
-.nav-logo{font-family:'Georgia',serif;font-size:17px;font-weight:600;color:var(--text);cursor:pointer;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--text);cursor:pointer;}
 .nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
 .nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color 0.2s;cursor:pointer;}
 .nav-links a:hover{color:var(--text);}
@@ -98,7 +101,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 .sec{padding:72px 6%;background:var(--white);}
 .eyebrow{font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:12px;}
-.sec-title{font-family:'Georgia',serif;font-size:clamp(28px,3vw,42px);font-weight:600;line-height:1.12;color:var(--text);margin-bottom:14px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3vw,42px);font-weight:600;line-height:1.12;color:var(--text);margin-bottom:14px;}
 .sec-sub{font-size:14.5px;color:var(--muted);font-weight:300;max-width:540px;line-height:1.78;margin-bottom:48px;}
 
 .btn{display:inline-block;background:var(--text);color:var(--white);padding:13px 30px;font-size:14px;font-weight:500;border-radius:4px;text-decoration:none;cursor:pointer;border:none;transition:opacity 0.2s;font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;}
@@ -110,12 +113,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 .hero{min-height:calc(100vh - 62px);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:64px 6% 56px;}
 .hero-eyebrow{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:20px;}
-.hero-title{font-family:'Georgia',serif;font-size:clamp(40px,4.8vw,60px);font-weight:700;line-height:1.06;color:var(--text);margin-bottom:22px;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(40px,4.8vw,60px);font-weight:700;line-height:1.06;color:var(--text);margin-bottom:22px;}
 .hero-sub{font-size:15px;color:var(--muted);font-weight:300;max-width:400px;line-height:1.78;margin-bottom:36px;}
 .hero-img-wrap{display:flex;flex-direction:column;align-items:center;}
 .hero-img{width:100%;max-width:440px;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:8px;display:block;}
 .hero-card{background:var(--white);border:1px solid var(--border);border-radius:5px;padding:13px 20px;box-shadow:0 4px 18px rgba(0,0,0,0.08);margin-top:14px;text-align:center;width:100%;max-width:440px;}
-.hero-card-name{font-family:'Georgia',serif;font-size:16px;font-weight:600;color:var(--text);}
+.hero-card-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--text);}
 .hero-card-role{font-size:11px;color:var(--muted);margin-top:2px;}
 
 .infobar{background:var(--sand-light);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 6%;display:flex;gap:36px;flex-wrap:wrap;align-items:center;}
@@ -123,10 +126,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .infobar-item strong{color:var(--text);font-weight:500;}
 
 .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.card{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:26px;transition:border-color 0.2s;}
-.card:hover{border-color:var(--sand-dark);}
+.card{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:26px;transition:border-color 0.2s,transform 0.25s,box-shadow 0.25s;}
+.card:hover{border-color:var(--sand-dark);transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,0.08);}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
+.reveal-delay-4{transition-delay:0.4s;}
+.reveal-delay-5{transition-delay:0.5s;}
+
+/* STATS BAR */
+.statsbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stat{padding:32px 24px;text-align:center;border-right:1px solid var(--border);}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,48px);font-weight:700;color:var(--text);line-height:1;}
+.stat-l{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:8px;}
+@media(max-width:700px){.statsbar{grid-template-columns:1fr 1fr;}.stat{border-bottom:1px solid var(--border);}}
 .card-icon{font-size:22px;margin-bottom:12px;}
-.card h3{font-family:'Georgia',serif;font-size:17px;font-weight:600;color:var(--text);margin-bottom:7px;}
+.card h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--text);margin-bottom:7px;}
 .card p{font-size:13px;color:var(--muted);line-height:1.7;}
 
 /* LEISTUNGEN - Preise oben, dann Leistungen darunter */
@@ -154,15 +174,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .leist-abbr{font-size:11.5px;color:var(--muted);margin-top:1px;}
 
 .zg-box{border:1px solid var(--border);border-radius:6px;padding:22px 26px;background:var(--white);}
-.zg-box h4{font-family:'Georgia',serif;font-size:17px;font-weight:600;color:var(--text);margin-bottom:13px;}
+.zg-box h4{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--text);margin-bottom:13px;}
 .zg-item{display:flex;align-items:flex-start;gap:9px;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted);}
 .zg-item:last-child{border-bottom:none;}
 
 /* ABLAUF */
 .ablauf-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:48px;}
 .ablauf-step{text-align:center;padding:0 6px;}
-.step-n{width:50px;height:50px;border-radius:50%;border:1.5px solid var(--sand-dark);display:flex;align-items:center;justify-content:center;font-family:'Georgia',serif;font-size:20px;font-weight:600;color:var(--text);margin:0 auto 16px;}
-.step-t{font-family:'Georgia',serif;font-size:17px;font-weight:600;color:var(--text);margin-bottom:7px;}
+.step-n{width:50px;height:50px;border-radius:50%;border:1.5px solid var(--sand-dark);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--text);margin:0 auto 16px;}
+.step-t{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--text);margin-bottom:7px;}
 .step-p{font-size:13px;color:var(--muted);line-height:1.65;}
 
 /* ÜBER MICH */
@@ -170,7 +190,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .ueber-img-wrap{display:flex;flex-direction:column;align-items:center;}
 .ueber-img{width:100%;max-width:400px;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:8px;}
 .ueber-name-card{background:var(--white);border:1px solid var(--border);border-radius:5px;padding:13px 20px;margin-top:14px;text-align:center;width:100%;max-width:400px;box-shadow:0 4px 14px rgba(0,0,0,0.06);}
-.ueber-name-card .name{font-family:'Georgia',serif;font-size:17px;font-weight:600;color:var(--text);}
+.ueber-name-card .name{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--text);}
 .ueber-name-card .role{font-size:11px;color:var(--muted);margin-top:2px;}
 .ueber-dets{display:flex;flex-direction:column;gap:12px;margin-top:26px;}
 .ueber-det{display:flex;align-items:flex-start;gap:12px;padding:13px 15px;background:var(--sand-light);border-radius:4px;border-left:3px solid var(--sand-dark);}
@@ -212,9 +232,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 /* LEGAL */
 .legal{padding:72px 6%;max-width:760px;}
-.legal h2{font-family:'Georgia',serif;font-size:34px;font-weight:600;color:var(--text);margin-bottom:8px;}
+.legal h2{font-family:'Playfair Display',serif;font-size:34px;font-weight:600;color:var(--text);margin-bottom:8px;}
 .legal-stand{font-size:12px;color:var(--muted);margin-bottom:32px;}
-.legal h3{font-family:'Georgia',serif;font-size:18px;font-weight:600;color:var(--text);margin:28px 0 8px;}
+.legal h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--text);margin:28px 0 8px;}
 .legal h4{font-size:14px;font-weight:500;color:var(--text);margin:16px 0 6px;}
 .legal p{font-size:13.5px;color:var(--muted);line-height:1.78;margin-bottom:8px;}
 .legal a{color:var(--text);}
@@ -222,7 +242,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .legal ul li{font-size:13.5px;color:var(--muted);line-height:1.78;margin-bottom:4px;}
 
 footer{background:var(--text);padding:34px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
-.f-logo{font-family:'Georgia',serif;font-size:17px;font-weight:600;color:var(--white);}
+.f-logo{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--white);}
 footer p{font-size:12px;color:rgba(255,255,255,0.4);}
 .f-links{display:flex;gap:18px;}
 .f-links a{font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;cursor:pointer;transition:color 0.2s;}
@@ -284,7 +304,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
       </div>
     </div>
     <div class="hero-img-wrap">
-      <img class="hero-img" src="foto-1.jpg" alt="Nick Grausam – Mobile Physiotherapie" alt="Nick Grausam">
+      <img class="hero-img" src="foto-1.jpg" alt="Nick Grausam – Mobile Physiotherapie">
       <div class="hero-card">
         <div class="hero-card-name">Nick Grausam</div>
         <div class="hero-card-role">Staatlich anerkannter Physiotherapeut</div>
@@ -299,17 +319,24 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
     <div class="infobar-item">💳 Privatpatienten · Beihilfe · Selbstzahler</div>
   </div>
 
+  <div class="statsbar">
+    <div class="stat reveal reveal-delay-1"><div class="stat-n">60'</div><div class="stat-l">Ersttermin inklusive</div></div>
+    <div class="stat reveal reveal-delay-2"><div class="stat-n">0 €</div><div class="stat-l">Fahrtkosten für Sie</div></div>
+    <div class="stat reveal reveal-delay-3"><div class="stat-n">24h</div><div class="stat-l">Reaktionszeit</div></div>
+    <div class="stat reveal reveal-delay-4"><div class="stat-n">100%</div><div class="stat-l">Einzelbetreuung</div></div>
+  </div>
+
   <div class="sec">
     <div class="eyebrow">Was ist mobile Physiotherapie?</div>
     <h2 class="sec-title">Therapie — dort wo Sie sind.</h2>
     <p class="sec-sub">Mobile Physiotherapie bedeutet: kein Fahrtweg, kein Wartezimmer. Ich komme zu Ihnen und behandle Sie in Ihrer gewohnten Umgebung.</p>
     <div class="cards-grid">
-      <div class="card"><div class="card-icon">🏠</div><h3>Hausbesuche</h3><p>Behandlung direkt bei Ihnen zuhause — komfortabel und ohne Aufwand.</p></div>
-      <div class="card"><div class="card-icon">👤</div><h3>Nur für Sie</h3><p>Volle Aufmerksamkeit. Jede Einheit individuell auf Ihre Bedürfnisse abgestimmt.</p></div>
-      <div class="card"><div class="card-icon">📋</div><h3>Mit oder ohne Rezept</h3><p>Selbstzahler benötigen kein Rezept. Die Erstattung durch Privatversicherungen variiert je nach Tarif.</p></div>
-      <div class="card"><div class="card-icon">⏱</div><h3>Individuelle Dauer</h3><p>Die Behandlungsdauer lege ich nach ausführlicher Befundung fest — passend zu Ihrem Bedarf.</p></div>
-      <div class="card"><div class="card-icon">💳</div><h3>Abrechnung</h3><p>Privatpatienten, Beamte mit Beihilfe und Selbstzahler. Transparente Festpreise.</p></div>
-      <div class="card"><div class="card-icon">📍</div><h3>Einzugsgebiet</h3><p>Heidelberg bis Karlsruhe — gesamte Rhein-Neckar-Region.</p></div>
+      <div class="card reveal reveal-delay-1"><div class="card-icon">🏠</div><h3>Hausbesuche</h3><p>Behandlung direkt bei Ihnen zuhause — komfortabel und ohne Aufwand.</p></div>
+      <div class="card reveal reveal-delay-2"><div class="card-icon">👤</div><h3>Nur für Sie</h3><p>Volle Aufmerksamkeit. Jede Einheit individuell auf Ihre Bedürfnisse abgestimmt.</p></div>
+      <div class="card reveal reveal-delay-3"><div class="card-icon">📋</div><h3>Mit oder ohne Rezept</h3><p>Selbstzahler benötigen kein Rezept. Die Erstattung durch Privatversicherungen variiert je nach Tarif.</p></div>
+      <div class="card reveal reveal-delay-4"><div class="card-icon">⏱</div><h3>Individuelle Dauer</h3><p>Die Behandlungsdauer lege ich nach ausführlicher Befundung fest — passend zu Ihrem Bedarf.</p></div>
+      <div class="card reveal reveal-delay-5"><div class="card-icon">💳</div><h3>Abrechnung</h3><p>Privatpatienten, Beamte mit Beihilfe und Selbstzahler. Transparente Festpreise.</p></div>
+      <div class="card reveal"><div class="card-icon">📍</div><h3>Einzugsgebiet</h3><p>Heidelberg bis Karlsruhe — gesamte Rhein-Neckar-Region.</p></div>
     </div>
   </div>
 
@@ -351,7 +378,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
 
       <!-- LEISTUNGEN darunter — 2-spaltig -->
       <div>
-        <h3 style="font-family:'Georgia',serif;font-size:22px;font-weight:600;color:var(--text);margin-bottom:20px;">Behandlungsangebot</h3>
+        <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--text);margin-bottom:20px;">Behandlungsangebot</h3>
         <div class="leist-grid">
           <div class="leist-item"><div class="leist-ico">🔍</div><div><div class="leist-name">Individuelle Befundung &amp; Beratung</div><div class="leist-abbr">In jeder Behandlung enthalten</div></div></div>
           <div class="leist-item"><div class="leist-ico">🦵</div><div><div class="leist-name">Krankengymnastik</div><div class="leist-abbr">KG</div></div></div>
@@ -397,7 +424,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
   <div class="sec">
     <div class="ueber-grid">
       <div class="ueber-img-wrap">
-        <img class="ueber-img" src="foto-2.jpg" alt="Nick Grausam – Mobile Physiotherapie" alt="Nick Grausam">
+        <img class="ueber-img" src="foto-2.jpg" alt="Nick Grausam – Mobile Physiotherapie">
         <div class="ueber-name-card">
           <div class="name">Nick Grausam</div>
           <div class="role">Staatlich anerkannter Physiotherapeut</div>
@@ -585,6 +612,11 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
 </footer>
 
 <script>
+const _observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');_observer.unobserve(e.target);}});
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>_observer.observe(el));
+
 function show(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
