@@ -3,7 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mobile Physiotherapie Grausam</title>
+<title>Mobile Physiotherapie Grausam | Hausbesuche Heidelberg–Karlsruhe</title>
+<meta name="description" content="Professionelle Physiotherapie direkt bei Ihnen zuhause. Hausbesuche für Privatpatienten, Beihilfe und Selbstzahler im Raum Heidelberg bis Karlsruhe. Jetzt Termin anfragen.">
+<meta name="keywords" content="Mobile Physiotherapie, Hausbesuche, Heidelberg, Karlsruhe, Leimen, Privatpatient, Beihilfe, Geriatrie, Physiotherapeut">
+<meta name="author" content="Nick Grausam">
+<meta property="og:title" content="Mobile Physiotherapie Grausam | Hausbesuche Heidelberg–Karlsruhe">
+<meta property="og:description" content="Professionelle Physiotherapie direkt bei Ihnen zuhause. Für Privatpatienten, Beihilfe und Selbstzahler.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://healthymovement-21.github.io/Mobile-Physiotherapie-Grausam/">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mobile Physiotherapie Grausam">
+<meta name="twitter:description" content="Physiotherapie Hausbesuche im Raum Heidelberg bis Karlsruhe.">
+<link rel="canonical" href="https://healthymovement-21.github.io/Mobile-Physiotherapie-Grausam/">
 
 <style>
 :root{
@@ -396,19 +408,21 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
       <div>
         <div class="success-msg" id="formOk">✓ Vielen Dank! Ich melde mich bald bei Ihnen.</div>
         <form class="form" id="contactForm" onsubmit="submitForm(event)">
+          <input type="hidden" name="_subject" value="Neue Terminanfrage – Mobile Physiotherapie Grausam">
+          <input type="hidden" name="_language" value="de">
           <div class="form-note">Pflichtfelder sind mit * markiert. Die Behandlungsdauer lege ich nach Befund fest.</div>
           <div class="form-row">
-            <div class="fg"><label>Vorname *</label><input type="text" required placeholder="Max"></div>
-            <div class="fg"><label>Nachname *</label><input type="text" required placeholder="Mustermann"></div>
+            <div class="fg"><label for="f_vorname">Vorname *</label><input id="f_vorname" name="vorname" type="text" required placeholder="Max"></div>
+            <div class="fg"><label for="f_nachname">Nachname *</label><input id="f_nachname" name="nachname" type="text" required placeholder="Mustermann"></div>
           </div>
           <div class="form-row">
-            <div class="fg"><label>Telefon *</label><input type="tel" required placeholder="0176 ..."></div>
-            <div class="fg"><label>E-Mail</label><input type="email" placeholder="max@email.de"></div>
+            <div class="fg"><label for="f_tel">Telefon *</label><input id="f_tel" name="telefon" type="tel" required placeholder="0176 ..."></div>
+            <div class="fg"><label for="f_email">E-Mail</label><input id="f_email" name="email" type="email" placeholder="max@email.de"></div>
           </div>
-          <div class="fg"><label>Adresse (für Hausbesuch) *</label><input type="text" required placeholder="Straße, PLZ Ort"></div>
+          <div class="fg"><label for="f_adresse">Adresse (für Hausbesuch) *</label><input id="f_adresse" name="adresse" type="text" required placeholder="Straße, PLZ Ort"></div>
           <div class="fg">
-            <label>Abrechnung / Versicherung *</label>
-            <select required>
+            <label for="f_versicherung">Abrechnung / Versicherung *</label>
+            <select id="f_versicherung" name="versicherung" required>
               <option value="">Bitte wählen</option>
               <option>Privatpatient / Privatpatientin</option>
               <option>Beamter / Beamtin mit Beihilfe</option>
@@ -416,8 +430,8 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
             </select>
           </div>
           <div class="fg">
-            <label>Haben Sie ein ärztliches Rezept?</label>
-            <select id="rezeptSelect" onchange="handleRezept(this.value)">
+            <label for="rezeptSelect">Haben Sie ein ärztliches Rezept?</label>
+            <select id="rezeptSelect" name="rezept" onchange="handleRezept(this.value)">
               <option value="">Bitte wählen</option>
               <option value="ja">Ja, ich habe ein Rezept</option>
               <option value="nein">Nein, kein Rezept</option>
@@ -425,8 +439,8 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
           </div>
           <div id="verordnungBlock" class="hidden">
             <div class="fg" style="margin-top:4px;">
-              <label>Verordnung auf dem Rezept</label>
-              <select id="verordnungSelect" onchange="handleVerordnung(this.value)">
+              <label for="verordnungSelect">Verordnung auf dem Rezept</label>
+              <select id="verordnungSelect" name="verordnung" onchange="handleVerordnung(this.value)">
                 <option value="">Bitte wählen</option>
                 <option>KG – Krankengymnastik</option>
                 <option>KGN – Krankengymnastik Neurologie</option>
@@ -438,14 +452,13 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
               </select>
             </div>
             <div id="sonstigesBlock" class="hidden" style="flex-direction:column;gap:10px;margin-top:8px;">
-              <div class="fg"><label>Was steht auf dem Rezept?</label><input type="text" placeholder="z. B. KGG, Bobath ..."></div>
-              <div class="fg"><label>Rezeptfoto hochladen (optional)</label><input type="file" accept="image/*"></div>
+              <div class="fg"><label for="f_rezepttext">Was steht auf dem Rezept?</label><input id="f_rezepttext" name="rezept_text" type="text" placeholder="z. B. KGG, Bobath ..."></div>
             </div>
           </div>
-          <div class="fg"><label>Anliegen / Beschwerden *</label><textarea required placeholder="Beschreiben Sie kurz Ihr Anliegen oder Ihre Diagnose..."></textarea></div>
-          <div class="fg"><label>Terminwunsch</label><input type="text" placeholder="z. B. Mo–Fr nachmittags"></div>
+          <div class="fg"><label for="f_anliegen">Anliegen / Beschwerden *</label><textarea id="f_anliegen" name="anliegen" required placeholder="Beschreiben Sie kurz Ihr Anliegen oder Ihre Diagnose..."></textarea></div>
+          <div class="fg"><label for="f_termin">Terminwunsch</label><input id="f_termin" name="terminwunsch" type="text" placeholder="z. B. Mo–Fr nachmittags"></div>
           <div class="consent">
-            <input type="checkbox" id="con" required>
+            <input type="checkbox" id="con" name="datenschutz" required>
             <label for="con">Ich habe die <a onclick="show('datenschutz')">Datenschutzerklärung</a> gelesen und stimme zu. *</label>
           </div>
           <button type="submit" class="btn" style="width:100%;">Anfrage absenden</button>
@@ -516,7 +529,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
 
 <footer>
   <div class="f-logo">Mobile Physiotherapie Grausam</div>
-  <p>© 2025 Nick Grausam · Alle Rechte vorbehalten</p>
+  <p>© 2026 Nick Grausam · Alle Rechte vorbehalten</p>
   <div class="f-links">
     <a onclick="show('impressum')">Impressum</a>
     <a onclick="show('datenschutz')">Datenschutz</a>
@@ -546,10 +559,31 @@ function handleVerordnung(val){
   if(val==='sonstiges'){b.classList.remove('hidden');b.style.display='flex';}
   else{b.classList.add('hidden');}
 }
-function submitForm(e){
+async function submitForm(e){
   e.preventDefault();
-  document.getElementById('formOk').style.display='block';
-  document.getElementById('contactForm').classList.add('hidden');
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = 'Wird gesendet…';
+  btn.disabled = true;
+  const data = new FormData(e.target);
+  try {
+    const res = await fetch('https://formspree.io/f/DEINE_FORM_ID', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if(res.ok){
+      document.getElementById('formOk').style.display='block';
+      document.getElementById('contactForm').classList.add('hidden');
+    } else {
+      btn.textContent = 'Anfrage absenden';
+      btn.disabled = false;
+      alert('Fehler beim Senden. Bitte rufen Sie an oder schreiben Sie per WhatsApp.');
+    }
+  } catch(err){
+    btn.textContent = 'Anfrage absenden';
+    btn.disabled = false;
+    alert('Fehler beim Senden. Bitte rufen Sie an oder schreiben Sie per WhatsApp.');
+  }
 }
 </script>
 </body>
