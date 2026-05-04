@@ -618,8 +618,12 @@ footer .f-logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:6
 function show(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  window.location.hash = id;
   window.scrollTo({top:0,behavior:'smooth'});
 }
+const _hash = window.location.hash.slice(1);
+if(_hash && document.getElementById(_hash)){show(_hash);}
+
 function toggleMenu(){document.getElementById('mm').classList.toggle('open');}
 function faq(btn){
   const a=btn.nextElementSibling;
