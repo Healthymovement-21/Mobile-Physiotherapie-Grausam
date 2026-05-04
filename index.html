@@ -97,7 +97,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .wa-btn:hover{transform:scale(1.08);}
 
 .page{display:none;padding-top:62px;min-height:100vh;background:var(--white);}
-.page.active{display:block;}
+.page.active{display:block;animation:pgFade 0.38s ease;}
+@keyframes pgFade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
 
 .sec{padding:72px 6%;background:var(--white);}
 .eyebrow{font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:12px;}
@@ -154,9 +155,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 /* PREISE - einheitlich, schlicht, nur Zeit + Betrag */
 .preise{display:flex;flex-direction:column;gap:10px;margin-bottom:8px;}
-.preis-card{border:1px solid var(--border);border-radius:6px;padding:20px 22px;background:var(--white);display:flex;flex-direction:column;gap:6px;}
-.preis-dur{font-size:13px;font-weight:400;color:var(--muted);}
-.preis-amt{font-size:22px;font-weight:600;color:var(--text);}
+.preis-card{border:1px solid var(--border);border-radius:8px;padding:22px 26px;background:var(--white);display:flex;align-items:center;justify-content:space-between;gap:16px;transition:box-shadow 0.25s,transform 0.25s;}
+.preis-card:hover{box-shadow:0 8px 28px rgba(0,0,0,0.07);transform:translateY(-3px);}
+.preis-card.highlight{border-color:var(--sand-dark);background:var(--sand-light);}
+.preis-dur{font-size:13px;font-weight:500;color:var(--muted);}
+.preis-amt{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--text);white-space:nowrap;}
 .preis-ersttermin-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-top:4px;padding-top:8px;border-top:1px solid var(--border);}
 .preis-note{font-size:11.5px;color:var(--muted);font-style:italic;line-height:1.5;margin-top:4px;}
 
@@ -167,8 +170,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 /* LEISTUNGEN Liste */
 .leist-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
-.leist-item{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:5px;transition:background 0.15s;}
-.leist-item:hover{background:var(--sand-light);}
+.leist-item{display:flex;align-items:center;gap:14px;padding:13px 16px;border-radius:6px;border:1px solid transparent;transition:background 0.2s,border-color 0.2s;}
+.leist-item:hover{background:var(--sand-light);border-color:var(--border);}
 .leist-ico{font-size:18px;width:28px;text-align:center;flex-shrink:0;}
 .leist-name{font-size:14px;color:var(--text);}
 .leist-abbr{font-size:11.5px;color:var(--muted);margin-top:1px;}
@@ -179,9 +182,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .zg-item:last-child{border-bottom:none;}
 
 /* ABLAUF */
-.ablauf-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:48px;}
-.ablauf-step{text-align:center;padding:0 6px;}
-.step-n{width:50px;height:50px;border-radius:50%;border:1.5px solid var(--sand-dark);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--text);margin:0 auto 16px;}
+.ablauf-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:48px;position:relative;}
+.ablauf-steps::before{content:'';position:absolute;top:25px;left:calc(12.5% + 25px);right:calc(12.5% + 25px);height:1px;background:var(--border);z-index:0;}
+.ablauf-step{text-align:center;padding:0 6px;position:relative;z-index:1;}
+.step-n{width:50px;height:50px;border-radius:50%;border:1.5px solid var(--sand-dark);background:var(--white);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--text);margin:0 auto 16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
 .step-t{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--text);margin-bottom:7px;}
 .step-p{font-size:13px;color:var(--muted);line-height:1.65;}
 
@@ -201,7 +205,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 /* FAQ */
 .faq-list{max-width:680px;}
 .faq-item{border-bottom:1px solid var(--border);}
-.faq-q{width:100%;background:none;border:none;text-align:left;padding:17px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:14.5px;font-weight:500;color:var(--text);font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:19px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:14.5px;font-weight:500;color:var(--text);font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;transition:color 0.2s;}
+.faq-q:hover{color:var(--muted);}
 .faq-q .ico{font-size:18px;color:var(--muted);transition:transform 0.2s;flex-shrink:0;}
 .faq-q.open .ico{transform:rotate(45deg);}
 .faq-a{display:none;padding:0 0 15px;font-size:13.5px;color:var(--muted);line-height:1.72;}
@@ -241,9 +246,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .legal ul{margin:8px 0 8px 20px;}
 .legal ul li{font-size:13.5px;color:var(--muted);line-height:1.78;margin-bottom:4px;}
 
-footer{background:var(--text);padding:34px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+footer{background:var(--text);padding:42px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
 .f-logo{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--white);}
 footer p{font-size:12px;color:rgba(255,255,255,0.4);}
+footer .f-logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:rgba(255,255,255,0.9);letter-spacing:0.3px;}
+.f-links{display:flex;gap:22px;}
+.f-links a{font-size:12px;color:rgba(255,255,255,0.45);cursor:pointer;text-decoration:none;transition:color 0.2s;letter-spacing:0.5px;}
+.f-links a:hover{color:rgba(255,255,255,0.85);}
 .f-links{display:flex;gap:18px;}
 .f-links a{font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;cursor:pointer;transition:color 0.2s;}
 .f-links a:hover{color:var(--white);}
@@ -327,9 +336,9 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
   </div>
 
   <div class="sec">
-    <div class="eyebrow">Was ist mobile Physiotherapie?</div>
-    <h2 class="sec-title">Therapie — dort wo Sie sind.</h2>
-    <p class="sec-sub">Mobile Physiotherapie bedeutet: kein Fahrtweg, kein Wartezimmer. Ich komme zu Ihnen und behandle Sie in Ihrer gewohnten Umgebung.</p>
+    <div class="reveal \">Was ist mobile Physiotherapie?</div>
+    <h2 class="sec-title reveal reveal-delay-1">Therapie — dort wo Sie sind.</h2>
+    <p class="sec-sub reveal reveal-delay-2">Mobile Physiotherapie bedeutet: kein Fahrtweg, kein Wartezimmer. Ich komme zu Ihnen und behandle Sie in Ihrer gewohnten Umgebung.</p>
     <div class="cards-grid">
       <div class="card reveal reveal-delay-1"><div class="card-icon">🏠</div><h3>Hausbesuche</h3><p>Behandlung direkt bei Ihnen zuhause — komfortabel und ohne Aufwand.</p></div>
       <div class="card reveal reveal-delay-2"><div class="card-icon">👤</div><h3>Nur für Sie</h3><p>Volle Aufmerksamkeit. Jede Einheit individuell auf Ihre Bedürfnisse abgestimmt.</p></div>
@@ -345,26 +354,25 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
 <!-- ═══ LEISTUNGEN ═══ -->
 <div class="page" id="leistungen">
   <div class="sec">
-    <div class="eyebrow">Angebot</div>
-    <h2 class="sec-title">Leistungen &amp; Preise</h2>
-    <p class="sec-sub">Alle Behandlungen finden bei Ihnen zuhause statt. Die Behandlungsdauer lege ich nach Befund fest.</p>
+    <div class="reveal \">Angebot</div>
+    <h2 class="sec-title reveal reveal-delay-1">Leistungen &amp; Preise</h2>
+    <p class="sec-sub reveal reveal-delay-2">Alle Behandlungen finden bei Ihnen zuhause statt. Die Behandlungsdauer lege ich nach Befund fest.</p>
 
     <div class="leist-section">
 
       <!-- PREISE oben — untereinander -->
       <div>
         <div class="preise">
-          <div class="preis-card">
-            <div class="preis-dur">Ersttermin</div>
+          <div class="preis-card reveal reveal-delay-1">
+            <div><div class="preis-dur">Ersttermin</div><div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5;">60 Min · Befundung, Aufklärung & individuelle Therapieplanung</div></div>
             <div class="preis-amt">30 €</div>
-            <div class="preis-ersttermin-desc">60 Minuten · Befundung, Aufklärung und Planung des Therapieverlaufs</div>
           </div>
-          <div class="preis-card">
-            <div class="preis-dur">45 Minuten</div>
+          <div class="preis-card reveal reveal-delay-2">
+            <div class="preis-dur">Folgebehandlung · 45 Minuten</div>
             <div class="preis-amt">80 €</div>
           </div>
-          <div class="preis-card">
-            <div class="preis-dur">60 Minuten</div>
+          <div class="preis-card highlight reveal reveal-delay-3">
+            <div><div class="preis-dur">Folgebehandlung · 60 Minuten</div><div style="font-size:11px;color:var(--sand-dark);font-weight:600;margin-top:3px;letter-spacing:1px;text-transform:uppercase;">Empfohlen</div></div>
             <div class="preis-amt">100 €</div>
           </div>
         </div>
@@ -407,9 +415,9 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
 <!-- ═══ ABLAUF ═══ -->
 <div class="page" id="ablauf">
   <div class="sec">
-    <div class="eyebrow">So funktioniert es</div>
-    <h2 class="sec-title">Einfach. Direkt. Persönlich.</h2>
-    <p class="sec-sub">Von der ersten Anfrage bis zur Behandlung — unkompliziert und transparent.</p>
+    <div class="reveal \">So funktioniert es</div>
+    <h2 class="sec-title reveal reveal-delay-1">Einfach. Direkt. Persönlich.</h2>
+    <p class="sec-sub reveal reveal-delay-2">Von der ersten Anfrage bis zur Behandlung — unkompliziert und transparent.</p>
     <div class="ablauf-steps">
       <div class="ablauf-step"><div class="step-n">1</div><div class="step-t">Kontakt aufnehmen</div><p class="step-p">Per WhatsApp, Telefon oder Kontaktformular — schnell und unkompliziert.</p></div>
       <div class="ablauf-step"><div class="step-n">2</div><div class="step-t">Erstgespräch</div><p class="step-p">Ich melde mich zeitnah. Wir besprechen Ihr Anliegen und vereinbaren einen Termin.</p></div>
@@ -431,8 +439,8 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
         </div>
       </div>
       <div>
-        <div class="eyebrow">Über mich</div>
-        <h2 class="sec-title">Nick Grausam</h2>
+        <div class="reveal \">Über mich</div>
+        <h2 class="sec-title reveal reveal-delay-1">Nick Grausam</h2>
         <p style="font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:6px;">Ich bin staatlich anerkannter Physiotherapeut und behandle meine Patienten direkt bei ihnen zuhause — persönlich, individuell und auf Augenhöhe.</p>
         <p style="font-size:15px;color:var(--muted);line-height:1.78;">Mein Schwerpunkt liegt in der geriatrischen und orthopädischen Rehabilitation. Besonders am Herzen liegen mir Patienten mit chronischen Erkrankungen, nach Operationen und bei eingeschränkter Mobilität.</p>
         <div class="ueber-dets">
@@ -448,9 +456,9 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
 <!-- ═══ FAQ ═══ -->
 <div class="page" id="faq">
   <div class="sec">
-    <div class="eyebrow">Häufige Fragen</div>
-    <h2 class="sec-title">FAQ</h2>
-    <p class="sec-sub">Antworten auf die wichtigsten Fragen rund um die Behandlung.</p>
+    <div class="reveal \">Häufige Fragen</div>
+    <h2 class="sec-title reveal reveal-delay-1">FAQ</h2>
+    <p class="sec-sub reveal reveal-delay-2">Antworten auf die wichtigsten Fragen rund um die Behandlung.</p>
     <div class="faq-list">
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was passiert beim Ersttermin? <span class="ico">+</span></button><div class="faq-a">Der Ersttermin dauert 60 Minuten und kostet 30 €. Er beinhaltet eine ausführliche Anamnese, Befundung und individuelle Therapieplanung. Auf Basis dieser Einheit lege ich die weitere Behandlung fest.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was ist im Behandlungspreis inbegriffen? <span class="ico">+</span></button><div class="faq-a">Alle therapeutischen Maßnahmen — darunter Taping, Flossing, Schröpfen, Wärmetherapie und Blading — sind fester Bestandteil der Behandlung. Es fallen keine zusätzlichen Kosten an.</div></div>
@@ -467,8 +475,8 @@ footer p{font-size:12px;color:rgba(255,255,255,0.4);}
   <div class="sec">
     <div class="kontakt-grid">
       <div>
-        <div class="eyebrow">Kontakt</div>
-        <h2 class="sec-title">Termin anfragen</h2>
+        <div class="reveal \">Kontakt</div>
+        <h2 class="sec-title reveal reveal-delay-1">Termin anfragen</h2>
         <p style="font-size:14.5px;color:var(--muted);line-height:1.78;">Ich melde mich innerhalb von 24 Stunden. Am schnellsten per WhatsApp.</p>
         <div class="kontakt-info">
           <div class="k-row"><div class="k-ico">📞</div><div><h4>Telefon / WhatsApp</h4><p><a href="tel:017642685146">0176 4268 5146</a></p></div></div>
