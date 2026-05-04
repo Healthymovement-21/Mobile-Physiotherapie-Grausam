@@ -618,7 +618,7 @@ function show(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   sessionStorage.setItem('page',id);
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo(0,0);
 }
 const _saved = sessionStorage.getItem('page');
 if(_saved && document.getElementById(_saved)){
