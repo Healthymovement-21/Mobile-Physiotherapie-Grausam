@@ -97,8 +97,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .wa-btn:hover{transform:scale(1.08);}
 
 .page{display:none;padding-top:62px;min-height:100vh;background:var(--white);}
-.page.active{display:block;animation:pgFade 0.38s ease;}
-@keyframes pgFade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+.page.active{display:block;}
 
 .sec{padding:72px 6%;background:var(--white);}
 .eyebrow{font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:12px;}
@@ -127,17 +126,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .infobar-item strong{color:var(--text);font-weight:500;}
 
 .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.card{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:26px;transition:border-color 0.2s,transform 0.25s,box-shadow 0.25s;}
-.card:hover{border-color:var(--sand-dark);transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,0.08);}
+.card{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:26px;transition:border-color 0.2s;}
+.card:hover{border-color:var(--sand-dark);}
 
-/* SCROLL REVEAL */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}
-.reveal.visible{opacity:1;transform:none;}
-.reveal-delay-1{transition-delay:0.1s;}
-.reveal-delay-2{transition-delay:0.2s;}
-.reveal-delay-3{transition-delay:0.3s;}
-.reveal-delay-4{transition-delay:0.4s;}
-.reveal-delay-5{transition-delay:0.5s;}
 
 /* STATS BAR */
 .statsbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
@@ -155,8 +146,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 /* PREISE - einheitlich, schlicht, nur Zeit + Betrag */
 .preise{display:flex;flex-direction:column;gap:10px;margin-bottom:8px;}
-.preis-card{border:1px solid var(--border);border-radius:8px;padding:22px 26px;background:var(--white);display:flex;align-items:center;justify-content:space-between;gap:16px;transition:box-shadow 0.25s,transform 0.25s;}
-.preis-card:hover{box-shadow:0 8px 28px rgba(0,0,0,0.07);transform:translateY(-3px);}
+.preis-card{border:1px solid var(--border);border-radius:8px;padding:22px 26px;background:var(--white);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+
 .preis-card.highlight{border-color:var(--sand-dark);background:var(--sand-light);}
 .preis-dur{font-size:13px;font-weight:500;color:var(--muted);}
 .preis-amt{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--text);white-space:nowrap;}
@@ -170,8 +161,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 /* LEISTUNGEN Liste */
 .leist-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
-.leist-item{display:flex;align-items:center;gap:14px;padding:13px 16px;border-radius:6px;border:1px solid transparent;transition:background 0.2s,border-color 0.2s;}
-.leist-item:hover{background:var(--sand-light);border-color:var(--border);}
+.leist-item{display:flex;align-items:center;gap:14px;padding:13px 16px;border-radius:6px;}
+.leist-item:hover{background:var(--sand-light);}
 .leist-ico{font-size:18px;width:28px;text-align:center;flex-shrink:0;}
 .leist-name{font-size:14px;color:var(--text);}
 .leist-abbr{font-size:11.5px;color:var(--muted);margin-top:1px;}
@@ -329,23 +320,23 @@ footer .f-logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:6
   </div>
 
   <div class="statsbar">
-    <div class="stat reveal reveal-delay-1"><div class="stat-n">60'</div><div class="stat-l">Ersttermin inklusive</div></div>
-    <div class="stat reveal reveal-delay-2"><div class="stat-n">0 €</div><div class="stat-l">Fahrtkosten für Sie</div></div>
-    <div class="stat reveal reveal-delay-3"><div class="stat-n">24h</div><div class="stat-l">Reaktionszeit</div></div>
-    <div class="stat reveal reveal-delay-4"><div class="stat-n">100%</div><div class="stat-l">Einzelbetreuung</div></div>
+    <div class="stat"><div class="stat-n">60'</div><div class="stat-l">Ersttermin inklusive</div></div>
+    <div class="stat"><div class="stat-n">0 €</div><div class="stat-l">Fahrtkosten für Sie</div></div>
+    <div class="stat"><div class="stat-n">24h</div><div class="stat-l">Reaktionszeit</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Einzelbetreuung</div></div>
   </div>
 
   <div class="sec">
     <div class="reveal \">Was ist mobile Physiotherapie?</div>
-    <h2 class="sec-title reveal reveal-delay-1">Therapie — dort wo Sie sind.</h2>
-    <p class="sec-sub reveal reveal-delay-2">Mobile Physiotherapie bedeutet: kein Fahrtweg, kein Wartezimmer. Ich komme zu Ihnen und behandle Sie in Ihrer gewohnten Umgebung.</p>
+    <h2 class="sec-title">Therapie — dort wo Sie sind.</h2>
+    <p class="sec-sub">Mobile Physiotherapie bedeutet: kein Fahrtweg, kein Wartezimmer. Ich komme zu Ihnen und behandle Sie in Ihrer gewohnten Umgebung.</p>
     <div class="cards-grid">
-      <div class="card reveal reveal-delay-1"><div class="card-icon">🏠</div><h3>Hausbesuche</h3><p>Behandlung direkt bei Ihnen zuhause — komfortabel und ohne Aufwand.</p></div>
-      <div class="card reveal reveal-delay-2"><div class="card-icon">👤</div><h3>Nur für Sie</h3><p>Volle Aufmerksamkeit. Jede Einheit individuell auf Ihre Bedürfnisse abgestimmt.</p></div>
-      <div class="card reveal reveal-delay-3"><div class="card-icon">📋</div><h3>Mit oder ohne Rezept</h3><p>Selbstzahler benötigen kein Rezept. Die Erstattung durch Privatversicherungen variiert je nach Tarif.</p></div>
-      <div class="card reveal reveal-delay-4"><div class="card-icon">⏱</div><h3>Individuelle Dauer</h3><p>Die Behandlungsdauer lege ich nach ausführlicher Befundung fest — passend zu Ihrem Bedarf.</p></div>
-      <div class="card reveal reveal-delay-5"><div class="card-icon">💳</div><h3>Abrechnung</h3><p>Privatpatienten, Beamte mit Beihilfe und Selbstzahler. Transparente Festpreise.</p></div>
-      <div class="card reveal"><div class="card-icon">📍</div><h3>Einzugsgebiet</h3><p>Heidelberg bis Karlsruhe — gesamte Rhein-Neckar-Region.</p></div>
+      <div class="card"><div class="card-icon">🏠</div><h3>Hausbesuche</h3><p>Behandlung direkt bei Ihnen zuhause — komfortabel und ohne Aufwand.</p></div>
+      <div class="card"><div class="card-icon">👤</div><h3>Nur für Sie</h3><p>Volle Aufmerksamkeit. Jede Einheit individuell auf Ihre Bedürfnisse abgestimmt.</p></div>
+      <div class="card"><div class="card-icon">📋</div><h3>Mit oder ohne Rezept</h3><p>Selbstzahler benötigen kein Rezept. Die Erstattung durch Privatversicherungen variiert je nach Tarif.</p></div>
+      <div class="card"><div class="card-icon">⏱</div><h3>Individuelle Dauer</h3><p>Die Behandlungsdauer lege ich nach ausführlicher Befundung fest — passend zu Ihrem Bedarf.</p></div>
+      <div class="card"><div class="card-icon">💳</div><h3>Abrechnung</h3><p>Privatpatienten, Beamte mit Beihilfe und Selbstzahler. Transparente Festpreise.</p></div>
+      <div class="card"><div class="card-icon">📍</div><h3>Einzugsgebiet</h3><p>Heidelberg bis Karlsruhe — gesamte Rhein-Neckar-Region.</p></div>
     </div>
   </div>
 
@@ -355,23 +346,23 @@ footer .f-logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:6
 <div class="page" id="leistungen">
   <div class="sec">
     <div class="reveal \">Angebot</div>
-    <h2 class="sec-title reveal reveal-delay-1">Leistungen &amp; Preise</h2>
-    <p class="sec-sub reveal reveal-delay-2">Alle Behandlungen finden bei Ihnen zuhause statt. Die Behandlungsdauer lege ich nach Befund fest.</p>
+    <h2 class="sec-title">Leistungen &amp; Preise</h2>
+    <p class="sec-sub">Alle Behandlungen finden bei Ihnen zuhause statt. Die Behandlungsdauer lege ich nach Befund fest.</p>
 
     <div class="leist-section">
 
       <!-- PREISE oben — untereinander -->
       <div>
         <div class="preise">
-          <div class="preis-card reveal reveal-delay-1">
+          <div class="preis-card">
             <div><div class="preis-dur">Ersttermin</div><div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5;">60 Min · Befundung, Aufklärung & individuelle Therapieplanung</div></div>
             <div class="preis-amt">30 €</div>
           </div>
-          <div class="preis-card reveal reveal-delay-2">
+          <div class="preis-card">
             <div class="preis-dur">Folgebehandlung · 45 Minuten</div>
             <div class="preis-amt">80 €</div>
           </div>
-          <div class="preis-card highlight reveal reveal-delay-3">
+          <div class="preis-card highlight">
             <div><div class="preis-dur">Folgebehandlung · 60 Minuten</div><div style="font-size:11px;color:var(--sand-dark);font-weight:600;margin-top:3px;letter-spacing:1px;text-transform:uppercase;">Empfohlen</div></div>
             <div class="preis-amt">100 €</div>
           </div>
@@ -416,8 +407,8 @@ footer .f-logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:6
 <div class="page" id="ablauf">
   <div class="sec">
     <div class="reveal \">So funktioniert es</div>
-    <h2 class="sec-title reveal reveal-delay-1">Einfach. Direkt. Persönlich.</h2>
-    <p class="sec-sub reveal reveal-delay-2">Von der ersten Anfrage bis zur Behandlung — unkompliziert und transparent.</p>
+    <h2 class="sec-title">Einfach. Direkt. Persönlich.</h2>
+    <p class="sec-sub">Von der ersten Anfrage bis zur Behandlung — unkompliziert und transparent.</p>
     <div class="ablauf-steps">
       <div class="ablauf-step"><div class="step-n">1</div><div class="step-t">Kontakt aufnehmen</div><p class="step-p">Per WhatsApp, Telefon oder Kontaktformular — schnell und unkompliziert.</p></div>
       <div class="ablauf-step"><div class="step-n">2</div><div class="step-t">Erstgespräch</div><p class="step-p">Ich melde mich zeitnah. Wir besprechen Ihr Anliegen und vereinbaren einen Termin.</p></div>
@@ -440,7 +431,7 @@ footer .f-logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:6
       </div>
       <div>
         <div class="reveal \">Über mich</div>
-        <h2 class="sec-title reveal reveal-delay-1">Nick Grausam</h2>
+        <h2 class="sec-title">Nick Grausam</h2>
         <p style="font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:6px;">Ich bin staatlich anerkannter Physiotherapeut und behandle meine Patienten direkt bei ihnen zuhause — persönlich, individuell und auf Augenhöhe.</p>
         <p style="font-size:15px;color:var(--muted);line-height:1.78;">Mein Schwerpunkt liegt in der geriatrischen und orthopädischen Rehabilitation. Besonders am Herzen liegen mir Patienten mit chronischen Erkrankungen, nach Operationen und bei eingeschränkter Mobilität.</p>
         <div class="ueber-dets">
@@ -457,8 +448,8 @@ footer .f-logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:6
 <div class="page" id="faq">
   <div class="sec">
     <div class="reveal \">Häufige Fragen</div>
-    <h2 class="sec-title reveal reveal-delay-1">FAQ</h2>
-    <p class="sec-sub reveal reveal-delay-2">Antworten auf die wichtigsten Fragen rund um die Behandlung.</p>
+    <h2 class="sec-title">FAQ</h2>
+    <p class="sec-sub">Antworten auf die wichtigsten Fragen rund um die Behandlung.</p>
     <div class="faq-list">
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was passiert beim Ersttermin? <span class="ico">+</span></button><div class="faq-a">Der Ersttermin dauert 60 Minuten und kostet 30 €. Er beinhaltet eine ausführliche Anamnese, Befundung und individuelle Therapieplanung. Auf Basis dieser Einheit lege ich die weitere Behandlung fest.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was ist im Behandlungspreis inbegriffen? <span class="ico">+</span></button><div class="faq-a">Alle therapeutischen Maßnahmen — darunter Taping, Flossing, Schröpfen, Wärmetherapie und Blading — sind fester Bestandteil der Behandlung. Es fallen keine zusätzlichen Kosten an.</div></div>
@@ -476,7 +467,7 @@ footer .f-logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:6
     <div class="kontakt-grid">
       <div>
         <div class="reveal \">Kontakt</div>
-        <h2 class="sec-title reveal reveal-delay-1">Termin anfragen</h2>
+        <h2 class="sec-title">Termin anfragen</h2>
         <p style="font-size:14.5px;color:var(--muted);line-height:1.78;">Ich melde mich innerhalb von 24 Stunden. Am schnellsten per WhatsApp.</p>
         <div class="kontakt-info">
           <div class="k-row"><div class="k-ico">📞</div><div><h4>Telefon / WhatsApp</h4><p><a href="tel:017642685146">0176 4268 5146</a></p></div></div>
@@ -620,11 +611,6 @@ footer .f-logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:6
 </footer>
 
 <script>
-const _observer = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');_observer.unobserve(e.target);}});
-},{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>_observer.observe(el));
-
 function show(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
