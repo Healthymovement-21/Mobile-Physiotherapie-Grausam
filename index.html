@@ -57,11 +57,10 @@
     "jobTitle": "Physiotherapeut",
     "description": "Staatlich anerkannter Physiotherapeut, ausgebildet an der BG Klinik Ludwigshafen"
   },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-    "opens": "08:00",
-    "closes": "19:00"
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceUrl": "https://wa.me/4917642685146",
+    "description": "Terminvereinbarung per WhatsApp oder E-Mail. Keine festen Öffnungszeiten — Termine werden individuell vereinbart."
   }
 }
 </script>
@@ -197,7 +196,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .hero-card-role{font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:3px;}
 
 /* ── INFOBAR ── */
-.infobar{background:var(--sand-light);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 6%;display:flex;gap:36px;flex-wrap:wrap;align-items:center;}
+.infobar{background:var(--sand-light);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 6%;display:flex;gap:28px;flex-wrap:wrap;align-items:center;justify-content:center;}
+.infobar a{color:inherit;text-decoration:none;}
+.infobar a:hover strong{text-decoration:underline;}
 .infobar-item{display:flex;align-items:center;gap:8px;font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);}
 .infobar-item strong{color:var(--text);font-weight:600;}
 
@@ -429,14 +430,14 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
   </div>
 
   <div class="infobar">
-    <div class="infobar-item">📞 <strong>0176 4268 5146</strong></div>
-    <div class="infobar-item">✉ <strong>info@physiotherapie-grausam.de</strong></div>
+    <div class="infobar-item">📞 <a href="tel:017642685146"><strong>0176 4268 5146</strong></a></div>
+    <div class="infobar-item">✉ <a href="mailto:info@physiotherapie-grausam.de"><strong>info@physiotherapie-grausam.de</strong></a></div>
     <div class="infobar-item">📍 <strong>Heidelberg – Karlsruhe</strong></div>
-    <div class="infobar-item">💳 Privatpatienten · Beihilfe · Selbstzahler</div>
+    <div class="infobar-item">💬 Erreichbar per WhatsApp &amp; E-Mail · Antwort innerhalb 24h</div>
   </div>
 
   <div class="statsbar">
-    <div class="stat"><div class="stat-n">60'</div><div class="stat-l">Ersttermin inklusive</div></div>
+    <div class="stat"><div class="stat-n">60 <span style="font-size:0.45em;font-weight:600;letter-spacing:1px;">MIN</span></div><div class="stat-l">Ersttermin inklusive</div></div>
     <div class="stat"><div class="stat-n">0 €</div><div class="stat-l">Fahrtkosten für Sie</div></div>
     <div class="stat"><div class="stat-n">24h</div><div class="stat-l">Reaktionszeit</div></div>
     <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Einzelbetreuung</div></div>
@@ -449,9 +450,9 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
     <div class="cards-grid">
       <div class="card"><div class="card-icon">🏠</div><h3>Hausbesuche</h3><p>Behandlung direkt bei Ihnen zuhause — komfortabel und ohne Aufwand.</p></div>
       <div class="card"><div class="card-icon">👤</div><h3>Nur für Sie</h3><p>Volle Aufmerksamkeit. Jede Einheit individuell auf Ihre Bedürfnisse abgestimmt.</p></div>
-      <div class="card"><div class="card-icon">📋</div><h3>Mit oder ohne Rezept</h3><p>Selbstzahler benötigen kein Rezept. Die Erstattung durch Privatversicherungen variiert je nach Tarif.</p></div>
+      <div class="card"><div class="card-icon">📋</div><h3>Mit oder ohne Rezept</h3><p>Privatversicherte und Beamte mit Beihilfe benötigen ein Rezept — dieses können Sie bei Ihrer zuständigen Stelle einreichen. Die Erstattung ist nicht garantiert, wir empfehlen sich vorab zu informieren. Selbstzahler benötigen kein Rezept.</p></div>
       <div class="card"><div class="card-icon">⏱</div><h3>Individuelle Dauer</h3><p>Die Behandlungsdauer lege ich nach ausführlicher Befundung fest — passend zu Ihrem Bedarf.</p></div>
-      <div class="card"><div class="card-icon">💳</div><h3>Abrechnung</h3><p>Privatpatienten, Beamte mit Beihilfe und Selbstzahler. Transparente Festpreise.</p></div>
+      <div class="card"><div class="card-icon">💳</div><h3>Abrechnung</h3><p>Privatpatienten, Beamte mit Beihilfe und Selbstzahler.</p></div>
       <div class="card"><div class="card-icon">📍</div><h3>Einzugsgebiet</h3><p>Heidelberg bis Karlsruhe — gesamte Rhein-Neckar-Region.</p></div>
     </div>
   </div>
@@ -463,7 +464,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
   <div class="sec">
     <span class="eyebrow">Angebot</span>
     <h2 class="sec-title">Leistungen &amp; Preise</h2>
-    <p class="sec-sub">Alle Behandlungen finden bei Ihnen zuhause statt. Die Behandlungsdauer lege ich nach Befund fest.</p>
+    <p class="sec-sub">Alle Behandlungen finden bei Ihnen zuhause statt. Die Behandlungsdauer legen wir gemeinsam nach dem Ersttermin fest.</p>
 
     <div class="leist-section">
 
@@ -487,7 +488,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
             <div class="preis-amt">100 €</div>
           </div>
         </div>
-        <p class="preis-note">Bei Vorliegen eines ärztlichen Rezepts können die Behandlungen bei der Privatversicherung oder Beihilfe eingereicht werden. Die Erstattung variiert je nach Tarif und ist nicht garantiert. Selbstzahler benötigen kein Rezept.</p>
+        <p class="preis-note">Privatversicherte &amp; Beihilfe mit Rezept: Leistungen nach § 4 Nr. 14 UStG umsatzsteuerbefreit — keine Mehrwertsteuer. · Selbstzahler: auf den Nettobetrag wird die gesetzliche MwSt. von 19 % erhoben (Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 €).</p>
         <div class="inkl-box" style="margin-top:14px;">
           <h4>Im Behandlungspreis inbegriffen</h4>
           <p>Taping · Flossing · Schröpfen · Wärmetherapie · Blading</p>
@@ -519,6 +520,21 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
         <div class="zg-item">◆ &nbsp;Alle, die flexible Therapie zuhause wünschen</div>
       </div>
 
+      <!-- Aufklärung Abrechnung -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <h3 style="font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;color:var(--text);letter-spacing:-0.3px;">Hinweise zur Abrechnung &amp; Umsatzsteuer</h3>
+
+        <div style="border:1px solid rgba(196,173,149,0.4);border-radius:16px;padding:22px 26px;background:rgba(196,173,149,0.08);">
+          <h4 style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:0.2px;">🏥 Privatversicherte &amp; Beamte mit Beihilfe (mit Rezept)</h4>
+          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);line-height:1.75;">Physiotherapeutische Heilbehandlungen sind nach <strong>§ 4 Nr. 14 UStG</strong> von der Umsatzsteuer befreit — es fällt keine Mehrwertsteuer an. Mit einem ärztlichen Rezept können Sie die Rechnung bei Ihrer privaten Krankenversicherung oder der zuständigen Beihilfestelle (z. B. Landesamt für Besoldung und Versorgung) einreichen. Die Erstattung ist tarifabhängig und nicht garantiert — wir empfehlen, sich vorab bei Ihrer Versicherung oder Beihilfestelle zu informieren, welche Leistungen und welcher Anteil erstattet werden.</p>
+        </div>
+
+        <div style="border:1px solid rgba(196,173,149,0.4);border-radius:16px;padding:22px 26px;background:rgba(196,173,149,0.08);">
+          <h4 style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:0.2px;">💶 Selbstzahler (ohne Rezept)</h4>
+          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);line-height:1.75;">Selbstzahler benötigen kein ärztliches Rezept. Da die Leistung in diesem Fall als private Dienstleistung gilt, wird auf den Nettobetrag die gesetzliche Umsatzsteuer von <strong>19 % erhoben</strong>. Die Gesamtpreise für Selbstzahler betragen daher: Ersttermin <strong>71,40 €</strong> · 45 Minuten <strong>95,20 €</strong> · 60 Minuten <strong>119,00 €</strong>.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -538,6 +554,38 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
   </div>
 </div>
 
+  <div class="sec">
+    <span class="eyebrow">Tipps &amp; Vorbereitung</span>
+    <h2 class="sec-title">Für Ihren Ersttermin</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px;">
+      <div class="card" style="padding:22px 24px;">
+        <div class="card-icon">📄</div>
+        <h3>Dokumente</h3>
+        <p>Wenn möglich, füllen Sie Anamnesebogen und Behandlungsvertrag vorab aus und bringen diese mit. Kein Problem, falls das nicht klappt — wir erledigen das gemeinsam beim Termin.</p>
+      </div>
+      <div class="card" style="padding:22px 24px;">
+        <div class="card-icon">📝</div>
+        <h3>Fragen notieren</h3>
+        <p>Notieren Sie sich vorab Fragen oder Beschwerden, die Ihnen wichtig sind — so nutzen wir die gemeinsame Zeit optimal und nichts bleibt offen.</p>
+      </div>
+      <div class="card" style="padding:22px 24px;">
+        <div class="card-icon">👕</div>
+        <h3>Kleidung</h3>
+        <p>Bequeme Sportklamotten sind generell wünschenswert, aber keine Pflicht. Hauptsache, Sie fühlen sich wohl und die betroffenen Körperstellen sind gut zugänglich.</p>
+      </div>
+      <div class="card" style="padding:22px 24px;">
+        <div class="card-icon">🏋️</div>
+        <h3>Sportgeräte</h3>
+        <p>Falls vorhanden, gerne griffbereit positionieren: Therabänder, Hanteln, Kettlebell, Matte, Foam Roller, Ball, Hocker, Stab o. Ä. — wir nutzen, was da ist.</p>
+      </div>
+      <div class="card" style="padding:22px 24px;">
+        <div class="card-icon">📋</div>
+        <h3>Trainingsplan</h3>
+        <p>Auf Wunsch erstelle ich Ihnen einen individuellen Trainingsplan, den Sie eigenständig zwischen den Terminen umsetzen können — für nachhaltigere Fortschritte.</p>
+      </div>
+    </div>
+  </div>
+
 <!-- ═══ ÜBER MICH ═══ -->
 <div class="page" id="ueber">
   <div class="sec">
@@ -548,6 +596,11 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
           <div class="name">Nick Grausam</div>
           <div class="role">Staatlich anerkannter Physiotherapeut</div>
         </div>
+        <div class="ueber-dets">
+          <div class="ueber-det"><div class="ueber-det-ico">🎓</div><div><h4>Ausbildung</h4><p>Staatlich anerkannter Physiotherapeut · BG Klinik Ludwigshafen</p></div></div>
+          <div class="ueber-det"><div class="ueber-det-ico">🏥</div><div><h4>Schwerpunkte</h4><p>Geriatrie · Post-OP Rehabilitation · Neurologie · Orthopädie</p></div></div>
+          <div class="ueber-det"><div class="ueber-det-ico">📍</div><div><h4>Einzugsgebiet</h4><p>Heidelberg – Karlsruhe · Rhein-Neckar-Raum</p></div></div>
+        </div>
       </div>
       <div>
         <span class="eyebrow">Über mich</span>
@@ -556,12 +609,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Meine Ausbildung an der BG Klinik Ludwigshafen hat mir das fachliche Fundament gegeben: Ich habe intensiv mit Patienten nach schweren traumatologischen, neurologischen und orthopädischen Eingriffen gearbeitet und erlebt, wie strukturierte Therapie Menschen schrittweise zurück in ihre Selbstständigkeit bringt.</p>
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Heute liegt mein Schwerpunkt auf Menschen, die ihr Zuhause nicht verlassen können: ältere Patienten mit eingeschränkter Mobilität, Menschen nach orthopädischen oder chirurgischen Eingriffen sowie Patienten mit geriatrischen Erkrankungsbildern, die eine kontinuierliche, fachkundige Betreuung benötigen. Die häusliche Behandlung ist in diesen Fällen kein Kompromiss — sie ist die fachlich sinnvollste Lösung.</p>
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Was mich dabei wirklich antreibt, ist ein Thema, das mir persönlich sehr am Herzen liegt: der Muskelabbau im Alter — medizinisch als <em>Sarkopenie</em> bekannt. Wissenschaftliche Untersuchungen zeigen, dass der Körper ab dem 30. Lebensjahr durchschnittlich 3–8 % Muskelmasse pro Jahrzehnt verliert; nach dem 60. Lebensjahr beschleunigt sich dieser Abbau auf bis zu 1–2 % pro Jahr <span style="font-size:12px;opacity:0.65;">(Cruz-Jentoft et al., European Working Group on Sarcopenia, 2010)</span>. Wer sich nicht bewegt, verliert nicht nur Kraft, sondern langfristig seine Mobilität, seine Unabhängigkeit und damit ein Stück Lebensqualität. Doch das Entscheidende ist: Es ist niemals zu spät, diesem Prozess entgegenzuwirken. Der Körper reagiert auf Reize, er passt sich an, er wird stärker — egal in welchem Alter und egal wo man gerade steht. Jeder Schritt zählt, jede Einheit hinterlässt eine Wirkung.</p>
-        <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:26px;">Körperliche Aktivität ist keine Option — sie ist eine Notwendigkeit, genauso selbstverständlich wie Essen und Trinken. Mein Ziel ist es, genau das erlebbar zu machen: Menschen wieder in Bewegung bringen, sie für ein aktives Leben begeistern und gemeinsam zeigen, was mit der richtigen Struktur möglich ist — jeden Tag ein bisschen mehr.</p>
-        <div class="ueber-dets">
-          <div class="ueber-det"><div class="ueber-det-ico">🎓</div><div><h4>Ausbildung</h4><p>Staatlich anerkannter Physiotherapeut · BG Klinik Ludwigshafen</p></div></div>
-          <div class="ueber-det"><div class="ueber-det-ico">🏥</div><div><h4>Schwerpunkte</h4><p>Geriatrie · Post-OP Rehabilitation · Neurologie · Orthopädie</p></div></div>
-          <div class="ueber-det"><div class="ueber-det-ico">📍</div><div><h4>Einzugsgebiet</h4><p>Heidelberg – Karlsruhe · Rhein-Neckar-Raum</p></div></div>
-        </div>
+        <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;">Körperliche Aktivität ist keine Option — sie ist eine Notwendigkeit, genauso selbstverständlich wie Essen und Trinken. Mein Ziel ist es, genau das erlebbar zu machen: Menschen wieder in Bewegung bringen, sie für ein aktives Leben begeistern und gemeinsam zeigen, was mit der richtigen Struktur möglich ist — jeden Tag ein bisschen mehr.</p>
       </div>
     </div>
   </div>
@@ -577,9 +625,10 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was passiert beim Ersttermin? <span class="ico">+</span></button><div class="faq-a">Der Ersttermin dauert 60 Minuten und kostet 60 €. Er beinhaltet eine ausführliche Anamnese, Befundung und individuelle Therapieplanung. Bei Buchung eines Folgetermins wird der Ersttermin kostenlos. Auf Basis dieser Einheit lege ich die weitere Behandlung fest.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was ist im Behandlungspreis inbegriffen? <span class="ico">+</span></button><div class="faq-a">Alle therapeutischen Maßnahmen — darunter Taping, Flossing, Schröpfen, Wärmetherapie und Blading — sind fester Bestandteil der Behandlung. Es fallen keine zusätzlichen Kosten an.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Brauche ich ein Rezept? <span class="ico">+</span></button><div class="faq-a">Als Selbstzahler benötigen Sie kein Rezept. Privatpatienten und Beamte mit Beihilfe benötigen in der Regel ein ärztliches Rezept. Die Erstattung durch die Privatversicherung variiert je nach Tarif — bitte klären Sie dies vorab mit Ihrer Versicherung.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wie funktioniert die Abrechnung? <span class="ico">+</span></button><div class="faq-a">Nach der Behandlung erhalten Sie eine Rechnung zu den Festpreisen. Privatpatienten reichen diese bei ihrer Versicherung ein, Beamte über die Beihilfe. Selbstzahler zahlen direkt — bar oder per Überweisung.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wie funktioniert die Abrechnung? <span class="ico">+</span></button><div class="faq-a">Nach der Behandlung erhalten Sie eine Rechnung. Privatpatienten reichen diese bei ihrer Versicherung ein, Beamte über die Beihilfestelle. Selbstzahler zahlen direkt — bar oder per Überweisung.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Fällt Umsatzsteuer auf die Behandlung an? <span class="ico">+</span></button><div class="faq-a">Das hängt von Ihrer Abrechnungsart ab. Privatversicherte und Beamte mit Beihilfe, die ein ärztliches Rezept vorlegen, profitieren von der Umsatzsteuerbefreiung nach § 4 Nr. 14 UStG — es fällt keine Mehrwertsteuer an. Selbstzahler erhalten eine Rechnung mit ausgewiesener Mehrwertsteuer von 19 %, da die Leistung ohne Rezept als private Dienstleistung gilt. Die Bruttopreise für Selbstzahler: Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 €.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">In welchem Gebiet kommen Sie? <span class="ico">+</span></button><div class="faq-a">Ich bin im Raum Heidelberg bis Karlsruhe tätig — inkl. gesamter Rhein-Neckar-Region. Bei Fragen einfach kurz anfragen.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wie schnell bekomme ich einen Termin? <span class="ico">+</span></button><div class="faq-a">Ich melde mich in der Regel innerhalb von 24 Stunden. Am schnellsten geht es per WhatsApp.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wann sind Sie erreichbar? <span class="ico">+</span></button><div class="faq-a">Es gibt keine festen Öffnungszeiten — Termine werden individuell mit Ihnen vereinbart. Am besten erreichen Sie mich per WhatsApp oder E-Mail. Sie erhalten in der Regel innerhalb von 24 Stunden eine Rückmeldung.</div></div>
     </div>
   </div>
 </div>
@@ -638,10 +687,11 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
       <div>
         <span class="eyebrow">Kontakt</span>
         <h2 class="sec-title">Termin anfragen</h2>
-        <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:0;">Ich melde mich innerhalb von 24 Stunden. Am schnellsten per WhatsApp.</p>
+        <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:0;">Bevorzugt per WhatsApp oder E-Mail — Sie erhalten innerhalb von 24 Stunden eine Rückmeldung. Es gibt keine festen Öffnungszeiten, Termine werden individuell vereinbart.</p>
         <div class="kontakt-info">
-          <div class="k-row"><div class="k-ico">📞</div><div><h4>Telefon / WhatsApp</h4><p><a href="tel:017642685146">0176 4268 5146</a></p></div></div>
+          <div class="k-row"><div class="k-ico">💬</div><div><h4>WhatsApp (bevorzugt)</h4><p><a href="https://wa.me/4917642685146" target="_blank">0176 4268 5146</a></p></div></div>
           <div class="k-row"><div class="k-ico">✉</div><div><h4>E-Mail</h4><p><a href="mailto:info@physiotherapie-grausam.de">info@physiotherapie-grausam.de</a></p></div></div>
+          <div class="k-row"><div class="k-ico">📞</div><div><h4>Telefon</h4><p><a href="tel:017642685146">0176 4268 5146</a></p></div></div>
           <div class="k-row"><div class="k-ico">📍</div><div><h4>Einzugsgebiet</h4><p>Heidelberg – Karlsruhe · Rhein-Neckar-Raum</p></div></div>
         </div>
         <div style="margin-top:28px;">
