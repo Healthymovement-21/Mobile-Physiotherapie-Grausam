@@ -16,6 +16,8 @@
 <meta name="twitter:title" content="Mobile Physiotherapie Grausam">
 <meta name="twitter:description" content="Physiotherapie Hausbesuche im Raum Heidelberg bis Karlsruhe.">
 <link rel="canonical" href="https://physiotherapie-grausam.com/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;500&display=swap" rel="stylesheet">
@@ -75,11 +77,11 @@
   --border:#ddd5c8;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Source Sans Pro',-apple-system,'Helvetica Neue',Arial,sans-serif;background:var(--white);color:var(--text);line-height:1.6;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:'Source Sans Pro',-apple-system,'Helvetica Neue',Arial,sans-serif;background:var(--white);color:var(--text);line-height:1.6;overflow-x:hidden;}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 6%;height:64px;display:flex;align-items:center;justify-content:space-between;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.98);border-bottom:1px solid var(--border);padding:0 6%;height:64px;display:flex;align-items:center;justify-content:space-between;}
 .nav-logo{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);cursor:pointer;letter-spacing:-0.3px;}
 .nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
 .nav-links a{font-family:'Source Sans Pro',sans-serif;font-size:13.5px;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s;cursor:pointer;position:relative;}
@@ -87,9 +89,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .nav-links a:not(.nav-cta):hover::after{transform:scaleX(1);}
 .nav-links a:hover{color:var(--text);}
 .nav-cta{
-  background:linear-gradient(135deg,#1e1b18,#5a4f45,#1e1b18)!important;
-  background-size:200% 200%!important;
-  animation:gradientShift 4s ease infinite;
+  background:#1e1b18!important;
   color:var(--white)!important;
   padding:10px 24px!important;
   border-radius:100px!important;
@@ -134,9 +134,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 /* ── BUTTONS ── */
 .btn{
   display:inline-block;
-  background:linear-gradient(135deg,#1e1b18,#5a4f45,#1e1b18);
-  background-size:200% 200%;
-  animation:gradientShift 4s ease infinite;
+  background:#1e1b18;
   color:var(--white);
   padding:14px 32px;
   font-size:13px;
@@ -148,8 +146,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
   cursor:pointer;
   border:none;
   box-shadow:0 4px 15px rgba(0,0,0,0.2);
-  transition:transform 0.2s,box-shadow 0.2s;
+  transition:transform 0.2s,box-shadow 0.2s,background 0.3s;
 }
+.btn:active{background:#3a3330;}
 .btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(0,0,0,0.27);}
 .btn-outline{
   display:inline-block;
@@ -546,7 +545,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
     <h2 class="sec-title">Einfach. Direkt. Persönlich.</h2>
     <p class="sec-sub">Von der ersten Anfrage bis zur Behandlung — unkompliziert und transparent.</p>
     <div class="ablauf-steps">
-      <div class="ablauf-step"><div class="step-n">1</div><div class="step-t">Kontakt aufnehmen</div><p class="step-p">Per WhatsApp, Telefon oder Kontaktformular — schnell und unkompliziert.</p></div>
+      <div class="ablauf-step"><div class="step-n">1</div><div class="step-t">Kontakt aufnehmen</div><p class="step-p">Per WhatsApp, E-Mail oder Kontaktformular — schnell und unkompliziert.</p></div>
       <div class="ablauf-step"><div class="step-n">2</div><div class="step-t">Erstgespräch</div><p class="step-p">Ich melde mich zeitnah. Wir besprechen Ihr Anliegen und vereinbaren einen Termin.</p></div>
       <div class="ablauf-step"><div class="step-n">3</div><div class="step-t">Ersttermin</div><p class="step-p">60 Minuten ausführliche Befundung und Beratung — die Basis für Ihre individuelle Therapie. 60 €. Bei Buchung eines Folgetermins kostenlos.</p></div>
       <div class="ablauf-step"><div class="step-n">4</div><div class="step-t">Therapie &amp; Plan</div><p class="step-p">Gemeinsam erarbeiten wir einen individuellen Therapieplan für nachhaltige Verbesserung.</p></div>
@@ -570,12 +569,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
       <div class="card" style="padding:22px 24px;">
         <div class="card-icon">👕</div>
         <h3>Kleidung</h3>
-        <p>Bequeme Sportklamotten sind generell wünschenswert, aber keine Pflicht. Hauptsache, Sie fühlen sich wohl und die betroffenen Körperstellen sind gut zugänglich.</p>
-      </div>
-      <div class="card" style="padding:22px 24px;">
-        <div class="card-icon">🏋️</div>
-        <h3>Sportgeräte</h3>
-        <p>Falls vorhanden, gerne griffbereit positionieren: Therabänder, Hanteln, Kettlebell, Matte, Foam Roller, Ball, Hocker, Stab o. Ä. — wir nutzen, was da ist.</p>
+        <p>Bequeme Kleidung erwünscht.</p>
       </div>
       <div class="card" style="padding:22px 24px;">
         <div class="card-icon">📋</div>
@@ -610,7 +604,6 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Meine Ausbildung an der BG Klinik Ludwigshafen hat mir das fachliche Fundament gegeben: Ich habe intensiv mit Patienten nach schweren traumatologischen, neurologischen und orthopädischen Eingriffen gearbeitet und erlebt, wie strukturierte Therapie Menschen schrittweise zurück in ihre Selbstständigkeit bringt.</p>
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Heute liegt mein Schwerpunkt auf Menschen, die ihr Zuhause nicht verlassen können: ältere Patienten mit eingeschränkter Mobilität, Menschen nach orthopädischen oder chirurgischen Eingriffen sowie Patienten mit geriatrischen Erkrankungsbildern, die eine kontinuierliche, fachkundige Betreuung benötigen. Die häusliche Behandlung ist in diesen Fällen kein Kompromiss — sie ist die fachlich sinnvollste Lösung.</p>
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Was mich dabei wirklich antreibt, ist ein Thema, das mir persönlich sehr am Herzen liegt: der Muskelabbau im Alter — medizinisch als <em>Sarkopenie</em> bekannt. Wissenschaftliche Untersuchungen zeigen, dass der Körper ab dem 30. Lebensjahr durchschnittlich 3–8 % Muskelmasse pro Jahrzehnt verliert; nach dem 60. Lebensjahr beschleunigt sich dieser Abbau auf bis zu 1–2 % pro Jahr <span style="font-size:12px;opacity:0.65;">(Cruz-Jentoft et al., European Working Group on Sarcopenia, 2010)</span>. Wer sich nicht bewegt, verliert nicht nur Kraft, sondern langfristig seine Mobilität, seine Unabhängigkeit und damit ein Stück Lebensqualität. Doch das Entscheidende ist: Es ist niemals zu spät, diesem Prozess entgegenzuwirken. Der Körper reagiert auf Reize, er passt sich an, er wird stärker — egal in welchem Alter und egal wo man gerade steht. Jeder Schritt zählt, jede Einheit hinterlässt eine Wirkung.</p>
-        <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;">Körperliche Aktivität ist keine Option — sie ist eine Notwendigkeit, genauso selbstverständlich wie Essen und Trinken. Mein Ziel ist es, genau das erlebbar zu machen: Menschen wieder in Bewegung bringen, sie für ein aktives Leben begeistern und gemeinsam zeigen, was mit der richtigen Struktur möglich ist — jeden Tag ein bisschen mehr.</p>
       </div>
     </div>
   </div>
@@ -676,7 +669,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
     </div>
 
     <div class="dok-info">
-      <strong>So geht's:</strong> Laden Sie die Dokumente herunter (PDF zum Ausdrucken oder DOCX zum digitalen Ausfüllen), füllen Sie den Anamnesebogen vor dem Ersttermin aus und bringen Sie alle drei unterzeichneten Dokumente zum Termin mit. Falls Sie Fragen beim Ausfüllen haben, melden Sie sich gern – telefonisch unter <a href="tel:017642685146" style="color:var(--text);text-decoration:underline;">0176 4268 5146</a> oder per WhatsApp.
+      <strong>So geht's:</strong> Laden Sie die Dokumente herunter (PDF zum Ausdrucken oder DOCX zum digitalen Ausfüllen), füllen Sie den Anamnesebogen vor dem Ersttermin aus und bringen Sie alle drei unterzeichneten Dokumente zum Termin mit. Bei Fragen einfach per WhatsApp oder E-Mail melden.
     </div>
   </div>
 </div>
@@ -690,9 +683,8 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
         <h2 class="sec-title">Termin anfragen</h2>
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:0;">Bevorzugt per WhatsApp oder E-Mail — Sie erhalten innerhalb von 24 Stunden eine Rückmeldung. Es gibt keine festen Öffnungszeiten, Termine werden individuell vereinbart.</p>
         <div class="kontakt-info">
-          <div class="k-row"><div class="k-ico">💬</div><div><h4>WhatsApp (bevorzugt)</h4><p><a href="https://wa.me/4917642685146" target="_blank">0176 4268 5146</a></p></div></div>
+          <div class="k-row"><div class="k-ico">💬</div><div><h4>WhatsApp / Telefon (bevorzugt)</h4><p><a href="https://wa.me/4917642685146" target="_blank">0176 4268 5146</a></p></div></div>
           <div class="k-row"><div class="k-ico">✉</div><div><h4>E-Mail</h4><p><a href="mailto:info@physiotherapie-grausam.de">info@physiotherapie-grausam.de</a></p></div></div>
-          <div class="k-row"><div class="k-ico">📞</div><div><h4>Telefon</h4><p><a href="tel:017642685146">0176 4268 5146</a></p></div></div>
           <div class="k-row"><div class="k-ico">📍</div><div><h4>Einzugsgebiet</h4><p>Heidelberg – Karlsruhe · Rhein-Neckar-Raum</p></div></div>
         </div>
         <div style="margin-top:28px;">
@@ -709,10 +701,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
             <div class="fg"><label for="f_vorname">Vorname *</label><input id="f_vorname" name="vorname" type="text" required placeholder="Max"></div>
             <div class="fg"><label for="f_nachname">Nachname *</label><input id="f_nachname" name="nachname" type="text" required placeholder="Mustermann"></div>
           </div>
-          <div class="form-row">
-            <div class="fg"><label for="f_tel">Telefon *</label><input id="f_tel" name="telefon" type="tel" required placeholder="0176 ..."></div>
-            <div class="fg"><label for="f_email">E-Mail</label><input id="f_email" name="email" type="email" placeholder="max@email.de"></div>
-          </div>
+          <div class="fg"><label for="f_email">E-Mail</label><input id="f_email" name="email" type="email" placeholder="max@email.de"></div>
           <div class="fg"><label for="f_adresse">Adresse (für Hausbesuch) *</label><input id="f_adresse" name="adresse" type="text" required placeholder="Straße, PLZ Ort"></div>
           <div class="fg">
             <label for="f_versicherung">Abrechnung / Versicherung *</label>
@@ -901,12 +890,12 @@ async function submitForm(e){
     } else {
       btn.textContent = 'Anfrage absenden';
       btn.disabled = false;
-      alert('Fehler beim Senden. Bitte rufen Sie an oder schreiben Sie per WhatsApp.');
+      alert('Fehler beim Senden. Bitte schreiben Sie per WhatsApp oder E-Mail.');
     }
   } catch(err){
     btn.textContent = 'Anfrage absenden';
     btn.disabled = false;
-    alert('Fehler beim Senden. Bitte rufen Sie an oder schreiben Sie per WhatsApp.');
+    alert('Fehler beim Senden. Bitte schreiben Sie per WhatsApp oder E-Mail.');
   }
 }
 </script>
