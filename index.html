@@ -415,7 +415,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
       <h1 class="hero-title">Physiotherapie<br>direkt bei<br>Ihnen zuhause.</h1>
       <p class="hero-sub">Professionelle, individuelle Behandlung — ohne Warteraum, ohne Anfahrt. Im Raum Heidelberg bis Karlsruhe.</p>
       <div class="hero-btns">
-        <a class="btn" href="https://wa.me/4917642685146" target="_blank">Termin per WhatsApp</a>
+        <button class="btn" onclick="show('kontakt')">Termin vereinbaren</button>
         <button class="btn-outline" onclick="show('leistungen')">Leistungen</button>
       </div>
     </div>
@@ -476,18 +476,27 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
               <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5;">60 Min · Befundung, Aufklärung &amp; individuelle Therapieplanung</div>
               <div style="font-family:'Montserrat',sans-serif;font-size:11.5px;color:var(--sand-dark);font-weight:700;margin-top:6px;letter-spacing:0.2px;">✓ Kostenlos bei Buchung eines Folgetermins</div>
             </div>
-            <div class="preis-amt">60 €</div>
+            <div style="text-align:right;">
+              <div class="preis-amt">60 €</div>
+              <div style="font-family:'Source Sans Pro',sans-serif;font-size:11px;color:var(--muted);margin-top:3px;">ohne Umsatzsteuer</div>
+            </div>
           </div>
           <div class="preis-card">
             <div class="preis-dur">Folgebehandlung · 45 Minuten</div>
-            <div class="preis-amt">80 €</div>
+            <div style="text-align:right;">
+              <div class="preis-amt">80 €</div>
+              <div style="font-family:'Source Sans Pro',sans-serif;font-size:11px;color:var(--muted);margin-top:3px;">ohne Umsatzsteuer</div>
+            </div>
           </div>
           <div class="preis-card">
             <div class="preis-dur">Folgebehandlung · 60 Minuten</div>
-            <div class="preis-amt">100 €</div>
+            <div style="text-align:right;">
+              <div class="preis-amt">100 €</div>
+              <div style="font-family:'Source Sans Pro',sans-serif;font-size:11px;color:var(--muted);margin-top:3px;">ohne Umsatzsteuer</div>
+            </div>
           </div>
         </div>
-        <p class="preis-note">Privatversicherte &amp; Beihilfe mit Rezept: Leistungen nach § 4 Nr. 14 UStG umsatzsteuerbefreit — keine Mehrwertsteuer. · Selbstzahler: auf den Nettobetrag wird die gesetzliche MwSt. von 19 % erhoben (Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 €).</p>
+        <p class="preis-note">Privatversicherte &amp; Beihilfe mit Rezept: Leistungen nach § 4 Nr. 14 UStG umsatzsteuerbefreit — keine Umsatzsteuer. · Selbstzahler: auf den Nettobetrag wird die gesetzliche Umsatzsteuer von 19 % erhoben (Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 €).</p>
         <div class="inkl-box" style="margin-top:14px;">
           <h4>Im Behandlungspreis inbegriffen</h4>
           <p>Taping · Flossing · Schröpfen · Wärmetherapie · Blading</p>
@@ -525,16 +534,21 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
 
         <div style="border:1px solid rgba(196,173,149,0.4);border-radius:16px;padding:22px 26px;background:rgba(196,173,149,0.08);">
           <h4 style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:0.2px;">🏥 Privatversicherte &amp; Beamte mit Beihilfe (mit Rezept)</h4>
-          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);line-height:1.75;">Physiotherapeutische Heilbehandlungen sind nach <strong>§ 4 Nr. 14 UStG</strong> von der Umsatzsteuer befreit — es fällt keine Mehrwertsteuer an. Mit einem ärztlichen Rezept können Sie die Rechnung bei Ihrer privaten Krankenversicherung oder der zuständigen Beihilfestelle (z. B. Landesamt für Besoldung und Versorgung) einreichen. Die Erstattung ist tarifabhängig und nicht garantiert — wir empfehlen, sich vorab bei Ihrer Versicherung oder Beihilfestelle zu informieren, welche Leistungen und welcher Anteil erstattet werden.</p>
+          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);line-height:1.75;">Physiotherapeutische Heilbehandlungen sind nach <strong>§ 4 Nr. 14 UStG</strong> von der Umsatzsteuer befreit — es fällt keine Umsatzsteuer an. Mit einem ärztlichen Rezept können Sie die Rechnung bei Ihrer privaten Krankenversicherung oder der zuständigen Beihilfestelle (z. B. Landesamt für Besoldung und Versorgung) einreichen. Die Erstattung ist tarifabhängig und nicht garantiert — wir empfehlen, sich vorab bei Ihrer Versicherung oder Beihilfestelle zu informieren, welche Leistungen und welcher Anteil erstattet werden.</p>
         </div>
 
         <div style="border:1px solid rgba(196,173,149,0.4);border-radius:16px;padding:22px 26px;background:rgba(196,173,149,0.08);">
           <h4 style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:0.2px;">💶 Selbstzahler (ohne Rezept)</h4>
-          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);line-height:1.75;">Selbstzahler benötigen kein ärztliches Rezept. Da die Leistung in diesem Fall als private Dienstleistung gilt, wird auf den Nettobetrag die gesetzliche Umsatzsteuer von <strong>19 % erhoben</strong>. Die Gesamtpreise für Selbstzahler betragen daher: Ersttermin <strong>71,40 €</strong> · 45 Minuten <strong>95,20 €</strong> · 60 Minuten <strong>119,00 €</strong>.</p>
+          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);line-height:1.75;">Selbstzahler benötigen kein ärztliches Rezept. Da die Leistung in diesem Fall als private Dienstleistung gilt, wird auf den Nettobetrag die gesetzliche Umsatzsteuer von <strong>19 % erhoben</strong>. Die Gesamtpreise für Selbstzahler betragen daher: Ersttermin <strong>71,40 €</strong> · 45 Minuten <strong>95,20 €</strong> · 60 Minuten <strong>119,00 €</strong> (inkl. Umsatzsteuer).</p>
         </div>
       </div>
 
     </div>
+
+    <div style="margin-top:48px;text-align:center;">
+      <button class="btn" onclick="show('kontakt')" style="padding:16px 48px;font-size:14px;">Termin vereinbaren</button>
+    </div>
+
   </div>
 </div>
 
@@ -559,12 +573,12 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
       <div class="card" style="padding:22px 24px;">
         <div class="card-icon">📄</div>
         <h3>Dokumente</h3>
-        <p>Wenn möglich, füllen Sie Anamnesebogen und Behandlungsvertrag vorab aus und bringen diese mit. Kein Problem, falls das nicht klappt — wir erledigen das gemeinsam beim Termin.</p>
+        <p>Bitte möglichst zum Erstgespräch mitbringen: <strong>Anamnesebogen</strong>, <strong>Behandlungsvertrag</strong> und <strong>Datenschutzerklärung</strong>. Alle Formulare finden Sie auf der <a href="javascript:void(0)" onclick="show('dokumente')" style="color:var(--text);font-weight:600;text-decoration:underline;">Dokumente-Seite</a>.</p>
       </div>
       <div class="card" style="padding:22px 24px;">
         <div class="card-icon">📝</div>
         <h3>Fragen notieren</h3>
-        <p>Notieren Sie sich vorab Fragen oder Beschwerden, die Ihnen wichtig sind — so nutzen wir die gemeinsame Zeit optimal und nichts bleibt offen.</p>
+        <p>Notieren Sie sich vorab Ihre Fragen und Beschwerden — so vergessen Sie auch nichts beim Erstgespräch.</p>
       </div>
       <div class="card" style="padding:22px 24px;">
         <div class="card-icon">👕</div>
@@ -574,7 +588,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
       <div class="card" style="padding:22px 24px;">
         <div class="card-icon">📋</div>
         <h3>Trainingsplan</h3>
-        <p>Auf Wunsch erstelle ich Ihnen einen individuellen Trainingsplan, den Sie eigenständig zwischen den Terminen umsetzen können — für nachhaltigere Fortschritte.</p>
+        <p>Für nachhaltige Erfolge erhalten Sie von mir einen persönlichen Trainingsplan.</p>
       </div>
     </div>
   </div>
@@ -603,7 +617,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Sport hat mich mein Leben lang begleitet — als leidenschaftlicher Handballer weiß ich aus eigener Erfahrung, was Bewegung bedeutet und wie viel sie einem geben kann. Durch die therapeutische Perspektive, die ich im Laufe meiner Ausbildung entwickelt habe, habe ich noch mehr Freude am Sport gefunden als je zuvor — weil ich verstehe, wie der Körper funktioniert, was er leisten kann und wie man das Beste aus ihm herausholt. Genau diese Begeisterung möchte ich an meine Patienten weitergeben.</p>
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Meine Ausbildung an der BG Klinik Ludwigshafen hat mir das fachliche Fundament gegeben: Ich habe intensiv mit Patienten nach schweren traumatologischen, neurologischen und orthopädischen Eingriffen gearbeitet und erlebt, wie strukturierte Therapie Menschen schrittweise zurück in ihre Selbstständigkeit bringt.</p>
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Heute liegt mein Schwerpunkt auf Menschen, die ihr Zuhause nicht verlassen können: ältere Patienten mit eingeschränkter Mobilität, Menschen nach orthopädischen oder chirurgischen Eingriffen sowie Patienten mit geriatrischen Erkrankungsbildern, die eine kontinuierliche, fachkundige Betreuung benötigen. Die häusliche Behandlung ist in diesen Fällen kein Kompromiss — sie ist die fachlich sinnvollste Lösung.</p>
-        <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Was mich dabei wirklich antreibt, ist ein Thema, das mir persönlich sehr am Herzen liegt: der Muskelabbau im Alter — medizinisch als <em>Sarkopenie</em> bekannt. Wissenschaftliche Untersuchungen zeigen, dass der Körper ab dem 30. Lebensjahr durchschnittlich 3–8 % Muskelmasse pro Jahrzehnt verliert; nach dem 60. Lebensjahr beschleunigt sich dieser Abbau auf bis zu 1–2 % pro Jahr <span style="font-size:12px;opacity:0.65;">(Cruz-Jentoft et al., European Working Group on Sarcopenia, 2010)</span>. Wer sich nicht bewegt, verliert nicht nur Kraft, sondern langfristig seine Mobilität, seine Unabhängigkeit und damit ein Stück Lebensqualität. Doch das Entscheidende ist: Es ist niemals zu spät, diesem Prozess entgegenzuwirken. Der Körper reagiert auf Reize, er passt sich an, er wird stärker — egal in welchem Alter und egal wo man gerade steht. Jeder Schritt zählt, jede Einheit hinterlässt eine Wirkung.</p>
+        <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;">Dafür bin ich für Sie da.</p>
       </div>
     </div>
   </div>
@@ -620,7 +634,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was ist im Behandlungspreis inbegriffen? <span class="ico">+</span></button><div class="faq-a">Alle therapeutischen Maßnahmen — darunter Taping, Flossing, Schröpfen, Wärmetherapie und Blading — sind fester Bestandteil der Behandlung. Es fallen keine zusätzlichen Kosten an.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Brauche ich ein Rezept? <span class="ico">+</span></button><div class="faq-a">Als Selbstzahler benötigen Sie kein Rezept. Privatpatienten und Beamte mit Beihilfe benötigen in der Regel ein ärztliches Rezept. Die Erstattung durch die Privatversicherung variiert je nach Tarif — bitte klären Sie dies vorab mit Ihrer Versicherung.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wie funktioniert die Abrechnung? <span class="ico">+</span></button><div class="faq-a">Nach der Behandlung erhalten Sie eine Rechnung. Privatpatienten reichen diese bei ihrer Versicherung ein, Beamte über die Beihilfestelle. Selbstzahler zahlen direkt — bar oder per Überweisung.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Fällt Umsatzsteuer auf die Behandlung an? <span class="ico">+</span></button><div class="faq-a">Das hängt von Ihrer Abrechnungsart ab. Privatversicherte und Beamte mit Beihilfe, die ein ärztliches Rezept vorlegen, profitieren von der Umsatzsteuerbefreiung nach § 4 Nr. 14 UStG — es fällt keine Mehrwertsteuer an. Selbstzahler erhalten eine Rechnung mit ausgewiesener Mehrwertsteuer von 19 %, da die Leistung ohne Rezept als private Dienstleistung gilt. Die Bruttopreise für Selbstzahler: Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 €.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Fällt Umsatzsteuer auf die Behandlung an? <span class="ico">+</span></button><div class="faq-a">Das hängt von Ihrer Abrechnungsart ab. Privatversicherte und Beamte mit Beihilfe, die ein ärztliches Rezept vorlegen, profitieren von der Umsatzsteuerbefreiung nach § 4 Nr. 14 UStG — es fällt keine Umsatzsteuer an. Selbstzahler erhalten eine Rechnung mit ausgewiesener Umsatzsteuer von 19 %, da die Leistung ohne Rezept als private Dienstleistung gilt. Die Bruttopreise für Selbstzahler: Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 €.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">In welchem Gebiet kommen Sie? <span class="ico">+</span></button><div class="faq-a">Ich bin im Raum Heidelberg bis Karlsruhe tätig — inkl. gesamter Rhein-Neckar-Region. Bei Fragen einfach kurz anfragen.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wann sind Sie erreichbar? <span class="ico">+</span></button><div class="faq-a">Es gibt keine festen Öffnungszeiten — Termine werden individuell mit Ihnen vereinbart. Am besten erreichen Sie mich per WhatsApp oder E-Mail. Sie erhalten in der Regel innerhalb von 24 Stunden eine Rückmeldung.</div></div>
     </div>
