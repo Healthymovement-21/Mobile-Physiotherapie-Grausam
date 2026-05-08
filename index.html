@@ -339,6 +339,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .form-note{font-family:'Source Sans Pro',sans-serif;font-size:11.5px;color:var(--muted);padding:10px 14px;background:rgba(196,173,149,0.12);border-radius:10px;border-left:3px solid var(--sand-dark);line-height:1.6;}
 .success-msg{display:none;background:rgba(196,173,149,0.15);border:1px solid var(--sand-dark);border-radius:14px;padding:16px;text-align:center;font-family:'Source Sans Pro',sans-serif;font-size:14px;color:var(--text);margin-bottom:12px;}
 .hidden{display:none!important;}
+.addr-hint{font-family:'Source Sans Pro',sans-serif;font-size:12px;padding:8px 12px;border-radius:8px;margin-top:4px;display:none;}
+.addr-hint.checking{display:block;background:rgba(196,173,149,0.12);color:var(--muted);}
+.addr-hint.ok{display:block;background:rgba(80,160,80,0.08);color:#2e6e2e;border:1px solid rgba(80,160,80,0.25);}
+.addr-hint.warn{display:block;background:rgba(200,80,40,0.07);color:#8a3a18;border:1px solid rgba(200,80,40,0.2);}
 
 /* ── LEGAL ── */
 .legal{padding:72px 6%;max-width:760px;}
@@ -758,7 +762,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
         <h2 class="sec-title">Termin anfragen</h2>
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:0;">Bevorzugt per WhatsApp oder E-Mail — Sie erhalten innerhalb von 24 Stunden eine Rückmeldung. Es gibt keine festen Öffnungszeiten, Termine werden individuell vereinbart.</p>
         <div class="kontakt-info">
-          <div class="k-row"><div class="k-ico">💬</div><div><h4>WhatsApp / Telefon (bevorzugt)</h4><p><a href="https://wa.me/4917642685146" target="_blank">0176 4268 5146</a></p></div></div>
+          <div class="k-row"><div class="k-ico">💬</div><div><h4>WhatsApp</h4><p><a href="https://wa.me/4917642685146" target="_blank">0176 4268 5146</a></p></div></div>
           <div class="k-row"><div class="k-ico">✉</div><div><h4>E-Mail</h4><p><a href="mailto:info@physiotherapie-grausam.de">info@physiotherapie-grausam.de</a></p></div></div>
           <div class="k-row"><div class="k-ico">📍</div><div><h4>Einzugsgebiet</h4><p>Heidelberg – Karlsruhe · Rhein-Neckar-Raum</p></div></div>
         </div>
@@ -776,8 +780,14 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
             <div class="fg"><label for="f_vorname">Vorname *</label><input id="f_vorname" name="vorname" type="text" required placeholder="Max"></div>
             <div class="fg"><label for="f_nachname">Nachname *</label><input id="f_nachname" name="nachname" type="text" required placeholder="Mustermann"></div>
           </div>
-          <div class="fg"><label for="f_email">E-Mail</label><input id="f_email" name="email" type="email" placeholder="max@email.de"></div>
-          <div class="fg"><label for="f_adresse">Adresse (für Hausbesuch) *</label><input id="f_adresse" name="adresse" type="text" required placeholder="Straße, PLZ Ort"></div>
+          <div class="fg"><label for="f_geb">Geburtsdatum *</label><input id="f_geb" name="geburtsdatum" type="date" required></div>
+          <div class="fg"><label for="f_email">E-Mail *</label><input id="f_email" name="email" type="email" required placeholder="max@email.de"></div>
+          <div class="fg"><label for="f_adresse">Straße &amp; Hausnummer *</label><input id="f_adresse" name="strasse" type="text" required placeholder="Musterstraße 1" onblur="checkAddress()"></div>
+          <div class="form-row">
+            <div class="fg"><label for="f_plz">PLZ *</label><input id="f_plz" name="plz" type="text" required placeholder="69181" maxlength="5" onblur="checkAddress()"></div>
+            <div class="fg"><label for="f_ort">Ort *</label><input id="f_ort" name="ort" type="text" required placeholder="Leimen" onblur="checkAddress()"></div>
+          </div>
+          <div class="addr-hint" id="addrHint"></div>
           <div class="fg">
             <label for="f_versicherung">Abrechnung / Versicherung *</label>
             <select id="f_versicherung" name="versicherung" required>
@@ -938,6 +948,28 @@ function faq(btn){
   document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));
   document.querySelectorAll('.faq-q').forEach(x=>x.classList.remove('open'));
   if(!open){a.classList.add('open');btn.classList.add('open');}
+}
+async function checkAddress(){
+  const street=document.getElementById('f_adresse').value.trim();
+  const plz=document.getElementById('f_plz').value.trim();
+  const ort=document.getElementById('f_ort').value.trim();
+  const hint=document.getElementById('addrHint');
+  if(!street||!plz||!ort){hint.className='addr-hint';return;}
+  hint.className='addr-hint checking';
+  hint.textContent='🔍 Adresse wird geprüft…';
+  try{
+    const url=`https://nominatim.openstreetmap.org/search?street=${encodeURIComponent(street)}&postalcode=${encodeURIComponent(plz)}&city=${encodeURIComponent(ort)}&country=de&format=json&limit=1&addressdetails=1`;
+    const res=await fetch(url,{headers:{'Accept-Language':'de','User-Agent':'PhysiotherapieGrausam/1.0'}});
+    const data=await res.json();
+    if(data.length>0){
+      const parts=data[0].display_name.split(',').slice(0,3).join(',').trim();
+      hint.className='addr-hint ok';
+      hint.textContent='✓ Adresse gefunden: '+parts;
+    }else{
+      hint.className='addr-hint warn';
+      hint.textContent='⚠ Adresse nicht gefunden — bitte Straße, PLZ und Ort auf Schreibfehler prüfen.';
+    }
+  }catch(e){hint.className='addr-hint';}
 }
 function toggleAcc(btn){
   const body=btn.nextElementSibling;
