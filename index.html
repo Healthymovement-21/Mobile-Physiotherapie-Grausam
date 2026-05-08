@@ -934,10 +934,6 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
 <script>
 // iOS horizontal scroll fix
 window.addEventListener('scroll',function(){if(window.pageXOffset!==0)window.scrollTo(0,window.pageYOffset);},{passive:true});
-document.addEventListener('touchmove',function(e){
-  if(Math.abs(e.touches[0].clientX-(e.target._tx||e.touches[0].clientX))>Math.abs(e.touches[0].clientY-(e.target._ty||e.touches[0].clientY))){e.preventDefault();}
-},{passive:false});
-document.addEventListener('touchstart',function(e){e.target._tx=e.touches[0].clientX;e.target._ty=e.touches[0].clientY;},{passive:true});
 
 function show(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
