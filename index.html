@@ -254,11 +254,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .inkl-box p{font-family:'Source Sans Pro',sans-serif;font-size:12.5px;color:var(--muted);line-height:1.6;}
 .inkl-box .legal-note{font-size:11px;color:var(--muted);margin-top:6px;font-style:italic;}
 .leist-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
-.leist-item{display:flex;align-items:center;gap:14px;padding:13px 16px;border-radius:12px;transition:background 0.2s;}
-.leist-item:hover{background:rgba(196,173,149,0.12);}
 .leist-ico{font-size:18px;width:28px;text-align:center;flex-shrink:0;}
 .leist-name{font-family:'Source Sans Pro',sans-serif;font-size:14px;font-weight:500;color:var(--text);}
 .leist-abbr{font-family:'Source Sans Pro',sans-serif;font-size:11.5px;color:var(--muted);margin-top:1px;}
+
+/* ── BEHANDLUNGS-ACCORDION ── */
+.leist-acc-list{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.leist-acc-item{border-bottom:1px solid var(--border);}
+.leist-acc-item:last-child{border-bottom:none;}
+.leist-acc-btn{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;text-align:left;gap:12px;transition:background 0.2s;}
+.leist-acc-btn:hover{background:rgba(196,173,149,0.08);}
+.leist-acc-inner{display:flex;align-items:center;gap:14px;}
+.acc-chevron{font-size:12px;color:var(--muted);transition:transform 0.25s;flex-shrink:0;}
+.leist-acc-btn.open .acc-chevron{transform:rotate(180deg);}
+.leist-acc-body{display:none;padding:0 18px 14px 60px;font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.7;}
+.leist-acc-body.open{display:block;}
 .zg-box{border:1px solid rgba(196,173,149,0.4);border-radius:16px;padding:22px 26px;background:var(--white);}
 .zg-box h4{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:14px;letter-spacing:-0.2px;}
 .zg-item{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);}
@@ -520,21 +530,74 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
       <!-- BEHANDLUNGSANGEBOT -->
       <div>
         <h3 style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:20px;letter-spacing:-0.5px;">Behandlungsangebot</h3>
-        <div class="leist-grid">
-          <div class="leist-item"><div class="leist-ico">🔍</div><div><div class="leist-name">Individuelle Befundung &amp; Beratung</div><div class="leist-abbr">In jeder Behandlung enthalten</div></div></div>
-          <div class="leist-item"><div class="leist-ico">🦵</div><div><div class="leist-name">Krankengymnastik</div><div class="leist-abbr">KG</div></div></div>
-          <div class="leist-item"><div class="leist-ico">🖐</div><div><div class="leist-name">Manuelle Therapie</div><div class="leist-abbr">MT</div></div></div>
-          <div class="leist-item"><div class="leist-ico">💆</div><div><div class="leist-name">Klassische Massagetherapie</div><div class="leist-abbr">KMT</div></div></div>
-          <div class="leist-item"><div class="leist-ico">🌊</div><div><div class="leist-name">Manuelle Lymphdrainage</div><div class="leist-abbr">MLD</div></div></div>
-          <div class="leist-item"><div class="leist-ico">🚶</div><div><div class="leist-name">Gangschule &amp; Mobilitätstraining</div></div></div>
-          <div class="leist-item"><div class="leist-ico">🏋</div><div><div class="leist-name">Funktionelles Training &amp; Alltagstraining</div><div class="leist-abbr">Im therapeutischen Kontext</div></div></div>
-          <div class="leist-item"><div class="leist-ico">🫁</div><div><div class="leist-name">Atemtherapie</div><div class="leist-abbr">AT</div></div></div>
+        <div class="leist-acc-list">
+
+          <div class="leist-acc-item">
+            <button class="leist-acc-btn" onclick="toggleAcc(this)">
+              <div class="leist-acc-inner"><div class="leist-ico">🔍</div><div><div class="leist-name">Individuelle Befundung &amp; Beratung</div><div class="leist-abbr">In jeder Behandlung enthalten</div></div></div>
+              <span class="acc-chevron">▾</span>
+            </button>
+            <div class="leist-acc-body">Systematische Erhebung des Befundbildes durch gezielte Befragung (Anamnese) und körperliche Untersuchung. Grundlage jeder physiotherapeutischen Behandlung zur individuellen Therapieplanung.</div>
+          </div>
+
+          <div class="leist-acc-item">
+            <button class="leist-acc-btn" onclick="toggleAcc(this)">
+              <div class="leist-acc-inner"><div class="leist-ico">🦵</div><div><div class="leist-name">Krankengymnastik</div><div class="leist-abbr">KG</div></div></div>
+              <span class="acc-chevron">▾</span>
+            </button>
+            <div class="leist-acc-body">Aktive und passiv-assistive Bewegungsübungen zur Verbesserung von Kraft, Beweglichkeit, Koordination und Ausdauer. Verordnungsfähige Heilmittelleistung gemäß Heilmittelkatalog (HMK) nach § 92 SGB V.</div>
+          </div>
+
+          <div class="leist-acc-item">
+            <button class="leist-acc-btn" onclick="toggleAcc(this)">
+              <div class="leist-acc-inner"><div class="leist-ico">🖐</div><div><div class="leist-name">Manuelle Therapie</div><div class="leist-abbr">MT</div></div></div>
+              <span class="acc-chevron">▾</span>
+            </button>
+            <div class="leist-acc-body">Gezielte Untersuchung und Behandlung von Funktionsstörungen des Bewegungsapparates — Gelenke, Muskeln und Nerven — durch spezifische Grifftechniken. Verordnungsfähige Heilmittelleistung gemäß HMK.</div>
+          </div>
+
+          <div class="leist-acc-item">
+            <button class="leist-acc-btn" onclick="toggleAcc(this)">
+              <div class="leist-acc-inner"><div class="leist-ico">💆</div><div><div class="leist-name">Klassische Massagetherapie</div><div class="leist-abbr">KMT</div></div></div>
+              <span class="acc-chevron">▾</span>
+            </button>
+            <div class="leist-acc-body">Mechanische Beeinflussung von Haut, Bindegewebe und Muskulatur durch standardisierte Handgriffe (Effleurage, Pétrissage, Friktion u. a.) zur Förderung der Durchblutung und Muskelentspannung. Verordnungsfähige Heilmittelleistung gemäß HMK.</div>
+          </div>
+
+          <div class="leist-acc-item">
+            <button class="leist-acc-btn" onclick="toggleAcc(this)">
+              <div class="leist-acc-inner"><div class="leist-ico">🌊</div><div><div class="leist-name">Manuelle Lymphdrainage</div><div class="leist-abbr">MLD</div></div></div>
+              <span class="acc-chevron">▾</span>
+            </button>
+            <div class="leist-acc-body">Entstauungstherapie bei Ödemen und Lymphabflussstörungen durch spezielle kreisförmige Drucktechniken, die den Lymphfluss anregen. Verordnungsfähige Heilmittelleistung gemäß HMK, häufig verordnet bei Lymphödemen und nach Operationen.</div>
+          </div>
+
+          <div class="leist-acc-item">
+            <button class="leist-acc-btn" onclick="toggleAcc(this)">
+              <div class="leist-acc-inner"><div class="leist-ico">🚶</div><div><div class="leist-name">Gangschule &amp; Mobilitätstraining</div></div></div>
+              <span class="acc-chevron">▾</span>
+            </button>
+            <div class="leist-acc-body">Therapeutisch angeleitetes Training zur Verbesserung des Gangbildes, der Gleichgewichtsfähigkeit und der allgemeinen Bewegungssicherheit — besonders relevant für geriatrische Patienten und nach neurologischen oder orthopädischen Erkrankungen.</div>
+          </div>
+
+          <div class="leist-acc-item">
+            <button class="leist-acc-btn" onclick="toggleAcc(this)">
+              <div class="leist-acc-inner"><div class="leist-ico">🏋</div><div><div class="leist-name">Funktionelles Training &amp; Alltagstraining</div></div></div>
+              <span class="acc-chevron">▾</span>
+            </button>
+            <div class="leist-acc-body">Wiederherstellung alltagsrelevanter Bewegungsabläufe und körperlicher Funktionen durch therapeutisch geführtes Training. Ziel ist die größtmögliche Selbstständigkeit im täglichen Leben — insbesondere für Patienten nach Eingriffen oder mit Mobilitätseinschränkungen.</div>
+          </div>
+
+          <div class="leist-acc-item">
+            <button class="leist-acc-btn" onclick="toggleAcc(this)">
+              <div class="leist-acc-inner"><div class="leist-ico">🫁</div><div><div class="leist-name">Atemtherapie</div><div class="leist-abbr">AT</div></div></div>
+              <span class="acc-chevron">▾</span>
+            </button>
+            <div class="leist-acc-body">Physiotherapeutische Behandlung von Atemfunktionsstörungen durch gezielte Atemübungen, manuelle Techniken und Wahrnehmungsschulung. Verordnungsfähige Heilmittelleistung gemäß HMK, u. a. bei COPD, nach Operationen und bei eingeschränkter Lungenkapazität.</div>
+          </div>
+
         </div>
-        <div class="inkl-box" style="margin-top:20px;">
-          <h4>Im Behandlungspreis inbegriffen</h4>
-          <p>Taping · Flossing · Schröpfen · Wärmetherapie · Blading</p>
-          <p class="legal-note">Alle dazukommenden Maßnahmen zur Unterstützung der Therapie gibt es ohne Aufpreis.</p>
-        </div>
+        <p style="font-family:'Source Sans Pro',sans-serif;font-size:12.5px;color:var(--muted);margin-top:12px;font-style:italic;">Alle weiteren Maßnahmen zur Unterstützung sind im Preis inbegriffen.</p>
       </div>
 
       <!-- Hinweise zur Abrechnung (freistehend, keine Kästen) -->
@@ -545,7 +608,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
       </div>
 
       <!-- Preisfußnote -->
-      <p class="preis-note">* Privatversicherte &amp; Beihilfe mit Rezept: Leistungen nach § 4 Nr. 14 UStG umsatzsteuerbefreit — keine Umsatzsteuer. · Selbstzahler: auf den Nettobetrag wird die gesetzliche Umsatzsteuer von 19 % erhoben (Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 €).</p>
+      <p class="preis-note">* Privatversicherte &amp; Beihilfe mit Rezept: Leistungen nach § 4 Nr. 14 UStG umsatzsteuerbefreit. · Selbstzahler: auf den Nettobetrag wird die gesetzliche Umsatzsteuer von 19 % erhoben (Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 €).</p>
 
     </div>
   </div>
@@ -875,6 +938,11 @@ function faq(btn){
   document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));
   document.querySelectorAll('.faq-q').forEach(x=>x.classList.remove('open'));
   if(!open){a.classList.add('open');btn.classList.add('open');}
+}
+function toggleAcc(btn){
+  const body=btn.nextElementSibling;
+  body.classList.toggle('open');
+  btn.classList.toggle('open');
 }
 function handleRezept(val){
   document.getElementById('verordnungBlock').classList.toggle('hidden', val !== 'ja');
