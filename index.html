@@ -345,6 +345,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .addr-hint.ok{display:block;background:rgba(80,160,80,0.08);color:#2e6e2e;border:1px solid rgba(80,160,80,0.25);}
 .addr-hint.warn{display:block;background:rgba(200,80,40,0.07);color:#8a3a18;border:1px solid rgba(200,80,40,0.2);}
 
+/* ── TRUST BADGES ── */
+.trust-bar{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;}
+.trust-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(196,173,149,0.12);border:1px solid rgba(196,173,149,0.35);border-radius:100px;padding:7px 14px;font-family:'Source Sans Pro',sans-serif;font-size:12.5px;font-weight:500;color:var(--muted);}
+.trust-badge svg,.trust-badge i{width:13px;height:13px;stroke:var(--sand-dark);stroke-width:2.5;fill:none;flex-shrink:0;}
+
+/* ── SCROLL ANIMATIONS ── */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ── STICKY CTA (mobile) ── */
+.sticky-cta{display:none;}
+@media(max-width:860px){
+  .sticky-cta{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:400;background:rgba(30,27,24,0.97);backdrop-filter:blur(8px);padding:12px 6% 16px;align-items:center;justify-content:space-between;gap:12px;transform:translateY(100%);transition:transform 0.35s ease;border-top:1px solid rgba(196,173,149,0.2);}
+  .sticky-cta.show{transform:translateY(0);}
+  .sticky-cta-text{font-family:'Source Sans Pro',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.3;}
+  .sticky-cta-text strong{display:block;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#fff;}
+  .sticky-cta .btn{padding:11px 22px;font-size:12.5px;white-space:nowrap;flex-shrink:0;}
+}
+
 /* ── LEGAL ── */
 .legal{padding:72px 6%;max-width:760px;}
 .legal h2{font-family:'Montserrat',sans-serif;font-size:32px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-1px;}
@@ -438,6 +457,12 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
       <div class="hero-btns">
         <button class="btn" onclick="show('kontakt')">Termin vereinbaren</button>
         <button class="btn-outline" onclick="show('leistungen')">Leistungen</button>
+      </div>
+      <div class="trust-bar">
+        <span class="trust-badge"><i data-lucide="shield-check"></i>Staatlich anerkannt</span>
+        <span class="trust-badge"><i data-lucide="clock"></i>Antwort &lt; 24 h</span>
+        <span class="trust-badge"><i data-lucide="credit-card"></i>PKV &amp; Beihilfe</span>
+        <span class="trust-badge"><i data-lucide="map-pin"></i>HD – KA</span>
       </div>
     </div>
     <div class="hero-img-wrap">
@@ -935,6 +960,11 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
   </div>
 </footer>
 
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text"><strong>Termin vereinbaren</strong>Raum Heidelberg – Karlsruhe</div>
+  <button class="btn" onclick="show('kontakt');document.getElementById('stickyCta').classList.remove('show')">Jetzt anfragen →</button>
+</div>
+
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>
 // iOS horizontal scroll fix
@@ -1004,6 +1034,25 @@ function handleVerordnung(val){
 window.formspree = window.formspree || function(){(formspree.q=formspree.q||[]).push(arguments);};
 formspree('initForm',{formElement:'#contactForm',formId:'xzdovrnq'});
 if(window.lucide) lucide.createIcons();
+
+// Scroll animations
+const _io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');_io.unobserve(e.target);}});
+},{threshold:0.12});
+document.querySelectorAll('.card,.dok-card,.ablauf-step,.preis-card,.ueber-det,.faq-item,.stat,.zg-item').forEach(el=>{
+  el.classList.add('fade-up');_io.observe(el);
+});
+
+// Sticky CTA
+const _cta=document.getElementById('stickyCta');
+let _ctaHidden=false;
+window.addEventListener('scroll',()=>{
+  if(_ctaHidden)return;
+  _cta.classList.toggle('show',window.scrollY>320);
+},{passive:true});
+document.querySelectorAll('.nav-links a, .mmenu a').forEach(a=>{
+  a.addEventListener('click',()=>{_cta.classList.remove('show');setTimeout(()=>_cta.classList.add('show'),600);});
+});
 </script>
 </body>
 </html>
