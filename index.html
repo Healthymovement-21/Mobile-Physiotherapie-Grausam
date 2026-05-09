@@ -340,6 +340,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .consent a{color:var(--text);cursor:pointer;}
 .form-note{font-family:'Source Sans Pro',sans-serif;font-size:11.5px;color:var(--muted);padding:10px 14px;background:rgba(196,173,149,0.12);border-radius:10px;border-left:3px solid var(--sand-dark);line-height:1.6;}
 .hidden{display:none!important;}
+/* Nav Logo */
+.nav-logo{display:flex;align-items:center;gap:9px;}
+.nav-logo-svg{width:26px;height:26px;flex-shrink:0;}
+/* Lucide Icons */
+.card-icon svg,.card-icon i{width:26px;height:26px;stroke:var(--sand-dark);stroke-width:1.5;fill:none;}
+.leist-ico svg,.leist-ico i{width:20px;height:20px;stroke:var(--sand-dark);stroke-width:1.5;fill:none;}
+.k-ico svg,.k-ico i{width:18px;height:18px;stroke:var(--text);stroke-width:1.5;fill:none;}
+.ueber-det-ico svg,.ueber-det-ico i{width:18px;height:18px;stroke:var(--sand-dark);stroke-width:1.5;fill:none;}
+.infobar-icon{display:inline-flex;align-items:center;margin-right:6px;}
+.infobar-icon svg{width:14px;height:14px;stroke:var(--muted);stroke-width:2;fill:none;vertical-align:middle;}
+.f-ico-wrap{display:inline-flex;align-items:center;margin-right:6px;vertical-align:middle;}
+.f-ico-wrap svg{width:13px;height:13px;stroke:rgba(255,255,255,0.7);stroke-width:2;fill:none;}
 [data-fs-success]{display:none;background:rgba(196,173,149,0.15);border:1px solid var(--sand-dark);border-radius:14px;padding:20px;text-align:center;font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--text);margin-bottom:12px;}
 [data-fs-error]:not(:empty){display:block;background:rgba(200,80,40,0.07);color:#8a3a18;border:1px solid rgba(200,80,40,0.22);border-radius:10px;padding:10px 14px;font-family:'Source Sans Pro',sans-serif;font-size:13px;margin-bottom:8px;line-height:1.55;}
 .addr-hint{font-family:'Source Sans Pro',sans-serif;font-size:12px;padding:8px 12px;border-radius:8px;margin-top:4px;display:none;}
@@ -362,16 +374,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6% 32px;}
 .footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:48px;margin-bottom:40px;}
 .f-logo{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:#ffffff;display:block;margin-bottom:12px;letter-spacing:-0.3px;}
-.f-tagline{font-family:'Source Sans Pro',sans-serif;font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;max-width:240px;}
-.footer-col-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px;display:block;}
+.f-tagline{font-family:'Source Sans Pro',sans-serif;font-size:13px;color:rgba(255,255,255,0.72);line-height:1.7;max-width:240px;}
+.footer-col-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:16px;display:block;}
 .footer-col-links{display:flex;flex-direction:column;gap:10px;}
-.footer-col-links a{font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:rgba(255,255,255,0.55);text-decoration:none;cursor:pointer;transition:color 0.2s;}
+.footer-col-links a{font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:rgba(255,255,255,0.8);text-decoration:none;cursor:pointer;transition:color 0.2s;}
 .footer-col-links a:hover{color:#ffffff;}
-.footer-contact-item{font-family:'Source Sans Pro',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:9px;line-height:1.5;}
-.footer-contact-item a{color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.2s;}
+.footer-contact-item{font-family:'Source Sans Pro',sans-serif;font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:9px;line-height:1.5;}
+.footer-contact-item a{color:rgba(255,255,255,0.8);text-decoration:none;transition:color 0.2s;}
 .footer-contact-item a:hover{color:#ffffff;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-.footer-bottom p{font-family:'Source Sans Pro',sans-serif;font-size:12px;color:rgba(255,255,255,0.28);}
+.footer-bottom p{font-family:'Source Sans Pro',sans-serif;font-size:12px;color:rgba(255,255,255,0.5);}
 
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
@@ -397,7 +409,10 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
 <body>
 
 <nav>
-  <span class="nav-logo" onclick="show('home')">Mobile Physiotherapie Grausam</span>
+  <span class="nav-logo" onclick="show('home')">
+  <svg class="nav-logo-svg" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="26" height="26" rx="6" fill="#1e1b18"/><path d="M13 6v14M6 13h14" stroke="#c4ad95" stroke-width="2.2" stroke-linecap="round"/></svg>
+  Mobile Physiotherapie Grausam
+</span>
   <ul class="nav-links">
     <li><a href="javascript:void(0)" onclick="show('home')">Start</a></li>
     <li><a href="javascript:void(0)" onclick="show('leistungen')">Leistungen</a></li>
@@ -445,10 +460,10 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
   </div>
 
   <div class="infobar">
-    <div class="infobar-item">📞 <a href="tel:017642685146"><strong>0176 4268 5146</strong></a></div>
-    <div class="infobar-item">✉ <a href="mailto:info@physiotherapie-grausam.de"><strong>info@physiotherapie-grausam.de</strong></a></div>
-    <div class="infobar-item">📍 <strong>Heidelberg – Karlsruhe</strong></div>
-    <div class="infobar-item">💬 Erreichbar per WhatsApp &amp; E-Mail · Antwort innerhalb 24h</div>
+    <div class="infobar-item"><span class="infobar-icon"><i data-lucide="phone"></i></span><a href="tel:017642685146"><strong>0176 4268 5146</strong></a></div>
+    <div class="infobar-item"><span class="infobar-icon"><i data-lucide="mail"></i></span><a href="mailto:info@physiotherapie-grausam.de"><strong>info@physiotherapie-grausam.de</strong></a></div>
+    <div class="infobar-item"><span class="infobar-icon"><i data-lucide="map-pin"></i></span><strong>Heidelberg – Karlsruhe</strong></div>
+    <div class="infobar-item"><span class="infobar-icon"><i data-lucide="message-circle"></i></span>Erreichbar per WhatsApp &amp; E-Mail · Antwort innerhalb 24h</div>
   </div>
 
   <div class="statsbar">
@@ -463,12 +478,12 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
     <h2 class="sec-title">Therapie — dort wo Sie sind.</h2>
     <p class="sec-sub">Mobile Physiotherapie bedeutet: kein Fahrtweg, kein Wartezimmer und kurze Wartezeit. Ich komme zu Ihnen und behandle Sie in Ihrer gewohnten Umgebung.</p>
     <div class="cards-grid">
-      <div class="card"><div class="card-icon">🏠</div><h3>Hausbesuche</h3><p>Behandlung direkt bei Ihnen zuhause.</p></div>
-      <div class="card"><div class="card-icon">👤</div><h3>1:1 Betreuung</h3><p>Jede Einheit wird individuell auf Ihre Bedürfnisse abgestimmt.</p></div>
-      <div class="card"><div class="card-icon">📋</div><h3>Mit oder ohne Rezept</h3><p>Privatversicherte und Beamte mit Beihilfe benötigen ein Rezept — dieses können Sie bei Ihrer zuständigen Stelle einreichen. Selbstzahler benötigen kein Rezept. Weitere Infos finden Sie unter <a href="javascript:void(0)" onclick="show('leistungen')" style="color:var(--text);font-weight:600;text-decoration:underline;">Leistungen &amp; Preise</a>.</p></div>
-      <div class="card"><div class="card-icon">⏱</div><h3>Individuelle Dauer</h3><p>Die Behandlungsdauer wird nach der ersten Behandlung gemeinsam festgelegt.</p></div>
-      <div class="card"><div class="card-icon">💳</div><h3>Abrechnung</h3><p>Privatpatienten, Beamte mit Beihilfe und Selbstzahler.</p></div>
-      <div class="card"><div class="card-icon">📍</div><h3>Einzugsgebiet</h3><p>Heidelberg bis Karlsruhe — gesamte Rhein-Neckar-Region.</p></div>
+      <div class="card"><div class="card-icon"><i data-lucide="home"></i></div><h3>Hausbesuche</h3><p>Behandlung direkt bei Ihnen zuhause.</p></div>
+      <div class="card"><div class="card-icon"><i data-lucide="user"></i></div><h3>1:1 Betreuung</h3><p>Jede Einheit wird individuell auf Ihre Bedürfnisse abgestimmt.</p></div>
+      <div class="card"><div class="card-icon"><i data-lucide="file-text"></i></div><h3>Mit oder ohne Rezept</h3><p>Privatversicherte und Beamte mit Beihilfe benötigen ein Rezept — dieses können Sie bei Ihrer zuständigen Stelle einreichen. Selbstzahler benötigen kein Rezept. Weitere Infos finden Sie unter <a href="javascript:void(0)" onclick="show('leistungen')" style="color:var(--text);font-weight:600;text-decoration:underline;">Leistungen &amp; Preise</a>.</p></div>
+      <div class="card"><div class="card-icon"><i data-lucide="clock"></i></div><h3>Individuelle Dauer</h3><p>Die Behandlungsdauer wird nach der ersten Behandlung gemeinsam festgelegt.</p></div>
+      <div class="card"><div class="card-icon"><i data-lucide="credit-card"></i></div><h3>Abrechnung</h3><p>Privatpatienten, Beamte mit Beihilfe und Selbstzahler.</p></div>
+      <div class="card"><div class="card-icon"><i data-lucide="map-pin"></i></div><h3>Einzugsgebiet</h3><p>Heidelberg bis Karlsruhe — gesamte Rhein-Neckar-Region.</p></div>
     </div>
   </div>
 
@@ -503,7 +518,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
               <div style="font-family:'Montserrat',sans-serif;font-size:11.5px;color:var(--sand-dark);font-weight:700;margin-top:6px;letter-spacing:0.2px;">✓ Kostenlos bei Buchung eines Folgetermins</div>
             </div>
             <div style="text-align:right;white-space:nowrap;">
-              <div class="preis-amt">60 €*</div>
+              <div class="preis-amt">60 €</div>
               <div style="font-family:'Source Sans Pro',sans-serif;font-size:11px;color:var(--muted);margin-top:3px;">ohne UmSt.</div>
             </div>
           </div>
@@ -513,7 +528,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
               <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;">45 Minuten</div>
             </div>
             <div style="text-align:right;white-space:nowrap;">
-              <div class="preis-amt">80 €*</div>
+              <div class="preis-amt">80 €</div>
               <div style="font-family:'Source Sans Pro',sans-serif;font-size:11px;color:var(--muted);margin-top:3px;">ohne UmSt.</div>
             </div>
           </div>
@@ -523,7 +538,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
               <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;">60 Minuten</div>
             </div>
             <div style="text-align:right;white-space:nowrap;">
-              <div class="preis-amt">100 €*</div>
+              <div class="preis-amt">100 €</div>
               <div style="font-family:'Source Sans Pro',sans-serif;font-size:11px;color:var(--muted);margin-top:3px;">ohne UmSt.</div>
             </div>
           </div>
@@ -540,7 +555,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
 
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
-              <div class="leist-acc-inner"><div class="leist-ico">🔍</div><div><div class="leist-name">Individuelle Befundung &amp; Beratung</div><div class="leist-abbr">In jeder Behandlung enthalten</div></div></div>
+              <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="stethoscope"></i></div><div><div class="leist-name">Individuelle Befundung &amp; Beratung</div><div class="leist-abbr">In jeder Behandlung enthalten</div></div></div>
               <span class="acc-chevron">▾</span>
             </button>
             <div class="leist-acc-body">Systematische Erhebung des Befundbildes durch gezielte Befragung (Anamnese) und körperliche Untersuchung. Grundlage jeder physiotherapeutischen Behandlung zur individuellen Therapieplanung.</div>
@@ -548,7 +563,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
 
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
-              <div class="leist-acc-inner"><div class="leist-ico">🦵</div><div><div class="leist-name">Krankengymnastik</div><div class="leist-abbr">KG</div></div></div>
+              <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="activity"></i></div><div><div class="leist-name">Krankengymnastik</div><div class="leist-abbr">KG</div></div></div>
               <span class="acc-chevron">▾</span>
             </button>
             <div class="leist-acc-body">Aktive und passiv-assistive Bewegungsübungen zur Verbesserung von Kraft, Beweglichkeit, Koordination und Ausdauer. Verordnungsfähige Heilmittelleistung gemäß Heilmittelkatalog (HMK) nach § 92 SGB V.</div>
@@ -556,7 +571,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
 
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
-              <div class="leist-acc-inner"><div class="leist-ico">🖐</div><div><div class="leist-name">Manuelle Therapie</div><div class="leist-abbr">MT</div></div></div>
+              <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="hand"></i></div><div><div class="leist-name">Manuelle Therapie</div><div class="leist-abbr">MT</div></div></div>
               <span class="acc-chevron">▾</span>
             </button>
             <div class="leist-acc-body">Gezielte Untersuchung und Behandlung von Funktionsstörungen des Bewegungsapparates — Gelenke, Muskeln und Nerven — durch spezifische Grifftechniken. Verordnungsfähige Heilmittelleistung gemäß HMK.</div>
@@ -564,7 +579,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
 
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
-              <div class="leist-acc-inner"><div class="leist-ico">💆</div><div><div class="leist-name">Klassische Massagetherapie</div><div class="leist-abbr">KMT</div></div></div>
+              <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="sparkles"></i></div><div><div class="leist-name">Klassische Massagetherapie</div><div class="leist-abbr">KMT</div></div></div>
               <span class="acc-chevron">▾</span>
             </button>
             <div class="leist-acc-body">Mechanische Beeinflussung von Haut, Bindegewebe und Muskulatur durch standardisierte Handgriffe (Effleurage, Pétrissage, Friktion u. a.) zur Förderung der Durchblutung und Muskelentspannung. Verordnungsfähige Heilmittelleistung gemäß HMK.</div>
@@ -572,7 +587,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
 
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
-              <div class="leist-acc-inner"><div class="leist-ico">🌊</div><div><div class="leist-name">Manuelle Lymphdrainage</div><div class="leist-abbr">MLD</div></div></div>
+              <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="droplets"></i></div><div><div class="leist-name">Manuelle Lymphdrainage</div><div class="leist-abbr">MLD</div></div></div>
               <span class="acc-chevron">▾</span>
             </button>
             <div class="leist-acc-body">Entstauungstherapie bei Ödemen und Lymphabflussstörungen durch spezielle kreisförmige Drucktechniken, die den Lymphfluss anregen. Verordnungsfähige Heilmittelleistung gemäß HMK, häufig verordnet bei Lymphödemen und nach Operationen.</div>
@@ -580,7 +595,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
 
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
-              <div class="leist-acc-inner"><div class="leist-ico">🚶</div><div><div class="leist-name">Gangschule &amp; Mobilitätstraining</div></div></div>
+              <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="move"></i></div><div><div class="leist-name">Gangschule &amp; Mobilitätstraining</div></div></div>
               <span class="acc-chevron">▾</span>
             </button>
             <div class="leist-acc-body">Therapeutisch angeleitetes Training zur Verbesserung des Gangbildes, der Gleichgewichtsfähigkeit und der allgemeinen Bewegungssicherheit — besonders relevant für geriatrische Patienten und nach neurologischen oder orthopädischen Erkrankungen.</div>
@@ -588,7 +603,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
 
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
-              <div class="leist-acc-inner"><div class="leist-ico">🏋</div><div><div class="leist-name">Funktionelles Training &amp; Alltagstraining</div></div></div>
+              <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="dumbbell"></i></div><div><div class="leist-name">Funktionelles Training &amp; Alltagstraining</div></div></div>
               <span class="acc-chevron">▾</span>
             </button>
             <div class="leist-acc-body">Wiederherstellung alltagsrelevanter Bewegungsabläufe und körperlicher Funktionen durch therapeutisch geführtes Training. Ziel ist die größtmögliche Selbstständigkeit im täglichen Leben — insbesondere für Patienten nach Eingriffen oder mit Mobilitätseinschränkungen.</div>
@@ -596,7 +611,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
 
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
-              <div class="leist-acc-inner"><div class="leist-ico">🫁</div><div><div class="leist-name">Atemtherapie</div><div class="leist-abbr">AT</div></div></div>
+              <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="wind"></i></div><div><div class="leist-name">Atemtherapie</div><div class="leist-abbr">AT</div></div></div>
               <span class="acc-chevron">▾</span>
             </button>
             <div class="leist-acc-body">Physiotherapeutische Behandlung von Atemfunktionsstörungen durch gezielte Atemübungen, manuelle Techniken und Wahrnehmungsschulung. Verordnungsfähige Heilmittelleistung gemäß HMK, u. a. bei COPD, nach Operationen und bei eingeschränkter Lungenkapazität.</div>
@@ -613,8 +628,6 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.75;"><strong>Selbstzahler (ohne Rezept):</strong> Selbstzahler benötigen kein ärztliches Rezept. Da die Leistung als private Dienstleistung gilt, wird auf den Nettobetrag die gesetzliche Umsatzsteuer von 19 % erhoben. Gesamtpreise: Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 € (inkl. Umsatzsteuer).</p>
       </div>
 
-      <!-- Preisfußnote -->
-      <p class="preis-note">* Privatversicherte &amp; Beihilfe mit Rezept: Leistungen nach § 4 Nr. 14 UStG umsatzsteuerbefreit. · Selbstzahler: auf den Nettobetrag wird die gesetzliche Umsatzsteuer von 19 % erhoben (Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 €).</p>
 
     </div>
   </div>
@@ -639,22 +652,22 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
     <h2 class="sec-title">Für Ihren Ersttermin</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px;">
       <div class="card" style="padding:22px 24px;">
-        <div class="card-icon">📄</div>
+        <div class="card-icon"><i data-lucide="file-text"></i></div>
         <h3>Dokumente</h3>
         <p>Wenn machbar, zum Erstgespräch mitbringen: <strong>Anamnesebogen</strong>, <strong>Behandlungsvertrag</strong> und <strong>Datenschutzerklärung</strong>. Alle Formulare finden Sie auf der <a href="javascript:void(0)" onclick="show('dokumente')" style="color:var(--text);font-weight:600;text-decoration:underline;">Dokumente-Seite</a>.</p>
       </div>
       <div class="card" style="padding:22px 24px;">
-        <div class="card-icon">📝</div>
+        <div class="card-icon"><i data-lucide="help-circle"></i></div>
         <h3>Fragen notieren</h3>
         <p>Um Ihre Therapiezeit optimal nutzen zu können, notieren Sie sich notfalls Ihre Fragen im Vorfeld.</p>
       </div>
       <div class="card" style="padding:22px 24px;">
-        <div class="card-icon">👕</div>
+        <div class="card-icon"><i data-lucide="tag"></i></div>
         <h3>Kleidung</h3>
         <p>Bequeme Kleidung erwünscht.</p>
       </div>
       <div class="card" style="padding:22px 24px;">
-        <div class="card-icon">📋</div>
+        <div class="card-icon"><i data-lucide="clipboard-list"></i></div>
         <h3>Trainingsplan</h3>
         <p>Für nachhaltige Erfolge erhalten Sie von mir einen persönlichen Trainingsplan.</p>
       </div>
@@ -674,9 +687,9 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
           <div class="role">Staatlich anerkannter Physiotherapeut</div>
         </div>
         <div class="ueber-dets">
-          <div class="ueber-det"><div class="ueber-det-ico">🎓</div><div><h4>Ausbildung</h4><p>Staatlich anerkannter Physiotherapeut · BG Klinik Ludwigshafen</p></div></div>
-          <div class="ueber-det"><div class="ueber-det-ico">🏥</div><div><h4>Schwerpunkte</h4><p>Geriatrie · Geriatrische Pflege · Orthopädie &amp; Post-OP · Chronische Erkrankungen · Immobilität · Individuelle Beschwerdebilder</p></div></div>
-          <div class="ueber-det"><div class="ueber-det-ico">📍</div><div><h4>Einzugsgebiet</h4><p>Heidelberg – Karlsruhe · Rhein-Neckar-Raum</p></div></div>
+          <div class="ueber-det"><div class="ueber-det-ico"><i data-lucide="graduation-cap"></i></div><div><h4>Ausbildung</h4><p>Staatlich anerkannter Physiotherapeut · BG Klinik Ludwigshafen</p></div></div>
+          <div class="ueber-det"><div class="ueber-det-ico"><i data-lucide="stethoscope"></i></div><div><h4>Schwerpunkte</h4><p>Geriatrie · Geriatrische Pflege · Orthopädie &amp; Post-OP · Chronische Erkrankungen · Immobilität · Individuelle Beschwerdebilder</p></div></div>
+          <div class="ueber-det"><div class="ueber-det-ico"><i data-lucide="map-pin"></i></div><div><h4>Einzugsgebiet</h4><p>Heidelberg – Karlsruhe · Rhein-Neckar-Raum</p></div></div>
         </div>
       </div>
       <div>
@@ -764,9 +777,9 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
         <h2 class="sec-title">Termin anfragen</h2>
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:0;">Bevorzugt per WhatsApp oder E-Mail — Sie erhalten innerhalb von 24 Stunden eine Rückmeldung. Es gibt keine festen Öffnungszeiten, Termine werden individuell vereinbart.</p>
         <div class="kontakt-info">
-          <div class="k-row"><div class="k-ico">💬</div><div><h4>WhatsApp</h4><p><a href="https://wa.me/4917642685146" target="_blank">0176 4268 5146</a></p></div></div>
-          <div class="k-row"><div class="k-ico">✉</div><div><h4>E-Mail</h4><p><a href="mailto:info@physiotherapie-grausam.de">info@physiotherapie-grausam.de</a></p></div></div>
-          <div class="k-row"><div class="k-ico">📍</div><div><h4>Einzugsgebiet</h4><p>Heidelberg – Karlsruhe · Rhein-Neckar-Raum</p></div></div>
+          <div class="k-row"><div class="k-ico"><i data-lucide="message-circle"></i></div><div><h4>WhatsApp</h4><p><a href="https://wa.me/4917642685146" target="_blank">0176 4268 5146</a></p></div></div>
+          <div class="k-row"><div class="k-ico"><i data-lucide="mail"></i></div><div><h4>E-Mail</h4><p><a href="mailto:info@physiotherapie-grausam.de">info@physiotherapie-grausam.de</a></p></div></div>
+          <div class="k-row"><div class="k-ico"><i data-lucide="map-pin"></i></div><div><h4>Einzugsgebiet</h4><p>Heidelberg – Karlsruhe · Rhein-Neckar-Raum</p></div></div>
         </div>
         <div style="margin-top:28px;">
           <a class="btn" href="https://wa.me/4917642685146?text=Guten%20Tag%2C%0Aich%20h%C3%A4tte%20Interesse%20an%20einem%20Physio%20Termin.%0A%0AHier%20meine%20Angaben%3A%0A%0AName%3A%20%0AAdresse%20(f%C3%BCr%20Hausbesuch)%3A%20%0ATelefonnummer%3A%20%0A%0AAnliegen%20%2F%20Beschwerden%3A%20%0A(z.%20B.%20Schmerzen%2C%20OP%2C%20Bewegungseinschr%C3%A4nkung)%0A%0AWunsch%20f%C3%BCr%20Termin%3A%20%0A(z.%20B.%20Tage%20%2F%20Uhrzeiten)%0A%0AAbrechnung%3A%20%0APrivatpatient%2Fin%20%2F%20Beihilfe%20%2F%20Selbstzahler%0A%0ASonstiges%20%2F%20wichtige%20Infos%3A%20%0A%0AVielen%20Dank%2C%20ich%20freue%20mich%20auf%20Ihre%20R%C3%BCckmeldung!" target="_blank">💬 Direkt per WhatsApp anfragen</a>
@@ -917,9 +930,9 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
     </div>
     <div>
       <span class="footer-col-title">Kontakt</span>
-      <p class="footer-contact-item">📞 <a href="tel:017642685146">0176 4268 5146</a></p>
-      <p class="footer-contact-item">✉ <a href="mailto:info@physiotherapie-grausam.de">info@physiotherapie-grausam.de</a></p>
-      <p class="footer-contact-item">📍 Heidelberg – Karlsruhe</p>
+      <p class="footer-contact-item"><span class="f-ico-wrap"><i data-lucide="phone"></i></span><a href="tel:017642685146">0176 4268 5146</a></p>
+      <p class="footer-contact-item"><span class="f-ico-wrap"><i data-lucide="mail"></i></span><a href="mailto:info@physiotherapie-grausam.de">info@physiotherapie-grausam.de</a></p>
+      <p class="footer-contact-item"><span class="f-ico-wrap"><i data-lucide="map-pin"></i></span>Heidelberg – Karlsruhe</p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -931,6 +944,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
   </div>
 </footer>
 
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>
 // iOS horizontal scroll fix
 window.addEventListener('scroll',function(){if(window.pageXOffset!==0)window.scrollTo(0,window.pageYOffset);},{passive:true});
@@ -992,6 +1006,7 @@ function handleVerordnung(val){
 }
 window.formspree = window.formspree || function(){(formspree.q=formspree.q||[]).push(arguments);};
 formspree('initForm',{formElement:'#contactForm',formId:'xzdovrnq'});
+if(window.lucide) lucide.createIcons();
 </script>
 </body>
 </html>
