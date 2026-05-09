@@ -207,15 +207,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .dok-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px;}
 .dok-card{background:var(--white);border:1px solid rgba(196,173,149,0.35);border-radius:20px;padding:28px 26px;display:flex;flex-direction:column;gap:14px;transition:all 0.25s;box-shadow:0 2px 12px rgba(0,0,0,0.04);}
 .dok-card:hover{border-color:rgba(196,173,149,0.65);transform:translateY(-3px);box-shadow:0 10px 35px rgba(0,0,0,0.09);}
-.dok-icon{font-size:30px;line-height:1;}
+.dok-icon{width:48px;height:48px;background:rgba(196,173,149,0.15);border-radius:14px;display:flex;align-items:center;justify-content:center;}
+.dok-icon svg,.dok-icon i{width:24px;height:24px;stroke:var(--sand-dark);stroke-width:1.5;fill:none;}
 .dok-title{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin:0;letter-spacing:-0.2px;}
 .dok-desc{font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.65;flex:1;margin:0;}
 .dok-actions{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
-.dok-btn{display:flex;align-items:center;justify-content:space-between;background:var(--text);color:var(--white);padding:11px 16px;font-family:'Montserrat',sans-serif;font-size:12.5px;font-weight:600;border-radius:12px;text-decoration:none;transition:opacity 0.2s;}
+.dok-btn{display:flex;align-items:center;gap:8px;justify-content:space-between;background:var(--text);color:var(--white);padding:11px 16px;font-family:'Montserrat',sans-serif;font-size:12.5px;font-weight:600;border-radius:12px;text-decoration:none;transition:opacity 0.2s;min-height:44px;}
 .dok-btn:hover{opacity:0.85;}
 .dok-btn.outline{background:transparent;color:var(--text);border:1.5px solid var(--border);}
 .dok-btn.outline:hover{border-color:var(--sand-dark);opacity:1;}
 .dok-btn span.fmt{font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;opacity:0.75;}
+.dok-btn svg,.dok-btn i{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none;flex-shrink:0;}
 .dok-info{background:var(--sand-light);border-radius:16px;padding:22px 26px;margin-top:32px;font-family:'Source Sans Pro',sans-serif;font-size:14px;color:var(--text);line-height:1.7;}
 .dok-info strong{color:var(--text);}
 @media(max-width:860px){.dok-grid{grid-template-columns:1fr;}}
@@ -708,39 +710,39 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
     <div class="dok-grid">
 
       <div class="dok-card">
-        <div class="dok-icon">📋</div>
+        <div class="dok-icon"><i data-lucide="clipboard-list"></i></div>
         <h3 class="dok-title">Anamnesebogen</h3>
         <p class="dok-desc">Fragebogen zu Ihrer medizinischen Vorgeschichte, aktuellen Beschwerden und Behandlungszielen. Bitte vor dem Ersttermin ausfüllen.</p>
         <div class="dok-actions">
-          <a class="dok-btn" href="dokumente/Anamnesebogen.pdf" target="_blank" download>Herunterladen <span class="fmt">PDF</span></a>
-          <a class="dok-btn outline" href="dokumente/Anamnesebogen.docx" download>Bearbeitbare Version <span class="fmt">DOCX</span></a>
+          <a class="dok-btn" href="dokumente/Anamnesebogen.pdf" target="_blank" download><i data-lucide="download"></i>Herunterladen <span class="fmt">PDF</span></a>
+          <a class="dok-btn outline" href="dokumente/Anamnesebogen.docx" download><i data-lucide="file-text"></i>Bearbeitbare Version <span class="fmt">DOCX</span></a>
         </div>
       </div>
 
       <div class="dok-card">
-        <div class="dok-icon">📝</div>
+        <div class="dok-icon"><i data-lucide="file-signature"></i></div>
         <h3 class="dok-title">Behandlungsvertrag</h3>
         <p class="dok-desc">Vereinbarung über Behandlung, Vergütung, Termine und Ausfallhonorar. Wird zu Beginn der Behandlung gemeinsam unterzeichnet.</p>
         <div class="dok-actions">
-          <a class="dok-btn" href="dokumente/Behandlungsvertrag.pdf" target="_blank" download>Herunterladen <span class="fmt">PDF</span></a>
-          <a class="dok-btn outline" href="dokumente/Behandlungsvertrag.docx" download>Bearbeitbare Version <span class="fmt">DOCX</span></a>
+          <a class="dok-btn" href="dokumente/Behandlungsvertrag.pdf" target="_blank" download><i data-lucide="download"></i>Herunterladen <span class="fmt">PDF</span></a>
+          <a class="dok-btn outline" href="dokumente/Behandlungsvertrag.docx" download><i data-lucide="file-text"></i>Bearbeitbare Version <span class="fmt">DOCX</span></a>
         </div>
       </div>
 
       <div class="dok-card">
-        <div class="dok-icon">🔒</div>
+        <div class="dok-icon"><i data-lucide="shield-check"></i></div>
         <h3 class="dok-title">Datenschutzerklärung</h3>
         <p class="dok-desc">Information nach DSGVO zur Verarbeitung Ihrer Gesundheitsdaten – inklusive Einwilligungsblatt zum Unterschreiben.</p>
         <div class="dok-actions">
-          <a class="dok-btn" href="dokumente/Datenschutzerklaerung-Patienten.pdf" target="_blank" download>Herunterladen <span class="fmt">PDF</span></a>
-          <a class="dok-btn outline" href="dokumente/Datenschutzerklaerung-Patienten.docx" download>Bearbeitbare Version <span class="fmt">DOCX</span></a>
+          <a class="dok-btn" href="dokumente/Datenschutzerklaerung-Patienten.pdf" target="_blank" download><i data-lucide="download"></i>Herunterladen <span class="fmt">PDF</span></a>
+          <a class="dok-btn outline" href="dokumente/Datenschutzerklaerung-Patienten.docx" download><i data-lucide="file-text"></i>Bearbeitbare Version <span class="fmt">DOCX</span></a>
         </div>
       </div>
 
     </div>
 
     <div class="dok-info">
-      <strong>So geht's:</strong> Laden Sie die Dokumente herunter (PDF zum Ausdrucken oder DOCX zum digitalen Ausfüllen), füllen Sie den Anamnesebogen vor dem Ersttermin aus und bringen Sie alle drei unterzeichneten Dokumente zum Termin mit.    </div>
+      <i data-lucide="info" style="width:15px;height:15px;stroke:var(--sand-dark);stroke-width:2;fill:none;vertical-align:middle;margin-right:6px;flex-shrink:0;"></i><strong>So geht's:</strong> Laden Sie die Dokumente herunter (PDF zum Ausdrucken oder DOCX zum digitalen Ausfüllen), füllen Sie den Anamnesebogen vor dem Ersttermin aus und bringen Sie alle drei unterzeichneten Dokumente zum Termin mit.    </div>
   </div>
 </div>
 
