@@ -978,6 +978,7 @@ function show(id){
   document.querySelectorAll('.nav-links a').forEach(a=>{
     a.classList.toggle('nav-active', a.getAttribute('onclick')&&a.getAttribute('onclick').includes("'"+id+"'"));
   });
+  if(typeof _ctaUpdate==='function')_ctaUpdate();
 }
 const _saved = sessionStorage.getItem('page');
 if(_saved && document.getElementById(_saved)){
@@ -1045,14 +1046,12 @@ document.querySelectorAll('.card,.dok-card,.ablauf-step,.preis-card,.ueber-det,.
 
 // Sticky CTA
 const _cta=document.getElementById('stickyCta');
-let _ctaHidden=false;
-window.addEventListener('scroll',()=>{
-  if(_ctaHidden)return;
+function _ctaUpdate(){
+  const cur=sessionStorage.getItem('page')||'home';
+  if(cur==='kontakt'){_cta.classList.remove('show');return;}
   _cta.classList.toggle('show',window.scrollY>320);
-},{passive:true});
-document.querySelectorAll('.nav-links a, .mmenu a').forEach(a=>{
-  a.addEventListener('click',()=>{_cta.classList.remove('show');setTimeout(()=>_cta.classList.add('show'),600);});
-});
+}
+window.addEventListener('scroll',_ctaUpdate,{passive:true});
 </script>
 </body>
 </html>
