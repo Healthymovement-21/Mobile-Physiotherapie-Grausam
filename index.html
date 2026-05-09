@@ -90,6 +90,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1.5px;background:var(--sand-dark);transform:scaleX(0);transition:transform 0.2s;}
 .nav-links a:hover::after{transform:scaleX(1);}
 .nav-links a:hover{color:var(--text);}
+.nav-links a.nav-active{color:var(--text);}
+.nav-links a.nav-active::after{transform:scaleX(1);}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;}
 .burger span{display:block;width:22px;height:1.5px;background:var(--text);}
 
@@ -199,7 +201,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
   transition:all 0.25s;
 }
 .card:hover{border-color:rgba(196,173,149,0.65);transform:translateY(-3px);box-shadow:0 10px 35px rgba(0,0,0,0.09);}
-.card-icon{font-size:24px;margin-bottom:14px;}
+.card-icon{width:48px;height:48px;background:rgba(196,173,149,0.15);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .card h3{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-0.2px;}
 .card p{font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);line-height:1.7;}
 
@@ -247,7 +249,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .leist-acc-btn{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;text-align:left;gap:12px;transition:background 0.2s;min-height:44px;}
 .leist-acc-btn:hover{background:rgba(196,173,149,0.08);}
 .leist-acc-inner{display:flex;align-items:center;gap:14px;}
-.acc-chevron{font-size:12px;color:var(--muted);transition:transform 0.25s;flex-shrink:0;}
+.acc-chevron{display:flex;align-items:center;color:var(--muted);transition:transform 0.25s;flex-shrink:0;}
+.acc-chevron svg,.acc-chevron i{width:16px;height:16px;stroke:var(--muted);stroke-width:2;fill:none;}
 .leist-acc-btn.open .acc-chevron{transform:rotate(180deg);}
 .leist-acc-body{display:none;padding:0 18px 14px 60px;font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.7;}
 .leist-acc-body.open{display:block;}
@@ -294,7 +297,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .faq-item{border-bottom:1px solid var(--border);}
 .faq-q{width:100%;background:none;border:none;text-align:left;padding:14px 0;min-height:44px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;color:var(--text);transition:color 0.2s;}
 .faq-q:hover{color:var(--muted);}
-.faq-q .ico{font-size:18px;color:var(--muted);transition:transform 0.2s;flex-shrink:0;}
+.faq-q .ico{display:flex;align-items:center;color:var(--muted);transition:transform 0.2s;flex-shrink:0;}
+.faq-q .ico svg,.faq-q .ico i{width:18px;height:18px;stroke:var(--muted);stroke-width:2;fill:none;}
 .faq-q.open .ico{transform:rotate(45deg);}
 .faq-a{display:none;padding:0 0 16px;font-family:'Source Sans Pro',sans-serif;font-size:14px;color:var(--muted);line-height:1.75;}
 .faq-a.open{display:block;}
@@ -364,6 +368,10 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
 .footer-contact-item a:hover{color:#ffffff;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
 .footer-bottom p{font-family:'Source Sans Pro',sans-serif;font-size:12px;color:rgba(255,255,255,0.5);}
+.footer-legal{display:flex;align-items:center;gap:16px;}
+.footer-legal-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);padding-right:4px;border-right:1px solid rgba(255,255,255,0.15);}
+.footer-legal a{font-family:'Source Sans Pro',sans-serif;font-size:12px;color:rgba(255,255,255,0.45);text-decoration:none;cursor:pointer;transition:color 0.2s;}
+.footer-legal a:hover{color:rgba(255,255,255,0.85);}
 
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
@@ -382,7 +390,8 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
   .nav-links{display:none;}
   .burger{display:flex;}
   .footer-inner{grid-template-columns:1fr;}
-  .footer-inner>:nth-child(n+2){display:none;}
+  .footer-inner{gap:28px;}
+  .footer-inner>:nth-child(3){display:none;}
 }
 </style>
 </head>
@@ -413,8 +422,6 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
   <a href="javascript:void(0)" onclick="show('faq');toggleMenu()">FAQ</a>
   <a href="javascript:void(0)" onclick="show('dokumente');toggleMenu()">Dokumente</a>
   <a href="javascript:void(0)" onclick="show('kontakt');toggleMenu()">Termin anfragen</a>
-  <a href="javascript:void(0)" onclick="show('impressum');toggleMenu()">Impressum</a>
-  <a href="javascript:void(0)" onclick="show('datenschutz');toggleMenu()">Datenschutz</a>
 </div>
 
 
@@ -536,7 +543,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
               <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="stethoscope"></i></div><div><div class="leist-name">Individuelle Befundung &amp; Beratung</div><div class="leist-abbr">In jeder Behandlung enthalten</div></div></div>
-              <span class="acc-chevron">▾</span>
+              <span class="acc-chevron"><i data-lucide="chevron-down"></i></span>
             </button>
             <div class="leist-acc-body">Systematische Erhebung des Befundbildes durch gezielte Befragung (Anamnese) und körperliche Untersuchung. Grundlage jeder physiotherapeutischen Behandlung zur individuellen Therapieplanung.</div>
           </div>
@@ -544,7 +551,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
               <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="activity"></i></div><div><div class="leist-name">Krankengymnastik</div><div class="leist-abbr">KG</div></div></div>
-              <span class="acc-chevron">▾</span>
+              <span class="acc-chevron"><i data-lucide="chevron-down"></i></span>
             </button>
             <div class="leist-acc-body">Aktive und passiv-assistive Bewegungsübungen zur Verbesserung von Kraft, Beweglichkeit, Koordination und Ausdauer. Verordnungsfähige Heilmittelleistung gemäß Heilmittelkatalog (HMK) nach § 92 SGB V.</div>
           </div>
@@ -552,7 +559,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
               <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="hand"></i></div><div><div class="leist-name">Manuelle Therapie</div><div class="leist-abbr">MT</div></div></div>
-              <span class="acc-chevron">▾</span>
+              <span class="acc-chevron"><i data-lucide="chevron-down"></i></span>
             </button>
             <div class="leist-acc-body">Gezielte Untersuchung und Behandlung von Funktionsstörungen des Bewegungsapparates — Gelenke, Muskeln und Nerven — durch spezifische Grifftechniken. Verordnungsfähige Heilmittelleistung gemäß HMK.</div>
           </div>
@@ -560,7 +567,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
               <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="sparkles"></i></div><div><div class="leist-name">Klassische Massagetherapie</div><div class="leist-abbr">KMT</div></div></div>
-              <span class="acc-chevron">▾</span>
+              <span class="acc-chevron"><i data-lucide="chevron-down"></i></span>
             </button>
             <div class="leist-acc-body">Mechanische Beeinflussung von Haut, Bindegewebe und Muskulatur durch standardisierte Handgriffe (Effleurage, Pétrissage, Friktion u. a.) zur Förderung der Durchblutung und Muskelentspannung. Verordnungsfähige Heilmittelleistung gemäß HMK.</div>
           </div>
@@ -568,7 +575,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
               <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="droplets"></i></div><div><div class="leist-name">Manuelle Lymphdrainage</div><div class="leist-abbr">MLD</div></div></div>
-              <span class="acc-chevron">▾</span>
+              <span class="acc-chevron"><i data-lucide="chevron-down"></i></span>
             </button>
             <div class="leist-acc-body">Entstauungstherapie bei Ödemen und Lymphabflussstörungen durch spezielle kreisförmige Drucktechniken, die den Lymphfluss anregen. Verordnungsfähige Heilmittelleistung gemäß HMK, häufig verordnet bei Lymphödemen und nach Operationen.</div>
           </div>
@@ -576,7 +583,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
               <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="move"></i></div><div><div class="leist-name">Gangschule &amp; Mobilitätstraining</div></div></div>
-              <span class="acc-chevron">▾</span>
+              <span class="acc-chevron"><i data-lucide="chevron-down"></i></span>
             </button>
             <div class="leist-acc-body">Therapeutisch angeleitetes Training zur Verbesserung des Gangbildes, der Gleichgewichtsfähigkeit und der allgemeinen Bewegungssicherheit — besonders relevant für geriatrische Patienten und nach neurologischen oder orthopädischen Erkrankungen.</div>
           </div>
@@ -584,7 +591,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
               <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="dumbbell"></i></div><div><div class="leist-name">Funktionelles Training &amp; Alltagstraining</div></div></div>
-              <span class="acc-chevron">▾</span>
+              <span class="acc-chevron"><i data-lucide="chevron-down"></i></span>
             </button>
             <div class="leist-acc-body">Wiederherstellung alltagsrelevanter Bewegungsabläufe und körperlicher Funktionen durch therapeutisch geführtes Training. Ziel ist die größtmögliche Selbstständigkeit im täglichen Leben — insbesondere für Patienten nach Eingriffen oder mit Mobilitätseinschränkungen.</div>
           </div>
@@ -592,7 +599,7 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
           <div class="leist-acc-item">
             <button class="leist-acc-btn" onclick="toggleAcc(this)">
               <div class="leist-acc-inner"><div class="leist-ico"><i data-lucide="wind"></i></div><div><div class="leist-name">Atemtherapie</div><div class="leist-abbr">AT</div></div></div>
-              <span class="acc-chevron">▾</span>
+              <span class="acc-chevron"><i data-lucide="chevron-down"></i></span>
             </button>
             <div class="leist-acc-body">Physiotherapeutische Behandlung von Atemfunktionsstörungen durch gezielte Atemübungen, manuelle Techniken und Wahrnehmungsschulung. Verordnungsfähige Heilmittelleistung gemäß HMK, u. a. bei COPD, nach Operationen und bei eingeschränkter Lungenkapazität.</div>
           </div>
@@ -691,13 +698,13 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
     <h2 class="sec-title">FAQ</h2>
     <p class="sec-sub">Antworten auf die wichtigsten Fragen rund um die Behandlung.</p>
     <div class="faq-list">
-      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was passiert beim Ersttermin? <span class="ico">+</span></button><div class="faq-a">Der Ersttermin dauert 60 Minuten und kostet 60 €. Er beinhaltet eine ausführliche Anamnese, Befundung und individuelle Therapieplanung. Bei Buchung eines Folgetermins wird der Ersttermin kostenlos. Auf Basis dieser Einheit lege ich die weitere Behandlung fest.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was ist im Behandlungspreis inbegriffen? <span class="ico">+</span></button><div class="faq-a">Ergänzende Maßnahmen wie Taping, Flossing, Schröpfen, Wärmetherapie und Blading werden eingesetzt, wenn sie therapeutisch sinnvoll sind — ohne Aufpreis. Es fallen keine zusätzlichen Kosten an.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Brauche ich ein Rezept? <span class="ico">+</span></button><div class="faq-a">Als Selbstzahler benötigen Sie kein Rezept. Privatpatienten und Beamte mit Beihilfe benötigen in der Regel ein ärztliches Rezept. Die Erstattung durch die Privatversicherung variiert je nach Tarif — bitte klären Sie dies vorab mit Ihrer Versicherung.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wie funktioniert die Abrechnung? <span class="ico">+</span></button><div class="faq-a">Nach der Behandlung erhalten Sie eine Rechnung. Privatpatienten reichen diese bei ihrer Versicherung ein, Beamte über die Beihilfestelle. Selbstzahler zahlen direkt — bar oder per Überweisung.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Fällt Umsatzsteuer auf die Behandlung an? <span class="ico">+</span></button><div class="faq-a">Das hängt von Ihrer Abrechnungsart ab. Privatversicherte und Beamte mit Beihilfe, die ein ärztliches Rezept vorlegen, profitieren von der Umsatzsteuerbefreiung nach § 4 Nr. 14 UStG — es fällt keine Umsatzsteuer an. Selbstzahler erhalten eine Rechnung mit ausgewiesener Umsatzsteuer von 19 %, da die Leistung ohne Rezept als private Dienstleistung gilt. Die Bruttopreise für Selbstzahler: Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 €.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="faq(this)">In welchem Einzugsgebiet sind Sie tätig? <span class="ico">+</span></button><div class="faq-a">Ich bin im Raum Heidelberg bis Karlsruhe tätig — inkl. gesamter Rhein-Neckar-Region. Bei Fragen einfach kurz anfragen.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wann sind Sie erreichbar? <span class="ico">+</span></button><div class="faq-a">Es gibt keine festen Öffnungszeiten — Termine werden individuell mit Ihnen vereinbart. Am besten erreichen Sie mich per WhatsApp oder E-Mail. Sie erhalten in der Regel innerhalb von 24 Stunden eine Rückmeldung.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was passiert beim Ersttermin? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Der Ersttermin dauert 60 Minuten und kostet 60 €. Er beinhaltet eine ausführliche Anamnese, Befundung und individuelle Therapieplanung. Bei Buchung eines Folgetermins wird der Ersttermin kostenlos. Auf Basis dieser Einheit lege ich die weitere Behandlung fest.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was ist im Behandlungspreis inbegriffen? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Ergänzende Maßnahmen wie Taping, Flossing, Schröpfen, Wärmetherapie und Blading werden eingesetzt, wenn sie therapeutisch sinnvoll sind — ohne Aufpreis. Es fallen keine zusätzlichen Kosten an.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Brauche ich ein Rezept? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Als Selbstzahler benötigen Sie kein Rezept. Privatpatienten und Beamte mit Beihilfe benötigen in der Regel ein ärztliches Rezept. Die Erstattung durch die Privatversicherung variiert je nach Tarif — bitte klären Sie dies vorab mit Ihrer Versicherung.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wie funktioniert die Abrechnung? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Nach der Behandlung erhalten Sie eine Rechnung. Privatpatienten reichen diese bei ihrer Versicherung ein, Beamte über die Beihilfestelle. Selbstzahler zahlen direkt — bar oder per Überweisung.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Fällt Umsatzsteuer auf die Behandlung an? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Das hängt von Ihrer Abrechnungsart ab. Privatversicherte und Beamte mit Beihilfe, die ein ärztliches Rezept vorlegen, profitieren von der Umsatzsteuerbefreiung nach § 4 Nr. 14 UStG — es fällt keine Umsatzsteuer an. Selbstzahler erhalten eine Rechnung mit ausgewiesener Umsatzsteuer von 19 %, da die Leistung ohne Rezept als private Dienstleistung gilt. Die Bruttopreise für Selbstzahler: Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 €.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">In welchem Einzugsgebiet sind Sie tätig? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Ich bin im Raum Heidelberg bis Karlsruhe tätig — inkl. gesamter Rhein-Neckar-Region. Bei Fragen einfach kurz anfragen.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wann sind Sie erreichbar? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Es gibt keine festen Öffnungszeiten — Termine werden individuell mit Ihnen vereinbart. Am besten erreichen Sie mich per WhatsApp oder E-Mail. Sie erhalten in der Regel innerhalb von 24 Stunden eine Rückmeldung.</div></div>
     </div>
   </div>
 </div>
@@ -917,9 +924,10 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
   </div>
   <div class="footer-bottom">
     <p>© 2026 Nick Grausam · Alle Rechte vorbehalten</p>
-    <div style="display:flex;gap:20px;">
-      <a href="javascript:void(0)" onclick="show('impressum')" style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;cursor:pointer;">Impressum</a>
-      <a href="javascript:void(0)" onclick="show('datenschutz')" style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;cursor:pointer;">Datenschutz</a>
+    <div class="footer-legal">
+      <span class="footer-legal-label">Rechtliches</span>
+      <a href="javascript:void(0)" onclick="show('impressum')">Impressum</a>
+      <a href="javascript:void(0)" onclick="show('datenschutz')">Datenschutz</a>
     </div>
   </div>
 </footer>
@@ -934,11 +942,17 @@ function show(id){
   document.getElementById(id).classList.add('active');
   sessionStorage.setItem('page',id);
   window.scrollTo(0,0);
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.toggle('nav-active', a.getAttribute('onclick')&&a.getAttribute('onclick').includes("'"+id+"'"));
+  });
 }
 const _saved = sessionStorage.getItem('page');
 if(_saved && document.getElementById(_saved)){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(_saved).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.toggle('nav-active', a.getAttribute('onclick')&&a.getAttribute('onclick').includes("'"+_saved+"'"));
+  });
 }
 
 function toggleMenu(){document.getElementById('mm').classList.toggle('open');}
