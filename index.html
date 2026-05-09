@@ -265,8 +265,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .dark-sec .sec-title{color:#ffffff;}
 .dark-sec .sec-title::after{background:rgba(168,137,106,0.5);}
 .dark-sec .sec-sub{color:rgba(255,255,255,0.55);}
-.ablauf-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:52px;position:relative;}
-.ablauf-steps::before{content:'';position:absolute;top:26px;left:calc(12.5% + 26px);right:calc(12.5% + 26px);height:1.5px;background:linear-gradient(to right,rgba(168,137,106,0.35),rgba(168,137,106,0.15));pointer-events:none;}
+.ablauf-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:52px;}
 .ablauf-step{text-align:center;padding:0 8px;}
 .step-n{
   width:52px;height:52px;border-radius:50%;
@@ -276,7 +275,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
   font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;
   color:var(--sand-dark);
   margin:0 auto 20px;
-  position:relative;z-index:1;
 }
 .step-t{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:#ffffff;margin-bottom:10px;letter-spacing:-0.2px;}
 .step-p{font-family:'Source Sans Pro',sans-serif;font-size:13px;color:rgba(255,255,255,0.58);line-height:1.68;}
@@ -405,7 +403,6 @@ footer{background:linear-gradient(135deg,#1e1b18 0%,#2d2720 100%);padding:56px 6
   .cards-grid{grid-template-columns:1fr;}
   .leist-grid{grid-template-columns:1fr;}
   .ablauf-steps{grid-template-columns:1fr 1fr;}
-  .ablauf-steps::before{display:none;}
   .ueber-grid{grid-template-columns:1fr;}
   .kontakt-grid{grid-template-columns:1fr;}
   .form-row{grid-template-columns:1fr;}
