@@ -250,24 +250,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .zg-item:last-child{border-bottom:none;}
 
 /* ── ABLAUF – Dark Section ── */
-.dark-sec{background:#111;padding:72px 6%;}
-.dark-sec .eyebrow{color:rgba(255,255,255,0.45);}
-.dark-sec .sec-title{color:#ffffff;}
-.dark-sec .sec-title::after{background:rgba(255,255,255,0.25);}
-.dark-sec .sec-sub{color:rgba(255,255,255,0.5);}
+.dark-sec{background:#f5f5f5;padding:72px 6%;}
+.dark-sec .eyebrow{color:var(--sand-dark);}
+.dark-sec .sec-title{color:var(--text);}
+.dark-sec .sec-title::after{background:var(--sand-dark);}
+.dark-sec .sec-sub{color:var(--muted);}
 .ablauf-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:52px;}
 .ablauf-step{text-align:center;padding:0 8px;}
 .step-n{
   width:52px;height:52px;border-radius:50%;
-  border:1.5px solid rgba(255,255,255,0.2);
-  background:rgba(255,255,255,0.08);
+  border:1.5px solid #ddd;
+  background:#fff;
   display:flex;align-items:center;justify-content:center;
   font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;
-  color:#fff;
+  color:#111;
   margin:0 auto 20px;
 }
-.step-t{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:#ffffff;margin-bottom:10px;letter-spacing:-0.2px;}
-.step-p{font-family:'Source Sans Pro',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.68;}
+.step-t{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:-0.2px;}
+.step-p{font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.68;}
 
 /* ── ÜBER MICH ── */
 .ueber-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
@@ -400,7 +400,7 @@ footer{background:#111;padding:56px 6% 32px;}
 .footer-contact-item a:hover{color:#ffffff;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
 .footer-bottom p{font-family:'Source Sans Pro',sans-serif;font-size:12px;color:rgba(255,255,255,0.5);}
-.footer-legal{display:flex;align-items:center;gap:16px;}
+.footer-legal{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
 .footer-legal-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);padding-right:4px;border-right:1px solid rgba(255,255,255,0.15);}
 .footer-legal a{font-family:'Source Sans Pro',sans-serif;font-size:12px;color:rgba(255,255,255,0.45);text-decoration:none;cursor:pointer;transition:color 0.2s;}
 .footer-legal a:hover{color:rgba(255,255,255,0.85);}
@@ -481,7 +481,6 @@ footer{background:#111;padding:56px 6% 32px;}
     <div class="infobar-item"><span class="infobar-icon"><i data-lucide="phone"></i></span><a href="tel:017642685146"><strong>0176 4268 5146</strong></a></div>
     <div class="infobar-item"><span class="infobar-icon"><i data-lucide="mail"></i></span><a href="mailto:info@physiotherapie-grausam.com"><strong>info@physiotherapie-grausam.com</strong></a></div>
     <div class="infobar-item"><span class="infobar-icon"><i data-lucide="map-pin"></i></span><strong>Heidelberg – Karlsruhe</strong></div>
-    <div class="infobar-item"><span class="infobar-icon"><i data-lucide="message-circle"></i></span>Erreichbar per WhatsApp &amp; E-Mail · Antwort innerhalb 24h</div>
   </div>
 
   <div class="statsbar">
@@ -498,6 +497,19 @@ footer{background:#111;padding:56px 6% 32px;}
       <div class="card"><div class="card-icon"><i data-lucide="clock"></i></div><h3>Dauer</h3><p>Die Dauer Ihrer Behandlung besprechen wir gemeinsam, um den bestmöglichen Therapieerfolg zu erzielen.</p></div>
       <div class="card"><div class="card-icon"><i data-lucide="credit-card"></i></div><h3>Abrechnung</h3><p>Privatpatienten, Beamte mit Beihilfe und Selbstzahler.</p></div>
       <div class="card"><div class="card-icon"><i data-lucide="map-pin"></i></div><h3>Einzugsgebiet</h3><p>Heidelberg bis Karlsruhe — gesamte Rhein-Neckar-Region.</p></div>
+      <div class="card"><div class="card-icon"><i data-lucide="clipboard-list"></i></div><h3>Trainingsplan</h3><p>Auf Wunsch erhalten Sie einen individuell angepassten Heimübungsplan zur Unterstützung Ihrer Therapie.</p></div>
+    </div>
+  </div>
+
+  <div class="sec" style="padding-top:0;">
+    <span class="eyebrow">Zielgruppe</span>
+    <h2 class="sec-title" style="margin-bottom:20px;">Für wen?</h2>
+    <div class="zg-box" style="border:none;background:none;padding:0;display:flex;flex-wrap:wrap;gap:10px;">
+      <div class="zg-item">◆ &nbsp;Geriatrische Patienten</div>
+      <div class="zg-item">◆ &nbsp;Geriatrisch pflegebedürftige Patienten</div>
+      <div class="zg-item">◆ &nbsp;Geriatrisch orthopädische Patienten &amp; nach OPs</div>
+      <div class="zg-item">◆ &nbsp;Chronisch kranke &amp; immobile Patienten</div>
+      <div class="zg-item">◆ &nbsp;Individuelle Beschwerdebilder</div>
     </div>
   </div>
 
@@ -508,19 +520,9 @@ footer{background:#111;padding:56px 6% 32px;}
   <div class="sec">
     <span class="eyebrow">Angebot</span>
     <h2 class="sec-title">Leistungen &amp; Preise</h2>
-    <p class="sec-sub">Alle Behandlungen finden bei Ihnen zuhause statt. Die Behandlungsdauer legen wir gemeinsam nach dem Ersttermin fest.</p>
 
     <div class="leist-section">
 
-      <!-- FÜR WEN? -->
-      <div class="zg-box">
-        <h4>Für wen?</h4>
-        <div class="zg-item">◆ &nbsp;Geriatrische Patienten</div>
-        <div class="zg-item">◆ &nbsp;Geriatrisch pflegebedürftige Patienten</div>
-        <div class="zg-item">◆ &nbsp;Geriatrisch orthopädische Patienten &amp; nach OPs</div>
-        <div class="zg-item">◆ &nbsp;Chronisch kranke &amp; immobile Patienten</div>
-        <div class="zg-item">◆ &nbsp;Individuelle Beschwerdebilder</div>
-      </div>
 
       <!-- PREISE -->
       <div>
@@ -632,13 +634,12 @@ footer{background:#111;padding:56px 6% 32px;}
           </div>
 
         </div>
-        <p style="font-family:'Source Sans Pro',sans-serif;font-size:12.5px;color:var(--muted);margin-top:12px;font-style:italic;">Alle weiteren Maßnahmen zur Unterstützung sind im Preis inbegriffen.</p>
       </div>
 
       <!-- Hinweise zur Abrechnung (freistehend, keine Kästen) -->
       <div style="display:flex;flex-direction:column;gap:10px;">
         <h3 style="font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.2px;">Hinweise zur Abrechnung &amp; Umsatzsteuer</h3>
-        <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.75;"><strong>Privatversicherte &amp; Beamte mit Beihilfe (mit Rezept):</strong> Physiotherapeutische Heilbehandlungen sind nach § 4 Nr. 14 UStG von der Umsatzsteuer befreit — es fällt keine Umsatzsteuer an. Mit einem ärztlichen Rezept können Sie die Rechnung bei Ihrer privaten Krankenversicherung oder der zuständigen Beihilfestelle einreichen. Die Erstattung ist tarifabhängig und nicht garantiert.</p>
+        <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.75;"><strong>Privatversicherte &amp; Beamte mit Beihilfe (mit Rezept):</strong> Physiotherapeutische Heilbehandlungen sind nach § 4 Nr. 14 UStG von der Umsatzsteuer befreit. Mit einem ärztlichen Rezept können Sie die Rechnung bei Ihrer privaten Krankenversicherung oder der zuständigen Beihilfestelle einreichen. Die Erstattung ist tarifabhängig und nicht garantiert.</p>
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.75;"><strong>Selbstzahler (ohne Rezept):</strong> Selbstzahler benötigen kein ärztliches Rezept. Da die Leistung als private Dienstleistung gilt, wird auf den Nettobetrag die gesetzliche Umsatzsteuer von 19 % erhoben. Gesamtpreise: Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 € (inkl. Umsatzsteuer).</p>
       </div>
 
@@ -679,11 +680,6 @@ footer{background:#111;padding:56px 6% 32px;}
         <div class="card-icon"><i data-lucide="tag"></i></div>
         <h3>Kleidung</h3>
         <p>Bequeme Kleidung erwünscht.</p>
-      </div>
-      <div class="card" style="padding:22px 24px;">
-        <div class="card-icon"><i data-lucide="clipboard-list"></i></div>
-        <h3>Trainingsplan</h3>
-        <p>Für nachhaltige Erfolge erhalten Sie von mir einen persönlichen Trainingsplan.</p>
       </div>
     </div>
   </div>
@@ -762,15 +758,15 @@ footer{background:#111;padding:56px 6% 32px;}
           <input type="hidden" name="_language" value="de">
           <div class="form-note">Pflichtfelder sind mit * markiert. Die Behandlungsdauer lege ich nach Befund fest.</div>
           <div class="form-row">
-            <div class="fg"><label for="f_vorname">Vorname *</label><input id="f_vorname" name="vorname" type="text" required placeholder="Max" autocomplete="given-name" data-fs-field></div>
-            <div class="fg"><label for="f_nachname">Nachname *</label><input id="f_nachname" name="nachname" type="text" required placeholder="Mustermann" autocomplete="family-name" data-fs-field></div>
+            <div class="fg"><label for="f_vorname">Vorname *</label><input id="f_vorname" name="vorname" type="text" required autocomplete="given-name" data-fs-field></div>
+            <div class="fg"><label for="f_nachname">Nachname *</label><input id="f_nachname" name="nachname" type="text" required autocomplete="family-name" data-fs-field></div>
           </div>
           <div class="fg"><label for="f_geb">Geburtsdatum *</label><input id="f_geb" name="geburtsdatum" type="date" required autocomplete="bday" data-fs-field></div>
-          <div class="fg"><label for="f_email">E-Mail *</label><input id="f_email" name="email" type="email" required placeholder="max@email.de" autocomplete="email" data-fs-field><span data-fs-error="email"></span></div>
-          <div class="fg"><label for="f_adresse">Straße &amp; Hausnummer *</label><input id="f_adresse" name="strasse" type="text" required placeholder="Musterstraße 1" autocomplete="street-address" onblur="checkAddress()" data-fs-field></div>
+          <div class="fg"><label for="f_email">E-Mail *</label><input id="f_email" name="email" type="email" required autocomplete="email" data-fs-field><span data-fs-error="email"></span></div>
+          <div class="fg"><label for="f_adresse">Straße &amp; Hausnummer *</label><input id="f_adresse" name="strasse" type="text" required autocomplete="street-address" onblur="checkAddress()" data-fs-field></div>
           <div class="form-row">
-            <div class="fg"><label for="f_plz">PLZ *</label><input id="f_plz" name="plz" type="text" required placeholder="69181" maxlength="5" autocomplete="postal-code" onblur="checkAddress()" data-fs-field></div>
-            <div class="fg"><label for="f_ort">Ort *</label><input id="f_ort" name="ort" type="text" required placeholder="Leimen" autocomplete="address-level2" onblur="checkAddress()" data-fs-field></div>
+            <div class="fg"><label for="f_plz">PLZ *</label><input id="f_plz" name="plz" type="text" required maxlength="5" autocomplete="postal-code" onblur="checkAddress()" data-fs-field></div>
+            <div class="fg"><label for="f_ort">Ort *</label><input id="f_ort" name="ort" type="text" required autocomplete="address-level2" onblur="checkAddress()" data-fs-field></div>
           </div>
           <div class="addr-hint" id="addrHint"></div>
           <div class="fg">
@@ -782,34 +778,7 @@ footer{background:#111;padding:56px 6% 32px;}
               <option>Selbstzahler</option>
             </select>
           </div>
-          <div class="fg">
-            <label for="rezeptSelect">Haben Sie ein ärztliches Rezept?</label>
-            <select id="rezeptSelect" name="rezept" onchange="handleRezept(this.value)">
-              <option value="">Bitte wählen</option>
-              <option value="ja">Ja, ich habe ein Rezept</option>
-              <option value="nein">Nein, kein Rezept</option>
-            </select>
-          </div>
-          <div id="verordnungBlock" class="hidden">
-            <div class="fg" style="margin-top:4px;">
-              <label for="verordnungSelect">Verordnung auf dem Rezept</label>
-              <select id="verordnungSelect" name="verordnung" onchange="handleVerordnung(this.value)">
-                <option value="">Bitte wählen</option>
-                <option>KG – Krankengymnastik</option>
-                <option>KGN – Krankengymnastik Neurologie</option>
-                <option>MT – Manuelle Therapie</option>
-                <option>KMT – Klassische Massagetherapie</option>
-                <option>MLD – Manuelle Lymphdrainage</option>
-                <option>AT – Atemtherapie</option>
-                <option value="sonstiges">Sonstiges</option>
-              </select>
-            </div>
-            <div id="sonstigesBlock" class="hidden" style="flex-direction:column;gap:10px;margin-top:8px;">
-              <div class="fg"><label for="f_rezepttext">Was steht auf dem Rezept?</label><input id="f_rezepttext" name="rezept_text" type="text" placeholder="z. B. KGG, Bobath ..."></div>
-            </div>
-          </div>
-          <div class="fg"><label for="f_anliegen">Anliegen / Beschwerden *</label><textarea id="f_anliegen" name="anliegen" required placeholder="Beschreiben Sie kurz Ihr Anliegen oder Ihre Diagnose..." data-fs-field></textarea></div>
-          <div class="fg"><label for="f_termin">Terminwunsch</label><input id="f_termin" name="terminwunsch" type="text" placeholder="z. B. Mo–Fr nachmittags" data-fs-field></div>
+          <div class="fg"><label for="f_anliegen">Anliegen / Beschwerden *</label><textarea id="f_anliegen" name="anliegen" required data-fs-field></textarea></div>
           <div class="consent">
             <input type="checkbox" id="con" name="datenschutz" required>
             <label for="con">Ich habe die <a href="javascript:void(0)" onclick="show('datenschutz')">Datenschutzerklärung</a> gelesen und stimme zu. *</label>
