@@ -1042,7 +1042,6 @@ footer{background:#111;padding:56px 6% 32px;}
       <span class="footer-legal-label">Rechtliches</span>
       <a href="javascript:void(0)" onclick="show('impressum')">Impressum</a>
       <a href="javascript:void(0)" onclick="show('datenschutz')">Datenschutz</a>
-      <a href="javascript:void(0)" onclick="show('portal')" class="portal-footer-link">Inhaber</a>
     </div>
   </div>
 </footer>
@@ -1167,6 +1166,18 @@ function _portalDate(){
     const da=document.getElementById('portal-dash');
     if(lo&&da){lo.classList.add('hidden');da.classList.remove('hidden');_portalDate();}
   }
+})();
+
+// Geheimer Portal-Shortcut: P dann G innerhalb 1 Sekunde
+(function(){
+  let _last='',_t=0;
+  document.addEventListener('keydown',function(e){
+    const k=e.key.toLowerCase();
+    const now=Date.now();
+    if(k==='p'){_last='p';_t=now;}
+    else if(k==='g'&&_last==='p'&&(now-_t)<1000){show('portal');_last='';_t=0;}
+    else{_last='';_t=0;}
+  });
 })();
 
 // Sticky CTA
