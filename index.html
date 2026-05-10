@@ -438,7 +438,6 @@ footer{background:#111;padding:56px 6% 32px;}
     <li><a href="javascript:void(0)" onclick="show('ablauf')">Ablauf</a></li>
     <li><a href="javascript:void(0)" onclick="show('ueber')">Über mich</a></li>
     <li><a href="javascript:void(0)" onclick="show('faq')">FAQ</a></li>
-    <li><a href="javascript:void(0)" onclick="show('dokumente')">Dokumente</a></li>
     <li><a href="javascript:void(0)" onclick="show('kontakt')">Termin anfragen</a></li>
   </ul>
   <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
@@ -450,7 +449,6 @@ footer{background:#111;padding:56px 6% 32px;}
   <a href="javascript:void(0)" onclick="show('ablauf');toggleMenu()">Ablauf</a>
   <a href="javascript:void(0)" onclick="show('ueber');toggleMenu()">Über mich</a>
   <a href="javascript:void(0)" onclick="show('faq');toggleMenu()">FAQ</a>
-  <a href="javascript:void(0)" onclick="show('dokumente');toggleMenu()">Dokumente</a>
   <a href="javascript:void(0)" onclick="show('kontakt');toggleMenu()">Termin anfragen</a>
 </div>
 
@@ -666,7 +664,7 @@ footer{background:#111;padding:56px 6% 32px;}
       <div class="card" style="padding:22px 24px;">
         <div class="card-icon"><i data-lucide="file-text"></i></div>
         <h3>Dokumente</h3>
-        <p>Wenn machbar, zum Erstgespräch mitbringen: <strong>Anamnesebogen</strong>, <strong>Behandlungsvertrag</strong> und <strong>Datenschutzerklärung</strong>. Alle Formulare finden Sie auf der <a href="javascript:void(0)" onclick="show('dokumente')" style="color:var(--text);font-weight:600;text-decoration:underline;">Dokumente-Seite</a>.</p>
+        <p>Wenn machbar, zum Erstgespräch mitbringen: <strong>Anamnesebogen</strong>, <strong>Behandlungsvertrag</strong> und <strong>Datenschutzerklärung</strong>. Alle Formulare finden Sie unten auf der <a href="javascript:void(0)" onclick="show('kontakt')" style="color:var(--text);font-weight:600;text-decoration:underline;">Termin-Seite</a>.</p>
       </div>
       <div class="card" style="padding:22px 24px;">
         <div class="card-icon"><i data-lucide="help-circle"></i></div>
@@ -735,51 +733,6 @@ footer{background:#111;padding:56px 6% 32px;}
 </div>
 
 <!-- ═══ DOKUMENTE ═══ -->
-<div class="page" id="dokumente">
-  <div class="sec">
-    <span class="eyebrow">Vor dem Ersttermin</span>
-    <h2 class="sec-title">Dokumente zum Download</h2>
-    <p class="sec-sub">Damit unser Ersttermin reibungslos abläuft, können Sie die folgenden Dokumente vorab herunterladen, in Ruhe ausfüllen und beim Termin mitbringen oder per E-Mail an <a href="mailto:info@physiotherapie-grausam.com" style="color:var(--text);text-decoration:underline;">info@physiotherapie-grausam.com</a> senden.</p>
-
-    <div class="dok-grid">
-
-      <div class="dok-card">
-        <div class="dok-icon"><i data-lucide="clipboard-list"></i></div>
-        <h3 class="dok-title">Anamnesebogen</h3>
-        <p class="dok-desc">Fragebogen zu Ihrer medizinischen Vorgeschichte, aktuellen Beschwerden und Behandlungszielen. Bitte vor dem Ersttermin ausfüllen.</p>
-        <div class="dok-actions">
-          <a class="dok-btn" href="dokumente/Anamnesebogen.pdf" target="_blank" download><i data-lucide="download"></i>Herunterladen <span class="fmt">PDF</span></a>
-          <a class="dok-btn outline" href="dokumente/Anamnesebogen.docx" download><i data-lucide="file-text"></i>Bearbeitbare Version <span class="fmt">DOCX</span></a>
-        </div>
-      </div>
-
-      <div class="dok-card">
-        <div class="dok-icon"><i data-lucide="file-signature"></i></div>
-        <h3 class="dok-title">Behandlungsvertrag</h3>
-        <p class="dok-desc">Vereinbarung über Behandlung, Vergütung, Termine und Ausfallhonorar. Wird zu Beginn der Behandlung gemeinsam unterzeichnet.</p>
-        <div class="dok-actions">
-          <a class="dok-btn" href="dokumente/Behandlungsvertrag.pdf" target="_blank" download><i data-lucide="download"></i>Herunterladen <span class="fmt">PDF</span></a>
-          <a class="dok-btn outline" href="dokumente/Behandlungsvertrag.docx" download><i data-lucide="file-text"></i>Bearbeitbare Version <span class="fmt">DOCX</span></a>
-        </div>
-      </div>
-
-      <div class="dok-card">
-        <div class="dok-icon"><i data-lucide="shield-check"></i></div>
-        <h3 class="dok-title">Datenschutzerklärung</h3>
-        <p class="dok-desc">Information nach DSGVO zur Verarbeitung Ihrer Gesundheitsdaten – inklusive Einwilligungsblatt zum Unterschreiben.</p>
-        <div class="dok-actions">
-          <a class="dok-btn" href="dokumente/Datenschutzerklaerung-Patienten.pdf" target="_blank" download><i data-lucide="download"></i>Herunterladen <span class="fmt">PDF</span></a>
-          <a class="dok-btn outline" href="dokumente/Datenschutzerklaerung-Patienten.docx" download><i data-lucide="file-text"></i>Bearbeitbare Version <span class="fmt">DOCX</span></a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="dok-info">
-      <i data-lucide="info" style="width:15px;height:15px;stroke:var(--sand-dark);stroke-width:2;fill:none;vertical-align:middle;margin-right:6px;flex-shrink:0;"></i><strong>So geht's:</strong> Laden Sie die Dokumente herunter (PDF zum Ausdrucken oder DOCX zum digitalen Ausfüllen), füllen Sie den Anamnesebogen vor dem Ersttermin aus und bringen Sie alle drei unterzeichneten Dokumente zum Termin mit.    </div>
-  </div>
-</div>
-
 <!-- ═══ KONTAKT ═══ -->
 <div class="page" id="kontakt">
   <div class="sec">
@@ -861,6 +814,28 @@ footer{background:#111;padding:56px 6% 32px;}
         </form>
       </div>
     </div>
+
+    <!-- Dokumente -->
+    <div style="margin-top:56px;padding-top:40px;border-top:1px solid var(--border);">
+      <span class="eyebrow">Vor dem Ersttermin</span>
+      <h2 class="sec-title" style="margin-bottom:6px;">Dokumente</h2>
+      <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);margin-bottom:28px;">Bitte ausdrucken, ausfüllen und zum Ersttermin mitbringen.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff;border:1px solid var(--border);border-radius:12px;gap:16px;flex-wrap:wrap;">
+          <div><strong style="font-size:15px;">Anamnesebogen</strong><br><span style="font-size:13px;color:var(--muted);">Medizinische Vorgeschichte & Beschwerden</span></div>
+          <a href="dokumente/Anamnesebogen.pdf" download class="btn-outline" style="padding:10px 20px;font-size:13px;border-radius:8px;border:1.5px solid #ccc;background:#fff;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;"><i data-lucide="download" style="width:14px;height:14px;"></i> PDF herunterladen</a>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff;border:1px solid var(--border);border-radius:12px;gap:16px;flex-wrap:wrap;">
+          <div><strong style="font-size:15px;">Behandlungsvertrag</strong><br><span style="font-size:13px;color:var(--muted);">Vergütung, Termine & Ausfallhonorar</span></div>
+          <a href="dokumente/Behandlungsvertrag.pdf" download class="btn-outline" style="padding:10px 20px;font-size:13px;border-radius:8px;border:1.5px solid #ccc;background:#fff;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;"><i data-lucide="download" style="width:14px;height:14px;"></i> PDF herunterladen</a>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff;border:1px solid var(--border);border-radius:12px;gap:16px;flex-wrap:wrap;">
+          <div><strong style="font-size:15px;">Datenschutzerklärung</strong><br><span style="font-size:13px;color:var(--muted);">DSGVO-Einwilligung zur Datenverarbeitung</span></div>
+          <a href="dokumente/Datenschutzerklaerung-Patienten.pdf" download class="btn-outline" style="padding:10px 20px;font-size:13px;border-radius:8px;border:1.5px solid #ccc;background:#fff;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;"><i data-lucide="download" style="width:14px;height:14px;"></i> PDF herunterladen</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1026,7 +1001,7 @@ footer{background:#111;padding:56px 6% 32px;}
         <a href="javascript:void(0)" onclick="show('ablauf')">Ablauf</a>
         <a href="javascript:void(0)" onclick="show('ueber')">Über mich</a>
         <a href="javascript:void(0)" onclick="show('faq')">FAQ</a>
-        <a href="javascript:void(0)" onclick="show('dokumente')">Dokumente</a>
+        <a href="javascript:void(0)" onclick="show('kontakt')">Termin anfragen</a>
       </div>
     </div>
     <div>
