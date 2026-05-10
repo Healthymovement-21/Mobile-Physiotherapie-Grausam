@@ -7,6 +7,10 @@
 <meta name="description" content="Professionelle Physiotherapie direkt bei Ihnen zuhause. Hausbesuche für Privatpatienten, Beihilfe und Selbstzahler im Raum Heidelberg bis Karlsruhe. Jetzt Termin anfragen.">
 <meta name="keywords" content="Mobile Physiotherapie, Hausbesuche, Heidelberg, Karlsruhe, Leimen, Privatpatient, Beihilfe, Geriatrie, Physiotherapeut">
 <meta name="author" content="Nick Grausam">
+<!-- ══ SECURITY HEADERS ══ -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; frame-src 'none'; base-uri 'self'; object-src 'none';">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
 <meta property="og:title" content="Mobile Physiotherapie Grausam | Hausbesuche Heidelberg–Karlsruhe">
 <meta property="og:description" content="Professionelle Physiotherapie direkt bei Ihnen zuhause. Für Privatpatienten, Beihilfe und Selbstzahler.">
 <meta property="og:type" content="website">
@@ -839,6 +843,30 @@ footer{background:#111;padding:56px 6% 32px;}
   </div>
 </div>
 
+<!-- ═══ COOKIE POLICY ═══ -->
+<div class="page" id="cookie-policy">
+  <div class="legal">
+    <h2>Cookie-Richtlinie</h2>
+    <p class="legal-stand">Stand: Mai 2026</p>
+    <h3>Welche Cookies verwenden wir?</h3>
+    <p>Diese Website verwendet <strong>keine Tracking-, Analyse- oder Werbe-Cookies</strong>. Es kommen ausschließlich technisch notwendige Speicher zum Einsatz:</p>
+    <table style="width:100%;border-collapse:collapse;font-size:14px;margin:16px 0;">
+      <thead><tr style="background:#f5f5f5;"><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;">Name</th><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;">Art</th><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;">Zweck</th><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;">Dauer</th></tr></thead>
+      <tbody>
+        <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">cookie_ok</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">localStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Speichert Ihre Zustimmung zum Cookie-Hinweis</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Dauerhaft (löschbar)</td></tr>
+        <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">page</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">sessionStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Merkt die zuletzt besuchte Seite</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Sitzung</td></tr>
+        <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">form_last_submit</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">sessionStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Verhindert Formular-Spam (60s Sperre)</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Sitzung</td></tr>
+      </tbody>
+    </table>
+    <h3>Drittanbieter</h3>
+    <p><strong>Formspree</strong> (formspree.io) verarbeitet Ihre Kontaktformular-Anfragen. Formspree kann eigene technische Cookies zur Spam-Prävention setzen. Weitere Informationen: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Formspree Datenschutz</a>.</p>
+    <p><strong>Google Fonts</strong> wird zum Laden der Schriftarten verwendet. Dabei kann Ihre IP-Adresse an Google übermittelt werden. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Datenschutz</a>.</p>
+    <h3>Ihre Rechte</h3>
+    <p>Sie können jederzeit alle gespeicherten Daten in Ihrem Browser löschen: <em>Einstellungen → Datenschutz → Browserdaten löschen</em>. Da keine Tracking-Cookies eingesetzt werden, ist keine aktive Einwilligung nach ePrivacy-Richtlinie erforderlich.</p>
+    <p><a href="javascript:void(0)" onclick="show('datenschutz')" style="color:var(--text);text-decoration:underline;">→ Zur vollständigen Datenschutzerklärung</a></p>
+  </div>
+</div>
+
 <!-- ═══ IMPRESSUM ═══ -->
 <div class="page" id="impressum">
   <div class="legal">
@@ -1017,6 +1045,7 @@ footer{background:#111;padding:56px 6% 32px;}
       <span class="footer-legal-label">Rechtliches</span>
       <a href="javascript:void(0)" onclick="show('impressum')">Impressum</a>
       <a href="javascript:void(0)" onclick="show('datenschutz')">Datenschutz</a>
+      <a href="javascript:void(0)" onclick="show('cookie-policy')">Cookies</a>
       <a href="javascript:void(0)" onclick="show('portal')" class="portal-footer-link">Inhaber</a>
     </div>
   </div>
@@ -1101,18 +1130,52 @@ document.querySelectorAll('.card,.dok-card,.ablauf-step,.preis-card,.ueber-det,.
   el.classList.add('fade-up');_io.observe(el);
 });
 
-// PORTAL
-const _PORTAL_PW = 'grausam2025'; // ← Passwort hier ändern
-function portalLogin(){
-  const pw=document.getElementById('portal-pw-input').value;
+// ── CLICKJACKING PROTECTION ──
+if(window.top!==window.self){window.top.location=window.self.location;}
+
+// ── PORTAL (hashed PW + rate limiting) ──
+const _PORTAL_HASH='519d10aa5c0bb6fcd2f7bf7cf8155485cf362df2eba7297a2d36d022f98f9061';
+const _MAX_ATTEMPTS=5, _LOCKOUT_MS=5*60*1000;
+
+async function _hashStr(s){
+  const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+function _portalLocked(){
+  const lock=sessionStorage.getItem('portal_lock');
+  if(!lock) return false;
+  if(Date.now()<parseInt(lock)){return true;}
+  sessionStorage.removeItem('portal_lock');
+  sessionStorage.removeItem('portal_attempts');
+  return false;
+}
+async function portalLogin(){
   const err=document.getElementById('portal-err');
-  if(pw===_PORTAL_PW){
+  if(_portalLocked()){
+    const rem=Math.ceil((parseInt(sessionStorage.getItem('portal_lock'))-Date.now())/60000);
+    err.textContent=`Zu viele Versuche. Bitte ${rem} Min. warten.`;
+    err.classList.remove('hidden'); return;
+  }
+  const pw=document.getElementById('portal-pw-input').value.trim();
+  if(!pw) return;
+  const hash=await _hashStr(pw);
+  if(hash===_PORTAL_HASH){
     sessionStorage.setItem('portal_auth','1');
+    sessionStorage.removeItem('portal_attempts');
+    sessionStorage.removeItem('portal_lock');
     document.getElementById('portal-login').classList.add('hidden');
     document.getElementById('portal-dash').classList.remove('hidden');
     err.classList.add('hidden');
     _portalDate();
   } else {
+    const attempts=(parseInt(sessionStorage.getItem('portal_attempts'))||0)+1;
+    sessionStorage.setItem('portal_attempts',attempts);
+    if(attempts>=_MAX_ATTEMPTS){
+      sessionStorage.setItem('portal_lock',Date.now()+_LOCKOUT_MS);
+      err.textContent='Zu viele Versuche. Bitte 5 Min. warten.';
+    } else {
+      err.textContent=`Falsches Passwort. (${_MAX_ATTEMPTS-attempts} Versuche verbleibend)`;
+    }
     err.classList.remove('hidden');
     document.getElementById('portal-pw-input').value='';
     document.getElementById('portal-pw-input').focus();
@@ -1139,7 +1202,43 @@ function _portalDate(){
   }
 })();
 
-// Geheimer Portal-Shortcut: P dann G innerhalb 1 Sekunde
+// ── FORM RATE LIMITING (60s cooldown) ──
+(function(){
+  const form=document.getElementById('contactForm');
+  if(!form) return;
+  const COOLDOWN=60000;
+  form.addEventListener('submit',function(e){
+    const last=parseInt(sessionStorage.getItem('form_last_submit')||'0');
+    if(Date.now()-last<COOLDOWN){
+      e.preventDefault();e.stopImmediatePropagation();
+      const rem=Math.ceil((COOLDOWN-(Date.now()-last))/1000);
+      let msg=form.querySelector('.rate-msg');
+      if(!msg){msg=document.createElement('p');msg.className='rate-msg';msg.style.cssText='color:#c0392b;font-size:13px;margin-top:8px;';form.appendChild(msg);}
+      msg.textContent=`Bitte warten Sie noch ${rem} Sekunden bevor Sie erneut senden.`;
+      return;
+    }
+    sessionStorage.setItem('form_last_submit',Date.now());
+    const existing=form.querySelector('.rate-msg');
+    if(existing) existing.remove();
+  },true);
+})();
+
+// ── COOKIE BANNER ──
+(function(){
+  if(localStorage.getItem('cookie_ok')) return;
+  const banner=document.createElement('div');
+  banner.id='cookie-banner';
+  banner.innerHTML=`
+    <div style="max-width:680px;">
+      <strong>Cookie-Hinweis</strong><br>
+      <span style="font-size:13px;opacity:.85;">Diese Website verwendet ausschließlich technisch notwendige Cookies (Sitzungsspeicher für Formulare). Keine Tracking- oder Werbe-Cookies. Details in der <a href="javascript:void(0)" onclick="show('cookie-policy')" style="color:#fff;text-decoration:underline;">Cookie-Richtlinie</a>.</span>
+    </div>
+    <button onclick="(function(){localStorage.setItem('cookie_ok','1');document.getElementById('cookie-banner').remove();})()" style="background:#fff;color:#111;border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0;">Verstanden</button>`;
+  banner.style.cssText='position:fixed;bottom:0;left:0;right:0;background:#111;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;z-index:9999;font-family:"Source Sans Pro",sans-serif;font-size:14px;line-height:1.5;box-shadow:0 -2px 16px rgba(0,0,0,.2);';
+  document.body.appendChild(banner);
+})();
+
+// ── GEHEIMER PORTAL-SHORTCUT: P dann G ──
 (function(){
   let _last='',_t=0;
   document.addEventListener('keydown',function(e){
