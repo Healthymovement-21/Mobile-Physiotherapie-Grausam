@@ -831,10 +831,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       </tbody>
     </table>
     <h3>Drittanbieter</h3>
-    <p><strong>Formspree</strong> (formspree.io) verarbeitet Ihre Kontaktformular-Anfragen. Formspree kann eigene technische Cookies zur Spam-Prävention setzen. Weitere Informationen: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Formspree Datenschutz</a>.</p>
-    <p><strong>Google Fonts</strong> wird zum Laden der Schriftarten verwendet. Dabei kann Ihre IP-Adresse an Google übermittelt werden. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Datenschutz</a>.</p>
+    <p><strong>Formspree</strong> (Formspree Inc., USA) verarbeitet über das Kontaktformular übermittelte Daten als Auftragsverarbeiter (Art. 28 DSGVO). Formspree kann im Rahmen der Formularübermittlung technisch notwendige Cookies zur Spam-Prävention setzen. Es erfolgt kein Tracking. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO; Drittlandtransfer auf Basis von EU-Standardvertragsklauseln. Weitere Informationen: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>.</p>
+    <p><strong>Schriftarten:</strong> Diese Website verwendet ausschließlich lokal gehostete Schriftarten (Montserrat, Source Sans Pro). Es findet keine Verbindung zu Google Fonts oder anderen externen Schriftartdiensten statt — es werden keine IP-Adressen oder Nutzerdaten an Dritte übermittelt.</p>
+    <h3>Einwilligungspflicht</h3>
+    <p>Da diese Website ausschließlich technisch notwendige Speicher (localStorage/sessionStorage) und keinen externen Schriftartdienst nutzt, ist nach § 25 TTDSG keine aktive Einwilligung für Cookies erforderlich. Formspree-Cookies im Rahmen der Formularnutzung sind ebenfalls technisch notwendig und einwilligungsfrei.</p>
     <h3>Ihre Rechte</h3>
-    <p>Sie können jederzeit alle gespeicherten Daten in Ihrem Browser löschen: <em>Einstellungen → Datenschutz → Browserdaten löschen</em>. Da keine Tracking-Cookies eingesetzt werden, ist keine aktive Einwilligung nach ePrivacy-Richtlinie erforderlich.</p>
+    <p>Sie können jederzeit alle gespeicherten Daten in Ihrem Browser löschen: <em>Einstellungen → Datenschutz → Browserdaten löschen</em>.</p>
     <p><a href="javascript:void(0)" onclick="show('datenschutz')" style="color:var(--text);text-decoration:underline;">→ Zur vollständigen Datenschutzerklärung</a></p>
   </div>
 </div>
@@ -901,8 +903,13 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <p>Diese Website setzt keine Tracking- oder Marketing-Cookies. Der eingebundene Dienst Formspree kann im Rahmen der Formularnutzung technisch notwendige Cookies zur Spam-Prävention verwenden. Eine darüber hinausgehende Einwilligung ist nicht erforderlich, da keine Daten zu Werbe- oder Analysezwecken übermittelt werden.</p>
     <h3>Schriftarten</h3>
     <p>Diese Website verwendet ausschließlich lokal gehostete Schriftarten (Montserrat, Source Sans Pro). Es werden keine Daten an externe Schriftartdienste wie Google Fonts übertragen.</p>
-    <h3>Weitergabe an Dritte</h3>
-    <p>Eine Weitergabe Ihrer Daten an Dritte erfolgt nur über den beschriebenen Auftragsverarbeiter Formspree sowie, soweit gesetzlich erforderlich, an Beihilfestellen oder Finanzbehörden.</p>
+    <h3>Empfänger und Weitergabe an Dritte</h3>
+    <p>Ihre Daten werden ausschließlich an folgende Empfänger weitergegeben:</p>
+    <ul>
+      <li><strong>Formspree Inc. (USA)</strong> — als Auftragsverarbeiter für das Kontaktformular (Art. 28 DSGVO, EU-Standardvertragsklauseln)</li>
+      <li><strong>Gesetzlich verpflichtete Stellen</strong> — z. B. Beihilfestellen, Finanzbehörden, soweit gesetzlich erforderlich</li>
+    </ul>
+    <p>Eine Weitergabe zu Werbe-, Analyse- oder sonstigen kommerziellen Zwecken findet nicht statt.</p>
     <h3>Änderungen</h3>
     <p>Diese Erklärung wird bei Bedarf aktualisiert. Die aktuelle Version ist stets auf dieser Seite abrufbar.</p>
   </div>
@@ -1207,7 +1214,7 @@ function _portalDate(){
   banner.innerHTML=`
     <div style="max-width:680px;">
       <strong>Cookie-Hinweis</strong><br>
-      <span style="font-size:13px;opacity:.85;">Diese Website verwendet ausschließlich technisch notwendige Cookies (Sitzungsspeicher für Formulare). Keine Tracking- oder Werbe-Cookies. Details in der <a href="javascript:void(0)" onclick="show('cookie-policy')" style="color:#fff;text-decoration:underline;">Cookie-Richtlinie</a>.</span>
+      <span style="font-size:13px;opacity:.85;">Diese Website verwendet ausschließlich technisch notwendige Speicher (localStorage/sessionStorage). Keine Tracking-, Analyse- oder Werbe-Cookies. Schriftarten werden lokal bereitgestellt — keine Übermittlung an Google. Details: <a href="javascript:void(0)" onclick="show('cookie-policy')" style="color:#fff;text-decoration:underline;">Cookie-Richtlinie</a>.</span>
     </div>
     <button onclick="(function(){localStorage.setItem('cookie_ok','1');document.getElementById('cookie-banner').remove();})()" style="background:#fff;color:#111;border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0;">Verstanden</button>`;
   banner.style.cssText='position:fixed;bottom:0;left:0;right:0;background:#111;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;z-index:9999;font-family:"Source Sans Pro",sans-serif;font-size:14px;line-height:1.5;box-shadow:0 -2px 16px rgba(0,0,0,.2);';
