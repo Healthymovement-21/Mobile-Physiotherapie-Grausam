@@ -8,7 +8,7 @@
 <meta name="keywords" content="Mobile Physiotherapie, Hausbesuche, Heidelberg, Karlsruhe, Leimen, Privatpatient, Beihilfe, Geriatrie, Physiotherapeut">
 <meta name="author" content="Nick Grausam">
 <!-- ══ SECURITY HEADERS ══ -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; frame-src 'none'; base-uri 'self'; object-src 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; frame-src 'none'; base-uri 'self'; object-src 'none';">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
 <meta property="og:title" content="Mobile Physiotherapie Grausam | Hausbesuche Heidelberg–Karlsruhe">
@@ -23,9 +23,11 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
 <link rel="shortcut icon" href="favicon.svg?v=3">
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;500&display=swap&font-display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400 700;font-display:swap;src:url('fonts/Montserrat-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:300;font-display:swap;src:url('fonts/SourceSansPro-300-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:400 500;font-display:swap;src:url('fonts/SourceSansPro-400-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -852,7 +854,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <h3>Verantwortlich für den Inhalt</h3>
     <p>Verantwortlich nach § 55 Abs. 2 RStV: Nick Grausam (Anschrift wie oben)</p>
     <h3>Streitschlichtung</h3>
-    <p>Plattform der EU-Kommission: <a href="https://ec.europa.eu/consumers/odr/" target="_blank">ec.europa.eu/consumers/odr</a>. Wir nehmen nicht an Verbraucherschlichtungsverfahren teil.</p>
+    <p>Wir nehmen nicht an Verbraucherschlichtungsverfahren teil und sind hierzu nicht verpflichtet.</p>
   </div>
 </div>
 
@@ -860,7 +862,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 <div class="page" id="datenschutz">
   <div class="legal">
     <h2>Datenschutzerklärung</h2>
-    <p class="legal-stand">Stand: 7. Februar 2026</p>
+    <p class="legal-stand">Stand: 16. Mai 2026</p>
     <h3>Präambel</h3>
     <p>Diese Datenschutzerklärung informiert Sie darüber, welche personenbezogenen Daten wir verarbeiten, zu welchen Zwecken und auf welcher Rechtsgrundlage.</p>
     <h3>Verantwortlicher</h3>
@@ -885,9 +887,13 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <li>Beschwerde beim Landesbeauftragten für Datenschutz Baden-Württemberg</li>
     </ul>
     <h3>WhatsApp</h3>
-    <p>Bei WhatsApp-Kontakt werden Daten auf US-Servern von Meta verarbeitet (Grundlage: EU-US Data Privacy Framework). Datenschutzerklärung: <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank">whatsapp.com/legal/privacy-policy</a></p>
+    <p>Bei WhatsApp-Kontakt werden Daten auf US-Servern von Meta verarbeitet (Grundlage: EU-US Data Privacy Framework). Datenschutzerklärung: <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">whatsapp.com/legal/privacy-policy</a></p>
+    <h3>Kontaktformular (Formspree)</h3>
+    <p>Das Kontaktformular auf dieser Website wird über den Dienst <strong>Formspree</strong> (Formspree Inc., USA) verarbeitet. Wenn Sie das Formular absenden, werden Ihre Angaben (Name, E-Mail, Nachricht) an Formspree übermittelt und dort verarbeitet. Die Übermittlung in die USA erfolgt auf Grundlage von Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO). Weitere Informationen: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a></p>
     <h3>Cookies und Tracking</h3>
     <p>Diese Website verwendet keine Tracking-Cookies und übermittelt keine Daten zu Werbe- oder Analysezwecken.</p>
+    <h3>Schriftarten</h3>
+    <p>Diese Website verwendet ausschließlich lokal gehostete Schriftarten. Es werden keine Daten an externe Dienste (z. B. Google Fonts) übertragen.</p>
     <h3>Weitergabe an Dritte</h3>
     <p>Eine Weitergabe Ihrer Daten an Dritte erfolgt nur soweit gesetzlich erforderlich (z. B. Beihilfestellen, Finanzbehörden).</p>
     <h3>Änderungen</h3>
