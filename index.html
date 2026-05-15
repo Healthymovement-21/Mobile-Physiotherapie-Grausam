@@ -832,7 +832,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     </table>
     <h3>Drittanbieter-Speicher</h3>
     <p><strong>Formspree</strong> (Formspree Inc., USA): Beim <em>Absenden</em> des Kontaktformulars wird ein HTTPS-POST-Request an <code>formspree.io</code> gesendet. Diese Verbindung findet ausschließlich auf aktive Nutzerhandlung (Klick auf „Anfrage absenden") hin statt — nicht beim bloßen Aufrufen der Website. Es wird kein externes Skript von Formspree geladen. Rechtsgrundlage der Datenübermittlung: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen). <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Datenschutzerklärung Formspree</a>.</p>
-    <p><strong>Schriftarten und Skripte:</strong> Vollständig lokal gehostet (Montserrat, Source Sans Pro, Lucide Icons). Es werden <strong>keine externen Ressourcen</strong> beim Laden der Seite abgerufen — keine Übermittlung von IP-Adressen an Dritte durch den Seitenaufruf.</p>
+    <p><strong>Schriftarten und Skripte:</strong> Vollständig lokal gehostet (Montserrat, Source Sans Pro, Lucide Icons). Es werden <strong>keine externen Ressourcen</strong> beim Laden der Seite abgerufen — keine Übermittlung von IP-Adressen an Dritte allein durch den Seitenaufruf.</p>
+    <p><strong>OpenStreetMap Nominatim</strong> (Adressvalidierung): Beim Ausfüllen der Adressfelder im Kontaktformular wird eine Anfrage an <code>nominatim.openstreetmap.org</code> gesendet. Diese Verbindung findet ausschließlich bei aktiver Dateneingabe statt, speichert keinerlei Informationen auf dem Endgerät und fällt daher nicht unter § 25 TTDSG. Die Datenübermittlung an OpenStreetMap Foundation (UK) richtet sich nach Art. 6 Abs. 1 lit. f DSGVO — Details in der <a href="javascript:void(0)" onclick="show('datenschutz')" style="color:var(--text);text-decoration:underline;">Datenschutzerklärung</a>.</p>
     <h3>Bewertung der Einwilligungspflicht (§ 25 TTDSG)</h3>
     <p>Da diese Website ausschließlich Speicher einsetzt, die für die beschriebenen technischen Funktionen unbedingt erforderlich sind, und keine Tracking- oder Marketingtechnologien verwendet werden, ist nach § 25 Abs. 2 Nr. 2 TTDSG <strong>keine aktive Einwilligung</strong> (kein Consent-Banner) erforderlich. Diese Einschätzung gilt unter der Voraussetzung, dass keine weiteren Drittanbieter-Technologien eingebunden werden.</p>
     <h3>Ihre Rechte und weiterführende Informationen</h3>
@@ -906,8 +907,14 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <p><strong>Technische Speicher durch Formspree:</strong> Da kein externes Skript von Formspree geladen wird, erfolgt eine Verbindung zu Formspree-Servern ausschließlich beim aktiven Absenden des Formulars (HTTPS-POST). Formspree kann in diesem Rahmen technische Speicher (Cookies/ähnliche Technologien) zur Spam-Prävention einsetzen. Da diese nicht durch uns kontrolliert werden können, empfehlen wir die <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Datenschutzerklärung von Formspree</a> für aktuelle Informationen.</p>
     <h3>Cookies und technische Speicherung</h3>
     <p>Diese Website setzt keine Tracking- oder Marketing-Cookies. Alle eigenen Speicher (localStorage/sessionStorage) sind technisch erforderlich (§ 25 Abs. 2 Nr. 2 TTDSG). Formspree kann im Rahmen der Formularnutzung eigene technisch erforderliche Speicher einsetzen. Weitere Informationen in der <a href="javascript:void(0)" onclick="show('cookie-policy')" style="color:var(--text);">Cookie-Richtlinie</a>.</p>
-    <h3>Schriftarten</h3>
-    <p>Diese Website verwendet ausschließlich lokal gehostete Schriftarten (Montserrat, Source Sans Pro). Es werden keine Daten an externe Schriftartdienste wie Google Fonts übertragen.</p>
+    <h3>Adressvalidierung – OpenStreetMap Nominatim</h3>
+    <p><strong>Anbieter:</strong> OpenStreetMap Foundation (OSMF), St John's Innovation Centre, Cowley Road, Cambridge, CB4 0WS, Vereinigtes Königreich (<a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">Datenschutzerklärung</a>)</p>
+    <p><strong>Zweck:</strong> Wenn Sie im Kontaktformular Ihre Adresse eingeben, wird diese zur Überprüfung der Erreichbarkeit (Einzugsgebiet) an den Geocodierungsdienst Nominatim übermittelt. Die Validierung erfolgt bei der Dateneingabe und zeigt an, ob die Adresse im Versorgungsgebiet liegt. Die Nutzung ist freiwillig — das Formular lässt sich auch ohne Adressvalidierung absenden.</p>
+    <p><strong>Übermittelte Daten:</strong> Straße, PLZ, Ort (keine Personendaten wie Name oder E-Mail).</p>
+    <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse: Prüfung der Erreichbarkeit vor Terminbestätigung).</p>
+    <p><strong>Drittlandtransfer:</strong> Das Vereinigte Königreich verfügt über einen Angemessenheitsbeschluss der EU-Kommission (Art. 45 DSGVO) — die Übermittlung ist datenschutzrechtlich zulässig.</p>
+    <h3>Schriftarten und Icons</h3>
+    <p>Diese Website verwendet ausschließlich lokal gehostete Ressourcen: Schriftarten (Montserrat, Source Sans Pro) und Icons (Lucide Icons). Es werden <strong>keine</strong> Daten an externe Dienste wie Google Fonts oder CDN-Anbieter übertragen.</p>
     <h3>Datenminimierung und Pflichtfelder im Kontaktformular</h3>
     <p>Das Kontaktformular erhebt ausschließlich Daten, die für die Erbringung der angefragten Leistung erforderlich sind (Art. 5 Abs. 1 lit. c DSGVO):</p>
     <ul>
@@ -921,10 +928,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <h3>Empfänger und Weitergabe an Dritte</h3>
     <p>Ihre Daten werden ausschließlich an folgende Empfänger weitergegeben:</p>
     <ul>
-      <li><strong>Formspree Inc. (USA)</strong> — als Auftragsverarbeiter für das Kontaktformular (Art. 28 DSGVO, EU-Standardvertragsklauseln)</li>
+      <li><strong>GitHub Inc. (USA)</strong> — Hosting über GitHub Pages; verarbeitet technische Zugriffsdaten (IP, Browsertyp, Zeitstempel) bei jedem Seitenaufruf (Art. 28 DSGVO, EU-Standardvertragsklauseln)</li>
+      <li><strong>Formspree Inc. (USA)</strong> — Auftragsverarbeiter für das Kontaktformular; empfängt Formulardaten beim Absenden (Art. 28 DSGVO, EU-Standardvertragsklauseln)</li>
+      <li><strong>OpenStreetMap Foundation (UK)</strong> — Adressvalidierung via Nominatim; empfängt Straße/PLZ/Ort bei der Adresseingabe im Formular (Art. 6 Abs. 1 lit. f DSGVO, UK Angemessenheitsbeschluss)</li>
       <li><strong>Gesetzlich verpflichtete Stellen</strong> — z. B. Beihilfestellen, Finanzbehörden, soweit gesetzlich erforderlich</li>
     </ul>
-    <p>Eine Weitergabe zu Werbe-, Analyse- oder sonstigen kommerziellen Zwecken findet nicht statt.</p>
+    <p>Beim bloßen Aufruf der Website (ohne Formularnutzung) werden Daten ausschließlich an <strong>GitHub Inc.</strong> übermittelt (Hosting-Pflicht). Es werden keine Daten an Werbe- oder Analysedienste übertragen.</p>
     <h3>Änderungen</h3>
     <p>Diese Erklärung wird bei Bedarf aktualisiert. Die aktuelle Version ist stets auf dieser Seite abrufbar.</p>
   </div>
