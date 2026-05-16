@@ -8,7 +8,7 @@
 <meta name="keywords" content="Mobile Physiotherapie, Hausbesuche, Heidelberg, Karlsruhe, Leimen, Privatpatient, Beihilfe, Geriatrie, Physiotherapeut">
 <meta name="author" content="Nick Grausam">
 <!-- ══ SECURITY HEADERS ══ -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; base-uri 'self'; object-src 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://images.unsplash.com; connect-src 'self'; frame-src 'none'; base-uri 'self'; object-src 'none';">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
 <meta property="og:title" content="Mobile Physiotherapie Grausam | Hausbesuche Heidelberg–Karlsruhe">
@@ -81,6 +81,8 @@
   --text:#111111;
   --muted:#555555;
   --border:#e8e8e8;
+  --accent:#1a6b8a;
+  --accent-light:rgba(26,107,138,0.08);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;overflow-x:hidden;width:100%;overscroll-behavior-x:none;}
@@ -113,7 +115,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 /* ── SECTIONS ── */
 .sec{padding:64px 6%;background:var(--white);}
-.eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--sand-dark);font-weight:700;margin-bottom:14px;display:block;}
+.eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px;display:block;}
 .sec-title{font-family:'Montserrat',sans-serif;font-size:clamp(24px,2.8vw,38px);font-weight:700;line-height:1.08;letter-spacing:-1px;color:var(--text);margin-bottom:18px;}
 .sec-sub{font-size:15px;color:var(--muted);font-weight:400;max-width:540px;line-height:1.8;margin-bottom:48px;}
 
@@ -160,11 +162,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
   font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
   letter-spacing:2px;text-transform:uppercase;
   color:#000;text-decoration:none;cursor:pointer;
-  border-bottom:1.5px solid #000;padding-bottom:2px;
+  border-bottom:1.5px solid var(--accent);padding-bottom:2px;
   transition:opacity 0.2s;
 }
-.mehr-link:hover{opacity:0.5;}
-.mehr-link::after{content:'→';font-size:13px;letter-spacing:0;transition:transform 0.2s;}
+.mehr-link:hover{opacity:0.6;}
+.mehr-link::after{content:'→';font-size:13px;letter-spacing:0;color:var(--accent);transition:transform 0.2s;}
 .mehr-link:hover::after{transform:translateX(4px);}
 
 /* ── HERO ── */
@@ -536,9 +538,30 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <span class="visual-sec-label">Mein Angebot</span>
     <img class="visual-sec-img" src="foto-2.jpg" alt="Nick Grausam – Mobile Physiotherapie" loading="lazy">
     <div class="visual-sec-body">
-      <p style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Nick Grausam · Staatlich anerkannter Physiotherapeut</p>
+      <p style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Nick Grausam · Staatlich anerkannter Physiotherapeut</p>
       <h2 class="visual-sec-title">Individuelle Physiotherapie<br>direkt bei Ihnen zuhause.</h2>
       <button class="btn" onclick="show('leistungen')">mehr erfahren</button>
+    </div>
+  </div>
+
+  <!-- ── BILD-SEKTION: Physiotherapie ── -->
+  <div class="visual-sec" style="padding-bottom:0;">
+    <span class="visual-sec-label">Behandlung</span>
+    <img class="visual-sec-img" style="max-height:600px;" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1400&q=80&auto=format&fit=crop" alt="Physiotherapie Behandlung" loading="lazy">
+    <div class="visual-sec-body" style="padding-bottom:60px;">
+      <h2 class="visual-sec-title">Professionelle Therapie —<br>wo Sie sie brauchen.</h2>
+      <a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')">Alle Leistungen</a>
+    </div>
+  </div>
+
+  <!-- ── BILD-SEKTION: Geriatrie ── -->
+  <div class="visual-sec">
+    <span class="visual-sec-label">Zielgruppe</span>
+    <img class="visual-sec-img" style="max-height:600px;" src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=1400&q=80&auto=format&fit=crop" alt="Ältere Patienten – Mobile Physiotherapie" loading="lazy">
+    <div class="visual-sec-body">
+      <h2 class="visual-sec-title">Für Menschen,<br>die zuhause bleiben möchten.</h2>
+      <p class="visual-sec-desc" style="margin-bottom:32px;">Geriatrie · Orthopädie · Post-OP · Chronische Erkrankungen · Immobilität</p>
+      <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
     </div>
   </div>
 
@@ -642,7 +665,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.6;">Preise PKV/Beihilfe: Nettobetrag, steuerfrei nach § 4 Nr. 14 UStG (heilkundliche Leistung mit ärztlichem Rezept). Preise Selbstzahler: Endpreise inkl. 19 % MwSt. — Fahrtkosten und Hausbesuch sind im Preis enthalten.</p>
 
         <!-- Sonderregelung Ersttermin -->
-        <div style="margin-top:28px;padding:20px 24px;border:1.5px solid #000;">
+        <div style="margin-top:28px;padding:20px 24px;border:1.5px solid var(--accent);background:var(--accent-light);">
           <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;">Sonderregelung</span>
           <p style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);line-height:1.5;margin:0 0 8px;">Der Ersttermin ist <span style="text-decoration:underline;">kostenlos</span> —<br>wenn danach ein Folgetermin vereinbart &amp; wahrgenommen wird.</p>
           <a href="javascript:void(0)" onclick="show('agb')" style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);text-decoration:underline;">Details in den Behandlungsbedingungen (§ 4.3)</a>
