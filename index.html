@@ -90,20 +90,21 @@ body{font-family:'Source Sans Pro',-apple-system,'Helvetica Neue',Arial,sans-ser
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.98);border-bottom:1px solid var(--border);padding:0 6%;height:64px;display:flex;align-items:center;justify-content:space-between;}
 .nav-logo{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);cursor:pointer;letter-spacing:-0.3px;}
-.nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
-.nav-links a{font-family:'Source Sans Pro',sans-serif;font-size:13.5px;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s;cursor:pointer;position:relative;min-height:44px;display:flex;align-items:center;}
-.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1.5px;background:var(--sand-dark);transform:scaleX(0);transition:transform 0.2s;}
-.nav-links a:hover::after{transform:scaleX(1);}
-.nav-links a:hover{color:var(--text);}
-.nav-links a.nav-active{color:var(--text);}
-.nav-links a.nav-active::after{transform:scaleX(1);}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;}
-.burger span{display:block;width:22px;height:1.5px;background:var(--text);}
+.burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;}
+.burger span{display:block;width:22px;height:1.5px;background:var(--text);transition:transform 0.3s,opacity 0.3s;}
 
-.mmenu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:12px 6%;z-index:199;flex-direction:column;}
-.mmenu.open{display:flex;}
-.mmenu a{padding:14px 0;min-height:44px;display:flex;align-items:center;border-bottom:1px solid var(--border);color:var(--text);text-decoration:none;font-family:'Source Sans Pro',sans-serif;font-size:15px;font-weight:500;cursor:pointer;}
-.mmenu a:last-child{border-bottom:none;}
+/* ── OVERLAY NAV ── */
+.overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:350;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s ease;padding:80px 6% 48px;}
+.overlay.open{opacity:1;pointer-events:all;}
+.overlay-close{position:absolute;top:0;right:0;width:64px;height:64px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;border:none;font-size:22px;color:var(--text);line-height:1;}
+.overlay-links{list-style:none;width:100%;max-width:560px;text-align:center;}
+.overlay-links li{border-top:1px solid var(--border);}
+.overlay-links li:last-child{border-bottom:1px solid var(--border);}
+.overlay-links a{display:block;font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,44px);font-weight:700;color:var(--text);text-decoration:none;padding:18px 0;letter-spacing:-1px;transition:color 0.2s;cursor:pointer;}
+.overlay-links a:hover{color:var(--muted);}
+.overlay-cta{margin-top:40px;}
+.overlay-cta a{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);text-decoration:none;border:1.5px solid var(--text);padding:14px 40px;display:inline-block;transition:all 0.2s;cursor:pointer;}
+.overlay-cta a:hover{background:var(--text);color:#fff;}
 
 
 /* ── PAGES ── */
@@ -162,10 +163,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 /* ── HERO ── */
 .hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:64px 6% 56px;}
-.hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(30px,3.8vw,50px);font-weight:700;line-height:1.05;letter-spacing:-2px;color:var(--text);margin-bottom:22px;}
+.hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(34px,4.5vw,58px);font-weight:700;line-height:1.05;letter-spacing:-3px;color:var(--text);margin-bottom:22px;}
 .hero-sub{font-size:15.5px;color:var(--muted);font-weight:400;max-width:400px;line-height:1.78;margin-bottom:38px;}
 .hero-img-wrap{display:flex;flex-direction:column;align-items:center;}
-.hero-img{width:100%;max-width:440px;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:24px;display:block;box-shadow:0 20px 60px rgba(0,0,0,0.12);}
+.hero-img{width:100%;max-width:440px;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:0;display:block;box-shadow:0 20px 60px rgba(0,0,0,0.12);}
 .hero-card{background:transparent;border:none;border-top:1px solid #e8e8e8;padding:14px 0 0;margin-top:14px;text-align:center;width:100%;max-width:440px;}
 .hero-card-name{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);}
 .hero-card-role{font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:3px;}
@@ -286,7 +287,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 /* ── ÜBER MICH ── */
 .ueber-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
 .ueber-img-wrap{display:flex;flex-direction:column;align-items:center;}
-.ueber-img{width:100%;max-width:400px;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,0.12);}
+.ueber-img{width:100%;max-width:400px;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:0;box-shadow:0 20px 60px rgba(0,0,0,0.12);}
 .ueber-name-card{background:transparent;border:none;border-top:1px solid #e8e8e8;padding:14px 0 0;margin-top:14px;text-align:center;width:100%;max-width:400px;}
 .ueber-name-card .name{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;color:var(--text);}
 .ueber-name-card .role{font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:0.3px;}
@@ -443,8 +444,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   .ueber-grid{grid-template-columns:1fr;}
   .kontakt-grid{grid-template-columns:1fr;}
   .form-row{grid-template-columns:1fr;}
-  .nav-links{display:none;}
-  .burger{display:flex;}
   .footer-inner{grid-template-columns:1fr;}
   .footer-inner{gap:28px;}
   .footer-inner>:nth-child(3){display:none;}
@@ -460,24 +459,21 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   <svg class="nav-logo-svg" viewBox="0 0 26 26" fill="none"><rect width="26" height="26" rx="6" fill="#111"/><path d="M18 8 A8 8 0 1 0 20 14 L14 14" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
   Mobile Physiotherapie Grausam
 </span>
-  <ul class="nav-links">
-    <li><a href="javascript:void(0)" onclick="show('home')">Start</a></li>
-    <li><a href="javascript:void(0)" onclick="show('leistungen')">Leistungen</a></li>
-    <li><a href="javascript:void(0)" onclick="show('ablauf')">Ablauf</a></li>
-    <li><a href="javascript:void(0)" onclick="show('ueber')">Über mich</a></li>
-    <li><a href="javascript:void(0)" onclick="show('faq')">FAQ</a></li>
-    <li><a href="javascript:void(0)" onclick="show('kontakt')">Termin anfragen</a></li>
-  </ul>
-  <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span></span><span></span><span></span></button>
 </nav>
 
-<div class="mmenu" id="mm">
-  <a href="javascript:void(0)" onclick="show('home');toggleMenu()">Start</a>
-  <a href="javascript:void(0)" onclick="show('leistungen');toggleMenu()">Leistungen</a>
-  <a href="javascript:void(0)" onclick="show('ablauf');toggleMenu()">Ablauf</a>
-  <a href="javascript:void(0)" onclick="show('ueber');toggleMenu()">Über mich</a>
-  <a href="javascript:void(0)" onclick="show('faq');toggleMenu()">FAQ</a>
-  <a href="javascript:void(0)" onclick="show('kontakt');toggleMenu()">Termin anfragen</a>
+<div class="overlay" id="overlay">
+  <button class="overlay-close" onclick="toggleOverlay()" aria-label="Menü schließen">✕</button>
+  <ul class="overlay-links">
+    <li><a href="javascript:void(0)" onclick="show('home');toggleOverlay()">Start</a></li>
+    <li><a href="javascript:void(0)" onclick="show('leistungen');toggleOverlay()">Leistungen</a></li>
+    <li><a href="javascript:void(0)" onclick="show('ablauf');toggleOverlay()">Ablauf</a></li>
+    <li><a href="javascript:void(0)" onclick="show('ueber');toggleOverlay()">Über mich</a></li>
+    <li><a href="javascript:void(0)" onclick="show('faq');toggleOverlay()">FAQ</a></li>
+  </ul>
+  <div class="overlay-cta">
+    <a href="javascript:void(0)" onclick="show('kontakt');toggleOverlay()">Termin anfragen</a>
+  </div>
 </div>
 
 
@@ -1147,20 +1143,27 @@ function show(id){
   document.getElementById(id).classList.add('active');
   sessionStorage.setItem('page',id);
   window.scrollTo(0,0);
-  document.querySelectorAll('.nav-links a').forEach(a=>{
-    a.classList.toggle('nav-active', a.getAttribute('onclick')&&a.getAttribute('onclick').includes("'"+id+"'"));
-  });
 }
 const _saved = sessionStorage.getItem('page');
 if(_saved && document.getElementById(_saved)){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(_saved).classList.add('active');
-  document.querySelectorAll('.nav-links a').forEach(a=>{
-    a.classList.toggle('nav-active', a.getAttribute('onclick')&&a.getAttribute('onclick').includes("'"+_saved+"'"));
-  });
 }
 
-function toggleMenu(){document.getElementById('mm').classList.toggle('open');}
+function toggleOverlay(){
+  const ov=document.getElementById('overlay');
+  const btn=document.getElementById('burgerBtn');
+  ov.classList.toggle('open');
+  document.body.style.overflow=ov.classList.contains('open')?'hidden':'';
+  const sp=btn.querySelectorAll('span');
+  if(ov.classList.contains('open')){
+    sp[0].style.transform='translateY(6.5px) rotate(45deg)';
+    sp[1].style.opacity='0';
+    sp[2].style.transform='translateY(-6.5px) rotate(-45deg)';
+  }else{
+    sp[0].style.transform='';sp[1].style.opacity='';sp[2].style.transform='';
+  }
+}
 function faq(btn){
   const a=btn.nextElementSibling;
   const open=a.classList.contains('open');
