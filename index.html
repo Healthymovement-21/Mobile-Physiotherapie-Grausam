@@ -815,12 +815,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <form class="form" id="contactForm">
           <input type="hidden" name="_subject" value="Neue Terminanfrage – Mobile Physiotherapie Grausam">
           <input type="hidden" name="_language" value="de">
-          <div class="form-note">Pflichtfelder sind mit * markiert. Die Behandlungsdauer lege ich nach Befund fest.</div>
+          <div class="form-note">Mit * markierte Felder sind Pflichtangaben. Geburtsdatum und Angaben zu Beschwerden sind freiwillig — Sie können auch ohne diese Angaben anfragen.</div>
           <div class="form-row">
             <div class="fg"><label for="f_vorname">Vorname *</label><input id="f_vorname" name="vorname" type="text" required autocomplete="given-name"></div>
             <div class="fg"><label for="f_nachname">Nachname *</label><input id="f_nachname" name="nachname" type="text" required autocomplete="family-name"></div>
           </div>
-          <div class="fg"><label for="f_geb">Geburtsdatum *</label><input id="f_geb" name="geburtsdatum" type="date" required autocomplete="bday"></div>
+          <div class="fg"><label for="f_geb">Geburtsdatum <span style="font-weight:400;color:var(--muted);">(freiwillig)</span></label><input id="f_geb" name="geburtsdatum" type="date" autocomplete="bday"></div>
           <div class="fg"><label for="f_email">E-Mail *</label><input id="f_email" name="email" type="email" required autocomplete="email"></div>
           <div class="fg"><label for="f_adresse">Straße &amp; Hausnummer *</label><input id="f_adresse" name="strasse" type="text" required autocomplete="street-address" onblur="checkAddress()"></div>
           <div class="form-row">
@@ -837,14 +837,18 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
               <option>Selbstzahler</option>
             </select>
           </div>
-          <div class="fg"><label for="f_anliegen">Anliegen / Beschwerden *</label><textarea id="f_anliegen" name="anliegen" required></textarea></div>
-          <div class="consent">
-            <input type="checkbox" id="con" name="datenschutz" required>
-            <label for="con">Ich habe die <a href="javascript:void(0)" onclick="show('datenschutz')">Datenschutzerklärung</a> gelesen und stimme zu. *</label>
+          <div class="fg">
+            <label for="f_anliegen">Anliegen / Beschwerden <span style="font-weight:400;color:var(--muted);">(freiwillig)</span></label>
+            <textarea id="f_anliegen" name="anliegen"></textarea>
+            <span style="font-family:'Source Sans Pro',sans-serif;font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5;">Wenn Sie hier Gesundheitsdaten angeben, erscheint unten eine Einwilligungserklärung nach Art. 9 Abs. 2 lit. a DSGVO.</span>
           </div>
           <div class="consent">
-            <input type="checkbox" id="con2" name="gesundheitsdaten_einwilligung" required>
-            <label for="con2">Ich willige ausdrücklich in die Verarbeitung meiner im Textfeld angegebenen Gesundheitsdaten (Art. 9 Abs. 2 lit. a DSGVO) zum Zweck der Terminvorbereitung und Therapieplanung ein. Diese Einwilligung ist freiwillig und kann jederzeit widerrufen werden. *</label>
+            <input type="checkbox" id="con" name="datenschutz" required>
+            <label for="con">Ich habe die <a href="javascript:void(0)" onclick="show('datenschutz')">Datenschutzerklärung</a> zur Kenntnis genommen und wurde gemäß Art. 13 DSGVO über die Verarbeitung meiner Daten informiert. *</label>
+          </div>
+          <div class="consent" id="con2-wrap" style="display:none;">
+            <input type="checkbox" id="con2" name="gesundheitsdaten_einwilligung">
+            <label for="con2">Ich willige ausdrücklich und freiwillig in die Verarbeitung der von mir im Beschwerdenfeld angegebenen Gesundheitsdaten ein (Art. 9 Abs. 2 lit. a DSGVO). Zweck: Terminvorbereitung und Therapieplanung. Empfänger: Formspree Inc. (USA, EU-Standardvertragsklauseln) als Übermittlungsdienstleister. Diese Einwilligung kann ich jederzeit ohne Nachteile widerrufen (per E-Mail an info@physiotherapie-grausam.com). *</label>
           </div>
           <button type="submit" class="btn" style="width:100%;" id="contactSubmit">Anfrage absenden</button>
         </form>
@@ -1245,6 +1249,22 @@ function handleVerordnung(val){
   if(val==='sonstiges'){b.classList.remove('hidden');b.style.display='flex';}
   else{b.classList.add('hidden');}
 }
+// ── Art. 9 Einwilligung: nur anzeigen wenn Beschwerden ausgefüllt ──
+(function(){
+  const ta = document.getElementById('f_anliegen');
+  const wrap = document.getElementById('con2-wrap');
+  const cb = document.getElementById('con2');
+  if(!ta||!wrap||!cb) return;
+  function toggle(){
+    const hasContent = ta.value.trim().length > 0;
+    wrap.style.display = hasContent ? 'flex' : 'none';
+    cb.required = hasContent;
+    if(!hasContent) cb.checked = false;
+  }
+  ta.addEventListener('input', toggle);
+  ta.addEventListener('change', toggle);
+})();
+
 // ── CONTACT FORM (native fetch → Formspree) ──
 (function(){
   const form = document.getElementById('contactForm');
