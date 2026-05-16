@@ -83,6 +83,8 @@
   --border:#e8e8e8;
   --accent:#1a6b8a;
   --accent-light:rgba(26,107,138,0.08);
+  --gold:#c9a227;
+  --gold-light:rgba(201,162,39,0.12);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;overflow-x:hidden;width:100%;overscroll-behavior-x:none;}
@@ -115,8 +117,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 /* ── SECTIONS ── */
 .sec{padding:64px 6%;background:var(--white);}
-.eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px;display:block;}
+.eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px;display:block;}
 .sec-title{font-family:'Montserrat',sans-serif;font-size:clamp(24px,2.8vw,38px);font-weight:700;line-height:1.08;letter-spacing:-1px;color:var(--text);margin-bottom:18px;}
+.sec-title-gold{display:inline-block;padding-bottom:10px;border-bottom:3px solid var(--gold);}
 .sec-sub{font-size:15px;color:var(--muted);font-weight:400;max-width:540px;line-height:1.8;margin-bottom:48px;}
 
 
@@ -173,7 +176,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .hero{min-height:calc(100vh - 64px);display:flex;align-items:center;padding:80px 6% 72px;}
 .hero-text-only{border-bottom:1px solid var(--border);}
 .hero-text-only > div{max-width:680px;}
-.hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(36px,5.5vw,72px);font-weight:700;line-height:1.02;letter-spacing:-3px;color:var(--text);margin-bottom:24px;}
+.hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(36px,5.5vw,72px);font-weight:700;line-height:1.02;letter-spacing:-3px;color:var(--text);margin-bottom:24px;padding-bottom:20px;border-bottom:3px solid var(--gold);display:inline-block;}
 .hero-sub{font-size:16px;color:var(--muted);font-weight:400;max-width:480px;line-height:1.8;margin-bottom:40px;}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
 .hero-btns .btn,.hero-btns .btn-outline{flex:1;min-width:140px;text-align:center;margin:0;}
@@ -358,7 +361,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 /* ── PHILOSOPHIE SEKTION ── */
 .philosophie-sec{padding:80px 6%;border-top:1px solid var(--border);}
 .phil-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:28px;display:block;}
-.phil-statement{font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,48px);font-weight:700;line-height:1.08;letter-spacing:-2px;color:var(--text);margin-bottom:32px;max-width:720px;}
+.phil-statement{font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,48px);font-weight:700;line-height:1.08;letter-spacing:-2px;color:var(--text);margin-bottom:32px;max-width:720px;padding-bottom:20px;border-bottom:3px solid var(--gold);display:inline-block;}
 .phil-text{font-family:'Source Sans Pro',sans-serif;font-size:16px;color:var(--muted);line-height:1.8;max-width:600px;margin-bottom:10px;}
 
 /* ── VISUELL-SEKTION (Bild + Titel + Button, zentriert) ── */
@@ -578,7 +581,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
   <div class="sec" style="padding-top:0;">
     <span class="eyebrow">Zielgruppe</span>
-    <h2 class="sec-title" style="margin-bottom:20px;">Für wen?</h2>
+    <h2 class="sec-title sec-title-gold" style="margin-bottom:20px;">Für wen?</h2>
     <div class="zg-box" style="border:none;background:none;padding:0;display:flex;flex-direction:column;gap:0;max-width:480px;">
       <div class="zg-item">◆ &nbsp;Geriatrische Patienten</div>
       <div class="zg-item">◆ &nbsp;Geriatrisch pflegebedürftige Patienten</div>
@@ -598,7 +601,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 <div class="page" id="leistungen">
   <div class="sec">
     <span class="eyebrow">Angebot</span>
-    <h2 class="sec-title">Leistungen &amp; Preise</h2>
+    <h2 class="sec-title sec-title-gold">Leistungen &amp; Preise</h2>
 
     <div class="leist-section">
 
@@ -766,7 +769,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 <div class="page" id="ablauf">
   <div class="dark-sec">
     <span class="eyebrow">So funktioniert es</span>
-    <h2 class="sec-title">Einfach. Direkt. Persönlich.</h2>
+    <h2 class="sec-title sec-title-gold">Einfach. Direkt. Persönlich.</h2>
     <p class="sec-sub">Von der ersten Anfrage bis zur Behandlung — unkompliziert und transparent.</p>
     <div class="ablauf-steps">
       <div class="ablauf-step"><div class="step-n">1</div><div class="step-t">Kontakt aufnehmen</div><p class="step-p">Per E-Mail oder Kontaktformular — schnell und unkompliziert.</p></div>
@@ -854,7 +857,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="kontakt-grid">
       <div>
         <span class="eyebrow">Kontakt</span>
-        <h2 class="sec-title">Termin unverbindlich anfragen</h2>
+        <h2 class="sec-title sec-title-gold">Termin unverbindlich anfragen</h2>
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:0;">Per E-Mail oder Telefon — ich melde mich in der Regel innerhalb von 24 Stunden zurück. Es gibt keine festen Öffnungszeiten, Termine werden individuell vereinbart.</p>
         <div class="kontakt-info">
           <div class="k-row"><div class="k-ico"><i data-lucide="phone"></i></div><div><h4>Telefon</h4><p><a href="tel:017642685146">0176 4268 5146</a></p></div></div>
