@@ -356,6 +356,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .addr-hint.ok{display:block;background:rgba(80,160,80,0.08);color:#2e6e2e;border:1px solid rgba(80,160,80,0.25);}
 .addr-hint.warn{display:block;background:rgba(200,80,40,0.07);color:#8a3a18;border:1px solid rgba(200,80,40,0.2);}
 
+/* ── PHILOSOPHIE SEKTION ── */
+.philosophie-sec{padding:80px 6%;border-top:1px solid var(--border);}
+.phil-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:28px;display:block;}
+.phil-statement{font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,48px);font-weight:700;line-height:1.08;letter-spacing:-2px;color:var(--text);margin-bottom:32px;max-width:720px;}
+.phil-text{font-family:'Source Sans Pro',sans-serif;font-size:16px;color:var(--muted);line-height:1.8;max-width:600px;margin-bottom:10px;}
+
+/* ── VISUELL-SEKTION (Bild + Titel + Button, zentriert) ── */
+.visual-sec{padding:0 6% 80px;border-top:1px solid var(--border);}
+.visual-sec-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-align:center;padding:48px 0 32px;display:block;}
+.visual-sec-img{width:100%;max-height:520px;object-fit:cover;object-position:top center;display:block;}
+.visual-sec-body{text-align:center;padding:40px 0 0;}
+.visual-sec-title{font-family:'Montserrat',sans-serif;font-size:clamp(20px,2.5vw,28px);font-weight:700;letter-spacing:-0.5px;color:var(--text);margin-bottom:16px;}
+.visual-sec-desc{font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;max-width:520px;margin:0 auto 32px;}
+
 /* ── SCROLL ANIMATIONS ── */
 .fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.55s ease,transform 0.55s ease;}
 .fade-up.visible{opacity:1;transform:translateY(0);}
@@ -516,6 +530,25 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="stat"><div class="stat-n">0 €</div><div class="stat-l">Fahrtkosten für Sie</div></div>
     <div class="stat"><div class="stat-n">24h</div><div class="stat-l">Antwortzeit (i.d.R.)</div></div>
     <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Einzelbetreuung</div></div>
+  </div>
+
+  <!-- ── PHILOSOPHIE ── -->
+  <div class="philosophie-sec">
+    <span class="phil-label">Mein Ansatz</span>
+    <p class="phil-statement">Therapie beginnt da,<br>wo Sie zuhause sind.</p>
+    <p class="phil-text">Viele Patienten sind auf Physiotherapie angewiesen — können aber nicht zu einer Praxis kommen. Eingeschränkte Mobilität, Pflegebedürftigkeit, postoperative Phasen oder chronische Erkrankungen machen den Weg dorthin oft unmöglich oder unzumutbar.</p>
+    <p class="phil-text">Die häusliche Behandlung ist in diesen Fällen kein Kompromiss. Sie ist die naheliegendste Option.</p>
+  </div>
+
+  <!-- ── VISUELLE LEISTUNGEN-SEKTION ── -->
+  <div class="visual-sec">
+    <span class="visual-sec-label">Meine Leistungen</span>
+    <img class="visual-sec-img" src="foto-2.jpg" alt="Mobile Physiotherapie Grausam – Behandlung" loading="lazy">
+    <div class="visual-sec-body">
+      <h2 class="visual-sec-title">Individuelle Physiotherapie</h2>
+      <p class="visual-sec-desc">Befundung, manuelle Therapie, Mobilisation, Taping, Wärmetherapie und individuelle Heimübungspläne — alles direkt bei Ihnen zuhause. Für Privatpatienten, Beihilfeberechtigte und Selbstzahler.</p>
+      <button class="btn" onclick="show('leistungen')">mehr erfahren</button>
+    </div>
   </div>
 
   <div class="sec">
