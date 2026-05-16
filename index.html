@@ -173,13 +173,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .mehr-link:hover::after{transform:translateX(4px);}
 
 /* ── HERO ── */
-.hero{min-height:calc(100vh - 64px);display:flex;align-items:center;padding:80px 6% 72px;}
-.hero-text-only{border-bottom:1px solid var(--border);}
-.hero-text-only > div{max-width:680px;}
-.hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(36px,5.5vw,72px);font-weight:700;line-height:1.02;letter-spacing:-3px;color:var(--text);margin-bottom:24px;padding-bottom:20px;border-bottom:3px solid var(--gold);display:inline-block;}
-.hero-sub{font-size:16px;color:var(--muted);font-weight:400;max-width:480px;line-height:1.8;margin-bottom:40px;}
+.hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
+.hero-content{padding:80px 7% 72px 6%;display:flex;flex-direction:column;justify-content:center;}
+.hero-img-wrap{position:relative;overflow:hidden;}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(32px,4.5vw,64px);font-weight:700;line-height:1.02;letter-spacing:-3px;color:var(--text);margin-bottom:24px;padding-bottom:20px;border-bottom:3px solid var(--gold);display:inline-block;}
+.hero-sub{font-size:16px;color:var(--muted);font-weight:400;line-height:1.8;margin-bottom:40px;}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
 .hero-btns .btn,.hero-btns .btn-outline{flex:1;min-width:140px;text-align:center;margin:0;}
+@media(max-width:860px){.hero{grid-template-columns:1fr;}.hero-img-wrap{height:300px;order:-1;}.hero-content{padding:48px 6% 56px;}}
 
 /* ── INFOBAR ── */
 .infobar{background:#f5f5f5;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;padding:14px 6%;display:flex;gap:28px;flex-wrap:wrap;align-items:center;justify-content:center;}
@@ -359,7 +361,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .addr-hint.warn{display:block;background:rgba(200,80,40,0.07);color:#8a3a18;border:1px solid rgba(200,80,40,0.2);}
 
 /* ── PHILOSOPHIE SEKTION ── */
-.philosophie-sec{padding:80px 6%;border-top:1px solid var(--border);}
+.philosophie-sec{padding:80px 6%;border-top:1px solid var(--border);background:#faf7f3;}
 .phil-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:28px;display:block;}
 .phil-statement{font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,48px);font-weight:700;line-height:1.08;letter-spacing:-2px;color:var(--text);margin-bottom:32px;max-width:720px;padding-bottom:20px;border-bottom:3px solid var(--gold);display:inline-block;}
 .phil-text{font-family:'Source Sans Pro',sans-serif;font-size:16px;color:var(--muted);line-height:1.8;max-width:600px;margin-bottom:10px;}
@@ -503,8 +505,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
 <!-- ═══ START ═══ -->
 <div class="page active" id="home">
-  <div class="hero hero-text-only">
-    <div>
+  <div class="hero">
+    <div class="hero-content">
       <span class="eyebrow">Herzlich Willkommen</span>
       <h1 class="hero-title">Mobile Physiotherapie<br>für Privatpatienten<br>&amp; Selbstzahler.</h1>
       <p class="hero-sub">Individuelle und professionelle physiotherapeutische Behandlung — direkt bei Ihnen zuhause. Im Raum Heidelberg bis Karlsruhe.</p>
@@ -512,6 +514,9 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
         <button class="btn-outline" onclick="show('leistungen')">Leistungen</button>
       </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1400&q=85&auto=format&fit=crop" alt="Physiotherapeut beim Hausbesuch" loading="eager">
     </div>
   </div>
 
@@ -550,7 +555,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   <!-- ── BILD-SEKTION: Physiotherapie ── -->
   <div class="visual-sec" style="padding-bottom:0;">
     <span class="visual-sec-label">Behandlung</span>
-    <img class="visual-sec-img" style="max-height:600px;" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1400&q=80&auto=format&fit=crop" alt="Physiotherapie Behandlung" loading="lazy">
+    <img class="visual-sec-img" style="max-height:600px;" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1400&q=85&auto=format&fit=crop" alt="Physiotherapie Behandlung" loading="lazy">
     <div class="visual-sec-body" style="padding-bottom:60px;">
       <h2 class="visual-sec-title">Professionelle Therapie —<br>wo Sie sie brauchen.</h2>
       <a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')">Alle Leistungen</a>
@@ -560,7 +565,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   <!-- ── BILD-SEKTION: Geriatrie ── -->
   <div class="visual-sec">
     <span class="visual-sec-label">Zielgruppe</span>
-    <img class="visual-sec-img" style="max-height:600px;" src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=1400&q=80&auto=format&fit=crop" alt="Ältere Patienten – Mobile Physiotherapie" loading="lazy">
+    <img class="visual-sec-img" style="max-height:600px;" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=85&auto=format&fit=crop" alt="Ältere Patienten – Mobile Physiotherapie" loading="lazy">
     <div class="visual-sec-body">
       <h2 class="visual-sec-title">Für Menschen,<br>die zuhause bleiben möchten.</h2>
       <p class="visual-sec-desc" style="margin-bottom:32px;">Geriatrie · Orthopädie · Post-OP · Chronische Erkrankungen · Immobilität</p>
@@ -568,7 +573,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     </div>
   </div>
 
-  <div class="sec">
+  <div class="sec" style="background:#faf7f3;">
     <div class="cards-grid">
 <div class="card"><div class="card-icon"><i data-lucide="user"></i></div><h3>1:1 Betreuung</h3><p>Individuelle Betreuung in Ihren eigenen vier Wänden — ausschließlich für Sie.</p></div>
       <div class="card"><div class="card-icon"><i data-lucide="file-text"></i></div><h3>Mit oder ohne Rezept</h3><p>Privatversicherte und Beamte mit Beihilfe benötigen ein Rezept — dieses können Sie bei Ihrer zuständigen Stelle einreichen. Selbstzahler benötigen kein Rezept. Weitere Infos finden Sie unter <a href="javascript:void(0)" onclick="show('leistungen')" style="color:var(--text);font-weight:600;text-decoration:underline;">Leistungen &amp; Preise</a>.</p></div>
