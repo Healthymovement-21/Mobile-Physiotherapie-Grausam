@@ -392,15 +392,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .portal-footer-link:hover{color:rgba(255,255,255,0.55);}
 
 /* ── LEGAL ── */
-.legal{padding:72px 6%;max-width:760px;}
+.legal{padding:72px 6%;max-width:760px;overflow-wrap:break-word;word-break:break-word;}
 .legal h2{font-family:'Montserrat',sans-serif;font-size:32px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-1px;}
 .legal-stand{font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-bottom:32px;}
 .legal h3{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin:28px 0 8px;letter-spacing:-0.2px;}
 .legal h4{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;color:var(--text);margin:16px 0 6px;}
-.legal p{font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);line-height:1.78;margin-bottom:8px;}
-.legal a{color:var(--text);}
+.legal p{font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);line-height:1.78;margin-bottom:8px;overflow-wrap:break-word;word-break:break-word;}
+.legal a{color:var(--text);overflow-wrap:break-word;word-break:break-word;}
 .legal ul{margin:8px 0 8px 20px;}
-.legal ul li{font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);line-height:1.78;margin-bottom:4px;}
+.legal ul li{font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);line-height:1.78;margin-bottom:4px;overflow-wrap:break-word;word-break:break-word;}
+.legal-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0;}
+.legal-table-wrap table{width:100%;min-width:500px;border-collapse:collapse;font-size:13.5px;}
+@media(max-width:600px){
+  .legal{padding:48px 5%;}
+  .legal h2{font-size:26px;}
+}
+@media(max-width:480px){
+  .preis-amt{font-size:18px;}
+}
 
 /* ── FOOTER ── */
 footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);padding:56px 6% 32px;}
@@ -546,9 +555,9 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <!-- GKV-Hinweis -->
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--text);line-height:1.7;padding:0 0 18px;border-bottom:1px solid var(--border);margin-bottom:0;"><strong>Wichtiger Hinweis:</strong> Eine Abrechnung mit gesetzlichen Krankenkassen (GKV) ist nicht möglich. Die Behandlung richtet sich ausschließlich an <strong>Privatpatienten, Beamte mit Beihilfe</strong> und <strong>Selbstzahler</strong>.</p>
         <!-- Spaltenköpfe -->
-        <div style="display:flex;justify-content:flex-end;gap:24px;padding:10px 0;border-bottom:1.5px solid #111;">
-          <div style="text-align:right;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);white-space:nowrap;min-width:90px;">PKV / Beihilfe<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:9.5px;">mit Rezept · steuerfrei</span></div>
-          <div style="text-align:right;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);white-space:nowrap;min-width:90px;">Selbstzahler<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:9.5px;">ohne Rezept · inkl. MwSt.</span></div>
+        <div style="display:flex;justify-content:flex-end;gap:16px;padding:10px 0;border-bottom:1.5px solid #111;">
+          <div style="text-align:right;font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);min-width:80px;">PKV / Beihilfe<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:9px;">mit Rezept</span></div>
+          <div style="text-align:right;font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);min-width:80px;">Selbstzahler<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:9px;">inkl. MwSt.</span></div>
         </div>
         <div class="preise">
           <div class="preis-card">
@@ -557,12 +566,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
               <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5;">60 Min · Befundung, Aufklärung &amp; individuelle Therapieplanung</div>
               <div style="font-family:'Source Sans Pro',sans-serif;font-size:11px;color:#555;margin-top:5px;">✓ Entfällt bei direkt anschließendem Folgetermin</div>
             </div>
-            <div style="display:flex;gap:24px;flex-shrink:0;align-items:center;">
-              <div style="text-align:right;min-width:90px;">
+            <div style="display:flex;gap:16px;flex-shrink:0;align-items:center;">
+              <div style="text-align:right;min-width:80px;">
                 <div class="preis-amt">60,00 €</div>
                 <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">§ 4 Nr. 14 UStG</div>
               </div>
-              <div style="text-align:right;min-width:90px;">
+              <div style="text-align:right;min-width:80px;">
                 <div class="preis-amt">71,40 €</div>
                 <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">inkl. 19 % MwSt.</div>
               </div>
@@ -573,12 +582,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
               <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Folgebehandlung</div>
               <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;">45 Minuten</div>
             </div>
-            <div style="display:flex;gap:24px;flex-shrink:0;align-items:center;">
-              <div style="text-align:right;min-width:90px;">
+            <div style="display:flex;gap:16px;flex-shrink:0;align-items:center;">
+              <div style="text-align:right;min-width:80px;">
                 <div class="preis-amt">80,00 €</div>
                 <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">§ 4 Nr. 14 UStG</div>
               </div>
-              <div style="text-align:right;min-width:90px;">
+              <div style="text-align:right;min-width:80px;">
                 <div class="preis-amt">95,20 €</div>
                 <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">inkl. 19 % MwSt.</div>
               </div>
@@ -589,12 +598,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
               <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Folgebehandlung</div>
               <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;">60 Minuten</div>
             </div>
-            <div style="display:flex;gap:24px;flex-shrink:0;align-items:center;">
-              <div style="text-align:right;min-width:90px;">
+            <div style="display:flex;gap:16px;flex-shrink:0;align-items:center;">
+              <div style="text-align:right;min-width:80px;">
                 <div class="preis-amt">100,00 €</div>
                 <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">§ 4 Nr. 14 UStG</div>
               </div>
-              <div style="text-align:right;min-width:90px;">
+              <div style="text-align:right;min-width:80px;">
                 <div class="preis-amt">119,00 €</div>
                 <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">inkl. 19 % MwSt.</div>
               </div>
@@ -858,14 +867,16 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <h3>Rechtlicher Rahmen</h3>
     <p>localStorage und sessionStorage sind keine Cookies im technischen Sinne, werden aber rechtlich wie „Speichern von Informationen auf dem Endgerät des Nutzers" behandelt und fallen damit unter § 25 TTDSG. Diese Website verwendet ausschließlich Speicher, die nach § 25 Abs. 2 Nr. 2 TTDSG als <strong>unbedingt erforderlich</strong> eingestuft werden können — es werden <strong>keine Tracking-, Analyse- oder Werbe-Technologien</strong> eingesetzt. Der nachstehende Hinweis ist daher kein Einwilligungs-Banner, sondern eine Informationspflicht.</p>
     <h3>Eingesetzte Speicher (eigene)</h3>
-    <table style="width:100%;border-collapse:collapse;font-size:13.5px;margin:16px 0;">
-      <thead><tr style="background:#f5f5f5;"><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;">Name</th><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;">Art</th><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;">Zweck und Erforderlichkeit</th><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;">Dauer</th></tr></thead>
-      <tbody>
-        <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">cookie_ok</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">localStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Speichert, dass der Datenschutzhinweis zur Kenntnis genommen wurde. Technisch erforderlich, um den Hinweis nicht bei jedem Seitenaufruf neu anzuzeigen (§ 25 Abs. 2 Nr. 2 TTDSG).</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Dauerhaft (im Browser löschbar)</td></tr>
-        <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">page</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">sessionStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Stellt nach Seitenaktualisierung die zuletzt angezeigte Unterseite wieder her. Technisch erforderlich für die korrekte Funktion dieser Single-Page-Applikation; ohne diesen Speicher würde ein Reload stets zur Startseite zurückführen.</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Sitzung (automatisch gelöscht)</td></tr>
-        <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">form_last_submit</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">sessionStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Verhindert durch eine 60-Sekunden-Sperre mehrfache Formularübermittlungen (Spam-Schutz). Sicherheitstechnisch erforderlich (§ 25 Abs. 2 Nr. 2 TTDSG).</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Sitzung (automatisch gelöscht)</td></tr>
-      </tbody>
-    </table>
+    <div class="legal-table-wrap">
+      <table>
+        <thead><tr style="background:#f5f5f5;"><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Name</th><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Art</th><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;min-width:200px;">Zweck und Erforderlichkeit</th><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Dauer</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">cookie_ok</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">localStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Speichert, dass der Datenschutzhinweis zur Kenntnis genommen wurde. Technisch erforderlich, um den Hinweis nicht bei jedem Seitenaufruf neu anzuzeigen (§ 25 Abs. 2 Nr. 2 TTDSG).</td><td style="padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Dauerhaft</td></tr>
+          <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">page</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">sessionStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Stellt nach Seitenaktualisierung die zuletzt angezeigte Unterseite wieder her. Technisch erforderlich für die korrekte Funktion dieser Single-Page-Applikation.</td><td style="padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Sitzung</td></tr>
+          <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">form_last_submit</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">sessionStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Verhindert durch eine 60-Sekunden-Sperre mehrfache Formularübermittlungen (Spam-Schutz). Sicherheitstechnisch erforderlich (§ 25 Abs. 2 Nr. 2 TTDSG).</td><td style="padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Sitzung</td></tr>
+        </tbody>
+      </table>
+    </div>
     <h3>Drittanbieter-Speicher</h3>
     <p><strong>Formspree</strong> (Formspree Inc., USA): Beim <em>Absenden</em> des Kontaktformulars wird ein HTTPS-POST-Request an <code>formspree.io</code> gesendet. Diese Verbindung findet ausschließlich auf aktive Nutzerhandlung (Klick auf „Anfrage absenden") hin statt — nicht beim bloßen Aufrufen der Website. Es wird kein externes Skript von Formspree geladen. Rechtsgrundlage der Datenübermittlung: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen). <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Datenschutzerklärung Formspree</a>.</p>
     <p><strong>Schriftarten und Skripte:</strong> Vollständig lokal gehostet (Montserrat, Source Sans Pro, Lucide Icons). Es werden <strong>keine externen Ressourcen</strong> beim Laden der Seite abgerufen — keine Übermittlung von IP-Adressen an Dritte allein durch den Seitenaufruf.</p>
