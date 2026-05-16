@@ -186,70 +186,79 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 @media(max-width:700px){.statsbar{grid-template-columns:1fr 1fr;}.stat{border-bottom:1px solid var(--border);}}
 
 /* ── CARDS ── */
-.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--border);}
 .card{
-  background:#fff;
-  border:1px solid rgba(0,0,0,0.08);
-  border-radius:20px;
-  padding:28px;
-  transition:all 0.25s;
-  box-shadow:0 2px 12px rgba(0,0,0,0.04);
+  background:transparent;
+  border:none;
+  border-top:1px solid var(--border);
+  border-radius:0;
+  padding:32px 0;
+  transition:none;
+  box-shadow:none;
 }
-.card:hover{border-color:#bbb;transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.1);}
-.card-icon{width:48px;height:48px;background:#f5f5f5;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
-.card h3{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-0.3px;}
+.cards-grid .card:nth-child(odd){padding-right:52px;border-right:1px solid var(--border);}
+.cards-grid .card:nth-child(even){padding-left:52px;}
+.card:hover{border-color:var(--border);transform:none;box-shadow:none;background:transparent;}
+.card-icon{width:auto;height:auto;background:transparent;border-radius:0;display:flex;align-items:center;margin-bottom:14px;}
+.card h3{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-0.3px;}
 .card p{font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);line-height:1.7;}
+/* Prep list (Ablauf Vorbereitung) */
+.prep-list{display:flex;flex-direction:column;border-top:1px solid var(--border);margin-top:8px;}
+.prep-item{display:flex;gap:28px;align-items:flex-start;padding:24px 0;border-bottom:1px solid var(--border);}
+.prep-n{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;color:var(--muted);padding-top:3px;min-width:26px;flex-shrink:0;}
+.prep-t{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:var(--text);display:block;margin-bottom:6px;letter-spacing:-0.2px;}
+.prep-item p{font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);line-height:1.7;margin:0;}
 
 /* ── DOKUMENTE ── */
 .dok-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px;}
-.dok-card{background:var(--white);border:1px solid #e8e8e8;border-radius:16px;padding:28px 26px;display:flex;flex-direction:column;gap:14px;transition:all 0.25s;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
-.dok-card:hover{border-color:#bbb;transform:translateY(-3px);box-shadow:0 10px 35px rgba(0,0,0,0.08);}
-.dok-icon{width:48px;height:48px;background:#f5f5f5;border-radius:12px;display:flex;align-items:center;justify-content:center;}
-.dok-icon svg,.dok-icon i{width:24px;height:24px;stroke:#111;stroke-width:1.5;fill:none;}
-.dok-title{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin:0;letter-spacing:-0.2px;}
+.dok-card{background:transparent;border:none;border-top:1px solid var(--border);border-radius:0;padding:20px 0;display:flex;flex-direction:column;gap:10px;transition:none;box-shadow:none;}
+.dok-card:hover{border-color:var(--border);transform:none;box-shadow:none;}
+.dok-icon{width:32px;height:32px;background:transparent;border-radius:0;display:flex;align-items:center;justify-content:center;}
+.dok-icon svg,.dok-icon i{width:22px;height:22px;stroke:#111;stroke-width:1.5;fill:none;}
+.dok-title{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin:0;letter-spacing:-0.2px;}
 .dok-desc{font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.65;flex:1;margin:0;}
 .dok-actions{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
-.dok-btn{display:flex;align-items:center;gap:8px;justify-content:space-between;background:#111;color:var(--white);padding:11px 18px;font-family:'Montserrat',sans-serif;font-size:12.5px;font-weight:600;border-radius:100px;text-decoration:none;transition:all 0.2s;min-height:44px;box-shadow:0 2px 10px rgba(0,0,0,0.15);}
-.dok-btn:hover{opacity:0.85;transform:translateY(-1px);}
+.dok-btn{display:flex;align-items:center;gap:8px;justify-content:space-between;background:#111;color:var(--white);padding:11px 18px;font-family:'Montserrat',sans-serif;font-size:12.5px;font-weight:600;border-radius:100px;text-decoration:none;transition:all 0.2s;min-height:44px;}
+.dok-btn:hover{opacity:0.85;}
 .dok-btn.outline{background:transparent;color:var(--text);border:2px solid #ddd;box-shadow:none;}
-.dok-btn.outline:hover{border-color:#111;opacity:1;transform:translateY(-1px);}
+.dok-btn.outline:hover{border-color:#111;opacity:1;}
 .dok-btn span.fmt{font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;opacity:0.75;}
 .dok-btn svg,.dok-btn i{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none;flex-shrink:0;}
-.dok-info{background:#f5f5f5;border-left:3px solid #111;border-radius:0 12px 12px 0;padding:22px 26px;margin-top:32px;font-family:'Source Sans Pro',sans-serif;font-size:14px;color:var(--text);line-height:1.7;}
+.dok-info{background:transparent;border-left:2px solid #111;border-radius:0;padding:16px 20px;margin-top:24px;font-family:'Source Sans Pro',sans-serif;font-size:14px;color:var(--text);line-height:1.7;}
 .dok-info strong{color:var(--text);}
 @media(max-width:860px){.dok-grid{grid-template-columns:1fr;}}
 
 /* ── LEISTUNGEN ── */
 .leist-section{display:flex;flex-direction:column;gap:48px;}
-.preise{display:flex;flex-direction:column;gap:10px;margin-bottom:8px;}
-.preis-card{border:1px solid rgba(0,0,0,0.08);border-radius:16px;padding:22px 26px;background:var(--white);display:flex;align-items:center;justify-content:space-between;gap:16px;transition:all 0.2s;box-shadow:0 2px 12px rgba(0,0,0,0.04);}
-.preis-card:hover{border-color:#aaa;box-shadow:0 8px 28px rgba(0,0,0,0.09);transform:translateY(-2px);}
-.preis-card.highlight{border-color:#e0e0e0;background:#fafafa;}
+.preise{display:flex;flex-direction:column;gap:0;margin-bottom:8px;border-top:1px solid var(--border);}
+.preis-card{border:none;border-bottom:1px solid var(--border);border-radius:0;padding:22px 0;background:transparent;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:none;box-shadow:none;}
+.preis-card:hover{border-color:var(--border);box-shadow:none;transform:none;background:transparent;}
+.preis-card.highlight{border-color:var(--border);background:transparent;}
 .preis-dur{font-family:'Source Sans Pro',sans-serif;font-size:13px;font-weight:500;color:var(--muted);}
-.preis-amt{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;color:var(--text);white-space:nowrap;}
+.preis-amt{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:700;color:var(--text);white-space:nowrap;}
 .preis-note{font-family:'Source Sans Pro',sans-serif;font-size:11.5px;color:var(--muted);font-style:italic;line-height:1.5;margin-top:4px;}
-.inkl-box{border:1px solid #e8e8e8;border-radius:12px;padding:18px 22px;background:#f8f8f8;}
+.inkl-box{border:none;border-left:2px solid #111;border-radius:0;padding:14px 20px;background:transparent;}
 .inkl-box h4{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;}
 .inkl-box p{font-family:'Source Sans Pro',sans-serif;font-size:12.5px;color:var(--muted);line-height:1.6;}
 .inkl-box .legal-note{font-size:11px;color:var(--muted);margin-top:6px;font-style:italic;}
 .leist-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
-.leist-ico{width:36px;height:36px;background:#f0f0f0;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.leist-ico{width:28px;height:28px;background:transparent;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .leist-name{font-family:'Source Sans Pro',sans-serif;font-size:14px;font-weight:500;color:var(--text);}
 .leist-abbr{font-family:'Source Sans Pro',sans-serif;font-size:11.5px;color:var(--muted);margin-top:1px;}
 
 /* ── BEHANDLUNGS-ACCORDION ── */
-.leist-acc-list{display:flex;flex-direction:column;border:1px solid rgba(0,0,0,0.08);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.04);}
+.leist-acc-list{display:flex;flex-direction:column;border:none;border-top:1px solid var(--border);border-radius:0;overflow:visible;box-shadow:none;}
 .leist-acc-item{border-bottom:1px solid var(--border);}
-.leist-acc-item:last-child{border-bottom:none;}
-.leist-acc-btn{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;text-align:left;gap:12px;transition:background 0.2s;min-height:44px;}
-.leist-acc-btn:hover{background:#f8f8f8;}
+.leist-acc-item:last-child{border-bottom:1px solid var(--border);}
+.leist-acc-btn{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:14px 0;text-align:left;gap:12px;transition:color 0.2s;min-height:44px;}
+.leist-acc-btn:hover{background:transparent;color:var(--muted);}
 .leist-acc-inner{display:flex;align-items:center;gap:14px;}
 .acc-chevron{display:flex;align-items:center;color:var(--muted);transition:transform 0.25s;flex-shrink:0;}
 .acc-chevron svg,.acc-chevron i{width:16px;height:16px;stroke:var(--muted);stroke-width:2;fill:none;}
 .leist-acc-btn.open .acc-chevron{transform:rotate(180deg);}
-.leist-acc-body{display:none;padding:0 18px 14px 60px;font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.7;}
+.leist-acc-body{display:none;padding:0 0 16px 42px;font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.7;}
 .leist-acc-body.open{display:block;}
-.zg-box{border:1px solid #e8e8e8;border-radius:12px;padding:22px 26px;background:var(--white);}
+.zg-box{border:none;border-radius:0;padding:0;background:transparent;}
 .zg-box h4{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:14px;letter-spacing:-0.2px;}
 .zg-item{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);}
 .zg-item:last-child{border-bottom:none;}
@@ -281,11 +290,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .ueber-name-card{background:transparent;border:none;border-top:1px solid #e8e8e8;padding:14px 0 0;margin-top:14px;text-align:center;width:100%;max-width:400px;}
 .ueber-name-card .name{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;color:var(--text);}
 .ueber-name-card .role{font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:0.3px;}
-.ueber-dets{display:flex;flex-direction:column;gap:12px;margin-top:26px;}
-.ueber-det{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:#f8f8f8;border-radius:12px;border-left:3px solid #111;}
-.ueber-det-ico{width:36px;height:36px;background:#efefef;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ueber-det h4{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.3px;text-transform:uppercase;color:var(--text);margin-bottom:3px;}
-.ueber-det p{font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.55;}
+.ueber-dets{display:flex;flex-direction:column;gap:0;margin-top:26px;border-top:1px solid var(--border);}
+.ueber-det{display:flex;align-items:flex-start;gap:16px;padding:18px 0;background:transparent;border-radius:0;border-left:none;border-bottom:1px solid var(--border);}
+.ueber-det-ico{width:22px;height:22px;background:transparent;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding-top:2px;}
+.ueber-det h4{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text);margin-bottom:4px;}
+.ueber-det p{font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.6;}
 
 /* ── FAQ ── */
 .faq-list{max-width:680px;}
@@ -300,9 +309,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 /* ── KONTAKT ── */
 .kontakt-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
-.kontakt-info{display:flex;flex-direction:column;gap:18px;margin-top:22px;}
-.k-row{display:flex;align-items:flex-start;gap:14px;}
-.k-ico{width:42px;height:42px;background:#f0f0f0;border:1px solid #e8e8e8;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.kontakt-info{display:flex;flex-direction:column;gap:0;margin-top:22px;border-top:1px solid var(--border);}
+.k-row{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--border);}
+.k-ico{width:20px;height:20px;background:transparent;border:none;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding-top:3px;}
 .k-row h4{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text);margin-bottom:3px;}
 .k-row p,.k-row a{font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--muted);text-decoration:none;}
 .k-row a:hover{color:var(--text);}
@@ -418,7 +427,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   .hero{grid-template-columns:1fr;padding:36px 6% 52px;gap:32px;}
   .hero-img-wrap{align-items:center;}
   .hero-img{max-width:300px;}
-  .cards-grid{grid-template-columns:1fr;}
+  .cards-grid{grid-template-columns:1fr;border-bottom:none;}
+  .cards-grid .card:nth-child(odd){padding-right:0;border-right:none;}
+  .cards-grid .card:nth-child(even){padding-left:0;}
+  .cards-grid .card:last-child{border-bottom:1px solid var(--border);}
   .leist-grid{grid-template-columns:1fr;}
   .ablauf-steps{grid-template-columns:1fr 1fr;}
   .ueber-grid{grid-template-columns:1fr;}
@@ -670,21 +682,18 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   <div class="sec">
     <span class="eyebrow">Tipps &amp; Vorbereitung</span>
     <h2 class="sec-title">Für Ihren Ersttermin</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px;">
-      <div class="card" style="padding:22px 24px;">
-        <div class="card-icon"><i data-lucide="file-text"></i></div>
-        <h3>Dokumente</h3>
-        <p>Zum Erstgespräch bitte mitbringen: <strong>Behandlungsvertrag</strong> und <strong>Datenschutzerklärung</strong>. Alle Formulare finden Sie unten auf der <a href="javascript:void(0)" onclick="show('kontakt')" style="color:var(--text);font-weight:600;text-decoration:underline;">Termin-Seite</a>.</p>
+    <div class="prep-list">
+      <div class="prep-item">
+        <span class="prep-n">01</span>
+        <div><strong class="prep-t">Dokumente</strong><p>Zum Erstgespräch bitte mitbringen: <strong>Behandlungsvertrag</strong> und <strong>Datenschutzerklärung</strong>. Alle Formulare finden Sie unten auf der <a href="javascript:void(0)" onclick="show('kontakt')" style="color:var(--text);font-weight:600;text-decoration:underline;">Termin-Seite</a>.</p></div>
       </div>
-      <div class="card" style="padding:22px 24px;">
-        <div class="card-icon"><i data-lucide="help-circle"></i></div>
-        <h3>Fragen notieren</h3>
-        <p>Um Ihre Therapiezeit optimal nutzen zu können, notieren Sie sich notfalls Ihre Fragen im Vorfeld.</p>
+      <div class="prep-item">
+        <span class="prep-n">02</span>
+        <div><strong class="prep-t">Fragen notieren</strong><p>Um Ihre Therapiezeit optimal nutzen zu können, notieren Sie sich Ihre Fragen im Vorfeld.</p></div>
       </div>
-      <div class="card" style="padding:22px 24px;">
-        <div class="card-icon"><i data-lucide="tag"></i></div>
-        <h3>Kleidung</h3>
-        <p>Bequeme Kleidung erwünscht.</p>
+      <div class="prep-item">
+        <span class="prep-n">03</span>
+        <div><strong class="prep-t">Kleidung</strong><p>Bequeme Kleidung erwünscht.</p></div>
       </div>
     </div>
   </div>
@@ -799,14 +808,14 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <span class="eyebrow">Vor dem Ersttermin</span>
       <h2 class="sec-title" style="margin-bottom:6px;">Dokumente</h2>
       <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);margin-bottom:28px;">Bitte ausdrucken, ausfüllen und zum Ersttermin mitbringen.</p>
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff;border:1px solid var(--border);border-radius:12px;gap:16px;flex-wrap:wrap;">
-          <div><strong style="font-size:15px;">Behandlungsvertrag</strong></div>
-          <a href="dokumente/Behandlungsvertrag.pdf" download="Behandlungsvertrag.pdf" class="btn-outline" style="padding:10px 20px;font-size:13px;border-radius:8px;border:1.5px solid #ccc;background:#fff;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;"><i data-lucide="download" style="width:14px;height:14px;"></i> PDF herunterladen</a>
+      <div style="border-top:1px solid var(--border);">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid var(--border);gap:16px;flex-wrap:wrap;">
+          <strong style="font-size:15px;font-family:'Montserrat',sans-serif;">Behandlungsvertrag</strong>
+          <a href="dokumente/Behandlungsvertrag.pdf" download="Behandlungsvertrag.pdf" style="font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;border-bottom:1px solid currentColor;padding-bottom:1px;"><i data-lucide="download" style="width:13px;height:13px;"></i> PDF herunterladen</a>
         </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff;border:1px solid var(--border);border-radius:12px;gap:16px;flex-wrap:wrap;">
-          <div><strong style="font-size:15px;">Datenschutzerklärung</strong></div>
-          <a href="dokumente/Datenschutzerklaerung-Patienten.pdf" download="Datenschutzerklärung.pdf" class="btn-outline" style="padding:10px 20px;font-size:13px;border-radius:8px;border:1.5px solid #ccc;background:#fff;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;"><i data-lucide="download" style="width:14px;height:14px;"></i> PDF herunterladen</a>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid var(--border);gap:16px;flex-wrap:wrap;">
+          <strong style="font-size:15px;font-family:'Montserrat',sans-serif;">Datenschutzerklärung</strong>
+          <a href="dokumente/Datenschutzerklaerung-Patienten.pdf" download="Datenschutzerklärung.pdf" style="font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;border-bottom:1px solid currentColor;padding-bottom:1px;"><i data-lucide="download" style="width:13px;height:13px;"></i> PDF herunterladen</a>
         </div>
       </div>
     </div>
