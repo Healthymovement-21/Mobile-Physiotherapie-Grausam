@@ -459,7 +459,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   .footer-inner{grid-template-columns:1fr 1fr;gap:36px;}
 }
 @media(max-width:860px){
-  .hero{padding:56px 6% 52px;}
   .hero-title{font-size:clamp(34px,8vw,56px);}
   .hero-btns .btn,.hero-btns .btn-outline{flex:1;text-align:center;}
   .cards-grid{grid-template-columns:1fr;border-bottom:none;}
@@ -474,6 +473,15 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   .footer-inner{grid-template-columns:1fr;}
   .footer-inner{gap:28px;}
   .footer-inner>:nth-child(3){display:none;}
+  /* Weniger Rand auf Mobile */
+  .sec{padding:48px 4%;}
+  .philosophie-sec{padding:56px 4%;}
+  .visual-sec{padding:0 0 56px;}
+  .visual-sec-body{padding:28px 4% 0;}
+  .visual-sec-label{padding:36px 4% 24px;}
+  .hero-content{padding:40px 4% 48px;}
+  .infobar{padding:14px 4%;}
+  footer{padding:48px 4% 28px;}
   /* Verhindert, dass sticky CTA Content überdeckt */
   .page.active{padding-bottom:80px;}
 }
@@ -595,7 +603,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <div class="zg-item">◆ &nbsp;Chronisch kranke &amp; immobile Patienten</div>
       <div class="zg-item">◆ &nbsp;Individuelle Beschwerdebilder</div>
     </div>
-    <div style="margin-top:32px;display:flex;gap:28px;flex-wrap:wrap;">
+    <div style="margin-top:32px;display:flex;flex-direction:column;gap:20px;">
       <a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')">Leistungen &amp; Preise</a>
       <a class="mehr-link" href="javascript:void(0)" onclick="show('ueber')">Über mich</a>
     </div>
