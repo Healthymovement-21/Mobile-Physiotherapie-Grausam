@@ -114,59 +114,67 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 /* ── SECTIONS ── */
 .sec{padding:64px 6%;background:var(--white);}
 .eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--sand-dark);font-weight:700;margin-bottom:14px;display:block;}
-.sec-title{font-family:'Montserrat',sans-serif;font-size:clamp(22px,2.5vw,32px);font-weight:700;line-height:1.12;letter-spacing:-0.5px;color:var(--text);margin-bottom:18px;padding-bottom:18px;position:relative;}
-.sec-title::after{content:'';position:absolute;left:0;bottom:0;width:36px;height:2.5px;background:var(--sand-dark);border-radius:2px;}
+.sec-title{font-family:'Montserrat',sans-serif;font-size:clamp(24px,2.8vw,38px);font-weight:700;line-height:1.08;letter-spacing:-1px;color:var(--text);margin-bottom:18px;}
 .sec-sub{font-size:15px;color:var(--muted);font-weight:400;max-width:540px;line-height:1.8;margin-bottom:48px;}
 
 
 /* ── BUTTONS ── */
-@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .btn{
   display:inline-block;
-  background:linear-gradient(135deg,#111 0%,#3a3a3a 50%,#111 100%);
-  background-size:200% 200%;
-  animation:gradientShift 5s ease infinite;
-  color:var(--white);
-  padding:14px 32px;
-  font-size:13px;
+  background:#000;
+  color:#fff;
+  padding:14px 36px;
+  font-size:11px;
   font-weight:700;
   font-family:'Montserrat',sans-serif;
-  letter-spacing:0.5px;
-  border-radius:100px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  border-radius:0;
   text-decoration:none;
   cursor:pointer;
-  border:none;
-  box-shadow:0 4px 15px rgba(0,0,0,0.2);
-  transition:transform 0.2s,box-shadow 0.2s,opacity 0.2s;
+  border:1.5px solid #000;
+  transition:background 0.2s,color 0.2s;
 }
-.btn:active{opacity:0.85;}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.28);opacity:0.95;}
+.btn:hover{background:#fff;color:#000;}
 .btn-outline{
   display:inline-block;
   background:transparent;
-  color:var(--text);
-  padding:12px 30px;
-  font-size:13px;
+  color:#000;
+  padding:13px 34px;
+  font-size:11px;
   font-weight:700;
   font-family:'Montserrat',sans-serif;
-  letter-spacing:0.5px;
-  border:2px solid #ccc;
-  border-radius:100px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  border:1.5px solid #000;
+  border-radius:0;
   text-decoration:none;
   cursor:pointer;
-  transition:all 0.2s;
+  transition:background 0.2s,color 0.2s;
   margin-left:12px;
 }
-.btn-outline:hover{border-color:#111;background:#f0f0f0;}
+.btn-outline:hover{background:#000;color:#fff;}
 .hero-btns{display:flex;gap:12px;}
 .hero-btns .btn,.hero-btns .btn-outline{margin:0;flex:1;text-align:center;}
+/* ── MEHR ERFAHREN LINK ── */
+.mehr-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:#000;text-decoration:none;cursor:pointer;
+  border-bottom:1.5px solid #000;padding-bottom:2px;
+  transition:opacity 0.2s;
+}
+.mehr-link:hover{opacity:0.5;}
+.mehr-link::after{content:'→';font-size:13px;letter-spacing:0;transition:transform 0.2s;}
+.mehr-link:hover::after{transform:translateX(4px);}
 
 /* ── HERO ── */
 .hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:64px 6% 56px;}
 .hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(34px,4.5vw,58px);font-weight:700;line-height:1.05;letter-spacing:-3px;color:var(--text);margin-bottom:22px;}
 .hero-sub{font-size:15.5px;color:var(--muted);font-weight:400;max-width:400px;line-height:1.78;margin-bottom:38px;}
 .hero-img-wrap{display:flex;flex-direction:column;align-items:center;}
-.hero-img{width:100%;max-width:440px;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:0;display:block;box-shadow:0 20px 60px rgba(0,0,0,0.12);}
+.hero-img{width:100%;max-width:440px;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:0;display:block;}
 .hero-card{background:transparent;border:none;border-top:1px solid #e8e8e8;padding:14px 0 0;margin-top:14px;text-align:center;width:100%;max-width:440px;}
 .hero-card-name{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);}
 .hero-card-role{font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:3px;}
@@ -219,10 +227,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .dok-title{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin:0;letter-spacing:-0.2px;}
 .dok-desc{font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.65;flex:1;margin:0;}
 .dok-actions{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
-.dok-btn{display:flex;align-items:center;gap:8px;justify-content:space-between;background:#111;color:var(--white);padding:11px 18px;font-family:'Montserrat',sans-serif;font-size:12.5px;font-weight:600;border-radius:100px;text-decoration:none;transition:all 0.2s;min-height:44px;}
-.dok-btn:hover{opacity:0.85;}
-.dok-btn.outline{background:transparent;color:var(--text);border:2px solid #ddd;box-shadow:none;}
-.dok-btn.outline:hover{border-color:#111;opacity:1;}
+.dok-btn{display:flex;align-items:center;gap:8px;justify-content:space-between;background:#000;color:#fff;padding:11px 18px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border-radius:0;border:1.5px solid #000;text-decoration:none;transition:all 0.2s;min-height:44px;}
+.dok-btn:hover{background:#fff;color:#000;}
+.dok-btn.outline{background:transparent;color:var(--text);border:1.5px solid #ccc;}
+.dok-btn.outline:hover{border-color:#000;}
 .dok-btn span.fmt{font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;opacity:0.75;}
 .dok-btn svg,.dok-btn i{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none;flex-shrink:0;}
 .dok-info{background:transparent;border-left:2px solid #111;border-radius:0;padding:16px 20px;margin-top:24px;font-family:'Source Sans Pro',sans-serif;font-size:14px;color:var(--text);line-height:1.7;}
@@ -287,7 +295,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 /* ── ÜBER MICH ── */
 .ueber-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
 .ueber-img-wrap{display:flex;flex-direction:column;align-items:center;}
-.ueber-img{width:100%;max-width:400px;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:0;box-shadow:0 20px 60px rgba(0,0,0,0.12);}
+.ueber-img{width:100%;max-width:400px;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:0;}
 .ueber-name-card{background:transparent;border:none;border-top:1px solid #e8e8e8;padding:14px 0 0;margin-top:14px;text-align:center;width:100%;max-width:400px;}
 .ueber-name-card .name{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;color:var(--text);}
 .ueber-name-card .role{font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:0.3px;}
@@ -484,7 +492,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <h1 class="hero-title">Mobile Physiotherapie<br>für Privatpatienten<br>&amp; Selbstzahler.</h1>
       <p class="hero-sub">Ich biete individuelle und professionelle physiotherapeutische Behandlungen im Raum Heidelberg bis Karlsruhe an.</p>
       <div class="hero-btns">
-        <button class="btn" onclick="show('kontakt')">Termin unverbindlich anfragen</button>
+        <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
         <button class="btn-outline" onclick="show('leistungen')">Leistungen</button>
       </div>
     </div>
@@ -530,6 +538,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <div class="zg-item">◆ &nbsp;Geriatrisch orthopädische Patienten &amp; nach OPs</div>
       <div class="zg-item">◆ &nbsp;Chronisch kranke &amp; immobile Patienten</div>
       <div class="zg-item">◆ &nbsp;Individuelle Beschwerdebilder</div>
+    </div>
+    <div style="margin-top:32px;display:flex;gap:28px;flex-wrap:wrap;">
+      <a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')">Leistungen &amp; Preise</a>
+      <a class="mehr-link" href="javascript:void(0)" onclick="show('ueber')">Über mich</a>
     </div>
   </div>
 
@@ -617,8 +629,9 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Wird kein Folgetermin vereinbart, oder wird der vereinbarte Folgetermin nicht wahrgenommen, wird der Ersttermin zum regulären Preis (60,00 € / PKV &amp; Beihilfe bzw. 71,40 € inkl. MwSt. / Selbstzahler) in Rechnung gestellt. Die vollständige Regelung ist in den <a href="javascript:void(0)" onclick="show('agb')" style="color:var(--text);text-decoration:underline;">Behandlungsbedingungen</a> (§ 4.3) festgehalten.</p>
         </div>
 
-        <div style="margin-top:24px;">
-          <button class="btn" onclick="show('kontakt')" style="padding:14px 40px;">Termin unverbindlich anfragen</button>
+        <div style="margin-top:28px;display:flex;gap:24px;flex-wrap:wrap;align-items:center;">
+          <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
+          <a class="mehr-link" href="javascript:void(0)" onclick="show('ablauf')" style="margin-top:0;">Wie läuft es ab?</a>
         </div>
       </div>
 
@@ -764,7 +777,11 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Mein Schwerpunkt liegt auf Menschen, die ihr Zuhause nicht verlassen können — älteren Patienten mit eingeschränkter Mobilität, Menschen nach orthopädischen oder chirurgischen Eingriffen sowie Patienten mit geriatrischen Erkrankungsbildern, die eine kontinuierliche, fachkundige Betreuung benötigen. Die häusliche Behandlung ist in diesen Fällen kein Kompromiss — sie ist für viele Betroffene die fachlich naheliegendste Option.</p>
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Sport hat mich mein Leben lang begleitet — als leidenschaftlicher Handballer weiß ich aus eigener Erfahrung, was Bewegung bedeutet und wie viel sie einem geben kann. Durch die therapeutische Perspektive, die ich im Laufe meiner Ausbildung entwickelt habe, habe ich noch mehr Freude am Sport gefunden als je zuvor — weil ich verstehe, wie der Körper funktioniert, was er leisten kann und wie man ihn gezielt unterstützen kann. Genau diese Begeisterung möchte ich an meine Patienten weitergeben.</p>
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Meine Ausbildung an der BG Klinik Ludwigshafen hat mir das fachliche Fundament gegeben. Ich habe intensiv mit Patienten nach schweren traumatologischen, neurologischen und orthopädischen Eingriffen gearbeitet und erlebt, wie strukturierte Therapie Menschen schrittweise zurück in ihre Selbstständigkeit bringt.</p>
-        <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;">Dafür bin ich für Sie da.</p>
+        <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:32px;">Dafür bin ich für Sie da.</p>
+        <div style="display:flex;gap:24px;flex-wrap:wrap;">
+          <a class="mehr-link" href="javascript:void(0)" onclick="show('kontakt')">Termin anfragen</a>
+          <a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')">Leistungen &amp; Preise</a>
+        </div>
       </div>
     </div>
   </div>
