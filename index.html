@@ -8,7 +8,7 @@
 <meta name="keywords" content="Mobile Physiotherapie, Hausbesuche, Heidelberg, Karlsruhe, Leimen, Privatpatient, Beihilfe, Geriatrie, Physiotherapeut">
 <meta name="author" content="Nick Grausam">
 <!-- ══ SECURITY HEADERS ══ -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self' https://formspree.io https://nominatim.openstreetmap.org; form-action 'self' https://formspree.io; frame-src 'none'; base-uri 'self'; object-src 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; base-uri 'self'; object-src 'none';">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
 <meta property="og:title" content="Mobile Physiotherapie Grausam | Hausbesuche Heidelberg–Karlsruhe">
@@ -342,8 +342,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .infobar-icon svg{width:14px;height:14px;stroke:var(--muted);stroke-width:2;fill:none;vertical-align:middle;}
 .f-ico-wrap{display:inline-flex;align-items:center;margin-right:6px;vertical-align:middle;}
 .f-ico-wrap svg{width:13px;height:13px;stroke:rgba(255,255,255,0.7);stroke-width:2;fill:none;}
-#fs-success{background:rgba(168,137,106,0.15);border:1px solid var(--sand-dark);border-radius:14px;padding:20px;text-align:center;font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--text);margin-bottom:12px;}
-#fs-error{background:rgba(200,80,40,0.07);color:#8a3a18;border:1px solid rgba(200,80,40,0.22);border-radius:10px;padding:10px 14px;font-family:'Source Sans Pro',sans-serif;font-size:13px;margin-bottom:8px;line-height:1.55;}
 .addr-hint{font-family:'Source Sans Pro',sans-serif;font-size:12px;padding:8px 12px;border-radius:8px;margin-top:4px;display:none;}
 .addr-hint.checking{display:block;background:rgba(168,137,106,0.12);color:var(--muted);}
 .addr-hint.ok{display:block;background:rgba(80,160,80,0.08);color:#2e6e2e;border:1px solid rgba(80,160,80,0.25);}
@@ -802,7 +800,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <div>
         <span class="eyebrow">Kontakt</span>
         <h2 class="sec-title">Termin unverbindlich anfragen</h2>
-        <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:0;">Per E-Mail oder Kontaktformular — ich melde mich in der Regel innerhalb von 24 Stunden zurück. Es gibt keine festen Öffnungszeiten, Termine werden individuell vereinbart.</p>
+        <p style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:0;">Per E-Mail oder Telefon — ich melde mich in der Regel innerhalb von 24 Stunden zurück. Es gibt keine festen Öffnungszeiten, Termine werden individuell vereinbart.</p>
         <div class="kontakt-info">
           <div class="k-row"><div class="k-ico"><i data-lucide="phone"></i></div><div><h4>Telefon</h4><p><a href="tel:017642685146">0176 4268 5146</a></p></div></div>
           <div class="k-row"><div class="k-ico"><i data-lucide="mail"></i></div><div><h4>E-Mail</h4><p><a href="mailto:info@physiotherapie-grausam.com">info@physiotherapie-grausam.com</a></p></div></div>
@@ -810,48 +808,18 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         </div>
       </div>
       <div>
-        <div id="fs-success" style="display:none;">✓ Vielen Dank! Ihre Anfrage ist eingegangen — ich melde mich in der Regel innerhalb von 24 Stunden bei Ihnen.</div>
-        <div id="fs-error" style="display:none;"></div>
-        <form class="form" id="contactForm">
-          <input type="hidden" name="_subject" value="Neue Terminanfrage – Mobile Physiotherapie Grausam">
-          <input type="hidden" name="_language" value="de">
-          <div class="form-note">Mit * markierte Felder sind Pflichtangaben. Geburtsdatum und Angaben zu Beschwerden sind freiwillig — Sie können auch ohne diese Angaben anfragen.</div>
-          <div class="form-row">
-            <div class="fg"><label for="f_vorname">Vorname *</label><input id="f_vorname" name="vorname" type="text" required autocomplete="given-name"></div>
-            <div class="fg"><label for="f_nachname">Nachname *</label><input id="f_nachname" name="nachname" type="text" required autocomplete="family-name"></div>
-          </div>
-          <div class="fg"><label for="f_geb">Geburtsdatum <span style="font-weight:400;color:var(--muted);">(freiwillig)</span></label><input id="f_geb" name="geburtsdatum" type="date" autocomplete="bday"></div>
-          <div class="fg"><label for="f_email">E-Mail *</label><input id="f_email" name="email" type="email" required autocomplete="email"></div>
-          <div class="fg"><label for="f_adresse">Straße &amp; Hausnummer *</label><input id="f_adresse" name="strasse" type="text" required autocomplete="street-address" onblur="checkAddress()"></div>
-          <div class="form-row">
-            <div class="fg"><label for="f_plz">PLZ *</label><input id="f_plz" name="plz" type="text" required maxlength="5" autocomplete="postal-code" onblur="checkAddress()"></div>
-            <div class="fg"><label for="f_ort">Ort *</label><input id="f_ort" name="ort" type="text" required autocomplete="address-level2" onblur="checkAddress()"></div>
-          </div>
-          <div class="addr-hint" id="addrHint"></div>
-          <div class="fg">
-            <label for="f_versicherung">Abrechnung / Versicherung *</label>
-            <select id="f_versicherung" name="versicherung" required>
-              <option value="">Bitte wählen</option>
-              <option>Privatpatient / Privatpatientin</option>
-              <option>Beamter / Beamtin mit Beihilfe</option>
-              <option>Selbstzahler</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label for="f_anliegen">Anliegen / Beschwerden <span style="font-weight:400;color:var(--muted);">(freiwillig)</span></label>
-            <textarea id="f_anliegen" name="anliegen"></textarea>
-            <span style="font-family:'Source Sans Pro',sans-serif;font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5;">Wenn Sie hier Gesundheitsdaten angeben, erscheint unten eine Einwilligungserklärung nach Art. 9 Abs. 2 lit. a DSGVO.</span>
-          </div>
-          <div class="consent">
-            <input type="checkbox" id="con" name="datenschutz" required>
-            <label for="con">Ich habe die <a href="javascript:void(0)" onclick="show('datenschutz')">Datenschutzerklärung</a> zur Kenntnis genommen und wurde gemäß Art. 13 DSGVO über die Verarbeitung meiner Daten informiert. *</label>
-          </div>
-          <div class="consent" id="con2-wrap" style="display:none;">
-            <input type="checkbox" id="con2" name="gesundheitsdaten_einwilligung">
-            <label for="con2">Ich willige ausdrücklich und freiwillig in die Verarbeitung der von mir im Beschwerdenfeld angegebenen Gesundheitsdaten ein (Art. 9 Abs. 2 lit. a DSGVO). Zweck: Terminvorbereitung und Therapieplanung. Empfänger: Formspree Inc. (USA, EU-Standardvertragsklauseln) als Übermittlungsdienstleister. Diese Einwilligung kann ich jederzeit ohne Nachteile widerrufen (per E-Mail an info@physiotherapie-grausam.com). *</label>
-          </div>
-          <button type="submit" class="btn" style="width:100%;" id="contactSubmit">Anfrage absenden</button>
-        </form>
+        <div style="border-top:1px solid var(--border);padding-top:32px;">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:600;margin-bottom:8px;">Bitte folgende Angaben in die E-Mail aufnehmen:</h3>
+          <ul style="font-family:'Source Sans Pro',sans-serif;font-size:15px;color:var(--muted);line-height:2;list-style:none;padding:0;margin:0 0 28px 0;">
+            <li style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--sand-dark);font-weight:600;">—</span> Vor- und Nachname</li>
+            <li style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--sand-dark);font-weight:600;">—</span> Geburtsdatum</li>
+            <li style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--sand-dark);font-weight:600;">—</span> Wohnanschrift (Straße, PLZ, Ort)</li>
+            <li style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--sand-dark);font-weight:600;">—</span> Versicherungsart (PKV · Beihilfe · Selbstzahler)</li>
+            <li style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--sand-dark);font-weight:600;">—</span> Kurzes Anliegen <span style="font-size:13px;">(freiwillig)</span></li>
+          </ul>
+          <a href="mailto:info@physiotherapie-grausam.com?subject=Terminanfrage%20%E2%80%93%20Mobile%20Physiotherapie%20Grausam" class="btn" style="display:inline-block;text-decoration:none;">E-Mail schreiben</a>
+          <p style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:16px;line-height:1.6;">Ihre Daten werden ausschließlich für die Terminorganisation verwendet und nicht an Dritte weitergegeben. Weitere Informationen in der <a href="javascript:void(0)" onclick="show('datenschutz')" style="color:var(--text);">Datenschutzerklärung</a>.</p>
+        </div>
       </div>
     </div>
 
@@ -889,14 +857,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <tbody>
           <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">cookie_ok</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">localStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Speichert, dass der Datenschutzhinweis zur Kenntnis genommen wurde. Technisch erforderlich, um den Hinweis nicht bei jedem Seitenaufruf neu anzuzeigen (§ 25 Abs. 2 Nr. 2 TTDSG).</td><td style="padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Dauerhaft</td></tr>
           <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">page</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">sessionStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Stellt nach Seitenaktualisierung die zuletzt angezeigte Unterseite wieder her. Technisch erforderlich für die korrekte Funktion dieser Single-Page-Applikation.</td><td style="padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Sitzung</td></tr>
-          <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">form_last_submit</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">sessionStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Verhindert durch eine 60-Sekunden-Sperre mehrfache Formularübermittlungen (Spam-Schutz). Sicherheitstechnisch erforderlich (§ 25 Abs. 2 Nr. 2 TTDSG).</td><td style="padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Sitzung</td></tr>
         </tbody>
       </table>
     </div>
     <h3>Drittanbieter-Speicher</h3>
-    <p><strong>Formspree</strong> (Formspree Inc., USA): Beim <em>Absenden</em> des Kontaktformulars wird ein HTTPS-POST-Request an <code>formspree.io</code> gesendet. Diese Verbindung findet ausschließlich auf aktive Nutzerhandlung (Klick auf „Anfrage absenden") hin statt — nicht beim bloßen Aufrufen der Website. Es wird kein externes Skript von Formspree geladen. Rechtsgrundlage der Datenübermittlung: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen). <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Datenschutzerklärung Formspree</a>.</p>
+    <p>Diese Website bindet <strong>keine Drittanbieter-Dienste</strong> ein, die beim Seitenaufruf oder bei der Kontaktaufnahme Daten auf dem Endgerät speichern. Kontaktanfragen werden direkt per E-Mail übermittelt — ohne Zwischenschaltung externer Dienste.</p>
     <p><strong>Schriftarten und Skripte:</strong> Vollständig lokal gehostet (Montserrat, Source Sans Pro, Lucide Icons). Es werden <strong>keine externen Ressourcen</strong> beim Laden der Seite abgerufen — keine Übermittlung von IP-Adressen an Dritte allein durch den Seitenaufruf.</p>
-    <p><strong>OpenStreetMap Nominatim</strong> (Adressvalidierung): Beim Ausfüllen der Adressfelder im Kontaktformular wird eine Anfrage an <code>nominatim.openstreetmap.org</code> gesendet. Diese Verbindung findet ausschließlich bei aktiver Dateneingabe statt, speichert keinerlei Informationen auf dem Endgerät und fällt daher nicht unter § 25 TTDSG. Die Datenübermittlung an OpenStreetMap Foundation (UK) richtet sich nach Art. 6 Abs. 1 lit. f DSGVO — Details in der <a href="javascript:void(0)" onclick="show('datenschutz')" style="color:var(--text);text-decoration:underline;">Datenschutzerklärung</a>.</p>
     <h3>Bewertung der Einwilligungspflicht (§ 25 TTDSG)</h3>
     <p>Da diese Website ausschließlich Speicher einsetzt, die für die beschriebenen technischen Funktionen unbedingt erforderlich sind, und keine Tracking- oder Marketingtechnologien verwendet werden, ist nach § 25 Abs. 2 Nr. 2 TTDSG <strong>keine aktive Einwilligung</strong> (kein Consent-Banner) erforderlich. Diese Einschätzung gilt unter der Voraussetzung, dass keine weiteren Drittanbieter-Technologien eingebunden werden.</p>
     <h3>Ihre Rechte und weiterführende Informationen</h3>
@@ -928,15 +894,14 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 <div class="page" id="datenschutz">
   <div class="legal">
     <h2>Datenschutzerklärung</h2>
-    <p class="legal-stand">Stand: 16. Mai 2026</p>
+    <p class="legal-stand">Stand: 16. Mai 2026 · aktualisiert: Kontaktweg auf E-Mail umgestellt</p>
     <h3>Präambel</h3>
     <p>Diese Datenschutzerklärung informiert Sie darüber, welche personenbezogenen Daten wir verarbeiten, zu welchen Zwecken und auf welcher Rechtsgrundlage.</p>
     <h3>Verantwortlicher</h3>
     <p><strong>Nick Grausam</strong> · Mobile Physiotherapie Grausam<br>Dornierstraße 5 · 69181 Leimen<br>E-Mail: <a href="mailto:info@physiotherapie-grausam.com">info@physiotherapie-grausam.com</a> · Tel: 0176 4268 5146</p>
     <h3>Verarbeitete Daten und Rechtsgrundlagen</h3>
     <ul>
-      <li><strong>Kontaktanfragen</strong> (Name, Adresse, Tel., E-Mail) — Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung)</li>
-      <li><strong>Gesundheitsdaten im Kontaktformular</strong> (freiwillig angegebene Beschwerden) — Art. 9 Abs. 2 lit. a DSGVO (ausdrückliche Einwilligung)</li>
+      <li><strong>Kontaktanfragen per E-Mail</strong> (Name, Adresse, Tel., E-Mail) — Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung)</li>
       <li><strong>Gesundheitsdaten</strong> im Rahmen der Behandlung — Art. 9 Abs. 2 lit. h DSGVO</li>
       <li><strong>Website-Nutzungsdaten</strong> (IP, Browsertyp, Zugriffszeit) — Art. 6 Abs. 1 lit. f DSGVO, max. 30 Tage gespeichert</li>
     </ul>
@@ -959,44 +924,33 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am sicheren und stabilen Betrieb der Website).</p>
     <p><strong>Drittlandtransfer:</strong> GitHub verarbeitet Daten in den USA auf Basis von EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).</p>
     <p><strong>Auftragsverarbeitung:</strong> GitHub ist als Auftragsverarbeiter im Sinne von Art. 28 DSGVO tätig.</p>
-    <h3>Kontaktformular – Auftragsverarbeitung durch Formspree</h3>
-    <p><strong>Anbieter:</strong> Formspree Inc., 340 S Lemon Ave #5707, Walnut, CA 91789, USA (<a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Datenschutzerklärung</a>)</p>
-    <p><strong>Zweck:</strong> Entgegennahme und Weiterleitung von Kontaktanfragen über das Website-Formular.</p>
-    <p><strong>Verarbeitete Datenkategorien:</strong> Name, E-Mail-Adresse, Wohnanschrift, Geburtsdatum, Versicherungsart sowie freiwillig angegebene Gesundheitsdaten (Beschwerden).</p>
-    <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen / Vertragsanbahnung) für allgemeine Kontaktdaten; Art. 9 Abs. 2 lit. a DSGVO (ausdrückliche Einwilligung) für freiwillig angegebene Gesundheitsdaten.</p>
-    <p><strong>Drittlandtransfer:</strong> Formspree verarbeitet Daten auf Servern in den USA. Die Übermittlung erfolgt auf Grundlage von EU-Standardvertragsklauseln gemäß Art. 46 Abs. 2 lit. c DSGVO. Trotz dieser Schutzmaßnahme besteht ein Restrisiko, dass US-Behörden unter US-Recht (z. B. FISA 702) auf die Daten zugreifen können, ohne dass dies dem europäischen Datenschutzniveau vollständig entspricht. Die Nutzung des Kontaktformulars erfolgt in Kenntnis dieses Restrisikos.</p>
-    <p><strong>Auftragsverarbeitung:</strong> Soweit Formspree im Rahmen der Verarbeitung als Auftragsverarbeiter im Sinne von Art. 28 DSGVO tätig ist, wurde bzw. wird ein Auftragsverarbeitungsvertrag (Data Processing Agreement) abgeschlossen. Formspree bietet einen solchen Vertrag unter <a href="https://formspree.io/legal/dpa/" target="_blank" rel="noopener">formspree.io/legal/dpa</a> an.</p>
-    <p><strong>Speicherdauer:</strong> Formspree speichert übermittelte Daten gemäß seinen eigenen Datenschutzbestimmungen. Eigene Kopien von Anfragen werden nur so lange aufbewahrt, wie es für die Bearbeitung erforderlich ist.</p>
-    <p><strong>Technische Speicher durch Formspree:</strong> Da kein externes Skript von Formspree geladen wird, erfolgt eine Verbindung zu Formspree-Servern ausschließlich beim aktiven Absenden des Formulars (HTTPS-POST). Formspree kann in diesem Rahmen technische Speicher (Cookies/ähnliche Technologien) zur Spam-Prävention einsetzen. Da diese nicht durch uns kontrolliert werden können, empfehlen wir die <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Datenschutzerklärung von Formspree</a> für aktuelle Informationen.</p>
+    <h3>Kontaktaufnahme per E-Mail</h3>
+    <p><strong>Zweck:</strong> Entgegennahme von Terminanfragen und Patientenkorrespondenz.</p>
+    <p><strong>Verarbeitete Datenkategorien:</strong> Name, E-Mail-Adresse, Wohnanschrift, Geburtsdatum, Versicherungsart sowie freiwillig angegebene Angaben zum Anliegen.</p>
+    <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung). Sofern freiwillig Gesundheitsdaten mitgeteilt werden, gilt Art. 9 Abs. 2 lit. a DSGVO (ausdrückliche Einwilligung durch aktive Übermittlung).</p>
+    <p><strong>Empfänger:</strong> Ausschließlich Nick Grausam, Mobile Physiotherapie Grausam. Es werden keine E-Mail-Inhalte an Dritte weitergegeben.</p>
+    <p><strong>Speicherdauer:</strong> E-Mails werden nur so lange aufbewahrt, wie es für die Bearbeitung und die gesetzlichen Aufbewahrungspflichten erforderlich ist (bis zu 6 Jahre für Geschäftsbriefe gemäß § 147 AO).</p>
     <h3>Cookies und technische Speicherung</h3>
-    <p>Diese Website setzt keine Tracking- oder Marketing-Cookies. Alle eigenen Speicher (localStorage/sessionStorage) sind technisch erforderlich (§ 25 Abs. 2 Nr. 2 TTDSG). Formspree kann im Rahmen der Formularnutzung eigene technisch erforderliche Speicher einsetzen. Weitere Informationen in der <a href="javascript:void(0)" onclick="show('cookie-policy')" style="color:var(--text);">Cookie-Richtlinie</a>.</p>
-    <h3>Adressvalidierung – OpenStreetMap Nominatim</h3>
-    <p><strong>Anbieter:</strong> OpenStreetMap Foundation (OSMF), St John's Innovation Centre, Cowley Road, Cambridge, CB4 0WS, Vereinigtes Königreich (<a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">Datenschutzerklärung</a>)</p>
-    <p><strong>Zweck:</strong> Wenn Sie im Kontaktformular Ihre Adresse eingeben, wird diese zur Überprüfung der Erreichbarkeit (Einzugsgebiet) an den Geocodierungsdienst Nominatim übermittelt. Die Validierung erfolgt bei der Dateneingabe und zeigt an, ob die Adresse im Versorgungsgebiet liegt. Die Nutzung ist freiwillig — das Formular lässt sich auch ohne Adressvalidierung absenden.</p>
-    <p><strong>Übermittelte Daten:</strong> Straße, PLZ, Ort (keine Personendaten wie Name oder E-Mail).</p>
-    <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse: Prüfung der Erreichbarkeit vor Terminbestätigung).</p>
-    <p><strong>Drittlandtransfer:</strong> Das Vereinigte Königreich verfügt über einen Angemessenheitsbeschluss der EU-Kommission (Art. 45 DSGVO) — die Übermittlung ist datenschutzrechtlich zulässig.</p>
+    <p>Diese Website setzt keine Tracking- oder Marketing-Cookies. Alle eigenen Speicher (localStorage/sessionStorage) sind technisch erforderlich (§ 25 Abs. 2 Nr. 2 TTDSG). Es werden keine Drittanbieter-Skripte oder externe Dienste eingebunden, die beim Seitenaufruf Daten übertragen. Weitere Informationen in der <a href="javascript:void(0)" onclick="show('cookie-policy')" style="color:var(--text);">Cookie-Richtlinie</a>.</p>
     <h3>Schriftarten und Icons</h3>
     <p>Diese Website verwendet ausschließlich lokal gehostete Ressourcen: Schriftarten (Montserrat, Source Sans Pro) und Icons (Lucide Icons). Es werden <strong>keine</strong> Daten an externe Dienste wie Google Fonts oder CDN-Anbieter übertragen.</p>
-    <h3>Datenminimierung und Pflichtfelder im Kontaktformular</h3>
-    <p>Das Kontaktformular erhebt ausschließlich Daten, die für die Erbringung der angefragten Leistung erforderlich sind (Art. 5 Abs. 1 lit. c DSGVO):</p>
+    <h3>Datenminimierung bei Kontaktanfragen</h3>
+    <p>Bei Kontaktanfragen per E-Mail werden ausschließlich Daten erbeten, die für die Erbringung der angefragten Leistung erforderlich sind (Art. 5 Abs. 1 lit. c DSGVO):</p>
     <ul>
       <li><strong>Vor- und Nachname:</strong> Identifikation der Patientenperson für die Terminplanung und Rechnungsstellung.</li>
       <li><strong>Geburtsdatum:</strong> Erforderlich für die Patientenidentifikation und die Dokumentation gemäß § 630f BGB.</li>
       <li><strong>E-Mail-Adresse:</strong> Rückmeldung zur Terminanfrage und Übersendung von Unterlagen.</li>
       <li><strong>Wohnanschrift (Straße, PLZ, Ort):</strong> Zwingend erforderlich, da es sich um einen Hausbesuchsdienst handelt — die Behandlung findet beim Patienten zuhause statt.</li>
       <li><strong>Abrechnungsart / Versicherung:</strong> Zur Klärung der Preisgestaltung und Ausstellung einer korrekten Rechnung (Umsatzsteuerbefreiung § 4 Nr. 14 UStG vs. Selbstzahler mit USt).</li>
-      <li><strong>Anliegen / Beschwerden (freiwillig):</strong> Gesundheitsdaten zur Vorbereitung des Ersttermins. Dieses Feld ist nicht verpflichtend; die Angabe erfolgt auf Basis einer ausdrücklichen Einwilligung (Art. 9 Abs. 2 lit. a DSGVO).</li>
+      <li><strong>Anliegen / Beschwerden (freiwillig):</strong> Angaben zur Vorbereitung des Ersttermins. Diese Angabe ist nicht verpflichtend.</li>
     </ul>
     <h3>Empfänger und Weitergabe an Dritte</h3>
     <p>Ihre Daten werden ausschließlich an folgende Empfänger weitergegeben:</p>
     <ul>
       <li><strong>GitHub Inc. (USA)</strong> — Hosting über GitHub Pages; verarbeitet technische Zugriffsdaten (IP, Browsertyp, Zeitstempel) bei jedem Seitenaufruf (Art. 28 DSGVO, EU-Standardvertragsklauseln)</li>
-      <li><strong>Formspree Inc. (USA)</strong> — Auftragsverarbeiter für das Kontaktformular; empfängt Formulardaten beim Absenden (Art. 28 DSGVO, EU-Standardvertragsklauseln)</li>
-      <li><strong>OpenStreetMap Foundation (UK)</strong> — Adressvalidierung via Nominatim; empfängt Straße/PLZ/Ort bei der Adresseingabe im Formular (Art. 6 Abs. 1 lit. f DSGVO, UK Angemessenheitsbeschluss)</li>
       <li><strong>Gesetzlich verpflichtete Stellen</strong> — z. B. Beihilfestellen, Finanzbehörden, soweit gesetzlich erforderlich</li>
     </ul>
-    <p>Beim bloßen Aufruf der Website (ohne Formularnutzung) werden Daten ausschließlich an <strong>GitHub Inc.</strong> übermittelt (Hosting-Pflicht). Es werden keine Daten an Werbe- oder Analysedienste übertragen.</p>
+    <p>Beim Aufruf der Website werden Daten ausschließlich an <strong>GitHub Inc.</strong> übermittelt (Hosting-Pflicht). Es werden keine Daten an Werbe- oder Analysedienste übertragen.</p>
     <h3>Änderungen</h3>
     <p>Diese Erklärung wird bei Bedarf aktualisiert. Die aktuelle Version ist stets auf dieser Seite abrufbar.</p>
   </div>
@@ -1214,28 +1168,6 @@ function faq(btn){
   document.querySelectorAll('.faq-q').forEach(x=>x.classList.remove('open'));
   if(!open){a.classList.add('open');btn.classList.add('open');}
 }
-async function checkAddress(){
-  const street=document.getElementById('f_adresse').value.trim();
-  const plz=document.getElementById('f_plz').value.trim();
-  const ort=document.getElementById('f_ort').value.trim();
-  const hint=document.getElementById('addrHint');
-  if(!street||!plz||!ort){hint.className='addr-hint';return;}
-  hint.className='addr-hint checking';
-  hint.textContent='🔍 Adresse wird geprüft…';
-  try{
-    const url=`https://nominatim.openstreetmap.org/search?street=${encodeURIComponent(street)}&postalcode=${encodeURIComponent(plz)}&city=${encodeURIComponent(ort)}&country=de&format=json&limit=1&addressdetails=1`;
-    const res=await fetch(url,{headers:{'Accept-Language':'de','User-Agent':'PhysiotherapieGrausam/1.0'}});
-    const data=await res.json();
-    if(data.length>0){
-      const parts=data[0].display_name.split(',').slice(0,3).join(',').trim();
-      hint.className='addr-hint ok';
-      hint.textContent='✓ Adresse gefunden: '+parts;
-    }else{
-      hint.className='addr-hint warn';
-      hint.textContent='⚠ Adresse nicht gefunden — bitte Straße, PLZ und Ort auf Schreibfehler prüfen.';
-    }
-  }catch(e){hint.className='addr-hint';}
-}
 function toggleAcc(btn){
   const body=btn.nextElementSibling;
   body.classList.toggle('open');
@@ -1249,68 +1181,6 @@ function handleVerordnung(val){
   if(val==='sonstiges'){b.classList.remove('hidden');b.style.display='flex';}
   else{b.classList.add('hidden');}
 }
-// ── Art. 9 Einwilligung: nur anzeigen wenn Beschwerden ausgefüllt ──
-(function(){
-  const ta = document.getElementById('f_anliegen');
-  const wrap = document.getElementById('con2-wrap');
-  const cb = document.getElementById('con2');
-  if(!ta||!wrap||!cb) return;
-  function toggle(){
-    const hasContent = ta.value.trim().length > 0;
-    wrap.style.display = hasContent ? 'flex' : 'none';
-    cb.required = hasContent;
-    if(!hasContent) cb.checked = false;
-  }
-  ta.addEventListener('input', toggle);
-  ta.addEventListener('change', toggle);
-})();
-
-// ── CONTACT FORM (native fetch → Formspree) ──
-(function(){
-  const form = document.getElementById('contactForm');
-  const successBox = document.getElementById('fs-success');
-  const errorBox = document.getElementById('fs-error');
-  const submitBtn = document.getElementById('contactSubmit');
-  if(!form) return;
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    // Spam throttle: 60 s between submissions
-    const last = sessionStorage.getItem('form_last_submit');
-    if(last && Date.now() - parseInt(last) < 60000){
-      errorBox.textContent = 'Bitte warten Sie 60 Sekunden zwischen zwei Anfragen.';
-      errorBox.style.display = 'block';
-      return;
-    }
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Wird gesendet…';
-    errorBox.style.display = 'none';
-    successBox.style.display = 'none';
-    try{
-      const res = await fetch('https://formspree.io/f/xzdovrnq', {
-        method: 'POST',
-        headers: {'Accept': 'application/json'},
-        body: new FormData(form)
-      });
-      const json = await res.json();
-      if(res.ok){
-        sessionStorage.setItem('form_last_submit', Date.now().toString());
-        successBox.style.display = 'block';
-        form.reset();
-        document.getElementById('addrHint').className = 'addr-hint';
-      } else {
-        const msg = json.errors ? json.errors.map(x=>x.message).join(', ') : 'Unbekannter Fehler.';
-        errorBox.textContent = 'Fehler beim Senden: ' + msg;
-        errorBox.style.display = 'block';
-      }
-    } catch(err){
-      errorBox.textContent = 'Netzwerkfehler. Bitte versuchen Sie es erneut oder schreiben Sie direkt an info@physiotherapie-grausam.com.';
-      errorBox.style.display = 'block';
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Anfrage absenden';
-    }
-  });
-})();
 if(window.lucide) lucide.createIcons();
 
 // Scroll animations
@@ -1393,26 +1263,6 @@ function _portalDate(){
   }
 })();
 
-// ── FORM RATE LIMITING (60s cooldown) ──
-(function(){
-  const form=document.getElementById('contactForm');
-  if(!form) return;
-  const COOLDOWN=60000;
-  form.addEventListener('submit',function(e){
-    const last=parseInt(sessionStorage.getItem('form_last_submit')||'0');
-    if(Date.now()-last<COOLDOWN){
-      e.preventDefault();e.stopImmediatePropagation();
-      const rem=Math.ceil((COOLDOWN-(Date.now()-last))/1000);
-      let msg=form.querySelector('.rate-msg');
-      if(!msg){msg=document.createElement('p');msg.className='rate-msg';msg.style.cssText='color:#c0392b;font-size:13px;margin-top:8px;';form.appendChild(msg);}
-      msg.textContent=`Bitte warten Sie noch ${rem} Sekunden bevor Sie erneut senden.`;
-      return;
-    }
-    sessionStorage.setItem('form_last_submit',Date.now());
-    const existing=form.querySelector('.rate-msg');
-    if(existing) existing.remove();
-  },true);
-})();
 
 // ── COOKIE BANNER ──
 (function(){
