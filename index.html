@@ -389,6 +389,29 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
   .sticky-cta .btn{padding:11px 22px;font-size:12.5px;white-space:nowrap;flex-shrink:0;}
 }
 
+/* ── PREIS-MODAL ── */
+.preis-modal{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:500;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
+.preis-modal.open{opacity:1;pointer-events:all;}
+.preis-modal-header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);padding:18px 6%;display:flex;align-items:center;justify-content:space-between;z-index:10;}
+.preis-modal-title{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;letter-spacing:-0.3px;color:var(--text);}
+.preis-modal-close{background:none;border:1.5px solid var(--border);cursor:pointer;font-size:16px;color:var(--text);padding:6px 12px;font-family:'Montserrat',sans-serif;font-weight:700;transition:background 0.2s;}
+.preis-modal-close:hover{background:#111;color:#fff;border-color:#111;}
+.preis-modal-body{padding:48px 6% 80px;}
+.pm-block{margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid var(--border);}
+.pm-block:last-child{border-bottom:none;}
+.pm-kuerzel{display:inline-block;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--accent);background:var(--accent-light);padding:3px 8px;margin-bottom:12px;}
+.pm-heading{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.5px;color:var(--text);margin-bottom:6px;}
+.pm-desc{font-family:'Source Sans Pro',sans-serif;font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px;}
+.pm-table{width:100%;border-collapse:collapse;margin-bottom:16px;}
+.pm-table th{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:8px 0;border-bottom:1.5px solid #111;text-align:left;}
+.pm-table th:last-child,.pm-table td:last-child{text-align:right;}
+.pm-table th:nth-child(2),.pm-table td:nth-child(2){text-align:right;}
+.pm-table td{font-family:'Source Sans Pro',sans-serif;font-size:14px;color:var(--text);padding:12px 0;border-bottom:1px solid var(--border);}
+.pm-table tr:last-child td{border-bottom:none;}
+.pm-table .pm-total td{font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;background:#faf7f3;padding:12px 8px;border-bottom:none;}
+.pm-example{background:#faf7f3;border-left:3px solid var(--gold);padding:16px 18px;margin-top:8px;}
+.pm-example-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+
 /* ── PORTAL ── */
 .portal-screen{min-height:calc(100vh - 64px);display:flex;align-items:center;justify-content:center;background:#f5f5f5;padding:40px 6%;}
 .portal-login-box{background:#fff;border:1px solid #e8e8e8;border-radius:20px;padding:48px 40px;max-width:380px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,0.07);}
@@ -512,6 +535,122 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 </div>
 
 
+<!-- ═══ PREIS-MODAL ═══ -->
+<div class="preis-modal" id="preisModal">
+  <div class="preis-modal-header">
+    <span class="preis-modal-title">Abrechnungsbeispiele je Verordnungsart</span>
+    <button class="preis-modal-close" onclick="closePreisModal()">✕ Schließen</button>
+  </div>
+  <div class="preis-modal-body">
+
+    <!-- KG -->
+    <div class="pm-block">
+      <span class="pm-kuerzel">KG</span>
+      <h2 class="pm-heading">Krankengymnastik</h2>
+      <p class="pm-desc">Häufigste Verordnung. Einzel-KG wird bei nahezu allen orthopädischen, neurologischen und internistischen Indikationen verordnet. Die Behandlungszeit beträgt mindestens 20 Minuten je Einheit.</p>
+      <div class="pm-example">
+        <div class="pm-example-title">Beispielrechnung — Hausbesuch mit KG-Rezept</div>
+        <table class="pm-table">
+          <thead><tr><th>Position</th><th>PKV / Beihilfe</th><th>Selbstzahler</th></tr></thead>
+          <tbody>
+            <tr><td>KG Einzel (20 Min.) × 1</td><td>19,50 €</td><td>23,21 €</td></tr>
+            <tr><td>Hausbesuch / Anfahrt</td><td>9,20 €</td><td>10,95 €</td></tr>
+          </tbody>
+          <tfoot><tr class="pm-total"><td>Gesamt je Termin</td><td>28,70 €</td><td>34,16 €</td></tr></tfoot>
+        </table>
+      </div>
+      <p style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px;">Typische Verordnung: „KG 6× / 10× · 20 Min." — PKV und Beihilfe erstatten je Sitzung bis zum Höchstbetrag von 19,50 €.</p>
+    </div>
+
+    <!-- MT -->
+    <div class="pm-block">
+      <span class="pm-kuerzel">MT</span>
+      <h2 class="pm-heading">Manuelle Therapie</h2>
+      <p class="pm-desc">Verordnet bei Funktionsstörungen der Wirbelsäule, Gelenke und Extremitäten. Mindestbehandlungszeit 30 Minuten. Erfordert Zusatzqualifikation (liegt vor).</p>
+      <div class="pm-example">
+        <div class="pm-example-title">Beispielrechnung — Hausbesuch mit MT-Rezept</div>
+        <table class="pm-table">
+          <thead><tr><th>Position</th><th>PKV / Beihilfe</th><th>Selbstzahler</th></tr></thead>
+          <tbody>
+            <tr><td>MT (30 Min.) × 1</td><td>22,50 €</td><td>26,78 €</td></tr>
+            <tr><td>Hausbesuch / Anfahrt</td><td>9,20 €</td><td>10,95 €</td></tr>
+          </tbody>
+          <tfoot><tr class="pm-total"><td>Gesamt je Termin</td><td>31,70 €</td><td>37,73 €</td></tr></tfoot>
+        </table>
+      </div>
+      <p style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px;">Typische Verordnung: „MT 6× · 30 Min." — Beihilfe-Höchstsatz: 22,50 € je Sitzung.</p>
+    </div>
+
+    <!-- MLD -->
+    <div class="pm-block">
+      <span class="pm-kuerzel">MLD</span>
+      <h2 class="pm-heading">Manuelle Lymphdrainage</h2>
+      <p class="pm-desc">Bei Lymphödemen, postoperativen Schwellungen und Ödemen infolge chronischer Erkrankungen. Zwei Verordnungsgrößen: „groß" (30 Min.) und „Ganz" (45 Min.).</p>
+      <div class="pm-example">
+        <div class="pm-example-title">Beispielrechnung — Hausbesuch mit MLD-groß-Rezept</div>
+        <table class="pm-table">
+          <thead><tr><th>Position</th><th>PKV / Beihilfe</th><th>Selbstzahler</th></tr></thead>
+          <tbody>
+            <tr><td>MLD groß (30 Min.) × 1</td><td>19,50 €</td><td>23,21 €</td></tr>
+            <tr><td>Hausbesuch / Anfahrt</td><td>9,20 €</td><td>10,95 €</td></tr>
+          </tbody>
+          <tfoot><tr class="pm-total"><td>Gesamt je Termin</td><td>28,70 €</td><td>34,16 €</td></tr></tfoot>
+        </table>
+      </div>
+      <div class="pm-example" style="margin-top:12px;">
+        <div class="pm-example-title">Beispielrechnung — Hausbesuch mit MLD-Ganz-Rezept</div>
+        <table class="pm-table">
+          <thead><tr><th>Position</th><th>PKV / Beihilfe</th><th>Selbstzahler</th></tr></thead>
+          <tbody>
+            <tr><td>MLD Ganz (45 Min.) × 1</td><td>29,20 €</td><td>34,75 €</td></tr>
+            <tr><td>Hausbesuch / Anfahrt</td><td>9,20 €</td><td>10,95 €</td></tr>
+          </tbody>
+          <tfoot><tr class="pm-total"><td>Gesamt je Termin</td><td>38,40 €</td><td>45,70 €</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- KMT -->
+    <div class="pm-block">
+      <span class="pm-kuerzel">KMT</span>
+      <h2 class="pm-heading">Klassische Massagetherapie</h2>
+      <p class="pm-desc">Bei muskulären Verspannungen, Durchblutungsstörungen und als ergänzende Maßnahme. <strong>Hinweis:</strong> Die Beihilfefähigkeit der KMT ist indikationsabhängig — bitte vorab mit der Beihilfestelle klären.</p>
+      <div class="pm-example">
+        <div class="pm-example-title">Beispielrechnung — Hausbesuch mit KMT-Rezept</div>
+        <table class="pm-table">
+          <thead><tr><th>Position</th><th>PKV / Beihilfe*</th><th>Selbstzahler</th></tr></thead>
+          <tbody>
+            <tr><td>KMT (25 Min.) × 1</td><td>17,50 €</td><td>20,83 €</td></tr>
+            <tr><td>Hausbesuch / Anfahrt</td><td>9,20 €</td><td>10,95 €</td></tr>
+          </tbody>
+          <tfoot><tr class="pm-total"><td>Gesamt je Termin</td><td>26,70 €*</td><td>31,78 €</td></tr></tfoot>
+        </table>
+      </div>
+      <p style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px;">* Beihilfefähigkeit der KMT ist nicht immer gegeben — abhängig von Diagnose und Beihilfestelle.</p>
+    </div>
+
+    <!-- Allgemeine Hinweise -->
+    <div class="pm-block">
+      <h2 class="pm-heading">Allgemeine Hinweise zur Abrechnung</h2>
+      <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+        <div style="padding:16px 18px;border-left:3px solid var(--gold);background:#faf7f3;">
+          <strong style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;display:block;margin-bottom:6px;">Orientierungsrahmen</strong>
+          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Die Preise orientieren sich an den GebüTh (Gebührenübersicht für Therapeuten) und den beihilfefähigen Höchstbeträgen gemäß Beihilfeverordnung BW / BhV Bund. PKV und Beihilfe erstatten in der Regel bis zu diesen Beträgen — eine Differenz über den Höchstbetrag hinaus trägt der Patient selbst.</p>
+        </div>
+        <div style="padding:16px 18px;border-left:3px solid var(--accent);background:var(--accent-light);">
+          <strong style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;display:block;margin-bottom:6px;">Honorarvereinbarung</strong>
+          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Vor der ersten Behandlung wird der Preis schriftlich vereinbart. Die Rechnung weist Leistungsart (KG, MT, MLD …) und Hausbesuch als separate Positionen aus. Bitte klären Sie Ihren persönlichen Erstattungsumfang vorab mit Ihrer Versicherung oder Beihilfestelle.</p>
+        </div>
+        <div style="padding:16px 18px;background:#f5f5f5;">
+          <strong style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;display:block;margin-bottom:6px;">Umsatzsteuer</strong>
+          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Heilbehandlungen mit ärztlicher Verordnung sind nach § 4 Nr. 14 UStG von der Umsatzsteuer befreit (netto = brutto). Behandlungen ohne Rezept (Selbstzahler) unterliegen 19 % MwSt.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- ═══ START ═══ -->
 <div class="page active" id="home">
   <div class="hero">
@@ -537,7 +676,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
   <div class="statsbar">
     <div class="stat"><div class="stat-n">60 <span style="font-size:0.45em;font-weight:600;letter-spacing:1px;">MIN</span></div><div class="stat-l">Ersttermin-Dauer</div></div>
-    <div class="stat"><div class="stat-n">15 €</div><div class="stat-l">Hausbesuch-Pauschale</div></div>
+    <div class="stat"><div class="stat-n">9,20 €</div><div class="stat-l">Hausbesuch-Pauschale</div></div>
     <div class="stat"><div class="stat-n">24h</div><div class="stat-l">Antwortzeit (i.d.R.)</div></div>
     <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Einzelbetreuung</div></div>
   </div>
@@ -624,85 +763,113 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <div>
         <!-- GKV-Hinweis -->
         <p style="font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--text);line-height:1.7;padding:0 0 18px;border-bottom:1px solid var(--border);margin-bottom:0;"><strong>Wichtiger Hinweis:</strong> Eine Abrechnung mit gesetzlichen Krankenkassen (GKV) ist nicht möglich. Die Behandlung richtet sich ausschließlich an <strong>Privatpatienten, Beamte mit Beihilfe</strong> und <strong>Selbstzahler</strong>.</p>
+
         <!-- Spaltenköpfe -->
-        <div style="display:flex;justify-content:flex-end;gap:16px;padding:10px 0;border-bottom:1.5px solid #111;">
-          <div style="text-align:right;font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);min-width:80px;">PKV / Beihilfe<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:9px;">mit Rezept</span></div>
-          <div style="text-align:right;font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);min-width:80px;">Selbstzahler<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:9px;">inkl. MwSt.</span></div>
+        <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px 16px;padding:10px 0;border-bottom:1.5px solid #111;align-items:end;">
+          <div></div>
+          <div style="text-align:right;font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);min-width:80px;">PKV / Beihilfe<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:9px;">netto · mit Rezept</span></div>
+          <div style="text-align:right;font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);min-width:80px;">Selbstzahler<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:9px;">inkl. 19 % MwSt.</span></div>
         </div>
+
+        <!-- Preise je Leistungsart -->
         <div class="preise">
+
+          <!-- KG -->
           <div class="preis-card">
             <div>
-              <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Ersttermin <span style="font-family:'Source Sans Pro',sans-serif;font-size:11px;font-weight:400;color:var(--muted);letter-spacing:0;">· Sonderregelung siehe unten ↓</span></div>
-              <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5;">60 Min · Befundung, Aufklärung &amp; individuelle Therapieplanung</div>
+              <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Krankengymnastik <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--accent);">KG</span></div>
+              <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:3px;">min. 20 Min. · orientiert an Beihilfe-Höchstsatz BW / GebüTh</div>
             </div>
             <div style="display:flex;gap:16px;flex-shrink:0;align-items:center;">
-              <div style="text-align:right;min-width:80px;">
-                <div class="preis-amt">60,00 €</div>
-                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">§ 4 Nr. 14 UStG</div>
-              </div>
-              <div style="text-align:right;min-width:80px;">
-                <div class="preis-amt">71,40 €</div>
-                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">inkl. 19 % MwSt.</div>
-              </div>
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">19,50 €</div></div>
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">23,21 €</div></div>
             </div>
           </div>
+
+          <!-- MT -->
           <div class="preis-card">
             <div>
-              <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Folgebehandlung</div>
-              <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;">45 Minuten</div>
+              <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Manuelle Therapie <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--accent);">MT</span></div>
+              <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:3px;">min. 30 Min. · Gelenkfunktionsstörungen, Wirbelsäule, Extremitäten</div>
             </div>
             <div style="display:flex;gap:16px;flex-shrink:0;align-items:center;">
-              <div style="text-align:right;min-width:80px;">
-                <div class="preis-amt">80,00 €</div>
-                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">§ 4 Nr. 14 UStG</div>
-              </div>
-              <div style="text-align:right;min-width:80px;">
-                <div class="preis-amt">95,20 €</div>
-                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">inkl. 19 % MwSt.</div>
-              </div>
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">22,50 €</div></div>
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">26,78 €</div></div>
             </div>
           </div>
+
+          <!-- MLD groß -->
           <div class="preis-card">
             <div>
-              <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Folgebehandlung</div>
-              <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;">60 Minuten</div>
+              <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Lymphdrainage groß <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--accent);">MLD</span></div>
+              <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:3px;">min. 30 Min. · Teilbehandlung</div>
             </div>
             <div style="display:flex;gap:16px;flex-shrink:0;align-items:center;">
-              <div style="text-align:right;min-width:80px;">
-                <div class="preis-amt">100,00 €</div>
-                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">§ 4 Nr. 14 UStG</div>
-              </div>
-              <div style="text-align:right;min-width:80px;">
-                <div class="preis-amt">119,00 €</div>
-                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">inkl. 19 % MwSt.</div>
-              </div>
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">19,50 €</div></div>
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">23,21 €</div></div>
             </div>
           </div>
-          <div class="preis-card" style="background:rgba(201,162,39,0.05);margin:0 -2px;padding-left:2px;padding-right:2px;">
+
+          <!-- MLD Ganz -->
+          <div class="preis-card">
+            <div>
+              <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Lymphdrainage Ganz <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--accent);">MLD</span></div>
+              <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:3px;">min. 45 Min. · Ganzbehandlung</div>
+            </div>
+            <div style="display:flex;gap:16px;flex-shrink:0;align-items:center;">
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">29,20 €</div></div>
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">34,75 €</div></div>
+            </div>
+          </div>
+
+          <!-- KMT -->
+          <div class="preis-card">
+            <div>
+              <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Klassische Massage <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--accent);">KMT</span></div>
+              <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:3px;">min. 25 Min. · Beihilfefähigkeit je nach Indikation prüfen</div>
+            </div>
+            <div style="display:flex;gap:16px;flex-shrink:0;align-items:center;">
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">17,50 €</div></div>
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">20,83 €</div></div>
+            </div>
+          </div>
+
+          <!-- KGG -->
+          <div class="preis-card">
+            <div>
+              <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Gerätegestützte KG <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--accent);">KGG</span></div>
+              <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:3px;">min. 60 Min. · mit Trainingsgeräten</div>
+            </div>
+            <div style="display:flex;gap:16px;flex-shrink:0;align-items:center;">
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">35,00 €</div></div>
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">41,65 €</div></div>
+            </div>
+          </div>
+
+          <!-- Hausbesuch -->
+          <div class="preis-card" style="background:rgba(201,162,39,0.06);">
             <div>
               <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Hausbesuch / Anfahrt</div>
-              <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5;">Separate Position — empfohlen für PKV &amp; Beihilfe</div>
+              <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:3px;">Separate Rechnungsposition · je Termin</div>
             </div>
             <div style="display:flex;gap:16px;flex-shrink:0;align-items:center;">
-              <div style="text-align:right;min-width:80px;">
-                <div class="preis-amt">15,00 €</div>
-                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">§ 4 Nr. 14 UStG</div>
-              </div>
-              <div style="text-align:right;min-width:80px;">
-                <div class="preis-amt">17,85 €</div>
-                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">inkl. 19 % MwSt.</div>
-              </div>
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">9,20 €</div></div>
+              <div style="text-align:right;min-width:80px;"><div class="preis-amt">10,95 €</div></div>
             </div>
           </div>
+
         </div>
 
-        <!-- Hinweis-Box PKV/Beihilfe -->
-        <div style="margin-top:20px;padding:16px 20px;border-left:3px solid var(--gold);background:#faf7f3;">
-          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--text);line-height:1.75;margin:0 0 8px;"><strong>Orientierungsrahmen PKV &amp; Beihilfe (BW):</strong> Die Behandlungspreise orientieren sich an den Gebühren für Therapeuten (GebüTh) sowie den beihilfefähigen Höchstsätzen des Landes Baden-Württemberg. PKV und Beihilfe erstatten in der Regel bis zu diesen Richtsätzen — eine darüber hinausgehende Differenz trägt der Patient selbst.</p>
-          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--text);line-height:1.75;margin:0;"><strong>Honorarvereinbarung:</strong> Der Preis wird vor der Behandlung schriftlich vereinbart. Auf der Rechnung wird die erbrachte Leistungsart ausgewiesen (z. B. KG, MT, MLD), da die Erstattung durch PKV/Beihilfe sich an der Leistungsart orientiert. Bitte klären Sie den Erstattungsumfang vorab mit Ihrer Versicherung oder Beihilfestelle.</p>
+        <!-- Button Extrafenster + Fußnote -->
+        <div style="margin-top:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+          <p style="font-family:'Source Sans Pro',sans-serif;font-size:11.5px;color:var(--muted);line-height:1.6;margin:0;">PKV/Beihilfe: netto, steuerfrei gem. § 4 Nr. 14 UStG. Selbstzahler: inkl. 19 % MwSt. Preise orientiert an GebüTh &amp; Beihilfe-Höchstsätzen BW.</p>
+          <button onclick="openPreisModal()" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:none;border:1.5px solid var(--border);color:var(--text);padding:10px 18px;cursor:pointer;white-space:nowrap;transition:border-color 0.2s;">Abrechnungsbeispiele ↗</button>
         </div>
 
-        <p style="font-family:'Source Sans Pro',sans-serif;font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.6;">Preise PKV/Beihilfe: Nettobetrag, steuerfrei nach § 4 Nr. 14 UStG (heilkundliche Leistung mit ärztlichem Rezept). Preise Selbstzahler: Endpreise inkl. 19 % MwSt. Der Hausbesuch wird als separate Rechnungsposition ausgewiesen.</p>
+        <!-- Honorarvereinbarung-Hinweis -->
+        <div style="margin-top:20px;padding:14px 18px;border-left:3px solid var(--gold);background:#faf7f3;">
+          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--text);line-height:1.75;margin:0;"><strong>Honorarvereinbarung:</strong> Der Preis wird vor der ersten Behandlung schriftlich vereinbart. Die Rechnung weist die Leistungsart (KG, MT, MLD …) und den Hausbesuch als separate Positionen aus — so wie es PKV und Beihilfe für eine vollständige Erstattung benötigen. Bitte klären Sie Ihren Erstattungsumfang vorab mit Ihrer Versicherung oder Beihilfestelle.</p>
+        </div>
 
         <!-- Sonderregelung Ersttermin -->
         <div style="margin-top:28px;padding:20px 24px;border:1.5px solid var(--accent);background:var(--accent-light);">
@@ -1249,6 +1416,14 @@ if(_saved && document.getElementById(_saved)){
   document.getElementById(_saved).classList.add('active');
 }
 
+function openPreisModal(){
+  document.getElementById('preisModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closePreisModal(){
+  document.getElementById('preisModal').classList.remove('open');
+  document.body.style.overflow='';
+}
 function toggleOverlay(){
   const ov=document.getElementById('overlay');
   const btn=document.getElementById('burgerBtn');
