@@ -509,10 +509,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
   <div class="sec">
     <div class="cards-grid">
-<div class="card"><div class="card-icon"><i data-lucide="user"></i></div><h3>1:1 Betreuung</h3><p>Zielgerichtete Betreuung in Ihren eigenen vier Wänden.</p></div>
+<div class="card"><div class="card-icon"><i data-lucide="user"></i></div><h3>1:1 Betreuung</h3><p>Individuelle Betreuung in Ihren eigenen vier Wänden — ausschließlich für Sie.</p></div>
       <div class="card"><div class="card-icon"><i data-lucide="file-text"></i></div><h3>Mit oder ohne Rezept</h3><p>Privatversicherte und Beamte mit Beihilfe benötigen ein Rezept — dieses können Sie bei Ihrer zuständigen Stelle einreichen. Selbstzahler benötigen kein Rezept. Weitere Infos finden Sie unter <a href="javascript:void(0)" onclick="show('leistungen')" style="color:var(--text);font-weight:600;text-decoration:underline;">Leistungen &amp; Preise</a>.</p></div>
-      <div class="card"><div class="card-icon"><i data-lucide="clock"></i></div><h3>Dauer</h3><p>Die Dauer Ihrer Behandlung besprechen wir gemeinsam, um den bestmöglichen Therapieerfolg zu erzielen.</p></div>
-      <div class="card"><div class="card-icon"><i data-lucide="credit-card"></i></div><h3>Abrechnung</h3><p>Privatpatienten, Beamte mit Beihilfe und Selbstzahler.</p></div>
+      <div class="card"><div class="card-icon"><i data-lucide="clock"></i></div><h3>Dauer</h3><p>Die Behandlungsdauer lege ich individuell nach Befund fest und bespreche sie vorab mit Ihnen.</p></div>
+      <div class="card"><div class="card-icon"><i data-lucide="credit-card"></i></div><h3>Abrechnung</h3><p>Privatpatienten, Beamte mit Beihilfe und Selbstzahler. <strong>Keine Abrechnung mit gesetzlichen Krankenkassen (GKV).</strong></p></div>
       <div class="card"><div class="card-icon"><i data-lucide="map-pin"></i></div><h3>Einzugsgebiet</h3><p>Heidelberg bis Karlsruhe — gesamte Rhein-Neckar-Region.</p></div>
       <div class="card"><div class="card-icon"><i data-lucide="clipboard-list"></i></div><h3>Trainingsplan</h3><p>Auf Wunsch erhalten Sie einen individuell angepassten Heimübungsplan zur Unterstützung Ihrer Therapie.</p></div>
     </div>
@@ -543,40 +543,66 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
       <!-- PREISE -->
       <div>
+        <!-- GKV-Hinweis -->
+        <p style="font-family:'Source Sans Pro',sans-serif;font-size:13.5px;color:var(--text);line-height:1.7;padding:0 0 18px;border-bottom:1px solid var(--border);margin-bottom:0;"><strong>Wichtiger Hinweis:</strong> Eine Abrechnung mit gesetzlichen Krankenkassen (GKV) ist nicht möglich. Die Behandlung richtet sich ausschließlich an <strong>Privatpatienten, Beamte mit Beihilfe</strong> und <strong>Selbstzahler</strong>.</p>
+        <!-- Spaltenköpfe -->
+        <div style="display:flex;justify-content:flex-end;gap:24px;padding:10px 0;border-bottom:1.5px solid #111;">
+          <div style="text-align:right;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);white-space:nowrap;min-width:90px;">PKV / Beihilfe<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:9.5px;">mit Rezept · steuerfrei</span></div>
+          <div style="text-align:right;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);white-space:nowrap;min-width:90px;">Selbstzahler<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:9.5px;">ohne Rezept · inkl. MwSt.</span></div>
+        </div>
         <div class="preise">
-          <div class="preis-card highlight">
+          <div class="preis-card">
             <div>
-              <div class="preis-dur" style="font-size:16px;font-weight:700;color:var(--text);">Ersttermin</div>
+              <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Ersttermin</div>
               <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5;">60 Min · Befundung, Aufklärung &amp; individuelle Therapieplanung</div>
-              <div style="font-family:'Montserrat',sans-serif;font-size:11.5px;color:#555;font-weight:700;margin-top:6px;letter-spacing:0.2px;">✓ Entfällt, wenn direkt im Anschluss ein Folgetermin vereinbart &amp; wahrgenommen wird</div>
+              <div style="font-family:'Source Sans Pro',sans-serif;font-size:11px;color:#555;margin-top:5px;">✓ Entfällt bei direkt anschließendem Folgetermin</div>
             </div>
-            <div style="text-align:right;white-space:nowrap;">
-              <div class="preis-amt">60 €</div>
-              <div style="font-family:'Source Sans Pro',sans-serif;font-size:11px;color:var(--muted);margin-top:3px;">ohne UmSt.</div>
+            <div style="display:flex;gap:24px;flex-shrink:0;align-items:center;">
+              <div style="text-align:right;min-width:90px;">
+                <div class="preis-amt">60,00 €</div>
+                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">§ 4 Nr. 14 UStG</div>
+              </div>
+              <div style="text-align:right;min-width:90px;">
+                <div class="preis-amt">71,40 €</div>
+                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">inkl. 19 % MwSt.</div>
+              </div>
             </div>
           </div>
-          <div class="preis-card highlight">
+          <div class="preis-card">
             <div>
-              <div class="preis-dur" style="font-size:16px;font-weight:700;color:var(--text);">Folgebehandlung</div>
+              <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Folgebehandlung</div>
               <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;">45 Minuten</div>
             </div>
-            <div style="text-align:right;white-space:nowrap;">
-              <div class="preis-amt">80 €</div>
-              <div style="font-family:'Source Sans Pro',sans-serif;font-size:11px;color:var(--muted);margin-top:3px;">ohne UmSt.</div>
+            <div style="display:flex;gap:24px;flex-shrink:0;align-items:center;">
+              <div style="text-align:right;min-width:90px;">
+                <div class="preis-amt">80,00 €</div>
+                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">§ 4 Nr. 14 UStG</div>
+              </div>
+              <div style="text-align:right;min-width:90px;">
+                <div class="preis-amt">95,20 €</div>
+                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">inkl. 19 % MwSt.</div>
+              </div>
             </div>
           </div>
-          <div class="preis-card highlight">
+          <div class="preis-card">
             <div>
-              <div class="preis-dur" style="font-size:16px;font-weight:700;color:var(--text);">Folgebehandlung</div>
+              <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Folgebehandlung</div>
               <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;">60 Minuten</div>
             </div>
-            <div style="text-align:right;white-space:nowrap;">
-              <div class="preis-amt">100 €</div>
-              <div style="font-family:'Source Sans Pro',sans-serif;font-size:11px;color:var(--muted);margin-top:3px;">ohne UmSt.</div>
+            <div style="display:flex;gap:24px;flex-shrink:0;align-items:center;">
+              <div style="text-align:right;min-width:90px;">
+                <div class="preis-amt">100,00 €</div>
+                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">§ 4 Nr. 14 UStG</div>
+              </div>
+              <div style="text-align:right;min-width:90px;">
+                <div class="preis-amt">119,00 €</div>
+                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">inkl. 19 % MwSt.</div>
+              </div>
             </div>
           </div>
         </div>
-        <div style="margin-top:24px;">
+        <p style="font-family:'Source Sans Pro',sans-serif;font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.6;">Preise PKV/Beihilfe: Nettobetrag, steuerfrei nach § 4 Nr. 14 UStG (heilkundliche Leistung mit ärztlichem Rezept). Preise Selbstzahler: Endpreise inkl. 19 % MwSt. — Fahrtkosten und Hausbesuch sind im Preis enthalten.</p>
+        <div style="margin-top:20px;">
           <button class="btn" onclick="show('kontakt')" style="padding:14px 40px;">Termin unverbindlich anfragen</button>
         </div>
       </div>
@@ -653,11 +679,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         </div>
       </div>
 
-      <!-- Hinweise zur Abrechnung (freistehend, keine Kästen) -->
+      <!-- Hinweise zur Abrechnung -->
       <div style="display:flex;flex-direction:column;gap:10px;">
-        <h3 style="font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.2px;">Hinweise zur Abrechnung &amp; Umsatzsteuer</h3>
-        <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.75;"><strong>Privatversicherte &amp; Beamte mit Beihilfe (mit Rezept):</strong> Physiotherapeutische Heilbehandlungen sind nach § 4 Nr. 14 UStG von der Umsatzsteuer befreit. Mit einem ärztlichen Rezept können Sie die Rechnung bei Ihrer privaten Krankenversicherung oder der zuständigen Beihilfestelle einreichen. Die Erstattung ist tarifabhängig und nicht garantiert.</p>
-        <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.75;"><strong>Selbstzahler (ohne Rezept):</strong> Selbstzahler benötigen kein ärztliches Rezept. Da die Leistung als private Dienstleistung gilt, wird auf den Nettobetrag die gesetzliche Umsatzsteuer von 19 % erhoben. Gesamtpreise: Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 € (inkl. Umsatzsteuer).</p>
+        <h3 style="font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.2px;">Hinweise zur Abrechnung</h3>
+        <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.75;"><strong>Keine GKV-Abrechnung:</strong> Eine Abrechnung mit gesetzlichen Krankenkassen (GKV) ist nicht möglich.</p>
+        <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.75;"><strong>Privatversicherte &amp; Beamte mit Beihilfe (mit ärztlichem Rezept):</strong> Heilbehandlungen sind nach § 4 Nr. 14 UStG von der Umsatzsteuer befreit — der ausgewiesene Nettobetrag ist der zu zahlende Endpreis. Die Rechnung können Sie bei Ihrer privaten Krankenversicherung oder Beihilfestelle einreichen. Eine Erstattung ist tarifabhängig und nicht garantiert.</p>
+        <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--muted);line-height:1.75;"><strong>Selbstzahler (ohne Rezept):</strong> Kein ärztliches Rezept erforderlich. Da keine heilkundliche Verordnung vorliegt, wird gesetzliche Umsatzsteuer von 19 % erhoben. Die Endpreise inkl. MwSt. sind in der Preistabelle oben ausgewiesen. Zahlung bar oder per Überweisung nach Behandlung.</p>
       </div>
 
 
@@ -735,11 +762,11 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <h2 class="sec-title">FAQ</h2>
     <p class="sec-sub">Antworten auf die wichtigsten Fragen rund um die Behandlung.</p>
     <div class="faq-list">
-      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was passiert beim Ersttermin? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Der Ersttermin dauert 60 Minuten und kostet 60 €. Er beinhaltet eine ausführliche Anamnese, Befundung und individuelle Therapieplanung. Bei Buchung eines Folgetermins wird der Ersttermin kostenlos. Auf Basis dieser Einheit lege ich die weitere Behandlung fest.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was passiert beim Ersttermin? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Der Ersttermin dauert 60 Minuten. Er umfasst eine ausführliche Anamnese, Befundung und individuelle Therapieplanung. Auf Basis dieser Einheit lege ich das weitere Vorgehen fest. Der Ersttermin entfällt kostenlos, wenn direkt im Anschluss ein Folgetermin vereinbart und wahrgenommen wird. Eine Abrechnung mit gesetzlichen Krankenkassen ist nicht möglich.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was ist im Behandlungspreis inbegriffen? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Ergänzende Maßnahmen wie Taping, Flossing, Schröpfen, Wärmetherapie und Blading werden eingesetzt, wenn sie therapeutisch sinnvoll sind — ohne Aufpreis. Es fallen keine zusätzlichen Kosten an.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Brauche ich ein Rezept? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Als Selbstzahler benötigen Sie kein Rezept. Privatpatienten und Beamte mit Beihilfe benötigen in der Regel ein ärztliches Rezept. Die Erstattung durch die Privatversicherung variiert je nach Tarif — bitte klären Sie dies vorab mit Ihrer Versicherung.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wie funktioniert die Abrechnung? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Nach der Behandlung erhalten Sie eine Rechnung. Privatpatienten reichen diese bei ihrer Versicherung ein, Beamte über die Beihilfestelle. Selbstzahler zahlen direkt — bar oder per Überweisung.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Fällt Umsatzsteuer auf die Behandlung an? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Das hängt von Ihrer Abrechnungsart ab. Privatversicherte und Beamte mit Beihilfe, die ein ärztliches Rezept vorlegen, profitieren von der Umsatzsteuerbefreiung nach § 4 Nr. 14 UStG — es fällt keine Umsatzsteuer an. Selbstzahler erhalten eine Rechnung mit ausgewiesener Umsatzsteuer von 19 %, da die Leistung ohne Rezept als private Dienstleistung gilt. Die Bruttopreise für Selbstzahler: Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 €.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Fällt Umsatzsteuer an? Kann ich mit der GKV abrechnen? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Eine Abrechnung mit gesetzlichen Krankenkassen (GKV) ist nicht möglich. Das Angebot richtet sich ausschließlich an Privatpatienten, Beamte mit Beihilfe und Selbstzahler. — Zur Umsatzsteuer: Privatversicherte und Beamte mit Beihilfe mit ärztlichem Rezept profitieren von der Steuerbefreiung nach § 4 Nr. 14 UStG; der Nettobetrag ist der Endpreis. Selbstzahler ohne Rezept erhalten eine Rechnung mit 19 % MwSt. — die Endpreise betragen: Ersttermin 71,40 € · 45 Min 95,20 € · 60 Min 119,00 €.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">In welchem Einzugsgebiet sind Sie tätig? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Ich bin im Raum Heidelberg bis Karlsruhe tätig — inkl. gesamter Rhein-Neckar-Region. Bei Fragen einfach kurz anfragen.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wann sind Sie erreichbar? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Es gibt keine festen Öffnungszeiten — Termine werden individuell mit Ihnen vereinbart. Am besten erreichen Sie mich per E-Mail oder über das Kontaktformular. Sie erhalten in der Regel innerhalb von 24 Stunden eine Rückmeldung.</div></div>
     </div>
