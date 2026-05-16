@@ -537,7 +537,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
   <div class="statsbar">
     <div class="stat"><div class="stat-n">60 <span style="font-size:0.45em;font-weight:600;letter-spacing:1px;">MIN</span></div><div class="stat-l">Ersttermin-Dauer</div></div>
-    <div class="stat"><div class="stat-n">0 €</div><div class="stat-l">Fahrtkosten für Sie</div></div>
+    <div class="stat"><div class="stat-n">15 €</div><div class="stat-l">Hausbesuch-Pauschale</div></div>
     <div class="stat"><div class="stat-n">24h</div><div class="stat-l">Antwortzeit (i.d.R.)</div></div>
     <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Einzelbetreuung</div></div>
   </div>
@@ -678,8 +678,31 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
               </div>
             </div>
           </div>
+          <div class="preis-card" style="background:rgba(201,162,39,0.05);margin:0 -2px;padding-left:2px;padding-right:2px;">
+            <div>
+              <div class="preis-dur" style="font-size:15px;font-weight:700;color:var(--text);">Hausbesuch / Anfahrt</div>
+              <div style="font-family:'Source Sans Pro',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5;">Separate Position — empfohlen für PKV &amp; Beihilfe</div>
+            </div>
+            <div style="display:flex;gap:16px;flex-shrink:0;align-items:center;">
+              <div style="text-align:right;min-width:80px;">
+                <div class="preis-amt">15,00 €</div>
+                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">§ 4 Nr. 14 UStG</div>
+              </div>
+              <div style="text-align:right;min-width:80px;">
+                <div class="preis-amt">17,85 €</div>
+                <div style="font-family:'Source Sans Pro',sans-serif;font-size:10px;color:var(--muted);margin-top:2px;">inkl. 19 % MwSt.</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <p style="font-family:'Source Sans Pro',sans-serif;font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.6;">Preise PKV/Beihilfe: Nettobetrag, steuerfrei nach § 4 Nr. 14 UStG (heilkundliche Leistung mit ärztlichem Rezept). Preise Selbstzahler: Endpreise inkl. 19 % MwSt. — Fahrtkosten und Hausbesuch sind im Preis enthalten.</p>
+
+        <!-- Hinweis-Box PKV/Beihilfe -->
+        <div style="margin-top:20px;padding:16px 20px;border-left:3px solid var(--gold);background:#faf7f3;">
+          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--text);line-height:1.75;margin:0 0 8px;"><strong>Orientierungsrahmen PKV &amp; Beihilfe (BW):</strong> Die Behandlungspreise orientieren sich an den Gebühren für Therapeuten (GebüTh) sowie den beihilfefähigen Höchstsätzen des Landes Baden-Württemberg. PKV und Beihilfe erstatten in der Regel bis zu diesen Richtsätzen — eine darüber hinausgehende Differenz trägt der Patient selbst.</p>
+          <p style="font-family:'Source Sans Pro',sans-serif;font-size:13px;color:var(--text);line-height:1.75;margin:0;"><strong>Honorarvereinbarung:</strong> Der Preis wird vor der Behandlung schriftlich vereinbart. Auf der Rechnung wird die erbrachte Leistungsart ausgewiesen (z. B. KG, MT, MLD), da die Erstattung durch PKV/Beihilfe sich an der Leistungsart orientiert. Bitte klären Sie den Erstattungsumfang vorab mit Ihrer Versicherung oder Beihilfestelle.</p>
+        </div>
+
+        <p style="font-family:'Source Sans Pro',sans-serif;font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.6;">Preise PKV/Beihilfe: Nettobetrag, steuerfrei nach § 4 Nr. 14 UStG (heilkundliche Leistung mit ärztlichem Rezept). Preise Selbstzahler: Endpreise inkl. 19 % MwSt. Der Hausbesuch wird als separate Rechnungsposition ausgewiesen.</p>
 
         <!-- Sonderregelung Ersttermin -->
         <div style="margin-top:28px;padding:20px 24px;border:1.5px solid var(--accent);background:var(--accent-light);">
@@ -854,7 +877,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <p class="sec-sub">Antworten auf die wichtigsten Fragen rund um die Behandlung.</p>
     <div class="faq-list">
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was passiert beim Ersttermin? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Der Ersttermin dauert 60 Minuten und umfasst eine ausführliche Anamnese, Befundung und Therapieplanung. Das weitere Vorgehen besprechen und planen wir gemeinsam. — <strong>Preisvorteil:</strong> Der Ersttermin wird nicht in Rechnung gestellt, wenn (1.) unmittelbar im Anschluss mindestens ein Folgetermin vereinbart wird und (2.) dieser Folgetermin tatsächlich wahrgenommen wird. Sind diese beiden Bedingungen nicht erfüllt, wird der Ersttermin zum regulären Preis berechnet. Die vollständige Regelung ist in den Behandlungsbedingungen (§ 4.3) festgehalten. — Eine Abrechnung mit gesetzlichen Krankenkassen ist nicht möglich.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was ist im Behandlungspreis inbegriffen? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Ergänzende Maßnahmen wie Taping, Flossing, Schröpfen, Wärmetherapie und Blading werden eingesetzt, wenn sie therapeutisch sinnvoll sind — ohne Aufpreis. Fahrtkosten werden nicht gesondert berechnet. Es fallen keine weiteren Kosten an; Ausfallhonorare bei kurzfristiger Absage sind separat in den Behandlungsbedingungen geregelt.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was ist im Behandlungspreis inbegriffen? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Ergänzende Maßnahmen wie Taping, Flossing, Schröpfen, Wärmetherapie und Blading werden eingesetzt, wenn sie therapeutisch sinnvoll sind — ohne Aufpreis. Hausbesuch und Anfahrt werden als separate Position auf der Rechnung ausgewiesen (15 € netto / PKV; 17,85 € inkl. MwSt. / Selbstzahler). Es fallen keine weiteren Kosten an; Ausfallhonorare bei kurzfristiger Absage sind separat in den Behandlungsbedingungen geregelt.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Brauche ich ein Rezept? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Als Selbstzahler benötigen Sie kein Rezept. Privatpatienten und Beamte mit Beihilfe benötigen in der Regel ein ärztliches Rezept, um die Rechnung bei ihrer Versicherung oder Beihilfestelle einzureichen. Die Erstattung ist tarifabhängig und nicht garantiert — bitte klären Sie dies vorab mit Ihrer Versicherung.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wie funktioniert die Abrechnung? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Nach der Behandlung erhalten Sie eine Rechnung per E-Mail. Privatpatienten reichen diese bei ihrer privaten Krankenversicherung ein, Beamte über die zuständige Beihilfestelle. Selbstzahler zahlen direkt — bar oder per Überweisung innerhalb von 14 Tagen. Eine Abrechnung mit gesetzlichen Krankenkassen (GKV) ist nicht möglich.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Fällt Umsatzsteuer an? Kann ich mit der GKV abrechnen? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Eine Abrechnung mit gesetzlichen Krankenkassen (GKV) ist nicht möglich. — Zur Umsatzsteuer: Die Steuerbefreiung nach § 4 Nr. 14 UStG gilt für physiotherapeutische Heilbehandlungen, die der Feststellung, Heilung oder Linderung von Krankheiten dienen. Bei Behandlungen mit ärztlicher Verordnung ist diese Voraussetzung in der Regel erfüllt; der Nettobetrag ist dann der Endpreis. Bei Behandlungen ohne ärztliche Verordnung (Selbstzahler) hängt die steuerliche Einordnung vom Einzelfall ab — in der Praxis wird für Selbstzahler-Leistungen ohne Rezept Umsatzsteuer von 19 % erhoben. Die konkreten Endpreise sind in der Preisliste ausgewiesen. Im Zweifel sprechen Sie mich gerne an.</div></div>
@@ -1039,7 +1062,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <p>Diese Bedingungen gelten für alle physiotherapeutischen Leistungen gegenüber Patienten (nachfolgend „Patient"). Sie sind jederzeit auf dieser Website abrufbar und werden mit Terminbestätigung Vertragsbestandteil.</p>
 
     <h3>2. Leistungsumfang und Erbringungsort</h3>
-    <p>Der Therapeut erbringt physiotherapeutische Hausbesuche ausschließlich im Rahmen seiner staatlich anerkannten Berufsqualifikation als Physiotherapeut (Ausbildung: BG Klinik Ludwigshafen). Leistungsort ist die vom Patienten angegebene Hausbesuchsadresse im Raum Heidelberg–Karlsruhe. <strong>Fahrtkosten werden nicht gesondert berechnet.</strong></p>
+    <p>Der Therapeut erbringt physiotherapeutische Hausbesuche ausschließlich im Rahmen seiner staatlich anerkannten Berufsqualifikation als Physiotherapeut (Ausbildung: BG Klinik Ludwigshafen). Leistungsort ist die vom Patienten angegebene Hausbesuchsadresse im Raum Heidelberg–Karlsruhe. <strong>Hausbesuch und Anfahrt werden als separate Rechnungsposition ausgewiesen (15 € netto, steuerfrei nach § 4 Nr. 14 UStG bei Rezept; 17,85 € inkl. 19 % MwSt. für Selbstzahler).</strong></p>
     <p>Die Behandlung stellt keine ärztliche Leistung und keine Diagnosestellung dar. Für Privatpatienten und Beihilfeberechtigte ist ein gültiges ärztliches Rezept Voraussetzung; Selbstzahler benötigen kein Rezept.</p>
 
     <h3>3. Vertragsschluss</h3>
