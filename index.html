@@ -96,7 +96,7 @@ body{font-family:'Lato',-apple-system,'Helvetica Neue',Arial,sans-serif;backgrou
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.98);border-bottom:1px solid var(--border);padding:0 6%;height:64px;display:flex;align-items:center;justify-content:space-between;}
-.nav-logo{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);cursor:pointer;letter-spacing:-0.3px;}
+.nav-logo{cursor:pointer;}
 .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;}
 .burger span{display:block;width:22px;height:1.5px;background:var(--text);transition:transform 0.3s,opacity 0.3s;}
 
@@ -356,8 +356,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .form-note{font-family:'Lato',sans-serif;font-size:11.5px;color:var(--muted);padding:10px 14px;background:#f5f5f5;border-radius:0 8px 8px 0;border-left:3px solid #111;line-height:1.6;}
 .hidden{display:none!important;}
 /* Nav Logo */
-.nav-logo{display:flex;align-items:center;gap:9px;}
-.nav-logo-svg{width:26px;height:26px;flex-shrink:0;}
+.nav-logo{display:flex;align-items:center;}
+.nav-logo-img{height:34px;width:auto;display:block;}
 /* Lucide Icons */
 .card-icon svg,.card-icon i{width:26px;height:26px;stroke:#111;stroke-width:1.5;fill:none;}
 .leist-ico svg,.leist-ico i{width:20px;height:20px;stroke:#111;stroke-width:1.5;fill:none;}
@@ -506,8 +506,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
 <nav>
   <span class="nav-logo" onclick="show('home')">
-  <svg class="nav-logo-svg" viewBox="0 0 26 26" fill="none"><rect width="26" height="26" rx="6" fill="#111"/><path d="M18 8 A8 8 0 1 0 20 14 L14 14" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  Mobile Physiotherapie Grausam
+  <img src="logo.svg" alt="Mobile Physiotherapie Grausam" class="nav-logo-img">
 </span>
   <button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span></span><span></span><span></span></button>
 </nav>
@@ -793,10 +792,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <div style="margin-top:28px;display:flex;gap:24px;flex-wrap:wrap;align-items:center;">
           <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
           <a class="mehr-link" href="javascript:void(0)" onclick="show('ablauf')" style="margin-top:0;">Wie läuft es ab?</a>
-        </div>
-        <div style="margin-top:24px;border-top:1px solid var(--border);padding-top:16px;display:flex;flex-direction:column;gap:6px;">
-          <p style="font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);line-height:1.6;">* Preise orientieren sich am GKV-Satz × 1,4. Einreichung der Rechnung bei PKV oder Beihilfestelle mit ärztlichem Rezept.</p>
-          <p style="font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);line-height:1.6;">** Endpreise inkl. 19 % MwSt. Kein ärztliches Rezept erforderlich.</p>
         </div>
       </div>
 
@@ -1347,6 +1342,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <p class="footer-contact-item"><span class="f-ico-wrap"><i data-lucide="mail"></i></span><a href="mailto:info@physiotherapie-grausam.com">info@physiotherapie-grausam.com</a></p>
       <p class="footer-contact-item"><span class="f-ico-wrap"><i data-lucide="map-pin"></i></span>Heidelberg – Karlsruhe</p>
     </div>
+  </div>
+  <div style="padding:12px 0 16px;border-top:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;gap:4px;">
+    <p style="font-family:'Lato',sans-serif;font-size:11px;color:rgba(255,255,255,0.35);line-height:1.6;margin:0;">* Preise orientieren sich am GKV-Satz × 1,4. Einreichung der Rechnung bei PKV oder Beihilfestelle mit ärztlichem Rezept.</p>
+    <p style="font-family:'Lato',sans-serif;font-size:11px;color:rgba(255,255,255,0.35);line-height:1.6;margin:0;">** Endpreise inkl. 19 % MwSt. Kein ärztliches Rezept erforderlich.</p>
   </div>
   <div class="footer-bottom">
     <p>© 2026 Nick Grausam · Alle Rechte vorbehalten</p>
