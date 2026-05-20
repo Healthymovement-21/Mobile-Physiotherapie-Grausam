@@ -79,11 +79,13 @@
   --sand-light:#f5f5f5;
   --sand-dark:#111111;
   --white:#ffffff;
+  --beige:#f5f0ea;
+  --beige-dark:#e8e0d4;
   --text:#111111;
   --muted:#555555;
   --border:#e8e8e8;
-  --accent:#1a6b8a;
-  --accent-light:rgba(26,107,138,0.08);
+  --accent:#2a6041;
+  --accent-light:rgba(42,96,65,0.10);
   --gold:#c9a227;
   --gold-light:rgba(201,162,39,0.12);
 }
@@ -446,6 +448,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 @media(max-width:480px){
   .preis-amt{font-size:18px;}
 }
+@media(max-width:700px){
+  #leistungen-raster .sec > div[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
+}
 
 /* ── FOOTER ── */
 footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);padding:56px 6% 32px;}
@@ -663,9 +668,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   <!-- ── PHILOSOPHIE ── -->
   <div class="philosophie-sec">
     <span class="phil-label">Meine Philosophie</span>
-    <p class="phil-statement">Therapie beginnt da,<br>wo Sie zuhause sind.</p>
-    <p class="phil-text">Viele Patienten sind auf Physiotherapie angewiesen — können aber nicht zu einer Praxis kommen. Eingeschränkte Mobilität, Pflegebedürftigkeit, postoperative Phasen oder chronische Erkrankungen machen den Weg dorthin oft unmöglich oder unzumutbar.</p>
-    <p class="phil-text">In solchen Fällen ist die häusliche Behandlung häufig eine sehr sinnvolle und praktikable Option. Sie ermöglicht es, die notwendige physiotherapeutische Betreuung direkt im gewohnten Umfeld der Patienten durchzuführen, was für viele Betroffene eine erhebliche Erleichterung darstellt.</p>
+    <p class="phil-statement">Aktivieren. Stärken.<br>Selbstständig bleiben.</p>
+    <p class="phil-text">Mein Ziel geht weit über die Behandlung akuter Beschwerden hinaus. Ich möchte meine Patienten nicht nur therapieren, sondern vor allem motivieren — aktiv zu werden, dranzubleiben und den eigenen Körper von Grund auf neu kennenzulernen. Durch eine ganzheitliche Behandlung schaffe ich die Voraussetzungen, um langfristig belastbarer zu werden und Beschwerden zunehmend selbst in den Griff zu bekommen.</p>
+    <p class="phil-text">Mobilität wiederherstellen, Eigenständigkeit im Alltag stärken, Selbstständigkeit fördern und fordern — das sind die Leitgedanken meiner Arbeit. Jede Behandlung ist darauf ausgerichtet, Ihnen mehr Freiheit zurückzugeben: weniger Abhängigkeit, mehr Vertrauen in den eigenen Körper und ein Leben, das Sie aktiv gestalten.</p>
+    <p class="phil-text">Bewegung und Training im Alter gewinnen zu Recht immer mehr Bedeutung. Es ist niemals zu spät, damit anzufangen — und Freude daran zu entdecken. Der Körper ist anpassungsfähiger, als viele glauben. Mit der richtigen Begleitung lässt sich in jedem Lebensabschnitt etwas bewegen.</p>
   </div>
 
   <!-- ── ANGEBOT-SEKTION ── -->
@@ -675,7 +681,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="visual-sec-body">
       <p style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Nick Grausam</p>
       <h2 class="visual-sec-title">Individuelle Physiotherapie<br>direkt bei Ihnen zuhause.</h2>
-      <button class="btn" onclick="show('leistungen')">mehr erfahren</button>
     </div>
   </div>
 
@@ -685,7 +690,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <img class="visual-sec-img" style="max-height:600px;" src="https://images.unsplash.com/photo-1620050382792-434b5828873d?w=1400&q=85&auto=format&fit=crop" alt="Physiotherapie Behandlung" loading="lazy">
     <div class="visual-sec-body" style="padding-bottom:60px;">
       <h2 class="visual-sec-title">Professionelle Therapie —<br>wo Sie sie brauchen.</h2>
-      <a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')">Alle Leistungen</a>
     </div>
   </div>
 
@@ -710,8 +714,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <div class="zg-item">◆ &nbsp;Chronisch kranke &amp; immobile Patienten</div>
       <div class="zg-item">◆ &nbsp;Individuelle Beschwerdebilder</div>
     </div>
-    <div style="margin-top:32px;display:flex;flex-direction:column;gap:36px;">
-      <a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')">Leistungen &amp; Preise</a>
+    <div style="margin-top:32px;display:flex;flex-direction:column;gap:36px;align-items:flex-start;">
       <a class="mehr-link" href="javascript:void(0)" onclick="show('ueber')">Über mich</a>
     </div>
   </div>
@@ -734,7 +737,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
         <!-- Block 1: Privatpatienten & Beihilfe -->
         <div style="margin-bottom:32px;">
-          <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">Privatpatienten &amp; Beihilfe <span style="font-weight:400;letter-spacing:0;text-transform:none;">· mit Rezept</span></div>
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--text);margin-bottom:14px;">Privatpatienten &amp; Beihilfe <span style="font-weight:500;font-size:14px;letter-spacing:0;text-transform:none;color:var(--muted);">· mit Rezept</span><sup style="font-size:11px;color:var(--muted);font-weight:400;">*</sup></h3>
           <div class="preistab-wrap">
             <table class="preistab">
               <thead>
@@ -753,12 +756,11 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
               </tbody>
             </table>
           </div>
-          <p style="font-family:'Lato',sans-serif;font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6;">Preise orientieren sich am GKV-Satz × 1,4. Einreichung der Rechnung bei PKV oder Beihilfestelle mit ärztlichem Rezept.</p>
         </div>
 
         <!-- Block 2: Selbstzahler -->
         <div style="margin-bottom:32px;">
-          <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">Selbstzahler <span style="font-weight:400;letter-spacing:0;text-transform:none;">· ohne Rezept</span></div>
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--text);margin-bottom:14px;">Selbstzahler <span style="font-weight:500;font-size:14px;letter-spacing:0;text-transform:none;color:var(--muted);">· ohne Rezept</span><sup style="font-size:11px;color:var(--muted);font-weight:400;">**</sup></h3>
           <div class="preistab-wrap">
             <table class="preistab">
               <thead>
@@ -774,7 +776,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
               </tbody>
             </table>
           </div>
-          <p style="font-family:'Lato',sans-serif;font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6;">* Endpreise inkl. 19 % MwSt. Kein ärztliches Rezept erforderlich.</p>
         </div>
 
         <!-- Block 3: Hausbesuch -->
@@ -785,7 +786,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
         <!-- Sonderregelung Ersttermin -->
         <div style="margin-bottom:28px;padding:20px 24px;border:1.5px solid var(--accent);background:var(--accent-light);">
-          <span style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--muted);display:block;margin-bottom:8px;">*</span>
           <p style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);line-height:1.5;margin:0 0 8px;">Der Ersttermin ist <span style="text-decoration:underline;">kostenlos</span> —<br>wenn danach ein Folgetermin vereinbart &amp; wahrgenommen wird.</p>
           <a href="javascript:void(0)" onclick="show('agb')" style="font-family:'Lato',sans-serif;font-size:12px;color:var(--muted);text-decoration:underline;">Details in den Behandlungsbedingungen (§ 4.3)</a>
         </div>
@@ -793,6 +793,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <div style="margin-top:28px;display:flex;gap:24px;flex-wrap:wrap;align-items:center;">
           <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
           <a class="mehr-link" href="javascript:void(0)" onclick="show('ablauf')" style="margin-top:0;">Wie läuft es ab?</a>
+        </div>
+        <div style="margin-top:24px;border-top:1px solid var(--border);padding-top:16px;display:flex;flex-direction:column;gap:6px;">
+          <p style="font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);line-height:1.6;">* Preise orientieren sich am GKV-Satz × 1,4. Einreichung der Rechnung bei PKV oder Beihilfestelle mit ärztlichem Rezept.</p>
+          <p style="font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);line-height:1.6;">** Endpreise inkl. 19 % MwSt. Kein ärztliches Rezept erforderlich.</p>
         </div>
       </div>
 
@@ -937,6 +941,59 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           <a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')">Leistungen &amp; Preise</a>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LEISTUNGEN RASTER ═══ -->
+<div class="page" id="leistungen-raster">
+  <div class="sec" style="border-top:1px solid var(--border);">
+    <span class="eyebrow">Behandlungsangebot</span>
+    <h2 class="sec-title" style="margin-bottom:40px;">Was ich behandle</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;border:1px solid var(--border);">
+      <div style="padding:28px 22px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
+        <div style="margin-bottom:14px;"><i data-lucide="activity" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Krankengymnastik</div>
+        <div style="font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">KG</div>
+      </div>
+      <div style="padding:28px 22px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
+        <div style="margin-bottom:14px;"><i data-lucide="hand" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Manuelle Therapie</div>
+        <div style="font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">MT</div>
+      </div>
+      <div style="padding:28px 22px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
+        <div style="margin-bottom:14px;"><i data-lucide="droplets" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Manuelle Lymphdrainage</div>
+        <div style="font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">MLD</div>
+      </div>
+      <div style="padding:28px 22px;border-bottom:1px solid var(--border);">
+        <div style="margin-bottom:14px;"><i data-lucide="sparkles" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Klassische Massage</div>
+        <div style="font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">KMT</div>
+      </div>
+      <div style="padding:28px 22px;border-right:1px solid var(--border);">
+        <div style="margin-bottom:14px;"><i data-lucide="move" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Gangschule</div>
+        <div style="font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Mobilitätstraining</div>
+      </div>
+      <div style="padding:28px 22px;border-right:1px solid var(--border);">
+        <div style="margin-bottom:14px;"><i data-lucide="dumbbell" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Funktionelles Training</div>
+        <div style="font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Alltagstraining</div>
+      </div>
+      <div style="padding:28px 22px;border-right:1px solid var(--border);">
+        <div style="margin-bottom:14px;"><i data-lucide="wind" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Atemtherapie</div>
+        <div style="font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">AT</div>
+      </div>
+      <div style="padding:28px 22px;">
+        <div style="margin-bottom:14px;"><i data-lucide="stethoscope" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Befundung &amp; Beratung</div>
+        <div style="font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">In jeder Behandlung</div>
+      </div>
+    </div>
+    <div style="margin-top:32px;">
+      <a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')">Alle Leistungen &amp; Preise</a>
     </div>
   </div>
 </div>
