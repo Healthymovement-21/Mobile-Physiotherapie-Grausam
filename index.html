@@ -97,7 +97,7 @@ body{font-family:'Lato',-apple-system,'Helvetica Neue',Arial,sans-serif;backgrou
 nav{position:fixed;top:0;left:0;right:0;z-index:400;background:#fff;border-bottom:1px solid var(--border);padding:0 6%;height:80px;display:flex;align-items:center;justify-content:space-between;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);}
 .nav-logo{cursor:pointer;}
 .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;}
-.burger span{display:block;width:22px;height:1.5px;background:var(--text);transition:transform 0.3s,opacity 0.3s;}
+.burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform 0.3s,opacity 0.3s;}
 
 /* ── OVERLAY NAV ── */
 .overlay{position:fixed;top:80px;left:0;right:0;bottom:0;background:#fff;z-index:350;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s ease;padding:0 6%;padding-bottom:env(safe-area-inset-bottom,0px);border-top:1px solid var(--border);}
@@ -1477,9 +1477,9 @@ function toggleOverlay(){
   document.body.style.overflow=ov.classList.contains('open')?'hidden':'';
   const sp=btn.querySelectorAll('span');
   if(ov.classList.contains('open')){
-    sp[0].style.transform='translateY(6.5px) rotate(45deg)';
+    sp[0].style.transform='translateY(7px) rotate(45deg)';
     sp[1].style.opacity='0';
-    sp[2].style.transform='translateY(-6.5px) rotate(-45deg)';
+    sp[2].style.transform='translateY(-7px) rotate(-45deg)';
   }else{
     sp[0].style.transform='';sp[1].style.opacity='';sp[2].style.transform='';
   }
