@@ -514,6 +514,9 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 .plz-result{font-family:'Lato',sans-serif;font-size:13px;padding:10px 14px;line-height:1.55;display:none;text-align:left;}
 .plz-result.ok{display:block;background:rgba(80,160,80,0.08);color:#2e6e2e;border:1px solid rgba(80,160,80,0.25);}
 .plz-result.warn{display:block;background:rgba(200,80,40,0.07);color:#8a3a18;border:1px solid rgba(200,80,40,0.2);}
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:none;}
 </style>
 </head>
 <body>
@@ -673,10 +676,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   </div>
 
   <div class="statsbar">
-    <div class="stat"><div class="stat-n">60 <span style="font-size:0.45em;font-weight:600;letter-spacing:1px;">MIN</span></div><div class="stat-l">Ersttermin-Dauer</div></div>
-    <div class="stat"><div class="stat-n">10 €</div><div class="stat-l">Fahrtpauschale</div></div>
-    <div class="stat"><div class="stat-n">24h</div><div class="stat-l">Antwortzeit (i.d.R.)</div></div>
-    <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Einzelbetreuung</div></div>
+    <div class="stat reveal"><div class="stat-n">60 <span style="font-size:0.45em;font-weight:600;letter-spacing:1px;">MIN</span></div><div class="stat-l">Ersttermin-Dauer</div></div>
+    <div class="stat reveal"><div class="stat-n">10 €</div><div class="stat-l">Fahrtpauschale</div></div>
+    <div class="stat reveal"><div class="stat-n">24h</div><div class="stat-l">Antwortzeit (i.d.R.)</div></div>
+    <div class="stat reveal"><div class="stat-n">100%</div><div class="stat-l">Einzelbetreuung</div></div>
   </div>
 
   <!-- ── PHILOSOPHIE ── -->
@@ -717,7 +720,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   </div>
 
   <div class="sec" style="padding-top:0;background:#fdfcf9;">
-    <h2 class="sec-title sec-title-gold" style="margin-bottom:20px;">Meine Patienten</h2>
+    <h2 class="sec-title sec-title-gold reveal" style="margin-bottom:20px;">Meine Patienten</h2>
     <div class="zg-box" style="border:none;background:none;padding:0;display:flex;flex-direction:column;gap:0;max-width:480px;">
       <div class="zg-item">◆ &nbsp;Geriatrische Patienten</div>
       <div class="zg-item">◆ &nbsp;Geriatrisch pflegebedürftige Patienten</div>
@@ -736,7 +739,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 <div class="page" id="leistungen">
   <div class="sec">
     <span class="eyebrow">Angebot</span>
-    <h2 class="sec-title sec-title-gold">Leistungen &amp; Preise</h2>
+    <h2 class="sec-title sec-title-gold reveal">Leistungen &amp; Preise</h2>
 
     <div class="leist-section">
 
@@ -888,7 +891,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 <div class="page" id="ablauf">
   <div class="dark-sec">
     <span class="eyebrow">So funktioniert es</span>
-    <h2 class="sec-title sec-title-gold">Einfach. Direkt. Persönlich.</h2>
+    <h2 class="sec-title sec-title-gold reveal">Einfach. Direkt. Persönlich.</h2>
     <p class="sec-sub">Von der ersten Anfrage bis zur Behandlung — unkompliziert und transparent.</p>
     <div class="ablauf-steps">
       <div class="ablauf-step"><div class="step-n">1</div><div class="step-t">Kontakt aufnehmen</div><p class="step-p">Per E-Mail oder Kontaktformular — schnell und unkompliziert.</p></div>
@@ -1029,7 +1032,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="kontakt-grid">
       <div>
         <span class="eyebrow">Kontakt</span>
-        <h2 class="sec-title sec-title-gold">Termin unverbindlich anfragen</h2>
+        <h2 class="sec-title sec-title-gold reveal">Termin unverbindlich anfragen</h2>
         <p style="font-family:'Lato',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:0;">Schreiben Sie mir jederzeit eine E-Mail — ich antworte in der Regel innerhalb von 24 Stunden und melde mich telefonisch oder per Mail zurück.</p>
         <div class="kontakt-info">
           <div class="k-row"><div class="k-ico"><i data-lucide="phone"></i></div><div><h4>Telefon</h4><p><a href="tel:017642685146">0176 4268 5146</a></p><p style="font-family:'Lato',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.6;">Erreichbar: Mo–Mi &amp; Fr ab 17 Uhr · Sa &amp; So ganztags</p></div></div>
@@ -1457,17 +1460,32 @@ function checkPLZ(){
   }
 }
 
+function revealPage(id){
+  const page=document.getElementById(id);
+  page.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.classList.remove('visible');
+    void el.offsetWidth;
+    el.style.transitionDelay=(i*0.07)+'s';
+    el.classList.add('visible');
+  });
+}
 function show(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   sessionStorage.setItem('page',id);
   window.scrollTo(0,0);
+  setTimeout(()=>revealPage(id),30);
 }
 const _saved = sessionStorage.getItem('page');
 if(_saved && document.getElementById(_saved)){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(_saved).classList.add('active');
 }
+// initial reveal for active page on load
+setTimeout(()=>{
+  const active=document.querySelector('.page.active');
+  if(active)revealPage(active.id);
+},80);
 
 function toggleOverlay(){
   const ov=document.getElementById('overlay');
