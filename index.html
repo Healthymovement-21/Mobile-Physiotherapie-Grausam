@@ -500,6 +500,19 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   /* Verhindert, dass sticky CTA Content überdeckt */
   .page.active{padding-bottom:80px;}
 }
+
+/* ── PLZ-CHECKER ── */
+.plz-sec{background:#f0ece6;border-bottom:1px solid var(--border);padding:22px 6%;}
+.plz-inner{display:flex;flex-direction:column;gap:10px;max-width:480px;margin:0 auto;text-align:center;}
+.plz-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.plz-form{display:flex;gap:0;}
+.plz-input{flex:1;padding:0 16px;border:1.5px solid #ccc;border-right:none;font-family:'Lato',sans-serif;font-size:15px;color:var(--text);background:#fff;outline:none;height:48px;border-radius:0;-webkit-appearance:none;}
+.plz-input:focus{border-color:#111;}
+.plz-btn{padding:0 24px;background:#111;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1.5px solid #111;cursor:pointer;white-space:nowrap;height:48px;flex-shrink:0;}
+.plz-btn:hover{background:#333;}
+.plz-result{font-family:'Lato',sans-serif;font-size:13px;padding:10px 14px;line-height:1.55;display:none;text-align:left;}
+.plz-result.ok{display:block;background:rgba(80,160,80,0.08);color:#2e6e2e;border:1px solid rgba(80,160,80,0.25);}
+.plz-result.warn{display:block;background:rgba(200,80,40,0.07);color:#8a3a18;border:1px solid rgba(200,80,40,0.2);}
 </style>
 </head>
 <body>
@@ -657,6 +670,18 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="infobar-item"><span class="infobar-icon"><i data-lucide="map-pin"></i></span><strong>Heidelberg – Karlsruhe</strong></div>
   </div>
 
+  <!-- ── PLZ-CHECKER ── -->
+  <div class="plz-sec">
+    <div class="plz-inner">
+      <span class="plz-label">Bin ich bei Ihnen? — Postleitzahl prüfen</span>
+      <div class="plz-form">
+        <input type="text" id="plzInput" class="plz-input" placeholder="z. B. 69181" maxlength="5" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPLZ()">
+        <button class="plz-btn" onclick="checkPLZ()">Prüfen</button>
+      </div>
+      <div id="plzResult" class="plz-result"></div>
+    </div>
+  </div>
+
   <div class="statsbar">
     <div class="stat"><div class="stat-n">60 <span style="font-size:0.45em;font-weight:600;letter-spacing:1px;">MIN</span></div><div class="stat-l">Ersttermin-Dauer</div></div>
     <div class="stat"><div class="stat-n">10 €</div><div class="stat-l">Fahrtpauschale</div></div>
@@ -758,13 +783,13 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
         <!-- Block 2: Selbstzahler -->
         <div style="margin-bottom:32px;">
-          <h3 style="font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--text);margin-bottom:14px;">Selbstzahler <span style="font-weight:500;font-size:14px;letter-spacing:0;text-transform:none;color:var(--muted);">· ohne Rezept</span><sup style="font-size:11px;color:var(--muted);font-weight:400;">**</sup></h3>
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--text);margin-bottom:14px;">Selbstzahler <span style="font-weight:500;font-size:14px;letter-spacing:0;text-transform:none;color:var(--muted);">· ohne Rezept</span></h3>
           <div class="preistab-wrap">
             <table class="preistab">
               <thead>
                 <tr>
                   <th>Dauer</th>
-                  <th>Preis</th>
+                  <th>Preis inkl. 19 % MwSt.</th>
                 </tr>
               </thead>
               <tbody>
@@ -869,9 +894,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
     </div>
   </div>
-  <div style="padding:16px 6% 20px;display:flex;flex-direction:column;gap:4px;">
-    <p style="font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);line-height:1.6;margin:0;">* Endpreise inkl. 19 % MwSt. Kein ärztliches Rezept erforderlich.</p>
-  </div>
+  <div style="padding:8px 6% 20px;"></div>
 </div>
 
 <!-- ═══ ABLAUF ═══ -->
@@ -1020,7 +1043,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <div>
         <span class="eyebrow">Kontakt</span>
         <h2 class="sec-title sec-title-gold">Termin unverbindlich anfragen</h2>
-        <p style="font-family:'Lato',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:0;">Per E-Mail oder Telefon — ich melde mich in der Regel innerhalb von 24 Stunden zurück. Es gibt keine festen Öffnungszeiten, Termine werden individuell vereinbart.</p>
+        <p style="font-family:'Lato',sans-serif;font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:0;">Schreiben Sie mir jederzeit eine E-Mail — ich antworte in der Regel innerhalb von 24 Stunden und melde mich dann telefonisch oder per Mail zurück. Telefonisch bin ich <strong style="color:var(--text);">Mo–Mi &amp; Fr ab 17 Uhr</strong> sowie <strong style="color:var(--text);">Sa &amp; So ganztags</strong> erreichbar.</p>
         <div class="kontakt-info">
           <div class="k-row"><div class="k-ico"><i data-lucide="phone"></i></div><div><h4>Telefon</h4><p><a href="tel:017642685146">0176 4268 5146</a></p><p style="font-family:'Lato',sans-serif;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.6;">Erreichbar: Mo–Mi &amp; Fr ab 17 Uhr · Sa &amp; So ganztags</p></div></div>
           <div class="k-row"><div class="k-ico"><i data-lucide="mail"></i></div><div><h4>E-Mail</h4><p><a href="mailto:info@physiotherapie-grausam.com">info@physiotherapie-grausam.com</a></p></div></div>
@@ -1037,7 +1060,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             <li style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--sand-dark);font-weight:600;">—</span> Versicherungsart (PKV · Beihilfe · Selbstzahler)</li>
             <li style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--sand-dark);font-weight:600;">—</span> Kurzes Anliegen <span style="font-size:13px;">(freiwillig)</span></li>
           </ul>
-          <a href="mailto:info@physiotherapie-grausam.com?subject=Terminanfrage%20%E2%80%93%20Mobile%20Physiotherapie%20Grausam" class="btn" style="display:inline-block;text-decoration:none;">E-Mail schreiben</a>
+          <a href="mailto:info@physiotherapie-grausam.com?subject=Terminanfrage%20%E2%80%93%20Mobile%20Physiotherapie%20Grausam&body=Guten%20Tag%2C%0A%0Amein%20Name%20ist%3A%20%0AGeburtsdatum%3A%20%0AWohnanschrift%20(Stra%C3%9Fe%2C%20PLZ%2C%20Ort)%3A%20%0AVersionsart%20(PKV%20%C2%B7%20Beihilfe%20%C2%B7%20Selbstzahler)%3A%20%0AKurzes%20Anliegen%20(freiwillig)%3A%20%0A%0AIch%20w%C3%BCrde%20gerne%20einen%20Termin%20vereinbaren.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen" class="btn" style="display:inline-block;text-decoration:none;">E-Mail schreiben</a>
         </div>
       </div>
     </div>
@@ -1362,6 +1385,85 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 <script>
 // iOS horizontal scroll fix
 window.addEventListener('scroll',function(){if(window.pageXOffset!==0)window.scrollTo(0,window.pageYOffset);},{passive:true});
+
+function checkPLZ(){
+  var v=(document.getElementById('plzInput').value||'').trim();
+  var r=document.getElementById('plzResult');
+  if(!/^\d{5}$/.test(v)){r.className='plz-result warn';r.textContent='Bitte eine gültige 5-stellige Postleitzahl eingeben.';return;}
+  var ok=new Set([
+    // Heidelberg (alle Stadtteile)
+    '69115','69117','69118','69120','69121','69123','69124','69126',
+    // Neckargemünd, Neckarsteinach
+    '69151','69239',
+    // Eppelheim
+    '69214',
+    // Leimen (inkl. Bruchhausen)
+    '69181',
+    // Nußloch
+    '69226',
+    // Walldorf
+    '69190',
+    // Wiesloch (inkl. Frauenweiler, Baiertal)
+    '69168',
+    // Gaiberg, Lingental
+    '69251',
+    // Mauer
+    '69256',
+    // Dielheim
+    '69234',
+    // Rauenberg
+    '69231',
+    // Mühlhausen (Kraichgau)
+    '69242',
+    // Malsch (inkl. Rot)
+    '69254',
+    // Sandhausen
+    '69207',
+    // Reilingen
+    '68799',
+    // Schwetzingen, Oftersheim, Plankstadt
+    '68723',
+    // Ketsch
+    '68775',
+    // Hockenheim
+    '68766',
+    // Altlußheim
+    '68804',
+    // Neulußheim
+    '68809',
+    // Kronau
+    '76709',
+    // Bad Schönborn (Bad Mingolsheim, Bad Langenbrücken)
+    '76669',
+    // Östringen
+    '76684',
+    // Ubstadt-Weiher (Stettfeld, Weier, Ubstadt)
+    '76698',
+    // Forst (Baden)
+    '76694',
+    // Bruchsal (inkl. Ögelsheim, Untergrombach, Obergrombach, Heidelsheim, Helmsheim, Büchenau)
+    '76646',
+    // Karlsdorf-Neuthard
+    '76689',
+    // Kraichtal (inkl. Neudorf)
+    '76703',
+    // Weingarten (Baden)
+    '76356',
+    // Stutensee (Spöck, Staffort, Friedrichstal)
+    '76297',
+    // Eggenstein-Leopoldshafen
+    '76344',
+    // Linkenheim-Hochstetten
+    '76351'
+  ]);
+  if(ok.has(v)){
+    r.className='plz-result ok';
+    r.innerHTML='&#10003; Ihr Wohnort liegt in meinem Einzugsgebiet. <a href="javascript:void(0)" onclick="show(\'kontakt\')" style="color:#2e6e2e;font-weight:600;text-decoration:underline;">Jetzt Termin anfragen →</a>';
+  } else {
+    r.className='plz-result warn';
+    r.innerHTML='Diese Postleitzahl liegt aktuell nicht in meinem Einzugsgebiet. Unsicher? Einfach <a href="javascript:void(0)" onclick="show(\'kontakt\')" style="color:#8a3a18;font-weight:600;text-decoration:underline;">kurz anfragen →</a>';
+  }
+}
 
 function show(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
