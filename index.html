@@ -176,15 +176,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .mehr-link:hover::after{transform:translateX(4px);}
 
 /* ── HERO ── */
-.hero{min-height:calc(100vh - 80px);display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--border);}
+.hero{min-height:calc(100vh - 80px);display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--border);background:#faf7f3;}
 .hero-content{padding:64px 7% 56px 6%;display:flex;flex-direction:column;justify-content:center;max-width:760px;}
 .hero-img-wrap{position:relative;overflow:hidden;}
 .hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;}
 .hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(32px,4.5vw,64px);font-weight:700;line-height:1.02;letter-spacing:-3px;color:var(--text);margin-bottom:24px;padding-bottom:20px;border-bottom:3px solid var(--gold);display:inline-block;}
-.hero-sub{font-size:16px;color:var(--muted);font-weight:400;line-height:1.8;margin-bottom:40px;}
+.hero-sub{font-size:16px;color:var(--muted);font-weight:400;line-height:1.8;margin-bottom:36px;}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
 .hero-btns .btn,.hero-btns .btn-outline{flex:1;min-width:140px;text-align:center;margin:0;display:flex;align-items:center;justify-content:center;}
-@media(max-width:860px){.hero{grid-template-columns:1fr;border-bottom:1px solid var(--border);min-height:auto;}.hero-img-wrap{height:300px;order:-1;}.hero-content{padding:32px 4% 36px;}}
+.hero-plz{margin-top:32px;max-width:420px;padding-top:28px;border-top:1px solid var(--beige-dark);}
+.hero-plz-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px;}
+@media(max-width:860px){.hero{grid-template-columns:1fr;border-bottom:1px solid var(--border);min-height:auto;background:#faf7f3;}.hero-img-wrap{height:300px;order:-1;}.hero-content{padding:36px 5% 44px;}}
 @media(max-width:600px){.hero-img-wrap{display:none;}}
 
 /* ── INFOBAR ── */
@@ -506,10 +508,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 .plz-inner{display:flex;flex-direction:column;gap:10px;max-width:480px;margin:0 auto;text-align:center;}
 .plz-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
 .plz-form{display:flex;gap:0;}
-.plz-input{flex:1;padding:0 16px;border:1.5px solid #ccc;border-right:none;font-family:'Lato',sans-serif;font-size:16px;color:var(--text);background:#fff;outline:none;height:48px;border-radius:0;-webkit-appearance:none;}
-.plz-input:focus{border-color:#111;}
-.plz-btn{padding:0 24px;background:#111;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1.5px solid #111;cursor:pointer;white-space:nowrap;height:48px;flex-shrink:0;}
-.plz-btn:hover{background:#333;}
+.plz-input{flex:1;padding:0 16px;border:1.5px solid var(--beige-dark);border-right:none;font-family:'Lato',sans-serif;font-size:16px;color:var(--text);background:#fff;outline:none;height:48px;border-radius:0;-webkit-appearance:none;}
+.plz-input:focus{border-color:var(--accent);}
+.plz-btn{padding:0 24px;background:var(--accent);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1.5px solid var(--accent);cursor:pointer;white-space:nowrap;height:48px;flex-shrink:0;}
+.plz-btn:hover{background:#1e4a2e;border-color:#1e4a2e;}
 .plz-result{font-family:'Lato',sans-serif;font-size:13px;padding:10px 14px;line-height:1.55;display:none;text-align:left;}
 .plz-result.ok{display:block;background:rgba(80,160,80,0.08);color:#2e6e2e;border:1px solid rgba(80,160,80,0.25);}
 .plz-result.warn{display:block;background:rgba(200,80,40,0.07);color:#8a3a18;border:1px solid rgba(200,80,40,0.2);}
@@ -661,8 +663,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
         <button class="btn-outline" onclick="show('leistungen')">Leistungen</button>
       </div>
-      <div style="margin-top:28px;max-width:420px;">
-        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;">Bin ich bei Ihnen?</span>
+      <div class="hero-plz">
+        <span class="hero-plz-label">Bin ich bei Ihnen? — Einzugsgebiet prüfen</span>
         <div class="plz-form">
           <input type="text" id="plzInput" class="plz-input" placeholder="Postleitzahl" maxlength="5" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPLZ()">
           <button class="plz-btn" onclick="checkPLZ()">Prüfen</button>
