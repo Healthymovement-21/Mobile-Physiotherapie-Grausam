@@ -664,12 +664,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     </div>
   </div>
 
-  <div class="infobar">
-    <div class="infobar-item"><span class="infobar-icon"><i data-lucide="phone"></i></span><a href="tel:017642685146"><strong>0176 4268 5146</strong></a></div>
-    <div class="infobar-item"><span class="infobar-icon"><i data-lucide="mail"></i></span><a href="mailto:info@physiotherapie-grausam.com"><strong>info@physiotherapie-grausam.com</strong></a></div>
-    <div class="infobar-item"><span class="infobar-icon"><i data-lucide="map-pin"></i></span><strong>Heidelberg – Karlsruhe</strong></div>
-  </div>
-
   <!-- ── PLZ-CHECKER ── -->
   <div class="plz-sec">
     <div class="plz-inner">
@@ -1383,8 +1377,11 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
 <script src="js/lucide.min.js"></script>
 <script>
-// iOS horizontal scroll fix
-window.addEventListener('scroll',function(){if(window.pageXOffset!==0)window.scrollTo(0,window.pageYOffset);},{passive:true});
+// iOS horizontal scroll fix (only when not zoomed in)
+window.addEventListener('scroll',function(){
+  var zoomed=window.visualViewport&&window.visualViewport.scale>1.05;
+  if(!zoomed&&window.pageXOffset!==0)window.scrollTo(0,window.pageYOffset);
+},{passive:true});
 
 function checkPLZ(){
   var v=(document.getElementById('plzInput').value||'').trim();
