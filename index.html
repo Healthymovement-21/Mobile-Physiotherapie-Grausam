@@ -176,15 +176,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .mehr-link:hover::after{transform:translateX(4px);}
 
 /* ── HERO ── */
-.hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--border);}
-.hero-content{padding:80px 7% 72px 6%;display:flex;flex-direction:column;justify-content:center;max-width:760px;}
+.hero{min-height:calc(100vh - 80px);display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--border);}
+.hero-content{padding:64px 7% 56px 6%;display:flex;flex-direction:column;justify-content:center;max-width:760px;}
 .hero-img-wrap{position:relative;overflow:hidden;}
 .hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;}
 .hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(32px,4.5vw,64px);font-weight:700;line-height:1.02;letter-spacing:-3px;color:var(--text);margin-bottom:24px;padding-bottom:20px;border-bottom:3px solid var(--gold);display:inline-block;}
 .hero-sub{font-size:16px;color:var(--muted);font-weight:400;line-height:1.8;margin-bottom:40px;}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
 .hero-btns .btn,.hero-btns .btn-outline{flex:1;min-width:140px;text-align:center;margin:0;display:flex;align-items:center;justify-content:center;}
-@media(max-width:860px){.hero{grid-template-columns:1fr;border-bottom:1px solid var(--border);}.hero-img-wrap{height:300px;order:-1;}.hero-content{padding:48px 6% 56px;}}
+@media(max-width:860px){.hero{grid-template-columns:1fr;border-bottom:1px solid var(--border);min-height:auto;}.hero-img-wrap{height:300px;order:-1;}.hero-content{padding:32px 4% 36px;}}
 @media(max-width:600px){.hero-img-wrap{display:none;}}
 
 /* ── INFOBAR ── */
@@ -506,7 +506,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 .plz-inner{display:flex;flex-direction:column;gap:10px;max-width:480px;margin:0 auto;text-align:center;}
 .plz-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
 .plz-form{display:flex;gap:0;}
-.plz-input{flex:1;padding:0 16px;border:1.5px solid #ccc;border-right:none;font-family:'Lato',sans-serif;font-size:15px;color:var(--text);background:#fff;outline:none;height:48px;border-radius:0;-webkit-appearance:none;}
+.plz-input{flex:1;padding:0 16px;border:1.5px solid #ccc;border-right:none;font-family:'Lato',sans-serif;font-size:16px;color:var(--text);background:#fff;outline:none;height:48px;border-radius:0;-webkit-appearance:none;}
 .plz-input:focus{border-color:#111;}
 .plz-btn{padding:0 24px;background:#111;color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1.5px solid #111;cursor:pointer;white-space:nowrap;height:48px;flex-shrink:0;}
 .plz-btn:hover{background:#333;}
@@ -661,18 +661,14 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
         <button class="btn-outline" onclick="show('leistungen')">Leistungen</button>
       </div>
-    </div>
-  </div>
-
-  <!-- ── PLZ-CHECKER ── -->
-  <div class="plz-sec">
-    <div class="plz-inner">
-      <span class="plz-label">Bin ich bei Ihnen? — Postleitzahl prüfen</span>
-      <div class="plz-form">
-        <input type="text" id="plzInput" class="plz-input" placeholder="z. B. 69181" maxlength="5" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPLZ()">
-        <button class="plz-btn" onclick="checkPLZ()">Prüfen</button>
+      <div style="margin-top:28px;max-width:420px;">
+        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;">Bin ich bei Ihnen?</span>
+        <div class="plz-form">
+          <input type="text" id="plzInput" class="plz-input" placeholder="Postleitzahl" maxlength="5" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPLZ()">
+          <button class="plz-btn" onclick="checkPLZ()">Prüfen</button>
+        </div>
+        <div id="plzResult" class="plz-result"></div>
       </div>
-      <div id="plzResult" class="plz-result"></div>
     </div>
   </div>
 
