@@ -176,7 +176,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .mehr-link:hover::after{transform:translateX(4px);}
 
 /* ── HERO ── */
-.hero{min-height:calc(100vh - 80px);display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--border);background:#faf7f3;}
+.hero{min-height:calc(100vh - 80px);display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--border);background:#fdfcf9;}
 .hero-content{padding:64px 7% 56px 6%;display:flex;flex-direction:column;justify-content:center;max-width:760px;}
 .hero-img-wrap{position:relative;overflow:hidden;}
 .hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;}
@@ -186,7 +186,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .hero-btns .btn,.hero-btns .btn-outline{flex:1;min-width:140px;text-align:center;margin:0;display:flex;align-items:center;justify-content:center;}
 .hero-plz{margin-top:32px;max-width:420px;padding-top:28px;border-top:1px solid var(--beige-dark);}
 .hero-plz-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px;}
-@media(max-width:860px){.hero{grid-template-columns:1fr;border-bottom:1px solid var(--border);min-height:auto;background:#faf7f3;}.hero-img-wrap{height:300px;order:-1;}.hero-content{padding:36px 5% 44px;}}
+@media(max-width:860px){.hero{grid-template-columns:1fr;border-bottom:1px solid var(--border);min-height:auto;background:#fdfcf9;}.hero-img-wrap{height:300px;order:-1;}.hero-content{padding:36px 5% 44px;}}
 @media(max-width:600px){.hero-img-wrap{display:none;}}
 
 /* ── INFOBAR ── */
@@ -375,7 +375,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .addr-hint.warn{display:block;background:rgba(200,80,40,0.07);color:#8a3a18;border:1px solid rgba(200,80,40,0.2);}
 
 /* ── PHILOSOPHIE SEKTION ── */
-.philosophie-sec{padding:80px 6%;border-top:1px solid var(--border);background:#faf7f3;}
+.philosophie-sec{padding:80px 6%;border-top:1px solid var(--border);background:#fdfcf9;}
 .phil-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:28px;display:block;}
 .phil-statement{font-family:'Montserrat',sans-serif;font-size:clamp(26px,4vw,48px);font-weight:700;line-height:1.08;letter-spacing:-2px;color:var(--text);margin-bottom:32px;max-width:720px;padding-bottom:20px;border-bottom:3px solid var(--gold);display:inline-block;}
 .phil-text{font-family:'Lato',sans-serif;font-size:16px;color:var(--muted);line-height:1.8;max-width:600px;margin-bottom:10px;}
@@ -634,7 +634,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="pm-block">
       <h2 class="pm-heading">Allgemeine Hinweise zur Abrechnung</h2>
       <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
-        <div style="padding:16px 18px;border-left:3px solid var(--gold);background:#faf7f3;">
+        <div style="padding:16px 18px;border-left:3px solid var(--gold);background:#fdfcf9;">
           <strong style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;display:block;margin-bottom:6px;">Orientierungsrahmen</strong>
           <p style="font-family:'Lato',sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Die Preise orientieren sich an den GebüTh (Gebührenübersicht für Therapeuten) und den beihilfefähigen Höchstbeträgen gemäß Beihilfeverordnung BW / BhV Bund. PKV und Beihilfe erstatten in der Regel bis zu diesen Beträgen — eine Differenz über den Höchstbetrag hinaus trägt der Patient selbst.</p>
         </div>
@@ -664,7 +664,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <button class="btn-outline" onclick="show('leistungen')">Leistungen</button>
       </div>
       <div class="hero-plz">
-        <span class="hero-plz-label">Bin ich bei Ihnen? — Einzugsgebiet prüfen</span>
+        <span class="hero-plz-label">Liegt Ihr Wohnort in meinem Einzugsgebiet?</span>
         <div class="plz-form">
           <input type="text" id="plzInput" class="plz-input" placeholder="Postleitzahl" maxlength="5" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPLZ()">
           <button class="plz-btn" onclick="checkPLZ()">Prüfen</button>
@@ -720,7 +720,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     </div>
   </div>
 
-  <div class="sec" style="padding-top:0;">
+  <div class="sec" style="padding-top:0;background:#fdfcf9;">
     <span class="eyebrow">Zielgruppe</span>
     <h2 class="sec-title sec-title-gold" style="margin-bottom:20px;">Für wen?</h2>
     <div class="zg-box" style="border:none;background:none;padding:0;display:flex;flex-direction:column;gap:0;max-width:480px;">
@@ -794,7 +794,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         </div>
 
         <!-- Block 3: Hausbesuch -->
-        <div style="margin-bottom:32px;padding:16px 20px;border:1px solid var(--border);background:#faf7f3;">
+        <div style="margin-bottom:32px;padding:16px 20px;border:1px solid var(--border);background:#fdfcf9;">
           <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Hausbesuch &amp; Fahrtkosten</div>
           <p style="font-family:'Lato',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin:0;">10,00 € <span style="font-weight:400;font-size:13px;color:var(--muted);">pro Hausbesuch · einheitlich für alle Patienten</span></p>
         </div>
