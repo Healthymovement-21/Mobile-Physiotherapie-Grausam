@@ -1475,13 +1475,10 @@ function toggleOverlay(){
   if(!ov.classList.contains('open')){ov.style.height=(window.innerHeight-80)+'px';}
   ov.classList.toggle('open');
   document.body.style.overflow=ov.classList.contains('open')?'hidden':'';
-  const sp=btn.querySelectorAll('span');
   if(ov.classList.contains('open')){
-    sp[0].style.transform='translateY(7px) rotate(45deg)';
-    sp[1].style.opacity='0';
-    sp[2].style.transform='translateY(-7px) rotate(-45deg)';
+    btn.innerHTML='<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="2" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="20" y1="2" x2="2" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
   }else{
-    sp[0].style.transform='';sp[1].style.opacity='';sp[2].style.transform='';
+    btn.innerHTML='<span></span><span></span><span></span>';
   }
 }
 function faq(btn){
