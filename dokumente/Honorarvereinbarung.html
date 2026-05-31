@@ -106,7 +106,14 @@
   td {
     padding: 7px 8px;
     border-bottom: 1px solid #e8e8e8;
-    vertical-align: top;
+    vertical-align: middle;
+  }
+  .cb-cell {
+    width: 28px;
+    text-align: center;
+    font-size: 15pt;
+    color: #999;
+    padding: 7px 4px;
   }
   tr:last-child td {
     border-bottom: none;
@@ -217,6 +224,7 @@
   <table>
     <thead>
       <tr>
+        <th style="width:28px;"></th>
         <th>Leistung</th>
         <th>Behandlungsdauer</th>
         <th>Honorar (netto)</th>
@@ -224,36 +232,43 @@
     </thead>
     <tbody>
       <tr>
+        <td class="cb-cell">☐</td>
         <td>Krankengymnastik (KG)</td>
         <td>35 Minuten</td>
         <td>45,00 €</td>
       </tr>
       <tr>
+        <td class="cb-cell">☐</td>
         <td>Krankengymnastik (KG)</td>
         <td>45 Minuten</td>
         <td>65,00 €</td>
       </tr>
       <tr>
+        <td class="cb-cell">☐</td>
         <td>Krankengymnastik (KG)</td>
         <td>60 Minuten</td>
         <td>85,00 €</td>
       </tr>
       <tr>
+        <td class="cb-cell">☐</td>
         <td>Manuelle Therapie (MT)</td>
         <td colspan="2" style="color:#555;font-style:italic;">auf Anfrage</td>
       </tr>
       <tr>
+        <td class="cb-cell">☐</td>
         <td>Manuelle Lymphdrainage (MLD)</td>
         <td colspan="2" style="color:#555;font-style:italic;">auf Anfrage</td>
       </tr>
       <tr>
+        <td class="cb-cell">☐</td>
         <td>Klassische Massagetherapie (KMT)</td>
         <td colspan="2" style="color:#555;font-style:italic;">auf Anfrage</td>
       </tr>
       <tr>
+        <td class="cb-cell" style="color:#111;">✓</td>
         <td><strong>Fahrtkosten / Hausbesuchspauschale</strong></td>
         <td>–</td>
-        <td><strong>15,00 €</strong></td>
+        <td><strong>10,00 €</strong></td>
       </tr>
     </tbody>
   </table>
@@ -292,7 +307,10 @@
     <div class="sig-line">Unterschrift Patient / in<br>(ggf. gesetzliche Vertretung)</div>
   </div>
   <div>
-    <div style="margin-bottom:32px;font-size:9.5pt;color:#777;">Leimen, _______________</div>
+    <div class="field-row" style="margin-bottom:32px;">
+      <span class="field-label">Ort, Datum</span>
+      <span class="field-line"></span>
+    </div>
     <div class="sig-line">Nick Grausam · Physiotherapeut</div>
   </div>
 </div>
