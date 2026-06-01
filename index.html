@@ -391,6 +391,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:400;background:#fff;border-botto
 .visual-sec-body{text-align:center;padding:40px 0 0;}
 .visual-sec-title{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(20px,2.5vw,28px);font-weight:700;letter-spacing:-0.5px;color:var(--text);margin-bottom:16px;}
 .visual-sec-desc{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;max-width:520px;margin:0 auto 32px;}
+.visual-sec-img{border-radius:var(--radius-lg);box-shadow:var(--shadow);}
+
+/* ── WEGWEISER (Verteiler zu Unterseiten) ── */
+.wegweiser{padding:84px 6%;border-top:1px solid var(--border);background:var(--white);}
+.wegweiser-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
+.ww-card{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:32px 30px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--sand-light);color:var(--text);cursor:pointer;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;}
+.ww-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--beige-dark);}
+.ww-ico{width:46px;height:46px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:4px;}
+.ww-ico i{width:22px;height:22px;stroke:var(--accent);stroke-width:1.6;fill:none;}
+.ww-title{font-family:'DM Sans',system-ui,sans-serif;font-size:19px;font-weight:700;color:var(--text);letter-spacing:-0.3px;}
+.ww-desc{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.65;flex:1;}
+.ww-arrow{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--accent);margin-top:4px;}
+.ww-card:hover .ww-arrow{text-decoration:underline;}
+@media(max-width:760px){.wegweiser{padding:64px 4%;}.wegweiser-grid{grid-template-columns:1fr;gap:14px;}}
 
 /* ── SCROLL ANIMATIONS ── */
 .fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.55s ease,transform 0.55s ease;}
@@ -536,9 +550,9 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 <div class="overlay" id="overlay">
   <ul class="overlay-links">
     <li><a href="javascript:void(0)" onclick="show('home');toggleOverlay()">Start</a></li>
+    <li><a href="javascript:void(0)" onclick="show('leistungen');toggleOverlay()">Leistungen</a></li>
     <li><a href="javascript:void(0)" onclick="show('ablauf');toggleOverlay()">Ablauf</a></li>
     <li><a href="javascript:void(0)" onclick="show('ueber');toggleOverlay()">Über mich</a></li>
-    <li><a href="javascript:void(0)" onclick="show('leistungen');toggleOverlay()">Leistungen</a></li>
     <li><a href="javascript:void(0)" onclick="show('faq');toggleOverlay()">FAQ</a></li>
   </ul>
   <div class="overlay-cta">
@@ -687,43 +701,50 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="stat reveal"><div class="stat-n">100%</div><div class="stat-l">Einzelbetreuung</div></div>
   </div>
 
-  <!-- ── PHILOSOPHIE ── -->
+  <!-- ── PHILOSOPHIE (kompakt) ── -->
   <div class="philosophie-sec">
     <span class="phil-label">Meine Philosophie</span>
     <p class="phil-statement">Aktivieren. Stärken.<br>Selbstständig bleiben.</p>
-    <p class="phil-text">Mein Ziel geht weit über die Behandlung akuter Beschwerden hinaus. Ich möchte meine Patienten nicht nur therapieren, sondern vor allem motivieren — aktiv zu werden, dranzubleiben und den eigenen Körper von Grund auf neu kennenzulernen. Durch eine ganzheitliche Behandlung schaffe ich die Voraussetzungen, um langfristig belastbarer zu werden und Beschwerden zunehmend selbst in den Griff zu bekommen.</p>
-    <p class="phil-text">Mobilität wiederherstellen, Eigenständigkeit im Alltag stärken, Selbstständigkeit fördern und fordern — das sind die Leitgedanken meiner Arbeit. Jede Behandlung ist darauf ausgerichtet, Ihnen mehr Freiheit zurückzugeben: weniger Abhängigkeit, mehr Vertrauen in den eigenen Körper und ein Leben, das Sie aktiv gestalten.</p>
-    <p class="phil-text">Bewegung und Training im Alter gewinnen zu Recht immer mehr Bedeutung. Es ist niemals zu spät, damit anzufangen — und Freude daran zu entdecken. Der Körper ist anpassungsfähiger, als viele glauben. Mit der richtigen Begleitung lässt sich in jedem Lebensabschnitt etwas bewegen.</p>
+    <p class="phil-text">Ich therapiere nicht nur akute Beschwerden — ich motiviere meine Patienten, aktiv zu werden, dranzubleiben und Mobilität zurückzugewinnen. Mein Ziel ist mehr Freiheit im Alltag: weniger Abhängigkeit, mehr Vertrauen in den eigenen Körper. Denn der Körper ist anpassungsfähiger als viele glauben — und für Bewegung ist es nie zu spät.</p>
   </div>
 
-  <!-- ── ANGEBOT-SEKTION ── -->
+  <!-- ── ANGEBOT-SEKTION (ein starker Bild-Block, echtes Foto) ── -->
   <div class="visual-sec">
     <span class="visual-sec-label">Mein Angebot</span>
-    <img class="visual-sec-img" src="foto-2.jpg" alt="Nick Grausam – Mobile Physiotherapie" loading="lazy">
+    <img class="visual-sec-img" src="foto-1.jpg" alt="Nick Grausam – Mobile Physiotherapie" loading="lazy">
     <div class="visual-sec-body">
-      <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Nick Grausam</p>
+      <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Nick Grausam · Staatlich anerkannter Physiotherapeut</p>
       <h2 class="visual-sec-title">Individuelle Physiotherapie<br>direkt bei Ihnen zuhause.</h2>
     </div>
   </div>
 
-  <!-- ── BILD-SEKTION: Physiotherapie ── -->
-  <div class="visual-sec" style="padding-bottom:0;">
-    <span class="visual-sec-label">Behandlung</span>
-    <img class="visual-sec-img" style="max-height:600px;" src="https://images.unsplash.com/photo-1620050382792-434b5828873d?w=1400&q=85&auto=format&fit=crop" alt="Physiotherapie Behandlung" loading="lazy">
-    <div class="visual-sec-body" style="padding-bottom:60px;">
-      <h2 class="visual-sec-title">Professionelle Therapie —<br>wo Sie sie brauchen.</h2>
+  <!-- ── WEGWEISER: Verteiler zu den Unterseiten ── -->
+  <div class="wegweiser">
+    <span class="eyebrow">Wie geht es weiter?</span>
+    <h2 class="sec-title">Alles Wichtige auf einen Blick</h2>
+    <div class="wegweiser-grid">
+      <a class="ww-card reveal" href="javascript:void(0)" onclick="show('leistungen')">
+        <div class="ww-ico"><i data-lucide="clipboard-list" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i></div>
+        <div class="ww-title">Leistungen &amp; Preise</div>
+        <div class="ww-desc">Krankengymnastik, Manuelle Therapie, Lymphdrainage &amp; Massage — mit transparenten Honoraren.</div>
+        <div class="ww-arrow">Ansehen →</div>
+      </a>
+      <a class="ww-card reveal" href="javascript:void(0)" onclick="show('ablauf')">
+        <div class="ww-ico"><i data-lucide="footprints" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i></div>
+        <div class="ww-title">So läuft es ab</div>
+        <div class="ww-desc">Von der ersten Anfrage bis zur Behandlung — in vier einfachen, transparenten Schritten.</div>
+        <div class="ww-arrow">Ansehen →</div>
+      </a>
+      <a class="ww-card reveal" href="javascript:void(0)" onclick="show('ueber')">
+        <div class="ww-ico"><i data-lucide="user-round" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i></div>
+        <div class="ww-title">Über mich</div>
+        <div class="ww-desc">Wer ich bin, wie ich arbeite und was mir in der Therapie wirklich wichtig ist.</div>
+        <div class="ww-arrow">Ansehen →</div>
+      </a>
     </div>
   </div>
 
-  <!-- ── BILD-SEKTION: Geriatrie ── -->
-  <div class="visual-sec">
-    <span class="visual-sec-label">Zielgruppe</span>
-    <img class="visual-sec-img" style="max-height:600px;" src="https://images.unsplash.com/photo-1587556930720-58ec521056a5?w=1400&q=85&auto=format&fit=crop" alt="Ältere Patienten – Mobile Physiotherapie" loading="lazy">
-    <div class="visual-sec-body">
-      <h2 class="visual-sec-title">Für Menschen,<br>die zuhause bleiben möchten.</h2>
-    </div>
-  </div>
-
+  <!-- ── MEINE PATIENTEN ── -->
   <div class="sec" style="padding-top:0;background:#fdfcf9;">
     <h2 class="sec-title sec-title-gold reveal" style="margin-bottom:20px;">Meine Patienten</h2>
     <div class="zg-box" style="border:none;background:none;padding:0;display:flex;flex-direction:column;gap:0;max-width:480px;">
@@ -733,8 +754,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <div class="zg-item">◆ &nbsp;Chronisch kranke &amp; immobile Patienten</div>
       <div class="zg-item">◆ &nbsp;Individuelle Beschwerdebilder</div>
     </div>
-    <div style="margin-top:32px;display:flex;flex-direction:column;gap:36px;align-items:flex-start;">
-      <a class="mehr-link" href="javascript:void(0)" onclick="show('ueber')">Über mich</a>
+    <div style="margin-top:36px;">
+      <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
     </div>
   </div>
 
@@ -955,59 +976,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           <a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')">Leistungen &amp; Preise</a>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ LEISTUNGEN RASTER ═══ -->
-<div class="page" id="leistungen-raster">
-  <div class="sec" style="border-top:1px solid var(--border);">
-    <span class="eyebrow">Behandlungsangebot</span>
-    <h2 class="sec-title" style="margin-bottom:40px;">Was ich behandle</h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;border:1px solid var(--border);">
-      <div style="padding:28px 22px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
-        <div style="margin-bottom:14px;"><i data-lucide="activity" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Krankengymnastik</div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">KG</div>
-      </div>
-      <div style="padding:28px 22px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
-        <div style="margin-bottom:14px;"><i data-lucide="hand" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Manuelle Therapie</div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">MT</div>
-      </div>
-      <div style="padding:28px 22px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
-        <div style="margin-bottom:14px;"><i data-lucide="droplets" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Manuelle Lymphdrainage</div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">MLD</div>
-      </div>
-      <div style="padding:28px 22px;border-bottom:1px solid var(--border);">
-        <div style="margin-bottom:14px;"><i data-lucide="sparkles" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Klassische Massage</div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">KMT</div>
-      </div>
-      <div style="padding:28px 22px;border-right:1px solid var(--border);">
-        <div style="margin-bottom:14px;"><i data-lucide="move" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Gangschule</div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Mobilitätstraining</div>
-      </div>
-      <div style="padding:28px 22px;border-right:1px solid var(--border);">
-        <div style="margin-bottom:14px;"><i data-lucide="dumbbell" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Funktionelles Training</div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Alltagstraining</div>
-      </div>
-      <div style="padding:28px 22px;border-right:1px solid var(--border);">
-        <div style="margin-bottom:14px;"><i data-lucide="wind" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Atemtherapie</div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">AT</div>
-      </div>
-      <div style="padding:28px 22px;">
-        <div style="margin-bottom:14px;"><i data-lucide="stethoscope" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none;"></i></div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Befundung &amp; Beratung</div>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">In jeder Behandlung</div>
-      </div>
-    </div>
-    <div style="margin-top:32px;">
-      <a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')">Alle Leistungen &amp; Preise</a>
     </div>
   </div>
 </div>
