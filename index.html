@@ -20,9 +20,9 @@
 <meta name="twitter:title" content="Mobile Physiotherapie Grausam">
 <meta name="twitter:description" content="Mobile Physiotherapie im Hausbesuch · Raum Heidelberg–Karlsruhe · Für Privatpatienten, Beihilfe &amp; Selbstzahler.">
 <link rel="canonical" href="https://physiotherapie-grausam.com/">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
 <style>
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/DMSans-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
 @font-face{font-family:'DM Sans';font-style:italic;font-weight:400;font-display:swap;src:url('fonts/DMSans-400italic-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
@@ -34,12 +34,6 @@
   "name": "Mobile Physiotherapie Grausam",
   "description": "Professionelle Physiotherapie Hausbesuche für Privatpatienten, Beihilfe und Selbstzahler im Raum Heidelberg bis Karlsruhe.",
   "url": "https://physiotherapie-grausam.com/",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Leimen",
-    "addressRegion": "Baden-Württemberg",
-    "addressCountry": "DE"
-  },
   "areaServed": {
     "@type": "GeoCircle",
     "geoMidpoint": {
@@ -99,12 +93,11 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:va
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:400;background:#fff;border-bottom:1px solid var(--border);padding:0 6%;height:80px;display:flex;align-items:center;justify-content:space-between;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);transition:background 0.3s,border-color 0.3s;}
 .nav-logo{cursor:pointer;}
-.burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;color:var(--text);}
+.burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;}
 .burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform 0.3s,opacity 0.3s,background 0.3s;}
 /* Transparente Navi über dem Cinematic-Hero */
 nav.nav-over{background:transparent;border-bottom-color:transparent;}
 nav.nav-over .nav-logo-img{filter:brightness(0) invert(1);}
-nav.nav-over .burger{color:#fff;}
 nav.nav-over .burger span{background:#fff;}
 
 /* ── OVERLAY NAV ── */
@@ -114,11 +107,11 @@ nav.nav-over .burger span{background:#fff;}
 .overlay-links{list-style:none;width:100%;max-width:560px;text-align:center;}
 .overlay-links li{border-top:1px solid var(--border);}
 .overlay-links li:last-child{border-bottom:1px solid var(--border);}
-.overlay-links a{display:block;font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:600;color:var(--text);text-decoration:none;padding:14px 0;letter-spacing:-0.5px;transition:color 0.2s;cursor:pointer;}
-.overlay-links a:hover{color:var(--accent);}
-.overlay-cta{margin-top:28px;}
-.overlay-cta a{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;text-decoration:none;background:var(--accent);border:none;padding:15px 44px;display:inline-block;border-radius:var(--radius-sm);transition:background 0.2s;cursor:pointer;}
-.overlay-cta a:hover{background:var(--accent-dark);}
+.overlay-links a{display:block;font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(26px,4vw,44px);font-weight:700;color:var(--text);text-decoration:none;padding:18px 0;letter-spacing:-1px;transition:color 0.2s;cursor:pointer;}
+.overlay-links a:hover{color:var(--muted);}
+.overlay-cta{margin-top:40px;}
+.overlay-cta a{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);text-decoration:none;border:1.5px solid var(--text);padding:14px 40px;display:inline-block;transition:all 0.2s;cursor:pointer;}
+.overlay-cta a:hover{background:var(--text);color:#fff;}
 
 
 /* ── PAGES ── */
@@ -185,7 +178,7 @@ nav.nav-over .burger span{background:#fff;}
 .mehr-link:hover::after{transform:translateX(4px);}
 
 /* ── HERO ── */
-.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;border-bottom:none;background:#17140f;overflow:hidden;}
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;border-bottom:none;background:radial-gradient(ellipse 130% 70% at 62% 45%,rgba(167,147,124,.14) 0%,transparent 55%),radial-gradient(ellipse 80% 55% at 4% 68%,rgba(167,147,124,.08) 0%,transparent 50%),radial-gradient(ellipse 45% 65% at 92% 12%,rgba(203,185,163,.06) 0%,transparent 45%),linear-gradient(155deg,#1d1a14 0%,#17140f 48%,#1a1710 100%);overflow:hidden;}
 .hero-content{position:relative;z-index:2;padding:104px 7% 56px;max-width:840px;width:100%;display:flex;flex-direction:column;justify-content:flex-end;}
 .hero-img-wrap{position:absolute;inset:0;margin:0;border-radius:0;box-shadow:none;overflow:hidden;z-index:0;}
 .hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 26%;}
@@ -327,7 +320,7 @@ nav.nav-over .burger span{background:#fff;}
 /* ── ÜBER MICH ── */
 .ueber-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
 .ueber-img-wrap{display:flex;flex-direction:column;align-items:center;}
-.ueber-img{width:100%;max-width:420px;aspect-ratio:4/5;object-fit:cover;object-position:center 18%;border-radius:var(--radius-lg);box-shadow:var(--shadow);}
+.ueber-img{width:100%;max-width:400px;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:var(--radius-lg);box-shadow:var(--shadow);}
 .ueber-name-card{background:transparent;border:none;border-top:1px solid #e8e8e8;padding:14px 0 0;margin-top:14px;text-align:center;width:100%;max-width:400px;}
 .ueber-name-card .name{font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:700;color:var(--text);}
 .ueber-name-card .role{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:0.3px;}
@@ -397,7 +390,7 @@ nav.nav-over .burger span{background:#fff;}
 /* ── VISUELL-SEKTION (Bild + Titel + Button, zentriert) ── */
 .visual-sec{padding:0 6% 80px;border-top:1px solid var(--border);}
 .visual-sec-label{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-align:center;padding:48px 0 32px;display:block;}
-.visual-sec-img{width:100%;max-height:520px;object-fit:cover;object-position:center 20%;display:block;}
+.visual-sec-img{width:100%;max-height:520px;object-fit:cover;object-position:top center;display:block;}
 .visual-sec-body{text-align:center;padding:40px 0 0;}
 .visual-sec-title{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(20px,2.5vw,28px);font-weight:700;letter-spacing:-0.5px;color:var(--text);margin-bottom:16px;}
 .visual-sec-desc{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;max-width:520px;margin:0 auto 32px;}
@@ -559,8 +552,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
 <div class="overlay" id="overlay">
   <ul class="overlay-links">
-    <li><a href="javascript:void(0)" onclick="show('ueber');toggleOverlay()">Über mich</a></li>
     <li><a href="javascript:void(0)" onclick="show('home');toggleOverlay()">Start</a></li>
+    <li><a href="javascript:void(0)" onclick="show('ueber');toggleOverlay()">Über mich</a></li>
     <li><a href="javascript:void(0)" onclick="show('leistungen');toggleOverlay()">Leistungen</a></li>
     <li><a href="javascript:void(0)" onclick="show('ablauf');toggleOverlay()">Ablauf</a></li>
     <li><a href="javascript:void(0)" onclick="show('faq');toggleOverlay()">FAQ</a></li>
@@ -694,9 +687,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <button class="btn-outline" onclick="show('leistungen')">Leistungen</button>
       </div>
     </div>
-    <div class="hero-img-wrap">
-      <img src="foto-hero.jpg" alt="Nick Grausam – Mobile Physiotherapie, Hausbesuche Raum Heidelberg–Karlsruhe" loading="eager">
-    </div>
   </div>
 
   <!-- ── PLZ-CHECK BAND ── -->
@@ -730,7 +720,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   <!-- ── ANGEBOT-SEKTION (ein starker Bild-Block, echtes Foto) ── -->
   <div class="visual-sec">
     <span class="visual-sec-label">Mein Angebot</span>
-    <img class="visual-sec-img" src="foto-hero.jpg" alt="Nick Grausam – Mobile Physiotherapie" loading="lazy">
+    <img class="visual-sec-img" src="foto-3-enhanced.jpg" alt="Nick Grausam – Mobile Physiotherapie" loading="lazy">
     <div class="visual-sec-body">
       <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Nick Grausam · Staatlich anerkannter Physiotherapeut</p>
       <h2 class="visual-sec-title">Individuelle Physiotherapie<br>direkt bei Ihnen zuhause.</h2>
@@ -972,7 +962,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   <div class="sec">
     <div class="ueber-grid">
       <div class="ueber-img-wrap">
-        <img class="ueber-img" src="foto-hero.jpg" alt="Nick Grausam – Mobile Physiotherapie" loading="lazy">
+        <img class="ueber-img" src="foto-2.jpg" alt="Nick Grausam – Mobile Physiotherapie" loading="lazy">
         <div class="ueber-name-card">
           <div class="name">Nick Grausam</div>
           <div class="role">Staatlich anerkannter Physiotherapeut</div>
@@ -1473,19 +1463,27 @@ function updateNav(){
 window.addEventListener('scroll',updateNav,{passive:true});
 window.addEventListener('resize',updateNav,{passive:true});
 
-function show(id){
+function show(id,push){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   sessionStorage.setItem('page',id);
+  if(push!==false)history.pushState({page:id},'','#'+id);
   window.scrollTo(0,0);
   setTimeout(()=>revealPage(id),30);
   updateNav();
 }
-const _saved = sessionStorage.getItem('page');
-if(_saved && document.getElementById(_saved)){
+window.addEventListener('popstate',function(e){
+  var id=(e.state&&e.state.page)||'home';
+  if(document.getElementById(id))show(id,false);
+});
+const _hash=location.hash.slice(1);
+const _saved=sessionStorage.getItem('page');
+const _start=(_hash&&document.getElementById(_hash))?_hash:(_saved&&document.getElementById(_saved))?_saved:'home';
+if(_start!=='home'||location.hash){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(_saved).classList.add('active');
+  (document.getElementById(_start)||document.getElementById('home')).classList.add('active');
 }
+history.replaceState({page:document.querySelector('.page.active').id},'','#'+document.querySelector('.page.active').id);
 // initial reveal for active page on load
 setTimeout(()=>{
   const active=document.querySelector('.page.active');
