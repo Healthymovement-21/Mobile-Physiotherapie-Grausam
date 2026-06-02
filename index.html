@@ -112,8 +112,8 @@ nav .burger span{background:#fff;}
 /* ── OVERLAY DRAWER (right side) ── */
 .overlay-backdrop{position:fixed;inset:0;background:rgba(23,20,15,0.45);z-index:340;opacity:0;pointer-events:none;transition:opacity 0.35s ease;}
 .overlay-backdrop.open{opacity:1;pointer-events:all;}
-.overlay{position:fixed;top:80px;left:0;right:0;background:#fff;z-index:360;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;transform:translateY(-110%);pointer-events:none;transition:transform 0.36s cubic-bezier(0.4,0,0.2,1);padding:32px 9% 40px;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));box-shadow:0 12px 40px rgba(0,0,0,0.10);}
-.overlay.open{transform:translateY(0);pointer-events:all;}
+.overlay{position:fixed;top:80px;left:0;right:0;background:#fff;z-index:360;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;transform:translateY(-110%);visibility:hidden;pointer-events:none;transition:transform 0.36s cubic-bezier(0.4,0,0.2,1),visibility 0s linear 0.36s;padding:32px 9% 40px;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));box-shadow:0 12px 40px rgba(0,0,0,0.10);}
+.overlay.open{transform:translateY(0);visibility:visible;pointer-events:all;transition:transform 0.36s cubic-bezier(0.4,0,0.2,1),visibility 0s linear 0s;}
 .overlay-close{position:absolute;top:16px;right:18px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:var(--text);border-radius:50%;transition:background 0.15s;}
 .overlay-close:hover{background:var(--beige);}
 .overlay-links{list-style:none;width:100%;}
