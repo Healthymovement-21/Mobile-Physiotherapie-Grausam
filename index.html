@@ -98,14 +98,16 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:va
 .page{overflow-x:hidden;max-width:100%;}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:420;background:#fff;border-bottom:1px solid var(--border);padding:0 9%;height:80px;display:flex;align-items:center;justify-content:space-between;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);transition:background 0.3s,border-color 0.3s;}
+nav{position:fixed;top:0;left:0;right:0;z-index:420;background:transparent;border-bottom:1px solid transparent;padding:0 9%;height:80px;display:flex;align-items:center;justify-content:space-between;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);transition:background 0.3s,border-color 0.3s;}
+nav.nav-white{background:#fff;border-bottom-color:var(--border);}
+nav.nav-white .nav-logo-img{filter:none;}
+nav.nav-white .burger span{background:var(--text);}
 .nav-logo{cursor:pointer;}
 .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;color:var(--text);}
 .burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform 0.3s,opacity 0.3s,background 0.3s;}
-/* Transparente Navi über dem Cinematic-Hero */
-nav.nav-over{background:transparent;border-bottom-color:transparent;}
-nav.nav-over .nav-logo-img{filter:brightness(0) invert(1);}
-nav.nav-over .burger span{background:#fff;}
+/* Logo/Burger immer weiß auf transparenter Nav */
+nav .nav-logo-img{filter:brightness(0) invert(1);}
+nav .burger span{background:#fff;}
 
 /* ── OVERLAY DRAWER (right side) ── */
 .overlay-backdrop{position:fixed;inset:0;background:rgba(23,20,15,0.45);z-index:340;opacity:0;pointer-events:none;transition:opacity 0.35s ease;}
@@ -567,7 +569,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 </head>
 <body>
 
-<nav class="nav-over">
+<nav>
   <span class="nav-logo" onclick="show('home')">
   <img src="logo.svg" alt="Mobile Physiotherapie Grausam" class="nav-logo-img">
 </span>
@@ -1562,8 +1564,8 @@ function updateNav(){
   if(!nav)return;
   const homeActive=document.getElementById('home').classList.contains('active');
   const atTop=window.pageYOffset < (window.innerHeight*0.55);
-  if(homeActive && atTop){ nav.classList.add('nav-over'); }
-  else { nav.classList.remove('nav-over'); }
+  if(homeActive && atTop){ nav.classList.remove('nav-white'); }
+  else { nav.classList.add('nav-white'); }
   const activePage=document.querySelector('.page.active');
   if(activePage){
     document.querySelectorAll('.overlay-links a').forEach(function(a){
