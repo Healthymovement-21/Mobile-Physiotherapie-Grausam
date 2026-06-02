@@ -1743,6 +1743,96 @@ function _portalDate(){
   });
 })();
 
+// ── BARRIEREFREIHEITS-WIDGET ──
+(function(){
+  const CSS=`
+  #a11y-fab{position:fixed;bottom:80px;right:18px;z-index:8000;width:44px;height:44px;border-radius:50%;background:#fff;border:1.5px solid #ddd;box-shadow:0 2px 12px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:box-shadow 0.2s;}
+  #a11y-fab:hover{box-shadow:0 4px 18px rgba(0,0,0,.18);}
+  #a11y-fab svg{width:20px;height:20px;stroke:#444;stroke-width:1.6;fill:none;}
+  #a11y-panel{position:fixed;bottom:132px;right:18px;z-index:8000;background:#fff;border:1px solid #e0dbd4;border-radius:14px;box-shadow:0 6px 28px rgba(0,0,0,.12);padding:18px 20px;width:230px;font-family:'DM Sans',system-ui,sans-serif;display:none;}
+  #a11y-panel.open{display:block;}
+  .a11y-head{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin-bottom:14px;}
+  .a11y-row{margin-bottom:12px;}
+  .a11y-label{font-size:12px;color:#555;margin-bottom:6px;display:block;}
+  .a11y-btns{display:flex;gap:6px;}
+  .a11y-sz{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;color:#333;background:#f5f3ef;border:1.5px solid transparent;border-radius:8px;cursor:pointer;padding:6px 10px;transition:all 0.15s;line-height:1;}
+  .a11y-sz:hover,.a11y-sz.active{background:#fff;border-color:#333;}
+  .a11y-toggle{width:100%;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.5px;color:#333;background:#f5f3ef;border:1.5px solid transparent;border-radius:8px;cursor:pointer;padding:8px 12px;text-align:left;transition:all 0.15s;display:flex;align-items:center;justify-content:space-between;}
+  .a11y-toggle:hover,.a11y-toggle.active{background:#fff;border-color:#333;}
+  .a11y-toggle .a11y-dot{width:12px;height:12px;border-radius:50%;background:#ddd;transition:background 0.2s;flex-shrink:0;}
+  .a11y-toggle.active .a11y-dot{background:#2f7355;}
+  .a11y-reset{display:block;margin-top:12px;padding-top:12px;border-top:1px solid #eee;font-size:11px;color:#aaa;cursor:pointer;text-align:center;transition:color 0.15s;}
+  .a11y-reset:hover{color:#555;}
+  /* Schriftgrößen-Stufen */
+  html[data-fs="1"]{font-size:108%;}
+  html[data-fs="2"]{font-size:118%;}
+  html[data-fs="3"]{font-size:130%;}
+  /* Hoher Kontrast */
+  body.hc{--text:#000;--muted:#222;--border:#888;background:#fff!important;}
+  body.hc .sec,body.hc .page,body.hc .dark-sec,body.hc .philosophie-sec{background:#fff!important;}
+  body.hc .dark-sec .sec-title,body.hc .dark-sec p,body.hc .step-t,body.hc .step-p{color:#000!important;}
+  body.hc .hero-title,body.hc .hero-sub{color:#000!important;}
+  body.hc .hero{background:#fff!important;}
+  body.hc nav{background:#fff!important;border-bottom:2px solid #000!important;}
+  body.hc .nav-logo-img{filter:none!important;}
+  body.hc a,body.hc .mehr-link,body.hc .btn,body.hc .hero-link{color:#000!important;}
+  `;
+  const style=document.createElement('style');
+  style.textContent=CSS;
+  document.head.appendChild(style);
+
+  const fab=document.createElement('button');
+  fab.id='a11y-fab';
+  fab.setAttribute('aria-label','Barrierefreiheit');
+  fab.innerHTML=`<svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="1.5"/><path d="M9 9h6M12 9v7M9 16l-2 4M15 16l2 4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+  const panel=document.createElement('div');
+  panel.id='a11y-panel';
+  panel.innerHTML=`
+    <div class="a11y-head">Barrierefreiheit</div>
+    <div class="a11y-row">
+      <span class="a11y-label">Schriftgröße</span>
+      <div class="a11y-btns">
+        <button class="a11y-sz" data-fs="0">A</button>
+        <button class="a11y-sz" data-fs="1">A+</button>
+        <button class="a11y-sz" data-fs="2">A++</button>
+        <button class="a11y-sz" data-fs="3">A+++</button>
+      </div>
+    </div>
+    <div class="a11y-row">
+      <button class="a11y-toggle" id="a11y-hc-btn">Hoher Kontrast <span class="a11y-dot"></span></button>
+    </div>
+    <span class="a11y-reset" id="a11y-reset">Zurücksetzen</span>`;
+
+  document.body.appendChild(fab);
+  document.body.appendChild(panel);
+
+  let fs=parseInt(localStorage.getItem('a11y_fs')||'0');
+  let hc=localStorage.getItem('a11y_hc')==='1';
+
+  function applyFs(v){
+    fs=v;
+    document.documentElement.setAttribute('data-fs',v||'');
+    panel.querySelectorAll('.a11y-sz').forEach(b=>b.classList.toggle('active',parseInt(b.dataset.fs)===v));
+    localStorage.setItem('a11y_fs',v);
+  }
+  function applyHc(v){
+    hc=v;
+    document.body.classList.toggle('hc',v);
+    document.getElementById('a11y-hc-btn').classList.toggle('active',v);
+    localStorage.setItem('a11y_hc',v?'1':'0');
+  }
+
+  applyFs(fs);
+  applyHc(hc);
+
+  fab.addEventListener('click',function(e){e.stopPropagation();panel.classList.toggle('open');});
+  document.addEventListener('click',function(e){if(!panel.contains(e.target)&&e.target!==fab)panel.classList.remove('open');});
+  panel.querySelectorAll('.a11y-sz').forEach(b=>b.addEventListener('click',()=>applyFs(parseInt(b.dataset.fs))));
+  document.getElementById('a11y-hc-btn').addEventListener('click',()=>applyHc(!hc));
+  document.getElementById('a11y-reset').addEventListener('click',function(){applyFs(0);applyHc(false);});
+})();
+
 </script>
 </body>
 </html>
