@@ -110,14 +110,16 @@ nav.nav-over .burger span{background:#fff;}
 /* ── OVERLAY DRAWER (right side) ── */
 .overlay-backdrop{position:fixed;inset:0;background:rgba(23,20,15,0.45);z-index:340;opacity:0;pointer-events:none;transition:opacity 0.35s ease;}
 .overlay-backdrop.open{opacity:1;pointer-events:all;}
-.overlay{position:fixed;top:0;right:0;bottom:0;width:min(360px,100vw);background:#fff;z-index:360;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;transform:translateX(100%);pointer-events:none;transition:transform 0.38s cubic-bezier(0.4,0,0.2,1);padding:88px 48px 48px;padding-bottom:calc(48px + env(safe-area-inset-bottom,0px));box-shadow:-16px 0 48px rgba(0,0,0,0.14);}
+.overlay{position:fixed;top:0;right:0;bottom:0;width:min(360px,100vw);background:#fff;z-index:360;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;transform:translateX(100%);pointer-events:none;transition:transform 0.38s cubic-bezier(0.4,0,0.2,1);padding:64px 40px 40px;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));box-shadow:-16px 0 48px rgba(0,0,0,0.14);}
 .overlay.open{transform:translateX(0);pointer-events:all;}
+.overlay-close{position:absolute;top:18px;right:18px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:var(--text);border-radius:50%;transition:background 0.15s;}
+.overlay-close:hover{background:var(--beige);}
 .overlay-links{list-style:none;width:100%;}
 .overlay-links li{border-top:1px solid var(--border);}
 .overlay-links li:last-child{border-bottom:1px solid var(--border);}
-.overlay-links a{display:block;font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(22px,3.5vw,32px);font-weight:700;color:var(--text);text-decoration:none;padding:16px 0;letter-spacing:-0.5px;transition:color 0.2s;cursor:pointer;}
+.overlay-links a{display:block;font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(18px,2.8vw,24px);font-weight:500;color:var(--text);text-decoration:none;padding:14px 0;letter-spacing:0;transition:color 0.2s;cursor:pointer;}
 .overlay-links a:hover{color:var(--muted);}
-.overlay-links a.nav-active{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px;}
+.overlay-links a.nav-active{color:var(--accent);}
 .overlay-cta{margin-top:36px;width:100%;border-top:1px solid var(--border);padding-top:24px;}
 .overlay-cta a{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--text);background:none;text-decoration:none;border:none;display:inline-flex;align-items:center;gap:7px;transition:opacity 0.2s;cursor:pointer;}
 .overlay-cta a::after{content:'→';font-size:13px;letter-spacing:0;}
@@ -574,6 +576,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
 <div class="overlay-backdrop" id="overlayBackdrop" onclick="toggleOverlay()"></div>
 <div class="overlay" id="overlay">
+  <button class="overlay-close" onclick="toggleOverlay()" aria-label="Menü schließen"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><line x1="2" y1="2" x2="16" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="2" x2="2" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
   <ul class="overlay-links">
     <li><a href="javascript:void(0)" onclick="show('home');toggleOverlay()">Start</a></li>
     <li><a href="javascript:void(0)" onclick="show('ueber');toggleOverlay()">Über mich</a></li>
@@ -1191,7 +1194,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 </div>
 
 <!-- ═══ IMPRESSUM ═══ -->
-<div class="page" id="impressum">
+<div class="page" id="impressum" data-nosnippet>
   <div class="legal">
     <h2>Impressum</h2>
     <p class="legal-stand">Angaben gemäß § 5 TMG</p>
@@ -1211,7 +1214,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 </div>
 
 <!-- ═══ DATENSCHUTZ ═══ -->
-<div class="page" id="datenschutz">
+<div class="page" id="datenschutz" data-nosnippet>
   <div class="legal">
     <h2>Datenschutzerklärung</h2>
     <p class="legal-stand">Stand: 16. Mai 2026 · aktualisiert: Kontaktweg auf E-Mail umgestellt</p>
@@ -1277,7 +1280,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 </div>
 
 <!-- ═══ AGB ═══ -->
-<div class="page" id="agb">
+<div class="page" id="agb" data-nosnippet>
   <div class="legal">
     <h2>Behandlungsbedingungen</h2>
     <p class="legal-stand">Stand: 16. Mai 2026</p>
@@ -1607,11 +1610,7 @@ function toggleOverlay(){
   ov.classList.toggle('open');
   bd.classList.toggle('open');
   document.body.style.overflow=ov.classList.contains('open')?'hidden':'';
-  if(ov.classList.contains('open')){
-    btn.innerHTML='<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="2" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="20" y1="2" x2="2" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
-  }else{
-    btn.innerHTML='<span></span><span></span><span></span>';
-  }
+
 }
 function faq(btn){
   const a=btn.nextElementSibling;
@@ -1764,9 +1763,9 @@ function _portalDate(){
   .a11y-reset{display:block;margin-top:12px;padding-top:12px;border-top:1px solid #eee;font-size:11px;color:#aaa;cursor:pointer;text-align:center;transition:color 0.15s;}
   .a11y-reset:hover{color:#555;}
   /* Schriftgrößen-Stufen */
-  html[data-fs="1"]{font-size:108%;}
-  html[data-fs="2"]{font-size:118%;}
-  html[data-fs="3"]{font-size:130%;}
+  html[data-fs="1"]{zoom:1.12;}
+  html[data-fs="2"]{zoom:1.25;}
+  html[data-fs="3"]{zoom:1.40;}
   /* Hoher Kontrast */
   body.hc{--text:#000;--muted:#222;--border:#888;background:#fff!important;}
   body.hc .sec,body.hc .page,body.hc .dark-sec,body.hc .philosophie-sec{background:#fff!important;}
