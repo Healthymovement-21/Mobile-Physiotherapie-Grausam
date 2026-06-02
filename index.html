@@ -392,6 +392,8 @@ nav.nav-over .burger span{background:#fff;}
 .doc-card:hover .doc-card-dl i{stroke:var(--accent);}
 .kontakt-privacy{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);margin-top:40px;line-height:1.6;}
 .kontakt-privacy a{color:var(--text);text-decoration:underline;}
+.kontakt-free{background:rgba(47,115,85,.08);border:1px solid rgba(47,115,85,.22);border-radius:var(--radius-sm);padding:13px 16px;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:#256240;line-height:1.55;margin-bottom:16px;}
+.kontakt-free strong{font-weight:700;}
 @media(max-width:600px){.doc-cards{grid-template-columns:1fr;}}
 .form{display:flex;flex-direction:column;gap:13px;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
@@ -1067,7 +1069,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="leist-hero-inner">
       <span class="leist-hero-eye">Kontakt</span>
       <h1 class="leist-hero-title">Termin anfragen</h1>
-      <p class="leist-hero-sub">Schreiben Sie mir eine E-Mail — ich antworte in der Regel innerhalb von 24 Stunden und melde mich telefonisch oder per Mail zurück.</p>
+      <p class="leist-hero-sub">Ich melde mich persönlich zurück — in der Regel innerhalb von 24 Stunden.</p>
     </div>
   </div>
 
@@ -1076,21 +1078,22 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
       <!-- Links: Kontaktdaten -->
       <div>
-        <h2 class="kontakt-col-title">So erreichen Sie mich</h2>
+        <h2 class="kontakt-col-title">Direkt erreichbar</h2>
         <div class="kontakt-info">
+          <div class="k-row">
+            <div class="k-ico"><i data-lucide="mail"></i></div>
+            <div>
+              <h4>E-Mail</h4>
+              <p><a href="mailto:info@physiotherapie-grausam.com">info@physiotherapie-grausam.com</a></p>
+              <p class="k-note">Antwort in der Regel innerhalb von 24 Stunden</p>
+            </div>
+          </div>
           <div class="k-row">
             <div class="k-ico"><i data-lucide="phone"></i></div>
             <div>
               <h4>Telefon</h4>
               <p><a href="tel:017642685146">0176 4268 5146</a></p>
               <p class="k-note">Mo–Mi &amp; Fr ab 17 Uhr · Sa &amp; So ganztags</p>
-            </div>
-          </div>
-          <div class="k-row">
-            <div class="k-ico"><i data-lucide="mail"></i></div>
-            <div>
-              <h4>E-Mail</h4>
-              <p><a href="mailto:info@physiotherapie-grausam.com">info@physiotherapie-grausam.com</a></p>
             </div>
           </div>
           <div class="k-row">
@@ -1101,10 +1104,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             </div>
           </div>
           <div class="k-row">
-            <div class="k-ico"><i data-lucide="clock"></i></div>
+            <div class="k-ico"><i data-lucide="gift"></i></div>
             <div>
-              <h4>Antwortzeit</h4>
-              <p>In der Regel innerhalb von 24 Stunden</p>
+              <h4>Ersttermin</h4>
+              <p>Kostenlos — bei Vereinbarung eines Folgetetermins</p>
             </div>
           </div>
         </div>
@@ -1113,7 +1116,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <!-- Rechts: Checkliste + CTA -->
       <div>
         <div class="kontakt-box">
-          <h3 class="kontakt-box-title">Was in die E-Mail gehört</h3>
+          <h3 class="kontakt-box-title">Was in die Anfrage gehört</h3>
           <ul class="kontakt-list">
             <li class="kontakt-list-item">
               <span class="kl-label">Vor- und Nachname</span>
@@ -1140,6 +1143,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             </li>
           </ul>
           <p class="kontakt-hint">Mindestens: Name, Rezept und Versicherungsart — alles andere klären wir im Anschluss.</p>
+          <div class="kontakt-free"><strong>Ersttermin kostenlos</strong> — wenn im Anschluss ein Folgetermin vereinbart und wahrgenommen wird.</div>
           <a href="mailto:info@physiotherapie-grausam.com?subject=Terminanfrage%20%E2%80%93%20Mobile%20Physiotherapie%20Grausam&body=Guten%20Tag%2C%0A%0Amein%20Name%20ist%3A%20%0AAlter%20oder%20Geburtsdatum%20(freiwillig)%3A%20%0AWohnanschrift%20(Stra%C3%9Fe%2C%20PLZ%2C%20Ort)%3A%20%0AVersicherungsart%20(PKV%20%C2%B7%20Beihilfe%20%C2%B7%20Selbstzahler)%3A%20%0AFalls%20Rezept%20vorhanden%20%E2%80%93%20was%20steht%20drauf%3F%20(Diagnose%2C%20KG%20%2F%20MT%20%2F%20MLD%20...)%3A%20%0AKurzes%20Anliegen%20(freiwillig)%3A%20%0A%0AIch%20w%C3%BCrde%20gerne%20einen%20Termin%20vereinbaren.%20Alles%20Weitere%20k%C3%B6nnen%20wir%20auch%20telefonisch%20kl%C3%A4ren.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen" class="btn kontakt-btn">E-Mail schreiben</a>
         </div>
       </div>
