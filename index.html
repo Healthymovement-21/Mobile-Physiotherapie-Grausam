@@ -161,9 +161,9 @@ nav .burger span{background:#fff;}
 .mehr-link:hover::after{transform:translateX(4px);}
 
 /* ── HERO ── */
-.hero{position:relative;min-height:56vh;display:flex;align-items:center;justify-content:center;border-bottom:none;background:radial-gradient(ellipse 85% 42% at 50% 92%,rgba(189,152,42,.13) 0%,transparent 70%),radial-gradient(ellipse 145% 78% at 38% 36%,rgba(200,163,105,.32) 0%,transparent 58%),radial-gradient(ellipse 72% 58% at 4% 64%,rgba(167,147,124,.18) 0%,transparent 52%),radial-gradient(ellipse 48% 62% at 94% 8%,rgba(203,185,163,.14) 0%,transparent 48%),linear-gradient(158deg,#2a2118 0%,#1e1609 52%,#241d0f 100%);overflow:hidden;}
+.hero{position:relative;min-height:100dvh;min-height:100vh;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;border-bottom:none;background:radial-gradient(ellipse 85% 42% at 50% 92%,rgba(189,152,42,.13) 0%,transparent 70%),radial-gradient(ellipse 145% 78% at 38% 36%,rgba(200,163,105,.32) 0%,transparent 58%),radial-gradient(ellipse 72% 58% at 4% 64%,rgba(167,147,124,.18) 0%,transparent 52%),radial-gradient(ellipse 48% 62% at 94% 8%,rgba(203,185,163,.14) 0%,transparent 48%),linear-gradient(158deg,#2a2118 0%,#1e1609 52%,#241d0f 100%);overflow:hidden;}
 .hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)'/%3E%3C/svg%3E");background-size:250px 250px;}
-.hero-content{position:relative;z-index:2;padding:72px 52px 52px;max-width:740px;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.hero-content{position:relative;z-index:2;padding:80px 9% 40px;width:100%;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
 .hero-img-wrap{position:absolute;inset:0;margin:0;border-radius:0;box-shadow:none;overflow:hidden;z-index:0;}
 .hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 26%;}
 .hero-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(23,20,15,.72) 0%,rgba(23,20,15,0) 20%),linear-gradient(to top,rgba(23,20,15,.97) 0%,rgba(23,20,15,.86) 28%,rgba(23,20,15,.6) 54%,rgba(23,20,15,.5) 80%,rgba(23,20,15,.5) 100%);z-index:1;}
@@ -177,14 +177,14 @@ nav .burger span{background:#fff;}
 .hero-link-secondary{color:rgba(255,255,255,.5);}
 .hero-link-secondary:hover{color:rgba(255,255,255,.8);}
 /* PLZ-Block direkt unter dem Hero */
-.plz-band{background:rgba(30,22,9,0.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);box-shadow:0 8px 36px rgba(0,0,0,0.28);padding:20px 24px;margin:-52px 9% 0;position:relative;z-index:10;}
+.plz-band{background:rgba(255,255,255,0.06);border-top:1px solid rgba(255,255,255,0.1);padding:20px 9% 28px;position:relative;z-index:2;}
 .plz-band-inner{max-width:100%;margin:0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 .plz-band-label{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:400;color:rgba(255,255,255,0.75);flex:1;min-width:160px;line-height:1.4;}
 .plz-band .plz-form{flex:1;min-width:240px;}
-@media(max-width:600px){.hero-content{padding:64px 36px 40px;}.hero-sub{font-size:13px;}.plz-band{margin:-44px 6% 0;padding:16px 18px;background:rgba(30,22,9,0.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}}
+@media(max-width:600px){.hero-content{padding:72px 7% 32px;}.hero-sub{font-size:13px;}}
 
 /* ── INFOBAR ── */
-.infobar{background:linear-gradient(to bottom,#f0ede8 0%,#fafaf8 48px);border-top:none;border-bottom:1px solid #e8e8e8;padding:52px 9% 18px;display:flex;gap:28px;flex-wrap:wrap;align-items:center;justify-content:center;}
+.infobar{background:#fafaf8;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;padding:18px 9%;display:flex;gap:28px;flex-wrap:wrap;align-items:center;justify-content:center;}
 .infobar a{color:inherit;text-decoration:none;}
 .infobar a:hover strong{text-decoration:underline;}
 .infobar-item{display:flex;align-items:center;gap:8px;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);}
@@ -543,8 +543,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   .visual-sec{padding:0 0 56px;}
   .visual-sec-body{padding:24px 5% 0;}
   .visual-sec-label{padding:28px 5% 16px;}
-  .hero-content{padding:88px 36px 60px;}
-  .infobar{padding:52px 7% 18px;}
+  .hero-content{padding:80px 9% 40px;}
+  .infobar{padding:14px 7%;}
   footer{padding:48px 5% 28px;}
   /* Verhindert, dass sticky CTA Content überdeckt */
   .page.active{padding-bottom:80px;}
@@ -714,21 +714,20 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <button class="hero-link hero-link-secondary" onclick="show('leistungen')">Leistungen</button>
       </div>
     </div>
-  </div>
-
-  <!-- ── PLZ-CHECK BAND ── -->
-  <div class="plz-band">
-    <div class="plz-band-inner">
-      <span class="plz-band-label">Liegt Ihr Wohnort in meinem Einzugsgebiet?</span>
-      <div style="flex:1;min-width:240px;">
-        <div class="plz-form">
-          <input type="text" id="plzInput" class="plz-input" placeholder="Postleitzahl" maxlength="5" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPLZ()">
-          <button class="plz-btn" onclick="checkPLZ()">Prüfen</button>
+    <div class="plz-band">
+      <div class="plz-band-inner">
+        <span class="plz-band-label">Liegt Ihr Wohnort in meinem Einzugsgebiet?</span>
+        <div style="flex:1;min-width:240px;">
+          <div class="plz-form">
+            <input type="text" id="plzInput" class="plz-input" placeholder="Postleitzahl" maxlength="5" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPLZ()">
+            <button class="plz-btn" onclick="checkPLZ()">Prüfen</button>
+          </div>
+          <div id="plzResult" class="plz-result"></div>
         </div>
-        <div id="plzResult" class="plz-result"></div>
       </div>
     </div>
   </div>
+
 
   <div class="statsbar">
     <div class="stat reveal"><div class="stat-n">60 <span style="font-size:0.45em;font-weight:600;letter-spacing:1px;">MIN</span></div><div class="stat-l">Ersttermin-Dauer</div></div>
