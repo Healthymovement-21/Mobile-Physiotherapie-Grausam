@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Behandlungsvertrag – Mobile Physiotherapie Grausam</title>
+<style>
+  @page { margin: 18mm 20mm; }
+  @media print {
+    body { margin: 0; }
+    .no-print { display: none; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Georgia', serif;
+    font-size: 10.5pt;
+    color: #111;
+    max-width: 720px;
+    margin: 36px auto;
+    padding: 0 32px 60px;
+    line-height: 1.6;
+  }
+  .no-print {
+    text-align: center;
+    margin: 0 0 28px;
+  }
+  .no-print button {
+    padding: 9px 28px;
+    font-size: 10.5pt;
+    cursor: pointer;
+    background: #111;
+    color: #fff;
+    border: none;
+    font-family: inherit;
+  }
+  .header {
+    border-bottom: 2px solid #111;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .header-left h1 { font-size: 12.5pt; font-weight: bold; margin: 0 0 2px; letter-spacing: 0.4px; }
+  .header-left p { margin: 0; font-size: 9pt; color: #555; }
+  .doc-title { font-size: 17pt; font-weight: bold; margin: 0 0 20px; letter-spacing: -0.5px; }
+  /* Patient data */
+  .patient-box {
+    border: 1px solid #ccc;
+    padding: 14px 16px 10px;
+    margin-bottom: 20px;
+  }
+  .patient-box-title {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #777;
+    margin-bottom: 12px;
+  }
+  .patient-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 24px;
+  }
+  .field-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 9px;
+  }
+  .field-row.full { grid-column: 1 / -1; }
+  .field-label { font-size: 9pt; color: #555; white-space: nowrap; min-width: 100px; }
+  .field-line { flex: 1; border-bottom: 1px solid #999; min-height: 15px; }
+  /* Intro text */
+  .intro {
+    font-size: 10pt;
+    margin: 0 0 18px;
+    line-height: 1.55;
+    color: #333;
+  }
+  /* Contract sections */
+  .section { margin-bottom: 12px; }
+  .section h2 {
+    font-size: 10pt;
+    font-weight: bold;
+    margin: 0 0 5px;
+    display: flex;
+    gap: 6px;
+    align-items: baseline;
+  }
+  .num { color: #999; font-weight: 400; }
+  .section p { margin: 0 0 0; font-size: 10pt; line-height: 1.55; }
+  /* Signature */
+  .sig-block {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .sig-top {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 26px;
+  }
+  .sig-line {
+    border-top: 1px solid #111;
+    padding-top: 5px;
+    font-size: 9pt;
+    color: #555;
+    line-height: 1.5;
+  }
+  .footer-note {
+    margin-top: 28px;
+    font-size: 8.5pt;
+    color: #888;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    line-height: 1.5;
+  }
+  hr.divider { border: none; border-top: 1px solid #e0e0e0; margin: 14px 0; }
+</style>
+</head>
+<body>
+
+<div class="no-print">
+  <button onclick="window.print()">Als PDF speichern / Drucken</button>
+</div>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Mobile Physiotherapie Grausam</h1>
+    <p>Nick Grausam &middot; Dornierstraße 5 &middot; 69181 Leimen<br>
+    Tel. 0176 4268 5146 &middot; info@physiotherapie-grausam.com</p>
+  </div>
+  <div style="font-size:9pt;color:#777;text-align:right;">
+    Staatlich anerkannter<br>Physiotherapeut
+  </div>
+</div>
+
+<div class="doc-title">Behandlungsvertrag</div>
+
+<div class="patient-box">
+  <div class="patient-box-title">Patientendaten</div>
+  <div class="patient-grid">
+    <div class="field-row">
+      <span class="field-label">Name, Vorname</span>
+      <span class="field-line"></span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">Geburtsdatum</span>
+      <span class="field-line"></span>
+    </div>
+    <div class="field-row full">
+      <span class="field-label">Straße, Nr.</span>
+      <span class="field-line"></span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">PLZ, Wohnort</span>
+      <span class="field-line"></span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">Telefon</span>
+      <span class="field-line"></span>
+    </div>
+    <div class="field-row full">
+      <span class="field-label">E-Mail</span>
+      <span class="field-line"></span>
+    </div>
+    <div class="field-row full">
+      <span class="field-label">Versicherung</span>
+      <span class="field-line"></span>
+    </div>
+  </div>
+</div>
+
+<p class="intro">Zwischen <strong>Nick Grausam</strong> (Mobile Physiotherapie Grausam, nachfolgend „Therapeut") und der oben genannten Person (nachfolgend „Patient") wird folgender Behandlungsvertrag geschlossen:</p>
+
+<div class="section">
+  <h2><span class="num">1.</span> Leistungsgegenstand</h2>
+  <p>Der Therapeut erbringt physiotherapeutische Leistungen im Rahmen von Hausbesuchen gemäß gesonderter Honorarvereinbarung nach dem aktuellen Stand der physiotherapeutischen Wissenschaft.</p>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2><span class="num">2.</span> Vertragsbindung</h2>
+  <p>Der Vertrag wird mit Unterzeichnung wirksam. Eine formale Kündigung ist nicht erforderlich, wenn keine weiteren Behandlungen gewünscht werden.</p>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2><span class="num">3.</span> Ausfallhonorar</h2>
+  <p>Termine sind verbindlich. Absagen müssen <strong>mindestens 24 Stunden</strong> vorher mitgeteilt werden. Bei nicht rechtzeitiger Absage oder Nichterscheinen behält sich der Therapeut die Berechnung des Behandlungshonorars (ohne Fahrtkosten) gemäß § 615 BGB vor.</p>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2><span class="num">4.</span> Zahlungsbedingungen</h2>
+  <p>Rechnungen sind innerhalb von <strong>14 Tagen</strong> nach Erhalt zu begleichen. Barzahlung ist möglich.</p>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2><span class="num">5.</span> Preise und Umsatzsteuer</h2>
+  <p>Heilbehandlungen mit ärztlicher Verordnung sind gemäß <strong>§ 4 Nr. 14 UStG</strong> von der Umsatzsteuer befreit (Netto = Brutto). Behandlungen ohne Rezept unterliegen 19&nbsp;% MwSt. Die vereinbarten Honorare sind der gesonderten Honorarvereinbarung zu entnehmen.</p>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2><span class="num">6.</span> Datenschutz (DSGVO)</h2>
+  <p>Personenbezogene Daten werden ausschließlich zur Behandlung und Abrechnung verarbeitet (Art. 9 Abs. 2 lit. h DSGVO). Eine gesonderte Datenschutzerklärung ist beigefügt und ebenfalls zu unterzeichnen.</p>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2><span class="num">7.</span> Kommunikation</h2>
+  <p>Der Patient willigt ein, Terminbestätigungen und Rechnungen per E-Mail zu erhalten.</p>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2><span class="num">8.</span> Verantwortung des Patienten</h2>
+  <p>Der Patient stellt sicher, dass der Therapeut pünktlich Zugang erhält und alle Unterlagen (Rezept, Behandlungsvertrag, Datenschutzerklärung) vollständig ausgefüllt zum Ersttermin bereitliegen. Die Erstattungsfähigkeit bei der eigenen Versicherung ist vorab zu klären.</p>
+</div>
+
+<div class="sig-block">
+  <div>
+    <div class="sig-top">
+      <span class="field-label">Ort, Datum</span>
+      <span class="field-line"></span>
+    </div>
+    <div class="sig-line">
+      Unterschrift Patient&thinsp;/&thinsp;in<br>
+      <span style="font-size:8.5pt;color:#999;">(ggf. gesetzliche Vertretung)</span>
+    </div>
+  </div>
+  <div>
+    <div class="sig-top">
+      <span class="field-label">Ort, Datum</span>
+      <span class="field-line"></span>
+    </div>
+    <div class="sig-line">Nick Grausam &middot; Physiotherapeut</div>
+  </div>
+</div>
+
+<div class="footer-note">
+  Mobile Physiotherapie Grausam &middot; Nick Grausam &middot; Dornierstraße 5, 69181 Leimen &middot; Tel. 0176 4268 5146 &middot; info@physiotherapie-grausam.com &middot; physiotherapie-grausam.com
+</div>
+
+</body>
+</html>
