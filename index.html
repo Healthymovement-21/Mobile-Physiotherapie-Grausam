@@ -1164,16 +1164,29 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
               <label for="kf-koerper">Körpergebiet<span class="fg-opt">freiwillig</span></label>
               <select id="kf-koerper">
                 <option value="">Bitte wählen …</option>
-                <option value="Wirbelsäule / Rücken">Wirbelsäule / Rücken</option>
-                <option value="HWS / Nacken">HWS / Nacken</option>
-                <option value="Schulter / Arm">Schulter / Arm</option>
-                <option value="Ellbogen / Hand">Ellbogen / Hand</option>
-                <option value="Hüfte / Becken">Hüfte / Becken</option>
-                <option value="Knie">Knie</option>
-                <option value="Sprunggelenk / Fuß">Sprunggelenk / Fuß</option>
-                <option value="Ganzkörper">Ganzkörper</option>
-                <option value="Neurologisch">Neurologisch</option>
-                <option value="Sonstiges">Sonstiges</option>
+                <optgroup label="Wirbelsäule">
+                  <option value="HWS – Halswirbelsäule / Nacken">HWS – Halswirbelsäule / Nacken</option>
+                  <option value="BWS – Brustwirbelsäule">BWS – Brustwirbelsäule</option>
+                  <option value="LWS – Lendenwirbelsäule / Rücken">LWS – Lendenwirbelsäule / Rücken</option>
+                  <option value="Becken / ISG">Becken / ISG</option>
+                </optgroup>
+                <optgroup label="Obere Extremität">
+                  <option value="Schulter">Schulter</option>
+                  <option value="Oberarm / Ellbogen">Oberarm / Ellbogen</option>
+                  <option value="Unterarm / Handgelenk">Unterarm / Handgelenk</option>
+                  <option value="Hand / Finger">Hand / Finger</option>
+                </optgroup>
+                <optgroup label="Untere Extremität">
+                  <option value="Hüfte / Oberschenkel">Hüfte / Oberschenkel</option>
+                  <option value="Knie">Knie</option>
+                  <option value="Unterschenkel / Sprunggelenk">Unterschenkel / Sprunggelenk</option>
+                  <option value="Fuß / Zehen">Fuß / Zehen</option>
+                </optgroup>
+                <optgroup label="Weiteres">
+                  <option value="Ganzkörper / Allgemein">Ganzkörper / Allgemein</option>
+                  <option value="Neurologisch">Neurologisch</option>
+                  <option value="Sonstiges">Sonstiges</option>
+                </optgroup>
               </select>
             </div>
           </div>
