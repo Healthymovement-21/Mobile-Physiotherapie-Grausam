@@ -20,9 +20,10 @@
 <meta property="og:image:height" content="736">
 <meta property="og:site_name" content="Mobile Physiotherapie Grausam">
 <meta property="og:locale" content="de_DE">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mobile Physiotherapie Grausam">
 <meta name="twitter:description" content="Mobile Physiotherapie im Hausbesuch · Raum Heidelberg–Karlsruhe · Für Privatpatienten, Beihilfe &amp; Selbstzahler.">
+<meta name="twitter:image" content="https://physiotherapie-grausam.com/foto-3-800.jpg">
 <link rel="canonical" href="https://physiotherapie-grausam.com/">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3">
@@ -391,6 +392,16 @@ nav .burger span{background:#fff;}
 .fg input[type="date"]{-webkit-appearance:none;appearance:none;line-height:normal;}
 .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--accent);background:var(--white);}
 .fg textarea{resize:vertical;min-height:80px;}
+/* ── FORM VALIDATION ── */
+.fg{position:relative;}
+.fg-icon{position:absolute;right:13px;top:20px;height:46px;display:flex;align-items:center;pointer-events:none;z-index:1;}
+.fg-msg{font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:#b83232;margin-top:4px;display:block;line-height:1.4;min-height:0;}
+.fg.valid .fg-msg{display:none;}
+.fg.valid input,.fg.valid select,.fg.valid textarea{border-color:#4a9060;background:#f6fbf7;}
+.fg.valid input,.fg.valid select{padding-right:40px;}
+.fg.invalid input,.fg.invalid select,.fg.invalid textarea{border-color:#b83232;background:#fdf7f7;}
+.fg.invalid input,.fg.invalid select{padding-right:40px;}
+.fg-opt{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);margin-left:4px;}
 .consent{display:flex;gap:9px;align-items:flex-start;}
 .consent input{margin-top:3px;flex-shrink:0;}
 .consent label{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);line-height:1.5;}
@@ -1104,39 +1115,51 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         </div>
       </div>
 
-      <!-- Rechts: Checkliste + CTA -->
+      <!-- Rechts: Kontaktformular -->
       <div>
-        <div class="kontakt-box">
-          <h3 class="kontakt-box-title">Was in die Anfrage gehört</h3>
-          <ul class="kontakt-list">
-            <li class="kontakt-list-item">
-              <span class="kl-label">Vor- und Nachname</span>
-            </li>
-            <li class="kontakt-list-item">
-              <span class="kl-label">Versicherungsart</span>
-              <span class="kl-tag">PKV · Beihilfe · Selbstzahler</span>
-            </li>
-            <li class="kontakt-list-item">
-              <span class="kl-label">Rezept: Diagnose &amp; Leistung</span>
-              <span class="kl-tag">KG · MT · MLD …</span>
-            </li>
-            <li class="kontakt-list-item">
-              <span class="kl-label">Wohnanschrift</span>
-              <span class="kl-tag">Straße, PLZ, Ort</span>
-            </li>
-            <li class="kontakt-list-item kontakt-list-optional">
-              <span class="kl-label">Alter oder Geburtsdatum</span>
-              <span class="kl-opt">freiwillig</span>
-            </li>
-            <li class="kontakt-list-item kontakt-list-optional">
-              <span class="kl-label">Kurzes Anliegen</span>
-              <span class="kl-opt">freiwillig</span>
-            </li>
-          </ul>
-          <p class="kontakt-hint">Mindestens: Name, Rezept und Versicherungsart — alles andere klären wir im Anschluss.</p>
-          <div class="kontakt-free"><strong>Ersttermin kostenlos</strong> — wenn im Anschluss ein Folgetermin vereinbart und wahrgenommen wird.</div>
-          <a href="mailto:info@physiotherapie-grausam.com?subject=Terminanfrage%20%E2%80%93%20Mobile%20Physiotherapie%20Grausam&body=Guten%20Tag%2C%0A%0Amein%20Name%20ist%3A%20%0AAlter%20oder%20Geburtsdatum%20(freiwillig)%3A%20%0AWohnanschrift%20(Stra%C3%9Fe%2C%20PLZ%2C%20Ort)%3A%20%0AVersicherungsart%20(PKV%20%C2%B7%20Beihilfe%20%C2%B7%20Selbstzahler)%3A%20%0AFalls%20Rezept%20vorhanden%20%E2%80%93%20was%20steht%20drauf%3F%20(Diagnose%2C%20KG%20%2F%20MT%20%2F%20MLD%20...)%3A%20%0AKurzes%20Anliegen%20(freiwillig)%3A%20%0A%0AIch%20w%C3%BCrde%20gerne%20einen%20Termin%20vereinbaren.%20Alles%20Weitere%20k%C3%B6nnen%20wir%20auch%20telefonisch%20kl%C3%A4ren.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen" class="btn kontakt-btn">E-Mail schreiben</a>
-        </div>
+        <h2 class="kontakt-col-title">Anfrage senden</h2>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);margin-top:4px;margin-bottom:24px;line-height:1.6;">Formular ausfüllen — ich melde mich persönlich zurück.</p>
+        <form class="form" id="kontaktForm" novalidate>
+          <div class="form-row">
+            <div class="fg" id="fg-name">
+              <label for="kf-name">Name</label>
+              <input type="text" id="kf-name" placeholder="Vor- und Nachname" autocomplete="name">
+              <span class="fg-icon" aria-hidden="true"></span>
+              <span class="fg-msg"></span>
+            </div>
+            <div class="fg" id="fg-vers">
+              <label for="kf-vers">Versicherungsart</label>
+              <select id="kf-vers">
+                <option value="">Bitte wählen …</option>
+                <option value="PKV">PKV</option>
+                <option value="Beihilfe">Beihilfe</option>
+                <option value="Selbstzahler">Selbstzahler</option>
+              </select>
+              <span class="fg-msg"></span>
+            </div>
+          </div>
+          <div class="fg" id="fg-email">
+            <label for="kf-email">E-Mail-Adresse</label>
+            <input type="email" id="kf-email" placeholder="ihre@email.de" autocomplete="email">
+            <span class="fg-icon" aria-hidden="true"></span>
+            <span class="fg-msg"></span>
+          </div>
+          <div class="fg" id="fg-adresse">
+            <label for="kf-adresse">Wohnanschrift</label>
+            <input type="text" id="kf-adresse" placeholder="Straße, PLZ, Ort" autocomplete="street-address">
+            <span class="fg-icon" aria-hidden="true"></span>
+            <span class="fg-msg"></span>
+          </div>
+          <div class="fg" id="fg-nachricht">
+            <label for="kf-nachricht">Anliegen &amp; Rezept-Info<span class="fg-opt">freiwillig</span></label>
+            <textarea id="kf-nachricht" placeholder="Diagnose, KG / MT / MLD, Wunschtermin …" rows="3"></textarea>
+          </div>
+          <div style="margin-top:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+            <button type="submit" class="btn">Anfrage senden</button>
+            <span id="kf-success" style="display:none;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:#4a9060;">✓ E-Mail-Client wird geöffnet …</span>
+          </div>
+        </form>
+        <p class="kontakt-privacy" style="margin-top:20px;">Das Formular öffnet Ihren E-Mail-Client. Es werden keine Daten direkt übertragen.</p>
       </div>
 
     </div>
@@ -1636,6 +1659,73 @@ function handleVerordnung(val){
   if(val==='sonstiges'){b.classList.remove('hidden');b.style.display='flex';}
   else{b.classList.add('hidden');}
 }
+// ── KONTAKT-FORMULAR VALIDIERUNG ──
+(function(){
+  var OK_SVG='<svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="#4a9060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var ERR_SVG='<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 2l9 9M11 2l-9 9" stroke="#b83232" stroke-width="1.8" stroke-linecap="round"/></svg>';
+  var validators={
+    'kf-name':function(v){return v.trim().length>=2?'':'Bitte vollständigen Namen eingeben.';},
+    'kf-vers':function(v){return v?'':'Bitte Versicherungsart wählen.';},
+    'kf-email':function(v){if(!v.trim())return 'E-Mail-Adresse ist erforderlich.';return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())?'':'Bitte gültige E-Mail-Adresse eingeben.';},
+    'kf-adresse':function(v){return v.trim().length>=5?'':'Wohnanschrift ist erforderlich.';}
+  };
+  function fgId(id){return 'fg-'+id.replace('kf-','');}
+  function setField(id,error,touched){
+    var el=document.getElementById(id);
+    if(!el)return;
+    var fg=document.getElementById(fgId(id));
+    if(!fg)return;
+    var icon=fg.querySelector('.fg-icon');
+    var msg=fg.querySelector('.fg-msg');
+    if(!touched){fg.classList.remove('valid','invalid');return;}
+    if(error){
+      fg.classList.add('invalid');fg.classList.remove('valid');
+      if(icon)icon.innerHTML=ERR_SVG;
+      if(msg)msg.textContent=error;
+    }else{
+      fg.classList.add('valid');fg.classList.remove('invalid');
+      if(icon)icon.innerHTML=OK_SVG;
+      if(msg)msg.textContent='';
+    }
+  }
+  function initForm(){
+    var form=document.getElementById('kontaktForm');
+    if(!form)return;
+    Object.keys(validators).forEach(function(id){
+      var el=document.getElementById(id);
+      if(!el)return;
+      el.addEventListener('input',function(){setField(id,validators[id](el.value),true);});
+      el.addEventListener('blur',function(){
+        var touched=el.value!==''||document.getElementById(fgId(id)).classList.contains('invalid');
+        setField(id,validators[id](el.value),touched);
+      });
+    });
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var allOk=true;
+      Object.keys(validators).forEach(function(id){
+        var el=document.getElementById(id);if(!el)return;
+        var err=validators[id](el.value);
+        setField(id,err,true);
+        if(err)allOk=false;
+      });
+      if(!allOk)return;
+      var name=document.getElementById('kf-name').value.trim();
+      var vers=document.getElementById('kf-vers').value;
+      var email=document.getElementById('kf-email').value.trim();
+      var adresse=document.getElementById('kf-adresse').value.trim();
+      var msg=document.getElementById('kf-nachricht').value.trim();
+      var body='Guten Tag,\n\nmein Name ist: '+name+'\nWohnanschrift: '+adresse+'\nVersicherungsart: '+vers+'\nRückantwort an: '+email+(msg?'\n\nAnliegen / Rezept-Info:\n'+msg:'')+'\n\nIch möchte gerne einen Termin vereinbaren.\n\nMit freundlichen Grüßen,\n'+name;
+      var s=document.getElementById('kf-success');
+      if(s){s.style.display='inline';}
+      window.location.href='mailto:info@physiotherapie-grausam.com?subject='+encodeURIComponent('Terminanfrage – Mobile Physiotherapie Grausam')+'&body='+encodeURIComponent(body);
+      setTimeout(function(){if(s)s.style.display='none';},3000);
+    });
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initForm);}
+  else{initForm();}
+})();
+
 if(window.lucide) lucide.createIcons();
 
 // Scroll animations
