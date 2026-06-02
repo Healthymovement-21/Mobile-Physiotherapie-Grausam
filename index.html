@@ -260,6 +260,14 @@ nav.nav-over .burger span{background:#fff;}
 .dok-info strong{color:var(--text);}
 @media(max-width:860px){.dok-grid{grid-template-columns:1fr;}}
 
+/* ── LEISTUNGEN HERO HEADER ── */
+.leist-hero{background:radial-gradient(ellipse 120% 80% at 70% 50%,rgba(167,147,124,.10) 0%,transparent 60%),linear-gradient(155deg,#1d1a14 0%,#17140f 55%,#1a1710 100%);padding:120px 7% 80px;border-bottom:1px solid rgba(255,255,255,.07);}
+.leist-hero-inner{max-width:700px;}
+.leist-hero-eye{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:20px;}
+.leist-hero-title{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(38px,7vw,64px);font-weight:700;line-height:1.04;letter-spacing:-2px;color:#fff;margin-bottom:24px;padding-bottom:20px;border-bottom:3px solid var(--gold);display:inline-block;}
+.leist-hero-sub{font-family:'DM Sans',system-ui,sans-serif;font-size:16px;color:rgba(255,255,255,.72);line-height:1.75;max-width:520px;}
+@media(max-width:600px){.leist-hero{padding:100px 6% 64px;}.leist-hero-title{font-size:clamp(34px,10vw,52px);}}
+
 /* ── LEISTUNGEN ── */
 .leist-section{display:flex;flex-direction:column;gap:64px;}
 .preise{display:flex;flex-direction:column;gap:0;margin-bottom:8px;border-top:1px solid var(--border);}
@@ -779,9 +787,14 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
 <!-- ═══ LEISTUNGEN ═══ -->
 <div class="page" id="leistungen">
+  <div class="leist-hero">
+    <div class="leist-hero-inner">
+      <span class="leist-hero-eye">Angebot</span>
+      <h1 class="leist-hero-title">Leistungen<br>&amp; Preise</h1>
+      <p class="leist-hero-sub">Für Privatpatienten, Beamte mit Beihilfe und Selbstzahler.<br>Transparente Honorare — vor Behandlungsbeginn schriftlich festgehalten.</p>
+    </div>
+  </div>
   <div class="sec">
-    <span class="eyebrow">Angebot</span>
-    <h2 class="sec-title sec-title-gold reveal">Leistungen &amp; Preise</h2>
 
     <div class="leist-section">
 
