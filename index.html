@@ -357,12 +357,40 @@ nav.nav-over .burger span{background:#fff;}
 
 /* ── KONTAKT ── */
 .kontakt-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.kontakt-col-title{font-family:'DM Sans',system-ui,sans-serif;font-size:20px;font-weight:700;color:var(--text);letter-spacing:-0.5px;margin-bottom:4px;}
 .kontakt-info{display:flex;flex-direction:column;gap:0;margin-top:22px;border-top:1px solid var(--border);}
 .k-row{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--border);}
 .k-ico{width:20px;height:20px;background:transparent;border:none;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding-top:3px;}
 .k-row h4{font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text);margin-bottom:3px;}
 .k-row p,.k-row a{font-family:'DM Sans',system-ui,sans-serif;font-size:13.5px;color:var(--muted);text-decoration:none;}
 .k-row a:hover{color:var(--text);}
+.k-note{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5;}
+.kontakt-box{background:var(--sand-light);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;}
+.kontakt-box-title{font-family:'DM Sans',system-ui,sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:20px;letter-spacing:-0.3px;}
+.kontakt-list{list-style:none;padding:0;margin:0 0 20px;border-top:1px solid var(--border);}
+.kontakt-list-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;}
+.kl-label{font-size:14px;color:var(--text);font-weight:500;}
+.kl-tag{font-size:11.5px;color:var(--muted);white-space:nowrap;background:var(--beige);padding:3px 8px;border-radius:4px;}
+.kl-opt{font-size:11.5px;color:var(--muted);white-space:nowrap;font-style:italic;}
+.kontakt-list-optional .kl-label{color:var(--muted);font-weight:400;}
+.kontakt-hint{font-family:'DM Sans',system-ui,sans-serif;font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:24px;}
+.kontakt-btn{display:block;text-align:center;text-decoration:none;width:100%;box-sizing:border-box;}
+.kontakt-docs{margin-top:64px;padding-top:48px;border-top:1px solid var(--border);}
+.kontakt-docs-sub{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);margin-bottom:28px;margin-top:4px;}
+.doc-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.doc-card{display:flex;align-items:center;gap:16px;padding:20px 24px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--white);text-decoration:none;color:var(--text);transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;}
+.doc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--beige-dark);}
+.doc-card-ico{width:40px;height:40px;background:var(--accent-light);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.doc-card-ico i{width:20px;height:20px;stroke:var(--accent);stroke-width:1.5;fill:none;}
+.doc-card-body{flex:1;}
+.doc-card-name{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.doc-card-meta{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);}
+.doc-card-dl{flex-shrink:0;}
+.doc-card-dl i{width:16px;height:16px;stroke:var(--muted);stroke-width:1.5;fill:none;}
+.doc-card:hover .doc-card-dl i{stroke:var(--accent);}
+.kontakt-privacy{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);margin-top:40px;line-height:1.6;}
+.kontakt-privacy a{color:var(--text);text-decoration:underline;}
+@media(max-width:600px){.doc-cards{grid-template-columns:1fr;}}
 .form{display:flex;flex-direction:column;gap:13px;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
 .fg{display:flex;flex-direction:column;gap:5px;}
@@ -1034,54 +1062,115 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 <!-- ═══ DOKUMENTE ═══ -->
 <!-- ═══ KONTAKT ═══ -->
 <div class="page" id="kontakt">
+  <div class="leist-hero">
+    <div class="leist-hero-inner">
+      <span class="leist-hero-eye">Kontakt</span>
+      <h1 class="leist-hero-title">Termin anfragen</h1>
+      <p class="leist-hero-sub">Schreiben Sie mir eine E-Mail — ich antworte in der Regel innerhalb von 24 Stunden und melde mich telefonisch oder per Mail zurück.</p>
+    </div>
+  </div>
+
   <div class="sec">
     <div class="kontakt-grid">
+
+      <!-- Links: Kontaktdaten -->
       <div>
-        <span class="eyebrow">Kontakt</span>
-        <h2 class="sec-title sec-title-gold reveal">Termin unverbindlich anfragen</h2>
-        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;margin-bottom:0;">Schreiben Sie mir jederzeit eine E-Mail — ich antworte in der Regel innerhalb von 24 Stunden und melde mich telefonisch oder per Mail zurück.</p>
+        <h2 class="kontakt-col-title">So erreichen Sie mich</h2>
         <div class="kontakt-info">
-          <div class="k-row"><div class="k-ico"><i data-lucide="phone"></i></div><div><h4>Telefon</h4><p><a href="tel:017642685146">0176 4268 5146</a></p><p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.6;">Erreichbar: Mo–Mi &amp; Fr ab 17 Uhr · Sa &amp; So ganztags</p></div></div>
-          <div class="k-row"><div class="k-ico"><i data-lucide="mail"></i></div><div><h4>E-Mail</h4><p><a href="mailto:info@physiotherapie-grausam.com">info@physiotherapie-grausam.com</a></p></div></div>
-          <div class="k-row"><div class="k-ico"><i data-lucide="map-pin"></i></div><div><h4>Einzugsgebiet</h4><p>Ausgewählte Orte · Raum Heidelberg–Karlsruhe</p></div></div>
+          <div class="k-row">
+            <div class="k-ico"><i data-lucide="phone"></i></div>
+            <div>
+              <h4>Telefon</h4>
+              <p><a href="tel:017642685146">0176 4268 5146</a></p>
+              <p class="k-note">Mo–Mi &amp; Fr ab 17 Uhr · Sa &amp; So ganztags</p>
+            </div>
+          </div>
+          <div class="k-row">
+            <div class="k-ico"><i data-lucide="mail"></i></div>
+            <div>
+              <h4>E-Mail</h4>
+              <p><a href="mailto:info@physiotherapie-grausam.com">info@physiotherapie-grausam.com</a></p>
+            </div>
+          </div>
+          <div class="k-row">
+            <div class="k-ico"><i data-lucide="map-pin"></i></div>
+            <div>
+              <h4>Einzugsgebiet</h4>
+              <p>Ausgewählte Orte · Raum Heidelberg–Karlsruhe</p>
+            </div>
+          </div>
+          <div class="k-row">
+            <div class="k-ico"><i data-lucide="clock"></i></div>
+            <div>
+              <h4>Antwortzeit</h4>
+              <p>In der Regel innerhalb von 24 Stunden</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Rechts: Checkliste + CTA -->
       <div>
-        <div style="border-top:1px solid var(--border);padding-top:32px;">
-          <h3 style="font-family:'DM Sans',system-ui,sans-serif;font-size:16px;font-weight:600;margin-bottom:16px;">Angaben für die Terminanfrage:</h3>
-          <ul style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);list-style:none;padding:0;margin:0 0 16px 0;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border);">
-            <li style="padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;"><span style="display:flex;align-items:center;gap:10px;color:var(--text);"><span style="color:var(--sand-dark);font-weight:700;flex-shrink:0;">—</span>Vor- und Nachname</span></li>
-            <li style="padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;"><span style="display:flex;align-items:center;gap:10px;color:var(--text);"><span style="color:var(--sand-dark);font-weight:700;flex-shrink:0;">—</span>Versicherungsart</span><span style="color:var(--muted);font-size:12px;white-space:nowrap;">PKV · Beihilfe · Selbstzahler</span></li>
-            <li style="padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;"><span style="display:flex;align-items:center;gap:10px;color:var(--text);"><span style="color:var(--sand-dark);font-weight:700;flex-shrink:0;">—</span>Rezept: Diagnose &amp; Leistung</span><span style="color:var(--muted);font-size:12px;white-space:nowrap;">KG · MT · MLD …</span></li>
-            <li style="padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;"><span style="display:flex;align-items:center;gap:10px;color:var(--text);"><span style="color:var(--sand-dark);font-weight:700;flex-shrink:0;">—</span>Wohnanschrift</span><span style="color:var(--muted);font-size:12px;white-space:nowrap;">Straße, PLZ, Ort</span></li>
-            <li style="padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;"><span style="display:flex;align-items:center;gap:10px;color:var(--text);"><span style="color:var(--sand-dark);font-weight:700;flex-shrink:0;">—</span>Alter oder Geburtsdatum</span><span style="color:var(--muted);font-size:12px;white-space:nowrap;">freiwillig</span></li>
-            <li style="padding:10px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;"><span style="display:flex;align-items:center;gap:10px;color:var(--text);"><span style="color:var(--sand-dark);font-weight:700;flex-shrink:0;">—</span>Kurzes Anliegen</span><span style="color:var(--muted);font-size:12px;white-space:nowrap;">freiwillig</span></li>
+        <div class="kontakt-box">
+          <h3 class="kontakt-box-title">Was in die E-Mail gehört</h3>
+          <ul class="kontakt-list">
+            <li class="kontakt-list-item">
+              <span class="kl-label">Vor- und Nachname</span>
+            </li>
+            <li class="kontakt-list-item">
+              <span class="kl-label">Versicherungsart</span>
+              <span class="kl-tag">PKV · Beihilfe · Selbstzahler</span>
+            </li>
+            <li class="kontakt-list-item">
+              <span class="kl-label">Rezept: Diagnose &amp; Leistung</span>
+              <span class="kl-tag">KG · MT · MLD …</span>
+            </li>
+            <li class="kontakt-list-item">
+              <span class="kl-label">Wohnanschrift</span>
+              <span class="kl-tag">Straße, PLZ, Ort</span>
+            </li>
+            <li class="kontakt-list-item kontakt-list-optional">
+              <span class="kl-label">Alter oder Geburtsdatum</span>
+              <span class="kl-opt">freiwillig</span>
+            </li>
+            <li class="kontakt-list-item kontakt-list-optional">
+              <span class="kl-label">Kurzes Anliegen</span>
+              <span class="kl-opt">freiwillig</span>
+            </li>
           </ul>
-          <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:24px;">Mindestens: Name, Rezept-Angaben und Versicherungsart — alles andere klären wir im Anschluss.</p>
-          <a href="mailto:info@physiotherapie-grausam.com?subject=Terminanfrage%20%E2%80%93%20Mobile%20Physiotherapie%20Grausam&body=Guten%20Tag%2C%0A%0Amein%20Name%20ist%3A%20%0AAlter%20oder%20Geburtsdatum%20(freiwillig)%3A%20%0AWohnanschrift%20(Stra%C3%9Fe%2C%20PLZ%2C%20Ort)%3A%20%0AVersicherungsart%20(PKV%20%C2%B7%20Beihilfe%20%C2%B7%20Selbstzahler)%3A%20%0AFalls%20Rezept%20vorhanden%20%E2%80%93%20was%20steht%20drauf%3F%20(Diagnose%2C%20KG%20%2F%20MT%20%2F%20MLD%20...)%3A%20%0AKurzes%20Anliegen%20(freiwillig)%3A%20%0A%0AIch%20w%C3%BCrde%20gerne%20einen%20Termin%20vereinbaren.%20Alles%20Weitere%20k%C3%B6nnen%20wir%20auch%20telefonisch%20kl%C3%A4ren.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen" class="btn" style="display:inline-block;text-decoration:none;">E-Mail schreiben</a>
+          <p class="kontakt-hint">Mindestens: Name, Rezept und Versicherungsart — alles andere klären wir im Anschluss.</p>
+          <a href="mailto:info@physiotherapie-grausam.com?subject=Terminanfrage%20%E2%80%93%20Mobile%20Physiotherapie%20Grausam&body=Guten%20Tag%2C%0A%0Amein%20Name%20ist%3A%20%0AAlter%20oder%20Geburtsdatum%20(freiwillig)%3A%20%0AWohnanschrift%20(Stra%C3%9Fe%2C%20PLZ%2C%20Ort)%3A%20%0AVersicherungsart%20(PKV%20%C2%B7%20Beihilfe%20%C2%B7%20Selbstzahler)%3A%20%0AFalls%20Rezept%20vorhanden%20%E2%80%93%20was%20steht%20drauf%3F%20(Diagnose%2C%20KG%20%2F%20MT%20%2F%20MLD%20...)%3A%20%0AKurzes%20Anliegen%20(freiwillig)%3A%20%0A%0AIch%20w%C3%BCrde%20gerne%20einen%20Termin%20vereinbaren.%20Alles%20Weitere%20k%C3%B6nnen%20wir%20auch%20telefonisch%20kl%C3%A4ren.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen" class="btn kontakt-btn">E-Mail schreiben</a>
         </div>
       </div>
+
     </div>
 
     <!-- Dokumente -->
-    <div style="margin-top:56px;padding-top:40px;border-top:1px solid var(--border);">
+    <div class="kontakt-docs">
       <span class="eyebrow">Vor dem Ersttermin</span>
-      <h2 class="sec-title" style="margin-bottom:6px;">Dokumente</h2>
-      <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);margin-bottom:28px;">Bitte ausdrucken, ausfüllen und zum Ersttermin mitbringen.</p>
-      <div style="border-top:1px solid var(--border);">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid var(--border);gap:16px;flex-wrap:wrap;">
-          <strong style="font-size:15px;font-family:'DM Sans',system-ui,sans-serif;">Behandlungsvertrag</strong>
-          <a href="dokumente/Behandlungsvertrag.pdf" download="Behandlungsvertrag.pdf" style="font-family:'DM Sans',system-ui,sans-serif;font-size:13.5px;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;border-bottom:1px solid currentColor;padding-bottom:1px;"><i data-lucide="download" style="width:13px;height:13px;"></i> PDF herunterladen</a>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid var(--border);gap:16px;flex-wrap:wrap;">
-          <strong style="font-size:15px;font-family:'DM Sans',system-ui,sans-serif;">Datenschutzerklärung</strong>
-          <a href="dokumente/Datenschutzerklaerung-Patienten.pdf" download="Datenschutzerklärung.pdf" style="font-family:'DM Sans',system-ui,sans-serif;font-size:13.5px;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;border-bottom:1px solid currentColor;padding-bottom:1px;"><i data-lucide="download" style="width:13px;height:13px;"></i> PDF herunterladen</a>
-        </div>
+      <h2 class="sec-title" style="margin-bottom:8px;">Dokumente</h2>
+      <p class="kontakt-docs-sub">Bitte ausdrucken, ausfüllen und zum Ersttermin mitbringen.</p>
+      <div class="doc-cards">
+        <a href="dokumente/Behandlungsvertrag.pdf" download="Behandlungsvertrag.pdf" class="doc-card">
+          <div class="doc-card-ico"><i data-lucide="file-text"></i></div>
+          <div class="doc-card-body">
+            <div class="doc-card-name">Behandlungsvertrag</div>
+            <div class="doc-card-meta">PDF · Vor Ersttermin ausfüllen</div>
+          </div>
+          <div class="doc-card-dl"><i data-lucide="download"></i></div>
+        </a>
+        <a href="dokumente/Datenschutzerklaerung-Patienten.pdf" download="Datenschutzerklärung.pdf" class="doc-card">
+          <div class="doc-card-ico"><i data-lucide="shield"></i></div>
+          <div class="doc-card-body">
+            <div class="doc-card-name">Datenschutzerklärung</div>
+            <div class="doc-card-meta">PDF · Vor Ersttermin ausfüllen</div>
+          </div>
+          <div class="doc-card-dl"><i data-lucide="download"></i></div>
+        </a>
       </div>
     </div>
 
-    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);margin-top:40px;line-height:1.6;">Ihre Daten werden ausschließlich für die Terminorganisation verwendet und nicht an Dritte weitergegeben. Weitere Informationen in der <a href="javascript:void(0)" onclick="show('datenschutz')" style="color:var(--text);">Datenschutzerklärung</a>.</p>
-
+    <p class="kontakt-privacy">Ihre Daten werden ausschließlich für die Terminorganisation verwendet und nicht an Dritte weitergegeben. Details in der <a href="javascript:void(0)" onclick="show('datenschutz')">Datenschutzerklärung</a>.</p>
   </div>
 </div>
 
