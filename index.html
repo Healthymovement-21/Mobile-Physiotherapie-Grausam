@@ -1150,9 +1150,47 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             <span class="fg-icon" aria-hidden="true"></span>
             <span class="fg-msg"></span>
           </div>
+          <div class="form-row">
+            <div class="fg" id="fg-rezept">
+              <label for="kf-rezept">Rezept vorhanden?</label>
+              <select id="kf-rezept" onchange="(function(v){var b=document.getElementById('fg-rezept-type');b.style.display=v==='Ja'?'block':'none';if(v!=='Ja')document.getElementById('kf-rezept-type').value='';}).call(this,this.value)">
+                <option value="">Bitte wählen …</option>
+                <option value="Ja">Ja</option>
+                <option value="Nein – Selbstzahler">Nein – Selbstzahler</option>
+              </select>
+              <span class="fg-msg"></span>
+            </div>
+            <div class="fg" id="fg-koerper">
+              <label for="kf-koerper">Körpergebiet<span class="fg-opt">freiwillig</span></label>
+              <select id="kf-koerper">
+                <option value="">Bitte wählen …</option>
+                <option value="Wirbelsäule / Rücken">Wirbelsäule / Rücken</option>
+                <option value="HWS / Nacken">HWS / Nacken</option>
+                <option value="Schulter / Arm">Schulter / Arm</option>
+                <option value="Ellbogen / Hand">Ellbogen / Hand</option>
+                <option value="Hüfte / Becken">Hüfte / Becken</option>
+                <option value="Knie">Knie</option>
+                <option value="Sprunggelenk / Fuß">Sprunggelenk / Fuß</option>
+                <option value="Ganzkörper">Ganzkörper</option>
+                <option value="Neurologisch">Neurologisch</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg" id="fg-rezept-type" style="display:none;">
+            <label for="kf-rezept-type">Art des Rezepts</label>
+            <select id="kf-rezept-type">
+              <option value="">Bitte wählen …</option>
+              <option value="KG – Krankengymnastik">KG – Krankengymnastik</option>
+              <option value="MT – Manuelle Therapie">MT – Manuelle Therapie</option>
+              <option value="MLD – Manuelle Lymphdrainage">MLD – Manuelle Lymphdrainage</option>
+              <option value="KMT – Klassische Massagetherapie">KMT – Klassische Massagetherapie</option>
+              <option value="Sonstiges">Sonstiges</option>
+            </select>
+          </div>
           <div class="fg" id="fg-nachricht">
-            <label for="kf-nachricht">Anliegen &amp; Rezept-Info<span class="fg-opt">freiwillig</span></label>
-            <textarea id="kf-nachricht" placeholder="Diagnose, KG / MT / MLD, Wunschtermin …" rows="3"></textarea>
+            <label for="kf-nachricht">Anliegen<span class="fg-opt">freiwillig</span></label>
+            <textarea id="kf-nachricht" placeholder="Wunschtermin, weitere Informationen …" rows="2"></textarea>
           </div>
           <div style="margin-top:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
             <button type="submit" class="btn">Anfrage senden</button>
@@ -1668,7 +1706,8 @@ function handleVerordnung(val){
     'kf-name':function(v){return v.trim().length>=2?'':'Bitte vollständigen Namen eingeben.';},
     'kf-vers':function(v){return v?'':'Bitte Versicherungsart wählen.';},
     'kf-email':function(v){if(!v.trim())return 'E-Mail-Adresse ist erforderlich.';return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())?'':'Bitte gültige E-Mail-Adresse eingeben.';},
-    'kf-adresse':function(v){return v.trim().length>=5?'':'Wohnanschrift ist erforderlich.';}
+    'kf-adresse':function(v){return v.trim().length>=5?'':'Wohnanschrift ist erforderlich.';},
+    'kf-rezept':function(v){return v?'':'Bitte angeben, ob ein Rezept vorliegt.';}
   };
   function fgId(id){return 'fg-'+id.replace('kf-','');}
   function setField(id,error,touched){
@@ -1715,8 +1754,11 @@ function handleVerordnung(val){
       var vers=document.getElementById('kf-vers').value;
       var email=document.getElementById('kf-email').value.trim();
       var adresse=document.getElementById('kf-adresse').value.trim();
+      var rezept=document.getElementById('kf-rezept').value;
+      var rezeptType=document.getElementById('kf-rezept-type').value;
+      var koerper=document.getElementById('kf-koerper').value;
       var msg=document.getElementById('kf-nachricht').value.trim();
-      var body='Guten Tag,\n\nmein Name ist: '+name+'\nWohnanschrift: '+adresse+'\nVersicherungsart: '+vers+'\nRückantwort an: '+email+(msg?'\n\nAnliegen / Rezept-Info:\n'+msg:'')+'\n\nIch möchte gerne einen Termin vereinbaren.\n\nMit freundlichen Grüßen,\n'+name;
+      var body='Guten Tag,\n\nmein Name ist: '+name+'\nWohnanschrift: '+adresse+'\nVersicherungsart: '+vers+'\nRückantwort an: '+email+'\nRezept vorhanden: '+rezept+(rezeptType?'\nArt des Rezepts: '+rezeptType:'')+(koerper?'\nKörpergebiet: '+koerper:'')+(msg?'\n\nAnliegen:\n'+msg:'')+'\n\nIch möchte gerne einen Termin vereinbaren.\n\nMit freundlichen Grüßen,\n'+name;
       var s=document.getElementById('kf-success');
       if(s){s.style.display='inline';}
       window.location.href='mailto:info@physiotherapie-grausam.com?subject='+encodeURIComponent('Terminanfrage – Mobile Physiotherapie Grausam')+'&body='+encodeURIComponent(body);
