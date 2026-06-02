@@ -112,8 +112,8 @@ nav .burger span{background:#fff;}
 /* ── OVERLAY DRAWER (right side) ── */
 .overlay-backdrop{position:fixed;inset:0;background:rgba(23,20,15,0.45);z-index:340;opacity:0;pointer-events:none;transition:opacity 0.35s ease;}
 .overlay-backdrop.open{opacity:1;pointer-events:all;}
-.overlay{position:fixed;top:80px;left:0;right:0;background:#fff;z-index:360;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;transform:translateY(-110%);visibility:hidden;pointer-events:none;transition:transform 0.36s cubic-bezier(0.4,0,0.2,1),visibility 0s linear 0.36s;padding:32px 9% 40px;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));box-shadow:0 12px 40px rgba(0,0,0,0.10);}
-.overlay.open{transform:translateY(0);visibility:visible;pointer-events:all;transition:transform 0.36s cubic-bezier(0.4,0,0.2,1),visibility 0s linear 0s;}
+.overlay{position:fixed;top:0;right:0;bottom:0;left:auto;width:min(320px,100vw);background:#fff;z-index:500;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;transform:translateX(100%);visibility:hidden;pointer-events:none;transition:transform 0.36s cubic-bezier(0.4,0,0.2,1),visibility 0s linear 0.36s;padding:80px 9% 40px;padding-top:calc(80px + env(safe-area-inset-top,0px));padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));box-shadow:-12px 0 48px rgba(0,0,0,0.14);}
+.overlay.open{transform:translateX(0);visibility:visible;pointer-events:all;transition:transform 0.36s cubic-bezier(0.4,0,0.2,1),visibility 0s linear 0s;}
 .overlay-close{position:absolute;top:16px;right:18px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:var(--text);border-radius:50%;transition:background 0.15s;}
 .overlay-close:hover{background:var(--beige);}
 .overlay-links{list-style:none;width:100%;}
@@ -176,11 +176,9 @@ nav .burger span{background:#fff;}
 .hero-link-primary::after{content:'→';font-size:13px;letter-spacing:0;}
 .hero-link-secondary{color:rgba(255,255,255,.5);}
 .hero-link-secondary:hover{color:rgba(255,255,255,.8);}
-/* PLZ-Block direkt unter dem Hero */
-.plz-band{background:rgba(255,255,255,0.06);border-top:1px solid rgba(255,255,255,0.1);padding:20px 9% 28px;position:relative;z-index:2;}
-.plz-band-inner{max-width:100%;margin:0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-.plz-band-label{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:400;color:rgba(255,255,255,0.75);flex:1;min-width:160px;line-height:1.4;}
-.plz-band .plz-form{flex:1;min-width:240px;}
+/* PLZ floating card */
+.plz-band{margin:0 9% 52px;background:rgba(255,255,255,0.07);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.11);border-radius:14px;padding:16px 20px 18px;box-shadow:0 20px 56px rgba(0,0,0,0.55),0 4px 14px rgba(0,0,0,0.28),inset 0 1px 0 rgba(255,255,255,0.10);position:relative;z-index:2;}
+.plz-band-label{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,0.40);display:block;margin-bottom:10px;}
 @media(max-width:600px){.hero-content{padding:72px 7% 32px;}.hero-sub{font-size:13px;}}
 
 /* ── INFOBAR ── */
@@ -555,10 +553,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 .plz-inner{display:flex;flex-direction:column;gap:10px;max-width:480px;margin:0 auto;text-align:center;}
 .plz-label{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
 .plz-form{display:flex;gap:8px;}
-.plz-input{flex:1;padding:0 14px;border:1px solid rgba(255,255,255,0.15);font-family:'DM Sans',system-ui,sans-serif;font-size:16px;color:#fff;background:rgba(255,255,255,0.08);outline:none;height:42px;border-radius:var(--radius-sm);-webkit-appearance:none;transition:border-color 0.2s;}
-.plz-input:focus{border-color:rgba(255,255,255,0.4);}.plz-input::placeholder{color:rgba(255,255,255,0.35);}
-.plz-btn{padding:0 18px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.85);font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;border:1.5px solid rgba(255,255,255,0.2);border-radius:var(--radius-sm);cursor:pointer;white-space:nowrap;height:42px;flex-shrink:0;transition:all 0.2s;}
-.plz-btn:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.4);}
+.plz-input{flex:1;padding:0 14px;border:1px solid rgba(255,255,255,0.12);font-family:'DM Sans',system-ui,sans-serif;font-size:16px;color:#fff;background:rgba(255,255,255,0.06);outline:none;height:44px;border-radius:9px;-webkit-appearance:none;transition:border-color 0.2s;}
+.plz-input:focus{border-color:rgba(255,255,255,0.35);}.plz-input::placeholder{color:rgba(255,255,255,0.28);}
+.plz-btn{width:44px;height:44px;background:rgba(255,255,255,0.09);color:rgba(255,255,255,0.82);border:1px solid rgba(255,255,255,0.16);border-radius:50%;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.plz-btn:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.35);color:#fff;}
 .plz-result{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;padding:12px 16px;line-height:1.55;display:none;text-align:left;border-radius:var(--radius-sm);margin-top:10px;}
 .plz-result.ok{display:block;background:rgba(80,160,80,0.08);color:#2e6e2e;border:1px solid rgba(80,160,80,0.25);}
 .plz-result.warn{display:block;background:rgba(200,80,40,0.07);color:#8a3a18;border:1px solid rgba(200,80,40,0.2);}
@@ -715,16 +713,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       </div>
     </div>
     <div class="plz-band">
-      <div class="plz-band-inner">
-        <span class="plz-band-label">Liegt Ihr Wohnort in meinem Einzugsgebiet?</span>
-        <div style="flex:1;min-width:240px;">
-          <div class="plz-form">
-            <input type="text" id="plzInput" class="plz-input" placeholder="Postleitzahl" maxlength="5" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPLZ()">
-            <button class="plz-btn" onclick="checkPLZ()">Prüfen</button>
-          </div>
-          <div id="plzResult" class="plz-result"></div>
-        </div>
+      <span class="plz-band-label">Prüfen Sie Ihre Postleitzahl</span>
+      <div class="plz-form">
+        <input type="text" id="plzInput" class="plz-input" placeholder="Postleitzahl" maxlength="5" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPLZ()">
+        <button class="plz-btn" onclick="checkPLZ()" aria-label="Prüfen"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
+      <div id="plzResult" class="plz-result"></div>
     </div>
   </div>
 
