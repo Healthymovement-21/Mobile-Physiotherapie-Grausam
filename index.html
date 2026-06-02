@@ -91,7 +91,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:va
 .page{overflow-x:hidden;max-width:100%;}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:400;background:#fff;border-bottom:1px solid var(--border);padding:0 6%;height:80px;display:flex;align-items:center;justify-content:space-between;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);transition:background 0.3s,border-color 0.3s;}
+nav{position:fixed;top:0;left:0;right:0;z-index:420;background:#fff;border-bottom:1px solid var(--border);padding:0 6%;height:80px;display:flex;align-items:center;justify-content:space-between;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);transition:background 0.3s,border-color 0.3s;}
 .nav-logo{cursor:pointer;}
 .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;}
 .burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform 0.3s,opacity 0.3s,background 0.3s;}
@@ -100,18 +100,20 @@ nav.nav-over{background:transparent;border-bottom-color:transparent;}
 nav.nav-over .nav-logo-img{filter:brightness(0) invert(1);}
 nav.nav-over .burger span{background:#fff;}
 
-/* ── OVERLAY NAV ── */
-.overlay{position:fixed;top:80px;left:0;right:0;bottom:0;background:#fff;z-index:350;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s ease;padding:0 6%;padding-bottom:env(safe-area-inset-bottom,0px);border-top:1px solid var(--border);}
-.overlay.open{opacity:1;pointer-events:all;}
-.overlay-close{position:absolute;top:0;right:0;width:64px;height:64px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;border:none;font-size:22px;color:var(--text);line-height:1;}
-.overlay-links{list-style:none;width:100%;max-width:560px;text-align:center;}
+/* ── OVERLAY DRAWER (right side) ── */
+.overlay-backdrop{position:fixed;inset:0;background:rgba(23,20,15,0.45);z-index:340;opacity:0;pointer-events:none;transition:opacity 0.35s ease;}
+.overlay-backdrop.open{opacity:1;pointer-events:all;}
+.overlay{position:fixed;top:0;right:0;bottom:0;width:min(360px,100vw);background:#fff;z-index:360;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;transform:translateX(100%);pointer-events:none;transition:transform 0.38s cubic-bezier(0.4,0,0.2,1);padding:88px 48px 48px;padding-bottom:calc(48px + env(safe-area-inset-bottom,0px));box-shadow:-16px 0 48px rgba(0,0,0,0.14);}
+.overlay.open{transform:translateX(0);pointer-events:all;}
+.overlay-links{list-style:none;width:100%;}
 .overlay-links li{border-top:1px solid var(--border);}
 .overlay-links li:last-child{border-bottom:1px solid var(--border);}
-.overlay-links a{display:block;font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(26px,4vw,44px);font-weight:700;color:var(--text);text-decoration:none;padding:18px 0;letter-spacing:-1px;transition:color 0.2s;cursor:pointer;}
+.overlay-links a{display:block;font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(22px,3.5vw,32px);font-weight:700;color:var(--text);text-decoration:none;padding:16px 0;letter-spacing:-0.5px;transition:color 0.2s;cursor:pointer;}
 .overlay-links a:hover{color:var(--muted);}
-.overlay-cta{margin-top:40px;}
-.overlay-cta a{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);text-decoration:none;border:1.5px solid var(--text);padding:14px 40px;display:inline-block;transition:all 0.2s;cursor:pointer;}
-.overlay-cta a:hover{background:var(--text);color:#fff;}
+.overlay-links a.nav-active{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px;}
+.overlay-cta{margin-top:36px;width:100%;}
+.overlay-cta a{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;background:var(--accent);text-decoration:none;border:1.5px solid var(--accent);padding:14px 32px;display:block;text-align:center;transition:all 0.2s;cursor:pointer;}
+.overlay-cta a:hover{background:var(--accent-dark);border-color:var(--accent-dark);}
 
 
 /* ── PAGES ── */
@@ -550,6 +552,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   <button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span></span><span></span><span></span></button>
 </nav>
 
+<div class="overlay-backdrop" id="overlayBackdrop" onclick="toggleOverlay()"></div>
 <div class="overlay" id="overlay">
   <ul class="overlay-links">
     <li><a href="javascript:void(0)" onclick="show('home');toggleOverlay()">Start</a></li>
@@ -1459,6 +1462,13 @@ function updateNav(){
   const atTop=window.pageYOffset < (window.innerHeight*0.55);
   if(homeActive && atTop){ nav.classList.add('nav-over'); }
   else { nav.classList.remove('nav-over'); }
+  const activePage=document.querySelector('.page.active');
+  if(activePage){
+    document.querySelectorAll('.overlay-links a').forEach(function(a){
+      const oc=a.getAttribute('onclick')||'';
+      a.classList.toggle('nav-active',oc.indexOf("'"+activePage.id+"'")!==-1);
+    });
+  }
 }
 window.addEventListener('scroll',updateNav,{passive:true});
 window.addEventListener('resize',updateNav,{passive:true});
@@ -1493,9 +1503,10 @@ setTimeout(()=>{
 
 function toggleOverlay(){
   const ov=document.getElementById('overlay');
+  const bd=document.getElementById('overlayBackdrop');
   const btn=document.getElementById('burgerBtn');
-  if(!ov.classList.contains('open')){ov.style.height=(window.innerHeight-80)+'px';}
   ov.classList.toggle('open');
+  bd.classList.toggle('open');
   document.body.style.overflow=ov.classList.contains('open')?'hidden':'';
   if(ov.classList.contains('open')){
     btn.innerHTML='<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="2" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="20" y1="2" x2="2" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
