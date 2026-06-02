@@ -187,7 +187,7 @@ nav .burger span{background:#fff;}
 .hero-link-secondary{color:rgba(255,255,255,.5);}
 .hero-link-secondary:hover{color:rgba(255,255,255,.8);}
 /* PLZ floating card */
-.plz-band{margin:0 9% clamp(130px,20vh,200px);background:rgba(30,24,14,0.55);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,0.10);border-top:1px solid rgba(200,168,100,0.22);border-radius:16px;padding:18px 22px 20px;box-shadow:0 24px 64px rgba(0,0,0,0.60),0 6px 18px rgba(0,0,0,0.30),inset 0 1px 0 rgba(255,255,255,0.07);position:relative;z-index:2;}
+.plz-band{margin:0 9% clamp(160px,25vh,240px);background:rgba(30,24,14,0.55);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,0.10);border-top:1px solid rgba(200,168,100,0.22);border-radius:16px;padding:18px 22px 20px;box-shadow:0 24px 64px rgba(0,0,0,0.60),0 6px 18px rgba(0,0,0,0.30),inset 0 1px 0 rgba(255,255,255,0.07);position:relative;z-index:2;}
 .plz-band-label{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:rgba(200,168,100,0.65);display:block;margin-bottom:11px;}
 @media(max-width:600px){.hero-content{padding:72px 7% 32px;}.hero-sub{font-size:13px;}.plz-band{margin-left:6%;margin-right:6%;}}
 
@@ -434,7 +434,7 @@ nav .burger span{background:#fff;}
 /* ── VISUELL-SEKTION (Bild + Titel + Button, zentriert) ── */
 .visual-sec{padding:0 9% 84px;border-top:1px solid var(--border);}
 .visual-sec-label{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);text-align:center;padding:36px 0 20px;display:block;}
-.visual-sec-img{width:72%;max-width:460px;height:auto;display:block;border-radius:var(--radius-lg);box-shadow:var(--shadow);margin:0 auto;}
+.visual-sec-img{width:88%;max-width:560px;height:auto;display:block;border-radius:var(--radius-lg);box-shadow:var(--shadow);margin:0 auto;}
 .visual-sec-body{text-align:center;padding:32px 0 0;}
 .visual-sec-title{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(18px,2.5vw,28px);font-weight:700;letter-spacing:-1px;color:var(--text);margin-bottom:16px;}
 .visual-sec-desc{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;max-width:520px;margin:0 auto 32px;}
@@ -1170,7 +1170,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <h2 class="sec-title" style="margin-bottom:8px;">Dokumente</h2>
       <p class="kontakt-docs-sub">Bitte ausdrucken, ausfüllen und zum Ersttermin mitbringen.</p>
       <div class="doc-cards">
-        <a href="dokumente/Behandlungsvertrag.html" target="_blank" class="doc-card">
+        <a href="dokumente/Behandlungsvertrag.pdf" download="Behandlungsvertrag.pdf" class="doc-card">
           <div class="doc-card-ico"><i data-lucide="file-text"></i></div>
           <div class="doc-card-body">
             <div class="doc-card-name">Behandlungsvertrag</div>
@@ -1633,11 +1633,12 @@ setTimeout(()=>{
 function toggleOverlay(){
   const ov=document.getElementById('overlay');
   const bd=document.getElementById('overlayBackdrop');
-  const btn=document.getElementById('burgerBtn');
+  const nav=document.querySelector('nav');
   ov.classList.toggle('open');
   bd.classList.toggle('open');
   document.body.style.overflow=ov.classList.contains('open')?'hidden':'';
-
+  if(ov.classList.contains('open')){nav.classList.add('nav-white');}
+  else{updateNav();}
 }
 function faq(btn){
   const a=btn.nextElementSibling;
