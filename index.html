@@ -339,7 +339,8 @@ nav.nav-over .burger span{background:#fff;}
 
 /* ── ÜBER MICH ── */
 .ueber-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
-.ueber-img-wrap{display:flex;flex-direction:column;align-items:stretch;position:relative;}
+.ueber-img-wrap{display:flex;flex-direction:column;align-items:stretch;}
+.ueber-img-inner{position:relative;}
 .ueber-img{width:100%;height:auto;display:block;border-radius:var(--radius-lg);box-shadow:var(--shadow);}
 .ueber-name-card{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(20,16,12,0.75));padding:44px 20px 18px;border-radius:0 0 var(--radius-lg) var(--radius-lg);}
 .ueber-name-card .name{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:600;color:#fff;}
@@ -1020,13 +1021,15 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   <div class="sec">
     <div class="ueber-grid">
       <div class="ueber-img-wrap">
-        <picture>
-          <source type="image/webp" srcset="foto-3-800.webp 1x, foto-3-1600.webp 2x">
-          <img class="ueber-img" src="foto-3-800.jpg" srcset="foto-3-800.jpg 1x, foto-3-1600.jpg 2x" alt="Nick Grausam – Mobile Physiotherapeut im Raum Heidelberg und Karlsruhe" loading="lazy" width="800" height="736">
-        </picture>
-        <div class="ueber-name-card">
-          <div class="name">Nick Grausam</div>
-          <div class="role">Staatlich anerkannter Physiotherapeut</div>
+        <div class="ueber-img-inner">
+          <picture>
+            <source type="image/webp" srcset="foto-3-800.webp 1x, foto-3-1600.webp 2x">
+            <img class="ueber-img" src="foto-3-800.jpg" srcset="foto-3-800.jpg 1x, foto-3-1600.jpg 2x" alt="Nick Grausam – Mobile Physiotherapeut im Raum Heidelberg und Karlsruhe" loading="lazy" width="800" height="736">
+          </picture>
+          <div class="ueber-name-card">
+            <div class="name">Nick Grausam</div>
+            <div class="role">Staatlich anerkannter Physiotherapeut</div>
+          </div>
         </div>
         <div class="ueber-dets">
           <div class="ueber-det"><div class="ueber-det-ico"><i data-lucide="graduation-cap"></i></div><div><h4>Ausbildung</h4><p>Staatlich anerkannter Physiotherapeut · BG Klinik Ludwigshafen</p></div></div>
