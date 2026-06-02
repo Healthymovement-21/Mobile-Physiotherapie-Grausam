@@ -1145,14 +1145,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             <span class="fg-msg"></span>
           </div>
           <div class="fg" id="fg-adresse">
-            <label for="kf-adresse">Wohnanschrift</label>
+            <label for="kf-adresse">Wohnanschrift<span class="fg-opt">freiwillig</span></label>
             <input type="text" id="kf-adresse" placeholder="Straße, PLZ, Ort" autocomplete="street-address">
-            <span class="fg-icon" aria-hidden="true"></span>
-            <span class="fg-msg"></span>
           </div>
           <div class="form-row">
             <div class="fg" id="fg-rezept">
-              <label for="kf-rezept">Rezept vorhanden?</label>
+              <label for="kf-rezept">Rezept vorhanden?<span class="fg-opt">freiwillig</span></label>
               <select id="kf-rezept" onchange="(function(v){var b=document.getElementById('fg-rezept-type');b.style.display=v==='Ja'?'block':'none';if(v!=='Ja')document.getElementById('kf-rezept-type').value='';}).call(this,this.value)">
                 <option value="">Bitte wählen …</option>
                 <option value="Ja">Ja</option>
@@ -1718,9 +1716,7 @@ function handleVerordnung(val){
   var validators={
     'kf-name':function(v){return v.trim().length>=2?'':'Bitte vollständigen Namen eingeben.';},
     'kf-vers':function(v){return v?'':'Bitte Versicherungsart wählen.';},
-    'kf-email':function(v){if(!v.trim())return 'E-Mail-Adresse ist erforderlich.';return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())?'':'Bitte gültige E-Mail-Adresse eingeben.';},
-    'kf-adresse':function(v){return v.trim().length>=5?'':'Wohnanschrift ist erforderlich.';},
-    'kf-rezept':function(v){return v?'':'Bitte angeben, ob ein Rezept vorliegt.';}
+    'kf-email':function(v){if(!v.trim())return 'E-Mail-Adresse ist erforderlich.';return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())?'':'Bitte gültige E-Mail-Adresse eingeben.';}
   };
   function fgId(id){return 'fg-'+id.replace('kf-','');}
   function setField(id,error,touched){
@@ -1771,7 +1767,11 @@ function handleVerordnung(val){
       var rezeptType=document.getElementById('kf-rezept-type').value;
       var koerper=document.getElementById('kf-koerper').value;
       var msg=document.getElementById('kf-nachricht').value.trim();
-      var body='Guten Tag,\n\nmein Name ist: '+name+'\nWohnanschrift: '+adresse+'\nVersicherungsart: '+vers+'\nRückantwort an: '+email+'\nRezept vorhanden: '+rezept+(rezeptType?'\nArt des Rezepts: '+rezeptType:'')+(koerper?'\nKörpergebiet: '+koerper:'')+(msg?'\n\nAnliegen:\n'+msg:'')+'\n\nIch möchte gerne einen Termin vereinbaren.\n\nMit freundlichen Grüßen,\n'+name;
+      var lines=['mein Name ist: '+name,'Versicherungsart: '+vers,'Rückantwort an: '+email];
+      if(adresse)lines.push('Wohnanschrift: '+adresse);
+      if(rezept)lines.push('Rezept vorhanden: '+rezept+(rezeptType?' ('+rezeptType+')':''));
+      if(koerper)lines.push('Körpergebiet: '+koerper);
+      var body='Guten Tag,\n\n'+lines.join('\n')+(msg?'\n\nAnliegen:\n'+msg:'')+'\n\nIch möchte gerne einen Termin vereinbaren.\n\nMit freundlichen Grüßen,\n'+name;
       var s=document.getElementById('kf-success');
       if(s){s.style.display='inline';}
       window.location.href='mailto:info@physiotherapie-grausam.com?subject='+encodeURIComponent('Terminanfrage – Mobile Physiotherapie Grausam')+'&body='+encodeURIComponent(body);
