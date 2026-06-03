@@ -1636,6 +1636,8 @@ function revealPage(id){
 function updateNav(){
   const nav=document.querySelector('nav');
   if(!nav)return;
+  const ov=document.getElementById('overlay');
+  if(ov&&ov.classList.contains('open')){nav.classList.add('nav-white');return;}
   const homeActive=document.getElementById('home').classList.contains('active');
   const atTop=window.pageYOffset < (window.innerHeight*0.55);
   if(homeActive && atTop){ nav.classList.remove('nav-white'); }
