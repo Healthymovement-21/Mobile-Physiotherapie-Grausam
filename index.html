@@ -306,7 +306,7 @@ nav .burger span{background:#fff;}
 .inkl-box p{font-family:'DM Sans',system-ui,sans-serif;font-size:12.5px;color:var(--muted);line-height:1.6;}
 .inkl-box .legal-note{font-size:11px;color:var(--muted);margin-top:6px;font-style:italic;}
 .leist-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
-.leist-ico{width:28px;height:28px;background:transparent;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
 .leist-name{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:500;color:var(--text);}
 .leist-abbr{font-family:'DM Sans',system-ui,sans-serif;font-size:11.5px;color:var(--muted);margin-top:1px;}
 
@@ -320,9 +320,33 @@ nav .burger span{background:#fff;}
 .acc-chevron{display:flex;align-items:center;color:var(--muted);transition:transform 0.25s;flex-shrink:0;}
 .acc-chevron svg,.acc-chevron i{width:16px;height:16px;stroke:var(--muted);stroke-width:2;fill:none;}
 .leist-acc-btn.open .acc-chevron{transform:rotate(180deg);}
-.leist-acc-body{display:none;padding:0 0 16px 42px;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;}
-.leist-acc-body.open{display:block;}
-.zg-box{border:none;border-radius:0;padding:0;background:transparent;}
+.leist-acc-body{overflow:hidden;max-height:0;padding:0 0 0 48px;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;transition:max-height 0.32s cubic-bezier(0.4,0,0.2,1),padding-bottom 0.32s ease;}
+.leist-acc-body.open{max-height:320px;padding-bottom:16px;}
+.leist-ico{width:34px;height:34px;background:var(--accent-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);}
+.leist-ico svg,.leist-ico i{width:16px;height:16px;stroke:var(--accent);stroke-width:1.9;fill:none;}
+
+/* ── LEISTUNGEN PAGE COMPONENTS ── */
+.notice-box{display:flex;align-items:flex-start;gap:11px;padding:13px 16px;background:#f8f6f2;border-left:3px solid var(--muted);margin-bottom:32px;}
+.notice-box p{font-family:'DM Sans',system-ui,sans-serif;font-size:12.5px;color:var(--text);line-height:1.65;}
+.preis-group{margin-bottom:32px;}
+.preis-group-label{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;}
+.preis-group-title{font-family:'DM Sans',system-ui,sans-serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:3px;letter-spacing:-0.3px;}
+.preis-group-badge{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:400;color:var(--muted);margin-left:6px;}
+.preis-group-note{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.5;}
+.inkl-pills{padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:24px;}
+.inkl-pills-label{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;}
+.inkl-pills-row{display:flex;gap:6px;flex-wrap:wrap;}
+.inkl-pill{display:inline-flex;align-items:center;gap:4px;background:var(--accent-light);border:1px solid rgba(139,90,43,0.12);border-radius:20px;padding:4px 11px;font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:600;color:var(--accent);}
+.hausbesuch-box{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px;border:1px solid var(--border);background:#fdfcf9;margin-bottom:24px;}
+.hausbesuch-label{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.hausbesuch-note{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);}
+.hausbesuch-price{font-family:'DM Sans',system-ui,sans-serif;font-size:24px;font-weight:700;color:var(--text);white-space:nowrap;flex-shrink:0;}
+.ersttermin-card{background:linear-gradient(135deg,#1e1609 0%,#2a2118 100%);border:1px solid rgba(200,168,100,0.18);border-radius:var(--radius-sm);padding:22px 22px 20px;margin-bottom:28px;}
+.ersttermin-card-star{font-size:18px;color:rgba(200,168,100,0.85);margin-bottom:11px;display:block;line-height:1;}
+.ersttermin-card-title{font-family:'DM Sans',system-ui,sans-serif;font-size:16px;font-weight:700;color:#f0ebe0;line-height:1.4;margin-bottom:7px;}
+.ersttermin-card-sub{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:rgba(240,235,224,0.6);line-height:1.55;margin-bottom:10px;}
+.ersttermin-card a{font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:rgba(200,168,100,0.5);text-decoration:underline;cursor:pointer;}
+.leist-acc-title{font-family:'DM Sans',system-ui,sans-serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:20px;letter-spacing:-0.5px;}
 .zg-box h4{font-family:'DM Sans',system-ui,sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:14px;letter-spacing:-0.2px;}
 .zg-item{display:flex;align-items:flex-start;gap:9px;padding:13px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);}
 .zg-item:last-child{border-bottom:none;}
@@ -894,20 +918,19 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <!-- PREISE -->
       <div>
         <!-- GKV-Hinweis -->
-        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13.5px;color:var(--text);line-height:1.7;padding:0 0 18px;border-bottom:1px solid var(--border);margin-bottom:24px;"><strong>Wichtiger Hinweis:</strong> Eine Abrechnung mit gesetzlichen Krankenkassen (GKV) ist nicht möglich. Die Behandlung richtet sich ausschließlich an <strong>Privatpatienten, Beamte mit Beihilfe</strong> und <strong>Selbstzahler</strong>.</p>
+        <div class="notice-box">
+          <i data-lucide="info" style="width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:2;flex-shrink:0;margin-top:1px;"></i>
+          <p><strong>Keine GKV-Abrechnung möglich.</strong> Die Behandlung richtet sich ausschließlich an <strong>Privatpatienten, Beamte mit Beihilfe</strong> und <strong>Selbstzahler</strong>.</p>
+        </div>
 
         <!-- Block 1: Privatpatienten & Beihilfe -->
-        <div style="margin-bottom:32px;">
-          <h3 style="font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--text);margin-bottom:6px;">Privatpatienten &amp; Beihilfe <span style="font-weight:500;font-size:14px;letter-spacing:0;text-transform:none;color:var(--muted);">· mit Rezept</span></h3>
-          <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);margin-bottom:14px;">Beispiel: KG · Krankengymnastik</p>
+        <div class="preis-group">
+          <span class="preis-group-label">PKV &amp; Beihilfe</span>
+          <h3 class="preis-group-title">Privatpatienten &amp; Beihilfe<span class="preis-group-badge">· mit Rezept</span></h3>
+          <p class="preis-group-note">Beispiel: KG · Krankengymnastik</p>
           <div class="preistab-wrap">
             <table class="preistab">
-              <thead>
-                <tr>
-                  <th>Dauer</th>
-                  <th>Preis</th>
-                </tr>
-              </thead>
+              <thead><tr><th>Dauer</th><th>Preis</th></tr></thead>
               <tbody>
                 <tr><td>35 Minuten</td><td>45,00 €</td></tr>
                 <tr><td>45 Minuten</td><td>65,00 €</td></tr>
@@ -915,20 +938,16 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
               </tbody>
             </table>
           </div>
-          <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6;">Weitere Leistungen (MT, MLD, KMT) sowie abweichende Behandlungszeiten auf Anfrage. Die Kosten werden vor Behandlungsbeginn schriftlich in einer Honorarvereinbarung festgehalten.</p>
+          <p class="preis-group-note" style="margin-top:10px;margin-bottom:0;">MT, MLD, KMT sowie abweichende Zeiten auf Anfrage. Alle Honorare werden schriftlich festgehalten.</p>
         </div>
 
         <!-- Block 2: Selbstzahler -->
-        <div style="margin-bottom:32px;">
-          <h3 style="font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--text);margin-bottom:14px;">Selbstzahler <span style="font-weight:500;font-size:14px;letter-spacing:0;text-transform:none;color:var(--muted);">· ohne Rezept</span></h3>
+        <div class="preis-group">
+          <span class="preis-group-label">Ohne Rezept</span>
+          <h3 class="preis-group-title">Selbstzahler<span class="preis-group-badge">· inkl. 19 % MwSt.</span></h3>
           <div class="preistab-wrap">
             <table class="preistab">
-              <thead>
-                <tr>
-                  <th>Dauer</th>
-                  <th>Preis inkl. 19 % MwSt.</th>
-                </tr>
-              </thead>
+              <thead><tr><th>Dauer</th><th>Preis</th></tr></thead>
               <tbody>
                 <tr><td>35 Minuten</td><td>60,00 €</td></tr>
                 <tr><td>45 Minuten</td><td>80,00 €</td></tr>
@@ -938,19 +957,36 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           </div>
         </div>
 
+        <!-- Inbegriffen ohne Aufpreis -->
+        <div class="inkl-pills">
+          <span class="inkl-pills-label">In jeder Behandlung inbegriffen</span>
+          <div class="inkl-pills-row">
+            <span class="inkl-pill">✓ Taping</span>
+            <span class="inkl-pill">✓ Flossing</span>
+            <span class="inkl-pill">✓ Schröpfen</span>
+            <span class="inkl-pill">✓ Wärmetherapie</span>
+            <span class="inkl-pill">✓ Blading</span>
+          </div>
+        </div>
+
         <!-- Block 3: Hausbesuch -->
-        <div style="margin-bottom:32px;padding:16px 20px;border:1px solid var(--border);background:#fdfcf9;">
-          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Hausbesuch &amp; Fahrtkosten</div>
-          <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:600;color:var(--text);margin:0;">10,00 € <span style="font-weight:400;font-size:13px;color:var(--muted);">pro Hausbesuch · einheitlich für alle Patienten</span></p>
+        <div class="hausbesuch-box">
+          <div>
+            <div class="hausbesuch-label">Hausbesuch &amp; Fahrtkosten</div>
+            <div class="hausbesuch-note">pro Hausbesuch · einheitlich für alle Patienten</div>
+          </div>
+          <div class="hausbesuch-price">10 €</div>
         </div>
 
-        <!-- Sonderregelung Ersttermin -->
-        <div style="margin-bottom:28px;padding:20px 24px;border:1.5px solid var(--accent);background:var(--accent-light);">
-          <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:16px;font-weight:700;color:var(--text);line-height:1.5;margin:0 0 8px;">Der Ersttermin ist <span style="text-decoration:underline;">kostenlos</span> —<br>wenn danach ein Folgetermin vereinbart &amp; wahrgenommen wird.</p>
-          <a href="javascript:void(0)" onclick="show('agb')" style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);text-decoration:underline;">Details in den Behandlungsbedingungen (§ 4.3)</a>
+        <!-- Ersttermin -->
+        <div class="ersttermin-card">
+          <span class="ersttermin-card-star">★</span>
+          <p class="ersttermin-card-title">Ersttermin kostenlos —<br>bei Vereinbarung eines Folgetetermins.</p>
+          <p class="ersttermin-card-sub">60 Minuten · Befundung, Anamnese &amp; Therapieplanung.</p>
+          <a href="javascript:void(0)" onclick="show('agb')">Details in den Behandlungsbedingungen (§ 4.3)</a>
         </div>
 
-        <div style="margin-top:28px;display:flex;gap:24px;flex-wrap:wrap;align-items:center;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;">
           <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
           <a class="mehr-link" href="javascript:void(0)" onclick="show('ablauf')" style="margin-top:0;">Wie läuft es ab?</a>
         </div>
@@ -958,7 +994,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
       <!-- BEHANDLUNGSANGEBOT -->
       <div>
-        <h3 style="font-family:'DM Sans',system-ui,sans-serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:20px;letter-spacing:-0.5px;">Behandlungsangebot</h3>
+        <span class="eyebrow" style="margin-bottom:8px;display:block;">Was ich anbiete</span>
+        <h3 class="leist-acc-title">Behandlungsangebot</h3>
         <div class="leist-acc-list">
 
           <div class="leist-acc-item">
@@ -1085,7 +1122,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="leist-hero-inner">
       <span class="leist-hero-eye">Über mich</span>
       <h1 class="leist-hero-title">Nick Grausam</h1>
-      <p class="leist-hero-sub">Staatlich anerkannter Physiotherapeut · Mobile Behandlung im Raum Heidelberg–Karlsruhe.</p>
+      <p class="leist-hero-sub">Mobile Physiotherapie · Hausbesuche im Raum Heidelberg–Karlsruhe.</p>
     </div>
   </div>
   <div class="sec">
@@ -1102,7 +1139,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           </div>
         </div>
         <div class="ueber-dets">
-          <div class="ueber-det"><div class="ueber-det-ico"><i data-lucide="graduation-cap"></i></div><div><h4>Ausbildung</h4><p>Staatlich anerkannter Physiotherapeut · BG Klinik Ludwigshafen</p></div></div>
+          <div class="ueber-det"><div class="ueber-det-ico"><i data-lucide="graduation-cap"></i></div><div><h4>Ausbildung</h4><p>BG Klinik Ludwigshafen</p></div></div>
           <div class="ueber-det"><div class="ueber-det-ico"><i data-lucide="stethoscope"></i></div><div><h4>Schwerpunkte</h4><p>Geriatrie · Geriatrische Pflege · Orthopädie &amp; Post-OP · Chronische Erkrankungen · Immobilität · Individuelle Beschwerdebilder</p></div></div>
           <div class="ueber-det"><div class="ueber-det-ico"><i data-lucide="map-pin"></i></div><div><h4>Einzugsgebiet</h4><p>Ausgewählte Orte · Raum Heidelberg–Karlsruhe</p></div></div>
         </div>
