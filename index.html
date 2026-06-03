@@ -264,6 +264,16 @@ nav .burger span{background:#fff;}
 
 /* ── LEISTUNGEN ── */
 .leist-section{display:flex;flex-direction:column;gap:64px;}
+@media(min-width:900px){.leist-section{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}}
+
+/* ── PAGE CTA ── */
+.page-cta{background:radial-gradient(ellipse 120% 80% at 70% 50%,rgba(167,147,124,.10) 0%,transparent 60%),linear-gradient(155deg,#1d1a14 0%,#17140f 55%,#1a1710 100%);padding:72px 9%;text-align:center;border-top:1px solid rgba(200,168,100,0.15);}
+.page-cta-eye{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:0.75;display:block;margin-bottom:16px;}
+.page-cta-title{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(20px,3vw,30px);font-weight:700;letter-spacing:-0.8px;color:#f0ebe0;margin-bottom:10px;}
+.page-cta-sub{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:28px;line-height:1.65;}
+.page-cta .btn{background:#f0ebe0;color:#1a1509;border-color:#f0ebe0;}
+.page-cta .btn:hover{background:#fff;border-color:#fff;}
+@media(max-width:860px){.page-cta{padding:52px 7%;}}
 .preise{display:flex;flex-direction:column;gap:0;margin-bottom:8px;border-top:1px solid var(--border);}
 .preis-card{border:none;border-bottom:1px solid var(--border);border-radius:0;padding:30px 0;background:transparent;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:none;box-shadow:none;}
 .preis-card:hover{border-color:var(--border);box-shadow:none;transform:none;background:transparent;}
@@ -306,20 +316,20 @@ nav .burger span{background:#fff;}
 .zg-item:last-child{border-bottom:none;}
 
 /* ── ABLAUF – Dark Section ── */
-.dark-sec{background:linear-gradient(135deg,#21392e 0%,#2c4d3d 55%,#1a2c23 100%);padding:84px 9%;}
-.dark-sec .eyebrow{color:rgba(255,255,255,0.5);}
+.dark-sec{background:radial-gradient(ellipse 120% 80% at 70% 50%,rgba(167,147,124,.10) 0%,transparent 60%),linear-gradient(155deg,#1d1a14 0%,#17140f 55%,#1a1710 100%);padding:84px 9%;border-bottom:1px solid rgba(255,255,255,.07);}
+.dark-sec .eyebrow{color:var(--gold);opacity:0.75;}
 .dark-sec .sec-title{color:#fff;}
-.dark-sec .sec-title::after{background:rgba(255,255,255,0.3);}
+.dark-sec .sec-title::after{background:rgba(200,168,100,0.35);}
 .dark-sec .sec-sub{color:rgba(255,255,255,0.6);}
 .ablauf-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:64px;}
 .ablauf-step{text-align:center;padding:0 8px;}
 .step-n{
   width:52px;height:52px;border-radius:50%;
-  border:1.5px solid rgba(255,255,255,0.2);
-  background:rgba(255,255,255,0.08);
+  border:1.5px solid rgba(200,168,100,0.35);
+  background:rgba(200,168,100,0.09);
   display:flex;align-items:center;justify-content:center;
   font-family:'DM Sans',system-ui,sans-serif;font-size:16px;font-weight:700;
-  color:rgba(255,255,255,0.85);
+  color:rgba(200,168,100,0.9);
   margin:0 auto 20px;
 }
 .step-t{font-family:'DM Sans',system-ui,sans-serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-0.2px;}
@@ -1000,7 +1010,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
     </div>
   </div>
-  <div style="padding:8px 6% 20px;"></div>
+  <div class="page-cta">
+    <span class="page-cta-eye">Termin vereinbaren</span>
+    <p class="page-cta-title">Kostenloser Ersttermin — direkt bei Ihnen zuhause.</p>
+    <p class="page-cta-sub">60 Minuten Befundung &amp; Beratung. Keine versteckten Kosten.</p>
+    <button class="btn" onclick="show('kontakt')">Jetzt anfragen</button>
+  </div>
 </div>
 
 <!-- ═══ ABLAUF ═══ -->
@@ -1035,11 +1050,23 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       </div>
     </div>
   </div>
-
+  <div class="page-cta">
+    <span class="page-cta-eye">Bereit?</span>
+    <p class="page-cta-title">Starten Sie jetzt.</p>
+    <p class="page-cta-sub">Kostenlosen Ersttermin anfragen — ich melde mich persönlich zurück.</p>
+    <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
+  </div>
 </div>
 
 <!-- ═══ ÜBER MICH ═══ -->
 <div class="page" id="ueber">
+  <div class="leist-hero">
+    <div class="leist-hero-inner">
+      <span class="leist-hero-eye">Über mich</span>
+      <h1 class="leist-hero-title">Nick Grausam</h1>
+      <p class="leist-hero-sub">Staatlich anerkannter Physiotherapeut · Mobile Behandlung im Raum Heidelberg–Karlsruhe.</p>
+    </div>
+  </div>
   <div class="sec">
     <div class="ueber-grid">
       <div class="ueber-img-wrap">
@@ -1060,8 +1087,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         </div>
       </div>
       <div>
-        <span class="eyebrow">Über mich</span>
-        <h2 class="sec-title">Nick Grausam</h2>
         <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Mein Schwerpunkt liegt auf Menschen, die ihr Zuhause nicht verlassen können — älteren Patienten mit eingeschränkter Mobilität, Menschen nach orthopädischen oder chirurgischen Eingriffen sowie Patienten mit geriatrischen Erkrankungsbildern, die eine kontinuierliche, fachkundige Betreuung benötigen. Die häusliche Behandlung ist in diesen Fällen kein Kompromiss — sie ist für viele Betroffene die fachlich naheliegendste Option.</p>
         <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Sport hat mich mein Leben lang begleitet — als leidenschaftlicher Handballer weiß ich aus eigener Erfahrung, was Bewegung bedeutet und wie viel sie einem geben kann. Durch die therapeutische Perspektive, die ich im Laufe meiner Ausbildung entwickelt habe, habe ich noch mehr Freude am Sport gefunden als je zuvor — weil ich verstehe, wie der Körper funktioniert, was er leisten kann und wie man ihn gezielt unterstützen kann. Genau diese Begeisterung möchte ich an meine Patienten weitergeben.</p>
         <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Meine Ausbildung an der BG Klinik Ludwigshafen hat mir das fachliche Fundament gegeben. Ich habe intensiv mit Patienten nach schweren traumatologischen, neurologischen und orthopädischen Eingriffen gearbeitet und erlebt, wie strukturierte Therapie Menschen schrittweise zurück in ihre Selbstständigkeit bringt.</p>
@@ -1072,6 +1097,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         </div>
       </div>
     </div>
+  </div>
+  <div class="page-cta">
+    <span class="page-cta-eye">Jetzt starten</span>
+    <p class="page-cta-title">Überzeugt? Vereinbaren Sie Ihren Ersttermin.</p>
+    <p class="page-cta-sub">Der Ersttermin ist kostenlos — bei Vereinbarung eines Folgetetermins.</p>
+    <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
   </div>
 </div>
 
@@ -1095,6 +1126,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wann sind Sie erreichbar? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Es gibt keine festen Öffnungszeiten — Termine werden individuell vereinbart. Am besten erreichen Sie mich per E-Mail oder über das Kontaktformular. Ich melde mich in der Regel innerhalb von 24 Stunden zurück.</div></div>
     </div>
   </div>
+  <div class="page-cta">
+    <span class="page-cta-eye">Noch Fragen?</span>
+    <p class="page-cta-title">Fragen Sie mich direkt.</p>
+    <p class="page-cta-sub">Ich antworte persönlich — in der Regel innerhalb von 24 Stunden.</p>
+    <button class="btn" onclick="show('kontakt')">Anfrage senden</button>
+  </div>
 </div>
 
 <!-- ═══ DOKUMENTE ═══ -->
@@ -1104,7 +1141,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="leist-hero-inner">
       <span class="leist-hero-eye">Kontakt</span>
       <h1 class="leist-hero-title">Termin anfragen</h1>
-      <p class="leist-hero-sub">Ich melde mich persönlich zurück — in der Regel innerhalb von 24 Stunden.</p>
+      <p class="leist-hero-sub">Ich melde mich persönlich zurück — in der Regel innerhalb von 24 Stunden.<br><span style="display:inline-block;margin-top:14px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(200,168,100,0.85);">✦ Ersttermin kostenlos — bei Vereinbarung eines Folgetetermins</span></p>
     </div>
   </div>
 
