@@ -206,6 +206,11 @@ nav .burger span{background:#fff;}
 .stat-l{font-family:'DM Sans',system-ui,sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:8px;font-weight:500;}
 @media(max-width:700px){.statsbar{grid-template-columns:1fr 1fr;}.stat{border-bottom:1px solid var(--border);}}
 
+/* ── TRUST STRIP ── */
+.trust-strip{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 36px;padding:22px 9%;background:#fff;border-bottom:1px solid var(--border);}
+.trust-item{display:flex;align-items:center;gap:7px;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.3px;color:var(--text);}
+@media(max-width:600px){.trust-strip{gap:8px 18px;padding:16px 6%;}.trust-item{font-size:11px;}}
+
 /* ── CARDS ── */
 .cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--border);}
 .card{
@@ -438,6 +443,14 @@ nav .burger span{background:#fff;}
 .visual-sec-body{text-align:center;padding:32px 0 0;}
 .visual-sec-title{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(18px,2.5vw,28px);font-weight:700;letter-spacing:-1px;color:var(--text);margin-bottom:16px;}
 .visual-sec-desc{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;max-width:520px;margin:0 auto 32px;}
+
+/* ── MISSION ── */
+.mission-sec{background:linear-gradient(155deg,#1e1609 0%,#2a2118 100%);padding:80px 9%;text-align:center;position:relative;overflow:hidden;border-top:1px solid rgba(200,168,100,0.15);}
+.mission-sec::before{content:'\201E';position:absolute;top:-40px;left:7%;font-size:220px;font-family:Georgia,serif;color:rgba(200,168,100,0.06);line-height:1;pointer-events:none;user-select:none;}
+.mission-inner{position:relative;z-index:1;}
+.mission-quote{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(18px,2.5vw,27px);font-weight:400;font-style:italic;color:#f0ebe0;line-height:1.65;max-width:660px;margin:0 auto 20px;letter-spacing:-0.2px;}
+.mission-attr{font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(200,168,100,0.65);}
+@media(max-width:600px){.mission-sec{padding:56px 7%;}}
 
 /* ── WEGWEISER (Verteiler zu Unterseiten) ── */
 .wegweiser{padding:84px 6%;border-top:1px solid var(--border);background:var(--white);}
@@ -724,6 +737,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 <!-- ═══ START ═══ -->
 <div class="page active" id="home">
   <div class="hero">
+    <div class="hero-img-wrap">
+      <picture>
+        <source type="image/webp" srcset="foto-3-800.webp 1x, foto-3-1600.webp 2x">
+        <img src="foto-3-800.jpg" srcset="foto-3-800.jpg 1x, foto-3-1600.jpg 2x" alt="" aria-hidden="true" loading="eager" width="800" height="736" fetchpriority="high">
+      </picture>
+    </div>
     <div class="hero-content">
       <h1 class="hero-title">Mobile Physiotherapie für Privatpatienten &amp; Selbstzahler.</h1>
       <p class="hero-sub">Individuelle physiotherapeutische Behandlung — direkt bei Ihnen zuhause. Tätig in ausgewählten Orten zwischen Heidelberg und Karlsruhe.</p>
@@ -748,6 +767,13 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="stat reveal"><div class="stat-n">10 €</div><div class="stat-l">Fahrtpauschale</div></div>
     <div class="stat reveal"><div class="stat-n">24h</div><div class="stat-l">Antwortzeit (i.d.R.)</div></div>
     <div class="stat reveal"><div class="stat-n">100%</div><div class="stat-l">Einzelbetreuung</div></div>
+  </div>
+
+  <div class="trust-strip">
+    <div class="trust-item reveal"><i data-lucide="shield-check" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>Staatlich anerkannter Physiotherapeut</div>
+    <div class="trust-item reveal"><i data-lucide="award" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>Ausgebildet an der BG Klinik Ludwigshafen</div>
+    <div class="trust-item reveal"><i data-lucide="shield" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>Berufshaftpflicht versichert</div>
+    <div class="trust-item reveal"><i data-lucide="lock" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>DSGVO-konform</div>
   </div>
 
   <!-- ── PHILOSOPHIE (kompakt) ── -->
@@ -793,6 +819,13 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <div class="ww-desc">Wer ich bin, wie ich arbeite und was mir in der Therapie wirklich wichtig ist.</div>
         <div class="ww-arrow">Ansehen →</div>
       </a>
+    </div>
+  </div>
+
+  <div class="mission-sec">
+    <div class="mission-inner">
+      <p class="mission-quote">„Ich komme zu Ihnen — damit Sie sich auf das Wesentliche konzentrieren können: Ihre Gesundheit."</p>
+      <span class="mission-attr">Nick Grausam &middot; Physiotherapeut</span>
     </div>
   </div>
 
@@ -1790,7 +1823,7 @@ if(window.lucide) lucide.createIcons();
 const _io = new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');_io.unobserve(e.target);}});
 },{threshold:0.12});
-document.querySelectorAll('.card,.dok-card,.ablauf-step,.preis-card,.ueber-det,.faq-item,.stat,.zg-item').forEach(el=>{
+document.querySelectorAll('.card,.dok-card,.ablauf-step,.preis-card,.ueber-det,.faq-item,.stat,.zg-item,.mission-inner').forEach(el=>{
   el.classList.add('fade-up');_io.observe(el);
 });
 
