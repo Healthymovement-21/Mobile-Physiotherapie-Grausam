@@ -275,7 +275,7 @@ nav .burger span{background:#fff;}
 
 /* ── LEISTUNGEN ── */
 .leist-section{display:flex;flex-direction:column;gap:64px;}
-@media(min-width:900px){.leist-section{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}}
+@media(min-width:900px){.leist-section{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}.leist-section>div:nth-child(2){position:sticky;top:110px;}}
 
 /* ── PAGE CTA ── */
 .page-cta{background:radial-gradient(ellipse 120% 80% at 70% 50%,rgba(167,147,124,.10) 0%,transparent 60%),linear-gradient(155deg,#1d1a14 0%,#17140f 55%,#1a1710 100%);padding:72px 9%;text-align:center;border-top:1px solid rgba(200,168,100,0.15);}
@@ -395,6 +395,7 @@ nav .burger span{background:#fff;}
 
 /* ── KONTAKT ── */
 .kontakt-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+@media(min-width:861px){.kontakt-grid>div:first-child{position:sticky;top:110px;}}
 .kontakt-col-title{font-family:'DM Sans',system-ui,sans-serif;font-size:20px;font-weight:700;color:var(--text);letter-spacing:-0.5px;margin-bottom:4px;}
 .kontakt-info{display:flex;flex-direction:column;gap:0;margin-top:22px;border-top:1px solid var(--border);}
 .k-row{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--border);}
@@ -486,6 +487,14 @@ nav .burger span{background:#fff;}
 .visual-sec-body{text-align:center;padding:32px 0 0;}
 .visual-sec-title{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(18px,2.5vw,28px);font-weight:700;letter-spacing:-1px;color:var(--text);margin-bottom:16px;}
 .visual-sec-desc{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;max-width:520px;margin:0 auto 32px;}
+@media(min-width:900px){
+  .visual-sec{display:flex;flex-wrap:wrap;align-items:center;gap:64px;padding:0 9% 96px;}
+  .visual-sec-label{flex:0 0 100%;text-align:left;padding:56px 0 0;}
+  .visual-sec picture{flex:1 1 420px;}
+  .visual-sec-img{width:100%;max-width:none;margin:0;}
+  .visual-sec-body{flex:1 1 380px;text-align:left;padding:0;}
+  .visual-sec-title{font-size:clamp(24px,3vw,34px);}
+}
 
 /* ── MISSION ── */
 .mission-sec{background:linear-gradient(155deg,#1e1609 0%,#2a2118 100%);padding:80px 9%;text-align:center;position:relative;overflow:hidden;border-top:1px solid rgba(200,168,100,0.15);}
