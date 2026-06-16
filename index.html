@@ -298,8 +298,9 @@ nav .burger span{background:#fff;}
 .preistab th{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-align:right;padding:8px 12px 8px 0;border-bottom:1.5px solid #111;white-space:nowrap;}
 .preistab th:first-child{text-align:left;}
 .preistab td{padding:14px 12px 14px 0;border-bottom:1px solid var(--border);color:var(--text);text-align:right;font-weight:600;white-space:nowrap;}
-.preistab td:first-child{text-align:left;font-weight:400;color:var(--text);}
+.preistab td:first-child{text-align:left;font-weight:400;color:var(--text);white-space:normal;}
 .preistab tbody tr:last-child td{border-bottom:none;}
+.preistab-tag{display:inline-block;margin-left:8px;font-size:9px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:3px 7px;border-radius:3px;vertical-align:middle;white-space:nowrap;}
 .leist-kürzel{display:block;font-size:11.5px;font-weight:400;color:var(--muted);margin-top:2px;}
 .inkl-box{border:none;border-left:3px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:14px 20px;background:var(--accent-light);}
 .inkl-box h4{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;}
@@ -829,7 +830,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="stat reveal"><div class="stat-n">60 <span style="font-size:0.45em;font-weight:600;letter-spacing:1px;">MIN</span></div><div class="stat-l">Ersttermin-Dauer</div></div>
     <div class="stat reveal"><div class="stat-n">10 €</div><div class="stat-l">Fahrtpauschale</div></div>
     <div class="stat reveal"><div class="stat-n">24h</div><div class="stat-l">Antwortzeit (i.d.R.)</div></div>
-    <div class="stat reveal"><div class="stat-n">100%</div><div class="stat-l">Einzelbetreuung</div></div>
+    <div class="stat reveal"><div class="stat-n">ab 22,50 €</div><div class="stat-l">Folgebehandlung</div></div>
   </div>
 
   <div class="trust-strip">
@@ -935,18 +936,18 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         <div class="preis-group">
           <span class="preis-group-label">PKV &amp; Beihilfe</span>
           <h3 class="preis-group-title">Privatpatienten &amp; Beihilfe<span class="preis-group-badge">· mit Rezept</span></h3>
-          <p class="preis-group-note">Beispiel: KG · Krankengymnastik</p>
+          <p class="preis-group-note">30 Min nach Beihilfe-Höchstsatz (MT) · 45/60 Min freie Honorarvereinbarung</p>
           <div class="preistab-wrap">
             <table class="preistab">
               <thead><tr><th>Dauer</th><th>Preis</th></tr></thead>
               <tbody>
-                <tr><td>35 Minuten</td><td>45,00 €</td></tr>
-                <tr><td>45 Minuten</td><td>65,00 €</td></tr>
-                <tr><td>60 Minuten</td><td>85,00 €</td></tr>
+                <tr><td>30 Minuten (MT) <span class="preistab-tag">i.d.R. ohne Eigenanteil</span></td><td>22,50 €</td></tr>
+                <tr><td>45 Minuten</td><td>80,00 €</td></tr>
+                <tr><td>60 Minuten</td><td>100,00 €</td></tr>
               </tbody>
             </table>
           </div>
-          <p class="preis-group-note" style="margin-top:10px;margin-bottom:0;">MT, MLD, KMT sowie abweichende Zeiten auf Anfrage. Alle Honorare werden schriftlich festgehalten.</p>
+          <p class="preis-group-note" style="margin-top:10px;margin-bottom:0;">Die 30-Minuten-Einheit entspricht in der Regel dem Beihilfe-Erstattungssatz — es bleibt meist nur die Fahrtkostenpauschale als Eigenanteil. MT, MLD, KMT sowie abweichende Zeiten auf Anfrage. Alle Honorare werden schriftlich festgehalten.</p>
         </div>
 
         <!-- Block 2: Selbstzahler -->
@@ -957,9 +958,9 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             <table class="preistab">
               <thead><tr><th>Dauer</th><th>Preis</th></tr></thead>
               <tbody>
-                <tr><td>35 Minuten</td><td>60,00 €</td></tr>
-                <tr><td>45 Minuten</td><td>80,00 €</td></tr>
-                <tr><td>60 Minuten</td><td>100,00 €</td></tr>
+                <tr><td>30 Minuten (MT)</td><td>26,78 €</td></tr>
+                <tr><td>45 Minuten</td><td>95,20 €</td></tr>
+                <tr><td>60 Minuten</td><td>119,00 €</td></tr>
               </tbody>
             </table>
           </div>
@@ -1171,6 +1172,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   <div class="sec">
     <div class="faq-list">
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was passiert beim Ersttermin? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Der Ersttermin dauert 60 Minuten und umfasst eine ausführliche Anamnese, Befundung und Therapieplanung. Das weitere Vorgehen besprechen und planen wir gemeinsam. — <strong>Preisvorteil:</strong> Der Ersttermin wird nicht in Rechnung gestellt, wenn (1.) unmittelbar im Anschluss mindestens ein Folgetermin vereinbart wird und (2.) dieser Folgetermin tatsächlich wahrgenommen wird. Sind diese beiden Bedingungen nicht erfüllt, wird der Ersttermin zum regulären Preis berechnet. Die vollständige Regelung ist in den Behandlungsbedingungen (§ 4.3) festgehalten. — <strong>Wichtig:</strong> Nur die Behandlungskosten entfallen — die Fahrtkostenpauschale (10,00 €) wird auch beim Ersttermin regulär berechnet. — Eine Abrechnung mit gesetzlichen Krankenkassen ist nicht möglich.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="faq(this)">Gibt es eine kürzere, günstigere Behandlungsoption? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Ja. Neben der ausführlichen 45/60-Minuten-Behandlung biete ich eine kompakte <strong>30-Minuten-Einheit (Manuelle Therapie) für 22,50 €</strong> (mit Rezept, Privatpatienten &amp; Beihilfe) an. Dieser Preis entspricht dem üblichen Beihilfe-Höchstsatz für MT — für viele Patienten bleibt dadurch außer der Fahrtkostenpauschale kein Eigenanteil übrig. Geben Sie Ihre gewünschte Behandlungsdauer einfach bei der Terminanfrage an.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Was ist im Behandlungspreis inbegriffen? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Ergänzende Maßnahmen wie Taping, Flossing, Schröpfen, Wärmetherapie und Blading werden eingesetzt, wenn sie therapeutisch sinnvoll sind — ohne Aufpreis. Hausbesuch und Anfahrt werden als separate Position auf der Rechnung ausgewiesen (10,00 € pro Hausbesuch, einheitlich für alle Patienten). Es fallen keine weiteren Kosten an; Ausfallhonorare bei kurzfristiger Absage sind separat in den Behandlungsbedingungen geregelt.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Brauche ich ein Rezept? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Als Selbstzahler benötigen Sie kein Rezept. Privatpatienten und Beamte mit Beihilfe benötigen in der Regel ein ärztliches Rezept, um die Rechnung bei ihrer Versicherung oder Beihilfestelle einzureichen. Die Erstattung ist tarifabhängig und nicht garantiert — bitte klären Sie dies vorab mit Ihrer Versicherung.</div></div>
       <div class="faq-item"><button class="faq-q" onclick="faq(this)">Wie funktioniert die Abrechnung? <span class="ico"><i data-lucide="plus"></i></span></button><div class="faq-a">Nach der Behandlung erhalten Sie eine Rechnung per E-Mail. Privatpatienten reichen diese bei ihrer privaten Krankenversicherung ein, Beamte über die zuständige Beihilfestelle. Selbstzahler zahlen direkt — bar oder per Überweisung innerhalb von 14 Tagen. Eine Abrechnung mit gesetzlichen Krankenkassen (GKV) ist nicht möglich.</div></div>
@@ -1270,6 +1272,15 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           <div class="fg" id="fg-adresse">
             <label for="kf-adresse">Wohnanschrift<span class="fg-opt">freiwillig</span></label>
             <input type="text" id="kf-adresse" placeholder="Straße, PLZ, Ort" autocomplete="street-address">
+          </div>
+          <div class="fg" id="fg-dauer">
+            <label for="kf-dauer">Gewünschte Behandlungsdauer<span class="fg-opt">freiwillig</span></label>
+            <select id="kf-dauer">
+              <option value="">Bitte wählen …</option>
+              <option value="30 Minuten / MT (22,50 € · i.d.R. ohne Eigenanteil bei Beihilfe)">30 Minuten — kompakt, i. d. R. ohne Eigenanteil bei Beihilfe</option>
+              <option value="45 Minuten">45 Minuten</option>
+              <option value="60 Minuten">60 Minuten</option>
+            </select>
           </div>
           <div class="form-row">
             <div class="fg" id="fg-rezept">
@@ -1497,9 +1508,9 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
     <h3>4. Preise, Umsatzsteuer und Zahlung</h3>
     <h4>4.1 Privatpatienten und Beihilfeberechtigte (mit ärztlichem Rezept)</h4>
-    <p>Heilbehandlungen mit ärztlicher Verordnung sind gemäß <strong>§ 4 Nr. 14 UStG von der Umsatzsteuer befreit</strong>. Es wird keine Umsatzsteuer erhoben und ausgewiesen. Preise (netto = brutto): Ersttermin 60 € · Folgebehandlung 45 Min 80 € · Folgebehandlung 60 Min 100 €.</p>
+    <p>Heilbehandlungen mit ärztlicher Verordnung sind gemäß <strong>§ 4 Nr. 14 UStG von der Umsatzsteuer befreit</strong>. Es wird keine Umsatzsteuer erhoben und ausgewiesen. Preise (netto = brutto): Ersttermin 60 € · Folgebehandlung 30 Min (MT) 22,50 € · Folgebehandlung 45 Min 80 € · Folgebehandlung 60 Min 100 €. Die 30-Minuten-Einheit entspricht dem üblichen Beihilfe-Höchstsatz für Manuelle Therapie.</p>
     <h4>4.2 Selbstzahler (ohne ärztliches Rezept)</h4>
-    <p>Leistungen ohne Verordnung gelten als private Dienstleistung und sind <strong>umsatzsteuerpflichtig (19 % USt)</strong>. Bruttopreise (inkl. 19 % USt): Ersttermin 71,40 € · Folgebehandlung 45 Min 95,20 € · Folgebehandlung 60 Min 119,00 €.</p>
+    <p>Leistungen ohne Verordnung gelten als private Dienstleistung und sind <strong>umsatzsteuerpflichtig (19 % USt)</strong>. Bruttopreise (inkl. 19 % USt): Ersttermin 71,40 € · Folgebehandlung 30 Min (MT) 26,78 € · Folgebehandlung 45 Min 95,20 € · Folgebehandlung 60 Min 119,00 €.</p>
     <h4>4.3 Ersttermin-Sonderregelung</h4>
     <p>Der Ersttermin (60 Min, Befundung und Therapieplanung) kostet regulär 60 € netto / 71,40 € brutto. <strong>Der Ersttermin wird nicht in Rechnung gestellt, wenn unmittelbar im Anschluss an den Ersttermin mindestens ein Folgetermin vereinbart und dieser tatsächlich wahrgenommen wird.</strong> Wird kein Folgetermin vereinbart oder nicht wahrgenommen, wird der Ersttermin zum vollen Preis berechnet. Die Fahrtkostenpauschale (§ 2.3) ist von dieser Sonderregelung ausgenommen und wird stets in voller Höhe berechnet.</p>
     <h4>4.4 Zahlung</h4>
@@ -1891,12 +1902,14 @@ function handleVerordnung(val){
       var vers=document.getElementById('kf-vers').value;
       var email=document.getElementById('kf-email').value.trim();
       var adresse=document.getElementById('kf-adresse').value.trim();
+      var dauer=document.getElementById('kf-dauer').value;
       var rezept=document.getElementById('kf-rezept').value;
       var rezeptType=document.getElementById('kf-rezept-type').value;
       var koerper=document.getElementById('kf-koerper').value;
       var msg=document.getElementById('kf-nachricht').value.trim();
       var lines=['Name: '+name,'Versicherungsart: '+vers,'E-Mail: '+email];
       if(adresse)lines.push('Wohnanschrift: '+adresse);
+      if(dauer)lines.push('Gewünschte Behandlungsdauer: '+dauer);
       if(rezept)lines.push('Rezept vorhanden: '+rezept+(rezeptType?' ('+rezeptType+')':''));
       if(koerper)lines.push('Körpergebiet: '+koerper);
       var body='Neue Terminanfrage über die Website:\n\n'+lines.join('\n')+(msg?'\n\nAnliegen:\n'+msg:'');
@@ -1909,6 +1922,7 @@ function handleVerordnung(val){
       fd.append('Versicherungsart',vers);
       fd.append('E-Mail',email);
       if(adresse)fd.append('Wohnanschrift',adresse);
+      if(dauer)fd.append('Gewünschte Behandlungsdauer',dauer);
       if(rezept)fd.append('Rezept vorhanden',rezept+(rezeptType?' ('+rezeptType+')':''));
       if(koerper)fd.append('Körpergebiet',koerper);
       if(msg)fd.append('Anliegen',msg);
