@@ -99,15 +99,11 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:va
 .page{overflow-x:hidden;max-width:100%;}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:420;background:rgba(23,20,15,0.72);border-bottom:1px solid rgba(255,255,255,0.08);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:0 9%;height:80px;display:flex;align-items:center;justify-content:space-between;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);transition:background 0.3s,border-color 0.3s;}
-nav.nav-white{background:#fff;border-bottom-color:var(--border);-webkit-backdrop-filter:none;backdrop-filter:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:420;background:transparent;border-bottom:1px solid transparent;padding:0 9%;height:80px;display:flex;align-items:center;justify-content:space-between;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);transition:background 0.3s,border-color 0.3s;}
+nav.nav-white{background:#fff;border-bottom-color:var(--border);}
 nav.nav-white .nav-logo-img{filter:none;}
 nav.nav-white .burger span{background:var(--text);}
 nav.nav-white .burger-label{color:var(--text);}
-@media(min-width:860px){
-  nav{background:transparent;border-bottom-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;}
-  nav.nav-white{background:#fff;border-bottom-color:var(--border);}
-}
 /* Desktop nav links */
 .nav-links{display:none;list-style:none;margin:0;padding:0;gap:6px;align-items:center;}
 .nav-links a{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:500;color:#fff;background:none;border:none;cursor:pointer;padding:6px 12px;border-radius:6px;text-decoration:none;transition:opacity 0.2s,background 0.2s;letter-spacing:0.1px;white-space:nowrap;}
@@ -127,7 +123,8 @@ nav.nav-white .burger-label{color:var(--text);}
   .burger{display:none!important;}
 }
 .nav-logo{cursor:pointer;}
-.burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;color:var(--text);}
+.burger{display:flex;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:8px 11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;color:var(--text);}
+.burger-lines{display:flex;flex-direction:column;gap:5px;align-items:center;}
 .burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform 0.3s,opacity 0.3s,background 0.3s;}
 /* Logo/Burger immer weiß auf transparenter Nav */
 nav .nav-logo-img{filter:brightness(0) invert(1);}
@@ -702,7 +699,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <li><a href="javascript:void(0)" onclick="show('faq')">FAQ</a></li>
   </ul>
   <button class="nav-cta" onclick="show('kontakt')">Termin anfragen</button>
-<button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span></span><span></span><span></span><span class="burger-label">Menü</span></button>
+<button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span class="burger-lines"><span></span><span></span><span></span></span><span class="burger-label">Menü</span></button>
 </nav>
 
 <div class="overlay-backdrop" id="overlayBackdrop" onclick="toggleOverlay()"></div>
