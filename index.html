@@ -103,6 +103,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:420;background:transparent;borde
 nav.nav-white{background:#fff;border-bottom-color:var(--border);}
 nav.nav-white .nav-logo-img{filter:none;}
 nav.nav-white .burger span{background:var(--text);}
+/* Desktop nav links */
+.nav-links{display:none;list-style:none;margin:0;padding:0;gap:6px;align-items:center;}
+.nav-links a{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:500;color:#fff;background:none;border:none;cursor:pointer;padding:6px 12px;border-radius:6px;text-decoration:none;transition:opacity 0.2s,background 0.2s;letter-spacing:0.1px;white-space:nowrap;}
+.nav-links a:hover{opacity:0.7;}
+.nav-links a.nav-active{font-weight:700;}
+nav.nav-white .nav-links a{color:var(--text);}
+.nav-cta{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:600;color:#fff;background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.3);border-radius:8px;padding:8px 18px;cursor:pointer;transition:background 0.2s,color 0.2s,border-color 0.2s;white-space:nowrap;display:none;}
+.nav-cta:hover{background:rgba(255,255,255,0.22);}
+nav.nav-white .nav-cta{color:var(--text);background:transparent;border-color:var(--border);}
+nav.nav-white .nav-cta:hover{background:var(--sand-light);}
+@media(min-width:860px){
+  .nav-links{display:flex;}
+  .nav-cta{display:block;}
+  .burger{display:none!important;}
+}
 .nav-logo{cursor:pointer;}
 .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;color:var(--text);}
 .burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform 0.3s,opacity 0.3s,background 0.3s;}
@@ -670,8 +685,15 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
 <nav>
   <span class="nav-logo" onclick="show('home')">
-  <img src="logo.svg" alt="Mobile Physiotherapie Grausam" class="nav-logo-img">
-</span>
+    <img src="logo.svg" alt="Mobile Physiotherapie Grausam" class="nav-logo-img">
+  </span>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="javascript:void(0)" onclick="show('leistungen')">Leistungen & Preise</a></li>
+    <li><a href="javascript:void(0)" onclick="show('ablauf')">Ablauf</a></li>
+    <li><a href="javascript:void(0)" onclick="show('ueber')">Über mich</a></li>
+    <li><a href="javascript:void(0)" onclick="show('faq')">FAQ</a></li>
+  </ul>
+  <button class="nav-cta" onclick="show('kontakt')">Termin anfragen</button>
   <button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span></span><span></span><span></span></button>
 </nav>
 
@@ -1754,7 +1776,7 @@ function updateNav(){
   else { nav.classList.add('nav-white'); }
   const activePage=document.querySelector('.page.active');
   if(activePage){
-    document.querySelectorAll('.overlay-links a').forEach(function(a){
+    document.querySelectorAll('.overlay-links a, #navLinks a').forEach(function(a){
       const oc=a.getAttribute('onclick')||'';
       a.classList.toggle('nav-active',oc.indexOf("'"+activePage.id+"'")!==-1);
     });
