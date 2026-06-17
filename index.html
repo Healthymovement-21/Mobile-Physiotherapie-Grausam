@@ -113,10 +113,21 @@ nav.nav-white .nav-links a{color:var(--text);}
 .nav-cta:hover{background:rgba(255,255,255,0.22);}
 nav.nav-white .nav-cta{color:var(--text);background:transparent;border-color:var(--border);}
 nav.nav-white .nav-cta:hover{background:var(--sand-light);}
+/* Mobile quick-links (option 3) */
+.mob-quick{display:flex;gap:6px;align-items:center;}
+.mob-quick-btn{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:600;background:rgba(255,255,255,0.13);color:#fff;border:1px solid rgba(255,255,255,0.28);border-radius:7px;padding:7px 13px;cursor:pointer;white-space:nowrap;transition:background 0.2s;}
+.mob-quick-btn:hover{background:rgba(255,255,255,0.22);}
+.mob-quick-cta{background:rgba(200,168,100,0.22);border-color:rgba(200,168,100,0.45);color:#f0ebe0;}
+nav.nav-white .mob-quick-btn{color:var(--text);background:transparent;border-color:var(--border);}
+nav.nav-white .mob-quick-cta{color:var(--accent);border-color:var(--accent);}
+/* Burger label (option 2) */
+.burger-label{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;line-height:1;margin-top:1px;}
+nav.nav-white .burger-label{color:var(--text);}
 @media(min-width:860px){
   .nav-links{display:flex;}
   .nav-cta{display:block;}
   .burger{display:none!important;}
+  .mob-quick{display:none;}
 }
 .nav-logo{cursor:pointer;}
 .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;color:var(--text);}
@@ -694,7 +705,11 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <li><a href="javascript:void(0)" onclick="show('faq')">FAQ</a></li>
   </ul>
   <button class="nav-cta" onclick="show('kontakt')">Termin anfragen</button>
-  <button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span></span><span></span><span></span></button>
+  <div class="mob-quick">
+    <button class="mob-quick-btn" onclick="show('leistungen')">Preise</button>
+    <button class="mob-quick-btn mob-quick-cta" onclick="show('kontakt')">Kontakt</button>
+  </div>
+  <button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span></span><span></span><span></span><span class="burger-label">Menü</span></button>
 </nav>
 
 <div class="overlay-backdrop" id="overlayBackdrop" onclick="toggleOverlay()"></div>
