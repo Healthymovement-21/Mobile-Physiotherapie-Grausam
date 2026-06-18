@@ -421,7 +421,10 @@ nav .burger-lines span{background:#fff;}
 .k-ico{width:20px;height:20px;background:transparent;border:none;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding-top:3px;}
 .k-row h4{font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text);margin-bottom:3px;}
 .k-row p,.k-row a{font-family:'DM Sans',system-ui,sans-serif;font-size:13.5px;color:var(--muted);text-decoration:none;}
+.k-row a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;}
 .k-row a:hover{color:var(--text);}
+.k-row-tap{cursor:pointer;border-radius:10px;padding:14px 12px;margin:0 -12px;background:#fdfcf9;border:1px solid var(--border);transition:background 0.15s;}
+.k-row-tap:active{background:#f5f0e8;}
 .k-note{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5;}
 .kontakt-box{background:var(--sand-light);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;}
 .kontakt-box-title{font-family:'DM Sans',system-ui,sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:20px;letter-spacing:-0.3px;}
@@ -1192,22 +1195,24 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <div>
         <h2 class="kontakt-col-title">Direkt erreichbar</h2>
         <div class="kontakt-info">
-          <div class="k-row">
+          <a class="k-row k-row-tap" href="mailto:info@physiotherapie-grausam.com" style="text-decoration:none;display:flex;align-items:center;">
             <div class="k-ico"><i data-lucide="mail"></i></div>
-            <div>
+            <div style="flex:1;">
               <h4>E-Mail</h4>
-              <p><a href="mailto:info@physiotherapie-grausam.com">info@physiotherapie-grausam.com</a></p>
+              <p style="color:var(--accent);font-weight:600;">info@physiotherapie-grausam.com</p>
               <p class="k-note">Antwort in der Regel innerhalb von 24 Stunden</p>
             </div>
-          </div>
-          <div class="k-row">
+            <i data-lucide="chevron-right" style="width:18px;height:18px;stroke:var(--accent);stroke-width:2;flex-shrink:0;margin-left:8px;"></i>
+          </a>
+          <a class="k-row k-row-tap" href="tel:017642685146" style="text-decoration:none;display:flex;align-items:center;">
             <div class="k-ico"><i data-lucide="phone"></i></div>
-            <div>
+            <div style="flex:1;">
               <h4>Telefon</h4>
-              <p><a href="tel:017642685146">0176 4268 5146</a></p>
+              <p style="color:var(--accent);font-weight:600;">0176 4268 5146</p>
               <p class="k-note">Mo–Mi &amp; Fr ab 17 Uhr · Sa &amp; So ganztags</p>
             </div>
-          </div>
+            <i data-lucide="chevron-right" style="width:18px;height:18px;stroke:var(--accent);stroke-width:2;flex-shrink:0;margin-left:8px;"></i>
+          </a>
           <div class="k-row">
             <div class="k-ico"><i data-lucide="map-pin"></i></div>
             <div>
