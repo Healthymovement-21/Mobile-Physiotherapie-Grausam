@@ -1547,11 +1547,14 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         Inhaber-Portal
       </div>
       <p class="portal-login-sub">Mobile Physiotherapie Grausam · Nur für interne Nutzung</p>
-      <div class="portal-pw-wrap" style="margin-bottom:0;">
-        <input type="password" id="portal-pw-input" placeholder="Passwort eingeben" autocomplete="current-password" onkeydown="if(event.key==='Enter')portalLogin()">
-      </div>
-      <div id="portal-err" class="portal-err hidden">Falsches Passwort. Bitte erneut versuchen.</div>
-      <button class="btn" style="width:100%;margin-top:14px;" onclick="portalLogin()">Anmelden</button>
+      <form onsubmit="portalLogin();return false;" autocomplete="on">
+        <input type="text" name="username" autocomplete="username" value="inhaber" style="display:none;">
+        <div class="portal-pw-wrap" style="margin-bottom:0;">
+          <input type="password" id="portal-pw-input" name="password" placeholder="Passwort eingeben" autocomplete="current-password">
+        </div>
+        <div id="portal-err" class="portal-err hidden">Falsches Passwort. Bitte erneut versuchen.</div>
+        <button type="submit" class="btn" style="width:100%;margin-top:14px;">Anmelden</button>
+      </form>
     </div>
   </div>
 
