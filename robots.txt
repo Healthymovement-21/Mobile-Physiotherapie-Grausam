@@ -1,3 +1,6 @@
 User-agent: *
 Allow: /
+
+Disallow: /dokumente/
+
 Sitemap: https://physiotherapie-grausam.com/sitemap.xml
