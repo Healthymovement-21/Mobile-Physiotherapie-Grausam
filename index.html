@@ -664,6 +664,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   .dark-sec{padding:48px 7%;}
   .philosophie-sec{padding:44px 7%;}
   .visual-sec{padding:0 0 44px;}
+  .vorteile-grid{grid-template-columns:1fr !important;}
+  .vorteile-grid>div{border-right:none !important;padding-left:0 !important;padding-right:0 !important;}
   .visual-sec-body{padding:20px 5% 0;}
   .visual-sec-label{padding:24px 5% 14px;}
   .wegweiser{padding:48px 5%;}
@@ -868,7 +870,29 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="trust-item reveal"><i data-lucide="lock" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>DSGVO-konform</div>
   </div>
 
-  <!-- ── PHILOSOPHIE (kompakt) ── -->
+  <!-- ── VORTEILE ── -->
+  <div style="background:var(--sand-dark);padding:64px 9%;">
+    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:40px;">Ihre Vorteile</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;" class="vorteile-grid">
+      <div style="padding:28px 32px 28px 0;border-top:1px solid rgba(255,255,255,0.08);border-right:1px solid rgba(255,255,255,0.08);">
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:20px;font-weight:600;color:#fff;line-height:1.4;">Kein Weg,<br>keine Wartezeiten</p>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:rgba(255,255,255,0.45);margin-top:8px;line-height:1.6;">Behandlung direkt bei Ihnen zuhause.</p>
+      </div>
+      <div style="padding:28px 0 28px 32px;border-top:1px solid rgba(255,255,255,0.08);">
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:20px;font-weight:600;color:#fff;line-height:1.4;">Ausreichend Zeit<br>für Ihre Therapie</p>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:rgba(255,255,255,0.45);margin-top:8px;line-height:1.6;">Keine getakteten Kurztermine.</p>
+      </div>
+      <div style="padding:28px 32px 0 0;border-top:1px solid rgba(255,255,255,0.08);border-right:1px solid rgba(255,255,255,0.08);">
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:20px;font-weight:600;color:#fff;line-height:1.4;">Zusatzmaßnahmen<br>ohne Aufpreis</p>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:rgba(255,255,255,0.45);margin-top:8px;line-height:1.6;">Taping, Schröpfen, Wärme & mehr inklusive.</p>
+      </div>
+      <div style="padding:28px 0 0 32px;border-top:1px solid rgba(255,255,255,0.08);">
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:20px;font-weight:600;color:#fff;line-height:1.4;">Flexible &amp; kurzfristige<br>Termine möglich</p>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:rgba(255,255,255,0.45);margin-top:8px;line-height:1.6;">Individuelle Terminvereinbarung, kein Wartezimmer.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- ── ANGEBOT-SEKTION (ein starker Bild-Block, echtes Foto) ── -->
   <div class="visual-sec">
     <span class="visual-sec-label">Mein Angebot</span>
@@ -881,15 +905,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     </div>
   </div>
 
-  <div class="sec" style="padding-top:56px;padding-bottom:56px;border-top:1px solid var(--border);">
-    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Ihre Vorteile auf einen Blick</p>
-    <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;max-width:640px;">
-      <li style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;color:var(--text);display:flex;align-items:baseline;gap:12px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">—</span>Behandlung bei Ihnen zuhause — kein Weg, keine Wartezeiten</li>
-      <li style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;color:var(--text);display:flex;align-items:baseline;gap:12px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">—</span>Zusatzmaßnahmen ohne Aufpreis</li>
-      <li style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;color:var(--text);display:flex;align-items:baseline;gap:12px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">—</span>Ausreichend Zeit für Ihre Therapie</li>
-      <li style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;color:var(--text);display:flex;align-items:baseline;gap:12px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">—</span>Flexible und kurzfristige Termine möglich</li>
-    </ul>
-  </div>
+
 
   <div class="philosophie-sec">
     <span class="phil-label">Meine Philosophie</span>
