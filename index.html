@@ -1986,32 +1986,16 @@ function sendMailto(e){
   var rezeptType=document.getElementById('kf-rezept-type')?document.getElementById('kf-rezept-type').value:'';
   var koerper=document.getElementById('kf-koerper').value;
   var msg=document.getElementById('kf-nachricht').value.trim();
-  var body='Guten Tag Herr Grausam,
-
-hiermit möchte ich einen Termin anfragen.
-
-'
-    +'Name: '+name+'
-'
-    +'Versicherungsart: '+vers+'
-'
-    +'E-Mail: '+email+'
-'
-    +(adresse?'Wohnanschrift: '+adresse+'
-':'')
-    +(dauer?'Gewünschte Behandlungsdauer: '+dauer+'
-':'')
-    +(rezept?'Rezept vorhanden: '+rezept+(rezeptType?' ('+rezeptType+')':'')+'
-':'')
-    +(koerper?'Körpergebiet: '+koerper+'
-':'')
-    +(msg?'
-Anliegen:
-'+msg+'
-':'')
-    +'
-Mit freundlichen Grüßen
-'+name;
+  var body='Guten Tag Herr Grausam,\n\nhiermit möchte ich einen Termin anfragen.\n\n'
+    +'Name: '+name+'\n'
+    +'Versicherungsart: '+vers+'\n'
+    +'E-Mail: '+email+'\n'
+    +(adresse?'Wohnanschrift: '+adresse+'\n':'')
+    +(dauer?'Gewünschte Behandlungsdauer: '+dauer+'\n':'')
+    +(rezept?'Rezept vorhanden: '+rezept+(rezeptType?' ('+rezeptType+')':'')+'\n':'')
+    +(koerper?'Körpergebiet: '+koerper+'\n':'')
+    +(msg?'\nAnliegen:\n'+msg+'\n':'')
+    +'\nMit freundlichen Grüßen\n'+name;
   var mailto='mailto:info@physiotherapie-grausam.com'
     +'?subject='+encodeURIComponent('Terminanfrage – '+name)
     +'&body='+encodeURIComponent(body);
