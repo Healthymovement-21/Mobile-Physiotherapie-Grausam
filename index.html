@@ -1286,15 +1286,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             <label for="kf-adresse">Wohnanschrift<span class="fg-opt">freiwillig</span></label>
             <input type="text" id="kf-adresse" placeholder="Straße, PLZ, Ort" autocomplete="street-address">
           </div>
-          <div class="fg" id="fg-dauer">
-            <label for="kf-dauer">Gewünschte Behandlungsdauer<span class="fg-opt">freiwillig</span></label>
-            <select id="kf-dauer">
-              <option value="">Bitte wählen …</option>
-              <option value="30 Minuten — Krankengymnastik">30 Minuten — Krankengymnastik</option>
-              <option value="45 Minuten">45 Minuten</option>
-              <option value="60 Minuten">60 Minuten</option>
-            </select>
-          </div>
           <div class="form-row">
             <div class="fg" id="fg-rezept">
               <label for="kf-rezept">Rezept vorhanden?<span class="fg-opt">freiwillig</span></label>
@@ -1981,7 +1972,6 @@ function sendMailto(e){
   var vers=document.getElementById('kf-vers').value;
   var email=document.getElementById('kf-email').value.trim();
   var adresse=document.getElementById('kf-adresse').value.trim();
-  var dauer=document.getElementById('kf-dauer').value;
   var rezept=document.getElementById('kf-rezept').value;
   var rezeptType=document.getElementById('kf-rezept-type')?document.getElementById('kf-rezept-type').value:'';
   var koerper=document.getElementById('kf-koerper').value;
@@ -1991,7 +1981,6 @@ function sendMailto(e){
     +'Versicherungsart: '+vers+'\n'
     +'E-Mail: '+email+'\n'
     +(adresse?'Wohnanschrift: '+adresse+'\n':'')
-    +(dauer?'Gewünschte Behandlungsdauer: '+dauer+'\n':'')
     +(rezept?'Rezept vorhanden: '+rezept+(rezeptType?' ('+rezeptType+')':'')+'\n':'')
     +(koerper?'Körpergebiet: '+koerper+'\n':'')
     +(msg?'\nAnliegen:\n'+msg+'\n':'')
