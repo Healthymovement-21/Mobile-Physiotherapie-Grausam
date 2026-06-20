@@ -8,7 +8,7 @@
 <meta name="keywords" content="Mobile Physiotherapie, Hausbesuche, Heidelberg, Karlsruhe, Leimen, Privatpatient, Beihilfe, Geriatrie, Physiotherapeut">
 <meta name="author" content="Nick Grausam">
 <!-- ══ SECURITY HEADERS ══ -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://images.unsplash.com; connect-src 'self' https://formsubmit.co; frame-src 'none'; base-uri 'self'; object-src 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://images.unsplash.com; connect-src 'self'; frame-src 'none'; base-uri 'self'; object-src 'none';">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
 <meta property="og:title" content="Mobile Physiotherapie Grausam | Hausbesuche Heidelberg–Karlsruhe">
@@ -1256,8 +1256,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <!-- Rechts: Kontaktformular -->
       <div>
         <h2 class="kontakt-col-title">Anfrage senden</h2>
-        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);margin-top:4px;margin-bottom:24px;line-height:1.6;">Formular ausfüllen — ich melde mich persönlich zurück.</p>
-        <form class="form" id="kontaktForm" novalidate>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);margin-top:4px;margin-bottom:24px;line-height:1.6;">Ausfüllen &amp; absenden — öffnet Ihr E-Mail-Programm mit allen Angaben.</p>
+        <form class="form" id="kontaktForm" onsubmit="sendMailto(event)" novalidate>
           <div class="form-row">
             <div class="fg" id="fg-name">
               <label for="kf-name">Name</label>
@@ -1351,11 +1351,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             <textarea id="kf-nachricht" placeholder="Wunschtermin, weitere Informationen …" rows="2"></textarea>
           </div>
           <div style="margin-top:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-            <button type="submit" class="btn">Anfrage senden</button>
-            <span id="kf-success" style="display:none;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:#4a9060;"></span>
+            <button type="submit" class="btn">E-Mail öffnen →</button>
           </div>
         </form>
-        <p class="kontakt-privacy" style="margin-top:20px;">Ihre Anfrage wird direkt versendet — unabhängig davon, welches E-Mail-Programm Sie nutzen.</p>
+        <p class="kontakt-privacy" style="margin-top:16px;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);line-height:1.6;">Klick öffnet Ihr E-Mail-Programm (Gmail, Apple Mail, Outlook, GMX …) mit allen Angaben vorausgefüllt — Sie müssen nur noch auf Senden drücken.</p>
       </div>
 
     </div>
@@ -1956,66 +1955,68 @@ function handleVerordnung(val){
         setField(id,validators[id](el.value),touched);
       });
     });
-    form.addEventListener('submit',function(e){
-      e.preventDefault();
-      var allOk=true;
-      Object.keys(validators).forEach(function(id){
-        var el=document.getElementById(id);if(!el)return;
-        var err=validators[id](el.value);
-        setField(id,err,true);
-        if(err)allOk=false;
-      });
-      if(!allOk)return;
-      var name=document.getElementById('kf-name').value.trim();
-      var vers=document.getElementById('kf-vers').value;
-      var email=document.getElementById('kf-email').value.trim();
-      var adresse=document.getElementById('kf-adresse').value.trim();
-      var dauer=document.getElementById('kf-dauer').value;
-      var rezept=document.getElementById('kf-rezept').value;
-      var rezeptType=document.getElementById('kf-rezept-type').value;
-      var koerper=document.getElementById('kf-koerper').value;
-      var msg=document.getElementById('kf-nachricht').value.trim();
-      var lines=['Name: '+name,'Versicherungsart: '+vers,'E-Mail: '+email];
-      if(adresse)lines.push('Wohnanschrift: '+adresse);
-      if(dauer)lines.push('Gewünschte Behandlungsdauer: '+dauer);
-      if(rezept)lines.push('Rezept vorhanden: '+rezept+(rezeptType?' ('+rezeptType+')':''));
-      if(koerper)lines.push('Körpergebiet: '+koerper);
-      var body='Neue Terminanfrage über die Website:\n\n'+lines.join('\n')+(msg?'\n\nAnliegen:\n'+msg:'');
-      var s=document.getElementById('kf-success');
-      var btn=form.querySelector('button[type=submit]');
-      var btnLabel=btn.textContent;
-      btn.disabled=true;btn.textContent='Wird gesendet …';
-      var fd=new FormData();
-      fd.append('Name',name);
-      fd.append('Versicherungsart',vers);
-      fd.append('E-Mail',email);
-      if(adresse)fd.append('Wohnanschrift',adresse);
-      if(dauer)fd.append('Gewünschte Behandlungsdauer',dauer);
-      if(rezept)fd.append('Rezept vorhanden',rezept+(rezeptType?' ('+rezeptType+')':''));
-      if(koerper)fd.append('Körpergebiet',koerper);
-      if(msg)fd.append('Anliegen',msg);
-      fd.append('_subject','Terminanfrage – Mobile Physiotherapie Grausam');
-      fd.append('_template','table');
-      fd.append('_captcha','false');
-      fd.append('Nachricht',body);
-      fetch('https://formsubmit.co/ajax/info@physiotherapie-grausam.com',{method:'POST',body:fd,headers:{'Accept':'application/json'}})
-        .then(function(r){return r.json();})
-        .then(function(){
-          btn.disabled=false;btn.textContent=btnLabel;
-          if(s){s.textContent='✓ Anfrage erfolgreich gesendet — ich melde mich zurück.';s.style.color='#4a9060';s.style.display='inline';}
-          form.reset();
-          document.querySelectorAll('.fg.valid,.fg.invalid').forEach(function(fg){fg.classList.remove('valid','invalid');});
-          setTimeout(function(){if(s)s.style.display='none';},6000);
-        })
-        .catch(function(){
-          btn.disabled=false;btn.textContent=btnLabel;
-          if(s){s.textContent='Fehler beim Senden — bitte direkt per E-Mail an info@physiotherapie-grausam.com';s.style.color='#c0392b';s.style.display='inline';}
-        });
-    });
+    /* mailto handled by sendMailto() */
   }
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initForm);}
   else{initForm();}
 })();
+
+function sendMailto(e){
+  e.preventDefault();
+  var allOk=true;
+  var validators2={
+    'kf-name':function(v){return v.trim()?'':'Bitte Name eingeben.';},
+    'kf-vers':function(v){return v?'':'Bitte Versicherungsart wählen.';},
+    'kf-email':function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())?'':'Bitte gültige E-Mail eingeben.';}
+  };
+  Object.keys(validators2).forEach(function(id){
+    var el=document.getElementById(id);if(!el)return;
+    var err=validators2[id](el.value);
+    var fg=document.getElementById('fg-'+id.replace('kf-',''));
+    if(fg){fg.classList.toggle('invalid',!!err);fg.classList.toggle('valid',!err);}
+    if(err)allOk=false;
+  });
+  if(!allOk)return;
+  var name=document.getElementById('kf-name').value.trim();
+  var vers=document.getElementById('kf-vers').value;
+  var email=document.getElementById('kf-email').value.trim();
+  var adresse=document.getElementById('kf-adresse').value.trim();
+  var dauer=document.getElementById('kf-dauer').value;
+  var rezept=document.getElementById('kf-rezept').value;
+  var rezeptType=document.getElementById('kf-rezept-type')?document.getElementById('kf-rezept-type').value:'';
+  var koerper=document.getElementById('kf-koerper').value;
+  var msg=document.getElementById('kf-nachricht').value.trim();
+  var body='Guten Tag Herr Grausam,
+
+hiermit möchte ich einen Termin anfragen.
+
+'
+    +'Name: '+name+'
+'
+    +'Versicherungsart: '+vers+'
+'
+    +'E-Mail: '+email+'
+'
+    +(adresse?'Wohnanschrift: '+adresse+'
+':'')
+    +(dauer?'Gewünschte Behandlungsdauer: '+dauer+'
+':'')
+    +(rezept?'Rezept vorhanden: '+rezept+(rezeptType?' ('+rezeptType+')':'')+'
+':'')
+    +(koerper?'Körpergebiet: '+koerper+'
+':'')
+    +(msg?'
+Anliegen:
+'+msg+'
+':'')
+    +'
+Mit freundlichen Grüßen
+'+name;
+  var mailto='mailto:info@physiotherapie-grausam.com'
+    +'?subject='+encodeURIComponent('Terminanfrage – '+name)
+    +'&body='+encodeURIComponent(body);
+  window.location.href=mailto;
+}
 
 if(window.lucide) lucide.createIcons();
 
