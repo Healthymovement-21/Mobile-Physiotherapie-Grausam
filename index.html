@@ -580,6 +580,14 @@ nav .burger-lines span{background:#fff;}
 .portal-pw-wrap input{width:100%;padding:12px 16px;border:1.5px solid #e8e8e8;border-radius:2px;font-size:15px;font-family:'DM Sans',system-ui,sans-serif;color:#111;background:#f8f8f8;outline:none;transition:border-color 0.2s;box-sizing:border-box;}
 .portal-pw-wrap input:focus{border-color:#111;background:#fff;}
 .portal-err{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:#c0392b;margin-top:10px;}
+.portal-faceid-btn{width:100%;padding:13px 16px;margin-bottom:4px;background:#111;color:#fff;border:none;border-radius:2px;font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:600;letter-spacing:0.3px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:opacity 0.2s;}
+.portal-faceid-btn:hover{opacity:0.8;}
+.portal-faceid-btn svg{width:20px;height:20px;stroke:#fff;}
+.portal-or-divider{text-align:center;position:relative;margin:16px 0 12px;}
+.portal-or-divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:#e8e8e8;}
+.portal-or-divider span{position:relative;background:#fff;padding:0 12px;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:#aaa;}
+.portal-faceid-setup-link{background:none;border:none;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:#aaa;padding:0;letter-spacing:0.3px;transition:color 0.2s;}
+.portal-faceid-setup-link:hover{color:#111;}
 .portal-dash-wrap{min-height:calc(100vh - 64px);background:#f5f5f5;padding:48px 6%;}
 .portal-dash-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:36px;flex-wrap:wrap;gap:16px;}
 .portal-dash-greeting{font-family:'DM Sans',system-ui,sans-serif;font-size:26px;font-weight:700;color:#111;letter-spacing:-0.5px;}
@@ -1560,6 +1568,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         Inhaber-Portal
       </div>
       <p class="portal-login-sub">Mobile Physiotherapie Grausam · Nur für interne Nutzung</p>
+      <button id="portal-faceid-btn" type="button" class="portal-faceid-btn" onclick="portalFaceIdLogin()" style="display:none;">
+        <i data-lucide="fingerprint"></i>Mit Face ID anmelden
+      </button>
+      <div id="portal-or-divider" class="portal-or-divider" style="display:none;"><span>oder</span></div>
       <form onsubmit="portalLogin();return false;" autocomplete="on">
         <input type="text" name="username" autocomplete="username" value="inhaber" style="display:none;">
         <div class="portal-pw-wrap" style="margin-bottom:0;">
@@ -1579,7 +1591,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           <div class="portal-dash-greeting">Guten Tag, Nick 👋</div>
           <div class="portal-dash-date" id="portal-date"></div>
         </div>
-        <button class="btn-outline" onclick="portalLogout()" style="margin:0;">Abmelden</button>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+          <button class="btn-outline" onclick="portalLogout()" style="margin:0;">Abmelden</button>
+          <button id="portal-faceid-setup-btn" type="button" class="portal-faceid-setup-link" onclick="portalSetupFaceId()" style="display:none;"></button>
+        </div>
       </div>
 
       <div class="portal-sections">
@@ -2004,6 +2019,77 @@ document.querySelectorAll('.card,.dok-card,.ablauf-step,.preis-card,.ueber-det,.
 // ── CLICKJACKING PROTECTION ──
 if(window.top!==window.self){window.top.location=window.self.location;}
 
+// ── PORTAL WEBAUTHN (Face ID / Touch ID) ──
+const _WA_RP_ID='physiotherapie-grausam.com';
+const _WA_KEY='portal_passkey_id';
+
+function _b64url(buf){return btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');}
+function _b64urlDec(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return Uint8Array.from(atob(s),c=>c.charCodeAt(0));}
+
+function _waSupported(){return!!(window.PublicKeyCredential&&navigator.credentials&&navigator.credentials.create);}
+function _hasFaceId(){return _waSupported()&&!!localStorage.getItem(_WA_KEY);}
+
+function _updateFaceIdUI(){
+  const loginBtn=document.getElementById('portal-faceid-btn');
+  const divider=document.getElementById('portal-or-divider');
+  const setupBtn=document.getElementById('portal-faceid-setup-btn');
+  const has=_hasFaceId();
+  if(loginBtn) loginBtn.style.display=has?'flex':'none';
+  if(divider) divider.style.display=has?'block':'none';
+  if(setupBtn){
+    setupBtn.style.display=_waSupported()?'block':'none';
+    setupBtn.textContent=has?'Face ID entfernen':'Face ID einrichten';
+  }
+}
+
+async function portalFaceIdLogin(){
+  const stored=localStorage.getItem(_WA_KEY);
+  if(!stored) return;
+  try{
+    const challenge=crypto.getRandomValues(new Uint8Array(32));
+    await navigator.credentials.get({publicKey:{
+      challenge,rpId:_WA_RP_ID,userVerification:'required',
+      allowCredentials:[{type:'public-key',id:_b64urlDec(stored)}],timeout:60000
+    }});
+    sessionStorage.setItem('portal_auth','1');
+    document.getElementById('portal-login').classList.add('hidden');
+    document.getElementById('portal-dash').classList.remove('hidden');
+    document.getElementById('portal-err').classList.add('hidden');
+    _portalDate();_updateFaceIdUI();
+  }catch(e){
+    if(e.name!=='NotAllowedError'){
+      const err=document.getElementById('portal-err');
+      err.textContent='Face ID fehlgeschlagen. Bitte Passwort verwenden.';
+      err.classList.remove('hidden');
+    }
+  }
+}
+
+async function portalSetupFaceId(){
+  const has=_hasFaceId();
+  if(has){
+    if(confirm('Face ID entfernen?')){localStorage.removeItem(_WA_KEY);_updateFaceIdUI();}
+    return;
+  }
+  try{
+    const challenge=crypto.getRandomValues(new Uint8Array(32));
+    const userId=crypto.getRandomValues(new Uint8Array(16));
+    const cred=await navigator.credentials.create({publicKey:{
+      challenge,
+      rp:{id:_WA_RP_ID,name:'Mobile Physiotherapie Grausam'},
+      user:{id:userId,name:'inhaber',displayName:'Inhaber'},
+      pubKeyCredParams:[{alg:-7,type:'public-key'},{alg:-257,type:'public-key'}],
+      authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required',residentKey:'preferred'},
+      timeout:60000
+    }});
+    localStorage.setItem(_WA_KEY,_b64url(cred.rawId));
+    _updateFaceIdUI();
+    alert('Face ID wurde eingerichtet. Ab sofort können Sie sich ohne Passwort anmelden.');
+  }catch(e){
+    if(e.name!=='NotAllowedError') alert('Face ID konnte nicht eingerichtet werden: '+e.message);
+  }
+}
+
 // ── PORTAL (hashed PW + rate limiting) ──
 const _PORTAL_HASH='519d10aa5c0bb6fcd2f7bf7cf8155485cf362df2eba7297a2d36d022f98f9061';
 const _MAX_ATTEMPTS=5, _LOCKOUT_MS=5*60*1000;
@@ -2037,7 +2123,7 @@ async function portalLogin(){
     document.getElementById('portal-login').classList.add('hidden');
     document.getElementById('portal-dash').classList.remove('hidden');
     err.classList.add('hidden');
-    _portalDate();
+    _portalDate();_updateFaceIdUI();
   } else {
     const attempts=(parseInt(sessionStorage.getItem('portal_attempts'))||0)+1;
     sessionStorage.setItem('portal_attempts',attempts);
@@ -2066,10 +2152,11 @@ function _portalDate(){
   if(el) el.textContent=`${days[d.getDay()]}, ${d.getDate()}. ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
 (function(){
+  _updateFaceIdUI();
   if(sessionStorage.getItem('portal_auth')==='1'){
     const lo=document.getElementById('portal-login');
     const da=document.getElementById('portal-dash');
-    if(lo&&da){lo.classList.add('hidden');da.classList.remove('hidden');_portalDate();}
+    if(lo&&da){lo.classList.add('hidden');da.classList.remove('hidden');_portalDate();_updateFaceIdUI();}
   }
 })();
 
