@@ -149,6 +149,7 @@ nav .burger-lines span{background:#fff;}
 .overlay.open .overlay-links li:nth-child(3){transition-delay:0.19s;}
 .overlay.open .overlay-links li:nth-child(4){transition-delay:0.25s;}
 .overlay.open .overlay-links li:nth-child(5){transition-delay:0.31s;}
+.overlay.open .overlay-links li:nth-child(6){transition-delay:0.37s;}
 .overlay-cta{opacity:0;transform:translateY(-8px);width:100%;padding:22px 9% calc(22px + env(safe-area-inset-bottom,0px));}
 .overlay.open .overlay-cta{opacity:1;transform:translateY(0);transition:transform 0.22s cubic-bezier(0.34,1.56,0.64,1),opacity 0.18s ease;transition-delay:0.37s;}
 .overlay-close{display:none;}
@@ -417,6 +418,49 @@ nav .burger-lines span{background:#fff;}
 .faq-q.open .ico{transform:rotate(45deg);}
 .faq-a{display:none;padding:0 0 16px;font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.75;}
 .faq-a.open{display:block;}
+/* ── MEHR FÜR SIE ── */
+.mehr-hero{padding:80px 8% 48px;max-width:760px;}
+.mehr-intro{font-size:15px;color:var(--muted);line-height:1.85;max-width:620px;margin-top:16px;}
+.mehr-block{padding:0 8% 72px;}
+.mehr-block-title{font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);margin-bottom:28px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.mehr-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;}
+.mehr-card{border:1px solid var(--border);padding:28px 26px;display:flex;flex-direction:column;gap:10px;transition:border-color 0.2s;}
+.mehr-card:hover{border-color:var(--text);}
+.mehr-card-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:2px;width:fit-content;}
+.badge-free{background:var(--text);color:#fff;}
+.badge-opt{background:var(--border);color:var(--muted);}
+.mehr-card-title{font-size:15px;font-weight:700;color:var(--text);line-height:1.3;}
+.mehr-card-desc{font-size:13px;color:var(--muted);line-height:1.75;flex:1;}
+.mehr-card-action{font-size:12px;color:var(--muted);margin-top:4px;}
+.coaching-card{border:1.5px solid var(--text);padding:36px 32px;margin-top:8px;}
+.coaching-card-tag{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.coaching-card-title{font-size:20px;font-weight:700;letter-spacing:-0.3px;margin-bottom:8px;}
+.coaching-card-sub{font-size:13.5px;color:var(--muted);line-height:1.8;max-width:580px;margin-bottom:24px;}
+.coaching-sessions{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;}
+.cs-item{background:var(--surface);padding:16px 18px;}
+.cs-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.cs-title{font-size:13px;font-weight:700;margin-bottom:4px;}
+.cs-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+.coaching-incl{margin-bottom:28px;}
+.coaching-incl-title{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.coaching-incl ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;}
+.coaching-incl ul li{font-size:12.5px;color:var(--muted);display:flex;gap:8px;align-items:baseline;}
+.coaching-incl ul li::before{content:"✓";font-weight:700;color:var(--text);flex-shrink:0;}
+.coaching-pdf-row{display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--surface);border-left:3px solid var(--text);margin-bottom:24px;}
+.coaching-pdf-row svg{flex-shrink:0;}
+.coaching-pdf-text{font-size:13px;color:var(--muted);}
+.coaching-pdf-text strong{color:var(--text);display:block;margin-bottom:2px;}
+.coaching-price-block{background:var(--text);color:#fff;padding:22px 24px;}
+.cpb-label{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#aaa;margin-bottom:6px;}
+.cpb-price{font-size:28px;font-weight:700;letter-spacing:-0.5px;margin-bottom:3px;}
+.cpb-per-h{font-size:12px;color:#bbb;margin-bottom:10px;}
+.cpb-per-h strong{color:#fff;}
+.cpb-note{font-size:11px;color:#888;line-height:1.6;}
+@media(max-width:700px){
+  .mehr-cards{grid-template-columns:1fr;}
+  .coaching-sessions{grid-template-columns:1fr;}
+  .coaching-incl ul{grid-template-columns:1fr;}
+}
 
 /* ── KONTAKT ── */
 .kontakt-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
@@ -713,6 +757,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   <ul class="nav-links" id="navLinks">
     <li><a href="javascript:void(0)" onclick="show('leistungen')">Leistungen & Preise</a></li>
     <li><a href="javascript:void(0)" onclick="show('ablauf')">Ablauf</a></li>
+    <li><a href="javascript:void(0)" onclick="show('mehr')">Mehr für Sie</a></li>
     <li><a href="javascript:void(0)" onclick="show('ueber')">Über mich</a></li>
     <li><a href="javascript:void(0)" onclick="show('faq')">FAQ</a></li>
   </ul>
@@ -728,6 +773,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <li><a href="javascript:void(0)" onclick="show('ueber');toggleOverlay()"><span class="overlay-link-text">Über mich</span></a></li>
     <li><a href="javascript:void(0)" onclick="show('ablauf');toggleOverlay()"><span class="overlay-link-text">Ablauf</span></a></li>
     <li><a href="javascript:void(0)" onclick="show('leistungen');toggleOverlay()"><span class="overlay-link-text">Leistungen</span></a></li>
+    <li><a href="javascript:void(0)" onclick="show('mehr');toggleOverlay()"><span class="overlay-link-text">Mehr für Sie</span></a></li>
     <li><a href="javascript:void(0)" onclick="show('faq');toggleOverlay()"><span class="overlay-link-text">FAQ</span></a></li>
   </ul>
   <div class="overlay-cta">
@@ -1208,6 +1254,108 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   </div>
 </div>
 
+<!-- ═══ MEHR FÜR SIE ═══ -->
+<div class="page" id="mehr">
+  <div class="mehr-hero reveal">
+    <span class="eyebrow">Über die Therapie hinaus</span>
+    <h1 class="sec-title" style="margin-top:8px;">Mehr für Sie.</h1>
+    <p class="mehr-intro">Physiotherapie endet oft nach 45 oder 60 Minuten. Was danach kommt — das Training zuhause, die Motivation, die Ernährung — entscheidet genauso über den Erfolg. Diese Angebote gibt es, weil ich meinen Patienten wirklich helfen möchte. Kein Verkaufsgespräch, kein Druck — nur Möglichkeiten, falls das Interesse da ist.</p>
+  </div>
+
+  <div class="mehr-block">
+    <div class="mehr-block-title">Kostenlos — immer dabei</div>
+    <div class="mehr-cards">
+      <div class="mehr-card reveal">
+        <span class="mehr-card-badge badge-free">Kostenlos</span>
+        <div class="mehr-card-title">Personalisiertes Übungshandout</div>
+        <div class="mehr-card-desc">Nach Bedarf erstelle ich ein auf Sie zugeschnittenes Übungsblatt — mit genauen Anleitungen, Wiederholungszahlen und Fotos. Zum Ausdrucken, zum Behalten.</div>
+        <div class="mehr-card-action">Einfach beim nächsten Termin ansprechen.</div>
+      </div>
+      <div class="mehr-card reveal">
+        <span class="mehr-card-badge badge-free">Kostenlos</span>
+        <div class="mehr-card-title">Kreuzband-Skript</div>
+        <div class="mehr-card-desc">20 Seiten Aufklärung zu ACL-Verletzungen: Tests, Heilungsphasen, Übungen, häufige Fehler. Für Patienten nach Kreuzband-OP oder bei Verdacht — damit Sie verstehen, was in Ihrem Knie passiert.</div>
+        <div class="mehr-card-action">Auf Anfrage — für alle Patienten mit Kniebeschwerden.</div>
+      </div>
+    </div>
+
+    <div class="mehr-block-title">Auf Wunsch buchbar</div>
+    <div class="mehr-cards">
+      <div class="mehr-card reveal">
+        <span class="mehr-card-badge badge-opt">Einmalig · ab 15 €</span>
+        <div class="mehr-card-title">Individueller Trainingsplan</div>
+        <div class="mehr-card-desc">Ein strukturierter Heimtrainingsplan — abgestimmt auf Ihre Beschwerden, Ziele und den Alltag. Nicht von der Stange, sondern auf Sie zugeschnitten. Schriftlich, angepasst, erklärbar.</div>
+        <div class="mehr-card-action">Bei Interesse einfach ansprechen.</div>
+      </div>
+      <div class="mehr-card reveal">
+        <span class="mehr-card-badge badge-opt">Auf Anfrage</span>
+        <div class="mehr-card-title">Produktempfehlungen</div>
+        <div class="mehr-card-desc">Faszienrollen, Widerstandsbänder, Schuheinlagen — ich empfehle nur, was ich selbst für sinnvoll halte. Keine Werbung, keine Provision. Nur ehrliche Einschätzung bei Fragen.</div>
+        <div class="mehr-card-action">Einfach fragen — im Termin oder per Mail.</div>
+      </div>
+    </div>
+
+    <!-- PERSONAL COACHING -->
+    <div class="mehr-block-title">Das besondere Angebot</div>
+    <div class="coaching-card reveal">
+      <div class="coaching-card-tag">Personal Coaching · Monatsprogramm</div>
+      <div class="coaching-card-title">Begleitung, die weitergeht.</div>
+      <div class="coaching-card-sub">Manchmal braucht es mehr als Therapie. Wenn das Ziel lautet: dauerhaft fitter, stabiler, gesünder werden — dann biete ich auf Wunsch eine monatliche Begleitung an. Vier Einheiten, die man sich aussucht. Immer erreichbar. Therapeutischer Hintergrund inklusive.</div>
+
+      <div class="coaching-sessions">
+        <div class="cs-item">
+          <div class="cs-num">Einheit 1</div>
+          <div class="cs-title">Aufklärung & Planung</div>
+          <div class="cs-desc">Ziele, Ernährung, Kalorienberatung, individueller Plan — offen und ehrlich.</div>
+        </div>
+        <div class="cs-item">
+          <div class="cs-num">Einheit 2</div>
+          <div class="cs-title">Oberkörper-Training</div>
+          <div class="cs-desc">Schulter, Rücken, Brust, Arme — abgestimmt auf Beschwerden und Ziele.</div>
+        </div>
+        <div class="cs-item">
+          <div class="cs-num">Einheit 3</div>
+          <div class="cs-title">Unterkörper-Training</div>
+          <div class="cs-desc">Beine, Hüfte, Core — funktionell, therapeutisch fundiert.</div>
+        </div>
+        <div class="cs-item">
+          <div class="cs-num">Einheit 4 · optional</div>
+          <div class="cs-title">Einkaufsbegleitung</div>
+          <div class="cs-desc">Supermarkt, Ernährung im Alltag — praktisch und ohne Theorie-Overhead.</div>
+        </div>
+      </div>
+
+      <div class="coaching-incl">
+        <div class="coaching-incl-title">Alles inklusive</div>
+        <ul>
+          <li>4 × 60 Min pro Monat</li>
+          <li>Schriftlicher Trainingsplan</li>
+          <li>WhatsApp-Erreichbarkeit</li>
+          <li>Ernährungshinweise</li>
+          <li>Monatliche Plananpassung</li>
+          <li>Therapeutische Expertise</li>
+        </ul>
+      </div>
+
+      <div class="coaching-pdf-row">
+        <i data-lucide="file-text" style="width:22px;height:22px;stroke:var(--text);stroke-width:1.8;fill:none;flex-shrink:0;"></i>
+        <div class="coaching-pdf-text">
+          <strong>Detaillierte Übersicht als PDF</strong>
+          Alle Inhalte, der genaue Ablauf und die Kostenstruktur auf einer Seite zusammengefasst.
+        </div>
+        <a href="dokumente/Personal-Coaching-Übersicht.pdf" target="_blank" rel="noopener" class="btn" style="white-space:nowrap;flex-shrink:0;">PDF öffnen</a>
+      </div>
+
+      <div class="coaching-price-block">
+        <div class="cpb-label">Monatspauschale</div>
+        <div class="cpb-price">180 € / Monat</div>
+        <div class="cpb-per-h">= <strong>45 € pro Stunde</strong> — inkl. WhatsApp-Begleitung und therapeutischem Hintergrund</div>
+        <div class="cpb-note">Zum Vergleich: Ein Personal Trainer ohne Therapiehintergrund kostet in der Regel 60–90 € pro Stunde. · Kündigung monatlich möglich. · Kein Vertrag ohne persönliches Gespräch.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ DOKUMENTE ═══ -->
 <!-- ═══ KONTAKT ═══ -->
 <div class="page" id="kontakt">
@@ -1642,6 +1790,26 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             <a href="https://docs.google.com/document/d/1EyCKvdNdVkpSH-IAKmCYothB2Q-4TBoP/export?format=pdf" target="_blank" rel="noopener" class="p-link">
               <div class="p-link-ico"><i data-lucide="clipboard-list"></i></div>Anamnesebogen (PDF)
             </a>
+            <a href="dokumente/Personal-Coaching-Übersicht.pdf" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="dumbbell"></i></div>Personal Coaching Übersicht (PDF)
+            </a>
+          </div>
+        </div>
+
+        <!-- ADD-ONS -->
+        <div class="portal-section">
+          <div class="portal-section-title">Add-ons &amp; Extras</div>
+          <div class="portal-link-list">
+            <a href="javascript:void(0)" onclick="show('mehr')" class="p-link primary">
+              <div class="p-link-ico"><i data-lucide="sparkles"></i></div>„Mehr für Sie"-Seite ansehen
+            </a>
+            <a href="dokumente/Personal-Coaching-Übersicht.pdf" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="file-text"></i></div>Coaching-PDF (Patientenversion)
+            </a>
+          </div>
+          <div style="margin-top:12px;padding:12px 14px;background:#f5f5f5;border-radius:2px;font-size:12px;color:#888;line-height:1.6;">
+            <strong style="color:#111;display:block;margin-bottom:4px;">Lieferprotokoll</strong>
+            Welcher Patient hat welches Add-on erhalten? → Im Google Drive: <em>AddOn_Tracker.xlsx</em>
           </div>
         </div>
 
