@@ -419,10 +419,9 @@ nav .burger-lines span{background:#fff;}
 .faq-a{display:none;padding:0 0 16px;font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.75;}
 .faq-a.open{display:block;}
 /* ── MEHR FÜR SIE ── */
-.mehr-hero{padding:72px 8% 0;display:flex;gap:64px;align-items:flex-start;}
-.mehr-hero-text{flex:1;max-width:520px;padding-bottom:48px;}
-.mehr-hero-img{width:200px;height:auto;flex-shrink:0;display:block;margin-top:4px;}
-.mehr-intro{font-size:15px;color:var(--muted);line-height:1.9;margin-top:16px;}
+.mehr-hero{padding:72px 8% 48px;max-width:700px;}
+.mehr-intro{font-size:15px;color:var(--muted);line-height:1.9;margin-top:16px;max-width:580px;}
+.coaching-pdf-hint{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:16px;font-style:italic;}
 .mehr-phil{padding:40px 8% 48px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#f7f5f2;}
 .mehr-phil-quote{font-size:21px;font-weight:700;letter-spacing:-0.3px;color:var(--text);line-height:1.35;margin-bottom:12px;max-width:500px;}
 .mehr-phil-text{font-size:13.5px;color:var(--muted);line-height:1.9;max-width:620px;}
@@ -464,18 +463,12 @@ nav .burger-lines span{background:#fff;}
 .coaching-bg-list li{font-size:12.5px;color:var(--muted);display:flex;gap:8px;align-items:baseline;line-height:1.6;}
 .coaching-bg-list li::before{content:"—";font-weight:700;color:var(--text);flex-shrink:0;}
 @media(max-width:860px){
-  .mehr-hero{flex-direction:column-reverse;gap:0;padding-bottom:0;}
-  .mehr-hero-img{width:100%;height:auto;margin-bottom:0;}
-  .mehr-hero-text{padding:40px 0 48px;}
   .coaching-sessions{grid-template-columns:1fr 1fr;gap:16px;}
   .coaching-bg-list{grid-template-columns:1fr;}
   .coaching-price-block{grid-template-columns:1fr;gap:20px;}
   .coaching-incl ul{grid-template-columns:1fr;}
 }
 @media(max-width:700px){
-  .mehr-hero{padding-left:0;padding-right:0;}
-  .mehr-hero-text{padding-left:8%;padding-right:8%;}
-  .mehr-phil{padding-left:8%;padding-right:8%;}
   .mehr-cards{grid-template-columns:1fr;}
 }
 
@@ -1278,17 +1271,9 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 <!-- ═══ MEHR FÜR SIE ═══ -->
 <div class="page" id="mehr">
   <div class="mehr-hero reveal">
-    <div class="mehr-hero-text">
-      <span class="eyebrow">Über die Therapie hinaus</span>
-      <h1 class="sec-title" style="margin-top:8px;">Mehr für Sie.</h1>
-      <p class="mehr-intro">Physiotherapie endet nach 30 bis 60 Minuten. Was danach kommt — das Training zuhause, die Motivation, die Ernährung — entscheidet genauso über den Erfolg.</p>
-    </div>
-    <img src="foto-nick-coaching.jpg" alt="Nick Grausam — Personal Coaching" class="mehr-hero-img">
-  </div>
-
-  <div class="mehr-phil reveal">
-    <div class="mehr-phil-quote">Kein Sprint — sondern ein Marathon.</div>
-    <p class="mehr-phil-text">Vielen fehlt es nicht am Willen, sondern an der Struktur. „Ich hab mal was gemacht, aber es hat sich verlaufen." Oder: „Ich mach schon was — aber unregelmäßig." Das kenne ich. Nicht fünfmal die Woche, kein radikaler Verzicht. Sondern ein- bis zweimal, konsequent und machbar. Ernährung, die sich schleichend ins Leben einbettet — ohne großen Kopf darum. Und jemand an der Seite, der auch dann da ist, wenn die Motivation fehlt oder der Alltag dazwischenfunkt. Das kann kein Plan auf Papier ersetzen — und kein KI-Chatbot.</p>
+    <span class="eyebrow">Über die Therapie hinaus</span>
+    <h1 class="sec-title" style="margin-top:8px;">Mehr für Sie.</h1>
+    <p class="mehr-intro">Egal ob das Rezept noch läuft, gerade ausgelaufen ist oder Sie einfach wieder richtig fit werden wollen — wenn die Therapie endet, muss es nicht aufhören. Hier finden Sie, was darüber hinausgeht.</p>
   </div>
 
   <div class="mehr-block">
@@ -1325,11 +1310,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     </div>
 
     <!-- PERSONAL COACHING -->
-    <div class="mehr-block-title">Das besondere Angebot</div>
+    <div class="mehr-block-title">Personal Coaching · Angebot</div>
     <div class="coaching-card reveal">
-      <div class="coaching-card-tag">Personal Coaching · Monatsprogramm</div>
       <div class="coaching-card-title">Begleitung, die weitergeht.</div>
-      <div class="coaching-card-sub">Manchmal liegt es nicht am Willen — sondern an der Struktur. Ich helfe dabei, diese Struktur zu finden. Nicht mit dem Ziel, fünfmal die Woche zu trainieren oder auf alles zu verzichten. Sondern mit dem Ziel, wirklich langfristig dranzubleiben: ein- bis zweimal die Woche, kluge Ernährung ohne großen Kopf, und jemanden an der Seite, der auch dann da ist, wenn die Motivation gerade fehlt.</div>
+      <div class="coaching-card-sub">Manchmal liegt es nicht am Willen — sondern an der Struktur. Ob noch unter Rezept oder danach: Wer dauerhaft aktiver, stärker und gesünder werden will, braucht einen Plan, der zum Leben passt. Nicht fünfmal die Woche und radikaler Verzicht — sondern ein- bis zweimal, konsequent. Ernährung ohne großen Kopf. Und jemanden an der Seite, der auch dann da ist, wenn die Motivation gerade fehlt.</div>
 
       <div class="coaching-sessions">
         <div class="cs-item">
@@ -1379,6 +1363,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         </ul>
       </div>
 
+      <p class="coaching-pdf-hint">Den genauen Ablauf, die Testphase und alle weiteren Details finden Sie in der Übersicht als PDF — schauen Sie gern rein, bevor Sie sich entscheiden.</p>
+
       <a href="dokumente/Personal-Coaching-Übersicht.pdf" target="_blank" rel="noopener" class="coaching-pdf-link">
         <i data-lucide="file-text" style="width:16px;height:16px;stroke:currentColor;stroke-width:1.8;fill:none;flex-shrink:0;"></i>
         Alle Details als PDF ansehen →
@@ -1390,7 +1376,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           <div class="cpb-price">150 €</div>
           <div class="cpb-per-h">pro Monat &nbsp;·&nbsp; = <strong>37,50 € / Stunde</strong></div>
         </div>
-        <div class="cpb-note">Inkl. WhatsApp-Begleitung und therapeutischem Hintergrund. Zum Vergleich: Ein Personal Trainer ohne Therapiehintergrund kostet 60–90 € pro Stunde. Kündigung monatlich möglich. Kein Vertrag ohne persönliches Gespräch.</div>
+        <div class="cpb-note">Zum Vergleich: Ein Personal Trainer ohne Therapiehintergrund kostet 60–90 € / Stunde.<br><br>Einstieg flexibel: Nach der ersten Einheit — Ziele, Planung, erste Umsetzung — entscheiden Sie selbst, ob Sie weitermachen. Kein Vertrag ohne Zusage. Kündigung monatlich möglich.</div>
       </div>
     </div>
   </div>
