@@ -125,7 +125,7 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
     <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Qualifikation: Krankengymnastik am Ger&auml;t (KGG)</span></div>
     <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Fortbildung beim langjährigen Physiotherapeuten der deutschen Fu&szlig;ballnationalmannschaft</span></div>
     <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Stetige Weiterbildung in Therapie, Training und Sport</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Jung und motiviert &mdash; nah am Patienten, nah an der aktuellen Wissenschaft</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Jung und motiviert</span></div>
   </div>
 </div>
 
