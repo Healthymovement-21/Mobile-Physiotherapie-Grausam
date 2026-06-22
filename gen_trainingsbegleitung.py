@@ -26,12 +26,12 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 .section-title { font-size: 8pt; font-weight: 700; letter-spacing: 1.2pt; text-transform: uppercase; color: #1a1a1a; margin-bottom: 6pt; padding-bottom: 3pt; border-bottom: 0.8pt solid #ccc; break-after: avoid; page-break-after: avoid; }
 
 /* HOOK */
-.hook-box { border-left: 3.5pt solid #1a1a1a; padding: 9pt 12pt; margin-bottom: 10pt; background: #f9f9f9; }
+.hook-box { border-left: 3.5pt solid #1a1a1a; padding: 9pt 12pt; margin-bottom: 10pt; background: #f9f9f9; break-inside: avoid; page-break-inside: avoid; }
 .hook-box p { margin-bottom: 4pt; }
 .hook-box p:last-child { margin-bottom: 0; }
 
 /* USP */
-.usp-box { background: #f0ede8; padding: 9pt 12pt; margin-bottom: 12pt; border-radius: 2pt; border-left: 3pt solid #888; }
+.usp-box { background: #f0ede8; padding: 9pt 12pt; margin-bottom: 12pt; border-radius: 2pt; border-left: 3pt solid #888; break-inside: avoid; page-break-inside: avoid; }
 .usp-box p { margin-bottom: 4pt; }
 .usp-box p:last-child { margin-bottom: 0; }
 
@@ -43,13 +43,13 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 .expertise-dash { flex-shrink: 0; color: #888; margin-top: 0.5pt; }
 
 /* CHECKLIST */
-.checklist-section { margin-bottom: 12pt; }
+.checklist-section { margin-bottom: 12pt; break-inside: avoid; page-break-inside: avoid; }
 .checklist-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 4pt; }
 .checklist-item { display: flex; align-items: flex-start; gap: 4pt; font-size: 9.5pt; }
 .check-mark { color: #1a1a1a; font-weight: 700; flex-shrink: 0; margin-top: 0.5pt; }
 
 /* FLOW */
-.flow-section { margin-bottom: 12pt; }
+.flow-section { margin-bottom: 12pt; break-inside: avoid; page-break-inside: avoid; }
 .flow-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; column-gap: 8pt; }
 .flow-step { border: 0.8pt solid #ccc; padding: 8pt 9pt; border-radius: 2pt; }
 .flow-step-label { font-size: 7pt; font-weight: 700; letter-spacing: 0.8pt; text-transform: uppercase; color: #777; margin-bottom: 3pt; }
@@ -57,7 +57,7 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 .flow-step-text { font-size: 8pt; color: #444; line-height: 1.4; }
 
 /* PRICE */
-.price-section { margin-bottom: 12pt; }
+.price-section { margin-bottom: 12pt; break-inside: avoid; page-break-inside: avoid; }
 .price-block { background: #1a1a1a; color: #fff; padding: 8pt 11pt; border-radius: 2pt; display: flex; align-items: center; justify-content: space-between; gap: 12pt; }
 .price-left { display: flex; align-items: baseline; gap: 4pt; }
 .price-amount { font-size: 32pt; font-weight: 800; line-height: 1; letter-spacing: -1pt; }
@@ -76,7 +76,7 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 .faq-item dd { font-size: 9pt; color: #333; line-height: 1.45; margin-left: 0; }
 
 /* CTA */
-.cta-section { margin-bottom: 12pt; }
+.cta-section { margin-bottom: 12pt; break-inside: avoid; page-break-inside: avoid; }
 .cta-box { border: 1.5pt solid #1a1a1a; padding: 8pt 11pt; border-radius: 2pt; display: flex; justify-content: space-between; align-items: center; gap: 16pt; }
 .cta-left h3 { font-size: 10.5pt; font-weight: 800; margin-bottom: 3pt; letter-spacing: -0.2pt; }
 .cta-left p { font-size: 8.5pt; color: #444; line-height: 1.4; }
