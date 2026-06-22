@@ -992,6 +992,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <span class="phil-label">Meine Philosophie</span>
     <p class="phil-statement">Ursache finden.<br>Funktion stärken.<br>Nachhaltig bewegen.</p>
     <p class="phil-text">Schmerz ist ein Signal — nicht die Diagnose. Ich behandle nicht nur Symptome, sondern suche nach den Ursachen: Wie bewegt sich Ihr Körper? Wo kompensiert er? Denn der Körper ist anpassungsfähig — aber wer auf Kompensationsmuster trainiert, festigt sie. Erst wenn Dysfunktionen erkannt und behoben sind, lässt sich nachhaltig Kraft und Mobilität aufbauen.</p>
+    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;font-weight:700;color:var(--text);line-height:1.55;margin-top:24px;padding-top:24px;border-top:1px solid var(--border);max-width:600px;">Viele Beschwerden verschwinden nicht durch mehr Behandlung — sondern durch die richtige Begleitung danach.</p>
   </div>
 
   <div class="sec" style="padding-top:52px;padding-bottom:52px;border-top:1px solid var(--border);">
@@ -2577,7 +2578,8 @@ const RG_ART={
   MT:{label:'MT Manuelle Therapie\nHausbesuch – 30 min',preis:35.60},
   KGG:{label:'KGG Einzelbehandlung mit Gerät\nHausbesuch – 30 min',preis:34.90},
   FK:{label:'Fahrtkostenpauschale',preis:10.00},
-  S:{label:'Sonstige Leistung',preis:0}
+  S:{label:'Sonstige Leistung',preis:0},
+  COACHING:{label:'Monatspauschale Therapeutische Trainingsbegleitung\n4 × 60 Min. | Individueller Trainingsplan | Begleitung',preis:150.00}
 };
 function rgGetPatients(){try{return JSON.parse(localStorage.getItem('rg_patients')||'[]');}catch{return[];}}
 function rgSavePatients(arr){localStorage.setItem('rg_patients',JSON.stringify(arr));}
@@ -2675,6 +2677,10 @@ function rgTypeChange(){
   document.getElementById('rg-tax-panel').style.display=isCoaching?'block':'none';
   document.getElementById('rg-sec-verordnung').style.display=isCoaching?'none':'block';
   document.getElementById('rg-sec-termine').style.display=isCoaching?'none':'block';
+  if(isCoaching){
+    document.getElementById('rg-leistungen').innerHTML='';
+    rgAddRow('COACHING',1,150);
+  }
 }
 function rgOpen(){
   const t=new Date();
@@ -2694,16 +2700,19 @@ function rgClose(){
   document.body.style.overflow='';
 }
 function rgAddRow(art='KG',menge=1,preis=null){
+  const isCoachingMode=(document.querySelector('input[name="rg-type"]:checked')||{value:'physio'}).value==='coaching';
   const tb=document.getElementById('rg-leistungen');
   const tr=document.createElement('tr');
   const p=preis!==null?preis:(RG_ART[art]||RG_ART.S).preis;
-  tr.innerHTML=`<td><select onchange="rgSel(this)" style="width:100%;">
-    <option value="KG"${art==='KG'?' selected':''}>KG · 29,70 €</option>
-    <option value="MT"${art==='MT'?' selected':''}>MT · 35,60 €</option>
-    <option value="KGG"${art==='KGG'?' selected':''}>KGG · 34,90 €</option>
-    <option value="FK"${art==='FK'?' selected':''}>Fahrtkosten · 10,00 €</option>
-    <option value="S"${art==='S'?' selected':''}>Sonstige Leistung</option>
-  </select></td>
+  const opts=isCoachingMode
+    ?`<option value="COACHING"${art==='COACHING'?' selected':''}>Monatspauschale Trainingsbegleitung · 150,00 €</option>
+       <option value="S"${art==='S'?' selected':''}>Sonstige Leistung</option>`
+    :`<option value="KG"${art==='KG'?' selected':''}>KG · 29,70 €</option>
+       <option value="MT"${art==='MT'?' selected':''}>MT · 35,60 €</option>
+       <option value="KGG"${art==='KGG'?' selected':''}>KGG · 34,90 €</option>
+       <option value="FK"${art==='FK'?' selected':''}>Fahrtkosten · 10,00 €</option>
+       <option value="S"${art==='S'?' selected':''}>Sonstige Leistung</option>`;
+  tr.innerHTML=`<td><select onchange="rgSel(this)" style="width:100%;">${opts}</select></td>
   <td><input type="number" value="${menge}" min="1" max="99" oninput="rgCalc()" style="width:58px;"></td>
   <td><input type="number" value="${p.toFixed(2)}" min="0" step="0.01" oninput="rgCalc()" style="width:72px;"></td>
   <td class="rg-rt" style="text-align:right;font-weight:600;white-space:nowrap;">${rgFmt(menge*p)}</td>
@@ -2745,12 +2754,12 @@ function rgGenerate(){
     const lbl=info.label.replace('\n','<br>');
     const mg=parseFloat(ii[0].value)||0,pr=parseFloat(ii[1].value)||0,s=mg*pr;
     tot+=s;
-    rows+=`<tr><td style="padding:5px 8px;border-bottom:1px solid #f0f0f0;">${pos++}</td>
-      <td style="padding:5px 8px;border-bottom:1px solid #f0f0f0;">${lbl}</td>
-      <td style="padding:5px 8px;border-bottom:1px solid #f0f0f0;text-align:center;">${mg}</td>
-      <td style="padding:5px 8px;border-bottom:1px solid #f0f0f0;text-align:center;">Stk.</td>
-      <td style="padding:5px 8px;border-bottom:1px solid #f0f0f0;text-align:right;">${rgFmt(pr)}</td>
-      <td style="padding:5px 8px;border-bottom:1px solid #f0f0f0;text-align:right;font-weight:700;">${rgFmt(s)}</td></tr>`;
+    rows+=`<tr><td style="padding:9px 8px;border-bottom:1px solid #f0f0f0;">${pos++}</td>
+      <td style="padding:9px 8px;border-bottom:1px solid #f0f0f0;">${lbl}</td>
+      <td style="padding:9px 8px;border-bottom:1px solid #f0f0f0;text-align:center;">${mg}</td>
+      <td style="padding:9px 8px;border-bottom:1px solid #f0f0f0;text-align:center;">Stk.</td>
+      <td style="padding:9px 8px;border-bottom:1px solid #f0f0f0;text-align:right;">${rgFmt(pr)}</td>
+      <td style="padding:9px 8px;border-bottom:1px solid #f0f0f0;text-align:right;font-weight:700;">${rgFmt(s)}</td></tr>`;
   });
   localStorage.setItem('rg_last_nr',parseInt(nr)||0);
   const anrF=anr==='Frau'?'geehrte Frau':(anr==='Herr'?'geehrter Herr':'geehrte/r');
