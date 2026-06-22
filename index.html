@@ -687,7 +687,7 @@ nav .burger-lines span{background:#fff;}
 .rg-ltable td input:focus,.rg-ltable td select:focus{border-color:#111;}
 .rg-del{background:none;border:none;cursor:pointer;color:#ccc;font-size:20px;line-height:1;padding:0 2px;}
 .rg-del:hover{color:#c00;}
-.rg-total-bar{text-align:right;font-size:15px;font-weight:700;padding:8px 0;border-top:2px solid #111;margin-bottom:2px;}
+.rg-total-bar{text-align:right;font-size:15px;font-weight:700;padding:14px 0 8px;border-top:2px solid #111;margin-bottom:2px;margin-top:10px;}
 .rg-add{background:none;border:1.5px dashed #ddd;border-radius:2px;padding:7px 14px;font-size:13px;color:#888;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;width:100%;margin-top:4px;}
 .rg-add:hover{border-color:#888;color:#333;}
 .rg-footer{padding:14px 24px;border-top:1px solid #e8e8e8;display:flex;gap:10px;justify-content:flex-end;}
@@ -949,7 +949,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     </div>
     <div class="hero-content">
       <h1 class="hero-title">Mobile Physiotherapie für Privatpatienten &amp; Selbstzahler.</h1>
-      <p class="hero-sub">Qualitative Einzelbehandlung — direkt bei Ihnen zuhause. Für Menschen, die keine Zeit für Wartezimmer haben und Therapie wollen, die wirklich hilft. Tätig zwischen Heidelberg und Karlsruhe.</p>
+      <p class="hero-sub">Für Menschen, die keine Zeit für Wartezimmer haben und Therapie wollen, die wirklich hilft. Tätig zwischen Heidelberg und Karlsruhe.</p>
       <div class="hero-btns">
         <button class="hero-link hero-link-primary" onclick="show('kontakt')">Termin anfragen</button>
         <button class="hero-link hero-link-secondary" onclick="show('leistungen')">Leistungen</button>
@@ -1270,9 +1270,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       </div>
       <div>
         <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;margin-bottom        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Einen Schwerpunkt meiner Arbeit bilden Menschen, die auf mobile Physiotherapie angewiesen sind — ältere Patienten mit eingeschränkter Mobilität, Menschen nach orthopädischen oder chirurgischen Eingriffen sowie Patienten mit geriatrischen Erkrankungsbildern. Die Behandlung zu Hause ist für viele keine Notlösung — sie ist die fachlich naheliegendste Option.</p>
-        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Daneben begleite ich Menschen, die nach der Therapie nicht einfach aufhören wollen — die trainieren möchten, die sich langfristig besser bewegen wollen, die nach einer Verletzung wieder belastbar werden wollen. Was mich dabei von einem Personal Trainer unterscheidet: Ich sehe, was im Körper passiert. Ich weiß, wann man pushen kann und wann nicht.</p>
-        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Sport hat mich mein ganzes Leben begleitet. Als Leistungshandballer im NLZ der Rhein-Neckar Löwen habe ich früh gelernt, was Athletiktraining bedeutet — mit Kraft- und Schnellkraftprogrammen, Technikschulung und dem Alltag eines Nachwuchsleistungszentrums der Handball-Bundesliga. Eigene Verletzungen haben mir gezeigt, wie man trotzdem trainiert und warum der therapeutische Blick dabei entscheidend ist.</p>
-        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;margin-bottom:32px;">Meine Ausbildung an der BG Klinik Ludwigshafen hat mir das klinische Fundament gegeben. Weitergebildet habe ich mich u. a. bei Thomas Armbrecht, dem langjährigen Physiotherapeuten der deutschen Fußballnationalmannschaft. Therapie und Training zusammenzudenken — das ist der rote Faden in allem, was ich tue.</p>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Daneben begleite ich Menschen, die nach der Therapie nicht einfach aufhören wollen — die trainieren, sich langfristig besser bewegen und nach einer Verletzung wieder belastbar werden möchten.</p>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.78;margin-bottom:32px;">Meine Ausbildung an der BG Klinik Ludwigshafen hat mir das klinische Fundament gegeben. Therapie und Training zusammenzudenken — das ist der rote Faden in allem, was ich tue.</p>
       </div>
     </div>
   </div>
@@ -2027,6 +2026,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
               </label>
             </div>
           </div>
+          <div id="rg-coaching-pricetag" style="display:none;margin-top:12px;background:#111;color:#fff;border-radius:2px;padding:12px 16px;display:flex;align-items:center;gap:16px;font-family:'DM Sans',system-ui,sans-serif;">
+            <div style="font-size:30px;font-weight:800;line-height:1;letter-spacing:-1px;">150 €</div>
+            <div style="font-size:11px;color:#ccc;line-height:1.6;">/ Monat &nbsp;·&nbsp; Therapeutische Trainingsbegleitung<br>4 &times; 60 Min. &nbsp;·&nbsp; Individueller Trainingsplan &nbsp;·&nbsp; Begleitung</div>
+          </div>
         </div>
 
         <div class="rg-sec">
@@ -2675,6 +2678,7 @@ function rgParseCSV(text){
 function rgTypeChange(){
   const isCoaching=document.querySelector('input[name="rg-type"]:checked').value==='coaching';
   document.getElementById('rg-tax-panel').style.display=isCoaching?'block':'none';
+  document.getElementById('rg-coaching-pricetag').style.display=isCoaching?'flex':'none';
   document.getElementById('rg-sec-verordnung').style.display=isCoaching?'none':'block';
   document.getElementById('rg-sec-termine').style.display=isCoaching?'none':'block';
   if(isCoaching){

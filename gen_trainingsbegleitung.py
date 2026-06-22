@@ -11,50 +11,50 @@ TEMPLATE = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <style>
-@page { size: A4; margin: 16mm; }
+@page { size: A4; margin: 20mm; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9.5pt; color: #1a1a1a; line-height: 1.45; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10pt; color: #1a1a1a; line-height: 1.55; }
 
 /* HEADER */
-.header { margin-bottom: 10pt; padding-bottom: 8pt; border-bottom: 1.5pt solid #1a1a1a; }
-.logo-wrap { margin-bottom: 8pt; }
+.header { margin-bottom: 14pt; padding-bottom: 10pt; border-bottom: 1.5pt solid #1a1a1a; }
+.logo-wrap { margin-bottom: 10pt; }
 .logo-wrap svg { width: 62%; height: auto; display: block; }
 .header-title h1 { font-size: 19pt; font-weight: 800; letter-spacing: -0.5pt; line-height: 1.1; margin-bottom: 2pt; }
 .header-title .tagline { font-size: 9pt; color: #555; font-style: italic; }
 
 /* EXPERTISE */
-.expertise-section { margin-bottom: 10pt; }
-.section-title { font-size: 7.5pt; font-weight: 700; letter-spacing: 1.2pt; text-transform: uppercase; color: #1a1a1a; margin-bottom: 5pt; padding-bottom: 2.5pt; border-bottom: 0.8pt solid #ccc; }
-.expertise-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 2.5pt; }
-.expertise-item { display: flex; align-items: flex-start; gap: 5pt; font-size: 8.5pt; line-height: 1.35; }
+.expertise-section { margin-bottom: 14pt; }
+.section-title { font-size: 8pt; font-weight: 700; letter-spacing: 1.2pt; text-transform: uppercase; color: #1a1a1a; margin-bottom: 6pt; padding-bottom: 3pt; border-bottom: 0.8pt solid #ccc; }
+.expertise-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 4pt; }
+.expertise-item { display: flex; align-items: flex-start; gap: 5pt; font-size: 9pt; line-height: 1.4; }
 .expertise-dash { flex-shrink: 0; color: #888; margin-top: 0.5pt; }
 
 /* HOOK */
-.hook-box { border-left: 3.5pt solid #1a1a1a; padding: 7pt 10pt; margin-bottom: 7pt; background: #f9f9f9; }
-.hook-box p { margin-bottom: 3pt; }
+.hook-box { border-left: 3.5pt solid #1a1a1a; padding: 9pt 12pt; margin-bottom: 10pt; background: #f9f9f9; }
+.hook-box p { margin-bottom: 4pt; }
 .hook-box p:last-child { margin-bottom: 0; }
 
 /* USP */
-.usp-box { background: #f0ede8; padding: 7pt 10pt; margin-bottom: 8pt; border-radius: 2pt; border-left: 3pt solid #888; }
-.usp-box p { margin-bottom: 3pt; }
+.usp-box { background: #f0ede8; padding: 9pt 12pt; margin-bottom: 12pt; border-radius: 2pt; border-left: 3pt solid #888; }
+.usp-box p { margin-bottom: 4pt; }
 .usp-box p:last-child { margin-bottom: 0; }
 
 /* CHECKLIST */
-.checklist-section { margin-bottom: 8pt; }
-.checklist-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 2.5pt; }
-.checklist-item { display: flex; align-items: flex-start; gap: 4pt; font-size: 9pt; }
+.checklist-section { margin-bottom: 12pt; }
+.checklist-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 4pt; }
+.checklist-item { display: flex; align-items: flex-start; gap: 4pt; font-size: 9.5pt; }
 .check-mark { color: #1a1a1a; font-weight: 700; flex-shrink: 0; margin-top: 0.5pt; }
 
 /* FLOW */
-.flow-section { margin-bottom: 8pt; }
-.flow-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; column-gap: 6pt; }
-.flow-step { border: 0.8pt solid #ccc; padding: 6pt 7pt; border-radius: 2pt; }
-.flow-step-label { font-size: 6.5pt; font-weight: 700; letter-spacing: 0.8pt; text-transform: uppercase; color: #777; margin-bottom: 2pt; }
-.flow-step-title { font-size: 8.5pt; font-weight: 700; margin-bottom: 2pt; line-height: 1.2; }
-.flow-step-text { font-size: 7.5pt; color: #444; line-height: 1.35; }
+.flow-section { margin-bottom: 12pt; }
+.flow-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; column-gap: 8pt; }
+.flow-step { border: 0.8pt solid #ccc; padding: 8pt 9pt; border-radius: 2pt; }
+.flow-step-label { font-size: 7pt; font-weight: 700; letter-spacing: 0.8pt; text-transform: uppercase; color: #777; margin-bottom: 3pt; }
+.flow-step-title { font-size: 9pt; font-weight: 700; margin-bottom: 3pt; line-height: 1.2; }
+.flow-step-text { font-size: 8pt; color: #444; line-height: 1.4; }
 
 /* PRICE */
-.price-section { margin-bottom: 8pt; }
+.price-section { margin-bottom: 12pt; }
 .price-block { background: #1a1a1a; color: #fff; padding: 8pt 11pt; border-radius: 2pt; display: flex; align-items: center; justify-content: space-between; gap: 12pt; }
 .price-left { display: flex; align-items: baseline; gap: 4pt; }
 .price-amount { font-size: 32pt; font-weight: 800; line-height: 1; letter-spacing: -1pt; }
@@ -66,13 +66,13 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9
 .price-footnote { font-size: 6.5pt; color: #999; margin-top: 3pt; line-height: 1.3; }
 
 /* FAQ */
-.faq-section { margin-bottom: 8pt; }
-.faq-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 4.5pt; }
-.faq-item dt { font-size: 8.5pt; font-weight: 700; margin-bottom: 1.5pt; line-height: 1.3; }
-.faq-item dd { font-size: 8.5pt; color: #333; line-height: 1.4; margin-left: 0; }
+.faq-section { margin-bottom: 12pt; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 7pt; }
+.faq-item dt { font-size: 9pt; font-weight: 700; margin-bottom: 2pt; line-height: 1.3; }
+.faq-item dd { font-size: 9pt; color: #333; line-height: 1.45; margin-left: 0; }
 
 /* CTA */
-.cta-section { margin-bottom: 8pt; }
+.cta-section { margin-bottom: 12pt; }
 .cta-box { border: 1.5pt solid #1a1a1a; padding: 8pt 11pt; border-radius: 2pt; display: flex; justify-content: space-between; align-items: center; gap: 16pt; }
 .cta-left h3 { font-size: 10.5pt; font-weight: 800; margin-bottom: 3pt; letter-spacing: -0.2pt; }
 .cta-left p { font-size: 8.5pt; color: #444; line-height: 1.4; }
@@ -256,8 +256,6 @@ def main():
     n = len(doc)
     doc.close()
     print(f"Pages: {n}")
-    if n != 2:
-        print(f"WARNING: expected 2, got {n}")
 
 if __name__ == "__main__":
     main()
