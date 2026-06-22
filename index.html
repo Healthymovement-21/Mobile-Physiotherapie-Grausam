@@ -822,6 +822,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.55s ease,transform 0.55s ease;}
 .reveal.visible{opacity:1;transform:none;}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js" defer></script>
 </head>
 <body>
 
@@ -2852,7 +2853,7 @@ function rgCalc(){
 }
 function rgFmt(v){return parseFloat(v).toFixed(2).replace('.',',')+' €';}
 function rgDate(s){if(!s)return'';const[y,m,d]=s.split('-');return`${d}.${m}.${y}`;}
-function rgGenerate(){
+async function rgGenerate(){
   const G=id=>document.getElementById(id).value.trim();
   const invoiceType=(document.querySelector('input[name="rg-type"]:checked')||{value:'physio'}).value;
   const taxType=(document.querySelector('input[name="rg-taxtype"]:checked')||{value:'klein'}).value;
@@ -2922,15 +2923,19 @@ function rgGenerate(){
   }
   const qrAmt=(vat19?totBrutto:tot).toFixed(2);
   const epcData=`BCD\n002\n1\nSCT\nDEFFDEFFXXX\nNick Grausam\nDE04500240249560193332\nEUR${qrAmt}\n\n\nRechnung Nr. ${nr}`;
-  const epcJson=JSON.stringify(epcData);
-  const paymentSection=`<div style="margin:6pt 0 10pt;font-size:8pt;">
-    <p style="margin-bottom:6pt;">Bitte &uuml;berweisen Sie den Rechnungsbetrag bis sp&auml;testens <strong>${dueDate}</strong> auf folgendes Konto:</p>
-    <div style="display:flex;align-items:center;gap:14pt;">
-      <div id="inv-qr-wrap" style="flex-shrink:0;text-align:center;">
-        <img id="inv-qr-img" src="" alt="GiroCode" style="width:72pt;height:72pt;display:none;border:1pt solid #eee;">
+  let qrSrc='';
+  if(typeof QRCode!=='undefined'){
+    try{qrSrc=await QRCode.toDataURL(epcData,{width:120,margin:1,errorCorrectionLevel:'M'});}catch(e){}
+  }
+  const qrImgHtml=qrSrc?`<div style="flex-shrink:0;text-align:center;margin-right:14pt;">
+        <img src="${qrSrc}" alt="GiroCode" style="width:72pt;height:72pt;display:block;border:1pt solid #eee;">
         <span style="font-size:6.5pt;color:#888;display:block;margin-top:2pt;">Banking-App scannen</span>
-      </div>
-      <div style="line-height:1.7;">
+      </div>`:'';
+  const paymentSection=`<div style="margin:6pt 0 8pt;font-size:8pt;">
+    <p style="margin-bottom:5pt;">Bitte &uuml;berweisen Sie den Rechnungsbetrag bis sp&auml;testens <strong>${dueDate}</strong> auf folgendes Konto:</p>
+    <div style="display:flex;align-items:center;">
+      ${qrImgHtml}
+      <div style="line-height:1.65;">
         <strong>Mobile Physiotherapie Grausam</strong><br>
         Inhaber: Nick Grausam<br>
         IBAN:&nbsp;DE04&nbsp;5002&nbsp;4024&nbsp;9560&nbsp;1933&nbsp;32<br>
@@ -2971,8 +2976,8 @@ table.lt tbody td{padding:4pt 7pt;font-size:8.5pt;border-bottom:.5pt solid #eee;
 .ftr-title{font-weight:700;color:#333;margin-bottom:2pt;font-size:7pt;}
 @media print{
   .no-print{display:none!important;}
-  html,body{height:100%!important;margin:0!important;padding:0!important;}
-  body{-webkit-print-color-adjust:exact;print-color-adjust:exact;display:flex!important;flex-direction:column!important;}
+  html{margin:0!important;padding:0!important;}
+  body{height:269mm!important;margin:0!important;padding:0!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;display:flex!important;flex-direction:column!important;}
   .ftr{margin-top:auto!important;}
 }
 </style></head><body>
@@ -3010,8 +3015,6 @@ ${paymentSection}
   <div><div class="ftr-title">Gesch&auml;ftsf&uuml;hrer: Nick Grausam</div>Telefon: +49&nbsp;176&nbsp;4268&nbsp;5146<br>E-Mail: info@physiotherapie-grausam.com<br>Steuernummer: 32146/46402<br>USt.-IDNr.: 41259430760</div>
   <div><div class="ftr-title">Bankverbindung</div>C24 Bank Frankfurt am Main<br>IBAN: DE04 5002 4024 9560 1933 32<br>BIC/Swift: DEFFDEFFXXX</div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"><\/script>
-<script>(function(){var img=document.getElementById('inv-qr-img');if(!img)return;QRCode.toDataURL(${epcJson},{width:108,margin:1,errorCorrectionLevel:'M'}).then(function(u){img.src=u;img.style.display='block';}).catch(function(){var w=document.getElementById('inv-qr-wrap');if(w)w.style.display='none';});})();<\/script>
 </body></html>`);
   w.document.close();
 }
