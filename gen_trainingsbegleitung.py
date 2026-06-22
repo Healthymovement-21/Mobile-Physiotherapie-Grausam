@@ -18,16 +18,12 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 /* HEADER */
 .header { margin-bottom: 14pt; padding-bottom: 10pt; border-bottom: 1.5pt solid #1a1a1a; }
 .logo-wrap { margin-bottom: 10pt; }
-.logo-wrap svg { width: 62%; height: auto; display: block; }
+.logo-wrap svg { width: 31%; height: auto; display: block; }
 .header-title h1 { font-size: 19pt; font-weight: 800; letter-spacing: -0.5pt; line-height: 1.1; margin-bottom: 2pt; }
 .header-title .tagline { font-size: 9pt; color: #555; font-style: italic; }
 
-/* EXPERTISE */
-.expertise-section { margin-bottom: 14pt; }
-.section-title { font-size: 8pt; font-weight: 700; letter-spacing: 1.2pt; text-transform: uppercase; color: #1a1a1a; margin-bottom: 6pt; padding-bottom: 3pt; border-bottom: 0.8pt solid #ccc; }
-.expertise-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 4pt; }
-.expertise-item { display: flex; align-items: flex-start; gap: 5pt; font-size: 9pt; line-height: 1.4; }
-.expertise-dash { flex-shrink: 0; color: #888; margin-top: 0.5pt; }
+/* SECTION TITLE */
+.section-title { font-size: 8pt; font-weight: 700; letter-spacing: 1.2pt; text-transform: uppercase; color: #1a1a1a; margin-bottom: 6pt; padding-bottom: 3pt; border-bottom: 0.8pt solid #ccc; break-after: avoid; page-break-after: avoid; }
 
 /* HOOK */
 .hook-box { border-left: 3.5pt solid #1a1a1a; padding: 9pt 12pt; margin-bottom: 10pt; background: #f9f9f9; }
@@ -38,6 +34,13 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 .usp-box { background: #f0ede8; padding: 9pt 12pt; margin-bottom: 12pt; border-radius: 2pt; border-left: 3pt solid #888; }
 .usp-box p { margin-bottom: 4pt; }
 .usp-box p:last-child { margin-bottom: 0; }
+
+/* EXPERTISE */
+.expertise-section { margin-bottom: 14pt; break-inside: avoid; page-break-inside: avoid; }
+.expertise-list { display: flex; flex-direction: column; gap: 5pt; }
+.expertise-item { display: flex; align-items: flex-start; gap: 8pt; font-size: 9.5pt; line-height: 1.45; }
+.expertise-year { flex-shrink: 0; font-size: 7.5pt; font-weight: 700; color: #888; min-width: 36pt; margin-top: 1.5pt; }
+.expertise-dash { flex-shrink: 0; color: #888; margin-top: 0.5pt; }
 
 /* CHECKLIST */
 .checklist-section { margin-bottom: 12pt; }
@@ -66,8 +69,9 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 .price-footnote { font-size: 6.5pt; color: #999; margin-top: 3pt; line-height: 1.3; }
 
 /* FAQ */
-.faq-section { margin-bottom: 12pt; }
+.faq-section { margin-bottom: 12pt; break-inside: avoid; page-break-inside: avoid; }
 .faq-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 7pt; }
+.faq-item { break-inside: avoid; page-break-inside: avoid; }
 .faq-item dt { font-size: 9pt; font-weight: 700; margin-bottom: 2pt; line-height: 1.3; }
 .faq-item dd { font-size: 9pt; color: #333; line-height: 1.45; margin-left: 0; }
 
@@ -100,22 +104,7 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
   </div>
 </div>
 
-<!-- MEINE EXPERTISE (ganz oben, vollständig) -->
-<div class="expertise-section">
-  <div class="section-title">Meine Expertise</div>
-  <div class="expertise-grid">
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Physiotherapeut &mdash; klinische Berufserfahrung, medizinischer Blick auf Bewegung &amp; Rehabilitation</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Leistungshandball im NLZ der Rhein-Neckar L&ouml;wen (Handball-Bundesliga)</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Fortbildung beim ehemaligen Physio der deutschen Fu&szlig;ballnationalmannschaft</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Technikschulung durch Trainer aus dem olympischen Gewichtheben</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Qualifikation: Krankengymnastik am Ger&auml;t (KGG)</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Kraft- &amp; Athletiktraining ab dem 13. Lebensjahr bei den Rhein-Neckar L&ouml;wen</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Eigene Verletzungserfahrung &mdash; Training trotz und mit Einschr&auml;nkungen</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Stetige Weiterbildung in Therapie, Training und Sport</span></div>
-  </div>
-</div>
-
-<!-- HOOK -->
+<!-- HOOK (Intro zuerst) -->
 <div class="hook-box">
   <p>Viele Beschwerden kommen zur&uuml;ck &mdash; nicht wegen fehlender Behandlung, sondern weil im Alltag niemand mehr begleitet.</p>
   <p>Die Physiotherapie endet nach 45 oder 60 Minuten. Was danach kommt, entscheidet genauso &uuml;ber den Erfolg. Hier setzt die Trainingsbegleitung an.</p>
@@ -125,6 +114,18 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 <div class="usp-box">
   <p>Ich bin kein Personal Trainer mit Trainerschein &mdash; ich bin Physiotherapeut mit medizinischem Blick, klinischer Berufserfahrung und eigenem Leistungssportbackground.</p>
   <p>Diese Verbindung aus Therapiehintergrund, Training und pers&ouml;nlicher Begleitung macht den Unterschied.</p>
+</div>
+
+<!-- MEINE EXPERTISE (chronologisch) -->
+<div class="expertise-section">
+  <div class="section-title">Mein Hintergrund &mdash; chronologisch</div>
+  <div class="expertise-list">
+    <div class="expertise-item"><span class="expertise-year">Ab&nbsp;13</span><span>Kraft- &amp; Athletiktraining im NLZ der Rhein-Neckar L&ouml;wen &mdash; Leistungshandball in der Handball-Bundesliga-Struktur</span></div>
+    <div class="expertise-item"><span class="expertise-year">Danach</span><span>Eigene Verletzungserfahrung &mdash; gelernt, wie man trotz Einschr&auml;nkungen trainiert und warum der therapeutische Blick dabei entscheidend ist</span></div>
+    <div class="expertise-item"><span class="expertise-year">Ausbildung</span><span>Staatlich anerkannter Physiotherapeut &mdash; BG Klinik Ludwigshafen &mdash; klinische Berufserfahrung, medizinischer Blick auf Bewegung &amp; Rehabilitation</span></div>
+    <div class="expertise-item"><span class="expertise-year">Zusatz</span><span>Qualifikation Krankengymnastik am Ger&auml;t (KGG) &mdash; ger&auml;tgest&uuml;tztes therapeutisches Training</span></div>
+    <div class="expertise-item"><span class="expertise-year">Fortbildung</span><span>Weiterbildung beim langjährigen Physiotherapeuten der deutschen Fu&szlig;ballnationalmannschaft</span></div>
+  </div>
 </div>
 
 <!-- WAS SIE BEKOMMEN -->
@@ -236,7 +237,7 @@ def main():
     # Inject height via style attribute on the root svg element
     svg_scaled = svg.replace(
         'viewBox="0 0 226.8 66"',
-        'viewBox="0 0 226.8 66" style="width:62%;height:auto;display:block;"',
+        'viewBox="0 0 226.8 66" style="width:31%;height:auto;display:block;"',
         1
     )
     html = TEMPLATE.replace('LOGO_PLACEHOLDER', svg_scaled)
