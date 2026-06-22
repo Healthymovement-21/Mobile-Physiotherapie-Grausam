@@ -240,7 +240,7 @@ def main():
     # Inject height via style attribute on the root svg element
     svg_scaled = svg.replace(
         'viewBox="0 0 226.8 66"',
-        'viewBox="0 0 226.8 66" style="height:40pt;width:auto;display:block;"',
+        'viewBox="0 0 226.8 66" style="height:62pt;width:auto;display:block;"',
         1
     )
     html = TEMPLATE.replace('LOGO_PLACEHOLDER', svg_scaled)

@@ -16,8 +16,8 @@ TEMPLATE = """<!DOCTYPE html>
 body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9pt; color: #1a1a1a; line-height: 1.45; }
 
 /* HEADER */
-.header { border-bottom: 1.5pt solid #1a1a1a; padding-bottom: 7pt; margin-bottom: 7pt; display: flex; align-items: flex-end; justify-content: space-between; gap: 16pt; }
-.logo-wrap svg { height: 36pt; width: auto; display: block; }
+.header { border-bottom: 1.5pt solid #1a1a1a; padding-bottom: 6pt; margin-bottom: 6pt; display: flex; align-items: flex-end; justify-content: space-between; gap: 16pt; }
+.logo-wrap svg { height: 62pt; width: auto; display: block; }
 .header-text { text-align: right; }
 .header-text h1 { font-size: 16pt; font-weight: 800; letter-spacing: -0.5pt; line-height: 1.1; margin-bottom: 2pt; }
 .header-text .tagline { font-size: 8.5pt; color: #555; }
@@ -38,7 +38,7 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9
 .intro p + p { margin-top: 3pt; }
 
 /* PRICE TABLE */
-.price-table-wrap { margin-bottom: 7pt; }
+.price-table-wrap { margin-bottom: 5pt; }
 table.ptable { width: 100%; border-collapse: collapse; }
 table.ptable thead tr { background: #1a1a1a; color: #fff; }
 table.ptable thead td { padding: 4pt 7pt; font-size: 7.5pt; font-weight: 700; letter-spacing: 0.3pt; }
@@ -63,13 +63,13 @@ table.ptable tfoot td.tp { text-align: right; font-size: 11pt; font-weight: 800;
 .scenario-note { font-size: 7pt; color: #888; margin-top: 4pt; font-style: italic; line-height: 1.4; }
 
 /* DISCLAIMER */
-.disclaimer-box { margin-bottom: 6pt; padding: 6pt 9pt; background: #fff8f0; border: 1pt solid #e0c090; border-left: 3pt solid #c87800; border-radius: 2pt; }
+.disclaimer-box { margin-bottom: 5pt; padding: 5pt 9pt; background: #fff8f0; border: 1pt solid #e0c090; border-left: 3pt solid #c87800; border-radius: 2pt; }
 .disclaimer-title { font-size: 7.5pt; font-weight: 700; color: #c87800; letter-spacing: 0.5pt; text-transform: uppercase; margin-bottom: 3pt; }
 .disclaimer-box p { font-size: 8pt; line-height: 1.5; color: #333; }
 .disclaimer-box p + p { margin-top: 3pt; }
 
 /* CHECKLIST */
-.checklist-wrap { margin-bottom: 6pt; }
+.checklist-wrap { margin-bottom: 5pt; }
 .checklist-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 3pt 14pt; }
 .cl-item { display: flex; align-items: flex-start; gap: 5pt; font-size: 8pt; line-height: 1.4; }
 .cl-arrow { flex-shrink: 0; font-weight: 700; color: #1a1a1a; margin-top: 0.5pt; }
@@ -214,7 +214,7 @@ def main():
         svg = f.read()
     svg_scaled = svg.replace(
         'viewBox="0 0 226.8 66"',
-        'viewBox="0 0 226.8 66" style="height:36pt;width:auto;display:block;"',
+        'viewBox="0 0 226.8 66" style="height:62pt;width:auto;display:block;"',
         1
     )
     html = TEMPLATE.replace('LOGO_PLACEHOLDER', svg_scaled)
