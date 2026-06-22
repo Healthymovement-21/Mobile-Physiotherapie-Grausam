@@ -2927,22 +2927,20 @@ async function rgGenerate(){
 
   const qrAmt=(vat19?totBrutto:tot).toFixed(2);
   const epcData=`BCD\n002\n1\nSCT\nDEFFDEFFXXX\nNick Grausam\nDE04500240249560193332\nEUR${qrAmt}\n\n\nRechnung Nr. ${nr}`;
-  let qrSrc='';
+  let qrHtml='';
   try{
-    if(!window._qrjsLoaded){
-      await new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';s.onload=()=>{window._qrjsLoaded=true;res();};s.onerror=rej;document.head.appendChild(s);});
+    if(!window._qrgenLoaded){
+      await new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js';s.onload=()=>{window._qrgenLoaded=true;res();};s.onerror=rej;document.head.appendChild(s);});
     }
-    const _d=document.createElement('div');
-    _d.style.cssText='position:fixed;left:-9999px;top:-9999px;width:120px;height:120px;';
-    document.body.appendChild(_d);
-    new QRCode(_d,{text:epcData,width:120,height:120,correctLevel:QRCode.CorrectLevel.M});
-    await new Promise(r=>setTimeout(r,200));
-    const _c=_d.querySelector('canvas');
-    if(_c)qrSrc=_c.toDataURL('image/png');
-    document.body.removeChild(_d);
+    const _qr=qrcode(0,'M');
+    _qr.addData(epcData,'Byte');
+    _qr.make();
+    let _svg=_qr.createSvgTag(1,0);
+    _svg=_svg.replace('<svg ','<svg style="width:72pt;height:72pt;display:block;border:1pt solid #eee;" ');
+    qrHtml=_svg;
   }catch(e){}
-  const qrImgHtml=qrSrc?`<div style="flex-shrink:0;text-align:center;margin-right:14pt;">
-        <img src="${qrSrc}" alt="GiroCode" style="width:72pt;height:72pt;display:block;border:1pt solid #eee;">
+  const qrImgHtml=qrHtml?`<div style="flex-shrink:0;text-align:center;margin-right:14pt;">
+        ${qrHtml}
         <span style="font-size:6.5pt;color:#888;display:block;margin-top:2pt;">Banking-App scannen</span>
       </div>`:'';
   const paymentSection=`<div style="margin:6pt 0 8pt;font-size:8pt;">
