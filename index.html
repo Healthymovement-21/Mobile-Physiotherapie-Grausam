@@ -822,7 +822,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.55s ease,transform 0.55s ease;}
 .reveal.visible{opacity:1;transform:none;}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </head>
 <body>
 
@@ -2853,18 +2852,6 @@ function rgCalc(){
 }
 function rgFmt(v){return parseFloat(v).toFixed(2).replace('.',',')+' €';}
 function rgDate(s){if(!s)return'';const[y,m,d]=s.split('-');return`${d}.${m}.${y}`;}
-function rgGetQrDataUrl(text){
-  try{
-    const d=document.createElement('div');
-    d.style.cssText='position:fixed;left:-9999px;top:-9999px;width:120px;height:120px;';
-    document.body.appendChild(d);
-    new QRCode(d,{text,width:120,height:120,correctLevel:QRCode.CorrectLevel.M});
-    const c=d.querySelector('canvas');
-    const url=c?c.toDataURL('image/png'):'';
-    document.body.removeChild(d);
-    return url;
-  }catch(e){return '';}
-}
 function rgGenerate(){
   const G=id=>document.getElementById(id).value.trim();
   const invoiceType=(document.querySelector('input[name="rg-type"]:checked')||{value:'physio'}).value;
@@ -2935,15 +2922,14 @@ function rgGenerate(){
   }
   const qrAmt=(vat19?totBrutto:tot).toFixed(2);
   const epcData=`BCD\n002\n1\nSCT\nDEFFDEFFXXX\nNick Grausam\nDE04500240249560193332\nEUR${qrAmt}\n\n\nRechnung Nr. ${nr}`;
-  const qrDataUrl=rgGetQrDataUrl(epcData);
-  const qrBlock=qrDataUrl?`<div style="flex-shrink:0;text-align:center;">
-        <img src="${qrDataUrl}" alt="GiroCode" style="width:72pt;height:72pt;display:block;border:1pt solid #eee;">
-        <span style="font-size:6.5pt;color:#888;display:block;margin-top:2pt;">Banking-App scannen</span>
-      </div>`:'';
+  const epcJson=JSON.stringify(epcData);
   const paymentSection=`<div style="margin:6pt 0 10pt;font-size:8pt;">
     <p style="margin-bottom:6pt;">Bitte &uuml;berweisen Sie den Rechnungsbetrag bis sp&auml;testens <strong>${dueDate}</strong> auf folgendes Konto:</p>
     <div style="display:flex;align-items:center;gap:14pt;">
-      ${qrBlock}
+      <div id="inv-qr-wrap" style="flex-shrink:0;text-align:center;">
+        <img id="inv-qr-img" src="" alt="GiroCode" style="width:72pt;height:72pt;display:none;border:1pt solid #eee;">
+        <span style="font-size:6.5pt;color:#888;display:block;margin-top:2pt;">Banking-App scannen</span>
+      </div>
       <div style="line-height:1.7;">
         <strong>Mobile Physiotherapie Grausam</strong><br>
         Inhaber: Nick Grausam<br>
@@ -3024,6 +3010,8 @@ ${paymentSection}
   <div><div class="ftr-title">Gesch&auml;ftsf&uuml;hrer: Nick Grausam</div>Telefon: +49&nbsp;176&nbsp;4268&nbsp;5146<br>E-Mail: info@physiotherapie-grausam.com<br>Steuernummer: 32146/46402<br>USt.-IDNr.: 41259430760</div>
   <div><div class="ftr-title">Bankverbindung</div>C24 Bank Frankfurt am Main<br>IBAN: DE04 5002 4024 9560 1933 32<br>BIC/Swift: DEFFDEFFXXX</div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"><\/script>
+<script>(function(){var img=document.getElementById('inv-qr-img');if(!img)return;QRCode.toDataURL(${epcJson},{width:108,margin:1,errorCorrectionLevel:'M'}).then(function(u){img.src=u;img.style.display='block';}).catch(function(){var w=document.getElementById('inv-qr-wrap');if(w)w.style.display='none';});})();<\/script>
 </body></html>`);
   w.document.close();
 }
