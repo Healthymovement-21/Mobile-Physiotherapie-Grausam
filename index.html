@@ -2842,12 +2842,14 @@ table.lt{width:100%;border-collapse:collapse;margin-bottom:6pt;}
 table.lt thead tr{background:#111;color:#fff;}
 table.lt thead td{padding:5pt 7pt;font-size:8pt;font-weight:700;letter-spacing:.4pt;}
 table.lt tbody td{padding:4pt 7pt;font-size:8.5pt;border-bottom:.5pt solid #eee;}
-.legal{font-size:7pt;color:#555;line-height:1.5;margin-bottom:8pt;}
-.ftr{border-top:.75pt solid #ccc;padding-top:7pt;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8pt;font-size:7.5pt;color:#555;line-height:1.55;}
-.ftr-title{font-weight:700;color:#111;margin-bottom:1pt;}
+.legal{font-size:7pt;color:#555;line-height:1.5;margin-bottom:0;}
+.print-wrapper{display:flex;flex-direction:column;min-height:269mm;}
+.ftr{border-top:.75pt solid #ccc;padding-top:6pt;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8pt;font-size:6.5pt;color:#777;line-height:1.5;margin-top:auto;}
+.ftr-title{font-weight:700;color:#555;margin-bottom:1pt;}
 @media print{.no-print{display:none!important;} body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
 </style></head><body>
 <div class="no-print"><span>Rechnung Nr. ${nr} &ndash; ${vn} ${nn}${isCoaching?' · Trainingsbegleitung':''}</span><button class="print-btn" onclick="window.print()">&#x1F5A8; Drucken / Als PDF speichern</button></div>
+<div class="print-wrapper">
 <div class="header">
   <div>
     <div class="logo-wrap"><img src="https://www.physiotherapie-grausam.com/logo.svg" alt="Mobile Physiotherapie Grausam"></div>
@@ -2878,6 +2880,7 @@ ${totalRows}
   <div><div class="ftr-title">Mobile Physiotherapie Grausam</div>Nick Grausam<br>Dornierstra&szlig;e 5 &middot; 69181 Leimen<br>Steuernummer: 32146/46402</div>
   <div><div class="ftr-title">Kontakt</div>Tel.: 0176 4268 5146<br>info@physiotherapie-grausam.com<br>www.physiotherapie-grausam.com</div>
   <div><div class="ftr-title">Bankverbindung</div>C24 Bank Frankfurt am Main<br>IBAN: DE04 5002 4024 9560 1933 32<br>BIC: DEFFDEFFXXX</div>
+</div>
 </div>
 </body></html>`);
   w.document.close();
