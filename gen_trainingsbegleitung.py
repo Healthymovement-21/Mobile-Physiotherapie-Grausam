@@ -32,9 +32,8 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 
 /* EXPERTISE */
 .expertise-section { margin-bottom: 14pt; break-inside: avoid; page-break-inside: avoid; }
-.expertise-list { display: flex; flex-direction: column; gap: 5pt; }
-.expertise-item { display: flex; align-items: flex-start; gap: 8pt; font-size: 9.5pt; line-height: 1.45; }
-.expertise-year { flex-shrink: 0; font-size: 7.5pt; font-weight: 700; color: #888; min-width: 36pt; margin-top: 1.5pt; }
+.expertise-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 4pt; }
+.expertise-item { display: flex; align-items: flex-start; gap: 5pt; font-size: 9pt; line-height: 1.4; }
 .expertise-dash { flex-shrink: 0; color: #888; margin-top: 0.5pt; }
 
 /* CHECKLIST */
@@ -107,13 +106,14 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 
 <!-- MEINE EXPERTISE (chronologisch) -->
 <div class="expertise-section">
-  <div class="section-title">Mein Hintergrund &mdash; chronologisch</div>
-  <div class="expertise-list">
-    <div class="expertise-item"><span class="expertise-year">Ab&nbsp;13</span><span>Kraft- &amp; Athletiktraining im NLZ der Rhein-Neckar L&ouml;wen &mdash; Leistungshandball in der Handball-Bundesliga-Struktur</span></div>
-    <div class="expertise-item"><span class="expertise-year">Danach</span><span>Eigene Verletzungserfahrung &mdash; gelernt, wie man trotz Einschr&auml;nkungen trainiert und warum der therapeutische Blick dabei entscheidend ist</span></div>
-    <div class="expertise-item"><span class="expertise-year">Ausbildung</span><span>Staatlich anerkannter Physiotherapeut &mdash; BG Klinik Ludwigshafen &mdash; klinische Berufserfahrung, medizinischer Blick auf Bewegung &amp; Rehabilitation</span></div>
-    <div class="expertise-item"><span class="expertise-year">Zusatz</span><span>Qualifikation Krankengymnastik am Ger&auml;t (KGG) &mdash; ger&auml;tgest&uuml;tztes therapeutisches Training</span></div>
-    <div class="expertise-item"><span class="expertise-year">Fortbildung</span><span>Weiterbildung beim langjährigen Physiotherapeuten der deutschen Fu&szlig;ballnationalmannschaft</span></div>
+  <div class="section-title">Meine Expertise</div>
+  <div class="expertise-grid">
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Kraft- &amp; Athletiktraining ab dem 13. Lebensjahr &mdash; NLZ der Rhein-Neckar L&ouml;wen (Handball-Bundesliga)</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Eigene Verletzungserfahrung &mdash; Training trotz und mit Einschr&auml;nkungen</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Physiotherapeut &mdash; klinische Berufserfahrung, medizinischer Blick auf Bewegung &amp; Rehabilitation</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Qualifikation: Krankengymnastik am Ger&auml;t (KGG)</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Fortbildung beim langjährigen Physiotherapeuten der deutschen Fu&szlig;ballnationalmannschaft</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Stetige Weiterbildung in Therapie, Training und Sport</span></div>
   </div>
 </div>
 
