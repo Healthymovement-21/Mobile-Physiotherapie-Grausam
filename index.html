@@ -2611,7 +2611,7 @@ const RG_ART={
   KG:{label:'Krankengymnastik (KG) — Anlage 9 Nr. 4\nHausbesuch – 30 min',preis:29.70},
   MT:{label:'Manuelle Therapie (MT) — Anlage 9 Nr. 11\nHausbesuch – 30 min',preis:35.60},
   KGG:{label:'Krankengymnastik am Gerät (KGG) — Anlage 9 Nr. 7\nHausbesuch – 30 min',preis:34.90},
-  FK:{label:'Fahrtkostenpauschale',preis:10.00},
+  FK:{label:'Hausbesuch inkl. Wegegeld/Fahrtkosten',preis:10.00},
   S:{label:'Sonstige Leistung',preis:0},
   COACHING:{label:'Monatspauschale Therapeutische Trainingsbegleitung\n4 × 60 Min. | Individueller Trainingsplan | Begleitung',preis:150.00}
 };
@@ -2826,7 +2826,7 @@ function rgAddRow(art='KG',menge=1,preis=null){
     :`<option value="KG"${art==='KG'?' selected':''}>KG · 29,70 €</option>
        <option value="MT"${art==='MT'?' selected':''}>MT · 35,60 €</option>
        <option value="KGG"${art==='KGG'?' selected':''}>KGG · 34,90 €</option>
-       <option value="FK"${art==='FK'?' selected':''}>Fahrtkosten · 10,00 €</option>
+       <option value="FK"${art==='FK'?' selected':''}>Wegegeld/Fahrtkosten · 10,00 €</option>
        <option value="S"${art==='S'?' selected':''}>Sonstige Leistung</option>`;
   tr.innerHTML=`<td><select onchange="rgSel(this)" style="width:100%;">${opts}</select></td>
   <td><input type="number" value="${menge}" min="1" max="99" oninput="rgCalc()" style="width:58px;"></td>
@@ -2926,7 +2926,7 @@ function rgGenerate(){
       <span style="font-size:17pt;font-weight:800;min-width:70pt;text-align:right;">${rgFmt(totBrutto)}</span>
     </div>`;
   } else {
-    const label=isCoaching?'Summe netto (zzgl. ggf. MwSt.)':'Summe netto';
+    const label=isCoaching?'Rechnungsbetrag (zzgl. ggf. MwSt.)':'Rechnungsbetrag (umsatzsteuerfrei)';
     totalRows=`<div style="display:flex;justify-content:flex-end;gap:20pt;padding:6pt 8pt;margin-bottom:8pt;border-top:1.5pt solid #111;">
       <span style="font-size:9.5pt;font-weight:700;">${label}</span>
       <span style="font-size:17pt;font-weight:800;min-width:70pt;text-align:right;">${rgFmt(tot)}</span>
