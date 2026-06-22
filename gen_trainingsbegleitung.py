@@ -1,358 +1,137 @@
 #!/usr/bin/env python3
 """
-Generate Therapeutische-Trainingsbegleitung.pdf
-Target: exactly 2 A4 pages, logo in header, expertise at top, no duplicate contact footer.
+Generate Therapeutische-Trainingsbegleitung.pdf — 2 A4 pages.
+Layout: Logo oben links (groß), Expertise direkt danach (vollständig), kein doppelter Footer.
 """
-
 import tempfile, os
 from weasyprint import HTML
 
-HTML_CONTENT = """<!DOCTYPE html>
+TEMPLATE = """<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Therapeutische Trainingsbegleitung</title>
 <style>
-  @page { size: A4; margin: 16mm; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 9.5pt;
-    color: #1a1a1a;
-    line-height: 1.45;
-  }
+@page { size: A4; margin: 16mm; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9.5pt; color: #1a1a1a; line-height: 1.45; }
 
-  /* ── HEADER ── */
-  .header {
-    margin-bottom: 8pt;
-    padding-bottom: 7pt;
-    border-bottom: 1.5pt solid #1a1a1a;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 16pt;
-  }
-  .header-logo img {
-    height: 30pt;
-    display: block;
-  }
-  .header-text {
-    text-align: right;
-  }
-  .header-text h1 {
-    font-size: 18pt;
-    font-weight: 800;
-    letter-spacing: -0.5pt;
-    line-height: 1.1;
-    margin-bottom: 1pt;
-  }
-  .header-text .tagline {
-    font-size: 8.5pt;
-    color: #444;
-    font-style: italic;
-  }
+/* HEADER */
+.header { margin-bottom: 10pt; padding-bottom: 8pt; border-bottom: 1.5pt solid #1a1a1a; }
+.header-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 14pt; }
+.logo-wrap { flex-shrink: 0; }
+.logo-wrap svg { height: 40pt; width: auto; display: block; }
+.header-title { text-align: right; }
+.header-title h1 { font-size: 19pt; font-weight: 800; letter-spacing: -0.5pt; line-height: 1.1; margin-bottom: 2pt; }
+.header-title .tagline { font-size: 9pt; color: #555; font-style: italic; }
 
-  /* ── COMPACT EXPERTISE (top of page 1) ── */
-  .cred-strip {
-    margin-bottom: 8pt;
-    padding: 6pt 10pt;
-    background: #1a1a1a;
-    color: #fff;
-    border-radius: 2pt;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 14pt;
-    row-gap: 3pt;
-  }
-  .cred-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 5pt;
-    font-size: 8pt;
-    line-height: 1.35;
-    color: rgba(255,255,255,0.9);
-  }
-  .cred-dash {
-    flex-shrink: 0;
-    color: rgba(255,255,255,0.5);
-    margin-top: 0.5pt;
-  }
+/* EXPERTISE */
+.expertise-section { margin-bottom: 10pt; }
+.section-title { font-size: 7.5pt; font-weight: 700; letter-spacing: 1.2pt; text-transform: uppercase; color: #1a1a1a; margin-bottom: 5pt; padding-bottom: 2.5pt; border-bottom: 0.8pt solid #ccc; }
+.expertise-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 2.5pt; }
+.expertise-item { display: flex; align-items: flex-start; gap: 5pt; font-size: 8.5pt; line-height: 1.35; }
+.expertise-dash { flex-shrink: 0; color: #888; margin-top: 0.5pt; }
 
-  /* ── HOOK BOX ── */
-  .hook-box {
-    border-left: 3.5pt solid #1a1a1a;
-    padding: 7pt 10pt;
-    margin-bottom: 7pt;
-    background: #f9f9f9;
-  }
-  .hook-box p { margin-bottom: 3pt; }
-  .hook-box p:last-child { margin-bottom: 0; }
+/* HOOK */
+.hook-box { border-left: 3.5pt solid #1a1a1a; padding: 7pt 10pt; margin-bottom: 7pt; background: #f9f9f9; }
+.hook-box p { margin-bottom: 3pt; }
+.hook-box p:last-child { margin-bottom: 0; }
 
-  /* ── USP BOX ── */
-  .usp-box {
-    background: #f0ede8;
-    padding: 7pt 10pt;
-    margin-bottom: 8pt;
-    border-radius: 2pt;
-    border-left: 3pt solid #888;
-  }
-  .usp-box p { margin-bottom: 3pt; }
-  .usp-box p:last-child { margin-bottom: 0; }
+/* USP */
+.usp-box { background: #f0ede8; padding: 7pt 10pt; margin-bottom: 8pt; border-radius: 2pt; border-left: 3pt solid #888; }
+.usp-box p { margin-bottom: 3pt; }
+.usp-box p:last-child { margin-bottom: 0; }
 
-  /* ── SECTION TITLES ── */
-  .section-title {
-    font-size: 7.5pt;
-    font-weight: 700;
-    letter-spacing: 1.2pt;
-    text-transform: uppercase;
-    color: #1a1a1a;
-    margin-bottom: 5pt;
-    padding-bottom: 2.5pt;
-    border-bottom: 0.8pt solid #ccc;
-  }
+/* CHECKLIST */
+.checklist-section { margin-bottom: 8pt; }
+.checklist-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 2.5pt; }
+.checklist-item { display: flex; align-items: flex-start; gap: 4pt; font-size: 9pt; }
+.check-mark { color: #1a1a1a; font-weight: 700; flex-shrink: 0; margin-top: 0.5pt; }
 
-  /* ── CHECKLIST ── */
-  .checklist-section { margin-bottom: 8pt; }
-  .checklist-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 14pt;
-    row-gap: 2.5pt;
-  }
-  .checklist-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 4pt;
-    font-size: 9pt;
-  }
-  .check-mark {
-    color: #1a1a1a;
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 0.5pt;
-  }
+/* FLOW */
+.flow-section { margin-bottom: 8pt; }
+.flow-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; column-gap: 6pt; }
+.flow-step { border: 0.8pt solid #ccc; padding: 6pt 7pt; border-radius: 2pt; }
+.flow-step-label { font-size: 6.5pt; font-weight: 700; letter-spacing: 0.8pt; text-transform: uppercase; color: #777; margin-bottom: 2pt; }
+.flow-step-title { font-size: 8.5pt; font-weight: 700; margin-bottom: 2pt; line-height: 1.2; }
+.flow-step-text { font-size: 7.5pt; color: #444; line-height: 1.35; }
 
-  /* ── FLOW STEPS ── */
-  .flow-section { margin-bottom: 8pt; }
-  .flow-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 6pt;
-  }
-  .flow-step {
-    border: 0.8pt solid #ccc;
-    padding: 6pt 7pt;
-    border-radius: 2pt;
-  }
-  .flow-step-label {
-    font-size: 6.5pt;
-    font-weight: 700;
-    letter-spacing: 0.8pt;
-    text-transform: uppercase;
-    color: #777;
-    margin-bottom: 2pt;
-  }
-  .flow-step-title {
-    font-size: 8.5pt;
-    font-weight: 700;
-    margin-bottom: 2pt;
-    line-height: 1.2;
-  }
-  .flow-step-text {
-    font-size: 7.5pt;
-    color: #444;
-    line-height: 1.35;
-  }
+/* PRICE */
+.price-section { margin-bottom: 8pt; }
+.price-block { background: #1a1a1a; color: #fff; padding: 8pt 11pt; border-radius: 2pt; display: flex; align-items: center; justify-content: space-between; gap: 12pt; }
+.price-left { display: flex; align-items: baseline; gap: 4pt; }
+.price-amount { font-size: 32pt; font-weight: 800; line-height: 1; letter-spacing: -1pt; }
+.price-currency { font-size: 18pt; font-weight: 700; align-self: flex-start; margin-top: 4pt; }
+.price-meta { display: flex; flex-direction: column; gap: 1pt; }
+.price-per-month { font-size: 8.5pt; color: #ccc; }
+.price-per-hour { font-size: 8pt; color: #aaa; }
+.price-compare { font-size: 7.5pt; color: #bbb; border-left: 1pt solid #444; padding-left: 12pt; max-width: 170pt; line-height: 1.35; }
+.price-footnote { font-size: 6.5pt; color: #999; margin-top: 3pt; line-height: 1.3; }
 
-  /* ── PRICE BLOCK ── */
-  .price-section { margin-bottom: 8pt; }
-  .price-block {
-    background: #1a1a1a;
-    color: #fff;
-    padding: 8pt 11pt;
-    border-radius: 2pt;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12pt;
-  }
-  .price-left {
-    display: flex;
-    align-items: baseline;
-    gap: 4pt;
-  }
-  .price-amount {
-    font-size: 32pt;
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -1pt;
-  }
-  .price-currency {
-    font-size: 18pt;
-    font-weight: 700;
-    align-self: flex-start;
-    margin-top: 4pt;
-  }
-  .price-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 1pt;
-  }
-  .price-per-month { font-size: 8.5pt; color: #ccc; }
-  .price-per-hour  { font-size: 8pt;   color: #aaa; }
-  .price-compare {
-    font-size: 7.5pt;
-    color: #bbb;
-    border-left: 1pt solid #444;
-    padding-left: 12pt;
-    max-width: 170pt;
-    line-height: 1.35;
-  }
-  .price-footnote {
-    font-size: 6.5pt;
-    color: #999;
-    margin-top: 3pt;
-    line-height: 1.3;
-  }
+/* FAQ */
+.faq-section { margin-bottom: 8pt; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 4.5pt; }
+.faq-item dt { font-size: 8.5pt; font-weight: 700; margin-bottom: 1.5pt; line-height: 1.3; }
+.faq-item dd { font-size: 8.5pt; color: #333; line-height: 1.4; margin-left: 0; }
 
-  /* ── FAQ ── */
-  .faq-section { margin-bottom: 8pt; }
-  .faq-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 14pt;
-    row-gap: 4.5pt;
-  }
-  .faq-item dt {
-    font-size: 8.5pt;
-    font-weight: 700;
-    margin-bottom: 1.5pt;
-    line-height: 1.3;
-  }
-  .faq-item dd {
-    font-size: 8.5pt;
-    color: #333;
-    line-height: 1.4;
-    margin-left: 0;
-  }
+/* CTA */
+.cta-section { margin-bottom: 8pt; }
+.cta-box { border: 1.5pt solid #1a1a1a; padding: 8pt 11pt; border-radius: 2pt; display: flex; justify-content: space-between; align-items: center; gap: 16pt; }
+.cta-left h3 { font-size: 10.5pt; font-weight: 800; margin-bottom: 3pt; letter-spacing: -0.2pt; }
+.cta-left p { font-size: 8.5pt; color: #444; line-height: 1.4; }
+.cta-right { text-align: right; flex-shrink: 0; }
+.cta-right .contact-name { font-size: 9pt; font-weight: 700; margin-bottom: 2pt; }
+.cta-right .contact-detail { font-size: 8.5pt; color: #333; line-height: 1.5; }
 
-  /* ── CTA BOX ── */
-  .cta-section { margin-bottom: 8pt; }
-  .cta-box {
-    border: 1.5pt solid #1a1a1a;
-    padding: 8pt 11pt;
-    border-radius: 2pt;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16pt;
-  }
-  .cta-left h3 {
-    font-size: 10.5pt;
-    font-weight: 800;
-    margin-bottom: 3pt;
-    letter-spacing: -0.2pt;
-  }
-  .cta-left p {
-    font-size: 8.5pt;
-    color: #444;
-    line-height: 1.4;
-  }
-  .cta-right {
-    text-align: right;
-    flex-shrink: 0;
-  }
-  .cta-right .contact-name {
-    font-size: 9pt;
-    font-weight: 700;
-    margin-bottom: 2pt;
-  }
-  .cta-right .contact-detail {
-    font-size: 8.5pt;
-    color: #333;
-    line-height: 1.5;
-  }
+/* LEGAL */
+.legal-box { background: #f3f3f3; border: 0.5pt solid #ddd; padding: 4pt 7pt; border-radius: 2pt; margin-bottom: 5pt; }
+.legal-box p { font-size: 7pt; color: #555; line-height: 1.3; }
+.legal-box p + p { margin-top: 2pt; }
 
-  /* ── FULL EXPERTISE (page 2) ── */
-  .expertise-section { margin-bottom: 8pt; }
-  .expertise-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 14pt;
-    row-gap: 2pt;
-  }
-  .expertise-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 4pt;
-    font-size: 8.5pt;
-    line-height: 1.35;
-  }
-  .expertise-dash {
-    flex-shrink: 0;
-    color: #555;
-    margin-top: 0.5pt;
-  }
-
-  /* ── LEGAL BOX ── */
-  .legal-box {
-    background: #f3f3f3;
-    border: 0.5pt solid #ddd;
-    padding: 4pt 7pt;
-    border-radius: 2pt;
-    margin-bottom: 5pt;
-  }
-  .legal-box p {
-    font-size: 7pt;
-    color: #555;
-    line-height: 1.3;
-  }
-  .legal-box p + p { margin-top: 2pt; }
-
-  /* ── FOOTER (footnote only) ── */
-  .footer-block {
-    font-size: 6.5pt;
-    color: #888;
-    line-height: 1.35;
-    border-top: 0.5pt solid #ddd;
-    padding-top: 4pt;
-  }
+/* FOOTNOTE */
+.footer-block { font-size: 6.5pt; color: #888; line-height: 1.35; border-top: 0.5pt solid #ddd; padding-top: 4pt; }
 </style>
 </head>
 <body>
 
-<!-- ══ HEADER ══ -->
+<!-- HEADER: Logo links, Titel rechts -->
 <div class="header">
-  <div class="header-logo">
-    <!--LOGO-->
-  </div>
-  <div class="header-text">
-    <h1>Therapeutische Trainingsbegleitung</h1>
-    <div class="tagline">Von der Behandlung zur&uuml;ck in einen belastbaren Alltag.</div>
+  <div class="header-top">
+    <div class="logo-wrap">LOGO_PLACEHOLDER</div>
+    <div class="header-title">
+      <h1>Therapeutische Trainingsbegleitung</h1>
+      <div class="tagline">Von der Behandlung zur&uuml;ck in einen belastbaren Alltag.</div>
+    </div>
   </div>
 </div>
 
-<!-- ══ KOMPAKTE EXPERTISE (sofort sichtbar) ══ -->
-<div class="cred-strip">
-  <div class="cred-item"><span class="cred-dash">&ndash;</span><span>Physiotherapeut &mdash; klinische Berufserfahrung, medizinischer Blick auf Bewegung &amp; Rehabilitation</span></div>
-  <div class="cred-item"><span class="cred-dash">&ndash;</span><span>Leistungshandball im NLZ der Rhein-Neckar L&ouml;wen (Handball-Bundesliga)</span></div>
-  <div class="cred-item"><span class="cred-dash">&ndash;</span><span>Fortbildung beim ehemaligen Physio der deutschen Fu&szlig;ballnationalmannschaft</span></div>
-  <div class="cred-item"><span class="cred-dash">&ndash;</span><span>Qualifikation KGG &middot; Technikschulung olympisches Gewichtheben &middot; eigene Verletzungserfahrung</span></div>
+<!-- MEINE EXPERTISE (ganz oben, vollständig) -->
+<div class="expertise-section">
+  <div class="section-title">Meine Expertise</div>
+  <div class="expertise-grid">
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Physiotherapeut &mdash; klinische Berufserfahrung, medizinischer Blick auf Bewegung &amp; Rehabilitation</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Leistungshandball im NLZ der Rhein-Neckar L&ouml;wen (Handball-Bundesliga)</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Fortbildung beim ehemaligen Physio der deutschen Fu&szlig;ballnationalmannschaft</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Technikschulung durch Trainer aus dem olympischen Gewichtheben</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Qualifikation: Krankengymnastik am Ger&auml;t (KGG)</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Kraft- &amp; Athletiktraining ab dem 13. Lebensjahr bei den Rhein-Neckar L&ouml;wen</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Eigene Verletzungserfahrung &mdash; Training trotz und mit Einschr&auml;nkungen</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Stetige Weiterbildung in Therapie, Training und Sport</span></div>
+  </div>
 </div>
 
-<!-- ══ HOOK BOX ══ -->
+<!-- HOOK -->
 <div class="hook-box">
   <p>Viele Beschwerden kommen zur&uuml;ck &mdash; nicht wegen fehlender Behandlung, sondern weil im Alltag niemand mehr begleitet.</p>
   <p>Die Physiotherapie endet nach 45 oder 60 Minuten. Was danach kommt, entscheidet genauso &uuml;ber den Erfolg. Hier setzt die Trainingsbegleitung an.</p>
 </div>
 
-<!-- ══ USP BOX ══ -->
+<!-- USP -->
 <div class="usp-box">
   <p>Ich bin kein Personal Trainer mit Trainerschein &mdash; ich bin Physiotherapeut mit medizinischem Blick, klinischer Berufserfahrung und eigenem Leistungssportbackground.</p>
   <p>Diese Verbindung aus Therapiehintergrund, Training und pers&ouml;nlicher Begleitung macht den Unterschied.</p>
 </div>
 
-<!-- ══ WAS SIE BEKOMMEN ══ -->
+<!-- WAS SIE BEKOMMEN -->
 <div class="checklist-section">
   <div class="section-title">Was Sie bekommen</div>
   <div class="checklist-grid">
@@ -367,7 +146,7 @@ HTML_CONTENT = """<!DOCTYPE html>
   </div>
 </div>
 
-<!-- ══ WIE ES ABLÄUFT ══ -->
+<!-- WIE ES ABLÄUFT -->
 <div class="flow-section">
   <div class="section-title">Wie es abl&auml;uft</div>
   <div class="flow-grid">
@@ -394,7 +173,7 @@ HTML_CONTENT = """<!DOCTYPE html>
   </div>
 </div>
 
-<!-- ══ PRICE BLOCK ══ -->
+<!-- PREIS -->
 <div class="price-section">
   <div class="price-block">
     <div class="price-left">
@@ -410,38 +189,20 @@ HTML_CONTENT = """<!DOCTYPE html>
   <div class="price-footnote">* Nettobetrag. Steuerliche Behandlung (Kleinunternehmerregelung &sect;&nbsp;19 UStG oder Regelbesteuerung) auf Anfrage. Nicht steuerbefreit nach &sect;&nbsp;4 Nr.&nbsp;14 UStG.</div>
 </div>
 
-<!-- ══ FAQ ══ -->
+<!-- FAQ -->
 <div class="faq-section">
   <div class="section-title">H&auml;ufige Fragen</div>
   <dl class="faq-grid">
-    <div class="faq-item">
-      <dt>F&uuml;r wen ist das geeignet?</dt>
-      <dd>F&uuml;r jeden, der sich langfristig besser bewegen m&ouml;chte &mdash; nach einer Verletzung, mitten in der Therapie oder pr&auml;ventiv. Keine Vorkenntnisse n&ouml;tig.</dd>
-    </div>
-    <div class="faq-item">
-      <dt>Kann ich mit Schmerzen trainieren?</dt>
-      <dd>Ja &mdash; das Training wird an Ihren K&ouml;rper angepasst. Sie trainieren mit mir, nicht gegen Ihren K&ouml;rper. Bei akuten Beschwerden zuerst den Arzt aufsuchen.</dd>
-    </div>
-    <div class="faq-item">
-      <dt>Wo findet das Training statt?</dt>
-      <dd>Individuell abgestimmt: bei Ihnen zu Hause, im Freien oder im Fitnessstudio &mdash; je nach Situation.</dd>
-    </div>
-    <div class="faq-item">
-      <dt>Muss ich schon sportlich aktiv sein?</dt>
-      <dd>Nein. Wir starten dort, wo Sie stehen &mdash; ohne Druck, ohne Voraussetzungen.</dd>
-    </div>
-    <div class="faq-item">
-      <dt>Wie l&auml;uft der Einstieg ab?</dt>
-      <dd>Kostenloses Erstgespr&auml;ch &mdash; kein Vertrag, keine Vorauszahlung. Erst nach der ersten Einheit entscheiden Sie.</dd>
-    </div>
-    <div class="faq-item">
-      <dt>Wie lange l&auml;uft das Coaching?</dt>
-      <dd>Monatlich ohne Mindestlaufzeit. K&uuml;ndigung formlos per Nachricht, jederzeit m&ouml;glich.</dd>
-    </div>
+    <div class="faq-item"><dt>F&uuml;r wen ist das geeignet?</dt><dd>F&uuml;r jeden, der sich langfristig besser bewegen m&ouml;chte &mdash; nach einer Verletzung, mitten in der Therapie oder pr&auml;ventiv. Keine Vorkenntnisse n&ouml;tig.</dd></div>
+    <div class="faq-item"><dt>Kann ich mit Schmerzen trainieren?</dt><dd>Ja &mdash; das Training wird an Ihren K&ouml;rper angepasst. Sie trainieren mit mir, nicht gegen Ihren K&ouml;rper. Bei akuten Beschwerden zuerst den Arzt aufsuchen.</dd></div>
+    <div class="faq-item"><dt>Wo findet das Training statt?</dt><dd>Individuell abgestimmt: bei Ihnen zu Hause, im Freien oder im Fitnessstudio &mdash; je nach Situation.</dd></div>
+    <div class="faq-item"><dt>Muss ich schon sportlich aktiv sein?</dt><dd>Nein. Wir starten dort, wo Sie stehen &mdash; ohne Druck, ohne Voraussetzungen.</dd></div>
+    <div class="faq-item"><dt>Wie l&auml;uft der Einstieg ab?</dt><dd>Kostenloses Erstgespr&auml;ch &mdash; kein Vertrag, keine Vorauszahlung. Erst nach der ersten Einheit entscheiden Sie.</dd></div>
+    <div class="faq-item"><dt>Wie lange l&auml;uft das Coaching?</dt><dd>Monatlich ohne Mindestlaufzeit. K&uuml;ndigung formlos per Nachricht, jederzeit m&ouml;glich.</dd></div>
   </dl>
 </div>
 
-<!-- ══ CTA BOX ══ -->
+<!-- CTA -->
 <div class="cta-section">
   <div class="cta-box">
     <div class="cta-left">
@@ -456,70 +217,51 @@ HTML_CONTENT = """<!DOCTYPE html>
   </div>
 </div>
 
-<!-- ══ MEINE EXPERTISE (vollständig, Seite 2) ══ -->
-<div class="expertise-section">
-  <div class="section-title">Meine Expertise</div>
-  <div class="expertise-grid">
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Leistungshandball im NLZ der Rhein-Neckar L&ouml;wen (Handball-Bundesliga)</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Fortbildung beim ehemaligen Physio der deutschen Fu&szlig;ballnationalmannschaft</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Qualifikation: Krankengymnastik am Ger&auml;t (KGG)</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Technikschulung durch Trainer aus dem olympischen Gewichtheben</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Kraft- &amp; Athletiktraining ab dem 13. Lebensjahr bei den Rhein-Neckar L&ouml;wen</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Eigene Verletzungserfahrung &mdash; Training trotz und mit Einschr&auml;nkungen</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Therapeutische Berufserfahrung: klinischer Blick auf Bewegung &amp; Rehabilitation</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Stetige Weiterbildung in Therapie, Training und Sport</span></div>
-  </div>
-</div>
-
-<!-- ══ LEGAL BOX ══ -->
+<!-- LEGAL -->
 <div class="legal-box">
-  <p><strong>Rechtlicher Hinweis:</strong> Die angebotene Trainingsbegleitung ist eine pers&ouml;nliche Trainings- und Begleitungsleistung und stellt keine Heilbehandlung, keine Physiotherapie auf &auml;rztliche Verordnung und keinen Ersatz f&uuml;r &auml;rztliche oder physiotherapeutische Behandlung dar. Die Leistung wird auf eigene Initiative des Kunden und ohne &auml;rztliche Verordnung erbracht. Bei akuten medizinischen Beschwerden wenden Sie sich bitte an einen Arzt.</p>
-  <p>Die Trainingsbegleitung f&auml;llt nicht unter die Steuerbefreiung nach &sect;&nbsp;4 Nr.&nbsp;14 UStG. Die steuerliche Behandlung (Kleinunternehmerregelung gem. &sect;&nbsp;19 UStG oder Regelbesteuerung) wird auf Anfrage mitgeteilt.</p>
+  <p><strong>Rechtlicher Hinweis:</strong> Die angebotene Trainingsbegleitung ist eine pers&ouml;nliche Trainings- und Begleitungsleistung und stellt keine Heilbehandlung, keine Physiotherapie auf &auml;rztliche Verordnung und keinen Ersatz f&uuml;r &auml;rztliche oder physiotherapeutische Behandlung dar. Die Leistung wird auf eigene Initiative des Kunden erbracht. Bei akuten medizinischen Beschwerden wenden Sie sich bitte an einen Arzt.</p>
+  <p>Die Trainingsbegleitung f&auml;llt nicht unter die Steuerbefreiung nach &sect;&nbsp;4 Nr.&nbsp;14 UStG. Die steuerliche Behandlung wird auf Anfrage mitgeteilt.</p>
 </div>
 
-<!-- ══ FOOTNOTE ONLY (kein doppelter Kontakt) ══ -->
+<!-- FOOTNOTE ONLY — kein doppelter Kontakt -->
 <div class="footer-block">
-  <p>** Ern&auml;hrungsempfehlungen basieren auf pers&ouml;nlicher Erfahrung und eigener Recherche &mdash; nicht auf einer Weiterbildung als Ern&auml;hrungsberater. Vollst&auml;ndig optional, auf ausdr&uuml;cklichen Wunsch verf&uuml;gbar &mdash; kein Ersatz f&uuml;r ern&auml;hrungsmedizinische Fachberatung.</p>
+  <p>** Ern&auml;hrungsempfehlungen basieren auf pers&ouml;nlicher Erfahrung und eigener Recherche &mdash; nicht auf einer Weiterbildung als Ern&auml;hrungsberater. Vollst&auml;ndig optional, auf ausdr&uuml;cklichen Wunsch verf&uuml;gbar.</p>
 </div>
 
 </body>
-</html>
-"""
+</html>"""
 
 OUTPUT_PATH = "/home/user/Mobile-Physiotherapie-Grausam/dokumente/Therapeutische-Trainingsbegleitung.pdf"
-LOGO_PATH  = "/home/user/Mobile-Physiotherapie-Grausam/logo.svg"
+LOGO_PATH   = "/home/user/Mobile-Physiotherapie-Grausam/logo.svg"
 
 def main():
     with open(LOGO_PATH) as f:
-        raw_svg = f.read()
-    # Scale SVG: set explicit style on the root svg element (h=30pt, auto width)
-    inline_logo = raw_svg.replace(
-        '<svg xmlns="http://www.w3.org/2000/svg"',
-        '<svg xmlns="http://www.w3.org/2000/svg" style="height:30pt;width:auto;display:block;"',
+        svg = f.read()
+    # Inject height via style attribute on the root svg element
+    svg_scaled = svg.replace(
+        'viewBox="0 0 226.8 66"',
+        'viewBox="0 0 226.8 66" style="height:40pt;width:auto;display:block;"',
         1
     )
-    html = HTML_CONTENT.replace('<!--LOGO-->', inline_logo)
+    html = TEMPLATE.replace('LOGO_PLACEHOLDER', svg_scaled)
 
     with tempfile.NamedTemporaryFile(suffix=".html", mode="w", encoding="utf-8", delete=False) as f:
         f.write(html)
-        tmp_html = f.name
+        tmp = f.name
 
     try:
-        print(f"Generating PDF ...")
-        HTML(filename=tmp_html).write_pdf(OUTPUT_PATH)
-        print(f"Saved to {OUTPUT_PATH}")
+        HTML(filename=tmp).write_pdf(OUTPUT_PATH)
+        print(f"Saved: {OUTPUT_PATH}")
     finally:
-        os.unlink(tmp_html)
+        os.unlink(tmp)
 
     import fitz
     doc = fitz.open(OUTPUT_PATH)
-    pages = len(doc)
+    n = len(doc)
     doc.close()
-    print(f"Page count: {pages}")
-    if pages == 2:
-        print("OK: exactly 2 pages.")
-    else:
-        print(f"WARNING: Expected 2 pages, got {pages}. Adjust CSS.")
+    print(f"Pages: {n}")
+    if n != 2:
+        print(f"WARNING: expected 2, got {n}")
 
 if __name__ == "__main__":
     main()
