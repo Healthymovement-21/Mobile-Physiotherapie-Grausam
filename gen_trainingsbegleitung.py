@@ -25,15 +25,10 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 /* SECTION TITLE */
 .section-title { font-size: 8pt; font-weight: 700; letter-spacing: 1.2pt; text-transform: uppercase; color: #1a1a1a; margin-bottom: 6pt; padding-bottom: 3pt; border-bottom: 0.8pt solid #ccc; break-after: avoid; page-break-after: avoid; }
 
-/* HOOK */
-.hook-box { border-left: 3.5pt solid #1a1a1a; padding: 9pt 12pt; margin-bottom: 10pt; background: #f9f9f9; break-inside: avoid; page-break-inside: avoid; }
-.hook-box p { margin-bottom: 4pt; }
-.hook-box p:last-child { margin-bottom: 0; }
-
-/* USP */
-.usp-box { background: #f0ede8; padding: 9pt 12pt; margin-bottom: 12pt; border-radius: 2pt; border-left: 3pt solid #888; break-inside: avoid; page-break-inside: avoid; }
-.usp-box p { margin-bottom: 4pt; }
-.usp-box p:last-child { margin-bottom: 0; }
+/* INTRO TEXT */
+.intro-text { margin-bottom: 12pt; }
+.intro-text p { margin-bottom: 5pt; font-size: 10pt; line-height: 1.6; }
+.intro-text p:last-child { margin-bottom: 0; }
 
 /* EXPERTISE */
 .expertise-section { margin-bottom: 14pt; break-inside: avoid; page-break-inside: avoid; }
@@ -104,16 +99,10 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
   </div>
 </div>
 
-<!-- HOOK (Intro zuerst) -->
-<div class="hook-box">
-  <p>Viele Beschwerden kommen zur&uuml;ck &mdash; nicht wegen fehlender Behandlung, sondern weil im Alltag niemand mehr begleitet.</p>
-  <p>Die Physiotherapie endet nach 45 oder 60 Minuten. Was danach kommt, entscheidet genauso &uuml;ber den Erfolg. Hier setzt die Trainingsbegleitung an.</p>
-</div>
-
-<!-- USP -->
-<div class="usp-box">
-  <p>Ich bin kein Personal Trainer mit Trainerschein &mdash; ich bin Physiotherapeut mit medizinischem Blick, klinischer Berufserfahrung und eigenem Leistungssportbackground.</p>
-  <p>Diese Verbindung aus Therapiehintergrund, Training und pers&ouml;nlicher Begleitung macht den Unterschied.</p>
+<!-- INTRO TEXT -->
+<div class="intro-text">
+  <p>Viele Beschwerden kommen zur&uuml;ck &mdash; nicht wegen fehlender Behandlung, sondern weil im Alltag niemand mehr begleitet. Die Physiotherapie endet nach 45 oder 60 Minuten. Was danach kommt, entscheidet genauso &uuml;ber den Erfolg.</p>
+  <p>Ich bin kein Personal Trainer mit Trainerschein &mdash; ich bin Physiotherapeut mit medizinischem Blick, klinischer Berufserfahrung und eigenem Leistungssportbackground. Diese Verbindung aus Therapiehintergrund, Training und pers&ouml;nlicher Begleitung macht den Unterschied.</p>
 </div>
 
 <!-- MEINE EXPERTISE (chronologisch) -->
