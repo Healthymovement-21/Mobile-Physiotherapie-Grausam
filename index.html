@@ -822,7 +822,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.55s ease,transform 0.55s ease;}
 .reveal.visible{opacity:1;transform:none;}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js" defer></script>
 </head>
 <body>
 
@@ -2930,10 +2929,17 @@ async function rgGenerate(){
   const epcData=`BCD\n002\n1\nSCT\nDEFFDEFFXXX\nNick Grausam\nDE04500240249560193332\nEUR${qrAmt}\n\n\nRechnung Nr. ${nr}`;
   let qrSrc='';
   try{
-    if(typeof QRCode==='undefined'){
-      await new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js';s.onload=res;s.onerror=rej;document.head.appendChild(s);});
+    if(!window._qrjsLoaded){
+      await new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';s.onload=()=>{window._qrjsLoaded=true;res();};s.onerror=rej;document.head.appendChild(s);});
     }
-    qrSrc=await QRCode.toDataURL(epcData,{width:120,margin:1,errorCorrectionLevel:'M'});
+    const _d=document.createElement('div');
+    _d.style.cssText='position:fixed;left:-9999px;top:-9999px;width:120px;height:120px;';
+    document.body.appendChild(_d);
+    new QRCode(_d,{text:epcData,width:120,height:120,correctLevel:QRCode.CorrectLevel.M});
+    await new Promise(r=>setTimeout(r,200));
+    const _c=_d.querySelector('canvas');
+    if(_c)qrSrc=_c.toDataURL('image/png');
+    document.body.removeChild(_d);
   }catch(e){}
   const qrImgHtml=qrSrc?`<div style="flex-shrink:0;text-align:center;margin-right:14pt;">
         <img src="${qrSrc}" alt="GiroCode" style="width:72pt;height:72pt;display:block;border:1pt solid #eee;">
@@ -2984,7 +2990,7 @@ table.lt tbody td{padding:4pt 7pt;font-size:8.5pt;border-bottom:.5pt solid #eee;
 .ftr-title{font-weight:700;color:#333;margin-bottom:2pt;font-size:7pt;}
 @media print{
   .no-print{display:none!important;}
-  html,body{height:100%!important;margin:0!important;padding:0!important;}
+  html,body{height:100%!important;margin:0!important;padding:0!important;overflow:hidden!important;}
   body{-webkit-print-color-adjust:exact;print-color-adjust:exact;display:flex!important;flex-direction:column!important;}
   .ftr{margin-top:auto!important;}
 }
