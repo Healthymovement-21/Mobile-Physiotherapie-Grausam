@@ -665,6 +665,37 @@ nav .burger-lines span{background:#fff;}
 .p-link.primary .p-link-ico svg,.p-link.primary .p-link-ico i{stroke:#fff;}
 .portal-footer-link{font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:rgba(255,255,255,0.18);text-decoration:none;cursor:pointer;transition:color 0.2s;margin-left:16px;}
 .portal-footer-link:hover{color:rgba(255,255,255,0.55);}
+/* ── RECHNUNGSGENERATOR ── */
+.rg-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:8000;display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:20px;}
+.rg-modal{background:#fff;width:100%;max-width:680px;border-radius:2px;margin:auto;font-family:'DM Sans',system-ui,sans-serif;}
+.rg-modal-header{padding:18px 24px;border-bottom:1px solid #e8e8e8;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:1;}
+.rg-modal-title{font-size:16px;font-weight:700;color:#111;}
+.rg-modal-body{padding:24px;}
+.rg-sec{margin-bottom:22px;}
+.rg-sec-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#bbb;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid #f0f0f0;}
+.rg-row{display:grid;gap:10px;margin-bottom:8px;}
+.rg-row-2{grid-template-columns:1fr 1fr;}
+.rg-row-3{grid-template-columns:1fr 1fr 1fr;}
+.rg-field label{display:block;font-size:11px;font-weight:600;color:#555;margin-bottom:3px;}
+.rg-field input,.rg-field select,.rg-field textarea{width:100%;padding:8px 11px;border:1.5px solid #e8e8e8;border-radius:2px;font-size:14px;font-family:'DM Sans',system-ui,sans-serif;color:#111;background:#fff;outline:none;transition:border-color .2s;box-sizing:border-box;}
+.rg-field input:focus,.rg-field select:focus,.rg-field textarea:focus{border-color:#111;}
+.rg-field textarea{resize:vertical;min-height:56px;}
+.rg-ltable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:8px;}
+.rg-ltable th{text-align:left;font-size:9px;font-weight:700;color:#888;letter-spacing:1px;text-transform:uppercase;padding:0 6px 5px 0;border-bottom:1px solid #e8e8e8;}
+.rg-ltable td{padding:4px 5px 4px 0;vertical-align:middle;}
+.rg-ltable td input,.rg-ltable td select{padding:6px 7px;border:1.5px solid #e8e8e8;border-radius:2px;font-size:13px;font-family:'DM Sans',system-ui,sans-serif;width:100%;box-sizing:border-box;outline:none;}
+.rg-ltable td input:focus,.rg-ltable td select:focus{border-color:#111;}
+.rg-del{background:none;border:none;cursor:pointer;color:#ccc;font-size:20px;line-height:1;padding:0 2px;}
+.rg-del:hover{color:#c00;}
+.rg-total-bar{text-align:right;font-size:15px;font-weight:700;padding:8px 0;border-top:2px solid #111;margin-bottom:2px;}
+.rg-add{background:none;border:1.5px dashed #ddd;border-radius:2px;padding:7px 14px;font-size:13px;color:#888;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;width:100%;margin-top:4px;}
+.rg-add:hover{border-color:#888;color:#333;}
+.rg-footer{padding:14px 24px;border-top:1px solid #e8e8e8;display:flex;gap:10px;justify-content:flex-end;}
+.rg-btn{padding:9px 20px;border-radius:2px;font-size:14px;font-weight:600;font-family:'DM Sans',system-ui,sans-serif;cursor:pointer;border:none;transition:opacity .15s;}
+.rg-btn:hover{opacity:.8;}
+.rg-btn-primary{background:#111;color:#fff;}
+.rg-btn-outline{background:#fff;color:#111;border:1.5px solid #ddd;}
+@media(max-width:600px){.rg-row-2,.rg-row-3{grid-template-columns:1fr;}}
 
 /* ── LEGAL ── */
 .legal{padding:72px 6%;max-width:760px;overflow-wrap:break-word;word-break:break-word;}
@@ -1738,6 +1769,15 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
       <div class="portal-sections">
 
+        <!-- RECHNUNGSGENERATOR -->
+        <div class="portal-section" style="grid-column:1/-1;background:#111;border-color:#111;">
+          <div class="portal-section-title" style="color:rgba(255,255,255,.4);">Rechnungsgenerator</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
+            <p style="font-size:14px;color:rgba(255,255,255,.75);margin:0;line-height:1.5;">Patient, Verordnung, Termine, Leistungen — einmal ausfüllen, fertige Rechnung im Browser drucken&nbsp;/ als PDF speichern.</p>
+            <button onclick="rgOpen()" style="background:#fff;color:#111;border:none;border-radius:2px;padding:11px 22px;font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;cursor:pointer;flex-shrink:0;white-space:nowrap;">Neue Rechnung erstellen</button>
+          </div>
+        </div>
+
         <!-- BUCHHALTUNG -->
         <div class="portal-section">
           <div class="portal-section-title">Buchhaltung</div>
@@ -1917,6 +1957,78 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       </div>
     </div>
   </div>
+
+  <!-- RECHNUNGSGENERATOR MODAL -->
+  <div id="rg-overlay" class="rg-overlay hidden" onclick="if(event.target===this)rgClose()">
+    <div class="rg-modal">
+      <div class="rg-modal-header">
+        <span class="rg-modal-title">Neue Rechnung erstellen</span>
+        <button class="rg-btn rg-btn-outline" onclick="rgClose()" style="padding:6px 14px;font-size:13px;">Schließen</button>
+      </div>
+      <div class="rg-modal-body">
+
+        <div class="rg-sec">
+          <div class="rg-sec-title">Rechnungsdaten</div>
+          <div class="rg-row rg-row-3">
+            <div class="rg-field"><label>Rechnungs-Nr.</label><input type="text" id="rg-nr" placeholder="000001"></div>
+            <div class="rg-field"><label>Rechnungsdatum</label><input type="date" id="rg-datum"></div>
+            <div class="rg-field"><label>Leistungszeitraum</label><input type="text" id="rg-zeitraum" placeholder="01.05. – 31.05.2026"></div>
+          </div>
+        </div>
+
+        <div class="rg-sec">
+          <div class="rg-sec-title">Patient</div>
+          <div class="rg-row rg-row-2">
+            <div class="rg-field"><label>Vorname</label><input type="text" id="rg-vorname" placeholder="Max"></div>
+            <div class="rg-field"><label>Nachname</label><input type="text" id="rg-nachname" placeholder="Mustermann"></div>
+          </div>
+          <div class="rg-row rg-row-2">
+            <div class="rg-field"><label>Straße &amp; Hausnummer</label><input type="text" id="rg-strasse" placeholder="Musterstraße 12"></div>
+            <div class="rg-field"><label>PLZ &amp; Ort</label><input type="text" id="rg-plzort" placeholder="69181 Leimen"></div>
+          </div>
+          <div class="rg-row" style="grid-template-columns:140px;">
+            <div class="rg-field"><label>Anrede</label><select id="rg-anrede"><option value="Herr">Herr</option><option value="Frau">Frau</option><option value="">Keine</option></select></div>
+          </div>
+        </div>
+
+        <div class="rg-sec">
+          <div class="rg-sec-title">Verordnung</div>
+          <div class="rg-row rg-row-2">
+            <div class="rg-field"><label>Arzt / Ärztin</label><input type="text" id="rg-arzt" placeholder="Dr. Musterarzt"></div>
+            <div class="rg-field"><label>Datum der Verordnung</label><input type="date" id="rg-vdatum"></div>
+          </div>
+          <div class="rg-row"><div class="rg-field"><label>Diagnose</label><input type="text" id="rg-diagnose" placeholder="z. B. M54.5 Rückenschmerzen"></div></div>
+        </div>
+
+        <div class="rg-sec">
+          <div class="rg-sec-title">Behandlungstermine</div>
+          <div class="rg-field"><label>Termine (kommagetrennt oder zeilenweise)</label><textarea id="rg-termine" placeholder="01.06.2026, 06.06.2026, 12.06.2026"></textarea></div>
+        </div>
+
+        <div class="rg-sec">
+          <div class="rg-sec-title">Leistungen</div>
+          <table class="rg-ltable">
+            <thead><tr>
+              <th style="width:42%;">Leistung</th>
+              <th style="width:13%;">Menge</th>
+              <th style="width:16%;">Preis</th>
+              <th style="width:18%;text-align:right;">Gesamt</th>
+              <th style="width:5%;"></th>
+            </tr></thead>
+            <tbody id="rg-leistungen"></tbody>
+          </table>
+          <div class="rg-total-bar">Gesamt: <span id="rg-total">0,00 €</span></div>
+          <button class="rg-add" onclick="rgAddRow()">+ Zeile hinzufügen</button>
+        </div>
+
+      </div>
+      <div class="rg-footer">
+        <button class="rg-btn rg-btn-outline" onclick="rgClose()">Abbrechen</button>
+        <button class="rg-btn rg-btn-primary" onclick="rgGenerate()">Rechnung erstellen →</button>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <footer>
@@ -2397,6 +2509,154 @@ function _portalDate(){
     else{_last='';_t=0;}
   });
 })();
+
+// ── RECHNUNGSGENERATOR ──
+const RG_ART={
+  KG:{label:'KG Einzelbehandlung\nHausbesuch – 30 min',preis:29.70},
+  MT:{label:'MT Manuelle Therapie\nHausbesuch – 30 min',preis:35.60},
+  KGG:{label:'KGG Einzelbehandlung mit Gerät\nHausbesuch – 30 min',preis:34.90},
+  FK:{label:'Fahrtkostenpauschale',preis:10.00},
+  S:{label:'Sonstige Leistung',preis:0}
+};
+function rgOpen(){
+  const t=new Date();
+  const pad=n=>String(n).padStart(2,'0');
+  document.getElementById('rg-datum').value=`${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`;
+  const last=parseInt(localStorage.getItem('rg_last_nr')||'0');
+  document.getElementById('rg-nr').value=String(last+1).padStart(6,'0');
+  const tb=document.getElementById('rg-leistungen');
+  if(!tb.rows.length){rgAddRow('KG',6,29.70);rgAddRow('FK',6,10.00);}
+  document.getElementById('rg-overlay').classList.remove('hidden');
+  document.body.style.overflow='hidden';
+}
+function rgClose(){
+  document.getElementById('rg-overlay').classList.add('hidden');
+  document.body.style.overflow='';
+}
+function rgAddRow(art='KG',menge=1,preis=null){
+  const tb=document.getElementById('rg-leistungen');
+  const tr=document.createElement('tr');
+  const p=preis!==null?preis:(RG_ART[art]||RG_ART.S).preis;
+  tr.innerHTML=`<td><select onchange="rgSel(this)" style="width:100%;">
+    <option value="KG"${art==='KG'?' selected':''}>KG · 29,70 €</option>
+    <option value="MT"${art==='MT'?' selected':''}>MT · 35,60 €</option>
+    <option value="KGG"${art==='KGG'?' selected':''}>KGG · 34,90 €</option>
+    <option value="FK"${art==='FK'?' selected':''}>Fahrtkosten · 10,00 €</option>
+    <option value="S"${art==='S'?' selected':''}>Sonstige Leistung</option>
+  </select></td>
+  <td><input type="number" value="${menge}" min="1" max="99" oninput="rgCalc()" style="width:58px;"></td>
+  <td><input type="number" value="${p.toFixed(2)}" min="0" step="0.01" oninput="rgCalc()" style="width:72px;"></td>
+  <td class="rg-rt" style="text-align:right;font-weight:600;white-space:nowrap;">${rgFmt(menge*p)}</td>
+  <td><button class="rg-del" onclick="this.closest('tr').remove();rgCalc()">×</button></td>`;
+  tb.appendChild(tr);rgCalc();
+}
+function rgSel(sel){
+  const info=RG_ART[sel.value]||RG_ART.S;
+  if(sel.value!=='S')sel.closest('tr').querySelectorAll('input')[1].value=info.preis.toFixed(2);
+  rgCalc();
+}
+function rgCalc(){
+  let tot=0;
+  document.querySelectorAll('#rg-leistungen tr').forEach(tr=>{
+    const ii=tr.querySelectorAll('input[type="number"]');
+    if(ii.length<2)return;
+    const s=(parseFloat(ii[0].value)||0)*(parseFloat(ii[1].value)||0);
+    tot+=s;tr.querySelector('.rg-rt').textContent=rgFmt(s);
+  });
+  document.getElementById('rg-total').textContent=rgFmt(tot);
+}
+function rgFmt(v){return parseFloat(v).toFixed(2).replace('.',',')+' €';}
+function rgDate(s){if(!s)return'';const[y,m,d]=s.split('-');return`${d}.${m}.${y}`;}
+function rgGenerate(){
+  const G=id=>document.getElementById(id).value.trim();
+  const nr=G('rg-nr'),datum=G('rg-datum'),zeitraum=G('rg-zeitraum');
+  const vn=G('rg-vorname'),nn=G('rg-nachname'),str=G('rg-strasse'),plz=G('rg-plzort'),anr=G('rg-anrede');
+  const arzt=G('rg-arzt'),vdat=G('rg-vdatum'),diag=G('rg-diagnose');
+  const termine=G('rg-termine').replace(/\n/g,', ').replace(/,\s*,/g,',');
+  let rows='',tot=0,pos=1;
+  document.querySelectorAll('#rg-leistungen tr').forEach(tr=>{
+    const sel=tr.querySelector('select');
+    const ii=tr.querySelectorAll('input[type="number"]');
+    if(!sel||ii.length<2)return;
+    const info=RG_ART[sel.value]||RG_ART.S;
+    const lbl=info.label.replace('\n','<br>');
+    const mg=parseFloat(ii[0].value)||0,pr=parseFloat(ii[1].value)||0,s=mg*pr;
+    tot+=s;
+    rows+=`<tr><td style="padding:7px 10px;border-bottom:1px solid #f0f0f0;">${pos++}</td>
+      <td style="padding:7px 10px;border-bottom:1px solid #f0f0f0;">${lbl}</td>
+      <td style="padding:7px 10px;border-bottom:1px solid #f0f0f0;text-align:center;">${mg}</td>
+      <td style="padding:7px 10px;border-bottom:1px solid #f0f0f0;text-align:center;">Stk.</td>
+      <td style="padding:7px 10px;border-bottom:1px solid #f0f0f0;text-align:right;">${rgFmt(pr)}</td>
+      <td style="padding:7px 10px;border-bottom:1px solid #f0f0f0;text-align:right;font-weight:700;">${rgFmt(s)}</td></tr>`;
+  });
+  localStorage.setItem('rg_last_nr',parseInt(nr)||0);
+  const anrF=anr==='Frau'?'geehrte Frau':(anr==='Herr'?'geehrter Herr':'geehrte/r');
+  const w=window.open('','_blank');
+  w.document.write(`<!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
+<title>Rechnung ${nr} – ${nn}</title>
+<style>
+@page{size:A4;margin:22mm 20mm 22mm 20mm;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:10.5pt;color:#111;line-height:1.55;}
+.no-print{background:#f0f0f0;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;font-family:sans-serif;font-size:14px;gap:12px;}
+.print-btn{background:#111;color:#fff;border:none;padding:8px 20px;cursor:pointer;font-size:14px;font-weight:700;border-radius:2px;}
+.header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1.5pt solid #111;padding-bottom:12pt;margin-bottom:28pt;}
+.h-info{font-size:9pt;color:#555;line-height:1.7;}
+.rech-nr-block{text-align:right;}
+.rech-title{font-size:22pt;font-weight:700;letter-spacing:-0.5pt;}
+.addr-label{font-size:8pt;font-weight:700;letter-spacing:1.5pt;text-transform:uppercase;color:#888;margin-bottom:3pt;}
+.addr{font-size:11pt;line-height:1.6;}
+.meta td{padding:2pt 10pt 2pt 0;font-size:9.5pt;vertical-align:top;}
+.meta td:first-child{color:#888;font-size:9pt;white-space:nowrap;}
+.meta td:last-child{font-weight:700;}
+.intro{font-size:10.5pt;line-height:1.65;margin:20pt 0 10pt;}
+.termine{font-size:10pt;color:#333;margin-bottom:14pt;line-height:1.6;}
+table.lt{width:100%;border-collapse:collapse;margin-bottom:14pt;}
+table.lt thead tr{background:#111;color:#fff;}
+table.lt thead td{padding:7pt 10pt;font-size:9pt;font-weight:700;letter-spacing:.5pt;}
+.tot-wrap{display:flex;justify-content:flex-end;gap:24pt;padding:9pt 10pt;margin-bottom:20pt;}
+.tot-wrap.main{border-top:1.5pt solid #111;}
+.tot-lbl{font-size:10pt;color:#555;}
+.tot-val{font-size:12pt;font-weight:700;min-width:80pt;text-align:right;}
+.legal{font-size:8.5pt;color:#555;line-height:1.65;margin-bottom:16pt;}
+.ftr{border-top:.75pt solid #ccc;padding-top:10pt;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8pt;font-size:8pt;color:#555;line-height:1.7;}
+.ftr-title{font-weight:700;color:#111;margin-bottom:1pt;}
+@media print{.no-print{display:none!important;} body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style></head><body>
+<div class="no-print"><span>Rechnung Nr. ${nr} &ndash; ${vn} ${nn}</span><button class="print-btn" onclick="window.print()">&#x1F5A8; Drucken / Als PDF speichern</button></div>
+<div class="header">
+  <div class="h-info"><strong>Mobile Physiotherapie Grausam</strong><br>Nick Grausam &middot; Physiotherapeut<br>Dornierstra&szlig;e 5 &middot; 69181 Leimen<br>Tel.: 0176 4268 5146 &middot; info@physiotherapie-grausam.com</div>
+  <div class="rech-nr-block"><div class="rech-title">RECHNUNG</div></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16pt;margin-bottom:24pt;">
+  <div><div class="addr-label">Rechnung an</div>
+    <div class="addr">${vn} ${nn}${str?'<br>'+str:''}${plz?'<br>'+plz:''}</div>
+  </div>
+  <div style="text-align:right;"><table class="meta" style="margin-left:auto;">
+    <tr><td>Rechnungs-Nr.</td><td>${nr}</td></tr>
+    <tr><td>Rechnungsdatum</td><td>${rgDate(datum)}</td></tr>
+    ${zeitraum?`<tr><td>Leistungszeitraum</td><td>${zeitraum}</td></tr>`:''}
+  </table></div>
+</div>
+<p class="intro">Sehr ${anrF} ${nn},<br>ich erlaube mir, folgende Leistungen in Rechnung zu stellen:</p>
+<p class="termine">Behandlung aufgrund der Verordnung von <strong>${arzt}</strong> vom <strong>${rgDate(vdat)}</strong>${diag?' mit Diagnose <strong>'+diag+'</strong>':''} f&uuml;r <strong>${vn} ${nn}</strong> an folgenden Terminen:<br>${termine}</p>
+<table class="lt"><thead><tr>
+  <td style="width:5%;">Pos.</td><td style="width:47%;">Artikel / Leistung</td>
+  <td style="width:10%;text-align:center;">Menge</td><td style="width:10%;text-align:center;">Einheit</td>
+  <td style="width:14%;text-align:right;">Einzelpreis</td><td style="width:14%;text-align:right;">Gesamt</td>
+</tr></thead><tbody>${rows}</tbody></table>
+<div class="tot-wrap main"><span class="tot-lbl">Summe netto</span><span class="tot-val">${rgFmt(tot)}</span></div>
+<div class="tot-wrap" style="margin-top:-16pt;"><span class="tot-lbl" style="font-weight:700;">Gesamtbetrag</span><span class="tot-val" style="font-size:14pt;">${rgFmt(tot)}</span></div>
+<p class="legal">Bitte begleichen Sie den Rechnungsbetrag innerhalb von 14 Tagen auf das unten genannte Konto.<br>
+Diese Rechnung enth&auml;lt steuerfreie Ums&auml;tze nach &sect; 4 Nr. 14 UStG. Die Behandlung erfolgte aufgrund &auml;rztlicher Verordnung und stellt eine heilkundige T&auml;tigkeit im Sinne des &sect; 4 Nr. 14 UStG dar &ndash; daher ist keine Umsatzsteuer enthalten und ausgewiesen.</p>
+<div class="ftr">
+  <div><div class="ftr-title">Mobile Physiotherapie Grausam</div>Nick Grausam<br>Dornierstra&szlig;e 5 &middot; 69181 Leimen<br>Steuernummer: 32146/46402</div>
+  <div><div class="ftr-title">Kontakt</div>Tel.: 0176 4268 5146<br>info@physiotherapie-grausam.com<br>www.physiotherapie-grausam.com</div>
+  <div><div class="ftr-title">Bankverbindung</div>C24 Bank Frankfurt am Main<br>IBAN: DE04 5002 4024 9560 1933 32<br>BIC: DEFFDEFFXXX</div>
+</div>
+</body></html>`);
+  w.document.close();
+}
 
 // ── BARRIEREFREIHEITS-WIDGET ──
 (function(){
