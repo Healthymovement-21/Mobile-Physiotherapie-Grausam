@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
 Generate Therapeutische-Trainingsbegleitung.pdf
-Target: exactly 2 A4 pages, clean typography, more whitespace.
+Target: exactly 2 A4 pages, logo in header, expertise at top, no duplicate contact footer.
 """
 
-import tempfile, os, subprocess
-from weasyprint import HTML, CSS
+import tempfile, os
+from weasyprint import HTML
 
 HTML_CONTENT = """<!DOCTYPE html>
 <html lang="de">
@@ -13,17 +13,8 @@ HTML_CONTENT = """<!DOCTYPE html>
 <meta charset="UTF-8">
 <title>Therapeutische Trainingsbegleitung</title>
 <style>
-  @page {
-    size: A4;
-    margin: 16mm;
-  }
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
+  @page { size: A4; margin: 16mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 9.5pt;
@@ -33,74 +24,95 @@ HTML_CONTENT = """<!DOCTYPE html>
 
   /* ── HEADER ── */
   .header {
-    margin-bottom: 9pt;
+    margin-bottom: 8pt;
     padding-bottom: 7pt;
     border-bottom: 1.5pt solid #1a1a1a;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16pt;
   }
-  .header-meta {
-    font-size: 7.5pt;
-    color: #555;
-    letter-spacing: 0.3pt;
-    margin-bottom: 3pt;
+  .header-logo img {
+    height: 30pt;
+    display: block;
   }
-  .header h1 {
-    font-size: 19pt;
+  .header-text {
+    text-align: right;
+  }
+  .header-text h1 {
+    font-size: 18pt;
     font-weight: 800;
     letter-spacing: -0.5pt;
     line-height: 1.1;
-    margin-bottom: 2pt;
+    margin-bottom: 1pt;
   }
-  .header .tagline {
-    font-size: 9pt;
+  .header-text .tagline {
+    font-size: 8.5pt;
     color: #444;
     font-style: italic;
+  }
+
+  /* ── COMPACT EXPERTISE (top of page 1) ── */
+  .cred-strip {
+    margin-bottom: 8pt;
+    padding: 6pt 10pt;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 2pt;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 14pt;
+    row-gap: 3pt;
+  }
+  .cred-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 5pt;
+    font-size: 8pt;
+    line-height: 1.35;
+    color: rgba(255,255,255,0.9);
+  }
+  .cred-dash {
+    flex-shrink: 0;
+    color: rgba(255,255,255,0.5);
+    margin-top: 0.5pt;
   }
 
   /* ── HOOK BOX ── */
   .hook-box {
     border-left: 3.5pt solid #1a1a1a;
-    padding: 8pt 11pt;
-    margin-bottom: 8pt;
+    padding: 7pt 10pt;
+    margin-bottom: 7pt;
     background: #f9f9f9;
   }
-  .hook-box p {
-    margin-bottom: 4pt;
-  }
-  .hook-box p:last-child {
-    margin-bottom: 0;
-  }
+  .hook-box p { margin-bottom: 3pt; }
+  .hook-box p:last-child { margin-bottom: 0; }
 
   /* ── USP BOX ── */
   .usp-box {
-    background: #1a1a1a;
-    color: #fff;
-    padding: 8pt 11pt;
-    margin-bottom: 9pt;
+    background: #f0ede8;
+    padding: 7pt 10pt;
+    margin-bottom: 8pt;
     border-radius: 2pt;
+    border-left: 3pt solid #888;
   }
-  .usp-box p {
-    margin-bottom: 3pt;
-  }
-  .usp-box p:last-child {
-    margin-bottom: 0;
-  }
+  .usp-box p { margin-bottom: 3pt; }
+  .usp-box p:last-child { margin-bottom: 0; }
 
   /* ── SECTION TITLES ── */
   .section-title {
-    font-size: 8pt;
+    font-size: 7.5pt;
     font-weight: 700;
     letter-spacing: 1.2pt;
     text-transform: uppercase;
     color: #1a1a1a;
-    margin-bottom: 6pt;
-    padding-bottom: 3pt;
+    margin-bottom: 5pt;
+    padding-bottom: 2.5pt;
     border-bottom: 0.8pt solid #ccc;
   }
 
   /* ── CHECKLIST ── */
-  .checklist-section {
-    margin-bottom: 9pt;
-  }
+  .checklist-section { margin-bottom: 8pt; }
   .checklist-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -121,9 +133,7 @@ HTML_CONTENT = """<!DOCTYPE html>
   }
 
   /* ── FLOW STEPS ── */
-  .flow-section {
-    margin-bottom: 9pt;
-  }
+  .flow-section { margin-bottom: 8pt; }
   .flow-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -131,7 +141,7 @@ HTML_CONTENT = """<!DOCTYPE html>
   }
   .flow-step {
     border: 0.8pt solid #ccc;
-    padding: 6pt 8pt;
+    padding: 6pt 7pt;
     border-radius: 2pt;
   }
   .flow-step-label {
@@ -153,17 +163,9 @@ HTML_CONTENT = """<!DOCTYPE html>
     color: #444;
     line-height: 1.35;
   }
-  .flow-note {
-    font-size: 7.5pt;
-    color: #555;
-    font-style: italic;
-    margin-top: 4pt;
-  }
 
   /* ── PRICE BLOCK ── */
-  .price-section {
-    margin-bottom: 9pt;
-  }
+  .price-section { margin-bottom: 8pt; }
   .price-block {
     background: #1a1a1a;
     color: #fff;
@@ -196,14 +198,8 @@ HTML_CONTENT = """<!DOCTYPE html>
     flex-direction: column;
     gap: 1pt;
   }
-  .price-per-month {
-    font-size: 8.5pt;
-    color: #ccc;
-  }
-  .price-per-hour {
-    font-size: 8pt;
-    color: #aaa;
-  }
+  .price-per-month { font-size: 8.5pt; color: #ccc; }
+  .price-per-hour  { font-size: 8pt;   color: #aaa; }
   .price-compare {
     font-size: 7.5pt;
     color: #bbb;
@@ -220,14 +216,12 @@ HTML_CONTENT = """<!DOCTYPE html>
   }
 
   /* ── FAQ ── */
-  .faq-section {
-    margin-bottom: 9pt;
-  }
+  .faq-section { margin-bottom: 8pt; }
   .faq-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 14pt;
-    row-gap: 5pt;
+    row-gap: 4.5pt;
   }
   .faq-item dt {
     font-size: 8.5pt;
@@ -243,9 +237,7 @@ HTML_CONTENT = """<!DOCTYPE html>
   }
 
   /* ── CTA BOX ── */
-  .cta-section {
-    margin-bottom: 9pt;
-  }
+  .cta-section { margin-bottom: 8pt; }
   .cta-box {
     border: 1.5pt solid #1a1a1a;
     padding: 8pt 11pt;
@@ -281,10 +273,8 @@ HTML_CONTENT = """<!DOCTYPE html>
     line-height: 1.5;
   }
 
-  /* ── EXPERTISE ── */
-  .expertise-section {
-    margin-bottom: 8pt;
-  }
+  /* ── FULL EXPERTISE (page 2) ── */
+  .expertise-section { margin-bottom: 8pt; }
   .expertise-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -317,11 +307,9 @@ HTML_CONTENT = """<!DOCTYPE html>
     color: #555;
     line-height: 1.3;
   }
-  .legal-box p + p {
-    margin-top: 2pt;
-  }
+  .legal-box p + p { margin-top: 2pt; }
 
-  /* ── DISCLAIMERS + FOOTER ── */
+  /* ── FOOTER (footnote only) ── */
   .footer-block {
     font-size: 6.5pt;
     color: #888;
@@ -329,19 +317,27 @@ HTML_CONTENT = """<!DOCTYPE html>
     border-top: 0.5pt solid #ddd;
     padding-top: 4pt;
   }
-  .footer-block p + p {
-    margin-top: 1.5pt;
-  }
-
 </style>
 </head>
 <body>
 
 <!-- ══ HEADER ══ -->
 <div class="header">
-  <div class="header-meta">Mobile Physiotherapie Grausam &nbsp;&middot;&nbsp; Nick Grausam &nbsp;&middot;&nbsp; Physiotherapeut</div>
-  <h1>Therapeutische Trainingsbegleitung</h1>
-  <div class="tagline">Von der Behandlung zur&uuml;ck in einen belastbaren Alltag.</div>
+  <div class="header-logo">
+    <!--LOGO-->
+  </div>
+  <div class="header-text">
+    <h1>Therapeutische Trainingsbegleitung</h1>
+    <div class="tagline">Von der Behandlung zur&uuml;ck in einen belastbaren Alltag.</div>
+  </div>
+</div>
+
+<!-- ══ KOMPAKTE EXPERTISE (sofort sichtbar) ══ -->
+<div class="cred-strip">
+  <div class="cred-item"><span class="cred-dash">&ndash;</span><span>Physiotherapeut &mdash; klinische Berufserfahrung, medizinischer Blick auf Bewegung &amp; Rehabilitation</span></div>
+  <div class="cred-item"><span class="cred-dash">&ndash;</span><span>Leistungshandball im NLZ der Rhein-Neckar L&ouml;wen (Handball-Bundesliga)</span></div>
+  <div class="cred-item"><span class="cred-dash">&ndash;</span><span>Fortbildung beim ehemaligen Physio der deutschen Fu&szlig;ballnationalmannschaft</span></div>
+  <div class="cred-item"><span class="cred-dash">&ndash;</span><span>Qualifikation KGG &middot; Technikschulung olympisches Gewichtheben &middot; eigene Verletzungserfahrung</span></div>
 </div>
 
 <!-- ══ HOOK BOX ══ -->
@@ -460,7 +456,7 @@ HTML_CONTENT = """<!DOCTYPE html>
   </div>
 </div>
 
-<!-- ══ EXPERTISE ══ -->
+<!-- ══ MEINE EXPERTISE (vollständig, Seite 2) ══ -->
 <div class="expertise-section">
   <div class="section-title">Meine Expertise</div>
   <div class="expertise-grid">
@@ -481,10 +477,9 @@ HTML_CONTENT = """<!DOCTYPE html>
   <p>Die Trainingsbegleitung f&auml;llt nicht unter die Steuerbefreiung nach &sect;&nbsp;4 Nr.&nbsp;14 UStG. Die steuerliche Behandlung (Kleinunternehmerregelung gem. &sect;&nbsp;19 UStG oder Regelbesteuerung) wird auf Anfrage mitgeteilt.</p>
 </div>
 
-<!-- ══ DISCLAIMERS + FOOTER ══ -->
+<!-- ══ FOOTNOTE ONLY (kein doppelter Kontakt) ══ -->
 <div class="footer-block">
   <p>** Ern&auml;hrungsempfehlungen basieren auf pers&ouml;nlicher Erfahrung und eigener Recherche &mdash; nicht auf einer Weiterbildung als Ern&auml;hrungsberater. Vollst&auml;ndig optional, auf ausdr&uuml;cklichen Wunsch verf&uuml;gbar &mdash; kein Ersatz f&uuml;r ern&auml;hrungsmedizinische Fachberatung.</p>
-  <p>Mobile Physiotherapie Grausam &nbsp;&middot;&nbsp; Nick Grausam &nbsp;&middot;&nbsp; info@physiotherapie-grausam.com &nbsp;&middot;&nbsp; 0176 4268 5146</p>
 </div>
 
 </body>
@@ -492,30 +487,39 @@ HTML_CONTENT = """<!DOCTYPE html>
 """
 
 OUTPUT_PATH = "/home/user/Mobile-Physiotherapie-Grausam/dokumente/Therapeutische-Trainingsbegleitung.pdf"
+LOGO_PATH  = "/home/user/Mobile-Physiotherapie-Grausam/logo.svg"
 
 def main():
+    with open(LOGO_PATH) as f:
+        raw_svg = f.read()
+    # Scale SVG: set explicit style on the root svg element (h=30pt, auto width)
+    inline_logo = raw_svg.replace(
+        '<svg xmlns="http://www.w3.org/2000/svg"',
+        '<svg xmlns="http://www.w3.org/2000/svg" style="height:30pt;width:auto;display:block;"',
+        1
+    )
+    html = HTML_CONTENT.replace('<!--LOGO-->', inline_logo)
+
     with tempfile.NamedTemporaryFile(suffix=".html", mode="w", encoding="utf-8", delete=False) as f:
-        f.write(HTML_CONTENT)
+        f.write(html)
         tmp_html = f.name
 
     try:
-        print(f"Generating PDF from {tmp_html} ...")
-        html = HTML(filename=tmp_html)
-        html.write_pdf(OUTPUT_PATH)
+        print(f"Generating PDF ...")
+        HTML(filename=tmp_html).write_pdf(OUTPUT_PATH)
         print(f"Saved to {OUTPUT_PATH}")
     finally:
         os.unlink(tmp_html)
 
-    # Verify page count
     import fitz
     doc = fitz.open(OUTPUT_PATH)
     pages = len(doc)
     doc.close()
     print(f"Page count: {pages}")
-    if pages != 2:
-        print(f"WARNING: Expected 2 pages, got {pages}. Adjust CSS.")
-    else:
+    if pages == 2:
         print("OK: exactly 2 pages.")
+    else:
+        print(f"WARNING: Expected 2 pages, got {pages}. Adjust CSS.")
 
 if __name__ == "__main__":
     main()

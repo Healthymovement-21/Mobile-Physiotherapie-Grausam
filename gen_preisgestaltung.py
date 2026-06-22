@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generate Preisgestaltung-Privatpatienten.pdf
-One A4 page for handout at first appointment / on request.
+One A4 page. Logo in header, compact expertise strip, no duplicate contact footer.
 """
 
 import tempfile, os
@@ -13,10 +13,7 @@ HTML_CONTENT = """<!DOCTYPE html>
 <meta charset="UTF-8">
 <title>Preisgestaltung für Privatpatienten</title>
 <style>
-  @page {
-    size: A4;
-    margin: 13mm 14mm 12mm 14mm;
-  }
+  @page { size: A4; margin: 13mm 14mm 12mm 14mm; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -29,26 +26,31 @@ HTML_CONTENT = """<!DOCTYPE html>
   .header {
     border-bottom: 1.5pt solid #1a1a1a;
     padding-bottom: 7pt;
-    margin-bottom: 10pt;
+    margin-bottom: 7pt;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16pt;
   }
-  .header-meta {
-    font-size: 7pt;
-    color: #666;
-    letter-spacing: 0.3pt;
-    margin-bottom: 2pt;
+  .header-logo img {
+    height: 28pt;
+    display: block;
   }
-  .header h1 {
+  .header-text {
+    text-align: right;
+  }
+  .header-text h1 {
     font-size: 16pt;
     font-weight: 800;
     letter-spacing: -0.5pt;
     line-height: 1.1;
     margin-bottom: 2pt;
   }
-  .header .tagline {
+  .header-text .tagline {
     font-size: 8.5pt;
     color: #555;
   }
-  .header .badge {
+  .badge {
     display: inline-block;
     background: #1a1a1a;
     color: #fff;
@@ -58,20 +60,54 @@ HTML_CONTENT = """<!DOCTYPE html>
     text-transform: uppercase;
     padding: 2pt 5pt;
     border-radius: 1pt;
-    margin-top: 5pt;
+    margin-top: 4pt;
+  }
+
+  /* ── COMPACT EXPERTISE ── */
+  .cred-strip {
+    margin-bottom: 7pt;
+    padding: 5pt 9pt;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 2pt;
+    display: flex;
+    gap: 10pt;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .cred-label {
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 0.8pt;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .cred-items {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+  .cred-item {
+    font-size: 7.5pt;
+    color: rgba(255,255,255,0.85);
+    white-space: nowrap;
+  }
+  .cred-item + .cred-item::before {
+    content: " · ";
+    color: rgba(255,255,255,0.35);
   }
 
   /* ── INTRO ── */
   .intro {
-    margin-bottom: 9pt;
-    padding: 7pt 10pt;
+    margin-bottom: 7pt;
+    padding: 6pt 9pt;
     background: #f7f7f5;
     border-left: 3pt solid #1a1a1a;
   }
-  .intro p {
-    font-size: 8.5pt;
-    line-height: 1.5;
-  }
+  .intro p { font-size: 8.5pt; line-height: 1.5; }
   .intro p + p { margin-top: 3pt; }
 
   /* ── SECTION TITLE ── */
@@ -87,17 +123,9 @@ HTML_CONTENT = """<!DOCTYPE html>
   }
 
   /* ── PRICE TABLE ── */
-  .price-table-wrap {
-    margin-bottom: 8pt;
-  }
-  table.ptable {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  table.ptable thead tr {
-    background: #1a1a1a;
-    color: #fff;
-  }
+  .price-table-wrap { margin-bottom: 7pt; }
+  table.ptable { width: 100%; border-collapse: collapse; }
+  table.ptable thead tr { background: #1a1a1a; color: #fff; }
   table.ptable thead td {
     padding: 4pt 7pt;
     font-size: 7.5pt;
@@ -109,26 +137,15 @@ HTML_CONTENT = """<!DOCTYPE html>
     border-bottom: 0.5pt solid #e8e8e8;
     font-size: 8.5pt;
   }
-  table.ptable tbody td.label-col {
-    font-weight: 700;
-  }
-  table.ptable tbody td.sub-col {
-    font-size: 8pt;
-    color: #555;
-  }
-  table.ptable tbody td.price-col {
-    text-align: right;
-    font-weight: 700;
-    white-space: nowrap;
-  }
+  table.ptable tbody td.label-col { font-weight: 700; }
+  table.ptable tbody td.sub-col   { font-size: 8pt; color: #555; }
+  table.ptable tbody td.price-col { text-align: right; font-weight: 700; white-space: nowrap; }
   table.ptable tfoot td {
-    padding: 6pt 7pt;
+    padding: 5.5pt 7pt;
     font-weight: 700;
     font-size: 9pt;
   }
-  table.ptable tfoot td.total-label {
-    color: #444;
-  }
+  table.ptable tfoot td.total-label { color: #444; }
   table.ptable tfoot td.total-price {
     text-align: right;
     font-size: 11pt;
@@ -136,10 +153,8 @@ HTML_CONTENT = """<!DOCTYPE html>
     border-top: 1.5pt solid #1a1a1a;
   }
 
-  /* ── REIMBURSEMENT SECTION ── */
-  .reimburse-wrap {
-    margin-bottom: 7pt;
-  }
+  /* ── REIMBURSEMENT ── */
+  .reimburse-wrap { margin-bottom: 7pt; }
   .scenario-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -163,9 +178,7 @@ HTML_CONTENT = """<!DOCTYPE html>
     color: #888;
     margin-bottom: 3pt;
   }
-  .scenario-box.best .scenario-label {
-    color: rgba(255,255,255,0.6);
-  }
+  .scenario-box.best .scenario-label { color: rgba(255,255,255,0.6); }
   .scenario-coverage {
     font-size: 12pt;
     font-weight: 800;
@@ -173,14 +186,8 @@ HTML_CONTENT = """<!DOCTYPE html>
     margin-bottom: 2pt;
     letter-spacing: -0.5pt;
   }
-  .scenario-net {
-    font-size: 7.5pt;
-    color: #555;
-    line-height: 1.4;
-  }
-  .scenario-box.best .scenario-net {
-    color: rgba(255,255,255,0.75);
-  }
+  .scenario-net { font-size: 7.5pt; color: #555; line-height: 1.4; }
+  .scenario-box.best .scenario-net { color: rgba(255,255,255,0.75); }
   .scenario-note {
     font-size: 7pt;
     color: #888;
@@ -206,19 +213,11 @@ HTML_CONTENT = """<!DOCTYPE html>
     text-transform: uppercase;
     margin-bottom: 3pt;
   }
-  .disclaimer-box p {
-    font-size: 8pt;
-    line-height: 1.5;
-    color: #333;
-  }
-  .disclaimer-box p + p {
-    margin-top: 3pt;
-  }
+  .disclaimer-box p { font-size: 8pt; line-height: 1.5; color: #333; }
+  .disclaimer-box p + p { margin-top: 3pt; }
 
-  /* ── WHAT TO ASK ── */
-  .checklist-wrap {
-    margin-bottom: 6pt;
-  }
+  /* ── CHECKLIST ── */
+  .checklist-wrap { margin-bottom: 6pt; }
   .checklist-2col {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -231,12 +230,7 @@ HTML_CONTENT = """<!DOCTYPE html>
     font-size: 8pt;
     line-height: 1.4;
   }
-  .cl-arrow {
-    flex-shrink: 0;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-top: 0.5pt;
-  }
+  .cl-arrow { flex-shrink: 0; font-weight: 700; color: #1a1a1a; margin-top: 0.5pt; }
 
   /* ── CONTACT BLOCK ── */
   .contact-block {
@@ -247,7 +241,7 @@ HTML_CONTENT = """<!DOCTYPE html>
     justify-content: space-between;
     align-items: center;
     gap: 16pt;
-    margin-bottom: 7pt;
+    margin-bottom: 5pt;
   }
   .contact-left h3 {
     font-size: 9.5pt;
@@ -255,28 +249,13 @@ HTML_CONTENT = """<!DOCTYPE html>
     letter-spacing: -0.2pt;
     margin-bottom: 2pt;
   }
-  .contact-left p {
-    font-size: 8pt;
-    color: #555;
-    line-height: 1.4;
-  }
-  .contact-right {
-    text-align: right;
-    flex-shrink: 0;
-  }
-  .contact-name {
-    font-size: 8.5pt;
-    font-weight: 700;
-    margin-bottom: 2pt;
-  }
-  .contact-detail {
-    font-size: 8pt;
-    color: #444;
-    line-height: 1.5;
-  }
+  .contact-left p { font-size: 8pt; color: #555; line-height: 1.4; }
+  .contact-right { text-align: right; flex-shrink: 0; }
+  .contact-name { font-size: 8.5pt; font-weight: 700; margin-bottom: 2pt; }
+  .contact-detail { font-size: 8pt; color: #444; line-height: 1.5; }
 
-  /* ── FOOTER ── */
-  .footer {
+  /* ── LEGAL NOTE (kein doppelter Kontakt) ── */
+  .legal-note {
     font-size: 6.5pt;
     color: #999;
     line-height: 1.35;
@@ -289,11 +268,25 @@ HTML_CONTENT = """<!DOCTYPE html>
 
 <!-- ══ HEADER ══ -->
 <div class="header">
-  <div class="header-meta">Mobile Physiotherapie Grausam &nbsp;&middot;&nbsp; Nick Grausam &nbsp;&middot;&nbsp; Physiotherapeut</div>
-  <h1>Ihre Kosten als Privatpatient</h1>
-  <div class="tagline">Transparente Preise &mdash; was auf Sie zukommt und was erstattet wird.</div>
-  <div>
-    <span class="badge">Nur f&uuml;r Privatversicherte &amp; Beihilfeberechtigte</span>
+  <div class="header-logo">
+    <!--LOGO-->
+  </div>
+  <div class="header-text">
+    <h1>Ihre Kosten als Privatpatient</h1>
+    <div class="tagline">Transparente Preise &mdash; was auf Sie zukommt und was erstattet wird.</div>
+    <div><span class="badge">Nur f&uuml;r Privatversicherte &amp; Beihilfeberechtigte</span></div>
+  </div>
+</div>
+
+<!-- ══ KOMPAKTE EXPERTISE ══ -->
+<div class="cred-strip">
+  <span class="cred-label">Ihr Therapeut</span>
+  <div class="cred-items">
+    <span class="cred-item">Nick Grausam &mdash; Physiotherapeut</span>
+    <span class="cred-item">NLZ Rhein-Neckar L&ouml;wen</span>
+    <span class="cred-item">Fortbildung DFB-Physio</span>
+    <span class="cred-item">KGG-Qualifikation</span>
+    <span class="cred-item">Klinische Berufserfahrung</span>
   </div>
 </div>
 
@@ -398,7 +391,7 @@ HTML_CONTENT = """<!DOCTYPE html>
 <div class="disclaimer-box">
   <div class="disclaimer-title">&#9888; Wichtig: Vorab informieren</div>
   <p>Die Erstattungsbetr&auml;ge sind Richtwerte &mdash; kein verbindliches Versprechen. Jede Versicherung und jeder Tarif ist anders. Bitte kl&auml;ren Sie vor dem ersten Termin, ob und in welchem Umfang Ihre Versicherung Physiotherapie-Hausbesuche erstattet.</p>
-  <p><strong>Fragen Sie Ihre Versicherung:</strong> Sind Hausbesuche erstattungsf&auml;hig? Gilt das GEB&Uuml;H-Preisrahmen? Ist eine vorherige Genehmigung erforderlich? Wie hoch ist Ihr pers&ouml;nlicher Erstattungssatz? &mdash; Nur so vermeiden Sie finanzielle &Uuml;berraschungen.</p>
+  <p><strong>Fragen Sie Ihre Versicherung:</strong> Sind Hausbesuche erstattungsf&auml;hig? Gilt der GEB&Uuml;H-Preisrahmen? Ist eine vorherige Genehmigung erforderlich? Wie hoch ist Ihr pers&ouml;nlicher Erstattungssatz?</p>
 </div>
 
 <!-- ══ CHECKLISTE ══ -->
@@ -427,10 +420,9 @@ HTML_CONTENT = """<!DOCTYPE html>
   </div>
 </div>
 
-<!-- ══ FOOTER ══ -->
-<div class="footer">
-  Alle Honorare sind Nettobetrag. Diese &Uuml;bersicht dient der Orientierung und ersetzt keine individuelle Auskunft Ihrer Krankenversicherung. &nbsp;&middot;&nbsp;
-  Mobile Physiotherapie Grausam &nbsp;&middot;&nbsp; Nick Grausam &nbsp;&middot;&nbsp; info@physiotherapie-grausam.com &nbsp;&middot;&nbsp; 0176 4268 5146
+<!-- ══ LEGAL NOTE (nur Hinweis, kein doppelter Kontakt) ══ -->
+<div class="legal-note">
+  Alle Honorare sind Nettobetrag. Diese &Uuml;bersicht dient der Orientierung und ersetzt keine individuelle Auskunft Ihrer Krankenversicherung.
 </div>
 
 </body>
@@ -438,16 +430,25 @@ HTML_CONTENT = """<!DOCTYPE html>
 """
 
 OUTPUT_PATH = "/home/user/Mobile-Physiotherapie-Grausam/dokumente/Preisgestaltung-Privatpatienten.pdf"
+LOGO_PATH  = "/home/user/Mobile-Physiotherapie-Grausam/logo.svg"
 
 def main():
+    with open(LOGO_PATH) as f:
+        raw_svg = f.read()
+    inline_logo = raw_svg.replace(
+        '<svg xmlns="http://www.w3.org/2000/svg"',
+        '<svg xmlns="http://www.w3.org/2000/svg" style="height:28pt;width:auto;display:block;"',
+        1
+    )
+    html = HTML_CONTENT.replace('<!--LOGO-->', inline_logo)
+
     with tempfile.NamedTemporaryFile(suffix=".html", mode="w", encoding="utf-8", delete=False) as f:
-        f.write(HTML_CONTENT)
+        f.write(html)
         tmp_html = f.name
 
     try:
-        print(f"Generating PDF from {tmp_html} ...")
-        html = HTML(filename=tmp_html)
-        html.write_pdf(OUTPUT_PATH)
+        print(f"Generating PDF ...")
+        HTML(filename=tmp_html).write_pdf(OUTPUT_PATH)
         print(f"Saved to {OUTPUT_PATH}")
     finally:
         os.unlink(tmp_html)
