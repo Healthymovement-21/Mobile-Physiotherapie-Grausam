@@ -2886,9 +2886,8 @@ function rgGenerate(){
   // Legal footer text
   let legalText='';
   if(!isCoaching){
-    legalText=`<p>Diese Rechnung enth&auml;lt steuerfreie Ums&auml;tze nach &sect;&nbsp;4 Nr.&nbsp;14 UStG, daher ist keine Umsatzsteuer enthalten und ausgewiesen.</p>
-    <p>Bitte begleichen Sie den Rechnungsbetrag innerhalb von 14 Tagen auf das unten genannte Konto.</p>
-    <p>Die Behandlung erfolgte aufgrund &auml;rztlicher Verordnung und stellt daher eine heilkundige T&auml;tigkeit im Sinne des &sect;&nbsp;4 Nr.&nbsp;14 UStG dar.</p>`;
+    legalText=`<p>Die Behandlung erfolgte aufgrund &auml;rztlicher Verordnung und stellt eine heilkundige T&auml;tigkeit im Sinne des &sect;&nbsp;4 Nr.&nbsp;14 UStG dar &mdash; die Rechnung ist daher umsatzsteuerfrei.</p>
+    <p>Bitte begleichen Sie den Rechnungsbetrag innerhalb von 14 Tagen auf das unten genannte Konto.</p>`;
   } else if(taxType==='klein'){
     legalText=`<p>Bitte begleichen Sie den Rechnungsbetrag innerhalb von 14 Tagen auf das unten genannte Konto.</p>
     <p>Gem&auml;&szlig; &sect;&nbsp;19 Abs.&nbsp;1 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer berechnet und ausgewiesen.</p>
@@ -2926,10 +2925,10 @@ function rgGenerate(){
       <span style="font-size:17pt;font-weight:800;min-width:70pt;text-align:right;">${rgFmt(totBrutto)}</span>
     </div>`;
   } else {
-    const label=isCoaching?'Rechnungsbetrag (zzgl. ggf. MwSt.)':'Rechnungsbetrag (umsatzsteuerfrei)';
+    const label=isCoaching?'Endbetrag (zzgl. ggf. MwSt.)':'Endbetrag (umsatzsteuerfrei)';
     totalRows=`<div style="display:flex;justify-content:flex-end;gap:20pt;padding:6pt 8pt;margin-bottom:8pt;border-top:1.5pt solid #111;">
-      <span style="font-size:9.5pt;font-weight:700;">${label}</span>
-      <span style="font-size:17pt;font-weight:800;min-width:70pt;text-align:right;">${rgFmt(tot)}</span>
+      <span style="font-size:9.5pt;font-weight:700;text-decoration:underline;">${label}</span>
+      <span style="font-size:17pt;font-weight:800;min-width:70pt;text-align:right;text-decoration:underline;">${rgFmt(tot)}</span>
     </div>`;
   }
 
