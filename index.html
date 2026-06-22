@@ -1997,10 +1997,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           </div>
           <div class="rg-pimp-bar" id="rg-pimp-bar">
             <span id="rg-pcnt" style="flex:1;">Noch keine Patienten importiert.</span>
-            <label style="background:#111;color:#fff;border:none;border-radius:2px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;white-space:nowrap;">
-              Excel importieren
-              <input type="file" id="rg-excel-file-input" accept=".xlsx,.xls,.csv" style="position:absolute;opacity:0;width:0;height:0;overflow:hidden;" onchange="rgHandleExcelFile(this)">
-            </label>
+            <button onclick="document.getElementById('rg-excel-file-input').click()" style="background:#111;color:#fff;border:none;border-radius:2px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;white-space:nowrap;">Excel importieren</button>
           </div>
         </div>
 
@@ -2976,5 +2973,6 @@ ${totalRows}
 })();
 
 </script>
+<input type="file" id="rg-excel-file-input" accept=".xlsx,.xls,.csv" style="position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;" onchange="rgHandleExcelFile(this)">
 </body>
 </html>
