@@ -11,34 +11,34 @@ TEMPLATE = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <style>
-@page { size: A4; margin: 13mm 14mm 12mm 14mm; }
+@page { size: A4; margin: 10mm 13mm 10mm 13mm; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9pt; color: #1a1a1a; line-height: 1.45; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 8.5pt; color: #1a1a1a; line-height: 1.4; }
 
 /* HEADER */
-.header { border-bottom: 1.5pt solid #1a1a1a; padding-bottom: 6pt; margin-bottom: 6pt; display: flex; align-items: flex-end; justify-content: space-between; gap: 16pt; }
-.logo-wrap svg { height: 62pt; width: auto; display: block; }
-.header-text { text-align: right; }
+.header { border-bottom: 1.5pt solid #1a1a1a; padding-bottom: 6pt; margin-bottom: 4pt; }
+.logo-wrap { margin-bottom: 3pt; }
+.logo-wrap svg { width: 50%; height: auto; display: block; }
 .header-text h1 { font-size: 16pt; font-weight: 800; letter-spacing: -0.5pt; line-height: 1.1; margin-bottom: 2pt; }
 .header-text .tagline { font-size: 8.5pt; color: #555; }
 .badge { display: inline-block; background: #1a1a1a; color: #fff; font-size: 7pt; font-weight: 700; letter-spacing: 0.8pt; text-transform: uppercase; padding: 2pt 5pt; border-radius: 1pt; margin-top: 4pt; }
 
 /* SECTION TITLE */
-.section-title { font-size: 7pt; font-weight: 700; letter-spacing: 1pt; text-transform: uppercase; color: #1a1a1a; margin-bottom: 4pt; padding-bottom: 2pt; border-bottom: 0.8pt solid #ccc; }
+.section-title { font-size: 7pt; font-weight: 700; letter-spacing: 1pt; text-transform: uppercase; color: #1a1a1a; margin-bottom: 2pt; padding-bottom: 2pt; border-bottom: 0.8pt solid #ccc; }
 
 /* EXPERTISE */
-.expertise-section { margin-bottom: 5pt; }
+.expertise-section { margin-bottom: 3pt; }
 .expertise-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 1.5pt; }
 .expertise-item { display: flex; align-items: flex-start; gap: 4pt; font-size: 8pt; line-height: 1.35; }
 .expertise-dash { flex-shrink: 0; color: #888; margin-top: 0.5pt; }
 
 /* INTRO */
-.intro { margin-bottom: 5pt; padding: 5pt 9pt; background: #f7f7f5; border-left: 3pt solid #1a1a1a; }
+.intro { margin-bottom: 3pt; padding: 5pt 9pt; background: #f7f7f5; border-left: 3pt solid #1a1a1a; }
 .intro p { font-size: 8.5pt; line-height: 1.5; }
 .intro p + p { margin-top: 3pt; }
 
 /* PRICE TABLE */
-.price-table-wrap { margin-bottom: 5pt; }
+.price-table-wrap { margin-bottom: 3pt; }
 table.ptable { width: 100%; border-collapse: collapse; }
 table.ptable thead tr { background: #1a1a1a; color: #fff; }
 table.ptable thead td { padding: 4pt 7pt; font-size: 7.5pt; font-weight: 700; letter-spacing: 0.3pt; }
@@ -51,11 +51,11 @@ table.ptable tfoot td.tl { color: #444; }
 table.ptable tfoot td.tp { text-align: right; font-size: 11pt; font-weight: 800; border-top: 1.5pt solid #1a1a1a; }
 
 /* SCENARIOS */
-.reimburse-wrap { margin-bottom: 5pt; }
+.reimburse-wrap { margin-bottom: 3pt; }
 .scenario-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4pt; }
 .scenario-box { border: 0.8pt solid #ccc; border-radius: 2pt; padding: 5pt 7pt; }
 .scenario-box.best { border-color: #1a1a1a; background: #1a1a1a; color: #fff; }
-.scenario-label { font-size: 7pt; font-weight: 700; letter-spacing: 0.8pt; text-transform: uppercase; color: #888; margin-bottom: 3pt; }
+.scenario-label { font-size: 7pt; font-weight: 700; letter-spacing: 0.8pt; text-transform: uppercase; color: #888; margin-bottom: 2pt; }
 .scenario-box.best .scenario-label { color: rgba(255,255,255,0.6); }
 .scenario-coverage { font-size: 12pt; font-weight: 800; line-height: 1; margin-bottom: 2pt; letter-spacing: -0.5pt; }
 .scenario-net { font-size: 7.5pt; color: #555; line-height: 1.4; }
@@ -63,19 +63,19 @@ table.ptable tfoot td.tp { text-align: right; font-size: 11pt; font-weight: 800;
 .scenario-note { font-size: 7pt; color: #888; margin-top: 4pt; font-style: italic; line-height: 1.4; }
 
 /* DISCLAIMER */
-.disclaimer-box { margin-bottom: 5pt; padding: 5pt 9pt; background: #fff8f0; border: 1pt solid #e0c090; border-left: 3pt solid #c87800; border-radius: 2pt; }
-.disclaimer-title { font-size: 7.5pt; font-weight: 700; color: #c87800; letter-spacing: 0.5pt; text-transform: uppercase; margin-bottom: 3pt; }
+.disclaimer-box { margin-bottom: 3pt; padding: 5pt 9pt; background: #fff8f0; border: 1pt solid #e0c090; border-left: 3pt solid #c87800; border-radius: 2pt; }
+.disclaimer-title { font-size: 7.5pt; font-weight: 700; color: #c87800; letter-spacing: 0.5pt; text-transform: uppercase; margin-bottom: 2pt; }
 .disclaimer-box p { font-size: 8pt; line-height: 1.5; color: #333; }
 .disclaimer-box p + p { margin-top: 3pt; }
 
 /* CHECKLIST */
-.checklist-wrap { margin-bottom: 5pt; }
+.checklist-wrap { margin-bottom: 3pt; }
 .checklist-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 3pt 14pt; }
 .cl-item { display: flex; align-items: flex-start; gap: 5pt; font-size: 8pt; line-height: 1.4; }
 .cl-arrow { flex-shrink: 0; font-weight: 700; color: #1a1a1a; margin-top: 0.5pt; }
 
 /* CONTACT */
-.contact-block { border: 1.5pt solid #1a1a1a; padding: 7pt 10pt; border-radius: 2pt; display: flex; justify-content: space-between; align-items: center; gap: 16pt; margin-bottom: 5pt; }
+.contact-block { border: 1.5pt solid #1a1a1a; padding: 7pt 10pt; border-radius: 2pt; display: flex; justify-content: space-between; align-items: center; gap: 16pt; margin-bottom: 3pt; }
 .contact-left h3 { font-size: 9.5pt; font-weight: 800; letter-spacing: -0.2pt; margin-bottom: 2pt; }
 .contact-left p { font-size: 8pt; color: #555; line-height: 1.4; }
 .contact-right { text-align: right; flex-shrink: 0; }
@@ -88,7 +88,7 @@ table.ptable tfoot td.tp { text-align: right; font-size: 11pt; font-weight: 800;
 </head>
 <body>
 
-<!-- HEADER: Logo links, Titel rechts -->
+<!-- HEADER: Logo oben, Titel darunter -->
 <div class="header">
   <div class="logo-wrap">LOGO_PLACEHOLDER</div>
   <div class="header-text">
@@ -172,19 +172,6 @@ table.ptable tfoot td.tp { text-align: right; font-size: 11pt; font-weight: 800;
   <p><strong>Fragen Sie Ihre Versicherung:</strong> Sind Hausbesuche erstattungsf&auml;hig? Ist eine Vorabgenehmigung n&ouml;tig? Wie hoch ist Ihr Erstattungssatz? Werden Fahrtkosten erstattet?</p>
 </div>
 
-<!-- CHECKLISTE -->
-<div class="checklist-wrap">
-  <div class="section-title">Was Sie vorab kl&auml;ren sollten</div>
-  <div class="checklist-2col">
-    <div class="cl-item"><span class="cl-arrow">&#10140;</span><span>Hausbesuche durch meinen Tarif erstattungsf&auml;hig?</span></div>
-    <div class="cl-item"><span class="cl-arrow">&#10140;</span><span>Welcher Erstattungssatz gilt f&uuml;r mich?</span></div>
-    <div class="cl-item"><span class="cl-arrow">&#10140;</span><span>Brauche ich eine Vorabgenehmigung?</span></div>
-    <div class="cl-item"><span class="cl-arrow">&#10140;</span><span>Gelten Einschr&auml;nkungen bei Sonderleistungen?</span></div>
-    <div class="cl-item"><span class="cl-arrow">&#10140;</span><span>Werden Fahrtkosten des Therapeuten erstattet?</span></div>
-    <div class="cl-item"><span class="cl-arrow">&#10140;</span><span>Wie reiche ich die Rechnung korrekt ein?</span></div>
-  </div>
-</div>
-
 <!-- CONTACT -->
 <div class="contact-block">
   <div class="contact-left">
@@ -214,7 +201,7 @@ def main():
         svg = f.read()
     svg_scaled = svg.replace(
         'viewBox="0 0 226.8 66"',
-        'viewBox="0 0 226.8 66" style="height:62pt;width:auto;display:block;"',
+        'viewBox="0 0 226.8 66" style="width:50%;height:auto;display:block;"',
         1
     )
     html = TEMPLATE.replace('LOGO_PLACEHOLDER', svg_scaled)

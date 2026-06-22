@@ -17,10 +17,8 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9
 
 /* HEADER */
 .header { margin-bottom: 10pt; padding-bottom: 8pt; border-bottom: 1.5pt solid #1a1a1a; }
-.header-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 14pt; }
-.logo-wrap { flex-shrink: 0; }
-.logo-wrap svg { height: 40pt; width: auto; display: block; }
-.header-title { text-align: right; }
+.logo-wrap { margin-bottom: 8pt; }
+.logo-wrap svg { width: 62%; height: auto; display: block; }
 .header-title h1 { font-size: 19pt; font-weight: 800; letter-spacing: -0.5pt; line-height: 1.1; margin-bottom: 2pt; }
 .header-title .tagline { font-size: 9pt; color: #555; font-style: italic; }
 
@@ -93,14 +91,12 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9
 </head>
 <body>
 
-<!-- HEADER: Logo links, Titel rechts -->
+<!-- HEADER: Logo oben, Titel darunter -->
 <div class="header">
-  <div class="header-top">
-    <div class="logo-wrap">LOGO_PLACEHOLDER</div>
-    <div class="header-title">
-      <h1>Therapeutische Trainingsbegleitung</h1>
-      <div class="tagline">Von der Behandlung zur&uuml;ck in einen belastbaren Alltag.</div>
-    </div>
+  <div class="logo-wrap">LOGO_PLACEHOLDER</div>
+  <div class="header-title">
+    <h1>Therapeutische Trainingsbegleitung</h1>
+    <div class="tagline">Von der Behandlung zur&uuml;ck in einen belastbaren Alltag.</div>
   </div>
 </div>
 
@@ -240,7 +236,7 @@ def main():
     # Inject height via style attribute on the root svg element
     svg_scaled = svg.replace(
         'viewBox="0 0 226.8 66"',
-        'viewBox="0 0 226.8 66" style="height:62pt;width:auto;display:block;"',
+        'viewBox="0 0 226.8 66" style="width:62%;height:auto;display:block;"',
         1
     )
     html = TEMPLATE.replace('LOGO_PLACEHOLDER', svg_scaled)
