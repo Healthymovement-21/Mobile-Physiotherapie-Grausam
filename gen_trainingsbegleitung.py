@@ -36,6 +36,16 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 .expertise-item { display: flex; align-items: flex-start; gap: 5pt; font-size: 9pt; line-height: 1.4; }
 .expertise-dash { flex-shrink: 0; color: #888; margin-top: 0.5pt; }
 
+/* ROTER FADEN */
+.red-thread { margin-bottom: 12pt; font-size: 10pt; line-height: 1.6; font-style: italic; color: #333; border-left: 3pt solid #1a1a1a; padding-left: 10pt; }
+
+/* TRAININGSINHALTE */
+.inhalt-section { margin-bottom: 12pt; break-inside: avoid; page-break-inside: avoid; }
+.inhalt-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 10pt; row-gap: 4pt; margin-bottom: 5pt; }
+.inhalt-item { font-size: 8.5pt; line-height: 1.4; display: flex; align-items: flex-start; gap: 4pt; }
+.inhalt-dot { flex-shrink: 0; color: #888; }
+.inhalt-note { font-size: 7.5pt; color: #888; font-style: italic; }
+
 /* CHECKLIST */
 .checklist-section { margin-bottom: 12pt; break-inside: avoid; page-break-inside: avoid; }
 .checklist-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 4pt; }
@@ -108,14 +118,19 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 <div class="expertise-section">
   <div class="section-title">Meine Expertise</div>
   <div class="expertise-grid">
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Kraft- &amp; Athletiktraining ab dem 13. Lebensjahr &mdash; NLZ der Rhein-Neckar L&ouml;wen (Handball-Bundesliga)</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Kraft- &amp; Athletiktraining ab dem 13. Lebensjahr bei den Rhein-Neckar L&ouml;wen</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Leistungshandball im NLZ der Rhein-Neckar L&ouml;wen (Handball-Bundesliga)</span></div>
     <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Eigene Verletzungserfahrung &mdash; Training trotz und mit Einschr&auml;nkungen</span></div>
     <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Physiotherapeut &mdash; klinische Berufserfahrung, medizinischer Blick auf Bewegung &amp; Rehabilitation</span></div>
     <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Qualifikation: Krankengymnastik am Ger&auml;t (KGG)</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Technikschulung durch Trainer aus dem olympischen Gewichtheben</span></div>
     <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Fortbildung beim langjährigen Physiotherapeuten der deutschen Fu&szlig;ballnationalmannschaft</span></div>
     <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Stetige Weiterbildung in Therapie, Training und Sport</span></div>
   </div>
 </div>
+
+<!-- ROTER FADEN -->
+<p class="red-thread">Genau diese Kombination &mdash; medizinisches Fachwissen, eigene Verletzungserfahrung und Leistungssportbackground &mdash; ist der rote Faden hinter allem, was ich tue.</p>
 
 <!-- WAS SIE BEKOMMEN -->
 <div class="checklist-section">
@@ -130,6 +145,23 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
     <div class="checklist-item"><span class="check-mark">&#10003;</span><span>Kostenloses Erstgespr&auml;ch zum Kennenlernen</span></div>
     <div class="checklist-item"><span class="check-mark">&#10003;</span><span>Keine Vorauszahlung &mdash; monatlich k&uuml;ndbar</span></div>
   </div>
+</div>
+
+<!-- TRAININGSINHALTE (Beispiel) -->
+<div class="inhalt-section">
+  <div class="section-title">M&ouml;gliche Trainingsinhalte &mdash; Beispiel</div>
+  <div class="inhalt-grid">
+    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Kraft &amp; Muskelaufbau</span></div>
+    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Mobilit&auml;t &amp; Beweglichkeit</span></div>
+    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Koordination &amp; Balance</span></div>
+    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>R&uuml;cken &amp; Haltung</span></div>
+    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Ausdauer &amp; Kondition</span></div>
+    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Verletzungspr&auml;vention</span></div>
+    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Rehabilitation &amp; Wiederbelastung</span></div>
+    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Atemtechnik &amp; Entspannung</span></div>
+    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Alltagsbewegungen verbessern</span></div>
+  </div>
+  <div class="inhalt-note">Die genauen Inhalte sind frei w&auml;hlbar und werden gemeinsam im Erstgespr&auml;ch festgelegt &mdash; das Beispiel oben zeigt, was m&ouml;glich ist.</div>
 </div>
 
 <!-- WIE ES ABLÄUFT -->
