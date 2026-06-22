@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 Generate Therapeutische-Trainingsbegleitung.pdf — 2 A4 pages.
-Layout: Logo oben links (groß), Expertise direkt danach (vollständig), kein doppelter Footer.
 """
 import tempfile, os
 from weasyprint import HTML
@@ -11,86 +10,86 @@ TEMPLATE = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <style>
-@page { size: A4; margin: 14mm 17mm; border-top: 2pt solid #1a1a1a; border-bottom: 2pt solid #1a1a1a; }
+@page { size: A4; margin: 15mm 18mm; border-top: 2.5pt solid #1a1a1a; border-bottom: 2.5pt solid #1a1a1a; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9.5pt; color: #1a1a1a; line-height: 1.55; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10pt; color: #1a1a1a; line-height: 1.62; }
 
 /* HEADER */
-.header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16pt; padding-bottom: 9pt; margin-bottom: 12pt; border-bottom: 1pt solid #1a1a1a; }
+.header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16pt; padding-bottom: 11pt; margin-bottom: 18pt; border-bottom: 1pt solid #1a1a1a; }
 .logo-wrap svg { width: 34%; height: auto; display: block; }
 .header-right { text-align: right; }
-.header-right h1 { font-size: 18pt; font-weight: 800; letter-spacing: -0.5pt; line-height: 1.05; margin-bottom: 2pt; }
-.header-right .tagline { font-size: 8.5pt; color: #555; font-style: italic; }
+.header-right h1 { font-size: 19pt; font-weight: 800; letter-spacing: -0.5pt; line-height: 1.05; margin-bottom: 3pt; }
+.header-right .tagline { font-size: 9pt; color: #666; font-style: italic; }
 
 /* SECTION TITLE */
-.section-title { font-size: 7pt; font-weight: 700; letter-spacing: 2pt; text-transform: uppercase; color: #555; margin-bottom: 6pt; padding-bottom: 3pt; border-bottom: 0.5pt solid #ddd; break-after: avoid; page-break-after: avoid; }
+.section-title { font-size: 7.5pt; font-weight: 700; letter-spacing: 2.5pt; text-transform: uppercase; color: #999; margin-bottom: 10pt; break-after: avoid; page-break-after: avoid; }
 
 /* INTRO */
-.intro-text { margin-bottom: 11pt; }
-.intro-text p { margin-bottom: 5pt; font-size: 9.5pt; line-height: 1.6; }
+.intro-text { margin-bottom: 17pt; }
+.intro-text p { margin-bottom: 8pt; font-size: 10pt; line-height: 1.65; }
 .intro-text p:last-child { margin-bottom: 0; }
 
 /* EXPERTISE */
-.expertise-section { margin-bottom: 11pt; }
-.expertise-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 4pt; }
-.expertise-item { display: flex; align-items: flex-start; gap: 6pt; font-size: 9pt; line-height: 1.4; }
-.expertise-dash { flex-shrink: 0; color: #aaa; }
+.expertise-section { margin-bottom: 17pt; }
+.expertise-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18pt; row-gap: 7pt; }
+.expertise-item { display: flex; align-items: flex-start; gap: 7pt; font-size: 9.5pt; line-height: 1.45; }
+.expertise-dash { flex-shrink: 0; color: #bbb; }
 
 /* RED THREAD */
-.red-thread { margin-bottom: 11pt; font-size: 10pt; line-height: 1.6; font-style: italic; color: #1a1a1a; padding: 7pt 0; border-top: 0.5pt solid #ccc; border-bottom: 0.5pt solid #ccc; text-align: center; }
+.red-thread { margin-bottom: 17pt; font-size: 10.5pt; line-height: 1.65; font-style: italic; color: #1a1a1a; padding: 11pt 12pt; border-top: 0.5pt solid #ccc; border-bottom: 0.5pt solid #ccc; text-align: center; }
 
 /* CHECKLIST */
-.checklist-section { margin-bottom: 11pt; }
-.checklist-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 4pt; }
-.checklist-item { display: flex; align-items: flex-start; gap: 6pt; font-size: 9.5pt; }
+.checklist-section { margin-bottom: 17pt; }
+.checklist-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18pt; row-gap: 7pt; }
+.checklist-item { display: flex; align-items: flex-start; gap: 7pt; font-size: 10pt; }
 .check-mark { flex-shrink: 0; font-weight: 800; color: #1a1a1a; margin-top: 0.5pt; }
 
 /* TRAININGSINHALTE */
-.inhalt-section { margin-bottom: 11pt; }
-.inhalt-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 10pt; row-gap: 4pt; margin-bottom: 4pt; }
-.inhalt-item { font-size: 8.5pt; line-height: 1.4; display: flex; align-items: flex-start; gap: 4pt; }
-.inhalt-dot { flex-shrink: 0; color: #aaa; }
-.inhalt-note { font-size: 7.5pt; color: #888; font-style: italic; }
+.inhalt-section { margin-bottom: 17pt; }
+.inhalt-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 12pt; row-gap: 6pt; margin-bottom: 6pt; }
+.inhalt-item { font-size: 9.5pt; line-height: 1.45; display: flex; align-items: flex-start; gap: 5pt; }
+.inhalt-dot { flex-shrink: 0; color: #bbb; }
+.inhalt-note { font-size: 8pt; color: #999; font-style: italic; }
 
 /* FLOW */
-.flow-section { margin-bottom: 11pt; }
-.flow-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; column-gap: 8pt; }
-.flow-step { border-top: 1.5pt solid #1a1a1a; padding-top: 6pt; }
-.flow-step-label { font-size: 6.5pt; font-weight: 700; letter-spacing: 1pt; text-transform: uppercase; color: #888; margin-bottom: 3pt; }
-.flow-step-title { font-size: 8.5pt; font-weight: 700; margin-bottom: 3pt; line-height: 1.2; }
-.flow-step-text { font-size: 7.5pt; color: #555; line-height: 1.4; }
+.flow-section { margin-bottom: 17pt; }
+.flow-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; column-gap: 11pt; }
+.flow-step { border-top: 1.5pt solid #1a1a1a; padding-top: 8pt; }
+.flow-step-label { font-size: 7pt; font-weight: 700; letter-spacing: 1pt; text-transform: uppercase; color: #999; margin-bottom: 4pt; }
+.flow-step-title { font-size: 9pt; font-weight: 700; margin-bottom: 4pt; line-height: 1.2; }
+.flow-step-text { font-size: 8.5pt; color: #555; line-height: 1.45; }
 
 /* PRICE */
-.price-section { margin-bottom: 4pt; }
-.price-block { background: #1a1a1a; color: #fff; padding: 9pt 13pt; display: flex; align-items: center; justify-content: space-between; gap: 14pt; }
+.price-section { margin-bottom: 5pt; }
+.price-block { background: #1a1a1a; color: #fff; padding: 13pt 16pt; display: flex; align-items: center; justify-content: space-between; gap: 14pt; }
 .price-left { display: flex; align-items: baseline; gap: 3pt; }
-.price-amount { font-size: 34pt; font-weight: 800; line-height: 1; letter-spacing: -1.5pt; }
-.price-currency { font-size: 18pt; font-weight: 700; align-self: flex-start; margin-top: 4pt; }
-.price-meta { margin-left: 6pt; }
-.price-per-month { font-size: 8pt; color: #bbb; }
-.price-per-hour { font-size: 7.5pt; color: #999; }
-.price-compare { font-size: 7.5pt; color: #bbb; border-left: 0.5pt solid #444; padding-left: 13pt; max-width: 175pt; line-height: 1.45; }
-.price-footnote { font-size: 6pt; color: #888; margin-top: 3pt; line-height: 1.3; margin-bottom: 11pt; }
+.price-amount { font-size: 38pt; font-weight: 800; line-height: 1; letter-spacing: -2pt; }
+.price-currency { font-size: 20pt; font-weight: 700; align-self: flex-start; margin-top: 5pt; }
+.price-meta { margin-left: 8pt; }
+.price-per-month { font-size: 9pt; color: #bbb; }
+.price-per-hour { font-size: 8pt; color: #999; }
+.price-compare { font-size: 8.5pt; color: #bbb; border-left: 0.5pt solid #444; padding-left: 14pt; max-width: 175pt; line-height: 1.5; }
+.price-footnote { font-size: 6.5pt; color: #888; margin-top: 4pt; line-height: 1.3; margin-bottom: 17pt; }
 
 /* FAQ */
-.faq-section { margin-bottom: 11pt; }
-.faq-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 6pt; }
+.faq-section { margin-bottom: 17pt; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18pt; row-gap: 10pt; }
 .faq-item { break-inside: avoid; page-break-inside: avoid; }
-.faq-item dt { font-size: 8.5pt; font-weight: 700; margin-bottom: 1.5pt; line-height: 1.3; }
-.faq-item dd { font-size: 8.5pt; color: #444; line-height: 1.45; margin-left: 0; }
+.faq-item dt { font-size: 9.5pt; font-weight: 700; margin-bottom: 2.5pt; line-height: 1.3; }
+.faq-item dd { font-size: 9pt; color: #444; line-height: 1.5; margin-left: 0; }
 
 /* CTA */
-.cta-section { margin-bottom: 11pt; }
-.cta-box { border: 1pt solid #1a1a1a; padding: 8pt 12pt; display: flex; justify-content: space-between; align-items: center; gap: 16pt; }
-.cta-left h3 { font-size: 10pt; font-weight: 800; margin-bottom: 2pt; letter-spacing: -0.2pt; }
-.cta-left p { font-size: 8pt; color: #555; line-height: 1.45; }
+.cta-section { margin-bottom: 17pt; }
+.cta-box { border: 1pt solid #1a1a1a; padding: 11pt 15pt; display: flex; justify-content: space-between; align-items: center; gap: 16pt; }
+.cta-left h3 { font-size: 11pt; font-weight: 800; margin-bottom: 4pt; letter-spacing: -0.2pt; }
+.cta-left p { font-size: 9pt; color: #555; line-height: 1.5; }
 .cta-right { text-align: right; flex-shrink: 0; }
-.cta-right .cname { font-size: 9pt; font-weight: 700; margin-bottom: 2pt; }
-.cta-right .cdetail { font-size: 8pt; color: #444; line-height: 1.6; }
+.cta-right .cname { font-size: 9.5pt; font-weight: 700; margin-bottom: 3pt; }
+.cta-right .cdetail { font-size: 9pt; color: #444; line-height: 1.65; }
 
 /* LEGAL + FOOTNOTE */
-.legal { font-size: 6.5pt; color: #777; line-height: 1.4; margin-bottom: 4pt; }
-.footnote { font-size: 6pt; color: #aaa; line-height: 1.3; border-top: 0.5pt solid #eee; padding-top: 3pt; }
+.legal { font-size: 7pt; color: #777; line-height: 1.45; margin-bottom: 4pt; }
+.footnote { font-size: 6.5pt; color: #aaa; line-height: 1.3; border-top: 0.5pt solid #eee; padding-top: 3pt; }
 </style>
 </head>
 <body>
@@ -243,7 +242,6 @@ LOGO_PATH   = "/home/user/Mobile-Physiotherapie-Grausam/logo.svg"
 def main():
     with open(LOGO_PATH) as f:
         svg = f.read()
-    # Inject height via style attribute on the root svg element
     svg_scaled = svg.replace(
         'viewBox="0 0 226.8 66"',
         'viewBox="0 0 226.8 66" style="width:130pt;height:auto;display:block;"',
