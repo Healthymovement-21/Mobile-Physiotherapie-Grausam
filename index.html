@@ -2610,12 +2610,16 @@ function rgSelectPatient(idx){
 }
 function rgImportExcel(){
   const inp=document.createElement('input');inp.type='file';inp.accept='.xlsx,.xls,.csv';
+  inp.style.cssText='position:fixed;top:-9999px;left:-9999px;opacity:0;';
   inp.onchange=e=>{
-    const file=e.target.files[0];if(!file)return;
+    const file=e.target.files[0];
+    document.body.removeChild(inp);
+    if(!file)return;
     const ext=file.name.split('.').pop().toLowerCase();
     if(ext==='csv'){const r=new FileReader();r.onload=ev=>rgParseCSV(ev.target.result);r.readAsText(file,'utf-8');return;}
     rgLoadXLSX(file);
   };
+  document.body.appendChild(inp);
   inp.click();
 }
 function rgLoadXLSX(file){
@@ -2830,9 +2834,9 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:9pt;color
 .no-print{background:#f0f0f0;padding:8px 16px;display:flex;align-items:center;justify-content:space-between;font-family:sans-serif;font-size:13px;gap:12px;}
 .print-btn{background:#111;color:#fff;border:none;padding:7px 18px;cursor:pointer;font-size:13px;font-weight:700;border-radius:2px;}
 .header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5pt solid #111;padding-bottom:8pt;margin-bottom:12pt;}
-.logo-wrap img{height:34pt;max-width:180pt;display:block;}
+.logo-wrap img{height:24pt;max-width:130pt;display:block;}
 .rech-title{font-size:20pt;font-weight:700;letter-spacing:-0.5pt;line-height:1;}
-.h-info{font-size:7.5pt;color:#666;line-height:1.5;margin-top:3pt;}
+.h-info{display:none;}
 .addr-label{font-size:7pt;font-weight:700;letter-spacing:1.5pt;text-transform:uppercase;color:#888;margin-bottom:2pt;}
 .addr{font-size:9.5pt;line-height:1.5;}
 .meta td{padding:1.5pt 8pt 1.5pt 0;font-size:8.5pt;vertical-align:top;}
@@ -2846,7 +2850,7 @@ table.lt thead td{padding:5pt 8pt;font-size:8pt;font-weight:700;letter-spacing:.
 .legal{font-size:7.5pt;color:#555;line-height:1.55;margin-bottom:8pt;}
 .ftr{border-top:.75pt solid #ccc;padding-top:6pt;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8pt;font-size:7.5pt;color:#555;line-height:1.6;}
 .ftr-title{font-weight:700;color:#111;margin-bottom:1pt;}
-@media print{.no-print{display:none!important;} body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media print{.no-print{display:none!important;} body{-webkit-print-color-adjust:exact;print-color-adjust:exact;} .ftr{position:fixed;bottom:15mm;left:15mm;right:15mm;} .legal{margin-bottom:60pt;}}
 </style></head><body>
 <div class="no-print"><span>Rechnung Nr. ${nr} &ndash; ${vn} ${nn}${isCoaching?' · Trainingsbegleitung':''}</span><button class="print-btn" onclick="window.print()">&#x1F5A8; Drucken / Als PDF speichern</button></div>
 <div class="header">

@@ -11,110 +11,106 @@ TEMPLATE = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <style>
-@page { size: A4; margin: 20mm; }
+@page { size: A4; margin: 14mm 17mm; border-top: 2pt solid #1a1a1a; border-bottom: 2pt solid #1a1a1a; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10pt; color: #1a1a1a; line-height: 1.55; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9.5pt; color: #1a1a1a; line-height: 1.55; }
 
 /* HEADER */
-.header { margin-bottom: 14pt; padding-bottom: 10pt; border-bottom: 1.5pt solid #1a1a1a; }
-.logo-wrap { margin-bottom: 10pt; }
-.logo-wrap svg { width: 31%; height: auto; display: block; }
-.header-title h1 { font-size: 19pt; font-weight: 800; letter-spacing: -0.5pt; line-height: 1.1; margin-bottom: 2pt; }
-.header-title .tagline { font-size: 9pt; color: #555; font-style: italic; }
+.header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16pt; padding-bottom: 9pt; margin-bottom: 12pt; border-bottom: 1pt solid #1a1a1a; }
+.logo-wrap svg { width: 34%; height: auto; display: block; }
+.header-right { text-align: right; }
+.header-right h1 { font-size: 18pt; font-weight: 800; letter-spacing: -0.5pt; line-height: 1.05; margin-bottom: 2pt; }
+.header-right .tagline { font-size: 8.5pt; color: #555; font-style: italic; }
 
 /* SECTION TITLE */
-.section-title { font-size: 8pt; font-weight: 700; letter-spacing: 1.2pt; text-transform: uppercase; color: #1a1a1a; margin-bottom: 6pt; padding-bottom: 3pt; border-bottom: 0.8pt solid #ccc; break-after: avoid; page-break-after: avoid; }
+.section-title { font-size: 7pt; font-weight: 700; letter-spacing: 2pt; text-transform: uppercase; color: #555; margin-bottom: 6pt; padding-bottom: 3pt; border-bottom: 0.5pt solid #ddd; break-after: avoid; page-break-after: avoid; }
 
-/* INTRO TEXT */
-.intro-text { margin-bottom: 12pt; }
-.intro-text p { margin-bottom: 5pt; font-size: 10pt; line-height: 1.6; }
+/* INTRO */
+.intro-text { margin-bottom: 11pt; }
+.intro-text p { margin-bottom: 5pt; font-size: 9.5pt; line-height: 1.6; }
 .intro-text p:last-child { margin-bottom: 0; }
 
 /* EXPERTISE */
-.expertise-section { margin-bottom: 14pt; break-inside: avoid; page-break-inside: avoid; }
+.expertise-section { margin-bottom: 11pt; }
 .expertise-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 4pt; }
-.expertise-item { display: flex; align-items: flex-start; gap: 5pt; font-size: 9pt; line-height: 1.4; }
-.expertise-dash { flex-shrink: 0; color: #888; margin-top: 0.5pt; }
+.expertise-item { display: flex; align-items: flex-start; gap: 6pt; font-size: 9pt; line-height: 1.4; }
+.expertise-dash { flex-shrink: 0; color: #aaa; }
 
-/* ROTER FADEN */
-.red-thread { margin-bottom: 12pt; font-size: 10pt; line-height: 1.6; font-style: italic; color: #333; border-left: 3pt solid #1a1a1a; padding-left: 10pt; }
-
-/* TRAININGSINHALTE */
-.inhalt-section { margin-bottom: 12pt; break-inside: avoid; page-break-inside: avoid; }
-.inhalt-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 10pt; row-gap: 4pt; margin-bottom: 5pt; }
-.inhalt-item { font-size: 8.5pt; line-height: 1.4; display: flex; align-items: flex-start; gap: 4pt; }
-.inhalt-dot { flex-shrink: 0; color: #888; }
-.inhalt-note { font-size: 7.5pt; color: #888; font-style: italic; }
+/* RED THREAD */
+.red-thread { margin-bottom: 11pt; font-size: 10pt; line-height: 1.6; font-style: italic; color: #1a1a1a; padding: 7pt 0; border-top: 0.5pt solid #ccc; border-bottom: 0.5pt solid #ccc; text-align: center; }
 
 /* CHECKLIST */
-.checklist-section { margin-bottom: 12pt; break-inside: avoid; page-break-inside: avoid; }
+.checklist-section { margin-bottom: 11pt; }
 .checklist-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 4pt; }
-.checklist-item { display: flex; align-items: flex-start; gap: 4pt; font-size: 9.5pt; }
-.check-mark { color: #1a1a1a; font-weight: 700; flex-shrink: 0; margin-top: 0.5pt; }
+.checklist-item { display: flex; align-items: flex-start; gap: 6pt; font-size: 9.5pt; }
+.check-mark { flex-shrink: 0; font-weight: 800; color: #1a1a1a; margin-top: 0.5pt; }
+
+/* TRAININGSINHALTE */
+.inhalt-section { margin-bottom: 11pt; }
+.inhalt-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 10pt; row-gap: 4pt; margin-bottom: 4pt; }
+.inhalt-item { font-size: 8.5pt; line-height: 1.4; display: flex; align-items: flex-start; gap: 4pt; }
+.inhalt-dot { flex-shrink: 0; color: #aaa; }
+.inhalt-note { font-size: 7.5pt; color: #888; font-style: italic; }
 
 /* FLOW */
-.flow-section { margin-bottom: 12pt; break-inside: avoid; page-break-inside: avoid; }
+.flow-section { margin-bottom: 11pt; }
 .flow-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; column-gap: 8pt; }
-.flow-step { border: 0.8pt solid #ccc; padding: 8pt 9pt; border-radius: 2pt; }
-.flow-step-label { font-size: 7pt; font-weight: 700; letter-spacing: 0.8pt; text-transform: uppercase; color: #777; margin-bottom: 3pt; }
-.flow-step-title { font-size: 9pt; font-weight: 700; margin-bottom: 3pt; line-height: 1.2; }
-.flow-step-text { font-size: 8pt; color: #444; line-height: 1.4; }
+.flow-step { border-top: 1.5pt solid #1a1a1a; padding-top: 6pt; }
+.flow-step-label { font-size: 6.5pt; font-weight: 700; letter-spacing: 1pt; text-transform: uppercase; color: #888; margin-bottom: 3pt; }
+.flow-step-title { font-size: 8.5pt; font-weight: 700; margin-bottom: 3pt; line-height: 1.2; }
+.flow-step-text { font-size: 7.5pt; color: #555; line-height: 1.4; }
 
 /* PRICE */
-.price-section { margin-bottom: 12pt; break-inside: avoid; page-break-inside: avoid; }
-.price-block { background: #1a1a1a; color: #fff; padding: 8pt 11pt; border-radius: 2pt; display: flex; align-items: center; justify-content: space-between; gap: 12pt; }
-.price-left { display: flex; align-items: baseline; gap: 4pt; }
-.price-amount { font-size: 32pt; font-weight: 800; line-height: 1; letter-spacing: -1pt; }
+.price-section { margin-bottom: 4pt; }
+.price-block { background: #1a1a1a; color: #fff; padding: 9pt 13pt; display: flex; align-items: center; justify-content: space-between; gap: 14pt; }
+.price-left { display: flex; align-items: baseline; gap: 3pt; }
+.price-amount { font-size: 34pt; font-weight: 800; line-height: 1; letter-spacing: -1.5pt; }
 .price-currency { font-size: 18pt; font-weight: 700; align-self: flex-start; margin-top: 4pt; }
-.price-meta { display: flex; flex-direction: column; gap: 1pt; }
-.price-per-month { font-size: 8.5pt; color: #ccc; }
-.price-per-hour { font-size: 8pt; color: #aaa; }
-.price-compare { font-size: 7.5pt; color: #bbb; border-left: 1pt solid #444; padding-left: 12pt; max-width: 170pt; line-height: 1.35; }
-.price-footnote { font-size: 6.5pt; color: #999; margin-top: 3pt; line-height: 1.3; }
+.price-meta { margin-left: 6pt; }
+.price-per-month { font-size: 8pt; color: #bbb; }
+.price-per-hour { font-size: 7.5pt; color: #999; }
+.price-compare { font-size: 7.5pt; color: #bbb; border-left: 0.5pt solid #444; padding-left: 13pt; max-width: 175pt; line-height: 1.45; }
+.price-footnote { font-size: 6pt; color: #888; margin-top: 3pt; line-height: 1.3; margin-bottom: 11pt; }
 
 /* FAQ */
-.faq-section { margin-bottom: 12pt; break-inside: avoid; page-break-inside: avoid; }
-.faq-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 7pt; }
+.faq-section { margin-bottom: 11pt; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14pt; row-gap: 6pt; }
 .faq-item { break-inside: avoid; page-break-inside: avoid; }
-.faq-item dt { font-size: 9pt; font-weight: 700; margin-bottom: 2pt; line-height: 1.3; }
-.faq-item dd { font-size: 9pt; color: #333; line-height: 1.45; margin-left: 0; }
+.faq-item dt { font-size: 8.5pt; font-weight: 700; margin-bottom: 1.5pt; line-height: 1.3; }
+.faq-item dd { font-size: 8.5pt; color: #444; line-height: 1.45; margin-left: 0; }
 
 /* CTA */
-.cta-section { margin-bottom: 12pt; break-inside: avoid; page-break-inside: avoid; }
-.cta-box { border: 1.5pt solid #1a1a1a; padding: 8pt 11pt; border-radius: 2pt; display: flex; justify-content: space-between; align-items: center; gap: 16pt; }
-.cta-left h3 { font-size: 10.5pt; font-weight: 800; margin-bottom: 3pt; letter-spacing: -0.2pt; }
-.cta-left p { font-size: 8.5pt; color: #444; line-height: 1.4; }
+.cta-section { margin-bottom: 11pt; }
+.cta-box { border: 1pt solid #1a1a1a; padding: 8pt 12pt; display: flex; justify-content: space-between; align-items: center; gap: 16pt; }
+.cta-left h3 { font-size: 10pt; font-weight: 800; margin-bottom: 2pt; letter-spacing: -0.2pt; }
+.cta-left p { font-size: 8pt; color: #555; line-height: 1.45; }
 .cta-right { text-align: right; flex-shrink: 0; }
-.cta-right .contact-name { font-size: 9pt; font-weight: 700; margin-bottom: 2pt; }
-.cta-right .contact-detail { font-size: 8.5pt; color: #333; line-height: 1.5; }
+.cta-right .cname { font-size: 9pt; font-weight: 700; margin-bottom: 2pt; }
+.cta-right .cdetail { font-size: 8pt; color: #444; line-height: 1.6; }
 
-/* LEGAL */
-.legal-box { background: #f3f3f3; border: 0.5pt solid #ddd; padding: 4pt 7pt; border-radius: 2pt; margin-bottom: 5pt; }
-.legal-box p { font-size: 7pt; color: #555; line-height: 1.3; }
-.legal-box p + p { margin-top: 2pt; }
-
-/* FOOTNOTE */
-.footer-block { font-size: 6.5pt; color: #888; line-height: 1.35; border-top: 0.5pt solid #ddd; padding-top: 4pt; }
+/* LEGAL + FOOTNOTE */
+.legal { font-size: 6.5pt; color: #777; line-height: 1.4; margin-bottom: 4pt; }
+.footnote { font-size: 6pt; color: #aaa; line-height: 1.3; border-top: 0.5pt solid #eee; padding-top: 3pt; }
 </style>
 </head>
 <body>
 
-<!-- HEADER: Logo oben, Titel darunter -->
+<!-- HEADER -->
 <div class="header">
   <div class="logo-wrap">LOGO_PLACEHOLDER</div>
-  <div class="header-title">
+  <div class="header-right">
     <h1>Therapeutische Trainingsbegleitung</h1>
     <div class="tagline">Von der Behandlung zur&uuml;ck in einen belastbaren Alltag.</div>
   </div>
 </div>
 
-<!-- INTRO TEXT -->
+<!-- INTRO -->
 <div class="intro-text">
   <p>Viele Beschwerden kommen zur&uuml;ck &mdash; nicht wegen fehlender Behandlung, sondern weil im Alltag niemand mehr begleitet. Die Physiotherapie endet nach 45 oder 60 Minuten. Was danach kommt, entscheidet genauso &uuml;ber den Erfolg.</p>
-  <p>Ich bin kein Personal Trainer mit Trainerschein &mdash; ich bin Physiotherapeut mit medizinischem Blick, klinischer Berufserfahrung und eigenem Leistungssportbackground. Diese Verbindung aus Therapiehintergrund, Training und pers&ouml;nlicher Begleitung macht den Unterschied.</p>
+  <p>Ich bin kein Personal Trainer mit Trainerschein &mdash; ich bin Physiotherapeut mit medizinischem Blick, klinischer Berufserfahrung und eigenem Leistungssportbackground. Diese Verbindung macht den Unterschied.</p>
 </div>
 
-<!-- MEINE EXPERTISE (chronologisch) -->
+<!-- EXPERTISE -->
 <div class="expertise-section">
   <div class="section-title">Meine Expertise</div>
   <div class="expertise-grid">
@@ -129,8 +125,8 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
   </div>
 </div>
 
-<!-- ROTER FADEN -->
-<p class="red-thread">Genau diese Kombination &mdash; medizinisches Fachwissen, eigene Verletzungserfahrung und Leistungssportbackground &mdash; ist der rote Faden hinter allem, was ich tue.</p>
+<!-- RED THREAD -->
+<div class="red-thread">Genau diese Kombination &mdash; medizinisches Fachwissen, eigene Verletzungserfahrung und Leistungssportbackground &mdash; ist der rote Faden hinter allem, was ich tue.</div>
 
 <!-- WAS SIE BEKOMMEN -->
 <div class="checklist-section">
@@ -147,7 +143,7 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
   </div>
 </div>
 
-<!-- TRAININGSINHALTE (Beispiel) -->
+<!-- TRAININGSINHALTE -->
 <div class="inhalt-section">
   <div class="section-title">M&ouml;gliche Trainingsinhalte &mdash; Beispiel</div>
   <div class="inhalt-grid">
@@ -161,7 +157,7 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
     <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Atemtechnik &amp; Entspannung</span></div>
     <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Alltagsbewegungen verbessern</span></div>
   </div>
-  <div class="inhalt-note">Die genauen Inhalte sind frei w&auml;hlbar und werden gemeinsam im Erstgespr&auml;ch festgelegt &mdash; das Beispiel oben zeigt, was m&ouml;glich ist.</div>
+  <div class="inhalt-note">Die genauen Inhalte sind frei w&auml;hlbar &mdash; das Beispiel zeigt, was m&ouml;glich ist.</div>
 </div>
 
 <!-- WIE ES ABLÄUFT -->
@@ -199,13 +195,13 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
       <div class="price-amount">150</div>
       <div class="price-meta">
         <div class="price-per-month">pro Monat*</div>
-        <div class="price-per-hour">= 37,50 &euro; pro Stunde</div>
+        <div class="price-per-hour">= 37,50 &euro;&nbsp;/ Stunde</div>
       </div>
     </div>
     <div class="price-compare">Personal Trainer ohne medizinischen Hintergrund: 60&ndash;90&nbsp;&euro;&nbsp;/ Stunde. Hier: Fachwissen mit therapeutischem Hintergrund + pers&ouml;nliches Training + dauerhafte Begleitung.</div>
   </div>
-  <div class="price-footnote">* Nettobetrag. Steuerliche Behandlung (Kleinunternehmerregelung &sect;&nbsp;19 UStG oder Regelbesteuerung) auf Anfrage. Nicht steuerbefreit nach &sect;&nbsp;4 Nr.&nbsp;14 UStG.</div>
 </div>
+<div class="price-footnote">* Nettobetrag. Steuerliche Behandlung (Kleinunternehmerregelung &sect;&nbsp;19 UStG oder Regelbesteuerung) auf Anfrage. Nicht steuerbefreit nach &sect;&nbsp;4 Nr.&nbsp;14 UStG.</div>
 
 <!-- FAQ -->
 <div class="faq-section">
@@ -228,23 +224,15 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
       <p>Einfach anrufen oder eine Nachricht schicken &mdash; wir schauen gemeinsam, ob die Trainingsbegleitung zu Ihrer Situation passt. Kein Vertrag, kein Druck.</p>
     </div>
     <div class="cta-right">
-      <div class="contact-name">Nick Grausam</div>
-      <div class="contact-detail">0176 4268 5146</div>
-      <div class="contact-detail">info@physiotherapie-grausam.com</div>
+      <div class="cname">Nick Grausam</div>
+      <div class="cdetail">0176 4268 5146<br>info@physiotherapie-grausam.com</div>
     </div>
   </div>
 </div>
 
-<!-- LEGAL -->
-<div class="legal-box">
-  <p><strong>Rechtlicher Hinweis:</strong> Die angebotene Trainingsbegleitung ist eine pers&ouml;nliche Trainings- und Begleitungsleistung und stellt keine Heilbehandlung, keine Physiotherapie auf &auml;rztliche Verordnung und keinen Ersatz f&uuml;r &auml;rztliche oder physiotherapeutische Behandlung dar. Die Leistung wird auf eigene Initiative des Kunden erbracht. Bei akuten medizinischen Beschwerden wenden Sie sich bitte an einen Arzt.</p>
-  <p>Die Trainingsbegleitung f&auml;llt nicht unter die Steuerbefreiung nach &sect;&nbsp;4 Nr.&nbsp;14 UStG. Die steuerliche Behandlung wird auf Anfrage mitgeteilt.</p>
-</div>
-
-<!-- FOOTNOTE ONLY — kein doppelter Kontakt -->
-<div class="footer-block">
-  <p>** Ern&auml;hrungsempfehlungen basieren auf pers&ouml;nlicher Erfahrung und eigener Recherche &mdash; nicht auf einer Weiterbildung als Ern&auml;hrungsberater. Vollst&auml;ndig optional, auf ausdr&uuml;cklichen Wunsch verf&uuml;gbar.</p>
-</div>
+<!-- LEGAL + FOOTNOTE -->
+<p class="legal"><strong>Rechtlicher Hinweis:</strong> Die Trainingsbegleitung ist eine pers&ouml;nliche Trainingsleistung &mdash; keine Heilbehandlung, keine Physiotherapie auf Verordnung und kein Ersatz f&uuml;r &auml;rztliche Behandlung. Bei akuten medizinischen Beschwerden bitte zun&auml;chst einen Arzt aufsuchen. Nicht steuerbefreit nach &sect;&nbsp;4 Nr.&nbsp;14 UStG.</p>
+<p class="footnote">** Ern&auml;hrungsempfehlungen basieren auf pers&ouml;nlicher Erfahrung &mdash; kein Ersatz f&uuml;r ern&auml;hrungsmedizinische Fachberatung. Vollst&auml;ndig optional.</p>
 
 </body>
 </html>"""
@@ -258,7 +246,7 @@ def main():
     # Inject height via style attribute on the root svg element
     svg_scaled = svg.replace(
         'viewBox="0 0 226.8 66"',
-        'viewBox="0 0 226.8 66" style="width:31%;height:auto;display:block;"',
+        'viewBox="0 0 226.8 66" style="width:130pt;height:auto;display:block;"',
         1
     )
     html = TEMPLATE.replace('LOGO_PLACEHOLDER', svg_scaled)
