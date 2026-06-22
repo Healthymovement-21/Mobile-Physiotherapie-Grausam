@@ -696,6 +696,11 @@ nav .burger-lines span{background:#fff;}
 .rg-btn-primary{background:#111;color:#fff;}
 .rg-btn-outline{background:#fff;color:#111;border:1.5px solid #ddd;}
 @media(max-width:600px){.rg-row-2,.rg-row-3{grid-template-columns:1fr;}}
+.rg-psearch-wrap{position:relative;margin-bottom:12px;}
+.rg-presults{position:absolute;top:100%;left:0;right:0;background:#fff;border:1.5px solid #111;border-top:none;z-index:10;max-height:200px;overflow-y:auto;box-shadow:0 4px 16px rgba(0,0,0,.1);}
+.rg-pitem{padding:9px 12px;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:#111;border-bottom:1px solid #f0f0f0;}
+.rg-pitem:hover{background:#f5f5f5;}
+.rg-pimp-bar{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#f5f5f5;border-radius:2px;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:#555;}
 
 /* ── LEGAL ── */
 .legal{padding:72px 6%;max-width:760px;overflow-wrap:break-word;word-break:break-word;}
@@ -1968,6 +1973,20 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <div class="rg-modal-body">
 
         <div class="rg-sec">
+          <div class="rg-sec-title">Patient auswählen</div>
+          <div class="rg-psearch-wrap">
+            <div class="rg-field"><label>Nachname oder Vorname eingeben</label>
+              <input type="text" id="rg-psearch" placeholder="z. B. Müller" oninput="rgPSearch()" autocomplete="off">
+            </div>
+            <div id="rg-presults" class="rg-presults" style="display:none;"></div>
+          </div>
+          <div class="rg-pimp-bar" id="rg-pimp-bar">
+            <span id="rg-pcnt" style="flex:1;">Noch keine Patienten importiert.</span>
+            <button onclick="rgImportExcel()" style="background:#111;color:#fff;border:none;border-radius:2px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;white-space:nowrap;">Excel importieren</button>
+          </div>
+        </div>
+
+        <div class="rg-sec">
           <div class="rg-sec-title">Rechnungsdaten</div>
           <div class="rg-row rg-row-3">
             <div class="rg-field"><label>Rechnungs-Nr.</label><input type="text" id="rg-nr" placeholder="000001"></div>
@@ -2518,6 +2537,97 @@ const RG_ART={
   FK:{label:'Fahrtkostenpauschale',preis:10.00},
   S:{label:'Sonstige Leistung',preis:0}
 };
+function rgGetPatients(){try{return JSON.parse(localStorage.getItem('rg_patients')||'[]');}catch{return[];}}
+function rgSavePatients(arr){localStorage.setItem('rg_patients',JSON.stringify(arr));}
+function rgPSearch(){
+  const q=document.getElementById('rg-psearch').value.trim().toLowerCase();
+  const res=document.getElementById('rg-presults');
+  if(!q){res.style.display='none';return;}
+  const all=rgGetPatients();
+  const pts=all.filter(p=>(p.nachname||'').toLowerCase().includes(q)||(p.vorname||'').toLowerCase().includes(q));
+  if(!pts.length){res.style.display='none';return;}
+  res.innerHTML=pts.slice(0,8).map(p=>{
+    const idx=all.indexOf(p);
+    return`<div class="rg-pitem" onclick="rgSelectPatient(${idx})">${p.nachname}, ${p.vorname}${p.geburtsdatum?' · '+p.geburtsdatum:''}</div>`;
+  }).join('');
+  res.style.display='block';
+}
+function rgSelectPatient(idx){
+  const p=rgGetPatients()[idx];if(!p)return;
+  const S=(id,v)=>{const el=document.getElementById(id);if(el&&v!==undefined)el.value=v;};
+  S('rg-vorname',p.vorname);S('rg-nachname',p.nachname);
+  S('rg-strasse',p.adresse);S('rg-plzort',p.plzort);
+  if(p.anrede){const sel=document.getElementById('rg-anrede');if(sel)sel.value=p.anrede;}
+  document.getElementById('rg-psearch').value=p.nachname+', '+p.vorname;
+  document.getElementById('rg-presults').style.display='none';
+}
+function rgImportExcel(){
+  const inp=document.createElement('input');inp.type='file';inp.accept='.xlsx,.xls,.csv';
+  inp.onchange=e=>{
+    const file=e.target.files[0];if(!file)return;
+    const ext=file.name.split('.').pop().toLowerCase();
+    if(ext==='csv'){const r=new FileReader();r.onload=ev=>rgParseCSV(ev.target.result);r.readAsText(file,'utf-8');return;}
+    rgLoadXLSX(file);
+  };
+  inp.click();
+}
+function rgLoadXLSX(file){
+  if(window.XLSX){rgParseXLSX(file);return;}
+  const s=document.createElement('script');
+  s.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
+  s.onload=()=>rgParseXLSX(file);
+  document.head.appendChild(s);
+}
+function rgParseXLSX(file){
+  const r=new FileReader();
+  r.onload=e=>{
+    const wb=XLSX.read(new Uint8Array(e.target.result),{type:'array'});
+    const ws=wb.Sheets[wb.SheetNames[0]];
+    const rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+    let hdrRow=-1;
+    for(let i=0;i<rows.length;i++){
+      const r2=rows[i].map(c=>String(c).toLowerCase());
+      if(r2.some(c=>c.includes('nachname'))){hdrRow=i;break;}
+    }
+    if(hdrRow<0){alert('Spalte "Nachname" nicht gefunden.');return;}
+    const hdr=rows[hdrRow].map(c=>String(c).toLowerCase());
+    const ci=k=>hdr.findIndex(h=>h.includes(k));
+    const iN=ci('nachname'),iV=ci('vorname'),iG=ci('geburt'),iA=ci('adresse'),iPLZ=ci('plz');
+    const pts=[];
+    for(let i=hdrRow+1;i<rows.length;i++){
+      const row=rows[i];
+      const nn=String(row[iN]||'').trim();
+      if(!nn)continue;
+      pts.push({
+        nachname:nn,
+        vorname:String(row[iV]||'').trim(),
+        geburtsdatum:iG>=0?String(row[iG]||'').trim():'',
+        adresse:iA>=0?String(row[iA]||'').trim():'',
+        plzort:iPLZ>=0?String(row[iPLZ]||'').trim():'',
+        anrede:''
+      });
+    }
+    rgSavePatients(pts);
+    document.getElementById('rg-pcnt').textContent=pts.length+' Patienten geladen';
+    alert(pts.length+' Patienten importiert.');
+  };
+  r.readAsArrayBuffer(file);
+}
+function rgParseCSV(text){
+  const lines=text.split('\n').map(l=>l.split(';').map(c=>c.replace(/^"|"$/g,'').trim()));
+  const hdr=lines[0].map(c=>c.toLowerCase());
+  const ci=k=>hdr.findIndex(h=>h.includes(k));
+  const iN=ci('nachname'),iV=ci('vorname'),iG=ci('geburt'),iA=ci('adresse'),iPLZ=ci('plz');
+  const pts=[];
+  for(let i=1;i<lines.length;i++){
+    const row=lines[i];const nn=(row[iN]||'').trim();
+    if(!nn)continue;
+    pts.push({nachname:nn,vorname:(row[iV]||'').trim(),geburtsdatum:iG>=0?(row[iG]||'').trim():'',adresse:iA>=0?(row[iA]||'').trim():'',plzort:iPLZ>=0?(row[iPLZ]||'').trim():'',anrede:''});
+  }
+  rgSavePatients(pts);
+  document.getElementById('rg-pcnt').textContent=pts.length+' Patienten geladen';
+  alert(pts.length+' Patienten importiert.');
+}
 function rgOpen(){
   const t=new Date();
   const pad=n=>String(n).padStart(2,'0');
@@ -2526,6 +2636,8 @@ function rgOpen(){
   document.getElementById('rg-nr').value=String(last+1).padStart(6,'0');
   const tb=document.getElementById('rg-leistungen');
   if(!tb.rows.length){rgAddRow('KG',6,29.70);rgAddRow('FK',6,10.00);}
+  const cnt=rgGetPatients().length;
+  document.getElementById('rg-pcnt').textContent=cnt>0?cnt+' Patienten geladen':'Noch keine Patienten importiert.';
   document.getElementById('rg-overlay').classList.remove('hidden');
   document.body.style.overflow='hidden';
 }
@@ -2565,14 +2677,14 @@ function rgCalc(){
   });
   document.getElementById('rg-total').textContent=rgFmt(tot);
 }
-function rgFmt(v){return parseFloat(v).toFixed(2).replace('.',',')+' €';}
+function rgFmt(v){return parseFloat(v).toFixed(2).replace('.',',')+' €';}
 function rgDate(s){if(!s)return'';const[y,m,d]=s.split('-');return`${d}.${m}.${y}`;}
 function rgGenerate(){
   const G=id=>document.getElementById(id).value.trim();
   const nr=G('rg-nr'),datum=G('rg-datum'),zeitraum=G('rg-zeitraum');
   const vn=G('rg-vorname'),nn=G('rg-nachname'),str=G('rg-strasse'),plz=G('rg-plzort'),anr=G('rg-anrede');
   const arzt=G('rg-arzt'),vdat=G('rg-vdatum'),diag=G('rg-diagnose');
-  const termine=G('rg-termine').replace(/\n/g,', ').replace(/,\s*,/g,',');
+  const termine=G('rg-termine').replace(/\n/g,' · ').replace(/·\s*·/g,'·');
   let rows='',tot=0,pos=1;
   document.querySelectorAll('#rg-leistungen tr').forEach(tr=>{
     const sel=tr.querySelector('select');
@@ -2582,12 +2694,12 @@ function rgGenerate(){
     const lbl=info.label.replace('\n','<br>');
     const mg=parseFloat(ii[0].value)||0,pr=parseFloat(ii[1].value)||0,s=mg*pr;
     tot+=s;
-    rows+=`<tr><td style="padding:7px 10px;border-bottom:1px solid #f0f0f0;">${pos++}</td>
-      <td style="padding:7px 10px;border-bottom:1px solid #f0f0f0;">${lbl}</td>
-      <td style="padding:7px 10px;border-bottom:1px solid #f0f0f0;text-align:center;">${mg}</td>
-      <td style="padding:7px 10px;border-bottom:1px solid #f0f0f0;text-align:center;">Stk.</td>
-      <td style="padding:7px 10px;border-bottom:1px solid #f0f0f0;text-align:right;">${rgFmt(pr)}</td>
-      <td style="padding:7px 10px;border-bottom:1px solid #f0f0f0;text-align:right;font-weight:700;">${rgFmt(s)}</td></tr>`;
+    rows+=`<tr><td style="padding:5px 8px;border-bottom:1px solid #f0f0f0;">${pos++}</td>
+      <td style="padding:5px 8px;border-bottom:1px solid #f0f0f0;">${lbl}</td>
+      <td style="padding:5px 8px;border-bottom:1px solid #f0f0f0;text-align:center;">${mg}</td>
+      <td style="padding:5px 8px;border-bottom:1px solid #f0f0f0;text-align:center;">Stk.</td>
+      <td style="padding:5px 8px;border-bottom:1px solid #f0f0f0;text-align:right;">${rgFmt(pr)}</td>
+      <td style="padding:5px 8px;border-bottom:1px solid #f0f0f0;text-align:right;font-weight:700;">${rgFmt(s)}</td></tr>`;
   });
   localStorage.setItem('rg_last_nr',parseInt(nr)||0);
   const anrF=anr==='Frau'?'geehrte Frau':(anr==='Herr'?'geehrter Herr':'geehrte/r');
@@ -2595,40 +2707,42 @@ function rgGenerate(){
   w.document.write(`<!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
 <title>Rechnung ${nr} – ${nn}</title>
 <style>
-@page{size:A4;margin:22mm 20mm 22mm 20mm;}
+@page{size:A4;margin:15mm 15mm 15mm 15mm;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:10.5pt;color:#111;line-height:1.55;}
-.no-print{background:#f0f0f0;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;font-family:sans-serif;font-size:14px;gap:12px;}
-.print-btn{background:#111;color:#fff;border:none;padding:8px 20px;cursor:pointer;font-size:14px;font-weight:700;border-radius:2px;}
-.header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1.5pt solid #111;padding-bottom:12pt;margin-bottom:28pt;}
-.h-info{font-size:9pt;color:#555;line-height:1.7;}
-.rech-nr-block{text-align:right;}
-.rech-title{font-size:22pt;font-weight:700;letter-spacing:-0.5pt;}
-.addr-label{font-size:8pt;font-weight:700;letter-spacing:1.5pt;text-transform:uppercase;color:#888;margin-bottom:3pt;}
-.addr{font-size:11pt;line-height:1.6;}
-.meta td{padding:2pt 10pt 2pt 0;font-size:9.5pt;vertical-align:top;}
-.meta td:first-child{color:#888;font-size:9pt;white-space:nowrap;}
+body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:9pt;color:#111;line-height:1.45;}
+.no-print{background:#f0f0f0;padding:8px 16px;display:flex;align-items:center;justify-content:space-between;font-family:sans-serif;font-size:13px;gap:12px;}
+.print-btn{background:#111;color:#fff;border:none;padding:7px 18px;cursor:pointer;font-size:13px;font-weight:700;border-radius:2px;}
+.header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5pt solid #111;padding-bottom:8pt;margin-bottom:12pt;}
+.logo-wrap img{height:34pt;max-width:180pt;display:block;}
+.rech-title{font-size:20pt;font-weight:700;letter-spacing:-0.5pt;line-height:1;}
+.h-info{font-size:7.5pt;color:#666;line-height:1.5;margin-top:3pt;}
+.addr-label{font-size:7pt;font-weight:700;letter-spacing:1.5pt;text-transform:uppercase;color:#888;margin-bottom:2pt;}
+.addr{font-size:9.5pt;line-height:1.5;}
+.meta td{padding:1.5pt 8pt 1.5pt 0;font-size:8.5pt;vertical-align:top;}
+.meta td:first-child{color:#888;font-size:8pt;white-space:nowrap;}
 .meta td:last-child{font-weight:700;}
-.intro{font-size:10.5pt;line-height:1.65;margin:20pt 0 10pt;}
-.termine{font-size:10pt;color:#333;margin-bottom:14pt;line-height:1.6;}
-table.lt{width:100%;border-collapse:collapse;margin-bottom:14pt;}
+.intro{font-size:9pt;line-height:1.5;margin:8pt 0 5pt;}
+.termine{font-size:8.5pt;color:#333;margin-bottom:7pt;line-height:1.5;}
+table.lt{width:100%;border-collapse:collapse;margin-bottom:7pt;}
 table.lt thead tr{background:#111;color:#fff;}
-table.lt thead td{padding:7pt 10pt;font-size:9pt;font-weight:700;letter-spacing:.5pt;}
-.tot-wrap{display:flex;justify-content:flex-end;gap:24pt;padding:9pt 10pt;margin-bottom:20pt;}
-.tot-wrap.main{border-top:1.5pt solid #111;}
-.tot-lbl{font-size:10pt;color:#555;}
-.tot-val{font-size:12pt;font-weight:700;min-width:80pt;text-align:right;}
-.legal{font-size:8.5pt;color:#555;line-height:1.65;margin-bottom:16pt;}
-.ftr{border-top:.75pt solid #ccc;padding-top:10pt;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8pt;font-size:8pt;color:#555;line-height:1.7;}
+table.lt thead td{padding:5pt 8pt;font-size:8pt;font-weight:700;letter-spacing:.4pt;}
+.tot-wrap{display:flex;justify-content:flex-end;gap:20pt;padding:6pt 8pt;margin-bottom:8pt;border-top:1.5pt solid #111;}
+.tot-lbl{font-size:9.5pt;font-weight:700;}
+.tot-val{font-size:13pt;font-weight:700;min-width:70pt;text-align:right;}
+.legal{font-size:7.5pt;color:#555;line-height:1.55;margin-bottom:8pt;}
+.ftr{border-top:.75pt solid #ccc;padding-top:6pt;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8pt;font-size:7.5pt;color:#555;line-height:1.6;}
 .ftr-title{font-weight:700;color:#111;margin-bottom:1pt;}
 @media print{.no-print{display:none!important;} body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
 </style></head><body>
-<div class="no-print"><span>Rechnung Nr. ${nr} &ndash; ${vn} ${nn}</span><button class="print-btn" onclick="window.print()">&#x1F5A8; Drucken / Als PDF speichern</button></div>
+<div class="no-print"><span>Rechnung Nr. ${nr} &ndash; ${vn} ${nn}</span><button class="print-btn" onclick="window.print()">&#x1F5A8; Drucken / Als PDF speichern</button></div>
 <div class="header">
-  <div class="h-info"><strong>Mobile Physiotherapie Grausam</strong><br>Nick Grausam &middot; Physiotherapeut<br>Dornierstra&szlig;e 5 &middot; 69181 Leimen<br>Tel.: 0176 4268 5146 &middot; info@physiotherapie-grausam.com</div>
-  <div class="rech-nr-block"><div class="rech-title">RECHNUNG</div></div>
+  <div>
+    <div class="logo-wrap"><img src="https://www.physiotherapie-grausam.com/logo.svg" alt="Mobile Physiotherapie Grausam"></div>
+    <div class="h-info">Nick Grausam &middot; Physiotherapeut &middot; Dornierstra&szlig;e 5 &middot; 69181 Leimen &middot; Tel.: 0176 4268 5146 &middot; info@physiotherapie-grausam.com</div>
+  </div>
+  <div style="text-align:right;"><div class="rech-title">RECHNUNG</div></div>
 </div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16pt;margin-bottom:24pt;">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12pt;margin-bottom:10pt;">
   <div><div class="addr-label">Rechnung an</div>
     <div class="addr">${vn} ${nn}${str?'<br>'+str:''}${plz?'<br>'+plz:''}</div>
   </div>
@@ -2645,10 +2759,9 @@ table.lt thead td{padding:7pt 10pt;font-size:9pt;font-weight:700;letter-spacing:
   <td style="width:10%;text-align:center;">Menge</td><td style="width:10%;text-align:center;">Einheit</td>
   <td style="width:14%;text-align:right;">Einzelpreis</td><td style="width:14%;text-align:right;">Gesamt</td>
 </tr></thead><tbody>${rows}</tbody></table>
-<div class="tot-wrap main"><span class="tot-lbl">Summe netto</span><span class="tot-val">${rgFmt(tot)}</span></div>
-<div class="tot-wrap" style="margin-top:-16pt;"><span class="tot-lbl" style="font-weight:700;">Gesamtbetrag</span><span class="tot-val" style="font-size:14pt;">${rgFmt(tot)}</span></div>
-<p class="legal">Bitte begleichen Sie den Rechnungsbetrag innerhalb von 14 Tagen auf das unten genannte Konto.<br>
-Diese Rechnung enth&auml;lt steuerfreie Ums&auml;tze nach &sect; 4 Nr. 14 UStG. Die Behandlung erfolgte aufgrund &auml;rztlicher Verordnung und stellt eine heilkundige T&auml;tigkeit im Sinne des &sect; 4 Nr. 14 UStG dar &ndash; daher ist keine Umsatzsteuer enthalten und ausgewiesen.</p>
+<div class="tot-wrap"><span class="tot-lbl">Gesamtbetrag (steuerfrei)</span><span class="tot-val">${rgFmt(tot)}</span></div>
+<p class="legal">Bitte begleichen Sie den Rechnungsbetrag innerhalb von 14 Tagen auf das unten genannte Konto. &bull;
+Diese Rechnung enth&auml;lt steuerfreie Ums&auml;tze nach &sect; 4 Nr. 14 UStG. Die Behandlung erfolgte aufgrund &auml;rztlicher Verordnung und stellt eine heilkundige T&auml;tigkeit im Sinne des &sect; 4 Nr. 14 UStG dar &ndash; daher ist keine Umsatzsteuer enthalten und ausgewiesen.</p>
 <div class="ftr">
   <div><div class="ftr-title">Mobile Physiotherapie Grausam</div>Nick Grausam<br>Dornierstra&szlig;e 5 &middot; 69181 Leimen<br>Steuernummer: 32146/46402</div>
   <div><div class="ftr-title">Kontakt</div>Tel.: 0176 4268 5146<br>info@physiotherapie-grausam.com<br>www.physiotherapie-grausam.com</div>
