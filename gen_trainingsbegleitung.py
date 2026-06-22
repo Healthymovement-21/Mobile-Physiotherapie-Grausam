@@ -118,14 +118,14 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 <div class="expertise-section">
   <div class="section-title">Meine Expertise</div>
   <div class="expertise-grid">
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Kraft- &amp; Athletiktraining ab dem 13. Lebensjahr bei den Rhein-Neckar L&ouml;wen</span></div>
     <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Leistungshandball im NLZ der Rhein-Neckar L&ouml;wen (Handball-Bundesliga)</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Eigene Verletzungserfahrung &mdash; Training trotz und mit Einschr&auml;nkungen</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Physiotherapeut &mdash; klinische Berufserfahrung, medizinischer Blick auf Bewegung &amp; Rehabilitation</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Qualifikation: Krankengymnastik am Ger&auml;t (KGG)</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Kraft- &amp; Athletiktraining ab dem 13. Lebensjahr bei den Rhein-Neckar L&ouml;wen</span></div>
     <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Technikschulung durch Trainer aus dem olympischen Gewichtheben</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Eigene Verletzungserfahrung &mdash; Training trotz und mit Einschr&auml;nkungen</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Qualifikation: Krankengymnastik am Ger&auml;t (KGG)</span></div>
     <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Fortbildung beim langjährigen Physiotherapeuten der deutschen Fu&szlig;ballnationalmannschaft</span></div>
     <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Stetige Weiterbildung in Therapie, Training und Sport</span></div>
+    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Jung und motiviert &mdash; nah am Patienten, nah an der aktuellen Wissenschaft</span></div>
   </div>
 </div>
 
