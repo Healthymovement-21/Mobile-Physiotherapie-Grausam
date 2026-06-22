@@ -2882,19 +2882,17 @@ function rgGenerate(){
   const vat19=isCoaching&&taxType==='vat19';
   const vatAmt=vat19?tot*0.19:0;
   const totBrutto=tot+vatAmt;
+  const dueDate=(()=>{if(!datum)return'14 Tagen nach Erhalt';const d=new Date(datum);d.setDate(d.getDate()+14);return rgDate(d.toISOString().slice(0,10));})();
 
   // Legal footer text
   let legalText='';
   if(!isCoaching){
-    legalText=`<p>Die Behandlung erfolgte aufgrund &auml;rztlicher Verordnung und stellt eine heilkundige T&auml;tigkeit im Sinne des &sect;&nbsp;4 Nr.&nbsp;14 UStG dar &mdash; die Rechnung ist daher umsatzsteuerfrei.</p>
-    <p>Bitte begleichen Sie den Rechnungsbetrag innerhalb von 14 Tagen auf das unten genannte Konto.</p>`;
+    legalText=`<p>Die Behandlung erfolgte aufgrund &auml;rztlicher Verordnung und stellt eine heilkundige T&auml;tigkeit im Sinne des &sect;&nbsp;4 Nr.&nbsp;14 UStG dar &mdash; die Rechnung ist daher umsatzsteuerfrei.</p>`;
   } else if(taxType==='klein'){
-    legalText=`<p>Bitte begleichen Sie den Rechnungsbetrag innerhalb von 14 Tagen auf das unten genannte Konto.</p>
-    <p>Gem&auml;&szlig; &sect;&nbsp;19 Abs.&nbsp;1 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer berechnet und ausgewiesen.</p>
+    legalText=`<p>Gem&auml;&szlig; &sect;&nbsp;19 Abs.&nbsp;1 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer berechnet und ausgewiesen.</p>
     <p>Diese Leistung stellt keine Heilbehandlung im Sinne des &sect;&nbsp;4 Nr.&nbsp;14 UStG dar. Es handelt sich um eine pers&ouml;nliche Trainingsbegleitung.</p>`;
   } else {
-    legalText=`<p>Bitte begleichen Sie den Rechnungsbetrag innerhalb von 14 Tagen auf das unten genannte Konto.</p>
-    <p>Der ausgewiesene Nettobetrag zzgl. 19&nbsp;% Mehrwertsteuer.</p>
+    legalText=`<p>Der ausgewiesene Nettobetrag zzgl. 19&nbsp;% Mehrwertsteuer.</p>
     <p>Diese Leistung stellt keine Heilbehandlung im Sinne des &sect;&nbsp;4 Nr.&nbsp;14 UStG dar.</p>`;
   }
 
@@ -2911,26 +2909,36 @@ function rgGenerate(){
   // Total rows
   let totalRows='';
   if(vat19){
-    totalRows=`
-    <div style="display:flex;justify-content:flex-end;gap:20pt;padding:5pt 8pt;border-top:0.75pt solid #ccc;margin-bottom:3pt;">
-      <span style="font-size:9pt;color:#666;">Netto</span>
-      <span style="font-size:9pt;min-width:70pt;text-align:right;">${rgFmt(tot)}</span>
-    </div>
-    <div style="display:flex;justify-content:flex-end;gap:20pt;padding:5pt 8pt;margin-bottom:3pt;">
-      <span style="font-size:9pt;color:#666;">19 % MwSt.</span>
-      <span style="font-size:9pt;min-width:70pt;text-align:right;">${rgFmt(vatAmt)}</span>
-    </div>
-    <div style="display:flex;justify-content:flex-end;gap:20pt;padding:6pt 8pt;margin-bottom:8pt;border-top:1.5pt solid #111;">
-      <span style="font-size:9.5pt;font-weight:700;">Gesamtbetrag brutto</span>
-      <span style="font-size:17pt;font-weight:800;min-width:70pt;text-align:right;">${rgFmt(totBrutto)}</span>
-    </div>`;
+    totalRows=`<table style="margin-left:auto;margin-bottom:8pt;border-collapse:collapse;min-width:240pt;">
+      <tr><td style="padding:3pt 8pt;font-size:9pt;color:#555;border-top:.75pt solid #ccc;">Netto</td><td style="padding:3pt 8pt;font-size:9pt;text-align:right;white-space:nowrap;border-top:.75pt solid #ccc;">${rgFmt(tot)}</td></tr>
+      <tr><td style="padding:3pt 8pt;font-size:9pt;color:#555;">19&nbsp;% MwSt.</td><td style="padding:3pt 8pt;font-size:9pt;text-align:right;white-space:nowrap;">${rgFmt(vatAmt)}</td></tr>
+      <tr><td style="padding:5pt 8pt;font-size:9pt;font-weight:700;border-top:1.5pt solid #111;">Gesamtbetrag brutto</td><td style="padding:5pt 8pt;font-size:9pt;font-weight:700;text-align:right;white-space:nowrap;border-top:1.5pt solid #111;">${rgFmt(totBrutto)}</td></tr>
+    </table>`;
   } else {
     const label=isCoaching?'Endbetrag (zzgl. ggf. MwSt.)':'Endbetrag (umsatzsteuerfrei)';
-    totalRows=`<div style="display:flex;justify-content:flex-end;gap:20pt;padding:6pt 8pt;margin-bottom:8pt;border-top:1.5pt solid #111;">
-      <span style="font-size:9.5pt;font-weight:700;text-decoration:underline;">${label}</span>
-      <span style="font-size:17pt;font-weight:800;min-width:70pt;text-align:right;text-decoration:underline;">${rgFmt(tot)}</span>
-    </div>`;
+    totalRows=`<table style="margin-left:auto;margin-bottom:8pt;border-collapse:collapse;min-width:240pt;">
+      <tr><td style="padding:5pt 8pt;font-size:9pt;font-weight:700;text-decoration:underline;border-top:1.5pt solid #111;">${label}</td><td style="padding:5pt 8pt;font-size:9pt;font-weight:700;text-align:right;white-space:nowrap;text-decoration:underline;border-top:1.5pt solid #111;">${rgFmt(tot)}</td></tr>
+    </table>`;
   }
+  const qrAmt=(vat19?totBrutto:tot).toFixed(2);
+  const epcData=`BCD\n002\n1\nSCT\nDEFFDEFFXXX\nNick Grausam\nDE04500240249560193332\nEUR${qrAmt}\n\n\nRechnung Nr. ${nr}`;
+  const qrUrl=`https://api.qrserver.com/v1/create-qr-code/?size=80x80&ecc=M&data=${encodeURIComponent(epcData)}`;
+  const paymentSection=`<div style="margin:6pt 0 10pt;font-size:8pt;">
+    <p style="margin-bottom:6pt;">Bitte &uuml;berweisen Sie den Rechnungsbetrag bis sp&auml;testens <strong>${dueDate}</strong> auf folgendes Konto:</p>
+    <div style="display:flex;align-items:center;gap:14pt;">
+      <div style="flex-shrink:0;text-align:center;">
+        <img src="${qrUrl}" alt="GiroCode" style="width:72pt;height:72pt;display:block;border:1pt solid #eee;" onerror="this.parentElement.style.display='none'">
+        <span style="font-size:6.5pt;color:#888;display:block;margin-top:2pt;">Banking-App scannen</span>
+      </div>
+      <div style="line-height:1.7;">
+        <strong>Mobile Physiotherapie Grausam</strong><br>
+        Inhaber: Nick Grausam<br>
+        IBAN:&nbsp;DE04&nbsp;5002&nbsp;4024&nbsp;9560&nbsp;1933&nbsp;32<br>
+        BIC/SWIFT:&nbsp;DEFFDEFFXXX<br>
+        Verwendungszweck:&nbsp;<strong>Rechnung Nr.&nbsp;${nr}</strong>
+      </div>
+    </div>
+  </div>`;
 
   const w=window.open('','_blank');
   w.document.write(`<!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
@@ -2986,6 +2994,7 @@ table.lt tbody td{padding:4pt 7pt;font-size:8.5pt;border-bottom:.5pt solid #eee;
     ${zeitraum?`<tr><td>Leistungszeitraum</td><td>${zeitraum}</td></tr>`:''}
   </table></div>
 </div>
+<h2 style="font-size:14pt;font-weight:800;margin:10pt 0 8pt;border-bottom:1pt solid #e8e8e8;padding-bottom:6pt;">Rechnung Nr.&nbsp;${nr}</h2>
 <p class="intro">${introText}</p>
 ${prescLine}
 <table class="lt"><thead><tr>
@@ -2994,7 +3003,8 @@ ${prescLine}
   <td style="width:14%;text-align:right;">Preis</td><td style="width:14%;text-align:right;">Gesamt</td>
 </tr></thead><tbody>${rows}</tbody></table>
 ${totalRows}
-<p class="legal">${legalText}</p>
+${legalText?`<p class="legal">${legalText}</p>`:''}
+${paymentSection}
 <div class="ftr">
   <div><div class="ftr-title">Mobile Physiotherapie Grausam</div>Dornierstra&szlig;e 5<br>69181 Leimen<br>Deutschland</div>
   <div><div class="ftr-title">Gesch&auml;ftsf&uuml;hrer: Nick Grausam</div>Telefon: +49&nbsp;176&nbsp;4268&nbsp;5146<br>E-Mail: info@physiotherapie-grausam.com<br>Steuernummer: 32146/46402<br>USt.-IDNr.: 41259430760</div>
