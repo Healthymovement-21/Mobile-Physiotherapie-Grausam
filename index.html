@@ -2456,25 +2456,43 @@ function sendWeb3Form(e){
     if(err)allOk=false;
   });
   if(!allOk)return;
-  var name=document.getElementById('kf-name').value.trim();
-  document.getElementById('kf-subject').value='Terminanfrage – '+name;
   var btn=document.getElementById('kf-submit-btn');
   btn.disabled=true;btn.textContent='Wird gesendet …';
   document.getElementById('kf-success').style.display='none';
   document.getElementById('kf-error').style.display='none';
-  var formData=new FormData(document.getElementById('kontaktForm'));
-  fetch('https://api.web3forms.com/submit',{method:'POST',body:formData})
-    .then(function(r){return r.json();})
-    .then(function(data){
-      if(data.success){
-        document.getElementById('kf-success').style.display='block';
-        document.getElementById('kontaktForm').reset();
-      } else {
-        document.getElementById('kf-error').style.display='block';
-      }
-    })
-    .catch(function(){document.getElementById('kf-error').style.display='block';})
-    .finally(function(){btn.disabled=false;btn.textContent='Anfrage senden';});
+  var G=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
+  var payload={
+    access_key:'7103fafa-83d0-442d-8d47-9e763190d926',
+    subject:'Terminanfrage – '+G('kf-name'),
+    from_name:'Kontaktformular physiotherapie-grausam.com',
+    name:G('kf-name'),
+    email:G('kf-email'),
+    'Versicherungsart':G('kf-vers'),
+    'Wohnanschrift':G('kf-adresse'),
+    'Rezept vorhanden':G('kf-rezept'),
+    'Körpergebiet':G('kf-koerper'),
+    'Anliegen':G('kf-nachricht')
+  };
+  fetch('https://api.web3forms.com/submit',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(payload)
+  })
+  .then(function(r){return r.json();})
+  .then(function(data){
+    if(data.success){
+      document.getElementById('kf-success').style.display='block';
+      document.getElementById('kontaktForm').reset();
+    } else {
+      document.getElementById('kf-error').style.display='block';
+      console.error('Web3Forms error:',data);
+    }
+  })
+  .catch(function(err){
+    document.getElementById('kf-error').style.display='block';
+    console.error('Fetch error:',err);
+  })
+  .finally(function(){btn.disabled=false;btn.textContent='Anfrage senden';});
 }
 
 if(window.lucide) lucide.createIcons();
