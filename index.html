@@ -2734,8 +2734,9 @@ function rgHandleExcelFile(inp){
 function rgLoadXLSX(file){
   if(window.XLSX){rgParseXLSX(file);return;}
   const s=document.createElement('script');
-  s.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
+  s.src='js/xlsx.full.min.js';
   s.onload=()=>rgParseXLSX(file);
+  s.onerror=()=>alert('Excel-Bibliothek konnte nicht geladen werden.\nBitte Datei als CSV (Trennzeichen: Semikolon) speichern und erneut importieren.');
   document.head.appendChild(s);
 }
 function rgParseXLSX(file){
