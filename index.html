@@ -223,10 +223,10 @@ nav .burger-lines span{background:#fff;}
 .hero-link-secondary{color:rgba(255,255,255,.5);}
 .hero-link-secondary:hover{color:rgba(255,255,255,.8);}
 /* Scroll hint */
-.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;background:none;border:none;padding:8px 12px;animation:scrollBounce 2.2s ease-in-out infinite;}
-.scroll-hint span{font-family:'DM Sans',system-ui,sans-serif;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
-.scroll-hint svg{stroke:rgba(255,255,255,0.45);}
-@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(7px);}}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.3);border-radius:40px;padding:12px 22px 14px;animation:scrollBounce 2.2s ease-in-out infinite;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.scroll-hint span{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,0.9);}
+.scroll-hint svg{stroke:rgba(255,255,255,0.9);}
+@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
 /* PLZ floating card */
 .plz-band{margin:0 9% clamp(160px,25vh,240px);background:rgba(30,24,14,0.55);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,0.10);border-top:1px solid rgba(200,168,100,0.22);border-radius:2px;padding:18px 22px 20px;box-shadow:0 24px 64px rgba(0,0,0,0.60),0 6px 18px rgba(0,0,0,0.30),inset 0 1px 0 rgba(255,255,255,0.07);position:relative;z-index:2;}
 .plz-band-label{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:rgba(200,168,100,0.65);display:block;margin-bottom:11px;}
@@ -989,7 +989,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     </div>
     <button class="scroll-hint" onclick="var t=document.querySelector('.trust-strip');if(t)t.scrollIntoView({behavior:'smooth'});" aria-label="Nach unten scrollen">
       <span>Entdecken</span>
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 9l6 6 6-6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M6 10l7 7 7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <div class="plz-band">
       <span class="plz-band-label">Prüfen Sie Ihre Postleitzahl</span>
