@@ -2077,9 +2077,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             <div class="rg-field"><label>Straße &amp; Hausnummer</label><input type="text" id="rg-strasse" placeholder="Musterstraße 12"></div>
             <div class="rg-field"><label>PLZ &amp; Ort</label><input type="text" id="rg-plzort" placeholder="69181 Leimen"></div>
           </div>
-          <div class="rg-row rg-row-2">
+          <div class="rg-row rg-row-3">
             <div class="rg-field"><label>Anrede</label><select id="rg-anrede"><option value="Herr">Herr</option><option value="Frau">Frau</option><option value="">Keine</option></select></div>
-            <div class="rg-field"><label>E-Mail Patient</label><input type="email" id="rg-email" placeholder="patient@beispiel.de"></div>
+            <div class="rg-field"><label>E-Mail</label><input type="email" id="rg-email" placeholder="patient@beispiel.de"></div>
+            <div class="rg-field"><label>Telefon</label><input type="tel" id="rg-telefon" placeholder="0176 …"></div>
           </div>
         </div>
 
@@ -2629,7 +2630,7 @@ function rgPSearch(){
   if(!pts.length){res.style.display='none';return;}
   res.innerHTML=pts.slice(0,8).map(p=>{
     const idx=all.indexOf(p);
-    return`<div class="rg-pitem" onclick="rgSelectPatient(${idx})">${p.nachname}, ${p.vorname}${p.geburtsdatum?' · '+p.geburtsdatum:''}</div>`;
+    return`<div class="rg-pitem" onclick="rgSelectPatient(${idx})"><strong>${p.nachname}, ${p.vorname}</strong>${p.geburtsdatum?' · '+p.geburtsdatum:''}${p.versicherung?' · '+p.versicherung:''}</div>`;
   }).join('');
   res.style.display='block';
 }
@@ -2638,7 +2639,7 @@ function rgSelectPatient(idx){
   const S=(id,v)=>{const el=document.getElementById(id);if(el&&v!==undefined)el.value=v;};
   S('rg-vorname',p.vorname);S('rg-nachname',p.nachname);
   S('rg-strasse',p.adresse);S('rg-plzort',p.plzort);
-  S('rg-email',p.email||'');
+  S('rg-email',p.email||'');S('rg-telefon',p.telefon||'');
   if(p.anrede){const sel=document.getElementById('rg-anrede');if(sel)sel.value=p.anrede;}
   document.getElementById('rg-psearch').value=p.nachname+', '+p.vorname;
   document.getElementById('rg-presults').style.display='none';
@@ -2756,7 +2757,9 @@ function rgParseXLSX(file){
     if(hdrRow<0){alert('Spalte "Nachname" nicht gefunden.');return;}
     const hdr=rows[hdrRow].map(c=>String(c).toLowerCase());
     const ci=k=>hdr.findIndex(h=>h.includes(k));
-    const iN=ci('nachname'),iV=ci('vorname'),iG=ci('geburt'),iA=ci('adresse'),iPLZ=ci('plz'),iE=hdr.findIndex(h=>h.includes('mail'));
+    const iN=ci('nachname'),iV=ci('vorname'),iG=ci('geburt'),iA=ci('adresse'),iPLZ=ci('plz'),iE=hdr.findIndex(h=>h.includes('mail')),iT=ci('telefon'),iVers=ci('versicherung');
+    const xlDate=v=>{const n=parseFloat(v);if(!n||isNaN(n))return String(v||'').trim();const d=new Date(Math.round((n-25569)*86400*1000));return`${String(d.getUTCDate()).padStart(2,'0')}.${String(d.getUTCMonth()+1).padStart(2,'0')}.${d.getUTCFullYear()}`;};
+    const xlTel=v=>{const s=String(v||'').trim();const n=parseFloat(s);if(!isNaN(n)&&s.includes('E'))return String(Math.round(n));return s;};
     const pts=[];
     for(let i=hdrRow+1;i<rows.length;i++){
       const row=rows[i];
@@ -2765,10 +2768,12 @@ function rgParseXLSX(file){
       pts.push({
         nachname:nn,
         vorname:String(row[iV]||'').trim(),
-        geburtsdatum:iG>=0?String(row[iG]||'').trim():'',
+        geburtsdatum:iG>=0?xlDate(row[iG]):'',
         adresse:iA>=0?String(row[iA]||'').trim():'',
         plzort:iPLZ>=0?String(row[iPLZ]||'').trim():'',
         email:iE>=0?String(row[iE]||'').trim():'',
+        telefon:iT>=0?xlTel(row[iT]):'',
+        versicherung:iVers>=0?String(row[iVers]||'').trim():'',
         anrede:''
       });
     }
