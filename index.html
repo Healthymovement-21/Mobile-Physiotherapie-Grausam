@@ -1550,14 +1550,15 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             </div>
           </div>
           <div class="fg" id="fg-rezept-type" style="display:none;">
-            <label>Art des Rezepts<span class="fg-opt">Mehrfachauswahl möglich</span></label>
-            <div class="rezept-checks">
-              <label class="cb-label"><input type="checkbox" name="rezept-type" value="KG – Krankengymnastik"><span>KG – Krankengymnastik</span></label>
-              <label class="cb-label"><input type="checkbox" name="rezept-type" value="MT – Manuelle Therapie"><span>MT – Manuelle Therapie</span></label>
-              <label class="cb-label"><input type="checkbox" name="rezept-type" value="MLD – Manuelle Lymphdrainage"><span>MLD – Manuelle Lymphdrainage</span></label>
-              <label class="cb-label"><input type="checkbox" name="rezept-type" value="KMT – Klassische Massagetherapie"><span>KMT – Klassische Massagetherapie</span></label>
-              <label class="cb-label"><input type="checkbox" name="rezept-type" value="Sonstiges"><span>Sonstiges</span></label>
-            </div>
+            <label for="kf-rezept-type">Art des Rezepts<span class="fg-opt">Mehrfachauswahl möglich</span></label>
+            <select id="kf-rezept-type" name="rezept-type" multiple size="5" style="height:auto;padding:6px 10px;">
+              <option value="KG – Krankengymnastik">KG – Krankengymnastik</option>
+              <option value="MT – Manuelle Therapie">MT – Manuelle Therapie</option>
+              <option value="MLD – Manuelle Lymphdrainage">MLD – Manuelle Lymphdrainage</option>
+              <option value="KMT – Klassische Massagetherapie">KMT – Klassische Massagetherapie</option>
+              <option value="Sonstiges">Sonstiges</option>
+            </select>
+            <span class="fg-opt" style="display:block;margin-top:4px;">Tippen &amp; halten für mehrere Einträge</span>
           </div>
           <div class="fg" id="fg-nachricht">
             <label for="kf-nachricht">Anliegen<span class="fg-opt">freiwillig</span></label>
@@ -2461,7 +2462,8 @@ function sendWeb3Form(e){
   document.getElementById('kf-success').style.display='none';
   document.getElementById('kf-error').style.display='none';
   var G=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
-  var rezeptTypes=Array.from(document.querySelectorAll('input[name="rezept-type"]:checked')).map(function(c){return c.value;}).join(', ');
+  var rezeptEl=document.getElementById('kf-rezept-type');
+  var rezeptTypes=rezeptEl?Array.from(rezeptEl.selectedOptions).map(function(o){return o.value;}).join(', '):'';
   var details=[
     'Versicherungsart: '+G('kf-vers'),
     G('kf-adresse')?'Wohnanschrift: '+G('kf-adresse'):'',
