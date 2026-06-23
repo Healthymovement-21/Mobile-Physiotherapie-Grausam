@@ -537,6 +537,9 @@ nav .burger-lines span{background:#fff;}
 .fg-opt{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);margin-left:4px;}
 .consent{display:flex;gap:9px;align-items:flex-start;}
 .consent input{margin-top:3px;flex-shrink:0;}
+.rezept-checks{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
+.cb-label{display:flex;align-items:center;gap:8px;font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--text);cursor:pointer;}
+.cb-label input[type="checkbox"]{width:16px;height:16px;flex-shrink:0;accent-color:var(--accent);cursor:pointer;}
 .consent label{font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);line-height:1.5;}
 .consent a{color:var(--text);cursor:pointer;}
 .form-note{font-family:'DM Sans',system-ui,sans-serif;font-size:11.5px;color:var(--muted);padding:12px 16px;background:var(--sand-light);border-radius:0 var(--radius-sm) var(--radius-sm) 0;border-left:3px solid var(--accent);line-height:1.6;}
@@ -1547,15 +1550,14 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             </div>
           </div>
           <div class="fg" id="fg-rezept-type" style="display:none;">
-            <label for="kf-rezept-type">Art des Rezepts</label>
-            <select id="kf-rezept-type">
-              <option value="">Bitte wählen …</option>
-              <option value="KG – Krankengymnastik">KG – Krankengymnastik</option>
-              <option value="MT – Manuelle Therapie">MT – Manuelle Therapie</option>
-              <option value="MLD – Manuelle Lymphdrainage">MLD – Manuelle Lymphdrainage</option>
-              <option value="KMT – Klassische Massagetherapie">KMT – Klassische Massagetherapie</option>
-              <option value="Sonstiges">Sonstiges</option>
-            </select>
+            <label>Art des Rezepts<span class="fg-opt">Mehrfachauswahl möglich</span></label>
+            <div class="rezept-checks">
+              <label class="cb-label"><input type="checkbox" name="rezept-type" value="KG – Krankengymnastik"><span>KG – Krankengymnastik</span></label>
+              <label class="cb-label"><input type="checkbox" name="rezept-type" value="MT – Manuelle Therapie"><span>MT – Manuelle Therapie</span></label>
+              <label class="cb-label"><input type="checkbox" name="rezept-type" value="MLD – Manuelle Lymphdrainage"><span>MLD – Manuelle Lymphdrainage</span></label>
+              <label class="cb-label"><input type="checkbox" name="rezept-type" value="KMT – Klassische Massagetherapie"><span>KMT – Klassische Massagetherapie</span></label>
+              <label class="cb-label"><input type="checkbox" name="rezept-type" value="Sonstiges"><span>Sonstiges</span></label>
+            </div>
           </div>
           <div class="fg" id="fg-nachricht">
             <label for="kf-nachricht">Anliegen<span class="fg-opt">freiwillig</span></label>
@@ -2459,10 +2461,12 @@ function sendWeb3Form(e){
   document.getElementById('kf-success').style.display='none';
   document.getElementById('kf-error').style.display='none';
   var G=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
+  var rezeptTypes=Array.from(document.querySelectorAll('input[name="rezept-type"]:checked')).map(function(c){return c.value;}).join(', ');
   var details=[
     'Versicherungsart: '+G('kf-vers'),
     G('kf-adresse')?'Wohnanschrift: '+G('kf-adresse'):'',
     G('kf-rezept')?'Rezept vorhanden: '+G('kf-rezept'):'',
+    rezeptTypes?'Art des Rezepts: '+rezeptTypes:'',
     G('kf-koerper')?'Körpergebiet: '+G('kf-koerper'):'',
     G('kf-nachricht')?'Anliegen: '+G('kf-nachricht'):''
   ].filter(Boolean).join('\n');
