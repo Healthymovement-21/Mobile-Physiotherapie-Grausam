@@ -2077,8 +2077,9 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             <div class="rg-field"><label>Straße &amp; Hausnummer</label><input type="text" id="rg-strasse" placeholder="Musterstraße 12"></div>
             <div class="rg-field"><label>PLZ &amp; Ort</label><input type="text" id="rg-plzort" placeholder="69181 Leimen"></div>
           </div>
-          <div class="rg-row" style="grid-template-columns:140px;">
+          <div class="rg-row rg-row-2">
             <div class="rg-field"><label>Anrede</label><select id="rg-anrede"><option value="Herr">Herr</option><option value="Frau">Frau</option><option value="">Keine</option></select></div>
+            <div class="rg-field"><label>E-Mail Patient</label><input type="email" id="rg-email" placeholder="patient@beispiel.de"></div>
           </div>
         </div>
 
@@ -2121,6 +2122,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       </div>
       <div class="rg-footer">
         <button class="rg-btn rg-btn-outline" onclick="rgClose()">Abbrechen</button>
+        <button class="rg-btn rg-btn-outline" onclick="rgMailTo()" title="E-Mail mit Rechnungsdetails vorbereiten">✉ E-Mail</button>
         <button class="rg-btn rg-btn-primary" onclick="rgGenerate()">Rechnung erstellen →</button>
       </div>
     </div>
@@ -2636,6 +2638,7 @@ function rgSelectPatient(idx){
   const S=(id,v)=>{const el=document.getElementById(id);if(el&&v!==undefined)el.value=v;};
   S('rg-vorname',p.vorname);S('rg-nachname',p.nachname);
   S('rg-strasse',p.adresse);S('rg-plzort',p.plzort);
+  S('rg-email',p.email||'');
   if(p.anrede){const sel=document.getElementById('rg-anrede');if(sel)sel.value=p.anrede;}
   document.getElementById('rg-psearch').value=p.nachname+', '+p.vorname;
   document.getElementById('rg-presults').style.display='none';
@@ -2753,7 +2756,7 @@ function rgParseXLSX(file){
     if(hdrRow<0){alert('Spalte "Nachname" nicht gefunden.');return;}
     const hdr=rows[hdrRow].map(c=>String(c).toLowerCase());
     const ci=k=>hdr.findIndex(h=>h.includes(k));
-    const iN=ci('nachname'),iV=ci('vorname'),iG=ci('geburt'),iA=ci('adresse'),iPLZ=ci('plz');
+    const iN=ci('nachname'),iV=ci('vorname'),iG=ci('geburt'),iA=ci('adresse'),iPLZ=ci('plz'),iE=hdr.findIndex(h=>h.includes('mail'));
     const pts=[];
     for(let i=hdrRow+1;i<rows.length;i++){
       const row=rows[i];
@@ -2765,6 +2768,7 @@ function rgParseXLSX(file){
         geburtsdatum:iG>=0?String(row[iG]||'').trim():'',
         adresse:iA>=0?String(row[iA]||'').trim():'',
         plzort:iPLZ>=0?String(row[iPLZ]||'').trim():'',
+        email:iE>=0?String(row[iE]||'').trim():'',
         anrede:''
       });
     }
@@ -2778,12 +2782,12 @@ function rgParseCSV(text){
   const lines=text.split('\n').map(l=>l.split(';').map(c=>c.replace(/^"|"$/g,'').trim()));
   const hdr=lines[0].map(c=>c.toLowerCase());
   const ci=k=>hdr.findIndex(h=>h.includes(k));
-  const iN=ci('nachname'),iV=ci('vorname'),iG=ci('geburt'),iA=ci('adresse'),iPLZ=ci('plz');
+  const iN=ci('nachname'),iV=ci('vorname'),iG=ci('geburt'),iA=ci('adresse'),iPLZ=ci('plz'),iE=hdr.findIndex(h=>h.includes('mail'));
   const pts=[];
   for(let i=1;i<lines.length;i++){
     const row=lines[i];const nn=(row[iN]||'').trim();
     if(!nn)continue;
-    pts.push({nachname:nn,vorname:(row[iV]||'').trim(),geburtsdatum:iG>=0?(row[iG]||'').trim():'',adresse:iA>=0?(row[iA]||'').trim():'',plzort:iPLZ>=0?(row[iPLZ]||'').trim():'',anrede:''});
+    pts.push({nachname:nn,vorname:(row[iV]||'').trim(),geburtsdatum:iG>=0?(row[iG]||'').trim():'',adresse:iA>=0?(row[iA]||'').trim():'',plzort:iPLZ>=0?(row[iPLZ]||'').trim():'',email:iE>=0?(row[iE]||'').trim():'',anrede:''});
   }
   rgSavePatients(pts);
   document.getElementById('rg-pcnt').textContent=pts.length+' Patienten geladen';
@@ -2854,6 +2858,49 @@ function rgCalc(){
 }
 function rgFmt(v){return parseFloat(v).toFixed(2).replace('.',',')+' €';}
 function rgDate(s){if(!s)return'';const[y,m,d]=s.split('-');return`${d}.${m}.${y}`;}
+function rgMailTo(){
+  const G=id=>document.getElementById(id).value.trim();
+  const anrede=G('rg-anrede');
+  const vorname=G('rg-vorname');
+  const nachname=G('rg-nachname');
+  const email=G('rg-email');
+  const nr=G('rg-nr')||'______';
+  const datumRaw=G('rg-datum');
+  const datum=datumRaw?rgDate(datumRaw):'______';
+  // Fälligkeit: Datum + 14 Tage
+  let faellig='______';
+  if(datumRaw){const d=new Date(datumRaw);d.setDate(d.getDate()+14);faellig=`${String(d.getDate()).padStart(2,'0')}.${String(d.getMonth()+1).padStart(2,'0')}.${d.getFullYear()}`;}
+  // Betrag aus Tabelle berechnen
+  let tot=0;
+  document.querySelectorAll('#rg-leistungen tr').forEach(tr=>{
+    const anz=parseFloat((tr.querySelector('.rg-anz')||{value:'0'}).value)||0;
+    const ep=parseFloat((tr.querySelector('.rg-ep')||{value:'0'}).value)||0;
+    tot+=anz*ep;
+  });
+  const betrag=rgFmt(tot);
+  const anredeZeile=anrede?`Sehr geehrte${anrede==='Herr'?'r':''} ${anrede} ${nachname}`:`Sehr geehrte/r ${vorname} ${nachname}`;
+  const body=`${anredeZeile},
+
+anbei erhalten Sie Rechnung Nr. ${nr} vom ${datum} über ${betrag}.
+
+Bitte überweisen Sie den Betrag bis spätestens ${faellig} auf folgendes Konto:
+
+Mobile Physiotherapie Grausam
+IBAN: DE04 5002 4024 9560 1933 32
+BIC: DEFFDEFFXXX
+Verwendungszweck: Rechnung Nr. ${nr}
+
+Bei Rückfragen stehe ich Ihnen gerne zur Verfügung.
+
+Mit freundlichen Grüßen
+Nick Grausam
+Mobile Physiotherapie Grausam
+Dornierstraße 5 · 69181 Leimen
+Tel.: 0176 4268 5146
+info@physiotherapie-grausam.com`;
+  const subject=`Rechnung Nr. ${nr} – Mobile Physiotherapie Grausam`;
+  window.location.href=`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 function rgGenerate(){
   const G=id=>document.getElementById(id).value.trim();
   const invoiceType=(document.querySelector('input[name="rg-type"]:checked')||{value:'physio'}).value;
