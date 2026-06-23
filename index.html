@@ -2484,7 +2484,9 @@ function sendWeb3Form(e){
       document.getElementById('kf-success').style.display='block';
       document.getElementById('kontaktForm').reset();
     } else {
-      document.getElementById('kf-error').style.display='block';
+      var errEl=document.getElementById('kf-error');
+      errEl.innerHTML='Leider ist ein Fehler aufgetreten: <strong>'+(data.message||JSON.stringify(data))+'</strong><br>Oder schreiben Sie direkt an <a href="mailto:info@physiotherapie-grausam.com">info@physiotherapie-grausam.com</a>';
+      errEl.style.display='block';
       console.error('Web3Forms error:',data);
     }
   })
