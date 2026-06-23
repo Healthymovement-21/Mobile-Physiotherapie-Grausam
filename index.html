@@ -2461,17 +2461,21 @@ function sendWeb3Form(e){
   document.getElementById('kf-success').style.display='none';
   document.getElementById('kf-error').style.display='none';
   var G=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
+  var details=[
+    'Versicherungsart: '+G('kf-vers'),
+    G('kf-adresse')?'Wohnanschrift: '+G('kf-adresse'):'',
+    G('kf-rezept')?'Rezept vorhanden: '+G('kf-rezept'):'',
+    G('kf-koerper')?'Körpergebiet: '+G('kf-koerper'):'',
+    G('kf-nachricht')?'Anliegen: '+G('kf-nachricht'):''
+  ].filter(Boolean).join('\n');
   var payload={
     access_key:'7103fafa-83d0-442d-8d47-9e763190d926',
-    subject:'Terminanfrage – '+G('kf-name'),
-    from_name:'Kontaktformular physiotherapie-grausam.com',
+    subject:'Terminanfrage von '+G('kf-name'),
+    from_name:'Physiotherapie Grausam Webseite',
     name:G('kf-name'),
     email:G('kf-email'),
-    'Versicherungsart':G('kf-vers'),
-    'Wohnanschrift':G('kf-adresse'),
-    'Rezept vorhanden':G('kf-rezept'),
-    'Körpergebiet':G('kf-koerper'),
-    'Anliegen':G('kf-nachricht')
+    message:details||'Terminanfrage',
+    botcheck:false
   };
   fetch('https://api.web3forms.com/submit',{
     method:'POST',
