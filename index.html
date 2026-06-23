@@ -1888,6 +1888,45 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           </div>
         </div>
 
+        <!-- EINNAHMEN -->
+        <div class="portal-section" style="grid-column:1/-1;">
+          <div class="portal-section-title">Einnahmen &amp; Zahlungsstatus</div>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',system-ui,sans-serif;">
+              <thead><tr style="border-bottom:2px solid #111;">
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Nr.</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Patient</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Datum</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Fällig</th>
+                <th style="padding:8px 10px;text-align:right;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Betrag</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Status</th>
+              </tr></thead>
+              <tbody id="portal-einnahmen-body"></tbody>
+            </table>
+          </div>
+          <div id="portal-einnahmen-sum" style="margin-top:12px;padding:10px 12px;background:#f5f5f5;border-radius:2px;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;"></div>
+          <p style="font-size:11px;color:#aaa;margin-top:8px;font-family:'DM Sans',system-ui,sans-serif;">Status-Badge anklicken zum Umschalten · Wird automatisch beim Erstellen einer Rechnung befüllt</p>
+        </div>
+
+        <!-- FAHRTENBUCH -->
+        <div class="portal-section" style="grid-column:1/-1;">
+          <div class="portal-section-title">Fahrtenbuch (Steuer)</div>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',system-ui,sans-serif;">
+              <thead><tr style="border-bottom:2px solid #111;">
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Datum</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Patient</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Zieladresse</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Rechnung</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">km</th>
+              </tr></thead>
+              <tbody id="portal-fahrt-body"></tbody>
+            </table>
+          </div>
+          <div id="portal-fahrt-sum" style="margin-top:12px;padding:10px 12px;background:#f5f5f5;border-radius:2px;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;"></div>
+          <p style="font-size:11px;color:#aaa;margin-top:8px;font-family:'DM Sans',system-ui,sans-serif;">km-Feld direkt editierbar · 0,30 €/km steuerlich absetzbar · Eintrag wird automatisch beim Erstellen einer Rechnung erstellt</p>
+        </div>
+
         <!-- HANDOUTS -->
         <div class="portal-section" style="grid-column:1/-1;">
           <div class="portal-section-title">Übungsprogramm-Handouts · 9 Körperbereiche</div>
@@ -2477,7 +2516,7 @@ async function portalFaceIdLogin(){
     document.getElementById('portal-login').classList.add('hidden');
     document.getElementById('portal-dash').classList.remove('hidden');
     document.getElementById('portal-err').classList.add('hidden');
-    _portalDate();_updateFaceIdUI();
+    _portalDate();_updateFaceIdUI();portalRenderSections();
   }catch(e){
     if(e.name!=='NotAllowedError'){
       const err=document.getElementById('portal-err');
@@ -2545,7 +2584,7 @@ async function portalLogin(){
     document.getElementById('portal-login').classList.add('hidden');
     document.getElementById('portal-dash').classList.remove('hidden');
     err.classList.add('hidden');
-    _portalDate();_updateFaceIdUI();
+    _portalDate();_updateFaceIdUI();portalRenderSections();
   } else {
     const attempts=(parseInt(sessionStorage.getItem('portal_attempts'))||0)+1;
     sessionStorage.setItem('portal_attempts',attempts);
@@ -2578,7 +2617,7 @@ function _portalDate(){
   if(sessionStorage.getItem('portal_auth')==='1'){
     const lo=document.getElementById('portal-login');
     const da=document.getElementById('portal-dash');
-    if(lo&&da){lo.classList.add('hidden');da.classList.remove('hidden');_portalDate();_updateFaceIdUI();}
+    if(lo&&da){lo.classList.add('hidden');da.classList.remove('hidden');_portalDate();_updateFaceIdUI();portalRenderSections();}
   }
 })();
 
@@ -2906,6 +2945,79 @@ info@physiotherapie-grausam.com`;
   const subject=`Rechnung Nr. ${nr} – Mobile Physiotherapie Grausam`;
   window.location.href=`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
+function rgGetInvoices(){try{return JSON.parse(localStorage.getItem('rg_invoices')||'[]');}catch{return[];}}
+function rgGetFahrten(){try{return JSON.parse(localStorage.getItem('rg_fahrtenbuch')||'[]');}catch{return[];}}
+function rgSetInvoiceStatus(nr,status){
+  const inv=rgGetInvoices();
+  const i=inv.findIndex(x=>x.nr===nr);
+  if(i<0)return;
+  inv[i].status=status;
+  inv[i].bezahltAm=status==='bezahlt'?new Date().toLocaleDateString('de-DE'):'';
+  localStorage.setItem('rg_invoices',JSON.stringify(inv));
+  portalRenderSections();
+}
+function rgSaveFahrtKm(id,km){
+  const f=rgGetFahrten();
+  const i=f.findIndex(x=>x.id===id);
+  if(i<0)return;
+  f[i].km=km;
+  localStorage.setItem('rg_fahrtenbuch',JSON.stringify(f));
+}
+function rgDeleteInvoice(nr){
+  if(!confirm('Rechnung Nr. '+nr+' aus der Liste löschen?'))return;
+  localStorage.setItem('rg_invoices',JSON.stringify(rgGetInvoices().filter(x=>x.nr!==nr)));
+  localStorage.setItem('rg_fahrtenbuch',JSON.stringify(rgGetFahrten().filter(x=>x.rechnungNr!==nr)));
+  portalRenderSections();
+}
+function portalRenderSections(){
+  portalRenderEinnahmen();
+  portalRenderFahrtenbuch();
+}
+function portalRenderEinnahmen(){
+  const el=document.getElementById('portal-einnahmen-body');
+  if(!el)return;
+  const inv=rgGetInvoices().slice().reverse();
+  if(!inv.length){el.innerHTML='<tr><td colspan="6" style="padding:16px;text-align:center;color:#aaa;font-size:13px;">Noch keine Rechnungen erfasst.</td></tr>';
+    document.getElementById('portal-einnahmen-sum').textContent='';return;}
+  let sumBezahlt=0,sumAusstehend=0;
+  el.innerHTML=inv.map(r=>{
+    const bezahlt=r.status==='bezahlt';
+    if(bezahlt)sumBezahlt+=r.betrag; else sumAusstehend+=r.betrag;
+    const statusBadge=bezahlt
+      ?`<span onclick="rgSetInvoiceStatus('${r.nr}','ausstehend')" title="Klick: zurücksetzen" style="cursor:pointer;background:#d4edda;color:#155724;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;">✓ Bezahlt${r.bezahltAm?' · '+r.bezahltAm:''}</span>`
+      :`<span onclick="rgSetInvoiceStatus('${r.nr}','bezahlt')" title="Klick: als bezahlt markieren" style="cursor:pointer;background:#fff3cd;color:#856404;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;">⏳ Ausstehend</span>`;
+    return`<tr style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:9px 10px;font-size:13px;white-space:nowrap;">${r.nr}</td>
+      <td style="padding:9px 10px;font-size:13px;">${r.patient||''}</td>
+      <td style="padding:9px 10px;font-size:12px;color:#888;white-space:nowrap;">${r.datum?r.datum.split('-').reverse().join('.'):'—'}</td>
+      <td style="padding:9px 10px;font-size:12px;color:#888;white-space:nowrap;">${r.faelligDatum||'—'}</td>
+      <td style="padding:9px 10px;font-size:13px;font-weight:700;text-align:right;white-space:nowrap;">${r.betrag?(r.betrag).toFixed(2).replace('.',',')+' €':'—'}</td>
+      <td style="padding:9px 10px;white-space:nowrap;">${statusBadge} <button onclick="rgDeleteInvoice('${r.nr}')" title="Löschen" style="background:none;border:none;cursor:pointer;color:#ccc;font-size:13px;padding:0 4px;">✕</button></td>
+    </tr>`;
+  }).join('');
+  const fmt=v=>v.toFixed(2).replace('.',',')+' €';
+  document.getElementById('portal-einnahmen-sum').innerHTML=`<span style="color:#155724;font-weight:700;">Eingenommen: ${fmt(sumBezahlt)}</span> &nbsp;·&nbsp; <span style="color:#856404;">Ausstehend: ${fmt(sumAusstehend)}</span> &nbsp;·&nbsp; <span style="font-weight:700;">Gesamt: ${fmt(sumBezahlt+sumAusstehend)}</span>`;
+}
+function portalRenderFahrtenbuch(){
+  const el=document.getElementById('portal-fahrt-body');
+  if(!el)return;
+  const f=rgGetFahrten().slice().reverse();
+  if(!f.length){el.innerHTML='<tr><td colspan="5" style="padding:16px;text-align:center;color:#aaa;font-size:13px;">Noch keine Fahrten erfasst.</td></tr>';
+    document.getElementById('portal-fahrt-sum').textContent='';return;}
+  let totalKm=0;
+  el.innerHTML=f.map(r=>{
+    const km=parseFloat(r.km)||0;
+    totalKm+=km;
+    return`<tr style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:9px 10px;font-size:12px;color:#888;white-space:nowrap;">${r.datum?r.datum.split('-').reverse().join('.'):(r.datum||'—')}</td>
+      <td style="padding:9px 10px;font-size:13px;">${r.patient||''}</td>
+      <td style="padding:9px 10px;font-size:12px;color:#666;">${r.nach||''}</td>
+      <td style="padding:9px 10px;font-size:12px;color:#888;">${r.rechnungNr||''}</td>
+      <td style="padding:9px 10px;"><input type="number" value="${r.km||''}" placeholder="km" min="0" step="0.1" onchange="rgSaveFahrtKm(${r.id},this.value)" style="width:60px;border:1px solid #ddd;border-radius:2px;padding:4px 6px;font-size:13px;font-family:'DM Sans',system-ui,sans-serif;"></td>
+    </tr>`;
+  }).join('');
+  document.getElementById('portal-fahrt-sum').innerHTML=`<span style="font-weight:700;">Gesamt: ${totalKm.toFixed(1)} km</span> &nbsp;·&nbsp; <span style="color:#888;font-size:12px;">Steuerlich absetzbar: ${(totalKm*0.30).toFixed(2).replace('.',',')} € (0,30 €/km)</span>`;
+}
 function rgGenerate(){
   const G=id=>document.getElementById(id).value.trim();
   const invoiceType=(document.querySelector('input[name="rg-type"]:checked')||{value:'physio'}).value;
@@ -3078,6 +3190,20 @@ ${paymentSection}
 </div>
 </body></html>`);
   w.document.close();
+  // Save to Einnahmen + Fahrtenbuch
+  const _betrag=vat19?totBrutto:tot;
+  const _faelligRaw=(()=>{if(!datum)return'';const d=new Date(datum);d.setDate(d.getDate()+14);return d.toISOString().slice(0,10);})();
+  const _faelligFmt=_faelligRaw?_faelligRaw.split('-').reverse().join('.'):'';
+  const _invRecord={id:Date.now(),nr,datum,faelligDatum:_faelligFmt,patient:`${nn}, ${vn}`,adresse:str,plzort:plz,betrag:_betrag,status:'ausstehend',bezahltAm:'',typ:invoiceType};
+  const _invList=rgGetInvoices();
+  const _existing=_invList.findIndex(x=>x.nr===nr);
+  if(_existing>=0)_invList[_existing]=_invRecord; else _invList.push(_invRecord);
+  localStorage.setItem('rg_invoices',JSON.stringify(_invList));
+  const _fList=rgGetFahrten();
+  if(!_fList.some(x=>x.rechnungNr===nr)){
+    _fList.push({id:Date.now()+1,datum,patient:`${nn}, ${vn}`,nach:(str?str+', ':'')+plz,km:'',rechnungNr:nr});
+    localStorage.setItem('rg_fahrtenbuch',JSON.stringify(_fList));
+  }
 }
 
 // ── BARRIEREFREIHEITS-WIDGET ──
