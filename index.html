@@ -1905,7 +1905,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             </table>
           </div>
           <div id="portal-einnahmen-sum" style="margin-top:12px;padding:10px 12px;background:#f5f5f5;border-radius:2px;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;"></div>
-          <p style="font-size:11px;color:#aaa;margin-top:8px;font-family:'DM Sans',system-ui,sans-serif;">Status-Badge anklicken zum Umschalten · Wird automatisch beim Erstellen einer Rechnung befüllt</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:12px;">
+            <p style="font-size:11px;color:#aaa;margin:0;font-family:'DM Sans',system-ui,sans-serif;">Status-Badge anklicken zum Umschalten · Wird automatisch beim Erstellen einer Rechnung befüllt</p>
+            <button onclick="rgExportEAR()" style="background:#111;color:#fff;border:none;border-radius:2px;padding:8px 18px;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">↓ EAR Excel exportieren</button>
+          </div>
         </div>
 
         <!-- FAHRTENBUCH -->
@@ -3018,6 +3021,67 @@ function portalRenderFahrtenbuch(){
   }).join('');
   document.getElementById('portal-fahrt-sum').innerHTML=`<span style="font-weight:700;">Gesamt: ${totalKm.toFixed(1)} km</span> &nbsp;·&nbsp; <span style="color:#888;font-size:12px;">Steuerlich absetzbar: ${(totalKm*0.30).toFixed(2).replace('.',',')} € (0,30 €/km)</span>`;
 }
+function rgExportEAR(){
+  const doExport=()=>{
+    const inv=rgGetInvoices();
+    const fahrten=rgGetFahrten();
+    const wb=XLSX.utils.book_new();
+    const yr=new Date().getFullYear();
+
+    // ── Sheet 1: Einnahmen ──
+    let sumNetto=0,sumUst=0,anzahl=0;
+    const eRows=inv.map(r=>{
+      const netto=+(r.netto||r.betrag||0);
+      const ust=+(r.ust||0);
+      const brutto=+(r.betrag||0);
+      sumNetto+=netto; sumUst+=ust; anzahl++;
+      const datum=r.datum?r.datum.split('-').reverse().join('.'):'';
+      const leistung=r.typ==='coaching'?'Trainingsbegleitung':'Physiotherapie';
+      return[datum,r.patient||'',leistung,'','',netto||'',r.ustPct||0,ust||'',brutto||'','Überweisung','Rechnung Nr. '+r.nr];
+    });
+    const ws1Data=[
+      ['Mobile Physiotherapie Grausam  ·  Einnahmen'],
+      [],
+      ['Einnahmen gesamt:',+(sumNetto+sumUst).toFixed(2),'davon USt. (19%):',+sumUst.toFixed(2),anzahl+' Behandlungen'],
+      [],
+      ['Datum','Patient/in','Leistung','Versicherung','Dauer','Netto','USt%','USt','Brutto','Zahlungsart','Bemerkung'],
+      ...eRows
+    ];
+    const ws1=XLSX.utils.aoa_to_sheet(ws1Data);
+    ws1['!cols']=[{wch:12},{wch:22},{wch:20},{wch:14},{wch:8},{wch:10},{wch:6},{wch:10},{wch:10},{wch:14},{wch:20}];
+    XLSX.utils.book_append_sheet(wb,ws1,'Einnahmen');
+
+    // ── Sheet 2: Ausgaben (leer mit Header) ──
+    const ws2=XLSX.utils.aoa_to_sheet([
+      ['Mobile Physiotherapie Grausam  ·  Ausgaben'],
+      [],
+      ['Datum','Beschreibung','Kategorie','Netto','USt%','USt','Brutto','Beleg-Nr.']
+    ]);
+    ws2['!cols']=[{wch:12},{wch:28},{wch:18},{wch:10},{wch:6},{wch:10},{wch:10},{wch:10}];
+    XLSX.utils.book_append_sheet(wb,ws2,'Ausgaben');
+
+    // ── Sheet 3: Fahrtenbuch ──
+    const fRows=fahrten.map(r=>{
+      const datum=r.datum?r.datum.split('-').reverse().join('.'):(r.datum||'');
+      return[datum,r.patient||'','Dornierstraße 5, 69181 Leimen',r.nach||'',r.km||'','Physiotherapie Hausbesuch',r.rechnungNr||''];
+    });
+    const ws3=XLSX.utils.aoa_to_sheet([
+      ['Mobile Physiotherapie Grausam  ·  Fahrtenbuch '+yr],
+      [],
+      ['Datum','Patient/in','Von (Heimadresse)','Nach (Patientenadresse)','km','Zweck','Rechnung Nr.'],
+      ...fRows
+    ]);
+    ws3['!cols']=[{wch:12},{wch:22},{wch:28},{wch:28},{wch:8},{wch:26},{wch:14}];
+    XLSX.utils.book_append_sheet(wb,ws3,'Fahrtenbuch');
+
+    XLSX.writeFile(wb,'PhysiotherapieGrausam_EAR_'+yr+'.xlsx');
+  };
+  if(window.XLSX){doExport();return;}
+  const s=document.createElement('script');s.src='js/xlsx.full.min.js';
+  s.onload=doExport;
+  s.onerror=()=>alert('XLSX-Bibliothek konnte nicht geladen werden.');
+  document.head.appendChild(s);
+}
 function rgGenerate(){
   const G=id=>document.getElementById(id).value.trim();
   const invoiceType=(document.querySelector('input[name="rg-type"]:checked')||{value:'physio'}).value;
@@ -3194,7 +3258,8 @@ ${paymentSection}
   const _betrag=vat19?totBrutto:tot;
   const _faelligRaw=(()=>{if(!datum)return'';const d=new Date(datum);d.setDate(d.getDate()+14);return d.toISOString().slice(0,10);})();
   const _faelligFmt=_faelligRaw?_faelligRaw.split('-').reverse().join('.'):'';
-  const _invRecord={id:Date.now(),nr,datum,faelligDatum:_faelligFmt,patient:`${nn}, ${vn}`,adresse:str,plzort:plz,betrag:_betrag,status:'ausstehend',bezahltAm:'',typ:invoiceType};
+  const _netto=vat19?tot:_betrag,_ustAmt=vat19?+(tot*0.19).toFixed(2):0,_ustPct=vat19?19:0;
+  const _invRecord={id:Date.now(),nr,datum,faelligDatum:_faelligFmt,patient:`${nn}, ${vn}`,adresse:str,plzort:plz,betrag:_betrag,netto:_netto,ust:_ustAmt,ustPct:_ustPct,status:'ausstehend',bezahltAm:'',typ:invoiceType};
   const _invList=rgGetInvoices();
   const _existing=_invList.findIndex(x=>x.nr===nr);
   if(_existing>=0)_invList[_existing]=_invRecord; else _invList.push(_invRecord);
