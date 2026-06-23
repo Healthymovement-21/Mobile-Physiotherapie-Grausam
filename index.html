@@ -1483,13 +1483,13 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           <div class="form-row">
             <div class="fg" id="fg-name">
               <label for="kf-name">Name</label>
-              <input type="text" id="kf-name" placeholder="Vor- und Nachname" autocomplete="name">
+              <input type="text" id="kf-name" name="name" placeholder="Vor- und Nachname" autocomplete="name">
               <span class="fg-icon" aria-hidden="true"></span>
               <span class="fg-msg"></span>
             </div>
             <div class="fg" id="fg-vers">
               <label for="kf-vers">Versicherungsart</label>
-              <select id="kf-vers">
+              <select id="kf-vers" name="Versicherungsart">
                 <option value="">Bitte wählen …</option>
                 <option value="PKV">PKV</option>
                 <option value="Beihilfe">Beihilfe</option>
@@ -1500,18 +1500,18 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           </div>
           <div class="fg" id="fg-email">
             <label for="kf-email">E-Mail-Adresse</label>
-            <input type="email" id="kf-email" placeholder="ihre@email.de" autocomplete="email">
+            <input type="email" id="kf-email" name="email" placeholder="ihre@email.de" autocomplete="email">
             <span class="fg-icon" aria-hidden="true"></span>
             <span class="fg-msg"></span>
           </div>
           <div class="fg" id="fg-adresse">
             <label for="kf-adresse">Wohnanschrift<span class="fg-opt">freiwillig</span></label>
-            <input type="text" id="kf-adresse" placeholder="Straße, PLZ, Ort" autocomplete="street-address">
+            <input type="text" id="kf-adresse" name="Wohnanschrift" placeholder="Straße, PLZ, Ort" autocomplete="street-address">
           </div>
           <div class="form-row">
             <div class="fg" id="fg-rezept">
               <label for="kf-rezept">Rezept vorhanden?<span class="fg-opt">freiwillig</span></label>
-              <select id="kf-rezept" onchange="(function(v){var b=document.getElementById('fg-rezept-type');b.style.display=v==='Ja'?'block':'none';if(v!=='Ja')document.getElementById('kf-rezept-type').value='';}).call(this,this.value)">
+              <select id="kf-rezept" name="Rezept vorhanden" onchange="(function(v){var b=document.getElementById('fg-rezept-type');b.style.display=v==='Ja'?'block':'none';if(v!=='Ja')document.getElementById('kf-rezept-type').value='';}).call(this,this.value)">
                 <option value="">Bitte wählen …</option>
                 <option value="Ja">Ja</option>
                 <option value="Nein – Selbstzahler">Nein – Selbstzahler</option>
@@ -1520,7 +1520,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
             </div>
             <div class="fg" id="fg-koerper">
               <label for="kf-koerper">Körpergebiet<span class="fg-opt">freiwillig</span></label>
-              <select id="kf-koerper">
+              <select id="kf-koerper" name="Körpergebiet">
                 <option value="">Bitte wählen …</option>
                 <optgroup label="Wirbelsäule">
                   <option value="HWS – Halswirbelsäule / Nacken">HWS – Halswirbelsäule / Nacken</option>
@@ -1561,7 +1561,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           </div>
           <div class="fg" id="fg-nachricht">
             <label for="kf-nachricht">Anliegen<span class="fg-opt">freiwillig</span></label>
-            <textarea id="kf-nachricht" placeholder="Wunschtermin, weitere Informationen …" rows="2"></textarea>
+            <textarea id="kf-nachricht" name="Anliegen" placeholder="Wunschtermin, weitere Informationen …" rows="2"></textarea>
           </div>
           <div style="margin-top:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
             <button type="submit" class="btn" id="kf-submit-btn">Anfrage senden</button>
