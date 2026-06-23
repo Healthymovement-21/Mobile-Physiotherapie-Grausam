@@ -7,8 +7,6 @@
 <meta name="description" content="Physiotherapie direkt bei Ihnen zuhause. Für Privatpatienten &amp; Selbstzahler im Raum Heidelberg–Karlsruhe. Jetzt Termin anfragen.">
 <meta name="keywords" content="Mobile Physiotherapie, Hausbesuche, Heidelberg, Karlsruhe, Leimen, Privatpatient, Beihilfe, Geriatrie, Physiotherapeut">
 <meta name="author" content="Nick Grausam">
-<!-- ══ SECURITY HEADERS ══ -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://images.unsplash.com; connect-src 'self' https://api.web3forms.com; frame-src 'none'; base-uri 'self'; object-src 'none';">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
 <meta property="og:title" content="Mobile Physiotherapie Grausam | Hausbesuche Heidelberg–Karlsruhe">
@@ -2495,7 +2493,9 @@ function sendWeb3Form(e){
     }
   })
   .catch(function(err){
-    document.getElementById('kf-error').style.display='block';
+    var errEl=document.getElementById('kf-error');
+    errEl.innerHTML='Fehler: '+err.toString()+' – oder direkt an <a href="mailto:info@physiotherapie-grausam.com">info@physiotherapie-grausam.com</a>';
+    errEl.style.display='block';
     console.error('Fetch error:',err);
   })
   .finally(function(){btn.disabled=false;btn.textContent='Anfrage senden';});
