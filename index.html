@@ -2201,8 +2201,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       </div>
       <div class="rg-footer">
         <button class="rg-btn rg-btn-outline" onclick="rgClose()">Abbrechen</button>
-        <button class="rg-btn rg-btn-outline" onclick="rgMailTo()" title="E-Mail mit Rechnungsdetails vorbereiten">✉ E-Mail</button>
-        <button class="rg-btn rg-btn-primary" onclick="rgGenerate()">Rechnung erstellen →</button>
+        <button id="rg-mail-btn" class="rg-btn rg-btn-outline" onclick="rgMailTo()" style="display:none;">✉&nbsp;E-Mail versenden</button>
+        <button id="rg-gen-btn" class="rg-btn rg-btn-primary" onclick="rgGenerate()">Rechnung erstellen →</button>
       </div>
     </div>
   </div>
@@ -2929,6 +2929,11 @@ function rgOpen(){
 function rgClose(){
   document.getElementById('rg-overlay').classList.add('hidden');
   document.body.style.overflow='';
+  // Buttons zurücksetzen
+  const _genBtn=document.getElementById('rg-gen-btn');
+  const _mailBtn=document.getElementById('rg-mail-btn');
+  if(_genBtn){_genBtn.textContent='Rechnung erstellen →';_genBtn.classList.add('rg-btn-primary');_genBtn.classList.remove('rg-btn-outline');_genBtn.onclick=rgGenerate;}
+  if(_mailBtn){_mailBtn.style.display='none';_mailBtn.classList.add('rg-btn-outline');_mailBtn.classList.remove('rg-btn-primary');}
 }
 function rgAddRow(art='KG',menge=1,preis=null){
   const isCoachingMode=(document.querySelector('input[name="rg-type"]:checked')||{value:'physio'}).value==='coaching';
@@ -2973,13 +2978,15 @@ function rgMailTo(){
   const vorname=G('rg-vorname');
   const nachname=G('rg-nachname');
   const email=G('rg-email');
+  if(!email){alert('Bitte zuerst die E-Mail-Adresse des Patienten eingeben.');return;}
   const nr=G('rg-nr')||'______';
   const datumRaw=G('rg-datum');
   const datum=datumRaw?rgDate(datumRaw):'______';
-  // Fälligkeit: Datum + 14 Tage
+  const zeitraum=G('rg-zeitraum');
+  const vdatRaw=G('rg-vdatum');
+  const vdat=vdatRaw?rgDate(vdatRaw):'';
   let faellig='______';
   if(datumRaw){const d=new Date(datumRaw);d.setDate(d.getDate()+14);faellig=`${String(d.getDate()).padStart(2,'0')}.${String(d.getMonth()+1).padStart(2,'0')}.${d.getFullYear()}`;}
-  // Betrag aus Tabelle berechnen
   let tot=0;
   document.querySelectorAll('#rg-leistungen tr').forEach(tr=>{
     const anz=parseFloat((tr.querySelector('.rg-anz')||{value:'0'}).value)||0;
@@ -2987,26 +2994,33 @@ function rgMailTo(){
     tot+=anz*ep;
   });
   const betrag=rgFmt(tot);
-  const anredeZeile=anrede?`Sehr geehrte${anrede==='Herr'?'r':''} ${anrede} ${nachname}`:`Sehr geehrte/r ${vorname} ${nachname}`;
-  const body=`${anredeZeile},
+  const gruss=anrede==='Herr'?`Guten Tag Herr ${nachname},`:(anrede==='Frau'?`Guten Tag Frau ${nachname},`:`Guten Tag ${vorname} ${nachname},`);
+  const zeitraumTeil=zeitraum?` für den Zeitraum ${zeitraum}`:'';
+  const rezeptTeil=vdat?` aufgrund des Rezepts vom ${vdat}`:'';
+  const body=`${gruss}
 
-anbei erhalten Sie Rechnung Nr. ${nr} vom ${datum} über ${betrag}.
+anbei erhalten Sie Rechnung Nr. ${nr} vom ${datum}${zeitraumTeil}${rezeptTeil}.
 
-Bitte überweisen Sie den Betrag bis spätestens ${faellig} auf folgendes Konto:
+Rechnungsbetrag: ${betrag}
+Zahlungsziel: ${faellig}
 
-Mobile Physiotherapie Grausam
+Bitte überweisen Sie den Betrag unter Angabe des Verwendungszwecks auf folgendes Konto:
+
+Kontoinhaber: Nick Grausam
 IBAN: DE04 5002 4024 9560 1933 32
 BIC: DEFFDEFFXXX
 Verwendungszweck: Rechnung Nr. ${nr}
 
-Bei Rückfragen stehe ich Ihnen gerne zur Verfügung.
+Bei Fragen stehe ich Ihnen jederzeit gerne zur Verfügung.
 
 Mit freundlichen Grüßen
+
 Nick Grausam
 Mobile Physiotherapie Grausam
 Dornierstraße 5 · 69181 Leimen
-Tel.: 0176 4268 5146
-info@physiotherapie-grausam.com`;
+Telefon: 0176 4268 5146
+E-Mail: info@physiotherapie-grausam.com
+Steuernummer: 32/146/46410 · USt.-IdNr.: DE341696654`;
   const subject=`Rechnung Nr. ${nr} – Mobile Physiotherapie Grausam`;
   window.location.href=`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
@@ -3331,6 +3345,11 @@ ${paymentSection}
     _fList.push({id:Date.now()+1,datum,patient:`${nn}, ${vn}`,nach:(str?str+', ':'')+plz,km:'',rechnungNr:nr});
     localStorage.setItem('rg_fahrtenbuch',JSON.stringify(_fList));
   }
+  // Post-generation: E-Mail-Button als primäre Aktion zeigen
+  const _genBtn=document.getElementById('rg-gen-btn');
+  const _mailBtn=document.getElementById('rg-mail-btn');
+  if(_genBtn){_genBtn.textContent='↺ Neue Rechnung';_genBtn.classList.remove('rg-btn-primary');_genBtn.classList.add('rg-btn-outline');_genBtn.onclick=function(){rgClose();rgOpen();};}
+  if(_mailBtn){_mailBtn.style.display='';_mailBtn.classList.remove('rg-btn-outline');_mailBtn.classList.add('rg-btn-primary');}
 }
 
 // ── BARRIEREFREIHEITS-WIDGET ──
