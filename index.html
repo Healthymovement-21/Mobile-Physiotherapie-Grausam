@@ -3026,60 +3026,17 @@ Steuernummer: 32/146/46410 · USt.-IdNr.: DE341696654`;
 }
 function rgEmailWithPdf(){
   if(!window._rgPdfData){alert('Bitte zuerst die Rechnung erstellen.');return;}
-  const {nr,email,subject,emailBody,bodyHtml,styles}=window._rgPdfData;
+  const {email,subject,emailBody}=window._rgPdfData;
   if(!email){alert('Bitte E-Mail-Adresse des Patienten eingeben.');return;}
-  const btn=document.getElementById('rg-mail-btn');
-  // Render-Div vorbereiten
-  let rd=document.getElementById('rg-pdf-render');
-  if(!rd){rd=document.createElement('div');rd.id='rg-pdf-render';rd.style.cssText='position:fixed;left:-9999px;top:0;width:210mm;background:#fff;z-index:-1;';document.body.appendChild(rd);}
-  rd.innerHTML=`<style>${styles}.no-print{display:none!important;}</style>${bodyHtml}`;
-  if(btn){btn.textContent='⏳ PDF wird erstellt …';btn.disabled=true;}
-  function doSend(){
-    html2pdf().set({
-      margin:[14,15,14,15],
-      filename:`Rechnung_${nr}.pdf`,
-      html2canvas:{scale:2,useCORS:true,logging:false},
-      jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
-    }).from(rd).outputPdf('blob').then(function(blob){
-      rd.innerHTML='';
-      if(btn){btn.textContent='✉ E-Mail mit PDF versenden';btn.disabled=false;}
-      const file=new File([blob],`Rechnung_${nr}.pdf`,{type:'application/pdf'});
-      if(navigator.canShare&&navigator.canShare({files:[file]})){
-        // iOS/Android: Share-Sheet — PDF direkt anhängen
-        navigator.share({files:[file],title:subject}).catch(function(){});
-        // E-Mail-Text in Zwischenablage
-        if(navigator.clipboard)navigator.clipboard.writeText(emailBody).catch(function(){});
-      } else {
-        // Desktop: PDF herunterladen + Mailprogramm öffnen
-        const url=URL.createObjectURL(blob);
-        const a=document.createElement('a');a.href=url;a.download=`Rechnung_${nr}.pdf`;
-        document.body.appendChild(a);a.click();document.body.removeChild(a);
-        setTimeout(function(){
-          URL.revokeObjectURL(url);
-          window.location.href='mailto:'+email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(emailBody);
-        },600);
-      }
-    }).catch(function(){
-      rd.innerHTML='';
-      if(btn){btn.textContent='✉ E-Mail mit PDF versenden';btn.disabled=false;}
-      alert('PDF-Erstellung fehlgeschlagen.\nBitte "Drucken → Als PDF speichern" nutzen und die Datei manuell anhängen.');
-      window.location.href='mailto:'+email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(emailBody);
-    });
-  }
-  if(window.html2pdf){doSend();}
-  else{
-    const s=document.createElement('script');
-    s.src='https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-    s.onload=doSend;
-    s.onerror=function(){
-      rd.innerHTML='';
-      if(btn){btn.textContent='✉ E-Mail mit PDF versenden';btn.disabled=false;}
-      alert('PDF-Bibliothek nicht verfügbar.\nBitte "Drucken → Als PDF speichern" nutzen und die Datei manuell anhängen.');
-      window.location.href='mailto:'+email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(emailBody);
-    };
-    document.head.appendChild(s);
-  }
+  window.location.href='mailto:'+email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(emailBody);
 }
+// Listener: E-Mail öffnen wenn aus Rechnungs-Preview angefordert
+window.addEventListener('message',function(e){
+  if(e.data==='rg_openMail'&&window._rgPdfData){
+    const {email,subject,emailBody}=window._rgPdfData;
+    if(email)window.location.href='mailto:'+email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(emailBody);
+  }
+});
 function rgGetInvoices(){try{return JSON.parse(localStorage.getItem('rg_invoices')||'[]');}catch{return[];}}
 function rgGetFahrten(){try{return JSON.parse(localStorage.getItem('rg_fahrtenbuch')||'[]');}catch{return[];}}
 function rgSetInvoiceStatus(nr,status){
@@ -3350,7 +3307,7 @@ table.lt tbody td{padding:4pt 7pt;font-size:8.5pt;border-bottom:.5pt solid #eee;
   .ftr{margin-top:auto!important;}
 }
 </style></head><body>
-<div class="no-print"><span>Rechnung Nr. ${nr} &ndash; ${vn} ${nn}${isCoaching?' · Trainingsbegleitung':''}</span><button class="print-btn" onclick="window.print()">&#x1F5A8; Drucken / Als PDF speichern</button></div>
+<div class="no-print"><span>Rechnung Nr. ${nr} &ndash; ${vn} ${nn}${isCoaching?' · Trainingsbegleitung':''}</span><div style="display:flex;gap:8px;"><button class="print-btn" onclick="window.print()">&#x1F4BE; Als PDF speichern</button><button class="print-btn" style="background:#c8a450;" onclick="window.opener&&window.opener.postMessage('rg_openMail','*')">&#x2709; E-Mail &ouml;ffnen</button></div></div>
 <div class="header">
   <div>
     <div class="logo-wrap"><img src="https://www.physiotherapie-grausam.com/logo.svg" alt="Mobile Physiotherapie Grausam"></div>
@@ -3410,8 +3367,7 @@ ${paymentSection}
     nr, email:G('rg-email'),
     subject:`Rechnung Nr. ${nr} – Mobile Physiotherapie Grausam`,
     emailBody:`${_gruss}\n\nanbei erhalten Sie Rechnung Nr. ${nr} vom ${rgDate(datum)}${_zteil}${_vteil}.\n\nRechnungsbetrag: ${rgFmt(_tot)}\nZahlungsziel: ${dueDate}\n\nBitte überweisen Sie den Betrag unter Angabe des Verwendungszwecks auf folgendes Konto:\n\nKontoinhaber: Nick Grausam\nIBAN: DE04 5002 4024 9560 1933 32\nBIC: DEFFDEFFXXX\nVerwendungszweck: Rechnung Nr. ${nr}\n\nBei Fragen stehe ich Ihnen jederzeit gerne zur Verfügung.\n\nMit freundlichen Grüßen\n\nNick Grausam\nMobile Physiotherapie Grausam\nDornierstraße 5 · 69181 Leimen\nTelefon: 0176 4268 5146\nE-Mail: info@physiotherapie-grausam.com\nSteuernummer: 32/146/46410 · USt.-IdNr.: DE341696654`,
-    bodyHtml:w.document.body.innerHTML,
-    styles:Array.from(w.document.querySelectorAll('style')).map(s=>s.textContent).join('\n')
+    ready:true
   };
   // Post-generation: E-Mail-Button als primäre Aktion zeigen
   const _genBtn=document.getElementById('rg-gen-btn');
