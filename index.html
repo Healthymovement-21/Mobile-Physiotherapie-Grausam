@@ -2062,6 +2062,27 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
           </div>
         </div>
 
+        <!-- ONLINE-TERMINBUCHUNG -->
+        <div class="portal-section">
+          <div class="portal-section-title">Online-Terminbuchung</div>
+          <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;">Diesen Link an Patienten schicken — sie wählen selbst einen freien Termin, der direkt in deinem Kalender landet.</p>
+          <div style="display:flex;align-items:center;gap:8px;background:#f5f3ef;border:1px solid var(--border);border-radius:4px;padding:10px 12px;margin-bottom:12px;flex-wrap:wrap;">
+            <input id="cal-link" type="text" readonly value="https://cal.com/nick-grausam-bcckbk" style="flex:1;min-width:180px;border:none;background:transparent;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--text);outline:none;">
+            <button onclick="calCopyLink()" id="cal-copy-btn" style="background:#111;color:#fff;border:none;border-radius:2px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;white-space:nowrap;">Kopieren</button>
+          </div>
+          <div class="portal-link-list">
+            <a href="https://wa.me/?text=Hallo%2C%20gerne%20k%C3%B6nnen%20Sie%20hier%20einen%20Termin%20bei%20mir%20buchen%3A%20https%3A%2F%2Fcal.com%2Fnick-grausam-bcckbk" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="message-circle"></i></div>Per WhatsApp senden
+            </a>
+            <a href="mailto:?subject=Terminbuchung%20Physiotherapie%20Grausam&body=Guten%20Tag%2C%0A%0Agerne%20k%C3%B6nnen%20Sie%20hier%20bequem%20einen%20Termin%20bei%20mir%20buchen%3A%0Ahttps%3A%2F%2Fcal.com%2Fnick-grausam-bcckbk%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0ANick%20Grausam" class="p-link">
+              <div class="p-link-ico"><i data-lucide="mail"></i></div>Per E-Mail senden
+            </a>
+            <a href="https://cal.com/nick-grausam-bcckbk" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="external-link"></i></div>Buchungsseite ansehen
+            </a>
+          </div>
+        </div>
+
         <!-- TOOLS & KONTAKT -->
         <div class="portal-section">
           <div class="portal-section-title">Tools &amp; Kontakt</div>
@@ -3037,6 +3058,12 @@ window.addEventListener('message',function(e){
     if(email)window.location.href='mailto:'+email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(emailBody);
   }
 });
+function calCopyLink(){
+  var inp=document.getElementById('cal-link');var btn=document.getElementById('cal-copy-btn');
+  var done=function(){if(btn){var o=btn.textContent;btn.textContent='✓ Kopiert';btn.style.background='#2f7355';setTimeout(function(){btn.textContent=o;btn.style.background='#111';},1800);}};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(inp.value).then(done).catch(function(){inp.select();document.execCommand('copy');done();});}
+  else{inp.select();document.execCommand('copy');done();}
+}
 function rgGetInvoices(){try{return JSON.parse(localStorage.getItem('rg_invoices')||'[]');}catch{return[];}}
 function rgGetFahrten(){try{return JSON.parse(localStorage.getItem('rg_fahrtenbuch')||'[]');}catch{return[];}}
 function rgSetInvoiceStatus(nr,status){
