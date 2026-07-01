@@ -892,113 +892,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   </div>
 </div>
 
-<!-- Sticky Mobile CTA -->
-<div class="sticky-cta" id="stickyCta">
-  <div class="sticky-cta-text"><strong>Hausbesuch-Termin?</strong>Raum Heidelberg–Karlsruhe</div>
-  <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
-</div>
-
-<!-- ═══ PREIS-MODAL ═══ -->
-<!-- preis-modal removed --><div style="display:none" id="preisModal"><div>
-
-    <!-- KG -->
-    <div class="pm-block">
-      <span class="pm-kuerzel">KG</span>
-      <h2 class="pm-heading">Krankengymnastik</h2>
-      <p class="pm-desc">Häufigste Verordnung. Einzel-KG wird bei nahezu allen orthopädischen, neurologischen und internistischen Indikationen verordnet. Die Behandlungszeit beträgt mindestens 20 Minuten je Einheit.</p>
-      <div class="pm-example">
-        <div class="pm-example-title">Beispielrechnung — Hausbesuch mit KG-Rezept</div>
-        <table class="pm-table">
-          <thead><tr><th>Position</th><th>PKV / Beihilfe</th><th>Selbstzahler</th></tr></thead>
-          <tbody>
-            <tr><td>KG Einzel (3 × 20 Min.)</td><td>58,50 €</td><td>69,62 €</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px;">Typische Verordnung: „KG 6× / 10× · 20 Min." — PKV und Beihilfe erstatten je Sitzung (60 Min.) bis zu 58,50 €.</p>
-    </div>
-
-    <!-- MT -->
-    <div class="pm-block">
-      <span class="pm-kuerzel">MT</span>
-      <h2 class="pm-heading">Manuelle Therapie</h2>
-      <p class="pm-desc">Verordnet bei Funktionsstörungen der Wirbelsäule, Gelenke und Extremitäten. Mindestbehandlungszeit 30 Minuten. Erfordert Zusatzqualifikation (liegt vor).</p>
-      <div class="pm-example">
-        <div class="pm-example-title">Beispielrechnung — Hausbesuch mit MT-Rezept</div>
-        <table class="pm-table">
-          <thead><tr><th>Position</th><th>PKV / Beihilfe</th><th>Selbstzahler</th></tr></thead>
-          <tbody>
-            <tr><td>MT (2 × 30 Min.)</td><td>45,00 €</td><td>53,55 €</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px;">Typische Verordnung: „MT 6× · 30 Min." — Beihilfe-Höchstsatz je 60-Min.-Sitzung: 45,00 €.</p>
-    </div>
-
-    <!-- MLD -->
-    <div class="pm-block">
-      <span class="pm-kuerzel">MLD</span>
-      <h2 class="pm-heading">Manuelle Lymphdrainage</h2>
-      <p class="pm-desc">Bei Lymphödemen, postoperativen Schwellungen und Ödemen infolge chronischer Erkrankungen. Zwei Verordnungsgrößen: „groß" (30 Min.) und „Ganz" (45 Min.).</p>
-      <div class="pm-example">
-        <div class="pm-example-title">Beispielrechnung — Hausbesuch mit MLD-groß-Rezept</div>
-        <table class="pm-table">
-          <thead><tr><th>Position</th><th>PKV / Beihilfe</th><th>Selbstzahler</th></tr></thead>
-          <tbody>
-            <tr><td>MLD groß (2 × 30 Min.)</td><td>39,00 €</td><td>46,41 €</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="pm-example" style="margin-top:12px;">
-        <div class="pm-example-title">Beispielrechnung — Hausbesuch mit MLD-Ganz-Rezept</div>
-        <table class="pm-table">
-          <thead><tr><th>Position</th><th>PKV / Beihilfe</th><th>Selbstzahler</th></tr></thead>
-          <tbody>
-            <tr><td>MLD Ganz (1 × 45 Min.)</td><td>29,20 €</td><td>34,75 €</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- KMT -->
-    <div class="pm-block">
-      <span class="pm-kuerzel">KMT</span>
-      <h2 class="pm-heading">Klassische Massagetherapie</h2>
-      <p class="pm-desc">Bei muskulären Verspannungen, Durchblutungsstörungen und als ergänzende Maßnahme. <strong>Hinweis:</strong> Die Beihilfefähigkeit der KMT ist indikationsabhängig — bitte vorab mit der Beihilfestelle klären.</p>
-      <div class="pm-example">
-        <div class="pm-example-title">Beispielrechnung — Hausbesuch mit KMT-Rezept</div>
-        <table class="pm-table">
-          <thead><tr><th>Position</th><th>PKV / Beihilfe*</th><th>Selbstzahler</th></tr></thead>
-          <tbody>
-            <tr><td>KMT (2 × 25 Min.)</td><td>35,00 €</td><td>41,65 €</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px;">* Beihilfefähigkeit der KMT ist nicht immer gegeben — abhängig von Diagnose und Beihilfestelle.</p>
-    </div>
-
-    <!-- Allgemeine Hinweise -->
-    <div class="pm-block">
-      <h2 class="pm-heading">Allgemeine Hinweise zur Abrechnung</h2>
-      <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
-        <div style="padding:16px 18px;border-left:3px solid var(--gold);background:#fdfcf9;">
-          <strong style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;display:block;margin-bottom:6px;">Orientierungsrahmen</strong>
-          <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Die Preise orientieren sich an den GebüTh (Gebührenübersicht für Therapeuten) und den beihilfefähigen Höchstbeträgen gemäß Beihilfeverordnung BW / BhV Bund. PKV und Beihilfe erstatten in der Regel bis zu diesen Beträgen — eine Differenz über den Höchstbetrag hinaus trägt der Patient selbst.</p>
-        </div>
-        <div style="padding:16px 18px;border-left:3px solid var(--accent);background:var(--accent-light);">
-          <strong style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;display:block;margin-bottom:6px;">Honorarvereinbarung</strong>
-          <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Vor der ersten Behandlung wird der Preis schriftlich vereinbart. Die Rechnung weist Leistungsart (KG, MT, MLD …) und Hausbesuch als separate Positionen aus. Bitte klären Sie Ihren persönlichen Erstattungsumfang vorab mit Ihrer Versicherung oder Beihilfestelle.</p>
-        </div>
-        <div style="padding:16px 18px;background:#f5f5f5;">
-          <strong style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;display:block;margin-bottom:6px;">Umsatzsteuer</strong>
-          <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Heilbehandlungen mit ärztlicher Verordnung sind nach § 4 Nr. 14 UStG von der Umsatzsteuer befreit (netto = brutto). Behandlungen ohne Rezept (Selbstzahler) unterliegen 19 % MwSt.</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
 <!-- ═══ START ═══ -->
 <div class="page active" id="home">
   <div class="hero">
@@ -1013,7 +906,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <p class="hero-sub">Physiotherapie mit Zeit und Ruhe – direkt bei Ihnen zuhause. Tätig in ausgewählten Orten zwischen Heidelberg und Karlsruhe.</p>
       <div class="hero-btns">
         <button class="hero-link hero-link-primary" onclick="show('kontakt')">Termin anfragen</button>
-        <button class="hero-link hero-link-secondary" onclick="show('leistungen')">Leistungen</button>
       </div>
     </div>
     <button class="scroll-hint" onclick="var t=document.querySelector('.trust-strip');if(t)t.scrollIntoView({behavior:'smooth'});" aria-label="Nach unten scrollen">
@@ -2632,23 +2524,6 @@ document.querySelectorAll('.card,.dok-card,.ablauf-step,.preis-card,.ueber-det,.
     card.addEventListener('mouseleave',function(){card.style.transform='';});
   }
   document.querySelectorAll('.mehr-card').forEach(bind);
-})();
-
-// ── STICKY MOBILE CTA ──
-(function(){
-  var bar=document.getElementById('stickyCta');
-  if(!bar)return;
-  var hidden=['kontakt','portal','impressum','datenschutz','agb','cookie-policy'];
-  function upd(){
-    var act=document.querySelector('.page.active');
-    var id=act?act.id:'home';
-    if(hidden.indexOf(id)<0 && window.scrollY>480) bar.classList.add('show');
-    else bar.classList.remove('show');
-  }
-  window.addEventListener('scroll',upd,{passive:true});
-  window.addEventListener('resize',upd,{passive:true});
-  document.addEventListener('click',function(){setTimeout(upd,80);});
-  upd();
 })();
 
 // ── CLICKJACKING PROTECTION ──
