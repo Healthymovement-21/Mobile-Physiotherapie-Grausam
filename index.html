@@ -325,6 +325,8 @@ nav .burger-lines span{background:#fff;}
 @media(min-width:900px){.leist-section{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}.leist-section>div:nth-child(2){position:sticky;top:110px;}}
 
 /* ── PAGE CTA ── */
+/* Frosted-Glass-Panel (wirkt über dunklen Hintergründen) */
+.glass-card{background:linear-gradient(180deg,rgba(255,255,255,0.10) 0%,rgba(255,255,255,0.03) 45%,rgba(255,255,255,0.015) 100%);-webkit-backdrop-filter:blur(18px) saturate(1.2);backdrop-filter:blur(18px) saturate(1.2);border:1px solid rgba(255,255,255,0.12);border-top:1px solid rgba(255,255,255,0.22);border-radius:var(--radius-card);box-shadow:0 22px 50px -22px rgba(0,0,0,0.55),inset 0 1px 0 rgba(255,255,255,0.10);}
 .page-cta{background:radial-gradient(ellipse 70% 50% at 80% 8%,rgba(189,152,42,.14) 0%,transparent 55%),radial-gradient(ellipse 95% 75% at 10% 96%,rgba(47,115,85,.20) 0%,transparent 55%),linear-gradient(160deg,#20190f 0%,#14120d 52%,#181e16 100%);padding:72px 9%;text-align:center;border-top:1px solid rgba(255,255,255,0.08);}
 .page-cta-eye{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:0.75;display:block;margin-bottom:16px;}
 .page-cta-title{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(20px,3vw,30px);font-weight:700;letter-spacing:-0.8px;color:#f0ebe0;margin-bottom:10px;}
@@ -972,28 +974,28 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   </div>
 
   <!-- ── KOSTEN & BEIHILFE ── -->
-  <div class="sec">
-    <span class="eyebrow" style="display:block;margin-bottom:12px;">Kosten &amp; Erstattung</span>
-    <h2 class="sec-title" style="margin-bottom:10px;">Was kostet mich das?</h2>
-    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:32px;max-width:580px;">Alles wird vorab schriftlich vereinbart — je nachdem, wie Sie versichert sind. Eine Abrechnung mit gesetzlichen Krankenkassen (GKV) ist nicht möglich.</p>
+  <div class="sec" style="background:radial-gradient(ellipse 70% 50% at 82% 6%,rgba(189,152,42,.13) 0%,transparent 55%),radial-gradient(ellipse 95% 75% at 8% 96%,rgba(47,115,85,.20) 0%,transparent 55%),linear-gradient(160deg,#20190f 0%,#14120d 52%,#181e16 100%);border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);">
+    <span class="eyebrow" style="display:block;margin-bottom:12px;color:var(--gold);">Kosten &amp; Erstattung</span>
+    <h2 class="sec-title" style="margin-bottom:10px;color:#fff;">Was kostet mich das?</h2>
+    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:rgba(255,255,255,0.72);line-height:1.7;margin-bottom:32px;max-width:580px;">Alles wird vorab schriftlich vereinbart — je nachdem, wie Sie versichert sind. Eine Abrechnung mit gesetzlichen Krankenkassen (GKV) ist nicht möglich.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
-      <div style="border:1px solid var(--border);border-radius:var(--radius-card);background:var(--sand-light);padding:26px 24px;box-shadow:var(--elev-card);">
-        <i data-lucide="shield-check" style="width:24px;height:24px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;color:var(--text);margin:12px 0 8px;">Privatpatienten</div>
-        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Sie erhalten eine Rechnung und reichen diese bei Ihrer privaten Krankenversicherung ein. Die Erstattung ist tarifabhängig.</p>
+      <div class="glass-card" style="padding:26px 24px;">
+        <i data-lucide="shield-check" style="width:24px;height:24px;stroke:#6fbf9a;stroke-width:1.6;fill:none;"></i>
+        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;color:#fff;margin:12px 0 8px;">Privatpatienten</div>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:rgba(255,255,255,0.72);line-height:1.7;margin:0;">Sie erhalten eine Rechnung und reichen diese bei Ihrer privaten Krankenversicherung ein. Die Erstattung ist tarifabhängig.</p>
       </div>
-      <div style="border:1px solid var(--border);border-radius:var(--radius-card);background:var(--sand-light);padding:26px 24px;box-shadow:var(--elev-card);">
-        <i data-lucide="landmark" style="width:24px;height:24px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;color:var(--text);margin:12px 0 8px;">Beamte mit Beihilfe</div>
-        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Die Vergütung richtet sich nach der Beihilfe-Gebührenübersicht (Anlage&nbsp;9 BBhV). Die Rechnung reichen Sie bei Ihrer Beihilfestelle und ggf. Ihrer Restkostenversicherung ein.</p>
+      <div class="glass-card" style="padding:26px 24px;">
+        <i data-lucide="landmark" style="width:24px;height:24px;stroke:#6fbf9a;stroke-width:1.6;fill:none;"></i>
+        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;color:#fff;margin:12px 0 8px;">Beamte mit Beihilfe</div>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:rgba(255,255,255,0.72);line-height:1.7;margin:0;">Die Vergütung richtet sich nach der Beihilfe-Gebührenübersicht (Anlage&nbsp;9 BBhV). Die Rechnung reichen Sie bei Ihrer Beihilfestelle und ggf. Ihrer Restkostenversicherung ein.</p>
       </div>
-      <div style="border:1px solid var(--border);border-radius:var(--radius-card);background:var(--sand-light);padding:26px 24px;box-shadow:var(--elev-card);">
-        <i data-lucide="wallet" style="width:24px;height:24px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;color:var(--text);margin:12px 0 8px;">Selbstzahler</div>
-        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Kein Rezept nötig. Feste, transparente Preise ab 45&nbsp;€ — Sie wählen zwischen 30, 45 und 60 Minuten.</p>
+      <div class="glass-card" style="padding:26px 24px;">
+        <i data-lucide="wallet" style="width:24px;height:24px;stroke:#6fbf9a;stroke-width:1.6;fill:none;"></i>
+        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;color:#fff;margin:12px 0 8px;">Selbstzahler</div>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:rgba(255,255,255,0.72);line-height:1.7;margin:0;">Kein Rezept nötig. Feste, transparente Preise ab 45&nbsp;€ — Sie wählen zwischen 30, 45 und 60 Minuten.</p>
       </div>
     </div>
-    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin-top:24px;max-width:580px;">Den genauen Erstattungsumfang klären wir gerne gemeinsam. <a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')" style="margin-top:0;">Alle Preise &amp; Details ansehen →</a></p>
+    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:rgba(255,255,255,0.72);line-height:1.7;margin-top:24px;max-width:580px;">Den genauen Erstattungsumfang klären wir gerne gemeinsam. <a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')" style="margin-top:0;color:#fff;">Alle Preise &amp; Details ansehen →</a></p>
   </div>
 
   <!-- ── MEINE PATIENTEN ── -->
