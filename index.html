@@ -1848,6 +1848,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
       <div class="portal-sections">
 
+        <!-- COCKPIT -->
+        <div class="portal-section" style="grid-column:1/-1;">
+          <div class="portal-section-title">Cockpit · Überblick</div>
+          <div id="portal-cockpit" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;"></div>
+        </div>
+
         <!-- RECHNUNGSGENERATOR -->
         <div class="portal-section" style="grid-column:1/-1;background:#111;border-color:#111;">
           <div class="portal-section-title" style="color:rgba(255,255,255,.4);">Rechnungsgenerator</div>
@@ -3107,8 +3113,41 @@ function rgDeleteInvoice(nr){
   portalRenderSections();
 }
 function portalRenderSections(){
+  portalRenderCockpit();
   portalRenderEinnahmen();
   portalRenderFahrtenbuch();
+}
+function portalRenderCockpit(){
+  const el=document.getElementById('portal-cockpit');
+  if(!el)return;
+  const inv=rgGetInvoices();
+  const fahrten=rgGetFahrten();
+  const now=new Date();
+  const ym=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  let monatEin=0,offen=0,offenCount=0,eingGesamt=0;
+  inv.forEach(r=>{
+    const b=+(r.betrag||0);
+    const bezahlt=r.status==='bezahlt';
+    if(bezahlt){eingGesamt+=b; if((r.bezahltAm||r.datum||'').length){const d=(r.datum||'');if(d.slice(0,7)===ym)monatEin+=b;}}
+    else{offen+=b;offenCount++;}
+  });
+  // Einnahmen diesen Monat: über Rechnungsdatum (egal ob bezahlt) – aussagekräftiger fürs Monatsgefühl
+  let monatRg=0,monatCount=0;
+  inv.forEach(r=>{if((r.datum||'').slice(0,7)===ym){monatRg+=+(r.betrag||0);monatCount++;}});
+  let totalKm=0;fahrten.forEach(r=>totalKm+=parseFloat(r.km)||0);
+  const fmt=v=>v.toFixed(2).replace('.',',')+' €';
+  const monName=now.toLocaleDateString('de-DE',{month:'long',year:'numeric'});
+  const cards=[
+    {label:'Umsatz '+monName,val:fmt(monatRg),sub:monatCount+' Rechnung'+(monatCount===1?'':'en'),bg:'#111',fg:'#fff',sfg:'rgba(255,255,255,.55)'},
+    {label:'Offen / Ausstehend',val:fmt(offen),sub:offenCount+' Rechnung'+(offenCount===1?'':'en'),bg:offen>0?'#fff3cd':'#f5f5f5',fg:offen>0?'#856404':'#888',sfg:offen>0?'#a07d1a':'#aaa'},
+    {label:'Eingenommen gesamt',val:fmt(eingGesamt),sub:'bezahlte Rechnungen',bg:'#d4edda',fg:'#155724',sfg:'#2a7a3a'},
+    {label:'Fahrten gesamt',val:totalKm.toFixed(1)+' km',sub:'absetzbar: '+fmt(totalKm*0.30),bg:'#f5f5f5',fg:'#111',sfg:'#888'}
+  ];
+  el.innerHTML=cards.map(c=>`<div style="background:${c.bg};border-radius:6px;padding:14px 16px;">
+    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:${c.sfg};margin-bottom:7px;">${c.label}</div>
+    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:21px;font-weight:700;color:${c.fg};line-height:1;">${c.val}</div>
+    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:${c.sfg};margin-top:6px;">${c.sub}</div>
+  </div>`).join('');
 }
 function portalRenderEinnahmen(){
   const el=document.getElementById('portal-einnahmen-body');
