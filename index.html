@@ -2153,6 +2153,10 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
               <input type="radio" name="rg-type" value="coaching" id="rg-type-coaching" onchange="rgTypeChange()">
               Trainingsbegleitung / Coaching
             </label>
+            <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:13px;color:#333;font-family:'DM Sans',system-ui,sans-serif;">
+              <input type="radio" name="rg-type" value="selbst" id="rg-type-selbst" onchange="rgTypeChange()">
+              Selbstzahler (Preis frei · USt. wählbar)
+            </label>
           </div>
           <div id="rg-tax-panel" style="display:none;margin-top:10px;padding:10px 12px;background:#fff8f0;border-left:3px solid #e87722;">
             <p style="font-size:11px;color:#888;margin-bottom:8px;font-family:'DM Sans',system-ui,sans-serif;">Steuerliche Behandlung – bitte mit Steuerberater abstimmen:</p>
@@ -2940,14 +2944,19 @@ function rgParseCSV(text){
   alert(pts.length+' Patienten importiert.');
 }
 function rgTypeChange(){
-  const isCoaching=document.querySelector('input[name="rg-type"]:checked').value==='coaching';
-  document.getElementById('rg-tax-panel').style.display=isCoaching?'block':'none';
+  const type=(document.querySelector('input[name="rg-type"]:checked')||{value:'physio'}).value;
+  const isCoaching=type==='coaching';
+  const isSelbst=type==='selbst';
+  document.getElementById('rg-tax-panel').style.display=(isCoaching||isSelbst)?'block':'none';
   document.getElementById('rg-coaching-pricetag').style.display=isCoaching?'flex':'none';
   document.getElementById('rg-sec-verordnung').style.display=isCoaching?'none':'block';
   document.getElementById('rg-sec-termine').style.display=isCoaching?'none':'block';
   if(isCoaching){
     document.getElementById('rg-leistungen').innerHTML='';
     rgAddRow('COACHING',1,150);
+  } else if(isSelbst){
+    document.getElementById('rg-leistungen').innerHTML='';
+    rgAddRow('S',1,0);
   }
 }
 function rgOpen(){
@@ -3208,7 +3217,7 @@ function rgExportEAR(){
       const brutto=+(r.betrag||0);
       sumNetto+=netto; sumUst+=ust; anzahl++;
       const datum=r.datum?r.datum.split('-').reverse().join('.'):'';
-      const leistung=r.typ==='coaching'?'Trainingsbegleitung':'Physiotherapie';
+      const leistung=r.typ==='coaching'?'Trainingsbegleitung':(r.typ==='selbst'?'Selbstzahler':'Physiotherapie');
       return[datum,r.patient||'',leistung,'','',netto||'',r.ustPct||0,ust||'',brutto||'','Überweisung','Rechnung Nr. '+r.nr];
     });
     const ws1Data=[
@@ -3259,6 +3268,7 @@ function rgGenerate(){
   const invoiceType=(document.querySelector('input[name="rg-type"]:checked')||{value:'physio'}).value;
   const taxType=(document.querySelector('input[name="rg-taxtype"]:checked')||{value:'klein'}).value;
   const isCoaching=invoiceType==='coaching';
+  const isSelbst=invoiceType==='selbst';
   const nr=G('rg-nr'),datum=G('rg-datum'),zeitraum=G('rg-zeitraum');
   const vn=G('rg-vorname'),nn=G('rg-nachname'),str=G('rg-strasse'),plz=G('rg-plzort'),anr=G('rg-anrede');
   const arzt=G('rg-arzt'),vdat=G('rg-vdatum'),diag=G('rg-diagnose');
@@ -3281,21 +3291,21 @@ function rgGenerate(){
   });
   localStorage.setItem('rg_last_nr',parseInt(nr)||0);
   const anrF=anr==='Frau'?'geehrte Frau':(anr==='Herr'?'geehrter Herr':'geehrte/r');
-  const vat19=isCoaching&&taxType==='vat19';
+  const vat19=(isCoaching||isSelbst)&&taxType==='vat19';
   const vatAmt=vat19?tot*0.19:0;
   const totBrutto=tot+vatAmt;
   const dueDate=(()=>{if(!datum)return'14 Tagen nach Erhalt';const d=new Date(datum);d.setDate(d.getDate()+14);return rgDate(d.toISOString().slice(0,10));})();
 
   // Legal footer text
   let legalText='';
-  if(!isCoaching){
+  if(!isCoaching&&!isSelbst){
     legalText=`<p>Die Behandlung erfolgte aufgrund &auml;rztlicher Verordnung und stellt eine heilkundige T&auml;tigkeit im Sinne des &sect;&nbsp;4 Nr.&nbsp;14 UStG dar &mdash; die Rechnung ist daher umsatzsteuerfrei.</p>`;
-  } else if(taxType==='klein'){
-    legalText=`<p>Gem&auml;&szlig; &sect;&nbsp;19 Abs.&nbsp;1 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer berechnet und ausgewiesen.</p>
-    <p>Diese Leistung stellt keine Heilbehandlung im Sinne des &sect;&nbsp;4 Nr.&nbsp;14 UStG dar. Es handelt sich um eine pers&ouml;nliche Trainingsbegleitung.</p>`;
-  } else {
+  } else if(vat19){
     legalText=`<p>Der ausgewiesene Nettobetrag zzgl. 19&nbsp;% Mehrwertsteuer.</p>
     <p>Diese Leistung stellt keine Heilbehandlung im Sinne des &sect;&nbsp;4 Nr.&nbsp;14 UStG dar.</p>`;
+  } else {
+    legalText=`<p>Gem&auml;&szlig; &sect;&nbsp;19 Abs.&nbsp;1 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer berechnet und ausgewiesen.</p>`;
+    if(isCoaching)legalText+=`<p>Diese Leistung stellt keine Heilbehandlung im Sinne des &sect;&nbsp;4 Nr.&nbsp;14 UStG dar. Es handelt sich um eine pers&ouml;nliche Trainingsbegleitung.</p>`;
   }
 
   // Intro text
