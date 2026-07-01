@@ -325,7 +325,7 @@ nav .burger-lines span{background:#fff;}
 @media(min-width:900px){.leist-section{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}.leist-section>div:nth-child(2){position:sticky;top:110px;}}
 
 /* ── PAGE CTA ── */
-.page-cta{background:radial-gradient(ellipse 120% 80% at 70% 50%,rgba(167,147,124,.10) 0%,transparent 60%),linear-gradient(155deg,#1d1a14 0%,#17140f 55%,#1a1710 100%);padding:72px 9%;text-align:center;border-top:1px solid rgba(200,168,100,0.15);}
+.page-cta{background:linear-gradient(180deg,rgba(255,255,255,0.07) 0%,transparent 22%),radial-gradient(ellipse 80% 55% at 22% 0%,rgba(47,115,85,0.30) 0%,transparent 55%),linear-gradient(135deg,#262220 0%,#203029 100%);padding:72px 9%;text-align:center;border-top:3px solid var(--accent);}
 .page-cta-eye{font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:0.75;display:block;margin-bottom:16px;}
 .page-cta-title{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(20px,3vw,30px);font-weight:700;letter-spacing:-0.8px;color:#f0ebe0;margin-bottom:10px;}
 .page-cta-sub{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:28px;line-height:1.65;}
@@ -395,7 +395,7 @@ nav .burger-lines span{background:#fff;}
 .zg-item:last-child{border-bottom:none;}
 
 /* ── ABLAUF – Dark Section ── */
-.dark-sec{background:radial-gradient(ellipse 120% 80% at 70% 50%,rgba(167,147,124,.10) 0%,transparent 60%),linear-gradient(155deg,#1d1a14 0%,#17140f 55%,#1a1710 100%);padding:84px 9%;border-bottom:1px solid rgba(255,255,255,.07);}
+.dark-sec{background:radial-gradient(ellipse 85% 42% at 50% 92%,rgba(189,152,42,.13) 0%,transparent 70%),radial-gradient(ellipse 145% 78% at 38% 36%,rgba(200,163,105,.32) 0%,transparent 58%),radial-gradient(ellipse 72% 58% at 4% 64%,rgba(167,147,124,.18) 0%,transparent 52%),radial-gradient(ellipse 48% 62% at 94% 8%,rgba(203,185,163,.14) 0%,transparent 48%),linear-gradient(158deg,#2a2118 0%,#1e1609 52%,#241d0f 100%);padding:84px 9%;border-bottom:1px solid rgba(255,255,255,.07);}
 .dark-sec .eyebrow{color:var(--gold);opacity:0.75;}
 .dark-sec .sec-title{color:#fff;}
 .dark-sec .sec-title::after{background:rgba(200,168,100,0.35);}
@@ -481,7 +481,7 @@ nav .burger-lines span{background:#fff;}
 .coaching-incl ul li::before{content:"✓";font-weight:700;color:var(--text);flex-shrink:0;}
 .coaching-pdf-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--text);text-decoration:none;margin-bottom:28px;opacity:0.7;}
 .coaching-pdf-link:hover{opacity:1;}
-.coaching-price-block{background:linear-gradient(135deg,#262220 0%,#203029 100%);color:#fff;padding:28px 32px;display:grid;grid-template-columns:auto 1fr;gap:52px;align-items:center;border-left:4px solid var(--accent);border-radius:6px;}
+.coaching-price-block{background:linear-gradient(180deg,rgba(255,255,255,0.08) 0%,transparent 22%),linear-gradient(135deg,#262220 0%,#203029 100%);color:#fff;padding:28px 32px;display:grid;grid-template-columns:auto 1fr;gap:52px;align-items:center;border-left:4px solid var(--accent);border-radius:6px;}
 .cpb-label{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px;}
 .cpb-price{font-size:46px;font-weight:700;letter-spacing:-2px;line-height:1;margin-bottom:4px;}
 .cpb-per-h{font-size:12.5px;color:rgba(255,255,255,0.6);}
@@ -929,6 +929,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="trust-item reveal"><i data-lucide="award" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>Ausgebildet an der BG Klinik Ludwigshafen</div>
     <div class="trust-item reveal"><i data-lucide="shield" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>Berufshaftpflicht versichert</div>
     <div class="trust-item reveal"><i data-lucide="lock" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>DSGVO-konform</div>
+    <div class="trust-item reveal"><i data-lucide="clock" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>Erreichbar: Mo–Mi &amp; Fr ab 17 Uhr · Sa &amp; So</div>
   </div>
 
   <!-- ── ANGEBOT-SEKTION (ein starker Bild-Block, echtes Foto) ── -->
@@ -948,15 +949,12 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   <div class="philosophie-sec">
     <span class="phil-label">Meine Philosophie</span>
     <p class="phil-statement">Ursache finden.<br>Funktion stärken.<br>Nachhaltig bewegen.</p>
-    <p class="phil-text">Schmerz ist ein Signal — nicht die Diagnose. Ich behandle nicht nur Symptome, sondern suche nach den Ursachen und begleite Sie, bis Bewegung sich wieder natürlich anfühlt.</p>
-    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;font-weight:700;color:var(--text);line-height:1.55;margin-top:24px;padding-top:24px;border-top:1px solid var(--border);max-width:600px;">Viele Beschwerden verschwinden nicht durch mehr Behandlung — sondern durch die richtige Begleitung danach.</p>
   </div>
 
   <div class="sec" style="padding-top:52px;padding-bottom:52px;border-top:1px solid var(--border);">
     <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:20px;">Warum mobile Privattherapie</p>
     <ul style="list-style:none;display:flex;flex-direction:column;gap:13px;max-width:640px;">
       <li style="font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:500;color:var(--text);display:flex;align-items:baseline;gap:12px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">—</span>Behandlung bei Ihnen zuhause — kein Weg, keine Wartezeiten</li>
-      <li style="font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:500;color:var(--text);display:flex;align-items:baseline;gap:12px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">—</span>Zusatzmaßnahmen ohne Aufpreis</li>
       <li style="font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:500;color:var(--text);display:flex;align-items:baseline;gap:12px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">—</span>Ausreichend Zeit für Ihre Therapie</li>
       <li style="font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:500;color:var(--text);display:flex;align-items:baseline;gap:12px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">—</span>Flexible und kurzfristige Termine möglich</li>
       <li style="font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:500;color:var(--text);display:flex;align-items:baseline;gap:12px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">—</span>Personalisiertes Übungshandout mit Tipps — auf Wunsch, kostenlos</li>
@@ -964,32 +962,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <li style="font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:500;color:var(--text);display:flex;align-items:baseline;gap:12px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">—</span>Therapeutische Trainingsbegleitung — auf Wunsch buchbar</li>
     </ul>
     <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13.5px;color:var(--muted);margin-top:20px;"><a href="javascript:void(0)" onclick="show('mehr')" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;">Alle weiteren Möglichkeiten ansehen →</a></p>
-  </div>
-
-  <!-- ── WEGWEISER: Verteiler zu den Unterseiten ── -->
-  <div class="wegweiser">
-    <span class="eyebrow">Überblick</span>
-    <h2 class="sec-title">Alles Wichtige auf einen Blick</h2>
-    <div class="wegweiser-grid">
-      <a class="ww-card reveal" href="javascript:void(0)" onclick="show('leistungen')">
-        <div class="ww-ico"><i data-lucide="clipboard-list" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i></div>
-        <div class="ww-title">Leistungen &amp; Preise</div>
-        <div class="ww-desc">Krankengymnastik, Manuelle Therapie, Lymphdrainage &amp; Massage — mit transparenten Honoraren.</div>
-        <div class="ww-arrow">Ansehen →</div>
-      </a>
-      <a class="ww-card reveal" href="javascript:void(0)" onclick="show('ablauf')">
-        <div class="ww-ico"><i data-lucide="footprints" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i></div>
-        <div class="ww-title">So läuft es ab</div>
-        <div class="ww-desc">Von der ersten Anfrage bis zur Behandlung — in vier einfachen, transparenten Schritten.</div>
-        <div class="ww-arrow">Ansehen →</div>
-      </a>
-      <a class="ww-card reveal" href="javascript:void(0)" onclick="show('ueber')">
-        <div class="ww-ico"><i data-lucide="user-round" style="width:22px;height:22px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i></div>
-        <div class="ww-title">Über mich</div>
-        <div class="ww-desc">Wer ich bin, wie ich arbeite und was mir in der Therapie wirklich wichtig ist.</div>
-        <div class="ww-arrow">Ansehen →</div>
-      </a>
-    </div>
   </div>
 
   <div class="mission-sec">
@@ -1334,8 +1306,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <!-- MEIN NACHHALTIGKEITSPROGRAMM -->
     <div class="coaching-section-break"></div>
     <span class="eyebrow" style="display:block;margin-bottom:10px;color:var(--accent);font-weight:700;">Das besondere Angebot</span>
-    <div style="font-size:clamp(30px,6.5vw,46px);font-weight:800;letter-spacing:-1px;line-height:1.02;color:var(--text);margin-bottom:6px;">Mein <span style="color:var(--accent);">Nachhaltigkeits</span>programm</div>
-    <div class="mehr-block-title" style="font-size:13px;letter-spacing:0.5px;margin-bottom:20px;">Die therapeutische Trainingsbegleitung</div>
+    <div style="font-size:clamp(30px,6.5vw,46px);font-weight:800;letter-spacing:-1px;line-height:1.02;color:var(--text);margin-bottom:6px;">Mein Nachhaltigkeitsprogramm</div>
+    <div class="mehr-block-title" style="font-size:13px;letter-spacing:0.5px;margin-bottom:20px;color:var(--muted);">Die therapeutische Trainingsbegleitung</div>
     <div class="coaching-card reveal">
       <div class="coaching-card-sub" style="margin-top:4px;">Nachhaltigkeit ist der wichtigste Faktor während und nach einer Therapie — und auch dann, wenn alles gesund erscheint. Vielen fehlt die Motivation, der Plan oder die Struktur im Alltag. Und ist die größte Hürde erst einmal geschafft, mangelt es meist am Durchhaltevermögen. Dabei ist es so wichtig, ein nachhaltig gesundes Leben zu führen: Ernährung, Kraftsport, Ausdauersport, allgemeines Cardio, optimaler Schlaf, Stressmanagement. Jeder weiß es — aber die wenigsten setzen es wirklich um.</div>
       <div class="coaching-card-sub" style="margin-top:10px;"><strong>Genau dabei möchte ich Ihnen sehr gerne helfen. Deshalb ist das hier mein Angebot an Sie.</strong></div>
