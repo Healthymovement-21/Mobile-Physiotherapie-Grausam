@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://physiotherapie-grausam.com/">
 <meta property="og:image" content="https://physiotherapie-grausam.com/foto-3-800.jpg">
 <meta property="og:image:width" content="800">
-<meta property="og:image:height" content="736">
+<meta property="og:image:height" content="1103">
 <meta property="og:site_name" content="Mobile Physiotherapie Grausam">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
@@ -75,6 +75,17 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was passiert beim Ersttermin?","acceptedAnswer":{"@type":"Answer","text":"Der Ersttermin dauert 60 Minuten und umfasst eine ausführliche Anamnese, Befundung und Therapieplanung. Das weitere Vorgehen besprechen und planen wir gemeinsam. Eine Abrechnung mit gesetzlichen Krankenkassen ist nicht möglich."}},
+{"@type":"Question","name":"Gibt es eine kürzere, günstigere Behandlungsoption?","acceptedAnswer":{"@type":"Answer","text":"Ja. Als Selbstzahler können Sie zwischen 30, 45 und 60 Minuten wählen. Privatpatienten und Beihilfeberechtigte rechnen entsprechend der ärztlichen Verordnung ab; die Vergütung richtet sich nach der Beihilfe-Gebührenübersicht (Anlage 9 BBhV) und wird vorab schriftlich vereinbart."}},
+{"@type":"Question","name":"Was ist im Behandlungspreis inbegriffen?","acceptedAnswer":{"@type":"Answer","text":"Ergänzende Maßnahmen wie Taping, Flossing, Schröpfen, Wärmetherapie und Blading werden eingesetzt, wenn sie therapeutisch sinnvoll sind – ohne Aufpreis. Es fallen keine weiteren Kosten an."}},
+{"@type":"Question","name":"Brauche ich ein Rezept?","acceptedAnswer":{"@type":"Answer","text":"Als Selbstzahler benötigen Sie kein Rezept. Privatpatienten und Beamte mit Beihilfe benötigen in der Regel ein ärztliches Rezept, um die Rechnung bei ihrer Versicherung oder Beihilfestelle einzureichen. Die Erstattung ist tarifabhängig und nicht garantiert."}},
+{"@type":"Question","name":"Wie funktioniert die Abrechnung?","acceptedAnswer":{"@type":"Answer","text":"Nach der Behandlung erhalten Sie eine Rechnung per E-Mail. Privatpatienten reichen diese bei ihrer privaten Krankenversicherung ein, Beamte über die zuständige Beihilfestelle. Selbstzahler zahlen direkt. Eine Abrechnung mit gesetzlichen Krankenkassen (GKV) ist nicht möglich."}},
+{"@type":"Question","name":"In welchem Einzugsgebiet sind Sie tätig?","acceptedAnswer":{"@type":"Answer","text":"Ich bin in ausgewählten Orten zwischen Heidelberg und Karlsruhe tätig – nicht flächendeckend im gesamten Korridor. Ob Ihr Wohnort dabei ist, können Sie auf der Startseite per Postleitzahl prüfen."}},
+{"@type":"Question","name":"Wann sind Sie erreichbar?","acceptedAnswer":{"@type":"Answer","text":"Es gibt keine festen Öffnungszeiten – Termine werden individuell vereinbart. Am besten erreichen Sie mich per E-Mail oder über das Kontaktformular."}}
+]}
+</script>
 
 <style>
 :root{
@@ -96,6 +107,12 @@
   --radius-lg:6px;
   --shadow:0 6px 28px rgba(38,34,32,0.08);
   --shadow-sm:0 2px 12px rgba(38,34,32,0.05);
+  /* Karten-Radius & Elevation-Skala (öffentliche Karten) */
+  --radius-card:16px;
+  --elev-card:0 22px 48px -24px rgba(38,34,32,0.32),0 8px 18px -12px rgba(38,34,32,0.20);
+  --elev-card-hover:0 36px 66px -26px rgba(47,115,85,0.48),0 14px 30px -18px rgba(38,34,32,0.28);
+  /* Status-Farben */
+  --ok:#155724;--ok-bg:#d4edda;--err:#721c24;--err-bg:#f8d7da;--warn:#856404;--warn-bg:#fff3cd;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;overflow-x:hidden;width:100%;overscroll-behavior-x:none;}
@@ -435,8 +452,8 @@ nav .burger-lines span{background:#fff;}
 .mehr-block{padding:52px 8% 72px;}
 .mehr-block-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:22px;}
 .mehr-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;perspective:1300px;}
-.mehr-card{position:relative;border:1px solid var(--border);border-radius:16px;padding:32px 28px;display:flex;flex-direction:column;gap:10px;background:linear-gradient(158deg,#fffdfa 0%,#faf8f4 100%);transform-style:preserve-3d;will-change:transform;box-shadow:0 22px 48px -24px rgba(38,34,32,.32),0 8px 18px -12px rgba(38,34,32,.20);transition:transform .18s ease-out,box-shadow .4s,border-color .4s;}
-.mehr-card:hover{border-color:var(--accent);box-shadow:0 36px 66px -26px rgba(47,115,85,.48),0 14px 30px -18px rgba(38,34,32,.28);}
+.mehr-card{position:relative;border:1px solid var(--border);border-radius:var(--radius-card);padding:32px 28px;display:flex;flex-direction:column;gap:10px;background:linear-gradient(158deg,var(--white) 0%,var(--sand-light) 100%);transform-style:preserve-3d;will-change:transform;box-shadow:var(--elev-card);transition:transform .18s ease-out,box-shadow .4s,border-color .4s;}
+.mehr-card:hover{border-color:var(--accent);box-shadow:var(--elev-card-hover);}
 .mehr-cards .mehr-card{transition:transform .2s ease-out,box-shadow .4s,border-color .4s;}
 .mehr-card-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 11px;border-radius:999px;width:fit-content;}
 .badge-free{background:var(--accent);color:#fff;}
@@ -448,7 +465,7 @@ nav .burger-lines span{background:#fff;}
 .mehr-card-title{font-size:15px;font-weight:700;color:var(--text);line-height:1.3;}
 .mehr-card-desc{font-size:13px;color:var(--muted);line-height:1.75;flex:1;}
 .mehr-card-action{font-size:11.5px;color:var(--accent);font-weight:600;padding-top:12px;margin-top:auto;}
-.coaching-card{border:1px solid var(--border);border-radius:18px;padding:40px 40px;margin-top:8px;background:linear-gradient(158deg,#fffdfa 0%,#faf8f4 100%);box-shadow:0 24px 54px -26px rgba(38,34,32,.30),0 8px 20px -12px rgba(38,34,32,.18);}
+.coaching-card{border:1px solid var(--border);border-radius:var(--radius-card);padding:40px 40px;margin-top:8px;background:linear-gradient(158deg,var(--white) 0%,var(--sand-light) 100%);box-shadow:var(--elev-card);}
 .coaching-card-tag{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
 .coaching-card-title{font-size:22px;font-weight:700;letter-spacing:-0.4px;margin-bottom:10px;}
 .coaching-card-sub{font-size:14px;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:28px;}
@@ -633,11 +650,12 @@ nav .burger-lines span{background:#fff;}
 /* ── STICKY CTA (mobile) ── */
 .sticky-cta{display:none;}
 @media(max-width:860px){
-  .sticky-cta{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:400;background:rgba(38,34,32,0.97);backdrop-filter:blur(8px);padding:12px 6% 16px;align-items:center;justify-content:space-between;gap:12px;transform:translateY(100%);transition:transform 0.35s ease;border-top:1px solid rgba(255,255,255,0.08);}
+  .sticky-cta{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:300;background:rgba(38,34,32,0.97);backdrop-filter:blur(8px);padding:12px 6% calc(14px + env(safe-area-inset-bottom));align-items:center;justify-content:space-between;gap:12px;transform:translateY(110%);transition:transform 0.35s ease;border-top:1px solid rgba(255,255,255,0.08);}
   .sticky-cta.show{transform:translateY(0);}
   .sticky-cta-text{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.3;}
   .sticky-cta-text strong{display:block;font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;color:#fff;}
-  .sticky-cta .btn{padding:11px 22px;font-size:12.5px;white-space:nowrap;flex-shrink:0;}
+  .sticky-cta .btn{padding:12px 22px;font-size:12.5px;white-space:nowrap;flex-shrink:0;background:var(--accent);color:#fff;border-radius:var(--radius);}
+  .sticky-cta .btn:hover{opacity:1;background:var(--accent-dark);}
 }
 
 
@@ -874,6 +892,11 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   </div>
 </div>
 
+<!-- Sticky Mobile CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text"><strong>Hausbesuch-Termin?</strong>Raum Heidelberg–Karlsruhe</div>
+  <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
+</div>
 
 <!-- ═══ PREIS-MODAL ═══ -->
 <!-- preis-modal removed --><div style="display:none" id="preisModal"><div>
@@ -1397,7 +1420,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div style="font-size:clamp(30px,6.5vw,46px);font-weight:800;letter-spacing:-1px;line-height:1.02;color:var(--text);margin-bottom:6px;">Mein <span style="color:var(--accent);">Nachhaltigkeits</span>programm</div>
     <div class="mehr-block-title" style="font-size:13px;letter-spacing:0.5px;margin-bottom:20px;">Die therapeutische Trainingsbegleitung</div>
     <div class="coaching-card reveal">
-      <div class="coaching-card-sub" style="margin-top:4px;">Nachhaltigkeit ist der wichtigste Faktor während und nach einer Therapie — und auch dann, wenn alles gesund erscheint. Vielen fehlt die Motivation, der Plan oder die Struktur im Alltag. Und ist die größte Hürde erst einmal geschafft, mangelt es meist am Durchhaltevermögen. Dabei ist es so wichtig, ein dauerhaft gesundes Leben zu führen: Ernährung, Kraftsport, Ausdauersport, allgemeines Cardio, optimaler Schlaf, Stressmanagement. Jeder weiß es — aber die wenigsten setzen es wirklich um.</div>
+      <div class="coaching-card-sub" style="margin-top:4px;">Nachhaltigkeit ist der wichtigste Faktor während und nach einer Therapie — und auch dann, wenn alles gesund erscheint. Vielen fehlt die Motivation, der Plan oder die Struktur im Alltag. Und ist die größte Hürde erst einmal geschafft, mangelt es meist am Durchhaltevermögen. Dabei ist es so wichtig, ein nachhaltig gesundes Leben zu führen: Ernährung, Kraftsport, Ausdauersport, allgemeines Cardio, optimaler Schlaf, Stressmanagement. Jeder weiß es — aber die wenigsten setzen es wirklich um.</div>
       <div class="coaching-card-sub" style="margin-top:10px;"><strong>Genau dabei möchte ich Ihnen sehr gerne helfen. Deshalb ist das hier mein Angebot an Sie.</strong></div>
       <div class="coaching-card-sub" style="margin-top:10px;color:var(--muted);">Physiotherapeut mit Leistungssport-Background und der eigenen Motivation, nachhaltig gesund zu leben — für alle, die langfristig aktiv in ihre Gesundheit investieren und ihren Alltag anpassen möchten.</div>
 
@@ -1494,8 +1517,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <div>
         <h2 class="kontakt-col-title">Anfrage senden</h2>
         <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);margin-top:4px;margin-bottom:24px;line-height:1.6;">Ausfüllen &amp; absenden — Nachricht wird direkt zugestellt.</p>
-        <div id="kf-success" style="display:none;padding:16px 18px;background:#d4edda;border-radius:2px;color:#155724;font-family:'DM Sans',system-ui,sans-serif;font-size:14px;margin-bottom:16px;">Vielen Dank! Ihre Anfrage wurde gesendet. Ich melde mich in der Regel innerhalb von 24 Stunden.</div>
-        <div id="kf-error" style="display:none;padding:16px 18px;background:#f8d7da;border-radius:2px;color:#721c24;font-family:'DM Sans',system-ui,sans-serif;font-size:14px;margin-bottom:16px;">Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie direkt an info@physiotherapie-grausam.com</div>
+        <div id="kf-success" style="display:none;padding:16px 18px;background:var(--ok-bg);border-radius:var(--radius-sm);color:var(--ok);font-family:'DM Sans',system-ui,sans-serif;font-size:14px;margin-bottom:16px;">Vielen Dank! Ihre Anfrage wurde gesendet. Ich melde mich in der Regel innerhalb von 24 Stunden.</div>
+        <div id="kf-error" style="display:none;padding:16px 18px;background:var(--err-bg);border-radius:var(--radius-sm);color:var(--err);font-family:'DM Sans',system-ui,sans-serif;font-size:14px;margin-bottom:16px;">Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie direkt an info@physiotherapie-grausam.com</div>
         <form class="form" id="kontaktForm" onsubmit="sendWeb3Form(event)" novalidate>
           <input type="hidden" name="access_key" value="7103fafa-83d0-442d-8d47-9e763190d926">
           <input type="hidden" name="subject" id="kf-subject" value="Terminanfrage – Mobile Physiotherapie Grausam">
@@ -2609,6 +2632,23 @@ document.querySelectorAll('.card,.dok-card,.ablauf-step,.preis-card,.ueber-det,.
     card.addEventListener('mouseleave',function(){card.style.transform='';});
   }
   document.querySelectorAll('.mehr-card').forEach(bind);
+})();
+
+// ── STICKY MOBILE CTA ──
+(function(){
+  var bar=document.getElementById('stickyCta');
+  if(!bar)return;
+  var hidden=['kontakt','portal','impressum','datenschutz','agb','cookie-policy'];
+  function upd(){
+    var act=document.querySelector('.page.active');
+    var id=act?act.id:'home';
+    if(hidden.indexOf(id)<0 && window.scrollY>480) bar.classList.add('show');
+    else bar.classList.remove('show');
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd,{passive:true});
+  document.addEventListener('click',function(){setTimeout(upd,80);});
+  upd();
 })();
 
 // ── CLICKJACKING PROTECTION ──
