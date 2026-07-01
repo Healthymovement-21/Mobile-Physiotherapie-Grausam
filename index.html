@@ -462,7 +462,7 @@ nav .burger-lines span{background:#fff;}
 .feat-chip::before{content:"✓";color:var(--accent);font-weight:800;font-size:12px;}
 .feat-chip:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 18px -12px rgba(47,115,85,.6);}
 .badge-opt{background:#efefef;color:var(--muted);}
-.mehr-card-title{font-size:15px;font-weight:700;color:var(--text);line-height:1.3;}
+.mehr-card-title{font-size:14px;font-weight:700;color:var(--text);line-height:1.35;}
 .mehr-card-desc{font-size:13px;color:var(--muted);line-height:1.75;flex:1;}
 .mehr-card-action{font-size:11.5px;color:var(--accent);font-weight:600;padding-top:12px;margin-top:auto;}
 .coaching-card{border:1px solid var(--border);border-radius:var(--radius-card);padding:40px 40px;margin-top:8px;background:linear-gradient(158deg,var(--white) 0%,var(--sand-light) 100%);box-shadow:var(--elev-card);}
@@ -621,8 +621,8 @@ nav .burger-lines span{background:#fff;}
 /* ── WEGWEISER (Verteiler zu Unterseiten) ── */
 .wegweiser{padding:84px 6%;border-top:1px solid var(--border);background:var(--white);}
 .wegweiser-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
-.ww-card{display:flex;flex-direction:column;align-items:flex-start;gap:11px;padding:28px 26px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--sand-light);color:var(--text);cursor:pointer;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;}
-.ww-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--beige-dark);}
+.ww-card{display:flex;flex-direction:column;align-items:flex-start;gap:11px;padding:28px 26px;border:1px solid var(--border);border-radius:var(--radius-card);background:var(--sand-light);color:var(--text);cursor:pointer;text-decoration:none;box-shadow:var(--elev-card);transition:transform 0.25s cubic-bezier(.2,.7,.3,1),box-shadow 0.3s,border-color 0.3s;}
+.ww-card:hover{transform:translateY(-4px);box-shadow:var(--elev-card-hover);border-color:var(--accent);}
 .ww-ico{width:42px;height:42px;border-radius:4px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:4px;}
 .ww-ico i{width:20px;height:20px;stroke:var(--accent);stroke-width:1.6;fill:none;}
 .ww-title{font-family:'DM Sans',system-ui,sans-serif;font-size:18px;font-weight:700;color:var(--text);letter-spacing:-0.3px;}
@@ -1005,19 +1005,19 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <h2 class="sec-title" style="margin-bottom:10px;">Was kostet mich das?</h2>
     <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:32px;max-width:580px;">Alles wird vorab schriftlich vereinbart — je nachdem, wie Sie versichert sind. Eine Abrechnung mit gesetzlichen Krankenkassen (GKV) ist nicht möglich.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
-      <div style="border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--sand-light);padding:24px 22px;">
+      <div style="border:1px solid var(--border);border-radius:var(--radius-card);background:var(--sand-light);padding:26px 24px;box-shadow:var(--elev-card);">
         <i data-lucide="shield-check" style="width:24px;height:24px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;font-weight:700;color:var(--text);margin:12px 0 8px;">Privatpatienten</div>
+        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;color:var(--text);margin:12px 0 8px;">Privatpatienten</div>
         <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Sie erhalten eine Rechnung und reichen diese bei Ihrer privaten Krankenversicherung ein. Die Erstattung ist tarifabhängig.</p>
       </div>
-      <div style="border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--sand-light);padding:24px 22px;">
+      <div style="border:1px solid var(--border);border-radius:var(--radius-card);background:var(--sand-light);padding:26px 24px;box-shadow:var(--elev-card);">
         <i data-lucide="landmark" style="width:24px;height:24px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;font-weight:700;color:var(--text);margin:12px 0 8px;">Beamte mit Beihilfe</div>
+        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;color:var(--text);margin:12px 0 8px;">Beamte mit Beihilfe</div>
         <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Die Vergütung richtet sich nach der Beihilfe-Gebührenübersicht (Anlage&nbsp;9 BBhV). Die Rechnung reichen Sie bei Ihrer Beihilfestelle und ggf. Ihrer Restkostenversicherung ein.</p>
       </div>
-      <div style="border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--sand-light);padding:24px 22px;">
+      <div style="border:1px solid var(--border);border-radius:var(--radius-card);background:var(--sand-light);padding:26px 24px;box-shadow:var(--elev-card);">
         <i data-lucide="wallet" style="width:24px;height:24px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;font-weight:700;color:var(--text);margin:12px 0 8px;">Selbstzahler</div>
+        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;color:var(--text);margin:12px 0 8px;">Selbstzahler</div>
         <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Kein Rezept nötig. Feste, transparente Preise ab 45&nbsp;€ — Sie wählen zwischen 30, 45 und 60 Minuten.</p>
       </div>
     </div>
