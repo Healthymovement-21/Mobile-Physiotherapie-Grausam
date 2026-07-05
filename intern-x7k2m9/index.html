@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<base href="/">
+<!-- INTERN – nicht oeffentlich verlinkt (obfuskierter Pfad). Der Passwort-Check unten
+     ist reiner SICHTSCHUTZ, KEIN echter Zugriffsschutz (clientseitig, umgehbar).
+     WICHTIG: Solange dieses Tool ohne serverseitige Authentifizierung oeffentlich
+     erreichbar ist, hier KEINE echten Patientendaten verarbeiten. -->
 <title>Mobile Physiotherapie Grausam | Hausbesuche Heidelberg–Karlsruhe</title>
 <meta name="description" content="Physiotherapie direkt bei Ihnen zuhause. Für Privatpatienten &amp; Selbstzahler im Raum Heidelberg–Karlsruhe. Jetzt Termin anfragen.">
 <meta name="keywords" content="Mobile Physiotherapie, Hausbesuche, Heidelberg, Karlsruhe, Leimen, Privatpatient, Beihilfe, Geriatrie, Physiotherapeut">
@@ -1728,6 +1734,450 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   </div>
 </div>
 
+<!-- ═══ PORTAL ═══ -->
+<div class="page" id="portal">
+  <!-- LOGIN -->
+  <div id="portal-login" class="portal-screen">
+    <div class="portal-login-box">
+      <div class="portal-brand-row">
+        <svg width="28" height="28" viewBox="0 0 26 26" fill="none"><rect width="26" height="26" rx="6" fill="#111"/><path d="M18 8 A8 8 0 1 0 20 14 L14 14" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Inhaber-Portal
+      </div>
+      <p class="portal-login-sub">Mobile Physiotherapie Grausam · Nur für interne Nutzung</p>
+      <button id="portal-faceid-btn" type="button" class="portal-faceid-btn" onclick="portalFaceIdLogin()" style="display:none;">
+        <i data-lucide="fingerprint"></i>Mit Face ID anmelden
+      </button>
+      <div id="portal-or-divider" class="portal-or-divider" style="display:none;"><span>oder</span></div>
+      <form onsubmit="portalLogin();return false;" autocomplete="on">
+        <input type="text" name="username" autocomplete="username" value="inhaber" style="display:none;">
+        <div class="portal-pw-wrap" style="margin-bottom:0;">
+          <input type="password" id="portal-pw-input" name="password" placeholder="Passwort eingeben" autocomplete="current-password">
+        </div>
+        <div id="portal-err" class="portal-err hidden">Falsches Passwort. Bitte erneut versuchen.</div>
+        <button type="submit" class="btn" style="width:100%;margin-top:14px;">Anmelden</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="portal-dash" class="hidden">
+    <div class="portal-dash-wrap">
+      <div class="portal-dash-header">
+        <div>
+          <div class="portal-dash-greeting">Guten Tag, Nick 👋</div>
+          <div class="portal-dash-date" id="portal-date"></div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+          <button class="btn-outline" onclick="portalLogout()" style="margin:0;">Abmelden</button>
+          <button id="portal-faceid-setup-btn" type="button" class="portal-faceid-setup-link" onclick="portalSetupFaceId()" style="display:none;"></button>
+        </div>
+      </div>
+
+      <div class="portal-sections">
+
+        <!-- COCKPIT -->
+        <div class="portal-section" style="grid-column:1/-1;">
+          <div class="portal-section-title">Cockpit · Überblick</div>
+          <div id="portal-cockpit" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;"></div>
+        </div>
+
+        <!-- RECHNUNGSGENERATOR -->
+        <div class="portal-section" style="grid-column:1/-1;background:#111;border-color:#111;">
+          <div class="portal-section-title" style="color:rgba(255,255,255,.4);">Rechnungsgenerator</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
+            <p style="font-size:14px;color:rgba(255,255,255,.75);margin:0;line-height:1.5;">Patient, Verordnung, Termine, Leistungen — einmal ausfüllen, fertige Rechnung im Browser drucken&nbsp;/ als PDF speichern.</p>
+            <button onclick="rgOpen()" style="background:#fff;color:#111;border:none;border-radius:2px;padding:11px 22px;font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;cursor:pointer;flex-shrink:0;white-space:nowrap;">Neue Rechnung erstellen</button>
+          </div>
+        </div>
+
+        <!-- BUCHHALTUNG -->
+        <div class="portal-section">
+          <div class="portal-section-title">Buchhaltung</div>
+          <div class="portal-link-list">
+            <a href="https://grausam.papierkram.de/einnahmen/rechnungen/neu" target="_blank" class="p-link primary">
+              <div class="p-link-ico"><i data-lucide="plus"></i></div>Neue Rechnung
+            </a>
+            <a href="https://grausam.papierkram.de/einnahmen/rechnungen" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="file-text"></i></div>Alle Rechnungen
+            </a>
+            <a href="https://grausam.papierkram.de/kontakte/kunden" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="users"></i></div>Kunden / Patienten
+            </a>
+            <a href="https://grausam.papierkram.de" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="bar-chart-2"></i></div>Papierkram Dashboard
+            </a>
+          </div>
+        </div>
+
+        <!-- DOKUMENTE & TABELLEN -->
+        <div class="portal-section">
+          <div class="portal-section-title">Dokumente &amp; Tabellen</div>
+          <div class="portal-link-list">
+            <a href="https://drive.google.com/drive/my-drive" target="_blank" class="p-link primary">
+              <div class="p-link-ico"><i data-lucide="folder-open"></i></div>Google Drive öffnen
+            </a>
+            <a href="https://www.icloud.com/iclouddrive" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="cloud"></i></div>iCloud Drive öffnen
+            </a>
+            <a href="dokumente/Behandlungsvertrag.docx" download class="p-link">
+              <div class="p-link-ico"><i data-lucide="download"></i></div>Behandlungsvertrag (DOCX)
+            </a>
+            <a href="https://docs.google.com/document/d/1EyCKvdNdVkpSH-IAKmCYothB2Q-4TBoP/export?format=pdf" target="_blank" rel="noopener" class="p-link">
+              <div class="p-link-ico"><i data-lucide="clipboard-list"></i></div>Anamnesebogen (PDF)
+            </a>
+            <a href="dokumente/Therapeutische-Trainingsbegleitung.pdf" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="dumbbell"></i></div>Therapeutische Trainingsbegleitung (PDF)
+            </a>
+            <a href="intern-x7k2m9/Coaching-Vertrag.pdf" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="file-signature"></i></div>Coaching-Vertrag (PDF)
+            </a>
+            <a href="intern-x7k2m9/Ersttermin-Coaching-Skript.pdf" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="clipboard-list"></i></div>Ersttermin-Coaching-Skript (intern)
+            </a>
+          </div>
+          <div style="margin-top:12px;padding:10px 14px;background:#fffbe6;border-left:3px solid #f0c040;border-radius:0 2px 2px 0;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:#7a6200;line-height:1.6;">
+            Bitte ausdrucken, ausfüllen und zum Ersttermin bereithalten.
+          </div>
+        </div>
+
+        <!-- ADD-ONS -->
+        <div class="portal-section">
+          <div class="portal-section-title">Add-ons &amp; Extras</div>
+          <div class="portal-link-list">
+            <a href="javascript:void(0)" onclick="show('mehr')" class="p-link primary">
+              <div class="p-link-ico"><i data-lucide="sparkles"></i></div>„Mehr für Sie"-Seite ansehen
+            </a>
+            <a href="dokumente/Therapeutische-Trainingsbegleitung.pdf" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="file-text"></i></div>Trainingsbegleitung-PDF (Patientenversion)
+            </a>
+          </div>
+          <div style="margin-top:12px;padding:12px 14px;background:#f5f5f5;border-radius:2px;font-size:12px;color:#888;line-height:1.6;">
+            <strong style="color:#111;display:block;margin-bottom:4px;">Lieferprotokoll</strong>
+            Welcher Patient hat welches Add-on erhalten? → Im Google Drive: <em>AddOn_Tracker.xlsx</em>
+          </div>
+        </div>
+
+        <!-- EINNAHMEN -->
+        <div class="portal-section" style="grid-column:1/-1;">
+          <div class="portal-section-title">Einnahmen &amp; Zahlungsstatus</div>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',system-ui,sans-serif;">
+              <thead><tr style="border-bottom:2px solid #111;">
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Nr.</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Patient</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Datum</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Fällig</th>
+                <th style="padding:8px 10px;text-align:right;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Betrag</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Status</th>
+              </tr></thead>
+              <tbody id="portal-einnahmen-body"></tbody>
+            </table>
+          </div>
+          <div id="portal-einnahmen-sum" style="margin-top:12px;padding:10px 12px;background:#f5f5f5;border-radius:2px;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;"></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:12px;">
+            <p style="font-size:11px;color:#aaa;margin:0;font-family:'DM Sans',system-ui,sans-serif;">Status-Badge anklicken zum Umschalten · Wird automatisch beim Erstellen einer Rechnung befüllt</p>
+            <button onclick="rgExportEAR()" style="background:#111;color:#fff;border:none;border-radius:2px;padding:8px 18px;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">↓ EAR Excel exportieren</button>
+          </div>
+        </div>
+
+        <!-- FAHRTENBUCH -->
+        <div class="portal-section" style="grid-column:1/-1;">
+          <div class="portal-section-title">Fahrtenbuch (Steuer)</div>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',system-ui,sans-serif;">
+              <thead><tr style="border-bottom:2px solid #111;">
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Datum</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Patient</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Zieladresse</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">Rechnung</th>
+                <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;">km</th>
+              </tr></thead>
+              <tbody id="portal-fahrt-body"></tbody>
+            </table>
+          </div>
+          <div id="portal-fahrt-sum" style="margin-top:12px;padding:10px 12px;background:#f5f5f5;border-radius:2px;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;"></div>
+          <p style="font-size:11px;color:#aaa;margin-top:8px;font-family:'DM Sans',system-ui,sans-serif;">km-Feld direkt editierbar · 0,30 €/km steuerlich absetzbar · Eintrag wird automatisch beim Erstellen einer Rechnung erstellt</p>
+        </div>
+
+        <!-- HANDOUTS -->
+        <div class="portal-section" style="grid-column:1/-1;">
+          <div class="portal-section-title">Übungsprogramm-Handouts · 9 Körperbereiche</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:4px;">
+            <a href="dokumente/Handout_Fuss.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Fuß &amp; Sprunggelenk</a>
+            <a href="dokumente/Handout_Knie.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Knie</a>
+            <a href="dokumente/Handout_Huefte.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Hüfte</a>
+            <a href="dokumente/Handout_LWS.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Lendenwirbelsäule (LWS)</a>
+            <a href="dokumente/Handout_BWS.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Brustwirbelsäule (BWS)</a>
+            <a href="dokumente/Handout_HWS.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Halswirbelsäule / Nacken</a>
+            <a href="dokumente/Handout_Schulter.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Schulter</a>
+            <a href="dokumente/Handout_Ellbogen.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Ellbogen</a>
+            <a href="dokumente/Handout_Hand.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Hand &amp; Handgelenk</a>
+          </div>
+        </div>
+
+        <!-- ERNÄHRUNGSGUIDE -->
+        <div class="portal-section">
+          <div class="portal-section-title">Ernährungsguide</div>
+          <div class="portal-link-list">
+            <a href="dokumente/Ernaehrungsguide.pdf" target="_blank" class="p-link primary">
+              <div class="p-link-ico"><i data-lucide="file-text"></i></div>Ernährungsguide (PDF)
+            </a>
+          </div>
+          <div style="margin-top:10px;padding:10px 12px;background:#f5f5f5;border-radius:2px;font-size:11px;color:#888;line-height:1.6;">
+            Energiebedarf &amp; Aktivit&auml;tsfaktoren &middot; Makron&auml;hrstoffe &middot; Eiweiß (tierisch &amp; pflanzlich) &middot; Fette &amp; Omega-3 &middot; Gem&uuml;se &amp; Ballaststoffe &middot; Nachhaltigkeit &middot; Alltagstipps &middot; Zusammenfassung
+          </div>
+        </div>
+
+        <!-- TRAININGSPLÄNE -->
+        <div class="portal-section" style="grid-column:1/-1;">
+          <div class="portal-section-title">Trainingspläne · 6 Equipment-Varianten · Ganzkörper</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:4px;">
+            <a href="dokumente/Trainingsplan_Kettlebell.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Kettlebell</a>
+            <a href="dokumente/Trainingsplan_Hantel.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Hanteln</a>
+            <a href="dokumente/Trainingsplan_Band.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Widerstandsband</a>
+            <a href="dokumente/Trainingsplan_Eigenkoerper.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Eigenkörpergewicht</a>
+            <a href="dokumente/Trainingsplan_TRX.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>TRX / Schlingentrainer</a>
+            <a href="dokumente/Trainingsplan_Geraete.pdf" target="_blank" class="p-link"><div class="p-link-ico"><i data-lucide="file-text"></i></div>Fitnessstudio / Geräte</a>
+          </div>
+        </div>
+
+        <!-- BEIHILFE REFERENZ -->
+        <div class="portal-section" style="grid-column:1/-1;">
+          <div class="portal-section-title">Beihilfe-Honorarübersicht · Anlage 9 BBhV <span style="font-size:11px;font-weight:400;color:#aaa;margin-left:8px;">Stand 01.02.2026</span></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:4px;">
+
+            <div style="background:#fff;border:1px solid #e8e8e8;border-radius:2px;padding:20px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#aaa;margin-bottom:12px;">KG · Krankengymnastik</div>
+              <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;">
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:7px 0;color:#555;">KG Einzel (20 Min)</td><td style="text-align:right;font-weight:700;color:#111;">29,70 €</td></tr>
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:7px 0;color:#555;">KGG Einzel mit Gerät (30 Min)</td><td style="text-align:right;font-weight:700;color:#111;">34,90 €</td></tr>
+                <tr><td style="padding:7px 0;color:#555;">KG Gruppe (25 Min)</td><td style="text-align:right;font-weight:700;color:#111;">11,60 €</td></tr>
+              </table>
+            </div>
+
+            <div style="background:#fff;border:1px solid #e8e8e8;border-radius:2px;padding:20px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#aaa;margin-bottom:12px;">MT · Manuelle Therapie</div>
+              <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;">
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:7px 0;color:#555;">MT Einzel (30 Min)</td><td style="text-align:right;font-weight:700;color:#111;">35,60 €</td></tr>
+              </table>
+            </div>
+
+            <div style="background:#fff;border:1px solid #e8e8e8;border-radius:2px;padding:20px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#aaa;margin-bottom:12px;">MLD · Manuelle Lymphdrainage</div>
+              <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;">
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:7px 0;color:#555;">MLD-30 (Teilbehandlung, 30 Min)</td><td style="text-align:right;font-weight:700;color:#111;">35,60 €</td></tr>
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:7px 0;color:#555;">MLD-45 (Großbehandlung, 45 Min)</td><td style="text-align:right;font-weight:700;color:#111;">49,80 €</td></tr>
+                <tr><td style="padding:7px 0;color:#555;">MLD-60 (Ganzbehandlung, 60 Min)</td><td style="text-align:right;font-weight:700;color:#111;">69,80 €</td></tr>
+              </table>
+            </div>
+
+            <div style="background:#fff;border:1px solid #e8e8e8;border-radius:2px;padding:20px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#aaa;margin-bottom:12px;">KMT · Klassische Massagetherapie</div>
+              <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;">
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:7px 0;color:#555;">KMT Teilkörper (10–20 Min)</td><td style="text-align:right;font-weight:700;color:#111;">26,10 €</td></tr>
+              </table>
+            </div>
+
+            <div style="background:#fff;border:1px solid #e8e8e8;border-radius:2px;padding:20px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#aaa;margin-bottom:12px;">Hausbesuch &amp; Wegegeld</div>
+              <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;">
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:7px 0;color:#555;">Hausbesuchszuschlag</td><td style="text-align:right;font-weight:700;color:#111;">—</td></tr>
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:7px 0;color:#555;">Wegegeld bis 2 km</td><td style="text-align:right;font-weight:700;color:#111;">—</td></tr>
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:7px 0;color:#555;">Wegegeld 2–5 km</td><td style="text-align:right;font-weight:700;color:#111;">—</td></tr>
+                <tr><td style="padding:7px 0;color:#555;">Wegegeld &gt; 5 km</td><td style="text-align:right;font-weight:700;color:#111;">—</td></tr>
+              </table>
+            </div>
+
+          </div>
+          <div style="margin-top:14px;padding:14px 16px;background:#fffbf0;border:1px solid #f0e4b0;border-radius:2px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <span style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:#7a6200;">⚠ Hausbesuch/Wegegeld bitte im aktuellen BVA-Merkblatt nachschlagen. Alle anderen Beträge: Stand 01.02.2026.</span>
+            <a href="https://www.bva.bund.de/SharedDocs/Downloads/DE/Bundesbedienstete/Gesundheit-Vorsorge/Beihilfe/Merkblaetter/heilbehandlungen.pdf?__blob=publicationFile" target="_blank" rel="noopener" style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;color:#7a6200;text-decoration:underline;">BVA Merkblatt Heilmittel öffnen ↗</a>
+          </div>
+        </div>
+
+        <!-- FINANZRECHNER -->
+        <div class="portal-section">
+          <div class="portal-section-title">Finanzrechner</div>
+          <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;">Einnahmen, Steuern, Break-Even, SV-Ampel und Praxis-Szenario — interaktiv durchrechnen.</p>
+          <div class="portal-link-list">
+            <a href="finanzrechner.html" class="p-link">
+              <div class="p-link-ico"><i data-lucide="calculator"></i></div>Finanzrechner öffnen
+            </a>
+          </div>
+        </div>
+
+        <!-- ONLINE-TERMINBUCHUNG -->
+        <div class="portal-section">
+          <div class="portal-section-title">Online-Terminbuchung</div>
+          <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;">Diesen Link an Patienten schicken — sie wählen selbst einen freien Termin, der direkt in deinem Kalender landet. Link änderbar: einfach überschreiben &amp; speichern.</p>
+          <div style="display:flex;align-items:center;gap:8px;background:#f5f3ef;border:1px solid var(--border);border-radius:4px;padding:10px 12px;margin-bottom:10px;flex-wrap:wrap;">
+            <input id="cal-link" type="text" value="https://cal.com/nick-grausam-pt" oninput="calSaveLink()" style="flex:1;min-width:180px;border:none;background:transparent;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--text);outline:none;">
+            <button onclick="calCopyLink()" id="cal-copy-btn" style="background:#111;color:#fff;border:none;border-radius:2px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;white-space:nowrap;">Kopieren</button>
+          </div>
+          <div class="portal-link-list">
+            <a href="javascript:void(0)" onclick="calShareWhatsApp()" class="p-link">
+              <div class="p-link-ico"><i data-lucide="message-circle"></i></div>Per WhatsApp senden
+            </a>
+            <a href="javascript:void(0)" onclick="calShareEmail()" class="p-link">
+              <div class="p-link-ico"><i data-lucide="mail"></i></div>Per E-Mail senden
+            </a>
+            <a href="javascript:void(0)" onclick="calOpenBooking()" class="p-link">
+              <div class="p-link-ico"><i data-lucide="external-link"></i></div>Buchungsseite ansehen
+            </a>
+          </div>
+        </div>
+
+        <!-- TOOLS & KONTAKT -->
+        <div class="portal-section">
+          <div class="portal-section-title">Tools &amp; Kontakt</div>
+          <div class="portal-link-list">
+            <a href="mailto:info@physiotherapie-grausam.com" class="p-link">
+              <div class="p-link-ico"><i data-lucide="mail"></i></div>E-Mail schreiben
+            </a>
+            <a href="https://calendar.google.com" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="calendar"></i></div>Google Kalender
+            </a>
+            <a href="https://physiotherapie-grausam.com" target="_blank" class="p-link">
+              <div class="p-link-ico"><i data-lucide="globe"></i></div>Website (live)
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- RECHNUNGSGENERATOR MODAL -->
+  <div id="rg-overlay" class="rg-overlay hidden" onclick="if(event.target===this)rgClose()">
+    <div class="rg-modal">
+      <div class="rg-modal-header">
+        <span class="rg-modal-title">Neue Rechnung erstellen</span>
+        <button class="rg-btn rg-btn-outline" onclick="rgClose()" style="padding:6px 14px;font-size:13px;">Schließen</button>
+      </div>
+      <div class="rg-modal-body">
+
+        <div class="rg-sec">
+          <div class="rg-sec-title">Patient auswählen</div>
+          <div class="rg-psearch-wrap">
+            <div class="rg-field"><label>Nachname oder Vorname eingeben</label>
+              <input type="text" id="rg-psearch" placeholder="z. B. Müller" oninput="rgPSearch()" autocomplete="off">
+            </div>
+            <div id="rg-presults" class="rg-presults" style="display:none;"></div>
+          </div>
+          <div class="rg-pimp-bar" id="rg-pimp-bar">
+            <span id="rg-pcnt" style="flex:1;">Noch keine Patienten importiert.</span>
+            <label for="rg-excel-file-input" style="background:#111;color:#fff;border-radius:2px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;white-space:nowrap;display:inline-block;">Excel importieren</label>
+          </div>
+        </div>
+
+        <div class="rg-sec">
+          <div class="rg-sec-title">Rechnungsart</div>
+          <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:2px;">
+            <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:13px;color:#333;font-family:'DM Sans',system-ui,sans-serif;">
+              <input type="radio" name="rg-type" value="physio" id="rg-type-physio" checked onchange="rgTypeChange()">
+              Physiotherapie (§4 Nr. 14 UStG, steuerfrei)
+            </label>
+            <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:13px;color:#333;font-family:'DM Sans',system-ui,sans-serif;">
+              <input type="radio" name="rg-type" value="coaching" id="rg-type-coaching" onchange="rgTypeChange()">
+              Trainingsbegleitung / Coaching
+            </label>
+            <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:13px;color:#333;font-family:'DM Sans',system-ui,sans-serif;">
+              <input type="radio" name="rg-type" value="selbst" id="rg-type-selbst" onchange="rgTypeChange()">
+              Selbstzahler (Preis frei · USt. wählbar)
+            </label>
+          </div>
+          <div id="rg-tax-panel" style="display:none;margin-top:10px;padding:10px 12px;background:#fff8f0;border-left:3px solid #e87722;">
+            <p style="font-size:11px;color:#888;margin-bottom:8px;font-family:'DM Sans',system-ui,sans-serif;">Steuerliche Behandlung – bitte mit Steuerberater abstimmen:</p>
+            <div style="display:flex;gap:20px;flex-wrap:wrap;">
+              <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:13px;color:#333;font-family:'DM Sans',system-ui,sans-serif;">
+                <input type="radio" name="rg-taxtype" value="klein" id="rg-tax-klein" checked>
+                §19 UStG (Kleinunternehmer – keine USt.)
+              </label>
+              <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:13px;color:#333;font-family:'DM Sans',system-ui,sans-serif;">
+                <input type="radio" name="rg-taxtype" value="vat19" id="rg-tax-vat19">
+                19 % Mehrwertsteuer ausweisen
+              </label>
+            </div>
+          </div>
+          <div id="rg-coaching-pricetag" style="display:none;margin-top:12px;background:#111;color:#fff;border-radius:2px;padding:12px 16px;display:flex;align-items:center;gap:16px;font-family:'DM Sans',system-ui,sans-serif;">
+            <div style="font-size:30px;font-weight:800;line-height:1;letter-spacing:-1px;">150 €</div>
+            <div style="font-size:11px;color:#ccc;line-height:1.6;">/ Monat &nbsp;·&nbsp; Therapeutische Trainingsbegleitung<br>4 &times; 60 Min. &nbsp;·&nbsp; Individueller Trainingsplan &nbsp;·&nbsp; Begleitung</div>
+          </div>
+        </div>
+
+        <div class="rg-sec">
+          <div class="rg-sec-title">Rechnungsdaten</div>
+          <div class="rg-row rg-row-3">
+            <div class="rg-field"><label>Rechnungs-Nr.</label><input type="text" id="rg-nr" placeholder="000001"></div>
+            <div class="rg-field"><label>Rechnungsdatum</label><input type="date" id="rg-datum"></div>
+            <div class="rg-field"><label>Leistungszeitraum</label><div style="display:flex;gap:6px;"><input type="text" id="rg-zeitraum" placeholder="01.05. – 31.05.2026" readonly style="cursor:pointer;flex:1;" onclick="rgOpenCal('range')"><button type="button" class="rg-date-btn" onclick="rgOpenCal('range')">&#128197;</button></div></div>
+          </div>
+        </div>
+
+        <div class="rg-sec">
+          <div class="rg-sec-title">Patient</div>
+          <div class="rg-row rg-row-2">
+            <div class="rg-field"><label>Vorname</label><input type="text" id="rg-vorname" placeholder="Max"></div>
+            <div class="rg-field"><label>Nachname</label><input type="text" id="rg-nachname" placeholder="Mustermann"></div>
+          </div>
+          <div class="rg-row rg-row-2">
+            <div class="rg-field"><label>Straße &amp; Hausnummer</label><input type="text" id="rg-strasse" placeholder="Musterstraße 12"></div>
+            <div class="rg-field"><label>PLZ &amp; Ort</label><input type="text" id="rg-plzort" placeholder="69181 Leimen"></div>
+          </div>
+          <div class="rg-row rg-row-3">
+            <div class="rg-field"><label>Anrede</label><select id="rg-anrede"><option value="Herr">Herr</option><option value="Frau">Frau</option><option value="">Keine</option></select></div>
+            <div class="rg-field"><label>E-Mail</label><input type="email" id="rg-email" placeholder="patient@beispiel.de"></div>
+            <div class="rg-field"><label>Telefon</label><input type="tel" id="rg-telefon" placeholder="0176 …"></div>
+          </div>
+        </div>
+
+        <div class="rg-sec" id="rg-sec-verordnung">
+          <div class="rg-sec-title">Verordnung</div>
+          <div class="rg-row rg-row-2">
+            <div class="rg-field"><label>Arzt / Ärztin</label><input type="text" id="rg-arzt" placeholder="Dr. Musterarzt"></div>
+            <div class="rg-field"><label>Datum der Verordnung</label><input type="date" id="rg-vdatum"></div>
+          </div>
+          <div class="rg-row"><div class="rg-field"><label>Diagnose</label><input type="text" id="rg-diagnose" placeholder="z. B. M54.5 Rückenschmerzen"></div></div>
+        </div>
+
+        <div class="rg-sec" id="rg-sec-termine">
+          <div class="rg-sec-title">Behandlungstermine</div>
+          <div class="rg-field">
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+              <button type="button" class="rg-date-btn" onclick="rgOpenCal('multi')" style="background:#111;color:#fff;border-color:#111;">&#128197; Termine auswählen</button>
+              <span id="rg-termine-count" style="font-size:12px;color:#888;">Noch keine Termine</span>
+            </div>
+            <input type="hidden" id="rg-termine">
+          </div>
+        </div>
+
+        <div class="rg-sec">
+          <div class="rg-sec-title">Leistungen</div>
+          <table class="rg-ltable">
+            <thead><tr>
+              <th style="width:42%;">Leistung</th>
+              <th style="width:13%;">Menge</th>
+              <th style="width:16%;">Preis</th>
+              <th style="width:18%;text-align:right;">Gesamt</th>
+              <th style="width:5%;"></th>
+            </tr></thead>
+            <tbody id="rg-leistungen"></tbody>
+          </table>
+          <div class="rg-total-bar">Gesamt: <span id="rg-total">0,00 €</span></div>
+          <button class="rg-add" onclick="rgAddRow()">+ Zeile hinzufügen</button>
+        </div>
+
+      </div>
+      <div class="rg-footer">
+        <button class="rg-btn rg-btn-outline" onclick="rgClose()">Abbrechen</button>
+        <button id="rg-mail-btn" class="rg-btn rg-btn-outline" onclick="rgEmailWithPdf()" style="display:none;">✉&nbsp;E-Mail mit PDF versenden</button>
+        <button id="rg-gen-btn" class="rg-btn rg-btn-primary" onclick="rgGenerate()">Rechnung erstellen →</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 <footer>
   <div class="footer-inner">
     <div>
@@ -1756,6 +2206,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <a href="javascript:void(0)" onclick="show('impressum')">Impressum</a>
       <a href="javascript:void(0)" onclick="show('datenschutz')">Datenschutz</a>
       <a href="javascript:void(0)" onclick="show('cookie-policy')">Cookies</a>
+      <a href="javascript:void(0)" onclick="show('portal')" class="portal-footer-link">Inhaber</a>
     </div>
   </div>
 </footer>
@@ -2083,6 +2534,148 @@ document.querySelectorAll('.card,.dok-card,.ablauf-step,.preis-card,.ueber-det,.
 // ── CLICKJACKING PROTECTION ──
 if(window.top!==window.self){window.top.location=window.self.location;}
 
+// ── PORTAL WEBAUTHN (Face ID / Touch ID) ──
+const _WA_RP_ID='physiotherapie-grausam.com';
+const _WA_KEY='portal_passkey_id';
+
+function _b64url(buf){return btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');}
+function _b64urlDec(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return Uint8Array.from(atob(s),c=>c.charCodeAt(0));}
+
+function _waSupported(){return!!(window.PublicKeyCredential&&navigator.credentials&&navigator.credentials.create);}
+function _hasFaceId(){return _waSupported()&&!!localStorage.getItem(_WA_KEY);}
+
+function _updateFaceIdUI(){
+  const loginBtn=document.getElementById('portal-faceid-btn');
+  const divider=document.getElementById('portal-or-divider');
+  const setupBtn=document.getElementById('portal-faceid-setup-btn');
+  const has=_hasFaceId();
+  if(loginBtn) loginBtn.style.display=has?'flex':'none';
+  if(divider) divider.style.display=has?'block':'none';
+  if(setupBtn){
+    setupBtn.style.display=_waSupported()?'block':'none';
+    setupBtn.textContent=has?'Face ID entfernen':'Face ID einrichten';
+  }
+}
+
+async function portalFaceIdLogin(){
+  const stored=localStorage.getItem(_WA_KEY);
+  if(!stored) return;
+  try{
+    const challenge=crypto.getRandomValues(new Uint8Array(32));
+    await navigator.credentials.get({publicKey:{
+      challenge,rpId:_WA_RP_ID,userVerification:'required',
+      allowCredentials:[{type:'public-key',id:_b64urlDec(stored)}],timeout:60000
+    }});
+    sessionStorage.setItem('portal_auth','1');
+    document.getElementById('portal-login').classList.add('hidden');
+    document.getElementById('portal-dash').classList.remove('hidden');
+    document.getElementById('portal-err').classList.add('hidden');
+    _portalDate();_updateFaceIdUI();portalRenderSections();
+  }catch(e){
+    if(e.name!=='NotAllowedError'){
+      const err=document.getElementById('portal-err');
+      err.textContent='Face ID fehlgeschlagen. Bitte Passwort verwenden.';
+      err.classList.remove('hidden');
+    }
+  }
+}
+
+async function portalSetupFaceId(){
+  const has=_hasFaceId();
+  if(has){
+    if(confirm('Face ID entfernen?')){localStorage.removeItem(_WA_KEY);_updateFaceIdUI();}
+    return;
+  }
+  try{
+    const challenge=crypto.getRandomValues(new Uint8Array(32));
+    const userId=crypto.getRandomValues(new Uint8Array(16));
+    const cred=await navigator.credentials.create({publicKey:{
+      challenge,
+      rp:{id:_WA_RP_ID,name:'Mobile Physiotherapie Grausam'},
+      user:{id:userId,name:'inhaber',displayName:'Inhaber'},
+      pubKeyCredParams:[{alg:-7,type:'public-key'},{alg:-257,type:'public-key'}],
+      authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required',residentKey:'preferred'},
+      timeout:60000
+    }});
+    localStorage.setItem(_WA_KEY,_b64url(cred.rawId));
+    _updateFaceIdUI();
+    alert('Face ID wurde eingerichtet. Ab sofort können Sie sich ohne Passwort anmelden.');
+  }catch(e){
+    if(e.name!=='NotAllowedError') alert('Face ID konnte nicht eingerichtet werden: '+e.message);
+  }
+}
+
+// ── PORTAL (hashed PW + rate limiting) ──
+const _PORTAL_HASH='c28b39301e7e776610caa863459bf05c4fc9890471d9c77ad061253930dc36ff';
+const _MAX_ATTEMPTS=5, _LOCKOUT_MS=5*60*1000;
+
+async function _hashStr(s){
+  const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+function _portalLocked(){
+  const lock=sessionStorage.getItem('portal_lock');
+  if(!lock) return false;
+  if(Date.now()<parseInt(lock)){return true;}
+  sessionStorage.removeItem('portal_lock');
+  sessionStorage.removeItem('portal_attempts');
+  return false;
+}
+async function portalLogin(){
+  const err=document.getElementById('portal-err');
+  if(_portalLocked()){
+    const rem=Math.ceil((parseInt(sessionStorage.getItem('portal_lock'))-Date.now())/60000);
+    err.textContent=`Zu viele Versuche. Bitte ${rem} Min. warten.`;
+    err.classList.remove('hidden'); return;
+  }
+  const pw=document.getElementById('portal-pw-input').value.trim();
+  if(!pw) return;
+  const hash=await _hashStr(pw);
+  if(hash===_PORTAL_HASH){
+    sessionStorage.setItem('portal_auth','1');
+    sessionStorage.removeItem('portal_attempts');
+    sessionStorage.removeItem('portal_lock');
+    document.getElementById('portal-login').classList.add('hidden');
+    document.getElementById('portal-dash').classList.remove('hidden');
+    err.classList.add('hidden');
+    _portalDate();_updateFaceIdUI();portalRenderSections();
+  } else {
+    const attempts=(parseInt(sessionStorage.getItem('portal_attempts'))||0)+1;
+    sessionStorage.setItem('portal_attempts',attempts);
+    if(attempts>=_MAX_ATTEMPTS){
+      sessionStorage.setItem('portal_lock',Date.now()+_LOCKOUT_MS);
+      err.textContent='Zu viele Versuche. Bitte 5 Min. warten.';
+    } else {
+      err.textContent=`Falsches Passwort. (${_MAX_ATTEMPTS-attempts} Versuche verbleibend)`;
+    }
+    err.classList.remove('hidden');
+    document.getElementById('portal-pw-input').value='';
+    document.getElementById('portal-pw-input').focus();
+  }
+}
+function portalLogout(){
+  sessionStorage.removeItem('portal_auth');
+  document.getElementById('portal-login').classList.remove('hidden');
+  document.getElementById('portal-dash').classList.add('hidden');
+  document.getElementById('portal-pw-input').value='';
+}
+function _portalDate(){
+  const d=new Date();
+  const days=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+  const months=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  const el=document.getElementById('portal-date');
+  if(el) el.textContent=`${days[d.getDay()]}, ${d.getDate()}. ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+(function(){
+  _updateFaceIdUI();
+  if(sessionStorage.getItem('portal_auth')==='1'){
+    const lo=document.getElementById('portal-login');
+    const da=document.getElementById('portal-dash');
+    if(lo&&da){lo.classList.add('hidden');da.classList.remove('hidden');_portalDate();_updateFaceIdUI();portalRenderSections();}
+  }
+})();
+
+
 // ── COOKIE BANNER ──
 (function(){
   if(localStorage.getItem('cookie_ok')) return;
@@ -2097,6 +2690,732 @@ if(window.top!==window.self){window.top.location=window.self.location;}
   banner.style.cssText='position:fixed;bottom:0;left:0;right:0;background:#262220;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;z-index:9999;font-family:"DM Sans",system-ui,sans-serif;font-size:15px;line-height:1.5;box-shadow:0 -2px 16px rgba(0,0,0,.2);';
   document.body.appendChild(banner);
 })();
+
+// ── GEHEIMER PORTAL-SHORTCUT: P dann G ──
+(function(){
+  let _last='',_t=0;
+  document.addEventListener('keydown',function(e){
+    const k=e.key.toLowerCase();
+    const now=Date.now();
+    if(k==='p'){_last='p';_t=now;}
+    else if(k==='g'&&_last==='p'&&(now-_t)<1000){show('portal');_last='';_t=0;}
+    else{_last='';_t=0;}
+  });
+})();
+
+// ── RECHNUNGSGENERATOR ──
+const RG_ART={
+  KG:{label:'Krankengymnastik (KG) — Anlage 9 Nr. 4\nHausbesuch – 30 min',preis:29.70},
+  MT:{label:'Manuelle Therapie (MT) — Anlage 9 Nr. 11\nHausbesuch – 30 min',preis:35.60},
+  KGG:{label:'Krankengymnastik am Gerät (KGG) — Anlage 9 Nr. 7\nHausbesuch – 30 min',preis:34.90},
+  FK:{label:'Hausbesuch inkl. Wegegeld/Fahrtkosten',preis:10.00},
+  S:{label:'Sonstige Leistung',preis:0},
+  COACHING:{label:'Monatspauschale Therapeutische Trainingsbegleitung\n4 × 60 Min. | Individueller Trainingsplan | Begleitung',preis:150.00}
+};
+function rgGetPatients(){try{return JSON.parse(localStorage.getItem('rg_patients')||'[]');}catch{return[];}}
+function rgSavePatients(arr){localStorage.setItem('rg_patients',JSON.stringify(arr));}
+function rgPSearch(){
+  const q=document.getElementById('rg-psearch').value.trim().toLowerCase();
+  const res=document.getElementById('rg-presults');
+  if(!q){res.style.display='none';return;}
+  const all=rgGetPatients();
+  const pts=all.filter(p=>(p.nachname||'').toLowerCase().includes(q)||(p.vorname||'').toLowerCase().includes(q));
+  if(!pts.length){res.style.display='none';return;}
+  res.innerHTML=pts.slice(0,8).map(p=>{
+    const idx=all.indexOf(p);
+    return`<div class="rg-pitem" onclick="rgSelectPatient(${idx})"><strong>${p.nachname}, ${p.vorname}</strong>${p.geburtsdatum?' · '+p.geburtsdatum:''}${p.versicherung?' · '+p.versicherung:''}</div>`;
+  }).join('');
+  res.style.display='block';
+}
+function rgSelectPatient(idx){
+  const p=rgGetPatients()[idx];if(!p)return;
+  const S=(id,v)=>{const el=document.getElementById(id);if(el&&v!==undefined)el.value=v;};
+  S('rg-vorname',p.vorname);S('rg-nachname',p.nachname);
+  S('rg-strasse',p.adresse);S('rg-plzort',p.plzort);
+  S('rg-email',p.email||'');S('rg-telefon',p.telefon||'');
+  if(p.anrede){const sel=document.getElementById('rg-anrede');if(sel)sel.value=p.anrede;}
+  document.getElementById('rg-psearch').value=p.nachname+', '+p.vorname;
+  document.getElementById('rg-presults').style.display='none';
+}
+/* ── KALENDER ── */
+const _rc={mode:null,sel:[],y:0,m:0};
+const _rcMon=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+function rgOpenCal(mode){
+  _rc.mode=mode;
+  const now=new Date();
+  _rc.y=now.getFullYear();_rc.m=now.getMonth();
+  if(mode==='range'){
+    _rc.sel=[];
+    const v=document.getElementById('rg-zeitraum').value;
+    const p=v.split('–').map(s=>s.trim());
+    if(p.length===2){const a=_rcPDE(p[0]),b=_rcPDE(p[1]);if(a&&b){_rc.sel=[a,b];_rc.y=+a.split('-')[0];_rc.m=+a.split('-')[1]-1;}}
+  } else {
+    const v=document.getElementById('rg-termine').value;
+    _rc.sel=v?v.split(',').map(s=>s.trim()).map(_rcPDE).filter(Boolean):[];
+    _rc.sel.sort();
+    if(_rc.sel.length){_rc.y=+_rc.sel[0].split('-')[0];_rc.m=+_rc.sel[0].split('-')[1]-1;}
+  }
+  document.getElementById('rg-cal-overlay').style.display='flex';
+  _rcRender();
+}
+function _rcPDE(s){const m=s.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);if(!m)return null;return`${m[3]}-${m[2].padStart(2,'0')}-${m[1].padStart(2,'0')}`;}
+function _rcFmt(iso){const[y,m,d]=iso.split('-');return`${d}.${m}.${y}`;}
+function _rcRender(){
+  document.getElementById('rg-cal-month-label').textContent=_rcMon[_rc.m]+' '+_rc.y;
+  const today=new Date().toISOString().slice(0,10);
+  const first=new Date(_rc.y,_rc.m,1).getDay();
+  const off=(first+6)%7;
+  const days=new Date(_rc.y,_rc.m+1,0).getDate();
+  const g=document.getElementById('rg-cal-days');g.innerHTML='';
+  for(let i=0;i<off;i++){const e=document.createElement('div');e.className='rg-cal-d rg-cal-empty';g.appendChild(e);}
+  for(let d=1;d<=days;d++){
+    const iso=`${_rc.y}-${String(_rc.m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const el=document.createElement('div');el.className='rg-cal-d';
+    if(iso===today)el.className+=' rg-today';
+    el.textContent=d;
+    if(_rc.mode==='range'){
+      const[s,e]=_rc.sel;
+      if(s&&e){
+        if(iso===s&&iso===e)el.className+=' rg-sel';
+        else if(iso===s)el.className+=' rg-range-s';
+        else if(iso===e)el.className+=' rg-range-e';
+        else if(iso>s&&iso<e)el.className+=' rg-in-range';
+      } else if(s&&iso===s){el.className+=' rg-sel';}
+    } else {
+      if(_rc.sel.includes(iso))el.className+=' rg-sel';
+    }
+    el.addEventListener('click',()=>_rcClick(iso));
+    g.appendChild(el);
+  }
+  const h=document.getElementById('rg-cal-hint');
+  if(_rc.mode==='range')h.textContent=_rc.sel.length===0?'Startdatum antippen':_rc.sel.length===1?'Enddatum antippen':'';
+  else h.textContent=_rc.sel.length===0?'Keine Termine ausgewählt':_rc.sel.length+' Termin'+(_rc.sel.length===1?'':'e')+' ausgewählt';
+}
+function _rcClick(iso){
+  if(_rc.mode==='range'){
+    if(_rc.sel.length===0||_rc.sel.length===2){_rc.sel=[iso];}
+    else{_rc.sel.push(iso);_rc.sel.sort();}
+  } else {
+    const i=_rc.sel.indexOf(iso);
+    if(i===-1)_rc.sel.push(iso);else _rc.sel.splice(i,1);
+    _rc.sel.sort();
+  }
+  _rcRender();
+}
+function rgCalPrev(){_rc.m--;if(_rc.m<0){_rc.m=11;_rc.y--;}_rcRender();}
+function rgCalNext(){_rc.m++;if(_rc.m>11){_rc.m=0;_rc.y++;}_rcRender();}
+function rgCalClear(){_rc.sel=[];_rcRender();}
+function rgCalDone(){
+  if(_rc.mode==='range'){
+    if(_rc.sel.length>=1){
+      document.getElementById('rg-zeitraum').value=_rc.sel.length===2?_rcFmt(_rc.sel[0])+' – '+_rcFmt(_rc.sel[1]):_rcFmt(_rc.sel[0]);
+    }
+  } else {
+    document.getElementById('rg-termine').value=_rc.sel.map(_rcFmt).join(', ');
+    const cnt=document.getElementById('rg-termine-count');
+    cnt.textContent=_rc.sel.length===0?'Keine Termine ausgewählt':_rc.sel.length+' Termin'+(_rc.sel.length===1?'':'e')+' ausgewählt';
+    // Auto-fill Menge in first Leistung row
+    const mg=document.querySelector('#rg-leistungen tr input[type="number"]');
+    if(mg&&_rc.sel.length>0)mg.value=_rc.sel.length;
+  }
+  document.getElementById('rg-cal-overlay').style.display='none';
+}
+function rgHandleExcelFile(inp){
+  const file=inp.files[0];
+  inp.value='';
+  if(!file)return;
+  const ext=file.name.split('.').pop().toLowerCase();
+  if(ext==='csv'){const r=new FileReader();r.onload=ev=>rgParseCSV(ev.target.result);r.readAsText(file,'utf-8');return;}
+  rgLoadXLSX(file);
+}
+function rgLoadXLSX(file){
+  if(window.XLSX){rgParseXLSX(file);return;}
+  const s=document.createElement('script');
+  s.src='js/xlsx.full.min.js';
+  s.onload=()=>rgParseXLSX(file);
+  s.onerror=()=>alert('Excel-Bibliothek konnte nicht geladen werden.\nBitte Datei als CSV (Trennzeichen: Semikolon) speichern und erneut importieren.');
+  document.head.appendChild(s);
+}
+function rgParseXLSX(file){
+  const r=new FileReader();
+  r.onload=e=>{
+    const wb=XLSX.read(new Uint8Array(e.target.result),{type:'array'});
+    const ws=wb.Sheets[wb.SheetNames[0]];
+    const rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+    let hdrRow=-1;
+    for(let i=0;i<rows.length;i++){
+      const r2=rows[i].map(c=>String(c).toLowerCase());
+      if(r2.some(c=>c.includes('nachname'))){hdrRow=i;break;}
+    }
+    if(hdrRow<0){alert('Spalte "Nachname" nicht gefunden.');return;}
+    const hdr=rows[hdrRow].map(c=>String(c).toLowerCase());
+    const ci=k=>hdr.findIndex(h=>h.includes(k));
+    const iN=ci('nachname'),iV=ci('vorname'),iG=ci('geburt'),iA=ci('adresse'),iPLZ=ci('plz'),iE=hdr.findIndex(h=>h.includes('mail')),iT=ci('telefon'),iVers=ci('versicherung');
+    const xlDate=v=>{const n=parseFloat(v);if(!n||isNaN(n))return String(v||'').trim();const d=new Date(Math.round((n-25569)*86400*1000));return`${String(d.getUTCDate()).padStart(2,'0')}.${String(d.getUTCMonth()+1).padStart(2,'0')}.${d.getUTCFullYear()}`;};
+    const xlTel=v=>{const s=String(v||'').trim();const n=parseFloat(s);if(!isNaN(n)&&s.includes('E'))return String(Math.round(n));return s;};
+    const pts=[];
+    for(let i=hdrRow+1;i<rows.length;i++){
+      const row=rows[i];
+      const nn=String(row[iN]||'').trim();
+      if(!nn)continue;
+      pts.push({
+        nachname:nn,
+        vorname:String(row[iV]||'').trim(),
+        geburtsdatum:iG>=0?xlDate(row[iG]):'',
+        adresse:iA>=0?String(row[iA]||'').trim():'',
+        plzort:iPLZ>=0?String(row[iPLZ]||'').trim():'',
+        email:iE>=0?String(row[iE]||'').trim():'',
+        telefon:iT>=0?xlTel(row[iT]):'',
+        versicherung:iVers>=0?String(row[iVers]||'').trim():'',
+        anrede:''
+      });
+    }
+    rgSavePatients(pts);
+    document.getElementById('rg-pcnt').textContent=pts.length+' Patienten geladen';
+    alert(pts.length+' Patienten importiert.');
+  };
+  r.readAsArrayBuffer(file);
+}
+function rgParseCSV(text){
+  const lines=text.split('\n').map(l=>l.split(';').map(c=>c.replace(/^"|"$/g,'').trim()));
+  const hdr=lines[0].map(c=>c.toLowerCase());
+  const ci=k=>hdr.findIndex(h=>h.includes(k));
+  const iN=ci('nachname'),iV=ci('vorname'),iG=ci('geburt'),iA=ci('adresse'),iPLZ=ci('plz'),iE=hdr.findIndex(h=>h.includes('mail'));
+  const pts=[];
+  for(let i=1;i<lines.length;i++){
+    const row=lines[i];const nn=(row[iN]||'').trim();
+    if(!nn)continue;
+    pts.push({nachname:nn,vorname:(row[iV]||'').trim(),geburtsdatum:iG>=0?(row[iG]||'').trim():'',adresse:iA>=0?(row[iA]||'').trim():'',plzort:iPLZ>=0?(row[iPLZ]||'').trim():'',email:iE>=0?(row[iE]||'').trim():'',anrede:''});
+  }
+  rgSavePatients(pts);
+  document.getElementById('rg-pcnt').textContent=pts.length+' Patienten geladen';
+  alert(pts.length+' Patienten importiert.');
+}
+function rgTypeChange(){
+  const type=(document.querySelector('input[name="rg-type"]:checked')||{value:'physio'}).value;
+  const isCoaching=type==='coaching';
+  const isSelbst=type==='selbst';
+  document.getElementById('rg-tax-panel').style.display=(isCoaching||isSelbst)?'block':'none';
+  document.getElementById('rg-coaching-pricetag').style.display=isCoaching?'flex':'none';
+  document.getElementById('rg-sec-verordnung').style.display=isCoaching?'none':'block';
+  document.getElementById('rg-sec-termine').style.display=isCoaching?'none':'block';
+  if(isCoaching){
+    document.getElementById('rg-leistungen').innerHTML='';
+    rgAddRow('COACHING',1,150);
+  } else if(isSelbst){
+    document.getElementById('rg-leistungen').innerHTML='';
+    rgAddRow('S',1,0);
+  }
+}
+function rgOpen(){
+  const t=new Date();
+  const pad=n=>String(n).padStart(2,'0');
+  document.getElementById('rg-datum').value=`${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`;
+  const last=parseInt(localStorage.getItem('rg_last_nr')||'0');
+  document.getElementById('rg-nr').value=String(last+1).padStart(6,'0');
+  const tb=document.getElementById('rg-leistungen');
+  if(!tb.rows.length){rgAddRow('KG',6,29.70);rgAddRow('FK',6,10.00);}
+  const cnt=rgGetPatients().length;
+  document.getElementById('rg-pcnt').textContent=cnt>0?cnt+' Patienten geladen':'Noch keine Patienten importiert.';
+  document.getElementById('rg-overlay').classList.remove('hidden');
+  document.body.style.overflow='hidden';
+}
+function rgClose(){
+  document.getElementById('rg-overlay').classList.add('hidden');
+  document.body.style.overflow='';
+  // Buttons zurücksetzen
+  const _genBtn=document.getElementById('rg-gen-btn');
+  const _mailBtn=document.getElementById('rg-mail-btn');
+  if(_genBtn){_genBtn.textContent='Rechnung erstellen →';_genBtn.classList.add('rg-btn-primary');_genBtn.classList.remove('rg-btn-outline');_genBtn.onclick=rgGenerate;}
+  if(_mailBtn){_mailBtn.style.display='none';_mailBtn.classList.add('rg-btn-outline');_mailBtn.classList.remove('rg-btn-primary');}
+}
+function rgAddRow(art='KG',menge=1,preis=null){
+  const isCoachingMode=(document.querySelector('input[name="rg-type"]:checked')||{value:'physio'}).value==='coaching';
+  const tb=document.getElementById('rg-leistungen');
+  const tr=document.createElement('tr');
+  const p=preis!==null?preis:(RG_ART[art]||RG_ART.S).preis;
+  const opts=isCoachingMode
+    ?`<option value="COACHING"${art==='COACHING'?' selected':''}>Monatspauschale Trainingsbegleitung · 150,00 €</option>
+       <option value="S"${art==='S'?' selected':''}>Sonstige Leistung</option>`
+    :`<option value="KG"${art==='KG'?' selected':''}>KG · 29,70 €</option>
+       <option value="MT"${art==='MT'?' selected':''}>MT · 35,60 €</option>
+       <option value="KGG"${art==='KGG'?' selected':''}>KGG · 34,90 €</option>
+       <option value="FK"${art==='FK'?' selected':''}>Wegegeld/Fahrtkosten · 10,00 €</option>
+       <option value="S"${art==='S'?' selected':''}>Sonstige Leistung</option>`;
+  tr.innerHTML=`<td><select onchange="rgSel(this)" style="width:100%;">${opts}</select></td>
+  <td><input type="number" value="${menge}" min="1" max="99" oninput="rgCalc()" style="width:58px;"></td>
+  <td><input type="number" value="${p.toFixed(2)}" min="0" step="0.01" oninput="rgCalc()" style="width:72px;"></td>
+  <td class="rg-rt" style="text-align:right;font-weight:600;white-space:nowrap;">${rgFmt(menge*p)}</td>
+  <td><button class="rg-del" onclick="this.closest('tr').remove();rgCalc()">×</button></td>`;
+  tb.appendChild(tr);rgCalc();
+}
+function rgSel(sel){
+  const info=RG_ART[sel.value]||RG_ART.S;
+  if(sel.value!=='S')sel.closest('tr').querySelectorAll('input')[1].value=info.preis.toFixed(2);
+  rgCalc();
+}
+function rgCalc(){
+  let tot=0;
+  document.querySelectorAll('#rg-leistungen tr').forEach(tr=>{
+    const ii=tr.querySelectorAll('input[type="number"]');
+    if(ii.length<2)return;
+    const s=(parseFloat(ii[0].value)||0)*(parseFloat(ii[1].value)||0);
+    tot+=s;tr.querySelector('.rg-rt').textContent=rgFmt(s);
+  });
+  document.getElementById('rg-total').textContent=rgFmt(tot);
+}
+function rgFmt(v){return parseFloat(v).toFixed(2).replace('.',',')+' €';}
+function rgDate(s){if(!s)return'';const[y,m,d]=s.split('-');return`${d}.${m}.${y}`;}
+function rgMailTo(){
+  const G=id=>document.getElementById(id).value.trim();
+  const anrede=G('rg-anrede');
+  const vorname=G('rg-vorname');
+  const nachname=G('rg-nachname');
+  const email=G('rg-email');
+  if(!email){alert('Bitte zuerst die E-Mail-Adresse des Patienten eingeben.');return;}
+  const nr=G('rg-nr')||'______';
+  const datumRaw=G('rg-datum');
+  const datum=datumRaw?rgDate(datumRaw):'______';
+  const zeitraum=G('rg-zeitraum');
+  const vdatRaw=G('rg-vdatum');
+  const vdat=vdatRaw?rgDate(vdatRaw):'';
+  let faellig='______';
+  if(datumRaw){const d=new Date(datumRaw);d.setDate(d.getDate()+14);faellig=`${String(d.getDate()).padStart(2,'0')}.${String(d.getMonth()+1).padStart(2,'0')}.${d.getFullYear()}`;}
+  let tot=0;
+  document.querySelectorAll('#rg-leistungen tr').forEach(tr=>{
+    const anz=parseFloat((tr.querySelector('.rg-anz')||{value:'0'}).value)||0;
+    const ep=parseFloat((tr.querySelector('.rg-ep')||{value:'0'}).value)||0;
+    tot+=anz*ep;
+  });
+  const betrag=rgFmt(tot);
+  const gruss=anrede==='Herr'?`Guten Tag Herr ${nachname},`:(anrede==='Frau'?`Guten Tag Frau ${nachname},`:`Guten Tag ${vorname} ${nachname},`);
+  const zeitraumTeil=zeitraum?` für den Zeitraum ${zeitraum}`:'';
+  const rezeptTeil=vdat?` aufgrund des Rezepts vom ${vdat}`:'';
+  const body=`${gruss}
+
+anbei erhalten Sie Rechnung Nr. ${nr} vom ${datum}${zeitraumTeil}${rezeptTeil}.
+
+Rechnungsbetrag: ${betrag}
+Zahlungsziel: ${faellig}
+
+Bitte überweisen Sie den Betrag unter Angabe des Verwendungszwecks auf folgendes Konto:
+
+Kontoinhaber: Nick Grausam
+IBAN: DE04 5002 4024 9560 1933 32
+BIC: DEFFDEFFXXX
+Verwendungszweck: Rechnung Nr. ${nr}
+
+Bei Fragen stehe ich Ihnen jederzeit gerne zur Verfügung.
+
+Mit freundlichen Grüßen
+
+Nick Grausam
+Mobile Physiotherapie Grausam
+Dornierstraße 5 · 69181 Leimen
+Telefon: 0176 4268 5146
+E-Mail: info@physiotherapie-grausam.com
+Steuernummer: 32/146/46410 · USt.-IdNr.: DE341696654`;
+  const subject=`Rechnung Nr. ${nr} – Mobile Physiotherapie Grausam`;
+  window.location.href=`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+function rgEmailWithPdf(){
+  if(!window._rgPdfData){alert('Bitte zuerst die Rechnung erstellen.');return;}
+  const {email,subject,emailBody}=window._rgPdfData;
+  if(!email){alert('Bitte E-Mail-Adresse des Patienten eingeben.');return;}
+  window.location.href='mailto:'+email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(emailBody);
+}
+// Listener: E-Mail öffnen wenn aus Rechnungs-Preview angefordert
+window.addEventListener('message',function(e){
+  if(e.data==='rg_openMail'&&window._rgPdfData){
+    const {email,subject,emailBody}=window._rgPdfData;
+    if(email)window.location.href='mailto:'+email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(emailBody);
+  }
+});
+function calGetLink(){var inp=document.getElementById('cal-link');return inp?inp.value.trim():'';}
+function calSaveLink(){try{localStorage.setItem('cal_link',calGetLink());}catch(e){}}
+function calLoadLink(){try{var v=localStorage.getItem('cal_link');var inp=document.getElementById('cal-link');if(v&&inp)inp.value=v;}catch(e){}}
+function calCopyLink(){
+  var inp=document.getElementById('cal-link');var btn=document.getElementById('cal-copy-btn');
+  var done=function(){if(btn){var o=btn.textContent;btn.textContent='✓ Kopiert';btn.style.background='#2f7355';setTimeout(function(){btn.textContent=o;btn.style.background='#111';},1800);}};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(inp.value).then(done).catch(function(){inp.select();document.execCommand('copy');done();});}
+  else{inp.select();document.execCommand('copy');done();}
+}
+function calShareWhatsApp(){var l=calGetLink();if(!l)return;window.open('https://wa.me/?text='+encodeURIComponent('Hallo, gerne können Sie hier einen Termin bei mir buchen: '+l),'_blank');}
+function calShareEmail(){var l=calGetLink();if(!l)return;window.location.href='mailto:?subject='+encodeURIComponent('Terminbuchung Physiotherapie Grausam')+'&body='+encodeURIComponent('Guten Tag,\n\ngerne können Sie hier bequem einen Termin bei mir buchen:\n'+l+'\n\nMit freundlichen Grüßen\nNick Grausam');}
+function calOpenBooking(){var l=calGetLink();if(l)window.open(l,'_blank');}
+document.addEventListener('DOMContentLoaded',calLoadLink);
+function rgGetInvoices(){try{return JSON.parse(localStorage.getItem('rg_invoices')||'[]');}catch{return[];}}
+function rgGetFahrten(){try{return JSON.parse(localStorage.getItem('rg_fahrtenbuch')||'[]');}catch{return[];}}
+function rgSetInvoiceStatus(nr,status){
+  const inv=rgGetInvoices();
+  const i=inv.findIndex(x=>x.nr===nr);
+  if(i<0)return;
+  inv[i].status=status;
+  inv[i].bezahltAm=status==='bezahlt'?new Date().toLocaleDateString('de-DE'):'';
+  localStorage.setItem('rg_invoices',JSON.stringify(inv));
+  portalRenderSections();
+}
+function rgSaveFahrtKm(id,km){
+  const f=rgGetFahrten();
+  const i=f.findIndex(x=>x.id===id);
+  if(i<0)return;
+  f[i].km=km;
+  localStorage.setItem('rg_fahrtenbuch',JSON.stringify(f));
+}
+function rgDeleteInvoice(nr){
+  if(!confirm('Rechnung Nr. '+nr+' aus der Liste löschen?'))return;
+  localStorage.setItem('rg_invoices',JSON.stringify(rgGetInvoices().filter(x=>x.nr!==nr)));
+  localStorage.setItem('rg_fahrtenbuch',JSON.stringify(rgGetFahrten().filter(x=>x.rechnungNr!==nr)));
+  portalRenderSections();
+}
+function portalRenderSections(){
+  portalRenderCockpit();
+  portalRenderEinnahmen();
+  portalRenderFahrtenbuch();
+}
+function portalRenderCockpit(){
+  const el=document.getElementById('portal-cockpit');
+  if(!el)return;
+  const inv=rgGetInvoices();
+  const fahrten=rgGetFahrten();
+  const now=new Date();
+  const ym=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  let monatEin=0,offen=0,offenCount=0,eingGesamt=0;
+  inv.forEach(r=>{
+    const b=+(r.betrag||0);
+    const bezahlt=r.status==='bezahlt';
+    if(bezahlt){eingGesamt+=b; if((r.bezahltAm||r.datum||'').length){const d=(r.datum||'');if(d.slice(0,7)===ym)monatEin+=b;}}
+    else{offen+=b;offenCount++;}
+  });
+  // Einnahmen diesen Monat: über Rechnungsdatum (egal ob bezahlt) – aussagekräftiger fürs Monatsgefühl
+  let monatRg=0,monatCount=0;
+  inv.forEach(r=>{if((r.datum||'').slice(0,7)===ym){monatRg+=+(r.betrag||0);monatCount++;}});
+  let totalKm=0;fahrten.forEach(r=>totalKm+=parseFloat(r.km)||0);
+  const fmt=v=>v.toFixed(2).replace('.',',')+' €';
+  const monName=now.toLocaleDateString('de-DE',{month:'long',year:'numeric'});
+  const cards=[
+    {label:'Umsatz '+monName,val:fmt(monatRg),sub:monatCount+' Rechnung'+(monatCount===1?'':'en'),bg:'#111',fg:'#fff',sfg:'rgba(255,255,255,.55)'},
+    {label:'Offen / Ausstehend',val:fmt(offen),sub:offenCount+' Rechnung'+(offenCount===1?'':'en'),bg:offen>0?'#fff3cd':'#f5f5f5',fg:offen>0?'#856404':'#888',sfg:offen>0?'#a07d1a':'#aaa'},
+    {label:'Eingenommen gesamt',val:fmt(eingGesamt),sub:'bezahlte Rechnungen',bg:'#d4edda',fg:'#155724',sfg:'#2a7a3a'},
+    {label:'Fahrten gesamt',val:totalKm.toFixed(1)+' km',sub:'absetzbar: '+fmt(totalKm*0.30),bg:'#f5f5f5',fg:'#111',sfg:'#888'}
+  ];
+  el.innerHTML=cards.map(c=>`<div style="background:${c.bg};border-radius:6px;padding:14px 16px;">
+    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:${c.sfg};margin-bottom:7px;">${c.label}</div>
+    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:21px;font-weight:700;color:${c.fg};line-height:1;">${c.val}</div>
+    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;color:${c.sfg};margin-top:6px;">${c.sub}</div>
+  </div>`).join('');
+}
+function portalRenderEinnahmen(){
+  const el=document.getElementById('portal-einnahmen-body');
+  if(!el)return;
+  const inv=rgGetInvoices().slice().reverse();
+  if(!inv.length){el.innerHTML='<tr><td colspan="6" style="padding:16px;text-align:center;color:#aaa;font-size:13px;">Noch keine Rechnungen erfasst.</td></tr>';
+    document.getElementById('portal-einnahmen-sum').textContent='';return;}
+  let sumBezahlt=0,sumAusstehend=0;
+  el.innerHTML=inv.map(r=>{
+    const bezahlt=r.status==='bezahlt';
+    if(bezahlt)sumBezahlt+=r.betrag; else sumAusstehend+=r.betrag;
+    const statusBadge=bezahlt
+      ?`<span onclick="rgSetInvoiceStatus('${r.nr}','ausstehend')" title="Klick: zurücksetzen" style="cursor:pointer;background:#d4edda;color:#155724;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;">✓ Bezahlt${r.bezahltAm?' · '+r.bezahltAm:''}</span>`
+      :`<span onclick="rgSetInvoiceStatus('${r.nr}','bezahlt')" title="Klick: als bezahlt markieren" style="cursor:pointer;background:#fff3cd;color:#856404;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;">⏳ Ausstehend</span>`;
+    return`<tr style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:9px 10px;font-size:13px;white-space:nowrap;">${r.nr}</td>
+      <td style="padding:9px 10px;font-size:13px;">${r.patient||''}</td>
+      <td style="padding:9px 10px;font-size:12px;color:#888;white-space:nowrap;">${r.datum?r.datum.split('-').reverse().join('.'):'—'}</td>
+      <td style="padding:9px 10px;font-size:12px;color:#888;white-space:nowrap;">${r.faelligDatum||'—'}</td>
+      <td style="padding:9px 10px;font-size:13px;font-weight:700;text-align:right;white-space:nowrap;">${r.betrag?(r.betrag).toFixed(2).replace('.',',')+' €':'—'}</td>
+      <td style="padding:9px 10px;white-space:nowrap;">${statusBadge} <button onclick="rgDeleteInvoice('${r.nr}')" title="Löschen" style="background:none;border:none;cursor:pointer;color:#ccc;font-size:13px;padding:0 4px;">✕</button></td>
+    </tr>`;
+  }).join('');
+  const fmt=v=>v.toFixed(2).replace('.',',')+' €';
+  document.getElementById('portal-einnahmen-sum').innerHTML=`<span style="color:#155724;font-weight:700;">Eingenommen: ${fmt(sumBezahlt)}</span> &nbsp;·&nbsp; <span style="color:#856404;">Ausstehend: ${fmt(sumAusstehend)}</span> &nbsp;·&nbsp; <span style="font-weight:700;">Gesamt: ${fmt(sumBezahlt+sumAusstehend)}</span>`;
+}
+function portalRenderFahrtenbuch(){
+  const el=document.getElementById('portal-fahrt-body');
+  if(!el)return;
+  const f=rgGetFahrten().slice().reverse();
+  if(!f.length){el.innerHTML='<tr><td colspan="5" style="padding:16px;text-align:center;color:#aaa;font-size:13px;">Noch keine Fahrten erfasst.</td></tr>';
+    document.getElementById('portal-fahrt-sum').textContent='';return;}
+  let totalKm=0;
+  el.innerHTML=f.map(r=>{
+    const km=parseFloat(r.km)||0;
+    totalKm+=km;
+    return`<tr style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:9px 10px;font-size:12px;color:#888;white-space:nowrap;">${r.datum?r.datum.split('-').reverse().join('.'):(r.datum||'—')}</td>
+      <td style="padding:9px 10px;font-size:13px;">${r.patient||''}</td>
+      <td style="padding:9px 10px;font-size:12px;color:#666;">${r.nach||''}</td>
+      <td style="padding:9px 10px;font-size:12px;color:#888;">${r.rechnungNr||''}</td>
+      <td style="padding:9px 10px;"><input type="number" value="${r.km||''}" placeholder="km" min="0" step="0.1" onchange="rgSaveFahrtKm(${r.id},this.value)" style="width:60px;border:1px solid #ddd;border-radius:2px;padding:4px 6px;font-size:13px;font-family:'DM Sans',system-ui,sans-serif;"></td>
+    </tr>`;
+  }).join('');
+  document.getElementById('portal-fahrt-sum').innerHTML=`<span style="font-weight:700;">Gesamt: ${totalKm.toFixed(1)} km</span> &nbsp;·&nbsp; <span style="color:#888;font-size:12px;">Steuerlich absetzbar: ${(totalKm*0.30).toFixed(2).replace('.',',')} € (0,30 €/km)</span>`;
+}
+function rgExportEAR(){
+  const doExport=()=>{
+    const inv=rgGetInvoices();
+    const fahrten=rgGetFahrten();
+    const wb=XLSX.utils.book_new();
+    const yr=new Date().getFullYear();
+
+    // ── Sheet 1: Einnahmen ──
+    let sumNetto=0,sumUst=0,anzahl=0;
+    const eRows=inv.map(r=>{
+      const netto=+(r.netto||r.betrag||0);
+      const ust=+(r.ust||0);
+      const brutto=+(r.betrag||0);
+      sumNetto+=netto; sumUst+=ust; anzahl++;
+      const datum=r.datum?r.datum.split('-').reverse().join('.'):'';
+      const leistung=r.typ==='coaching'?'Trainingsbegleitung':(r.typ==='selbst'?'Selbstzahler':'Physiotherapie');
+      return[datum,r.patient||'',leistung,'','',netto||'',r.ustPct||0,ust||'',brutto||'','Überweisung','Rechnung Nr. '+r.nr];
+    });
+    const ws1Data=[
+      ['Mobile Physiotherapie Grausam  ·  Einnahmen'],
+      [],
+      ['Einnahmen gesamt:',+(sumNetto+sumUst).toFixed(2),'davon USt. (19%):',+sumUst.toFixed(2),anzahl+' Behandlungen'],
+      [],
+      ['Datum','Patient/in','Leistung','Versicherung','Dauer','Netto','USt%','USt','Brutto','Zahlungsart','Bemerkung'],
+      ...eRows
+    ];
+    const ws1=XLSX.utils.aoa_to_sheet(ws1Data);
+    ws1['!cols']=[{wch:12},{wch:22},{wch:20},{wch:14},{wch:8},{wch:10},{wch:6},{wch:10},{wch:10},{wch:14},{wch:20}];
+    XLSX.utils.book_append_sheet(wb,ws1,'Einnahmen');
+
+    // ── Sheet 2: Ausgaben (leer mit Header) ──
+    const ws2=XLSX.utils.aoa_to_sheet([
+      ['Mobile Physiotherapie Grausam  ·  Ausgaben'],
+      [],
+      ['Datum','Beschreibung','Kategorie','Netto','USt%','USt','Brutto','Beleg-Nr.']
+    ]);
+    ws2['!cols']=[{wch:12},{wch:28},{wch:18},{wch:10},{wch:6},{wch:10},{wch:10},{wch:10}];
+    XLSX.utils.book_append_sheet(wb,ws2,'Ausgaben');
+
+    // ── Sheet 3: Fahrtenbuch ──
+    const fRows=fahrten.map(r=>{
+      const datum=r.datum?r.datum.split('-').reverse().join('.'):(r.datum||'');
+      return[datum,r.patient||'','Dornierstraße 5, 69181 Leimen',r.nach||'',r.km||'','Physiotherapie Hausbesuch',r.rechnungNr||''];
+    });
+    const ws3=XLSX.utils.aoa_to_sheet([
+      ['Mobile Physiotherapie Grausam  ·  Fahrtenbuch '+yr],
+      [],
+      ['Datum','Patient/in','Von (Heimadresse)','Nach (Patientenadresse)','km','Zweck','Rechnung Nr.'],
+      ...fRows
+    ]);
+    ws3['!cols']=[{wch:12},{wch:22},{wch:28},{wch:28},{wch:8},{wch:26},{wch:14}];
+    XLSX.utils.book_append_sheet(wb,ws3,'Fahrtenbuch');
+
+    XLSX.writeFile(wb,'PhysiotherapieGrausam_EAR_'+yr+'.xlsx');
+  };
+  if(window.XLSX){doExport();return;}
+  const s=document.createElement('script');s.src='js/xlsx.full.min.js';
+  s.onload=doExport;
+  s.onerror=()=>alert('XLSX-Bibliothek konnte nicht geladen werden.');
+  document.head.appendChild(s);
+}
+function rgGenerate(){
+  const G=id=>document.getElementById(id).value.trim();
+  const invoiceType=(document.querySelector('input[name="rg-type"]:checked')||{value:'physio'}).value;
+  const taxType=(document.querySelector('input[name="rg-taxtype"]:checked')||{value:'klein'}).value;
+  const isCoaching=invoiceType==='coaching';
+  const isSelbst=invoiceType==='selbst';
+  const nr=G('rg-nr'),datum=G('rg-datum'),zeitraum=G('rg-zeitraum');
+  const vn=G('rg-vorname'),nn=G('rg-nachname'),str=G('rg-strasse'),plz=G('rg-plzort'),anr=G('rg-anrede');
+  const arzt=G('rg-arzt'),vdat=G('rg-vdatum'),diag=G('rg-diagnose');
+  const termine=G('rg-termine').replace(/\n/g,' · ').replace(/·\s*·/g,'·');
+  let rows='',tot=0,pos=1;
+  document.querySelectorAll('#rg-leistungen tr').forEach(tr=>{
+    const sel=tr.querySelector('select');
+    const ii=tr.querySelectorAll('input[type="number"]');
+    if(!sel||ii.length<2)return;
+    const info=RG_ART[sel.value]||RG_ART.S;
+    const lbl=info.label.replace('\n','<br>');
+    const mg=parseFloat(ii[0].value)||0,pr=parseFloat(ii[1].value)||0,s=mg*pr;
+    tot+=s;
+    rows+=`<tr><td style="padding:9px 8px;border-bottom:1px solid #f0f0f0;">${pos++}</td>
+      <td style="padding:9px 8px;border-bottom:1px solid #f0f0f0;">${lbl}</td>
+      <td style="padding:9px 8px;border-bottom:1px solid #f0f0f0;text-align:center;">${mg}</td>
+      <td style="padding:9px 8px;border-bottom:1px solid #f0f0f0;text-align:center;">Stk.</td>
+      <td style="padding:9px 8px;border-bottom:1px solid #f0f0f0;text-align:right;">${rgFmt(pr)}</td>
+      <td style="padding:9px 8px;border-bottom:1px solid #f0f0f0;text-align:right;font-weight:700;">${rgFmt(s)}</td></tr>`;
+  });
+  localStorage.setItem('rg_last_nr',parseInt(nr)||0);
+  const anrF=anr==='Frau'?'geehrte Frau':(anr==='Herr'?'geehrter Herr':'geehrte/r');
+  const vat19=(isCoaching||isSelbst)&&taxType==='vat19';
+  const vatAmt=vat19?tot*0.19:0;
+  const totBrutto=tot+vatAmt;
+  const dueDate=(()=>{if(!datum)return'14 Tagen nach Erhalt';const d=new Date(datum);d.setDate(d.getDate()+14);return rgDate(d.toISOString().slice(0,10));})();
+
+  // Legal footer text
+  let legalText='';
+  if(!isCoaching&&!isSelbst){
+    legalText=`<p>Die Behandlung erfolgte aufgrund &auml;rztlicher Verordnung und stellt eine heilkundige T&auml;tigkeit im Sinne des &sect;&nbsp;4 Nr.&nbsp;14 UStG dar &mdash; die Rechnung ist daher umsatzsteuerfrei.</p>`;
+  } else if(vat19){
+    legalText=`<p>Der ausgewiesene Nettobetrag zzgl. 19&nbsp;% Mehrwertsteuer.</p>
+    <p>Diese Leistung stellt keine Heilbehandlung im Sinne des &sect;&nbsp;4 Nr.&nbsp;14 UStG dar.</p>`;
+  } else {
+    legalText=`<p>Gem&auml;&szlig; &sect;&nbsp;19 Abs.&nbsp;1 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer berechnet und ausgewiesen.</p>`;
+    if(isCoaching)legalText+=`<p>Diese Leistung stellt keine Heilbehandlung im Sinne des &sect;&nbsp;4 Nr.&nbsp;14 UStG dar. Es handelt sich um eine pers&ouml;nliche Trainingsbegleitung.</p>`;
+  }
+
+  // Intro text
+  const introText=isCoaching
+    ?`Sehr ${anrF} ${nn},<br>ich erlaube mir, folgende Leistungen f&uuml;r die vereinbarte Trainingsbegleitung in Rechnung zu stellen:`
+    :`Sehr ${anrF} ${nn},<br>ich erlaube mir, folgende Leistungen in Rechnung zu stellen:`;
+
+  // Prescription line (only for physio)
+  const prescLine=!isCoaching&&arzt
+    ?`<p class="termine">Behandlung aufgrund der Verordnung von <strong>${arzt}</strong> vom <strong>${rgDate(vdat)}</strong>${diag?' mit Diagnose <strong>'+diag+'</strong>':''} f&uuml;r <strong>${vn} ${nn}</strong>${termine?' an folgenden Terminen:<br>'+termine:''}</p>`
+    :'';
+
+  // Total rows
+  let totalRows='';
+  if(vat19){
+    totalRows=`<table style="margin-left:auto;margin-bottom:8pt;border-collapse:collapse;min-width:240pt;">
+      <tr><td style="padding:3pt 8pt;font-size:9pt;color:#555;border-top:.75pt solid #ccc;">Netto</td><td style="padding:3pt 8pt;font-size:9pt;text-align:right;white-space:nowrap;border-top:.75pt solid #ccc;">${rgFmt(tot)}</td></tr>
+      <tr><td style="padding:3pt 8pt;font-size:9pt;color:#555;">19&nbsp;% MwSt.</td><td style="padding:3pt 8pt;font-size:9pt;text-align:right;white-space:nowrap;">${rgFmt(vatAmt)}</td></tr>
+      <tr><td style="padding:5pt 8pt;font-size:9pt;font-weight:700;border-top:1.5pt solid #111;">Gesamtbetrag brutto</td><td style="padding:5pt 8pt;font-size:9pt;font-weight:700;text-align:right;white-space:nowrap;border-top:1.5pt solid #111;">${rgFmt(totBrutto)}</td></tr>
+    </table>`;
+  } else {
+    const label=isCoaching?'Endbetrag (zzgl. ggf. MwSt.)':'Endbetrag (umsatzsteuerfrei)';
+    totalRows=`<table style="margin-left:auto;margin-bottom:8pt;border-collapse:collapse;min-width:240pt;">
+      <tr><td style="padding:5pt 8pt;font-size:9pt;font-weight:700;text-decoration:underline;border-top:1.5pt solid #111;">${label}</td><td style="padding:5pt 8pt;font-size:9pt;font-weight:700;text-align:right;white-space:nowrap;text-decoration:underline;border-top:1.5pt solid #111;">${rgFmt(tot)}</td></tr>
+    </table>`;
+  }
+  // window.open MUSS synchron (vor jedem await) aufgerufen werden – sonst blockiert Safari Popups
+  const qrAmt=(vat19?totBrutto:tot).toFixed(2);
+  const epcData=`BCD\n002\n1\nSCT\nDEFFDEFFXXX\nNick Grausam\nDE04500240249560193332\nEUR${qrAmt}\n\n\nRechnung Nr. ${nr}`;
+  let qrHtml='';
+  try{
+    const _qr=qrcode(0,'M');
+    _qr.addData(epcData,'Byte');
+    _qr.make();
+    let _svg=_qr.createSvgTag(1,0);
+    _svg=_svg.replace('<svg ','<svg style="width:72pt;height:72pt;display:block;border:1pt solid #eee;" ');
+    qrHtml=_svg;
+  }catch(e){}
+
+  const w=window.open('','_blank');
+  if(!w){alert('Bitte Popups für diese Seite erlauben und erneut versuchen.');return;}
+  const qrImgHtml=qrHtml?`<div style="flex-shrink:0;text-align:center;margin-right:14pt;">
+        ${qrHtml}
+        <span style="font-size:6.5pt;color:#888;display:block;margin-top:2pt;">Banking-App scannen</span>
+      </div>`:'';
+  const paymentSection=`<div style="margin:6pt 0 8pt;font-size:8pt;">
+    <p style="margin-bottom:5pt;">Bitte &uuml;berweisen Sie den Rechnungsbetrag bis sp&auml;testens <strong>${dueDate}</strong> auf folgendes Konto:</p>
+    <div style="display:flex;align-items:center;">
+      ${qrImgHtml}
+      <div style="line-height:1.65;">
+        <strong>Mobile Physiotherapie Grausam</strong><br>
+        Inhaber: Nick Grausam<br>
+        IBAN:&nbsp;DE04&nbsp;5002&nbsp;4024&nbsp;9560&nbsp;1933&nbsp;32<br>
+        BIC/SWIFT:&nbsp;DEFFDEFFXXX<br>
+        Verwendungszweck:&nbsp;<strong>Rechnung Nr.&nbsp;${nr}</strong>
+      </div>
+    </div>
+  </div>`;
+
+  w.document.write(`<!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
+<title>Rechnung ${nr} – ${nn}</title>
+<style>
+@page{size:A4;margin:14mm 15mm 14mm 15mm;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:9pt;color:#111;line-height:1.45;}
+.no-print{background:#f0f0f0;padding:8px 16px;display:flex;align-items:center;justify-content:space-between;font-family:sans-serif;font-size:13px;gap:12px;}
+.print-btn{background:#111;color:#fff;border:none;padding:7px 18px;cursor:pointer;font-size:13px;font-weight:700;border-radius:2px;}
+.header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5pt solid #111;padding-bottom:8pt;margin-bottom:12pt;}
+.logo-wrap img{height:26pt;max-width:150pt;display:block;}
+.rech-title{font-size:20pt;font-weight:800;letter-spacing:-0.5pt;line-height:1;}
+.h-info{display:none;}
+.addr-label{font-size:7pt;font-weight:700;letter-spacing:1.5pt;text-transform:uppercase;color:#888;margin-bottom:2pt;}
+.addr{font-size:9pt;line-height:1.5;}
+.meta td{padding:1.5pt 8pt 1.5pt 0;font-size:8.5pt;vertical-align:top;}
+.meta td:first-child{color:#888;font-size:8pt;white-space:nowrap;}
+.meta td:last-child{font-weight:700;}
+.intro{font-size:9pt;line-height:1.5;margin:8pt 0 6pt;}
+.termine{font-size:8.5pt;color:#333;margin-bottom:6pt;line-height:1.45;}
+table.lt{width:100%;border-collapse:collapse;margin-bottom:6pt;}
+table.lt thead tr{background:#111;color:#fff;}
+table.lt thead td{padding:5pt 7pt;font-size:8pt;font-weight:700;letter-spacing:.4pt;}
+table.lt tbody td{padding:4pt 7pt;font-size:8.5pt;border-bottom:.5pt solid #eee;}
+.legal{font-size:7pt;color:#555;line-height:1.5;margin-bottom:8pt;}
+.legal p{margin-bottom:7pt;}
+.legal p:last-child{margin-bottom:0;}
+.ftr{border-top:.75pt solid #ccc;padding-top:6pt;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8pt;font-size:6.5pt;color:#777;line-height:1.55;}
+.ftr-title{font-weight:700;color:#333;margin-bottom:2pt;font-size:7pt;}
+@media print{
+  .no-print{display:none!important;}
+  html,body{height:100%!important;margin:0!important;padding:0!important;overflow:hidden!important;}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact;display:flex!important;flex-direction:column!important;}
+  .ftr{margin-top:auto!important;}
+}
+</style></head><body>
+<div class="no-print"><span>Rechnung Nr. ${nr} &ndash; ${vn} ${nn}${isCoaching?' · Trainingsbegleitung':''}</span><div style="display:flex;gap:8px;"><button class="print-btn" onclick="window.print()">&#x1F4BE; Als PDF speichern</button><button class="print-btn" style="background:#c8a450;" onclick="window.opener&&window.opener.postMessage('rg_openMail','*')">&#x2709; E-Mail &ouml;ffnen</button></div></div>
+<div class="header">
+  <div>
+    <div class="logo-wrap"><img src="https://www.physiotherapie-grausam.com/logo.svg" alt="Mobile Physiotherapie Grausam"></div>
+    <div class="h-info">Nick Grausam &middot; Physiotherapeut &middot; Dornierstra&szlig;e 5 &middot; 69181 Leimen &middot; Tel.: 0176 4268 5146 &middot; info@physiotherapie-grausam.com</div>
+  </div>
+  <div style="text-align:right;"><div class="rech-title">RECHNUNG</div>${isCoaching?'<div style="font-size:8pt;color:#888;margin-top:3pt;">Trainingsbegleitung</div>':''}</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12pt;margin-bottom:10pt;">
+  <div><div class="addr-label">Rechnung an</div>
+    <div class="addr">${vn} ${nn}${str?'<br>'+str:''}${plz?'<br>'+plz:''}</div>
+  </div>
+  <div style="text-align:right;"><table class="meta" style="margin-left:auto;">
+    <tr><td>Rechnungs-Nr.</td><td>${nr}</td></tr>
+    <tr><td>Rechnungsdatum</td><td>${rgDate(datum)}</td></tr>
+    ${zeitraum?`<tr><td>Leistungszeitraum</td><td>${zeitraum}</td></tr>`:''}
+  </table></div>
+</div>
+<h2 style="font-size:14pt;font-weight:800;margin:10pt 0 8pt;border-bottom:1pt solid #e8e8e8;padding-bottom:6pt;">Rechnung Nr.&nbsp;${nr}</h2>
+<p class="intro">${introText}</p>
+${prescLine}
+<table class="lt"><thead><tr>
+  <td style="width:5%;">Pos.</td><td style="width:47%;">Artikel / Leistung</td>
+  <td style="width:10%;text-align:center;">Menge</td><td style="width:10%;text-align:center;">Einheit</td>
+  <td style="width:14%;text-align:right;">Preis</td><td style="width:14%;text-align:right;">Gesamt</td>
+</tr></thead><tbody>${rows}</tbody></table>
+${totalRows}
+${legalText?`<p class="legal">${legalText}</p>`:''}
+${paymentSection}
+<div class="ftr">
+  <div><div class="ftr-title">Mobile Physiotherapie Grausam</div>Dornierstra&szlig;e 5<br>69181 Leimen<br>Deutschland</div>
+  <div><div class="ftr-title">Gesch&auml;ftsf&uuml;hrer: Nick Grausam</div>Telefon: +49&nbsp;176&nbsp;4268&nbsp;5146<br>E-Mail: info@physiotherapie-grausam.com<br>Steuernummer: 32/146/46410<br>USt.-IdNr.: DE341696654</div>
+  <div><div class="ftr-title">Bankverbindung</div>C24 Bank Frankfurt am Main<br>IBAN: DE04 5002 4024 9560 1933 32<br>BIC/Swift: DEFFDEFFXXX</div>
+</div>
+</body></html>`);
+  w.document.close();
+  // Save to Einnahmen + Fahrtenbuch
+  const _betrag=vat19?totBrutto:tot;
+  const _faelligRaw=(()=>{if(!datum)return'';const d=new Date(datum);d.setDate(d.getDate()+14);return d.toISOString().slice(0,10);})();
+  const _faelligFmt=_faelligRaw?_faelligRaw.split('-').reverse().join('.'):'';
+  const _netto=vat19?tot:_betrag,_ustAmt=vat19?+(tot*0.19).toFixed(2):0,_ustPct=vat19?19:0;
+  const _invRecord={id:Date.now(),nr,datum,faelligDatum:_faelligFmt,patient:`${nn}, ${vn}`,adresse:str,plzort:plz,betrag:_betrag,netto:_netto,ust:_ustAmt,ustPct:_ustPct,status:'ausstehend',bezahltAm:'',typ:invoiceType};
+  const _invList=rgGetInvoices();
+  const _existing=_invList.findIndex(x=>x.nr===nr);
+  if(_existing>=0)_invList[_existing]=_invRecord; else _invList.push(_invRecord);
+  localStorage.setItem('rg_invoices',JSON.stringify(_invList));
+  const _fList=rgGetFahrten();
+  if(!_fList.some(x=>x.rechnungNr===nr)){
+    _fList.push({id:Date.now()+1,datum,patient:`${nn}, ${vn}`,nach:(str?str+', ':'')+plz,km:'',rechnungNr:nr});
+    localStorage.setItem('rg_fahrtenbuch',JSON.stringify(_fList));
+  }
+  // Store data for PDF email
+  const _gruss=anr==='Herr'?`Guten Tag Herr ${nn},`:(anr==='Frau'?`Guten Tag Frau ${nn},`:`Guten Tag ${vn} ${nn},`);
+  const _zteil=zeitraum?` für den Zeitraum ${zeitraum}`:'';
+  const _vteil=vdat?` aufgrund des Rezepts vom ${rgDate(vdat)}`:'';
+  const _tot=vat19?totBrutto:tot;
+  window._rgPdfData={
+    nr, email:G('rg-email'),
+    subject:`Rechnung Nr. ${nr} – Mobile Physiotherapie Grausam`,
+    emailBody:`${_gruss}\n\nanbei erhalten Sie Rechnung Nr. ${nr} vom ${rgDate(datum)}${_zteil}${_vteil}.\n\nRechnungsbetrag: ${rgFmt(_tot)}\nZahlungsziel: ${dueDate}\n\nBitte überweisen Sie den Betrag unter Angabe des Verwendungszwecks auf folgendes Konto:\n\nKontoinhaber: Nick Grausam\nIBAN: DE04 5002 4024 9560 1933 32\nBIC: DEFFDEFFXXX\nVerwendungszweck: Rechnung Nr. ${nr}\n\nBei Fragen stehe ich Ihnen jederzeit gerne zur Verfügung.\n\nMit freundlichen Grüßen\n\nNick Grausam\nMobile Physiotherapie Grausam\nDornierstraße 5 · 69181 Leimen\nTelefon: 0176 4268 5146\nE-Mail: info@physiotherapie-grausam.com\nSteuernummer: 32/146/46410 · USt.-IdNr.: DE341696654`,
+    ready:true
+  };
+  // Post-generation: E-Mail-Button als primäre Aktion zeigen
+  const _genBtn=document.getElementById('rg-gen-btn');
+  const _mailBtn=document.getElementById('rg-mail-btn');
+  if(_genBtn){_genBtn.textContent='↺ Neue Rechnung';_genBtn.classList.remove('rg-btn-primary');_genBtn.classList.add('rg-btn-outline');_genBtn.onclick=function(){rgClose();rgOpen();};}
+  if(_mailBtn){_mailBtn.style.display='';_mailBtn.classList.remove('rg-btn-outline');_mailBtn.classList.add('rg-btn-primary');}
+}
 
 // ── BARRIEREFREIHEITS-WIDGET ──
 (function(){
@@ -2189,5 +3508,28 @@ if(window.top!==window.self){window.top.location=window.self.location;}
 })();
 
 </script>
+<input type="file" id="rg-excel-file-input" accept=".xlsx,.xls,.csv" style="position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;" onchange="rgHandleExcelFile(this)">
+
+<!-- KALENDER OVERLAY -->
+<div id="rg-cal-overlay" class="rg-cal-overlay" onclick="if(event.target===this)document.getElementById('rg-cal-overlay').style.display='none'">
+  <div class="rg-cal">
+    <div class="rg-cal-top">
+      <div class="rg-cal-nav">
+        <button class="rg-cal-nav-btn" onclick="rgCalPrev()">&#8592;</button>
+        <span class="rg-cal-month" id="rg-cal-month-label"></span>
+        <button class="rg-cal-nav-btn" onclick="rgCalNext()">&#8594;</button>
+      </div>
+      <div class="rg-cal-wd">
+        <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span>
+      </div>
+    </div>
+    <div class="rg-cal-days" id="rg-cal-days"></div>
+    <div id="rg-cal-hint" class="rg-cal-hint"></div>
+    <div class="rg-cal-foot">
+      <button class="rg-cal-clear" onclick="rgCalClear()">Zurücksetzen</button>
+      <button class="rg-cal-done" onclick="rgCalDone()">Fertig</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>

@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 
 Disallow: /dokumente/
+Disallow: /intern-x7k2m9/
 
 Sitemap: https://physiotherapie-grausam.com/sitemap.xml
