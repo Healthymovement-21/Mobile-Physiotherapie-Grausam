@@ -949,10 +949,11 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
   <!-- ── ANGEBOT-SEKTION (ein starker Bild-Block, echtes Foto) ── -->
   <div class="visual-sec">
     <span class="visual-sec-label">Mein Angebot</span>
-    <picture>
-      <source type="image/webp" srcset="foto-3-800.webp 1x, foto-3-1600.webp 2x">
-      <img class="visual-sec-img" src="foto-3-800.jpg" srcset="foto-3-800.jpg 1x, foto-3-1600.jpg 2x" alt="Nick Grausam – staatlich anerkannter Physiotherapeut für Hausbesuche" loading="lazy" width="800" height="1070">
-    </picture>
+    <!-- Neues Motiv: Behandlungssituation / Hausbesuch einfügen (NICHT dasselbe Foto wie „Über mich"). Gleiches Format 800×1070. -->
+    <div class="visual-sec-img" style="aspect-ratio:800/1070;background:linear-gradient(158deg,var(--beige) 0%,var(--sand-light) 100%);border:1px dashed var(--beige-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+      <i data-lucide="camera" style="width:34px;height:34px;stroke:var(--accent);stroke-width:1.4;fill:none;"></i>
+      <span style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">Foto folgt · Behandlungssituation</span>
+    </div>
     <div class="visual-sec-body">
       <h2 class="visual-sec-title">Volle Aufmerksamkeit —<br>in Ihren eigenen vier Wänden.</h2>
     </div>
@@ -1022,6 +1023,28 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     </div>
     <div style="margin-top:36px;">
       <button class="btn" onclick="show('kontakt')">Termin anfragen</button>
+    </div>
+  </div>
+
+  <!-- ── PATIENTENSTIMMEN — ausgeblendet, bis echte Rezensionen vorliegen (class="hidden" entfernen zum Aktivieren).
+       WICHTIG (HWG): Zitate müssen HWG-konform sein — KEINE Heilungsversprechen, KEINE Vorher-Nachher-Aussagen.
+       Nur Aussagen zu Ablauf, Service, Betreuung. Namen/Orte vom Inhaber einholen (Einwilligung erforderlich). -->
+  <div class="sec hidden" id="patientenstimmen">
+    <span class="eyebrow" style="display:block;margin-bottom:12px;">Erfahrungen</span>
+    <h2 class="sec-title" style="margin-bottom:28px;">Das sagen meine Patienten</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+      <div style="border:1px solid var(--border);border-radius:var(--radius-card);background:var(--sand-light);padding:26px 24px;box-shadow:var(--elev-card);">
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--text);line-height:1.7;font-style:italic;margin:0 0 14px;">„Sehr zuverlässig und pünktlich — die Behandlung bei mir zuhause war eine große Erleichterung im Alltag."</p>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;color:var(--muted);margin:0;">[Vorname N.] · [Ort]</p>
+      </div>
+      <div style="border:1px solid var(--border);border-radius:var(--radius-card);background:var(--sand-light);padding:26px 24px;box-shadow:var(--elev-card);">
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--text);line-height:1.7;font-style:italic;margin:0 0 14px;">„Nimmt sich viel Zeit und erklärt alles verständlich. Ich habe mich rundum gut betreut gefühlt."</p>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;color:var(--muted);margin:0;">[Vorname N.] · [Ort]</p>
+      </div>
+      <div style="border:1px solid var(--border);border-radius:var(--radius-card);background:var(--sand-light);padding:26px 24px;box-shadow:var(--elev-card);">
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--text);line-height:1.7;font-style:italic;margin:0 0 14px;">„Unkomplizierte Terminvereinbarung und ein sehr freundlicher, professioneller Umgang."</p>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;color:var(--muted);margin:0;">[Vorname N.] · [Ort]</p>
+      </div>
     </div>
   </div>
 
