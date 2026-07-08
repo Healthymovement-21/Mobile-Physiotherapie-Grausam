@@ -921,6 +921,7 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <div class="hero-btns">
         <button class="hero-link hero-link-primary" onclick="show('kontakt')">Verfügbarkeit prüfen</button>
       </div>
+      <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:rgba(255,255,255,0.72);margin-top:16px;letter-spacing:0.3px;">Erreichbar: Mo–Mi &amp; Fr ab 17 Uhr · Sa &amp; So ganztags</p>
     </div>
     <button class="scroll-hint" onclick="var t=document.querySelector('.trust-strip');if(t)t.scrollIntoView({behavior:'smooth'});" aria-label="Nach unten scrollen">
       <span>Entdecken</span>
@@ -939,21 +940,16 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
 
 
   <div class="trust-strip">
-    <div class="trust-item reveal"><i data-lucide="shield-check" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>Staatlich anerkannter Physiotherapeut</div>
     <div class="trust-item reveal"><i data-lucide="award" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>Ausgebildet an der BG Klinik Ludwigshafen</div>
-    <div class="trust-item reveal"><i data-lucide="shield" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>Berufshaftpflicht versichert</div>
-    <div class="trust-item reveal"><i data-lucide="medal" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>Fortbildungen bei Physio der dt. Fußball-Nationalelf</div>
-    <div class="trust-item reveal"><i data-lucide="clock" style="width:15px;height:15px;stroke:var(--accent);stroke-width:2;fill:none;flex-shrink:0;"></i>Erreichbar: Mo–Mi &amp; Fr ab 17 Uhr · Sa &amp; So</div>
   </div>
 
   <!-- ── ANGEBOT-SEKTION (ein starker Bild-Block, echtes Foto) ── -->
   <div class="visual-sec">
     <span class="visual-sec-label">Mein Angebot</span>
-    <!-- Neues Motiv: Behandlungssituation / Hausbesuch einfügen (NICHT dasselbe Foto wie „Über mich"). Gleiches Format 800×1070. -->
-    <div class="visual-sec-img" style="aspect-ratio:800/1070;background:linear-gradient(158deg,var(--beige) 0%,var(--sand-light) 100%);border:1px dashed var(--beige-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
-      <i data-lucide="camera" style="width:34px;height:34px;stroke:var(--accent);stroke-width:1.4;fill:none;"></i>
-      <span style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">Foto folgt · Behandlungssituation</span>
-    </div>
+    <picture>
+      <source type="image/webp" srcset="foto-3-800.webp 1x, foto-3-1600.webp 2x">
+      <img class="visual-sec-img" src="foto-3-800.jpg" srcset="foto-3-800.jpg 1x, foto-3-1600.jpg 2x" alt="Nick Grausam – Physiotherapeut für Hausbesuche" loading="lazy" width="800" height="1070">
+    </picture>
     <div class="visual-sec-body">
       <h2 class="visual-sec-title">Volle Aufmerksamkeit —<br>in Ihren eigenen vier Wänden.</h2>
     </div>
