@@ -183,7 +183,7 @@ nav .burger-lines span{background:#fff;}
 .overlay.open .overlay-links li:nth-child(3){transition-delay:0.19s;}
 .overlay.open .overlay-links li:nth-child(4){transition-delay:0.25s;}
 .overlay.open .overlay-links li:nth-child(5){transition-delay:0.31s;}
-.overlay.open .overlay-links li:nth-child(6){transition-delay:0.37s;}
+.overlay.open .overlay-links li:nth-child(6){transition-delay:0.37s;}.overlay.open .overlay-links li:nth-child(7){transition-delay:0.43s;}.overlay.open .overlay-links li:nth-child(8){transition-delay:0.49s;}
 .overlay-cta{opacity:0;transform:translateY(-8px);width:100%;padding:22px 9% calc(22px + env(safe-area-inset-bottom,0px));}
 .overlay.open .overlay-cta{opacity:1;transform:translateY(0);transition:transform 0.22s cubic-bezier(0.34,1.56,0.64,1),opacity 0.18s ease;transition-delay:0.37s;}
 .overlay-close{display:none;}
@@ -889,6 +889,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <li><a href="#mehr" onclick="show('mehr');return false;">Mehr für Sie</a></li>
     <li><a href="#ueber" onclick="show('ueber');return false;">Über mich</a></li>
     <li><a href="#faq" onclick="show('faq');return false;">FAQ</a></li>
+    <li><a href="#infos" onclick="show('infos');return false;">Relevante Infos</a></li>
+    <li><a href="#dokumente" onclick="show('dokumente');return false;">Dokumente</a></li>
   </ul>
   <button class="nav-cta" onclick="show('kontakt')">Termin anfragen</button>
 <button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span class="burger-lines"><span></span><span></span><span></span></span><span class="burger-label">Menü</span></button>
@@ -904,6 +906,8 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <li><a href="#leistungen" onclick="show('leistungen');toggleOverlay();return false;"><span class="overlay-link-text">Leistungen</span></a></li>
     <li><a href="#mehr" onclick="show('mehr');toggleOverlay();return false;"><span class="overlay-link-text">Mehr für Sie</span></a></li>
     <li><a href="#faq" onclick="show('faq');toggleOverlay();return false;"><span class="overlay-link-text">FAQ</span></a></li>
+    <li><a href="#infos" onclick="show('infos');toggleOverlay();return false;"><span class="overlay-link-text">Relevante Infos</span></a></li>
+    <li><a href="#dokumente" onclick="show('dokumente');toggleOverlay();return false;"><span class="overlay-link-text">Dokumente</span></a></li>
   </ul>
   <div class="overlay-cta">
     <a href="#kontakt" onclick="show('kontakt');toggleOverlay();return false;">Termin anfragen</a>
@@ -981,19 +985,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
       <p style="margin:0;color:var(--muted);">Ich kann dir nicht versprechen, dass alles funktioniert. Aber dass ich dranbleibe, hinterfrage und mich weiterbilde. Und dass ich dir ehrlich sage, wenn ich etwas nicht wei&szlig;.</p>
       <p style="margin:8px 0 0;"><a href="javascript:void(0)" onclick="show('kontakt')" style="color:var(--accent-dark);font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:3px;">Wenn du denkst, dass mein Ansatz zu dir passt, melde dich.</a></p>
     </div>
-  </div>
-
-  <!-- ── RELEVANTE INFOS (Legende) ── -->
-  <div class="sec">
-    <span class="eyebrow" style="display:block;margin-bottom:16px;">Relevante Infos</span>
-    <div style="max-width:620px;border-top:1px solid var(--border);">
-      <div style="padding:15px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Keine GKV-Abrechnung.</span> Nur Privatpatienten, Beamte mit Beihilfe und Selbstzahler.</div>
-      <div style="padding:15px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Privatpatienten.</span> Du bekommst eine Rechnung für deine private Krankenversicherung. Wie viel erstattet wird, hängt von deinem Tarif ab.</div>
-      <div style="padding:15px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Beamte mit Beihilfe.</span> Vergütung nach Anlage&nbsp;9 BBhV. Die Rechnung reichst du bei deiner Beihilfestelle ein.</div>
-      <div style="padding:15px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Selbstzahler.</span> Kein Rezept nötig, ab 45&nbsp;€. Ohne ärztliche Verordnung gilt es als Prävention, nicht als medizinische Behandlung.</div>
-      <div style="padding:15px 0;font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Kosten vorab.</span> Kosten und Honorar besprechen wir vor dem ersten Termin. Das gibt dir Sicherheit.</div>
-    </div>
-    <p style="margin-top:22px;"><a href="javascript:void(0)" onclick="show('leistungen')" style="color:var(--accent-dark);font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:3px;">Alle Preise &amp; Details</a></p>
   </div>
 
   <!-- ── MEINE PATIENTEN ── -->
@@ -1373,25 +1364,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     </div>
   </div>
 
-  <div class="sec" style="padding-bottom:6px;">
-    <span class="eyebrow" style="display:block;margin-bottom:14px;">Dokumente</span>
-    <div style="max-width:600px;border-top:1px solid var(--border);">
-      <a href="https://docs.google.com/document/d/1EyCKvdNdVkpSH-IAKmCYothB2Q-4TBoP/export?format=pdf" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);text-decoration:none;">
-        <span style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;color:var(--text);font-weight:700;">Anamnesebogen <span style="color:var(--muted);font-weight:500;font-size:12.5px;">· PDF</span></span>
-        <i data-lucide="download" style="width:18px;height:18px;stroke:var(--accent-dark);stroke-width:2;fill:none;flex-shrink:0;"></i>
-      </a>
-      <a href="dokumente/Behandlungsvertrag.pdf" download="Behandlungsvertrag.pdf" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);text-decoration:none;">
-        <span style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;color:var(--text);font-weight:700;">Behandlungsvertrag <span style="color:var(--muted);font-weight:500;font-size:12.5px;">· PDF</span></span>
-        <i data-lucide="download" style="width:18px;height:18px;stroke:var(--accent-dark);stroke-width:2;fill:none;flex-shrink:0;"></i>
-      </a>
-      <a href="dokumente/Datenschutzerklaerung-Patienten.pdf" download="Datenschutzerklärung.pdf" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;text-decoration:none;">
-        <span style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;color:var(--text);font-weight:700;">Datenschutzerklärung <span style="color:var(--muted);font-weight:500;font-size:12.5px;">· PDF</span></span>
-        <i data-lucide="download" style="width:18px;height:18px;stroke:var(--accent-dark);stroke-width:2;fill:none;flex-shrink:0;"></i>
-      </a>
-    </div>
-    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);margin-top:12px;">Bitte vor dem Ersttermin ausfüllen und bereithalten.</p>
-  </div>
-
   <div class="sec">
     <div class="kontakt-grid">
 
@@ -1575,6 +1547,53 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     </div>
 
     <p class="kontakt-privacy">Ihre Daten werden ausschließlich für die Terminorganisation verwendet und nicht an Dritte weitergegeben. Details in der <a href="javascript:void(0)" onclick="show('datenschutz')">Datenschutzerklärung</a>.</p>
+  </div>
+</div>
+
+<!-- ═══ RELEVANTE INFOS ═══ -->
+<div class="page" id="infos">
+  <div class="leist-hero">
+    <div class="leist-hero-inner">
+      <span class="leist-hero-eye">Gut zu wissen</span>
+      <h2 class="leist-hero-title">Relevante Infos</h2>
+    </div>
+  </div>
+  <div class="sec">
+    <div style="max-width:620px;border-top:1px solid var(--border);">
+      <div style="padding:15px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Keine GKV-Abrechnung.</span> Nur Privatpatienten, Beamte mit Beihilfe und Selbstzahler.</div>
+      <div style="padding:15px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Privatpatienten.</span> Du bekommst eine Rechnung für deine private Krankenversicherung. Wie viel erstattet wird, hängt von deinem Tarif ab.</div>
+      <div style="padding:15px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Beamte mit Beihilfe.</span> Vergütung nach Anlage&nbsp;9 BBhV. Die Rechnung reichst du bei deiner Beihilfestelle ein.</div>
+      <div style="padding:15px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Selbstzahler.</span> Kein Rezept nötig, ab 45&nbsp;€. Ohne ärztliche Verordnung gilt es als Prävention, nicht als medizinische Behandlung.</div>
+      <div style="padding:15px 0;font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Kosten vorab.</span> Kosten und Honorar besprechen wir vor dem ersten Termin. Das gibt dir Sicherheit.</div>
+    </div>
+    <p style="margin-top:22px;"><a href="javascript:void(0)" onclick="show('leistungen')" style="color:var(--accent-dark);font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:3px;">Alle Preise &amp; Details</a></p>
+  </div>
+</div>
+
+<!-- ═══ DOKUMENTE ═══ -->
+<div class="page" id="dokumente">
+  <div class="leist-hero">
+    <div class="leist-hero-inner">
+      <span class="leist-hero-eye">Vor dem Ersttermin</span>
+      <h2 class="leist-hero-title">Dokumente</h2>
+    </div>
+  </div>
+  <div class="sec">
+    <div style="max-width:600px;border-top:1px solid var(--border);">
+      <a href="https://docs.google.com/document/d/1EyCKvdNdVkpSH-IAKmCYothB2Q-4TBoP/export?format=pdf" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 0;border-bottom:1px solid var(--border);text-decoration:none;">
+        <span style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;color:var(--text);font-weight:700;">Anamnesebogen <span style="color:var(--muted);font-weight:500;font-size:12.5px;">· PDF</span></span>
+        <i data-lucide="download" style="width:18px;height:18px;stroke:var(--accent-dark);stroke-width:2;fill:none;flex-shrink:0;"></i>
+      </a>
+      <a href="dokumente/Behandlungsvertrag.pdf" download="Behandlungsvertrag.pdf" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 0;border-bottom:1px solid var(--border);text-decoration:none;">
+        <span style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;color:var(--text);font-weight:700;">Behandlungsvertrag <span style="color:var(--muted);font-weight:500;font-size:12.5px;">· PDF</span></span>
+        <i data-lucide="download" style="width:18px;height:18px;stroke:var(--accent-dark);stroke-width:2;fill:none;flex-shrink:0;"></i>
+      </a>
+      <a href="dokumente/Datenschutzerklaerung-Patienten.pdf" download="Datenschutzerklärung.pdf" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 0;text-decoration:none;">
+        <span style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;color:var(--text);font-weight:700;">Datenschutzerklärung <span style="color:var(--muted);font-weight:500;font-size:12.5px;">· PDF</span></span>
+        <i data-lucide="download" style="width:18px;height:18px;stroke:var(--accent-dark);stroke-width:2;fill:none;flex-shrink:0;"></i>
+      </a>
+    </div>
+    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);margin-top:12px;">Bitte vor dem Ersttermin ausfüllen und bereithalten.</p>
   </div>
 </div>
 
