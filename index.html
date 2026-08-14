@@ -31,6 +31,7 @@
 <style>
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/DMSans-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
 @font-face{font-family:'DM Sans';font-style:italic;font-weight:400;font-display:swap;src:url('fonts/DMSans-400italic-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+.gkv-red{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(15px,2.4vw,18px);font-weight:800;line-height:1.42;color:#b21c14;background:#fdeceb;border:1px solid #f3c2bd;border-left:4px solid #d62b22;border-radius:10px;padding:16px 18px;margin-bottom:34px;}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"Mobile Physiotherapie Grausam","url":"https://physiotherapie-grausam.com/"}
@@ -1051,7 +1052,6 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="leist-hero-inner">
       <span class="leist-hero-eye">Mein Angebot</span>
       <h2 class="leist-hero-title">Leistungen<br>&amp; Preise</h2>
-      <p class="leist-hero-sub">Für Privatpatienten, Beamte mit Beihilfe und Selbstzahler.<br>Transparente Honorare — vor Behandlungsbeginn schriftlich festgehalten.</p>
     </div>
   </div>
   <div class="sec">
@@ -1059,51 +1059,11 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     <div class="leist-section">
 
 
-      <!-- PREISE -->
-      <div>
-        <!-- GKV-Hinweis -->
-        <div class="notice-box">
-          <i data-lucide="info" style="width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:2;flex-shrink:0;margin-top:1px;"></i>
-          <p><strong>Keine GKV-Abrechnung möglich.</strong> Die Behandlung richtet sich ausschließlich an <strong>Privatpatienten, Beamte mit Beihilfe</strong> und <strong>Selbstzahler</strong>.</p>
-        </div>
-
-        <!-- Block 1: Privatpatienten & Beihilfe -->
-        <div class="preis-group">
-          <h3 class="preis-group-title">Privatpatienten &amp; Beihilfe<span class="preis-group-badge">· mit Rezept</span></h3>
-          <p class="preis-info-text">Abrechnung nach ärztlicher Verordnung — individuell, transparent und schriftlich vereinbart.</p>
-          <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);line-height:1.7;margin-top:6px;">Grundlage: Beihilfe-Gebührenübersicht Anlage 9 BBhV. Kosten richten sich nach der verordneten Leistung (KG, MT, MLD …) und werden vor Behandlungsbeginn festgelegt.</p>
-          <a class="preis-gebuehren-link" href="https://www.bva.bund.de/SharedDocs/Downloads/DE/Bundesbedienstete/Gesundheit-Vorsorge/Beihilfe/Merkblaetter/heilbehandlungen.pdf?__blob=publicationFile" target="_blank" rel="noopener noreferrer">Aktuelle Gebührenübersicht (BVA Merkblatt, Stand 02/2026) ↗</a>
-        </div>
-
-        <!-- Block 2: Selbstzahler -->
-        <div class="preis-group">
-          <span class="preis-group-label">Ohne Rezept</span>
-          <h3 class="preis-group-title">Selbstzahler<span class="preis-group-badge">· inkl. 19 % MwSt.</span></h3>
-          <div class="preistab-wrap">
-            <table class="preistab">
-              <thead><tr><th>Dauer</th><th>Preis</th></tr></thead>
-              <tbody>
-                <tr><td>30 Minuten</td><td>45,00 €</td></tr>
-                <tr><td>45 Minuten</td><td>60,00 €</td></tr>
-                <tr><td>60 Minuten</td><td>75,00 €</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="preis-group-note" style="margin-top:12px;">Alle Preise inkl. Anfahrt im gesamten Einzugsgebiet — keine versteckten Kosten.</p>
-        </div>
-
-
-<div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;">
-          <button class="btn" onclick="show('kontakt')">Unverbindlich anfragen</button>
-          <a class="mehr-link" href="javascript:void(0)" onclick="show('ablauf')" style="margin-top:0;">Wie läuft es ab?</a>
-        </div>
-        <p class="preis-versicherung-note">Bitte informieren Sie sich auch bei Ihrer eigenen Krankenversicherung oder Beihilfestelle über mögliche Erstattungen — in der Regel erstatten sie einen Teil der Behandlungskosten. Den genauen Betrag eruieren wir gerne gemeinsam.</p>
-      </div>
+      <div class="gkv-red">Keine Abrechnung über die gesetzliche Krankenkasse (GKV). Behandlung nur für Privatpatienten, Beamte mit Beihilfe und Selbstzahler.</div>
 
       <!-- BEHANDLUNGSANGEBOT -->
       <div>
-        <span class="eyebrow" style="margin-bottom:8px;display:block;">Was ich anbiete</span>
-        <h3 class="leist-acc-title">Behandlungsangebot</h3>
+        <h3 class="leist-acc-title">Abrechnungsfähige Leistungen</h3>
         <div class="leist-acc-list">
 
           <div class="leist-acc-item">
@@ -1173,6 +1133,41 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
         </div>
       </div>
 
+
+      <!-- PREISE -->
+      <div>
+
+        <!-- Block 1: Privatpatienten & Beihilfe -->
+        <div class="preis-group">
+          <h3 class="preis-group-title">Privatpatienten &amp; Beihilfe<span class="preis-group-badge">· mit Rezept</span></h3>
+          <p class="preis-info-text">Abrechnung nach ärztlicher Verordnung — individuell, transparent und schriftlich vereinbart.</p>
+          <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:var(--muted);line-height:1.7;margin-top:6px;">Grundlage: Beihilfe-Gebührenübersicht Anlage 9 BBhV. Kosten richten sich nach der verordneten Leistung (KG, MT, MLD …) und werden vor Behandlungsbeginn festgelegt.</p>
+          <a class="preis-gebuehren-link" href="https://www.bva.bund.de/SharedDocs/Downloads/DE/Bundesbedienstete/Gesundheit-Vorsorge/Beihilfe/Merkblaetter/heilbehandlungen.pdf?__blob=publicationFile" target="_blank" rel="noopener noreferrer">Aktuelle Gebührenübersicht (BVA Merkblatt, Stand 02/2026) ↗</a>
+        </div>
+
+        <!-- Block 2: Selbstzahler -->
+        <div class="preis-group">
+          <span class="preis-group-label">Ohne Rezept</span>
+          <h3 class="preis-group-title">Selbstzahler<span class="preis-group-badge">· inkl. 19 % MwSt.</span></h3>
+          <div class="preistab-wrap">
+            <table class="preistab">
+              <thead><tr><th>Dauer</th><th>Preis</th></tr></thead>
+              <tbody>
+                <tr><td>30 Minuten</td><td>45,00 €</td></tr>
+                <tr><td>45 Minuten</td><td>60,00 €</td></tr>
+                <tr><td>60 Minuten</td><td>75,00 €</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="preis-group-note" style="margin-top:12px;">Leistungen ohne ärztliche Verordnung gelten als Prävention, nicht als medizinische Behandlung.</p>
+        </div>
+
+
+<div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;">
+          <button class="btn" onclick="show('kontakt')">Unverbindlich anfragen</button>
+          <a class="mehr-link" href="javascript:void(0)" onclick="show('ablauf')" style="margin-top:0;">Wie läuft es ab?</a>
+        </div>
+      </div>
 
     </div>
   </div>
