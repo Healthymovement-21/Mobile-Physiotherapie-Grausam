@@ -983,29 +983,17 @@ footer{background:linear-gradient(135deg,#111 0%,#1a1a1a 60%,#0d0d0d 100%);paddi
     </div>
   </div>
 
-  <!-- ── KOSTEN & BEIHILFE ── -->
-  <div class="sec" style="background:transparent;">
-    <span class="eyebrow" style="display:block;margin-bottom:12px;color:var(--gold);">Kosten &amp; Erstattung</span>
-    <h2 class="sec-title" style="margin-bottom:10px;">Was kostet mich das?</h2>
-    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:32px;max-width:580px;">Was auf dich zukommt, klären wir vorher. Kosten und Honorar besprechen wir vor dem ersten Termin. Das gibt dir Sicherheit. Eine Abrechnung über die gesetzliche Krankenkasse ist nicht möglich.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
-      <div style="border:1px solid var(--border);border-radius:var(--radius-card);background:var(--sand-light);box-shadow:var(--elev-card);padding:26px 24px;">
-        <i data-lucide="shield-check" style="width:24px;height:24px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;color:var(--text);margin:12px 0 8px;">Privatpatienten</div>
-        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Du bekommst eine Rechnung und reichst sie bei deiner privaten Krankenversicherung ein. Wie viel erstattet wird, hängt von deinem Tarif ab. Frag am besten vorher kurz nach.</p>
-      </div>
-      <div style="border:1px solid var(--border);border-radius:var(--radius-card);background:var(--sand-light);box-shadow:var(--elev-card);padding:26px 24px;">
-        <i data-lucide="landmark" style="width:24px;height:24px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;color:var(--text);margin:12px 0 8px;">Beamte mit Beihilfe</div>
-        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Die Vergütung richtet sich nach der Beihilfe (Anlage&nbsp;9 BBhV). Die Rechnung reichst du bei deiner Beihilfestelle ein. Frag vorab, was erstattet wird.</p>
-      </div>
-      <div style="border:1px solid var(--border);border-radius:var(--radius-card);background:var(--sand-light);box-shadow:var(--elev-card);padding:26px 24px;">
-        <i data-lucide="wallet" style="width:24px;height:24px;stroke:var(--accent);stroke-width:1.6;fill:none;"></i>
-        <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:700;color:var(--text);margin:12px 0 8px;">Selbstzahler</div>
-        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin:0;">Kein Rezept nötig. Feste Preise ab 45&nbsp;€. Ohne ärztliche Verordnung gilt das als Prävention, nicht als medizinische Behandlung.</p>
-      </div>
+  <!-- ── RELEVANTE INFOS (Legende) ── -->
+  <div class="sec">
+    <span class="eyebrow" style="display:block;margin-bottom:16px;">Relevante Infos</span>
+    <div style="max-width:620px;border-top:1px solid var(--border);">
+      <div style="padding:15px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Keine GKV-Abrechnung.</span> Nur Privatpatienten, Beamte mit Beihilfe und Selbstzahler.</div>
+      <div style="padding:15px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Privatpatienten.</span> Du bekommst eine Rechnung für deine private Krankenversicherung. Wie viel erstattet wird, hängt von deinem Tarif ab.</div>
+      <div style="padding:15px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Beamte mit Beihilfe.</span> Vergütung nach Anlage&nbsp;9 BBhV. Die Rechnung reichst du bei deiner Beihilfestelle ein.</div>
+      <div style="padding:15px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Selbstzahler.</span> Kein Rezept nötig, ab 45&nbsp;€. Ohne ärztliche Verordnung gilt es als Prävention, nicht als medizinische Behandlung.</div>
+      <div style="padding:15px 0;font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;"><span style="color:var(--text);font-weight:700;">Kosten vorab.</span> Kosten und Honorar besprechen wir vor dem ersten Termin. Das gibt dir Sicherheit.</div>
     </div>
-    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.7;margin-top:24px;max-width:580px;"><a class="mehr-link" href="javascript:void(0)" onclick="show('leistungen')" style="margin-top:0;color:var(--accent);">Alle Preise &amp; Details ansehen</a></p>
+    <p style="margin-top:22px;"><a href="javascript:void(0)" onclick="show('leistungen')" style="color:var(--accent-dark);font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:3px;">Alle Preise &amp; Details</a></p>
   </div>
 
   <!-- ── MEINE PATIENTEN ── -->
