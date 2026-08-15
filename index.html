@@ -135,7 +135,7 @@
 html{scroll-behavior:smooth;overflow-x:hidden;width:100%;overscroll-behavior-x:none;}
 body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:var(--text);line-height:1.6;overflow-x:hidden;width:100%;max-width:100vw;position:relative;overscroll-behavior-x:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
 /* Animierter Scroll-Hintergrund: Weiß -> Grün + Perl-Glanz */
-.bg-green{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:0;will-change:opacity;transition:opacity .12s linear;background:linear-gradient(160deg,#f2faf5 0%,#dcefe1 52%,#bfe3ca 100%);}
+.bg-green{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:0;will-change:opacity;transition:opacity .12s linear;background:linear-gradient(160deg,#fdfefd 0%,#f6fbf8 55%,#edf5ef 100%);}
 .bg-pearl{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.4;mix-blend-mode:soft-light;background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,0.75) 50%,transparent 66%);background-size:300% 300%;animation:pearlmove 11s ease-in-out infinite;}
 @keyframes pearlmove{0%{background-position:100% 0%}50%{background-position:0% 100%}100%{background-position:100% 0%}}
 @media(prefers-reduced-motion:reduce){.bg-pearl{animation:none;opacity:.2}}
@@ -2211,7 +2211,7 @@ if(window.top!==window.self){window.top.location=window.self.location;}
     var pRaw=max>0?(h.scrollTop||document.body.scrollTop)/max:0;
     var pp=Math.max(0,Math.min(1,pRaw));
     /* leicht beschleunigt, damit das Grün gegen Ende deutlich wird */
-    g.style.opacity=Math.min(0.6,Math.pow(pp,1.2)).toFixed(3);
+    g.style.opacity=Math.min(0.5,Math.pow(pp,1.3)).toFixed(3);
   }
   window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});
   window.addEventListener('resize',upd,{passive:true});
