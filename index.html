@@ -1033,8 +1033,8 @@ nav .burger-label{color:var(--text)!important;}
 
 /* ===== Bildwelten: Seide, weisse Kurven, Tusche, Praxis ===== */
 /* Footer: gruene Seidenwellen statt Schwarz */
-footer{background:linear-gradient(to bottom,rgba(237,245,240,.96) 0%,rgba(237,245,240,.5) 12%,rgba(20,70,50,.12) 34%,rgba(12,52,37,.5) 62%,rgba(8,38,27,.78) 100%),url('bg-silk-green.jpg') center/cover no-repeat!important;position:relative;padding:96px 6% 30px!important;}
-footer .footer-col-title{color:rgba(255,255,255,.7)!important;}
+footer{background:linear-gradient(to bottom,rgba(237,245,240,.96) 0%,rgba(237,245,240,.62) 5%,rgba(74,124,100,.6) 14%,rgba(28,80,58,.8) 26%,rgba(16,60,43,.88) 55%,rgba(8,38,27,.93) 100%),url('bg-silk-green.jpg') center/cover no-repeat!important;position:relative;padding:104px 6% 32px!important;}
+footer .footer-col-title{color:rgba(255,255,255,.82)!important;}
 footer .footer-contact-item,footer .footer-contact-item a,footer .footer-col-links a{color:rgba(255,255,255,.9)!important;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.16)!important;}
 
@@ -1044,14 +1044,13 @@ footer .footer-contact-item,footer .footer-contact-item a,footer .footer-col-lin
 .sec-curves::before{content:'';position:absolute;inset:0;z-index:0;background:url('bg-white-curves.jpg') center/cover no-repeat;opacity:.55;}
 .sec-curves::after{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(to bottom,#edf5f0 0%,rgba(237,245,240,.72) 18%,rgba(240,247,243,.6) 50%,rgba(237,245,240,.8) 84%,#edf5f0 100%);}
 
-/* Tusche-Band als Trenner */
-.ink-band{position:relative;height:120px;overflow:hidden;margin:0;}
-.ink-band::before{content:'';position:absolute;inset:-40% -10%;background:url('bg-ink-green.jpg') center/cover no-repeat;transform:rotate(-90deg) scale(1.5);opacity:.55;}
-.ink-band::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,#edf5f0 0%,rgba(237,245,240,.35) 42%,rgba(237,245,240,.45) 58%,#edf5f0 100%);}
-
 /* Foto-Varianten */
 .photo-sec.ps-office::before{background-image:url('bg-office-blur.jpg');opacity:.42;filter:blur(18px) saturate(.6) brightness(1.18);}
-.photo-sec.ps-praxis::before{background-image:url('bg-praxis-green.jpg');opacity:.5;filter:blur(16px) saturate(.7) brightness(1.1);}
+/* Bildband: Foto klar sichtbar, oben/unten weich in den Grundton */
+.img-band{position:relative;width:100%;height:420px;overflow:hidden;}
+.img-band img{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;filter:saturate(.95) brightness(1.02);}
+.img-band::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,#edf5f0 0%,rgba(237,245,240,.35) 9%,rgba(237,245,240,0) 22%,rgba(237,245,240,0) 80%,rgba(237,245,240,.45) 93%,#edf5f0 100%);}
+@media(max-width:600px){.img-band{height:320px;}}
 
 /* ===== Silber-Button ueberall (Apple-Chrome) ===== */
 .btn,.btn-outline,.hero-link-primary,.u-btn,.nav-cta,.overlay-cta a,.p-link.primary,.rg-btn-primary,.rg-cal-done{
@@ -1242,7 +1241,6 @@ footer .footer-contact-item,footer .footer-contact-item a,footer .footer-col-lin
     </div>
   </div>
 
-  <div class="ink-band" aria-hidden="true"></div>
   <!-- ── MEINE PATIENTEN ── -->
   <div class="sec">
     <h2 class="sec-title sec-title-gold reveal" style="margin-bottom:8px;">Für wen ich da bin</h2>
@@ -1286,7 +1284,10 @@ footer .footer-contact-item,footer .footer-contact-item a,footer .footer-col-lin
       <h2 class="leist-hero-title">Leistungen<br>&amp; Preise</h2>
     </div>
   </div>
-  <div class="sec photo-sec ps-praxis">
+  <div class="img-band" aria-hidden="true">
+    <img src="bg-praxis-green.jpg" alt="Ruhige, helle Behandlungsatmosphaere" loading="lazy" width="736" height="1051">
+  </div>
+  <div class="sec">
 
     <div class="leist-section">
 
