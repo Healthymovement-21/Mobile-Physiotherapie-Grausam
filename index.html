@@ -218,6 +218,8 @@ nav .burger-lines span{background:#fff;}
 .page{display:none;padding-top:80px;min-height:100vh;background:transparent;}
 #home{padding-top:0;}
 .page.active{display:block;}
+/* Schutz gegen versehentlich doppelt eingebundene Startseite: nur die erste Instanz anzeigen. */
+.page#home ~ .page#home{display:none!important;}
 
 /* ── SECTIONS ── */
 .sec{padding:70px 9%;background:transparent;}
