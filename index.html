@@ -1464,9 +1464,11 @@ footer{padding:72px clamp(24px,6vw,88px) 28px!important;background:linear-gradie
 .footer-contact-item{font-size:15px!important;color:rgba(255,255,255,.82)!important;margin-bottom:12px!important;}
 .footer-contact-item a{color:#fff!important;}
 .footer-bottom{padding-top:24px!important;border-top:1px solid rgba(255,255,255,.16)!important;align-items:flex-end!important;}
-.footer-legal{gap:8px!important;padding:8px!important;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.06);}
-.footer-legal a{font-size:13px!important;color:rgba(255,255,255,.78)!important;padding:7px 12px;border-radius:999px;}
-.footer-legal a:hover{background:rgba(255,255,255,.12)!important;color:#fff!important;opacity:1!important;}
+.footer-legal{gap:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;}
+.footer-legal a{font-size:13px!important;color:rgba(255,255,255,.68)!important;padding:0 14px;border-radius:0;border-right:1px solid rgba(255,255,255,.22);}
+.footer-legal a:first-child{padding-left:0;}
+.footer-legal a:last-child{border-right:0;}
+.footer-legal a:hover{background:transparent!important;color:#fff!important;opacity:1!important;}
 .footer-copy{font-size:13px!important;color:rgba(255,255,255,.55)!important;}
 #cookie-banner{left:clamp(14px,3vw,32px)!important;right:clamp(14px,3vw,32px)!important;bottom:18px!important;border-radius:22px!important;padding:20px 24px!important;background:rgba(20,34,27,.96)!important;box-shadow:0 18px 48px rgba(0,0,0,.22)!important;}
 #cookie-banner strong{font-size:15px!important;letter-spacing:.01em;}
@@ -1482,7 +1484,9 @@ footer{padding:72px clamp(24px,6vw,88px) 28px!important;background:linear-gradie
   .legal{margin:28px 5%!important;padding:38px 24px!important;border-radius:22px;}
   .footer-inner{grid-template-columns:1fr!important;gap:24px!important;margin-bottom:34px!important;}
   .footer-bottom{align-items:flex-start!important;flex-direction:column!important;}
-  .footer-legal{border-radius:18px!important;}
+  .footer-legal{gap:10px 0!important;}
+  .footer-legal a{padding:0 10px!important;}
+  .footer-legal a:first-child{padding-left:0!important;}
   #cookie-banner{align-items:flex-start!important;}
   #cookie-banner button{margin-left:auto;}
 }
