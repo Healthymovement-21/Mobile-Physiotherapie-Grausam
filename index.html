@@ -103,6 +103,35 @@
 ]}
 </script>
 
+<script>
+// Google Consent Mode (Basic): Ohne aktive Analyse-Zustimmung wird kein GA4-Skript geladen.
+window.dataLayer = window.dataLayer || [];
+window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+gtag('consent', 'default', {
+  analytics_storage: 'denied',
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied'
+});
+(function(){
+  var measurementId = 'G-1V56Y7780M';
+  var analyticsLoaded = false;
+  window.loadGoogleAnalytics = function(){
+    if(analyticsLoaded || document.querySelector('script[data-ga4="'+measurementId+'"]')) return;
+    analyticsLoaded = true;
+    gtag('consent', 'update', {analytics_storage: 'granted'});
+    gtag('js', new Date());
+    gtag('config', measurementId);
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(measurementId);
+    script.dataset.ga4 = measurementId;
+    document.head.appendChild(script);
+  };
+  if(localStorage.getItem('cookie_consent') === 'analytics') window.loadGoogleAnalytics();
+})();
+</script>
+
 <style>
 :root{
   --sand-light:#f4f8f5;
@@ -1473,6 +1502,9 @@ footer{padding:42px clamp(24px,6vw,88px) 22px!important;background:#e9f0ea!impor
 #cookie-banner{left:clamp(14px,3vw,32px)!important;right:clamp(14px,3vw,32px)!important;bottom:18px!important;border-radius:22px!important;padding:20px 24px!important;background:rgba(20,34,27,.96)!important;box-shadow:0 18px 48px rgba(0,0,0,.22)!important;}
 #cookie-banner strong{font-size:15px!important;letter-spacing:.01em;}
 #cookie-banner button{border-radius:999px!important;padding:11px 22px!important;background:#baf0cc!important;color:#12301f!important;}
+#cookie-banner .cookie-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto;}
+#cookie-banner .cookie-actions button{margin-left:0!important;}
+#cookie-banner .cookie-actions .cookie-necessary{background:transparent!important;color:#fff!important;border:1px solid rgba(255,255,255,.65)!important;}
 @media(max-width:860px){
   nav{height:68px;border-radius:0;}
   .hero{min-height:650px!important;padding-top:68px;}
@@ -1490,6 +1522,80 @@ footer{padding:42px clamp(24px,6vw,88px) 22px!important;background:#e9f0ea!impor
   .footer-legal a:first-child{padding-left:0!important;}
   #cookie-banner{align-items:flex-start!important;}
   #cookie-banner button{margin-left:auto;}
+}
+</style>
+<style>
+/* ── Freigegebener visueller Stand: ruhig, hell, persönlich ── */
+:root{--brand:#236b4a;--brand-dark:#174c35;--brand-soft:#e4f0e7;--ink:#1d2921;--muted:#5d6b62;--line:#dbe5dd;--surface:#fbfcfa;--surface-soft:#f1f6f2;}
+body{font-family:'DM Sans',system-ui,sans-serif!important;background:#f6f8f5!important;color:var(--ink)!important;line-height:1.65!important;}
+.legacy-home{display:none!important;}
+nav{height:72px!important;padding:0 clamp(20px,6vw,88px)!important;background:rgba(251,252,250,.96)!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:blur(14px)!important;}
+nav .nav-logo-img{filter:none!important;max-height:42px!important;}
+nav .nav-links a{color:var(--ink)!important;font-size:13px!important;font-weight:600!important;}
+nav .nav-links a:hover{color:var(--brand)!important;opacity:1!important;}
+nav .nav-cta{display:block!important;color:#fff!important;background:var(--brand)!important;border:0!important;border-radius:8px!important;padding:11px 20px!important;min-height:44px!important;box-shadow:none!important;}
+nav .nav-cta:hover{background:var(--brand-dark)!important;opacity:1!important;}
+.hero{min-height:0!important;padding:72px 6% 76px!important;background:linear-gradient(180deg,#edf5ef 0%,#f8faf8 100%)!important;border-bottom:1px solid var(--line)!important;}
+.hero-img-wrap,.hero .liquid-glass,.hero .scroll-hint,.glass-divider,.mehr-flow,.cine,.hero-video{display:none!important;}
+.hero-content{max-width:780px!important;padding:72px 0 0!important;margin:0 auto!important;}
+.hero-title{max-width:760px!important;font-family:'DM Sans',system-ui,sans-serif!important;font-size:clamp(42px,6vw,74px)!important;font-weight:700!important;line-height:1.05!important;letter-spacing:-.055em!important;color:var(--ink)!important;text-shadow:none!important;}
+.hero-title span{color:var(--brand)!important;background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;-webkit-text-fill-color:initial!important;font-weight:400!important;}
+.hero-sub{max-width:560px!important;margin:24px auto 0!important;font-size:18px!important;line-height:1.65!important;color:var(--muted)!important;}
+.hero-btns{margin-top:32px!important;gap:14px!important;}
+.btn-wa{background:var(--brand)!important;color:#fff!important;border-radius:8px!important;min-height:48px!important;padding:13px 24px!important;box-shadow:none!important;font-family:'DM Sans',system-ui,sans-serif!important;font-size:14px!important;font-weight:700!important;}
+.btn-wa svg{color:#fff!important;fill:#fff!important;}.btn-wa:hover{background:var(--brand-dark)!important;transform:none!important;opacity:1!important;}
+.hero-link-secondary{color:var(--brand-dark)!important;background:transparent!important;border:1px solid var(--brand)!important;border-radius:8px!important;min-height:48px!important;padding:12px 22px!important;box-shadow:none!important;font-family:'DM Sans',system-ui,sans-serif!important;font-size:14px!important;font-weight:600!important;}
+.hero-link-secondary:hover{background:var(--brand-soft)!important;opacity:1!important;}
+.plz-sec{padding:48px 6% 72px!important;background:var(--surface)!important;}.plz-band{max-width:760px!important;margin:0 auto!important;padding:24px 28px!important;border:1px solid var(--line)!important;border-top:3px solid var(--brand)!important;border-radius:10px!important;background:#fff!important;box-shadow:0 10px 28px rgba(32,71,49,.05)!important;}.plz-band-label{color:var(--brand-dark)!important;font-size:12px!important;letter-spacing:1.3px!important;}.plz-input{background:#fff!important;border:1px solid var(--line)!important;border-radius:8px!important;min-height:46px!important;color:var(--ink)!important;}.plz-btn{background:var(--brand)!important;color:#fff!important;border-radius:8px!important;box-shadow:none!important;}.plz-btn:hover{background:var(--brand-dark)!important;}
+.visual-sec{max-width:1120px!important;margin:0 auto!important;padding:40px 6% 96px!important;gap:64px!important;background:var(--surface)!important;}.visual-sec-img,.ueber-img{border-radius:12px!important;box-shadow:0 16px 36px rgba(25,62,42,.10)!important;}.visual-sec-title{font-size:clamp(30px,4vw,50px)!important;line-height:1.08!important;color:var(--ink)!important;}
+.sec,.mehr-block,.mehr-hero,.abschluss,.dark-sec{max-width:1120px!important;margin:0 auto!important;padding:82px 6%!important;}.sec-title,.leist-hero-title,.visual-sec-title,.abschluss-title{color:var(--ink)!important;}.sec-title{font-size:clamp(30px,4vw,48px)!important;line-height:1.08!important;margin-bottom:28px!important;}.sec-curves,.photo-sec{background:transparent!important;border-radius:0!important;margin-bottom:0!important;box-shadow:none!important;}.dark-sec{background:var(--surface-soft)!important;border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important;}.dark-sec .eyebrow{color:var(--brand)!important;}.dark-sec .sec-title,.dark-sec .sec-title-gold,.dark-sec p,.dark-sec .step-t,.dark-sec .step-p{color:var(--ink)!important;}.eyebrow,.leist-hero-eye,.phil-label,.visual-sec-label{color:var(--brand)!important;}
+.btn,.btn-outline,.u-btn,.btn-silver,.overlay-cta a{border-radius:8px!important;min-height:46px!important;padding:12px 22px!important;box-shadow:none!important;font-family:'DM Sans',system-ui,sans-serif!important;}.btn,.u-btn,.overlay-cta a{background:var(--brand)!important;color:#fff!important;}.btn-outline{background:transparent!important;color:var(--brand-dark)!important;border:1px solid var(--brand)!important;}.btn:hover,.u-btn:hover,.overlay-cta a:hover{background:var(--brand-dark)!important;transform:none!important;}.btn-outline:hover{background:var(--brand-soft)!important;color:var(--brand-dark)!important;}
+a:not(.btn):not(.nav-cta):not(.btn-wa):not(.u-btn):not(.btn-silver){color:var(--brand-dark)!important;}.overlay{top:72px!important;background:#fbfcfa!important;border-radius:0!important;box-shadow:0 14px 36px rgba(25,62,42,.12)!important;}.overlay-links a{color:var(--ink)!important;}.overlay-cta a{display:inline-flex!important;}
+footer{padding:48px clamp(24px,6vw,88px) 24px!important;background:var(--surface-soft)!important;border-top:1px solid var(--line)!important;border-radius:0!important;}footer .footer-col-title{color:var(--brand-dark)!important;}footer .footer-contact-item,footer .footer-contact-item a,footer .footer-col-links a{color:var(--ink)!important;}.footer-bottom{border-top:1px solid var(--line)!important;}.footer-legal a,.footer-copy{color:var(--muted)!important;}
+*:focus-visible{outline:3px solid rgba(35,107,74,.42)!important;outline-offset:3px!important;}
+@media(max-width:860px){nav{height:68px!important;padding:0 6%!important;}.hero{padding:68px 7% 56px!important;}.hero-content{padding:58px 0 0!important;}.hero-title{font-size:clamp(38px,11vw,58px)!important;}.hero-sub{font-size:16px!important;}.hero-btns{align-items:stretch!important;flex-direction:column!important;}.hero-btns a,.hero-btns button{width:100%!important;}.plz-sec{padding:36px 7% 56px!important;}.plz-band{padding:20px!important;}.visual-sec,.sec,.mehr-block,.mehr-hero,.abschluss,.dark-sec{padding:56px 7%!important;border-radius:0!important;}.visual-sec{gap:36px!important;}footer{padding-top:36px!important;}.footer-inner{grid-template-columns:1fr!important;gap:24px!important;}.footer-bottom{align-items:flex-start!important;flex-direction:column!important;}}
+</style>
+<style>
+/* ── Kontrollierte Verfeinerung: Preise und Footer ── */
+#leistungen .preis-group{margin-bottom:40px;}
+#leistungen .preis-group:first-of-type{padding-bottom:34px;margin-bottom:36px;border-bottom:1px solid var(--line);}
+#leistungen .preis-group-title{font-size:clamp(19px,2.4vw,24px)!important;line-height:1.25!important;margin-bottom:10px!important;color:var(--ink)!important;}
+#leistungen .preis-group-badge{font-size:13px!important;color:var(--muted)!important;font-weight:400!important;}
+#leistungen .preis-info-text{max-width:620px;line-height:1.75!important;color:var(--muted)!important;}
+#leistungen .preis-group-label{margin-bottom:10px!important;color:var(--brand)!important;letter-spacing:1.4px!important;}
+#leistungen .preistab-wrap{overflow:visible!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important;}
+#leistungen .preistab{border-collapse:separate!important;border-spacing:0 10px!important;width:100%;font-family:'DM Sans',system-ui,sans-serif!important;}
+#leistungen .preistab thead th{padding:0 20px 4px!important;border:0!important;color:var(--muted)!important;font-size:11px!important;font-weight:700!important;letter-spacing:1.2px!important;text-transform:uppercase!important;}
+#leistungen .preistab thead th:last-child{text-align:right!important;}
+#leistungen .preistab tbody tr{background:var(--surface)!important;}
+#leistungen .preistab tbody td{padding:18px 20px!important;border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important;background:#fff!important;color:var(--ink)!important;font-size:15px!important;line-height:1.4!important;}
+#leistungen .preistab tbody td:first-child{border-left:1px solid var(--line)!important;border-radius:10px 0 0 10px!important;font-weight:600!important;}
+#leistungen .preistab tbody td:last-child{border-right:1px solid var(--line)!important;border-radius:0 10px 10px 0!important;text-align:right!important;font-size:23px!important;font-weight:700!important;letter-spacing:-.03em!important;color:var(--brand-dark)!important;}
+#leistungen .preis-group-note{max-width:640px;margin-top:14px!important;color:var(--muted)!important;line-height:1.65!important;font-size:12.5px!important;}
+#leistungen .preis-gebuehren-link{display:inline-flex;margin-top:8px;line-height:1.5;}
+footer{padding:52px clamp(24px,6vw,88px) 24px!important;background:var(--surface-soft)!important;}
+footer .footer-inner{max-width:1120px!important;margin:0 auto 34px!important;display:block!important;}
+footer .footer-inner>div{max-width:440px;}
+footer .footer-col-title{display:block!important;margin-bottom:18px!important;color:var(--brand-dark)!important;font-size:11px!important;letter-spacing:1.4px!important;text-transform:uppercase!important;}
+footer .footer-contact-item{display:flex!important;align-items:center!important;gap:10px!important;margin:0!important;padding:9px 0!important;font-size:14px!important;line-height:1.5!important;}
+footer .f-ico-wrap{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:28px!important;height:28px!important;border-radius:7px!important;background:var(--brand-soft)!important;color:var(--brand)!important;flex:none!important;}
+footer .f-ico-wrap svg{width:15px!important;height:15px!important;stroke:currentColor!important;}
+footer .footer-bottom{max-width:1120px!important;margin:0 auto!important;padding-top:20px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;}
+footer .footer-legal{display:flex!important;align-items:center!important;gap:8px 16px!important;flex-wrap:wrap!important;}
+footer .footer-legal a{padding:0!important;border:0!important;font-size:12px!important;color:var(--muted)!important;line-height:1.5!important;}
+footer .footer-legal a:hover{color:var(--brand-dark)!important;background:transparent!important;}
+footer .footer-copy{margin:0!important;white-space:nowrap;font-size:12px!important;color:var(--muted)!important;}
+@media(max-width:860px){
+  #leistungen .preis-group:first-of-type{padding-bottom:28px;margin-bottom:30px;}
+  #leistungen .preistab{border-spacing:0 8px!important;}
+  #leistungen .preistab thead th{padding-left:16px!important;padding-right:16px!important;}
+  #leistungen .preistab tbody td{padding:16px!important;}
+  #leistungen .preistab tbody td:last-child{font-size:21px!important;}
+  footer{padding-top:40px!important;}
+  footer .footer-inner{margin-bottom:26px!important;}
+  footer .footer-bottom{align-items:flex-start!important;flex-direction:column!important;gap:14px!important;}
+  footer .footer-legal{gap:8px 14px!important;}
+  footer .footer-copy{white-space:normal!important;}
 }
 </style>
 </head>
@@ -1537,7 +1643,7 @@ footer{padding:42px clamp(24px,6vw,88px) 22px!important;background:#e9f0ea!impor
 </div>
 
 <!-- ═══ START ═══ -->
-<div class="page active" id="home">
+<div class="page legacy-home" id="home-legacy" aria-hidden="true">
   <div class="hero">
     <div class="hero-img-wrap">
       <!-- Cinematischer Loop. Liegt hier ein echtes Video vor, ersetzt <video> die Bildebenen. -->
@@ -1612,10 +1718,10 @@ footer{padding:42px clamp(24px,6vw,88px) 22px!important;background:#e9f0ea!impor
     <div class="plz-band">
       <span class="plz-band-label">Deine Postleitzahl</span>
       <div class="plz-form">
-        <input type="text" id="plzInput" class="plz-input" placeholder="Postleitzahl" maxlength="5" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPLZ()">
+        <input type="text" id="plzInput-legacy" class="plz-input" placeholder="Postleitzahl" maxlength="5" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPLZ()">
         <button class="plz-btn" onclick="checkPLZ()" aria-label="Prüfen"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
-      <div id="plzResult" class="plz-result"></div>
+      <div id="plzResult-legacy" class="plz-result"></div>
     </div>
   </div>
 
@@ -2308,24 +2414,24 @@ footer{padding:42px clamp(24px,6vw,88px) 22px!important;background:#e9f0ea!impor
 <div class="page" id="cookie-policy">
   <div class="legal">
     <h2>Cookie-Richtlinie</h2>
-    <p class="legal-stand">Stand: Mai 2026</p>
+    <p class="legal-stand">Stand: September 2026</p>
     <h3>Rechtlicher Rahmen</h3>
-    <p>localStorage und sessionStorage sind keine Cookies im technischen Sinne, werden aber rechtlich wie „Speichern von Informationen auf dem Endgerät des Nutzers“ behandelt und fallen damit unter § 25 TDDDG. Diese Website verwendet ausschließlich Speicher, die nach § 25 Abs. 2 Nr. 2 TDDDG als <strong>unbedingt erforderlich</strong> eingestuft werden können — es werden <strong>keine Tracking-, Analyse- oder Werbe-Technologien</strong> eingesetzt. Der nachstehende Hinweis ist daher kein Einwilligungs-Banner, sondern eine Informationspflicht.</p>
+    <p>localStorage und sessionStorage sind keine Cookies im technischen Sinne, werden aber rechtlich wie „Speichern von Informationen auf dem Endgerät des Nutzers“ behandelt und fallen damit unter § 25 TDDDG. Für Google Analytics 4 wird erst nach einer aktiven Zustimmung eine Verbindung zu Google hergestellt. Ohne Zustimmung bleibt der Analytics-Speicher auf <strong>denied</strong> und das GA4-Skript wird nicht geladen.</p>
     <h3>Eingesetzte Speicher (eigene)</h3>
     <div class="legal-table-wrap">
       <table>
         <thead><tr style="background:#f5f5f5;"><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Name</th><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Art</th><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;min-width:200px;">Zweck und Erforderlichkeit</th><th style="text-align:left;padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Dauer</th></tr></thead>
         <tbody>
-          <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">cookie_ok</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">localStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Speichert, dass der Datenschutzhinweis zur Kenntnis genommen wurde. Technisch erforderlich, um den Hinweis nicht bei jedem Seitenaufruf neu anzuzeigen (§ 25 Abs. 2 Nr. 2 TDDDG).</td><td style="padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Dauerhaft</td></tr>
+          <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">cookie_consent</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">localStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Speichert die Auswahl „Nur notwendige“ oder „Analyse erlauben“, damit der Consent-Hinweis nicht bei jedem Seitenaufruf erneut erscheint.</td><td style="padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Dauerhaft</td></tr>
           <tr><td style="padding:10px 12px;border:1px solid #e8e8e8;">page</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">sessionStorage</td><td style="padding:10px 12px;border:1px solid #e8e8e8;">Stellt nach Seitenaktualisierung die zuletzt angezeigte Unterseite wieder her. Technisch erforderlich für die korrekte Funktion dieser Single-Page-Applikation.</td><td style="padding:10px 12px;border:1px solid #e8e8e8;white-space:nowrap;">Sitzung</td></tr>
         </tbody>
       </table>
     </div>
     <h3>Drittanbieter-Speicher</h3>
-    <p>Diese Website bindet <strong>keine Drittanbieter-Dienste</strong> ein, die beim Seitenaufruf oder bei der Kontaktaufnahme Daten auf dem Endgerät speichern. Kontaktanfragen werden direkt per E-Mail übermittelt — ohne Zwischenschaltung externer Dienste.</p>
-    <p><strong>Schriftarten und Skripte:</strong> Vollständig lokal gehostet (DM Sans, Lucide Icons). Es werden <strong>keine externen Ressourcen</strong> beim Laden der Seite abgerufen — keine Übermittlung von IP-Adressen an Dritte allein durch den Seitenaufruf.</p>
+    <p>Diese Website bindet Google Analytics 4 nur ein, wenn Sie zuvor aktiv „Analyse erlauben“ ausgewählt haben. Bei dieser Auswahl wird das GA4-Skript von Google geladen und die Mess-ID <strong>G-1V56Y7780M</strong> verwendet. Bei „Nur notwendige“ wird kein Analytics-Skript geladen und es findet keine Analyseübertragung an Google statt. Kontaktanfragen werden direkt per E-Mail übermittelt — ohne Zwischenschaltung externer Dienste.</p>
+    <p><strong>Schriftarten und lokale Ressourcen:</strong> Schriftarten (DM Sans) und Icons (Lucide Icons) werden lokal gehostet. Google Analytics ist die einzige externe Ressource und wird ausschließlich nach Analyse-Zustimmung nachgeladen.</p>
     <h3>Bewertung der Einwilligungspflicht (§ 25 TDDDG)</h3>
-    <p>Da diese Website ausschließlich Speicher einsetzt, die für die beschriebenen technischen Funktionen unbedingt erforderlich sind, und keine Tracking- oder Marketingtechnologien verwendet werden, ist nach § 25 Abs. 2 Nr. 2 TDDDG <strong>keine aktive Einwilligung</strong> (kein Consent-Banner) erforderlich. Diese Einschätzung gilt unter der Voraussetzung, dass keine weiteren Drittanbieter-Technologien eingebunden werden.</p>
+    <p>Für Google Analytics 4 wird die Einwilligung vor dem Laden des Dienstes eingeholt. Der Standardzustand für Analytics ist <strong>denied</strong>. Wird die Analyse nicht erlaubt, wird Google Analytics nicht geladen.</p>
     <h3>Ihre Rechte und weiterführende Informationen</h3>
     <p>Die vollständigen Informationen nach Art. 13 DSGVO (Zwecke, Rechtsgrundlagen, Empfänger, Speicherdauern, Betroffenenrechte) finden Sie in der <a href="javascript:void(0)" onclick="show('datenschutz')" style="color:var(--text);text-decoration:underline;">Datenschutzerklärung</a>. Sie können gespeicherte Browser-Daten jederzeit löschen: <em>Einstellungen → Datenschutz → Browserdaten löschen</em>.</p>
   </div>
@@ -2401,9 +2507,9 @@ footer{padding:42px clamp(24px,6vw,88px) 22px!important;background:#e9f0ea!impor
     <p><strong>Empfänger:</strong> Ausschließlich Nick Grausam, Mobile Physiotherapie Grausam. Es werden keine E-Mail-Inhalte an Dritte weitergegeben.</p>
     <p><strong>Speicherdauer:</strong> E-Mails werden nur so lange aufbewahrt, wie es für die Bearbeitung und die gesetzlichen Aufbewahrungspflichten erforderlich ist (bis zu 6 Jahre für Geschäftsbriefe gemäß § 147 AO).</p>
     <h3>Cookies und technische Speicherung</h3>
-    <p>Diese Website setzt keine Tracking- oder Marketing-Cookies. Alle eigenen Speicher (localStorage/sessionStorage) sind technisch erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Es werden keine Drittanbieter-Skripte oder externe Dienste eingebunden, die beim Seitenaufruf Daten übertragen. Weitere Informationen in der <a href="javascript:void(0)" onclick="show('cookie-policy')" style="color:var(--text);">Cookie-Richtlinie</a>.</p>
+    <p>Diese Website setzt technisch notwendige Speicher (localStorage/sessionStorage) ein. Google Analytics 4 wird ausschließlich nach einer aktiven Zustimmung zur Analyse geladen; bei Ablehnung wird kein Analytics-Skript eingebunden. Weitere Informationen in der <a href="javascript:void(0)" onclick="show('cookie-policy')" style="color:var(--text);">Cookie-Richtlinie</a>.</p>
     <h3>Schriftarten und Icons</h3>
-    <p>Diese Website verwendet ausschließlich lokal gehostete Ressourcen: Schriftarten (DM Sans) und Icons (Lucide Icons). Es werden <strong>keine</strong> Daten an externe Dienste wie Google Fonts oder CDN-Anbieter übertragen.</p>
+    <p>Schriftarten (DM Sans) und Icons (Lucide Icons) werden lokal gehostet. Es werden dafür <strong>keine</strong> externen Dienste wie Google Fonts oder CDN-Anbieter verwendet. Google Analytics 4 wird davon getrennt ausschließlich nach Analyse-Zustimmung geladen.</p>
     <h3>Datenminimierung bei Kontaktanfragen</h3>
     <p>Bei Kontaktanfragen per E-Mail werden ausschließlich Daten erbeten, die für die Erbringung der angefragten Leistung erforderlich sind (Art. 5 Abs. 1 lit. c DSGVO):</p>
     <ul>
@@ -2829,17 +2935,30 @@ if(window.top!==window.self){window.top.location=window.self.location;}
 
 // ── COOKIE BANNER ──
 (function(){
-  if(localStorage.getItem('cookie_ok')) return;
+  var consent=localStorage.getItem('cookie_consent');
+  if(consent === 'analytics' || consent === 'necessary') return;
   const banner=document.createElement('div');
   banner.id='cookie-banner';
   banner.innerHTML=`
     <div style="max-width:680px;">
       <strong>Cookie-Hinweis</strong><br>
-      <span style="font-size:13px;opacity:.85;">Diese Website verwendet ausschließlich technisch notwendige Speicher (localStorage/sessionStorage). Keine Tracking-, Analyse- oder Werbe-Cookies. Schriftarten werden lokal bereitgestellt — keine Übermittlung an Google. Details: <a href="javascript:void(0)" onclick="show('cookie-policy')" style="color:#fff;text-decoration:underline;">Cookie-Richtlinie</a>.</span>
+      <span style="font-size:13px;opacity:.85;">Diese Website verwendet technisch notwendige Speicher. Google Analytics 4 wird nur geladen, wenn Sie aktiv „Analyse erlauben“ auswählen. Details: <a href="javascript:void(0)" onclick="show('cookie-policy')" style="color:#fff;text-decoration:underline;">Cookie-Richtlinie</a>.</span>
     </div>
-    <button onclick="(function(){localStorage.setItem('cookie_ok','1');document.getElementById('cookie-banner').remove();})()" style="background:#fff;color:#111;border:none;border-radius:2px;padding:10px 22px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0;">Verstanden</button>`;
+    <div class="cookie-actions">
+      <button type="button" class="cookie-necessary" style="border-radius:999px;padding:11px 18px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0;">Nur notwendige</button>
+      <button type="button" class="cookie-analytics" style="border:none;border-radius:999px;padding:11px 18px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0;">Analyse erlauben</button>
+    </div>`;
   banner.style.cssText='position:fixed;bottom:0;left:0;right:0;background:#262220;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;z-index:9999;font-family:"DM Sans",system-ui,sans-serif;font-size:15px;line-height:1.5;box-shadow:0 -2px 16px rgba(0,0,0,.2);';
   document.body.appendChild(banner);
+  banner.querySelector('.cookie-necessary').addEventListener('click',function(){
+    localStorage.setItem('cookie_consent','necessary');
+    banner.remove();
+  });
+  banner.querySelector('.cookie-analytics').addEventListener('click',function(){
+    localStorage.setItem('cookie_consent','analytics');
+    if(window.loadGoogleAnalytics) window.loadGoogleAnalytics();
+    banner.remove();
+  });
 })();
 
 // ── BARRIEREFREIHEITS-WIDGET ──
