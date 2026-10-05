@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b2a">
+  <meta name="description" content="PhysioNebenbei – dein praktischer Startassistent für private physiotherapeutische Leistungen neben dem Hauptjob.">
+  <title>PhysioNebenbei · Von 0 zum ersten Patienten</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#uebersicht" aria-label="PhysioNebenbei Übersicht">
+        <span class="brand-mark">P</span>
+        <span><strong>PhysioNebenbei</strong><small>Dein Startsystem</small></span>
+      </a>
+      <div class="topbar-actions">
+        <span class="privacy-note">Lokaler Fortschritt · keine Patientendaten</span>
+        <button class="icon-button" id="reset-button" type="button" title="Fortschritt zurücksetzen">↺</button>
+      </div>
+    </header>
+
+    <div class="app-layout">
+      <aside class="sidebar" aria-label="Hauptnavigation">
+        <div class="sidebar-heading">DEIN WEG</div>
+        <nav id="main-nav">
+          <button class="nav-item active" data-view="uebersicht"><span>01</span>Übersicht</button>
+          <button class="nav-item" data-view="start"><span>02</span>Mein Start</button>
+          <button class="nav-item" data-view="modell"><span>03</span>Mein Modell</button>
+          <button class="nav-item" data-view="aufgaben"><span>04</span>Aufgaben</button>
+        </nav>
+        <div class="sidebar-foot">
+          <div class="mini-label">AKTUELLER ZIELPUNKT</div>
+          <strong>Erster bezahlter Patient</strong>
+          <div class="mini-progress"><i id="sidebar-progress"></i></div>
+          <small id="sidebar-progress-label">0 % startklar</small>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <section class="view active" id="view-uebersicht" data-view-panel>
+          <div class="page-intro">
+            <div>
+              <p class="eyebrow">DEIN NÄCHSTER SCHRITT</p>
+              <h1 id="greeting">Starte dein Nebenbusiness mit Klarheit.</h1>
+              <p class="lead">PhysioNebenbei führt dich von der ersten Idee bis zum ersten professionell vorbereiteten Privatpatienten.</p>
+            </div>
+            <span class="status-pill"><i></i>Arbeitsbereich</span>
+          </div>
+
+          <div class="progress-card">
+            <div class="progress-copy">
+              <p class="eyebrow">STARTKLARHEIT</p>
+              <div class="progress-value"><strong id="progress-value">0 %</strong><span>startklar</span></div>
+              <p id="progress-summary">Dein Profil ist noch nicht angelegt. Beantworte ein paar kurze Fragen, damit wir den Weg passend machen.</p>
+            </div>
+            <div class="progress-ring" id="progress-ring" aria-label="0 Prozent startklar"><span id="progress-ring-value">0%</span></div>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="next-card">
+              <div class="card-kicker"><span class="step-badge">NÄCHSTES</span><span id="next-duration">ca. 3 Min.</span></div>
+              <h2 id="next-title">Finde heraus, wo du gerade stehst.</h2>
+              <p id="next-description">Dein Startprofil entscheidet, welche Aufgaben und Informationen für dich relevant sind.</p>
+              <button class="primary-button" id="next-action" type="button" data-go="start">Startprofil anlegen <span>→</span></button>
+            </article>
+
+            <article class="task-card">
+              <div class="card-heading"><div><p class="eyebrow">OFFENE AUFGABEN</p><h2>Dein Arbeitsvorrat</h2></div><span class="count-badge" id="task-count">0</span></div>
+              <div id="task-list" class="task-list"></div>
+            </article>
+          </div>
+
+          <section class="milestones-section">
+            <div class="section-heading"><div><p class="eyebrow">DEIN WEG</p><h2>Vom Gedanken zum ersten Termin</h2></div><p class="section-note">Jeder Abschnitt endet mit einem sichtbaren Ergebnis.</p></div>
+            <div class="milestones" id="milestones"></div>
+          </section>
+        </section>
+
+        <section class="view" id="view-start" data-view-panel>
+          <div class="page-intro compact"><div><p class="eyebrow">SCHRITT 1 · ORIENTIERUNG</p><h1>Wo stehst du gerade?</h1><p class="lead">Keine Prüfung. Nur ein realistischer Ausgangspunkt für deinen persönlichen Plan.</p></div></div>
+          <div class="wizard-layout">
+            <form class="form-card" id="profile-form">
+              <div class="form-step" data-form-step="1">
+                <div class="form-step-head"><span>01</span><div><h2>Deine Ausgangssituation</h2><p>Damit wir unnötige Theorie überspringen.</p></div></div>
+                <label>Wie lange bist du schon als Physiotherapeut:in tätig?
+                  <select name="experience" required><option value="">Bitte auswählen</option><option value="start">Ich stehe am Anfang</option><option value="few">1–3 Jahre</option><option value="experienced">Mehr als 3 Jahre</option></select>
+                </label>
+                <label>Wie viel Zeit steht dir neben dem Hauptjob realistisch zur Verfügung?
+                  <select name="time" required><option value="">Bitte auswählen</option><option value="small">1–3 Stunden pro Woche</option><option value="medium">4–8 Stunden pro Woche</option><option value="large">Mehr als 8 Stunden pro Woche</option></select>
+                </label>
+              </div>
+              <div class="form-step" data-form-step="2">
+                <div class="form-step-head"><span>02</span><div><h2>Dein gewünschter Start</h2><p>Ein kleiner, klarer Start ist oft der beste Start.</p></div></div>
+                <label>Was möchtest du zunächst erreichen?
+                  <select name="goal" required><option value="">Bitte auswählen</option><option value="first">Erste:n Patient:in gewinnen</option><option value="income">Regelmäßiges Zusatzeinkommen aufbauen</option><option value="test">Eine Idee nebenbei testen</option></select>
+                </label>
+                <label>Wann möchtest du ungefähr starten?
+                  <select name="timing" required><option value="">Bitte auswählen</option><option value="soon">In den nächsten 4 Wochen</option><option value="quarter">In den nächsten 2–3 Monaten</option><option value="open">Noch offen</option></select>
+                </label>
+              </div>
+              <div class="form-actions"><span class="save-note" id="profile-status">Wird nur auf diesem Gerät gespeichert.</span><button class="primary-button" type="submit">Profil speichern <span>→</span></button></div>
+            </form>
+            <aside class="context-card"><p class="eyebrow">WARUM DAS ZÄHLT</p><h2>Du brauchst keinen perfekten Businessplan.</h2><p>Du brauchst eine Reihenfolge, die zu deiner Zeit, deinem Modell und deinem ersten realistischen Ziel passt.</p><div class="context-divider"></div><p class="legal-note"><strong>Hinweis:</strong> Dieses Profil ersetzt keine Rechts- oder Steuerberatung. Es hilft dir, offene Prüfpunkte sichtbar zu machen.</p></aside>
+          </div>
+        </section>
+
+        <section class="view" id="view-modell" data-view-panel>
+          <div class="page-intro compact"><div><p class="eyebrow">SCHRITT 2 · ENTSCHEIDUNG</p><h1>Welches Modell passt zu dir?</h1><p class="lead">Wähle den einfachsten sinnvollen Start. Du kannst später erweitern.</p></div></div>
+          <div class="model-grid" id="model-grid"></div>
+          <div class="model-result hidden" id="model-result"><div><p class="eyebrow">DEIN AKTUELLER START</p><h2 id="model-result-title"></h2><p id="model-result-copy"></p></div><button class="secondary-button" data-go="aufgaben" type="button">Aufgaben ansehen →</button></div>
+        </section>
+
+        <section class="view" id="view-aufgaben" data-view-panel>
+          <div class="page-intro compact"><div><p class="eyebrow">DEIN ARBEITSVORRAT</p><h1>Was ist als Nächstes dran?</h1><p class="lead">Markiere nur Dinge, die du tatsächlich erledigt oder bewusst geprüft hast.</p></div></div>
+          <div class="filter-row"><button class="filter active" data-filter="all" type="button">Alle</button><button class="filter" data-filter="open" type="button">Offen</button><button class="filter" data-filter="done" type="button">Erledigt</button></div>
+          <div class="full-task-list" id="full-task-list"></div>
+        </section>
+
+        <footer class="app-footer"><span>PhysioNebenbei · V1-Arbeitsbereich</span><span>Keine individuelle Rechts- oder Steuerberatung · Stand: 05.10.2026</span></footer>
+      </main>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
