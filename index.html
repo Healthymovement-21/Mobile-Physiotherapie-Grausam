@@ -1535,6 +1535,8 @@ nav .nav-links a{color:var(--ink)!important;font-size:13px!important;font-weight
 nav .nav-links a:hover{color:var(--brand)!important;opacity:1!important;}
 nav .nav-cta{display:block!important;color:#fff!important;background:var(--brand)!important;border:0!important;border-radius:8px!important;padding:11px 20px!important;min-height:44px!important;box-shadow:none!important;}
 nav .nav-cta:hover{background:var(--brand-dark)!important;opacity:1!important;}
+.btn-silver{background:var(--brand)!important;color:#fff!important;border-radius:8px!important;box-shadow:none!important;}
+.btn-silver::after{color:#fff!important;}
 .hero{min-height:0!important;padding:72px 6% 76px!important;background:linear-gradient(180deg,#edf5ef 0%,#f8faf8 100%)!important;border-bottom:1px solid var(--line)!important;}
 .hero-img-wrap,.hero .liquid-glass,.hero .scroll-hint,.glass-divider,.mehr-flow,.cine,.hero-video{display:none!important;}
 .hero-content{max-width:780px!important;padding:72px 0 0!important;margin:0 auto!important;}
@@ -1607,6 +1609,7 @@ footer .footer-copy{margin:0!important;white-space:nowrap;font-size:12px!importa
 @media(max-width:860px){
   /* Mobile: ruhige, kompakte Kopfzeile statt schwebender Kapsel */
   nav:not(.footer-legal){top:0!important;left:0!important;right:0!important;width:100%!important;height:64px!important;padding:0 18px!important;border-radius:0!important;background:rgba(251,252,250,.98)!important;border-bottom:1px solid var(--line)!important;box-shadow:none!important;backdrop-filter:blur(10px)!important;}
+  nav:not(.footer-legal) .nav-cta{display:none!important;}
   nav:not(.footer-legal) .nav-logo-img{height:39px!important;max-width:205px!important;}
   nav:not(.footer-legal) .burger{min-height:42px!important;padding:6px 8px!important;}
   .hero{padding:64px 7% 44px!important;}
