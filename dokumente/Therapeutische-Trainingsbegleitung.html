@@ -1,300 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trainingstherapeutische Begleitung · Nick Grausam</title>
 <style>
-@page { size: A4; margin: 15mm 18mm; border-top: 2.5pt solid #1a1a1a; border-bottom: 2.5pt solid #1a1a1a; }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10pt; color: #1a1a1a; line-height: 1.62; }
-
-/* HEADER */
-.header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16pt; padding-bottom: 11pt; margin-bottom: 18pt; border-bottom: 1pt solid #1a1a1a; }
-.logo-wrap svg { width: 34%; height: auto; display: block; }
-.header-right { text-align: right; }
-.header-right h1 { font-size: 19pt; font-weight: 800; letter-spacing: -0.5pt; line-height: 1.05; margin-bottom: 3pt; }
-.header-right .tagline { font-size: 9pt; color: #666; font-style: italic; }
-
-/* SECTION TITLE */
-.section-title { font-size: 7.5pt; font-weight: 700; letter-spacing: 2.5pt; text-transform: uppercase; color: #999; margin-bottom: 10pt; break-after: avoid; page-break-after: avoid; }
-
-/* INTRO */
-.intro-text { margin-bottom: 17pt; }
-.intro-text p { margin-bottom: 8pt; font-size: 10pt; line-height: 1.65; }
-.intro-text p:last-child { margin-bottom: 0; }
-
-/* EXPERTISE */
-.expertise-section { margin-bottom: 17pt; }
-.expertise-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18pt; row-gap: 7pt; }
-.expertise-item { display: flex; align-items: flex-start; gap: 7pt; font-size: 9.5pt; line-height: 1.45; }
-.expertise-dash { flex-shrink: 0; color: #bbb; }
-
-/* RED THREAD */
-.red-thread { margin-bottom: 17pt; font-size: 10.5pt; line-height: 1.65; font-style: italic; color: #1a1a1a; padding: 11pt 12pt; border-top: 0.5pt solid #ccc; border-bottom: 0.5pt solid #ccc; text-align: center; }
-
-/* CHECKLIST */
-.checklist-section { margin-bottom: 17pt; }
-.checklist-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18pt; row-gap: 7pt; }
-.checklist-item { display: flex; align-items: flex-start; gap: 7pt; font-size: 10pt; }
-.check-mark { flex-shrink: 0; font-weight: 800; color: #1a1a1a; margin-top: 0.5pt; }
-
-/* TRAININGSINHALTE */
-.inhalt-section { margin-bottom: 17pt; }
-.inhalt-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 12pt; row-gap: 6pt; margin-bottom: 6pt; }
-.inhalt-item { font-size: 9.5pt; line-height: 1.45; display: flex; align-items: flex-start; gap: 5pt; }
-.inhalt-dot { flex-shrink: 0; color: #bbb; }
-.inhalt-note { font-size: 8pt; color: #999; font-style: italic; }
-
-/* FLOW */
-.flow-section { margin-bottom: 17pt; }
-.flow-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; column-gap: 11pt; }
-.flow-step { border-top: 1.5pt solid #1a1a1a; padding-top: 8pt; }
-.flow-step-label { font-size: 7pt; font-weight: 700; letter-spacing: 1pt; text-transform: uppercase; color: #999; margin-bottom: 4pt; }
-.flow-step-title { font-size: 9pt; font-weight: 700; margin-bottom: 4pt; line-height: 1.2; }
-.flow-step-text { font-size: 8.5pt; color: #555; line-height: 1.45; }
-
-/* HONORAR */
-.honorar-section { margin-bottom: 17pt; }
-.honorar-box { border: 1pt solid #1a1a1a; padding: 13pt 16pt; }
-.honorar-box h3 { font-size: 12pt; margin-bottom: 5pt; }
-.honorar-box p { font-size: 9.5pt; color: #444; line-height: 1.55; }
-
-/* FAQ */
-.faq-section { margin-bottom: 17pt; }
-.faq-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18pt; row-gap: 10pt; }
-.faq-item { break-inside: avoid; page-break-inside: avoid; }
-.faq-item dt { font-size: 9.5pt; font-weight: 700; margin-bottom: 2.5pt; line-height: 1.3; }
-.faq-item dd { font-size: 9pt; color: #444; line-height: 1.5; margin-left: 0; }
-
-/* CTA */
-.cta-section { margin-bottom: 17pt; }
-.cta-box { border: 1pt solid #1a1a1a; padding: 11pt 15pt; display: flex; justify-content: space-between; align-items: center; gap: 16pt; }
-.cta-left h3 { font-size: 11pt; font-weight: 800; margin-bottom: 4pt; letter-spacing: -0.2pt; }
-.cta-left p { font-size: 9pt; color: #555; line-height: 1.5; }
-.cta-right { text-align: right; flex-shrink: 0; }
-.cta-right .cname { font-size: 9.5pt; font-weight: 700; margin-bottom: 3pt; }
-.cta-right .cdetail { font-size: 9pt; color: #444; line-height: 1.65; }
-
-/* LEGAL + FOOTNOTE */
-.legal { font-size: 7pt; color: #777; line-height: 1.45; margin-bottom: 4pt; }
-.footnote { font-size: 6.5pt; color: #aaa; line-height: 1.3; border-top: 0.5pt solid #eee; padding-top: 3pt; }
+@page{size:A4;margin:14mm 15mm}
+:root{--green:#236b4a;--dark:#174c35;--mint:#e8f3eb;--ink:#1d2921;--muted:#637068;--line:#dce8df;--coral:#f29b78;--yellow:#f6d875;--lavender:#dcd7f7}
+*{box-sizing:border-box}body{margin:0;background:#f4f8f4;color:var(--ink);font:15px/1.55 Arial,Helvetica,sans-serif}.page{max-width:900px;margin:24px auto;padding:28px;background:#fff;box-shadow:0 18px 55px rgba(28,73,49,.12)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:22px;border-bottom:1px solid var(--line)}.logo{width:205px;height:auto}.kicker{color:var(--green);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.top h1{margin:5px 0 0;color:var(--dark);font-size:34px;line-height:1.05;letter-spacing:-1px;text-align:right}
+.intro{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:stretch;padding:28px 0}.intro h2{margin:0 0 8px;font-size:25px;line-height:1.12;color:var(--dark)}.intro p{margin:0;color:var(--muted)}.intro-card{padding:20px;border-radius:18px;background:var(--mint);border:1px solid #cce2d1}.intro-card strong{display:block;color:var(--green);font-size:20px;line-height:1.15;margin-bottom:6px}.intro-card span{font-size:13px;color:var(--muted)}
+.section-label{margin:4px 0 12px;color:var(--green);font-size:11px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase}.offer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:26px}.offer{padding:18px;border:1px solid var(--line);border-radius:15px;background:#fbfdfb;min-height:112px}.offer:nth-child(1){border-top:5px solid var(--coral)}.offer:nth-child(2){border-top:5px solid var(--yellow)}.offer:nth-child(3){border-top:5px solid var(--lavender)}.offer:nth-child(4){border-top:5px solid #8bc7a4}.offer b{display:block;margin-bottom:5px;color:var(--dark);font-size:16px}.offer span{display:block;color:var(--muted);font-size:13px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}.panel{padding:20px;border-radius:16px;background:#fff;border:1px solid var(--line)}.panel h3{margin:0 0 12px;color:var(--dark);font-size:19px}.panel ul{margin:0;padding:0;list-style:none}.panel li{position:relative;margin:8px 0;padding-left:18px;font-size:13px}.panel li:before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:800}.steps{display:grid;gap:10px}.step{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start}.step i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-style:normal;font-weight:800;font-size:13px}.step b{display:block;font-size:14px}.step span{display:block;color:var(--muted);font-size:12.5px}
+.request{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:24px;padding:20px 22px;border-radius:17px;background:var(--green);color:#fff}.request strong{display:block;font-size:20px}.request span{font-size:13px;opacity:.9}.request a{display:inline-block;flex:none;padding:11px 16px;border-radius:9px;background:#fff;color:var(--green);font-weight:800;text-decoration:none}.foot{display:flex;justify-content:space-between;gap:18px;margin-top:24px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}.legal{margin-top:16px;color:#7b8780;font-size:10px;line-height:1.4}
+@media(max-width:700px){body{background:#fff;font-size:14px}.page{margin:0;padding:20px;box-shadow:none}.top{align-items:flex-start;flex-direction:column}.logo{width:175px}.top h1{text-align:left;font-size:29px}.intro,.two-col{grid-template-columns:1fr;gap:14px}.intro{padding:22px 0}.offer-grid{grid-template-columns:1fr}.offer{min-height:0}.request{align-items:flex-start;flex-direction:column}.request a{width:100%;text-align:center}.foot{flex-direction:column;gap:4px}}
+@media print{body{background:#fff}.page{margin:0;padding:0;box-shadow:none}.request a{display:none}.offer,.panel,.intro-card{break-inside:avoid}}
 </style>
 </head>
-<body>
-
-<!-- HEADER -->
-<div class="header">
-  <div class="logo-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 226.8 66" style="width:130pt;height:auto;display:block;">
-<!-- SVG created with Arrow, by QuiverAI (https://quiver.ai) -->
-  <style type="text/css">.cls-0 {fill:#FCF8F1;}
-.cls-1 {fill:#A7937C;}
-.cls-2 {fill:#CBB9A3;}
-.cls-3 {fill:#A7937C;}
-.cls-4 {fill:#342E29;}
-.cls-5 {fill:#A5917A;}</style>
-  <path class="cls-2" d="m38.9 3.7c0.4 0.1 0.5-0.1 0-0.5-1.7-1.5-7.5-2.3-12.7-1.3-13.8 2.4-24.3 14.2-24.4 29.3-0.1 7.9 2.1 16.3 8.4 23l0.1-0.4c-4.5-5.2-6.9-11.9-6.9-20.5 0-14.3 12.3-30.2 28.5-30.2 2.5 0 4.7 0.2 7 0.6z"/>
-  <path class="cls-2" d="m55.9 16.5c2.8 4.2 4.6 9.7 4.6 16 0 15.3-12.8 29.8-30.3 29.9-2.6 0-5.3-0.4-8.1-1 1.1 1.6 7.2 2.5 10.4 2.3 15.4-0.6 27.2-11.4 29.1-25.5 1-7.6-0.9-15.9-5.7-21.7z"/>
-  <path class="cls-3" d="m37.3 16.1c-2.8 4.3-6.8 11.3-16.1 11.5-2.6 0-5.4-0.7-7.5-1.7 2 1.9 5.3 3.5 9 3.5 11.4-0.1 14.3-7.8 17.3-12.8 2.6-4.5 5.7-7 9-7.2v-0.2c-3.9-0.7-8.1 1.8-11.7 6.9z"/>
-  <path class="cls-2" d="m31.5 18.2c0 2-1.6 3.9-4 3.9-2.1 0-3.9-1.4-3.9-3.8 0-1.8 1.5-4 3.9-4 2.1 0 4 1.8 4 3.9z"/>
-  <path class="cls-2" d="m37.3 23.9c-1.1 14.2-16.4 17-22.2 28.1-1.9 3.5-2.8 7.5-2.4 11.1 3.5-14.9 19.8-18.3 23.6-28.2 2-4.4 1.7-9.3 1-11z"/>
-  <path class="cls-1" d="m38.6 35.6c-0.4 1.2-1 2.5-1.9 3.5 3.9-0.3 8 1.5 8 5.5 0 2.4-1.1 5-2.5 7.5 2.4-2.1 4.5-5.2 4.5-8.6 0-3.6-3.1-7.2-8.1-7.9z"/>
-  <path class="cls-4" d="m86.4 18.2-0.3-8.4c-0.1-0.8 0.2-1 1-1.1v-0.1h-3.2v0.1l-3.4 8.4-3.6-8.5h-2.7v0.1c0.9 0.2 1.2 0.3 1.2 1.2l-0.3 8c0 0.9-0.4 1-1.3 1.1v0.2h3.1v-0.1c-1-0.1-1.3-0.3-1.3-1.1l0.2-8.1 4 9.3h0.2l3.7-8.9 0.4 7.9c0.1 0.7-0.2 0.8-1.1 0.9v0.1h3.5v-0.1c-0.7-0.1-1.1-0.2-1.1-0.9z"/>
-  <path class="cls-4" d="m91.3 12.4c-2 0-3.3 1.5-3.3 3.4s1.3 3.5 3.4 3.5c2 0 3.3-1.6 3.3-3.5-0.1-1.9-1.5-3.4-3.4-3.4zm0.1 6.6c-1.6 0-2.1-1.8-2.1-3.2 0-1.6 0.7-3.1 2-3.1 1.4 0 2.1 1.7 2.1 3 0 1.6-0.7 3.3-2 3.3z"/>
-  <path class="cls-4" d="m100.2 12.5c-0.8 0-1.7 0.5-2 1.3v-5.4l-2.3 0.2v0.1c0.7 0.1 0.9 0.3 0.9 0.9v8.4c0.6 0.7 1.8 1.3 3.1 1.3 1.8 0 3.2-1.4 3.2-3.6 0-2.1-1.3-3.2-2.9-3.2zm-0.4 6.5c-0.9 0-1.6-0.5-1.6-1.4v-3.4c0.2-0.7 0.9-1.2 1.6-1.2 1.3 0 2 1.2 2 3 0 1.6-0.6 3-2 3z"/>
-  <path class="cls-4" d="m106.1 10.2c0.4 0 0.7-0.4 0.7-0.8s-0.3-0.8-0.8-0.8-0.9 0.4-0.9 0.8c0.1 0.4 0.4 0.8 1 0.8z"/>
-  <path class="cls-4" d="m106.6 18.2v-5.7l-2.1 0.3v0.1c0.8 0.1 1 0.4 1 0.9v4.4c0 0.7-0.2 0.8-1 0.9v0.1h3v-0.1c-0.8-0.1-0.9-0.2-0.9-0.9z"/>
-  <path class="cls-4" d="m111.1 18.2v-9.8l-2.1 0.2v0.1c0.7 0.1 0.9 0.3 0.9 0.9v8.6c0 0.7-0.1 0.8-0.9 0.9v0.1h3v-0.1c-0.8-0.1-0.9-0.2-0.9-0.9z"/>
-  <path class="cls-4" d="m116.5 12.4c-1.7 0-3.1 1.4-3.1 3.4s1.5 3.5 3.1 3.5c1.2 0 2-0.5 2.4-1.1l-0.1-0.4c-0.4 0.6-1.1 1.1-1.9 1.1-1.4 0-2.2-1.3-2.2-3.1v-0.3h4.2c0.1-1.7-0.9-3.1-2.4-3.1zm-1.8 2.8c0.1-1.4 0.7-2.4 1.7-2.4s1.5 1 1.4 2.4h-3.1z"/>
-  <path class="cls-4" d="m128.8 8.6h-3.8v0.1c0.9 0.1 1.2 0.2 1.2 0.9v8.5c0 0.8-0.4 0.9-1.2 1v0.1h3.7v-0.2c-0.9-0.1-1.1-0.2-1.1-0.9v-3.4h1.2c2.5 0 4-0.9 4-3 0-1.7-1.1-3.1-4-3.1zm-0.2 5.8h-1v-5.4h1.1c1.9 0 2.7 1.2 2.7 2.7 0 1.6-1 2.7-2.8 2.7z"/>
-  <path class="cls-4" d="m140.9 18.2v-3.3c0-1.8-1-2.4-2.1-2.4-1 0-1.9 0.6-2.2 1.4v-5.5l-2.1 0.2v0.1c0.8 0.1 0.9 0.3 0.9 0.9v8.6c0 0.7-0.1 0.8-0.9 0.9v0.1h2.9v-0.1c-0.7-0.1-0.8-0.2-0.8-0.7v-3.9c0.2-0.9 0.9-1.4 1.7-1.4 1.1 0 1.5 0.7 1.5 1.9v3.4c0 0.5-0.2 0.6-0.9 0.7v0.1h2.9v-0.1c-0.7-0.1-0.9-0.2-0.9-0.9z"/>
-  <path class="cls-4" d="m147.6 12.7c0.8 0.1 1 0.5 0.7 1.3l-1.6 4.1-1.7-4.1c-0.4-0.8-0.3-1.1 0.6-1.3v-0.1h-3v0.1c0.6 0.1 0.8 0.5 1.2 1.3l2.4 5.6-0.7 1.4c-0.3 0.7-0.6 0.8-0.9 0.8s-0.8-0.3-1.1-0.5c-0.4 0.2-0.5 1.3 0.5 1.3 0.7 0 1.3-0.3 1.8-1.3l3.1-7.3c0.4-0.8 0.7-1.1 1.3-1.3v-0.1h-2.6v0.1z"/>
-  <path class="cls-4" d="m153.9 15.2c-0.8-0.4-1.6-0.8-1.6-1.5 0-0.6 0.5-1 1.2-1 0.8 0 1.6 0.6 1.8 1.7h0.2v-1.5c-0.6-0.2-1.2-0.4-1.9-0.4-1.2 0-2.2 0.6-2.2 1.8s1 1.6 1.8 2c0.9 0.3 1.7 0.8 1.7 1.6 0 0.7-0.6 1.2-1.3 1.2-1 0-1.9-0.8-2.1-2h-0.2v2c0.6-0.1 1.2 0.2 2.2 0.2 1.3 0 2.4-0.6 2.4-1.8 0-1.4-1.1-1.9-2-2.3z"/>
-  <path class="cls-4" d="m158.9 13.8v4.4c0 0.7-0.2 0.8-1 0.9v0.1h2.9v-0.1c-0.7-0.1-0.8-0.2-0.8-0.9v-5.7l-2.1 0.2v0.1c0.8 0.2 1 0.5 1 1z"/>
-  <path class="cls-4" d="m158.8 9.4c0 0.4 0.3 0.9 0.8 0.9s0.3-0.1 0.4-0.1c0.3-0.2 0.3-0.5 0.3-0.8-0.1-0.4-0.4-0.8-0.8-0.8s-0.7 0.4-0.7 0.8z"/>
-  <path class="cls-4" d="m165.7 12.4c-1.9 0.3-3.6 2.2-3.6 3.4 0 1.9 1.4 3.5 3.5 3.5 1.8 0 3.4-1.4 3.4-3.5 0-1.9-1.5-3.4-3.3-3.4zm0 6.6c-1.6 0-2.1-1.8-2.1-3.2 0-1.6 0.7-3.1 2-3.1 1.4 0 2.2 1.7 2.2 3 0 1.6-0.8 3.3-2.1 3.3z"/>
-  <path class="cls-4" d="m173.4 9.8-1.1 1.6v1.1h-1.6v0.3h0.9v4.7c0 1.1 0.7 1.8 1.7 1.8 0.8 0 1.6-0.4 2-1.1h-0.1c-0.3 0.4-0.7 0.6-1.2 0.6-0.7 0-1-0.5-1.1-1.4v-4.6h1.9v-0.2h-1.9v-2.8h0.5z"/>
-  <path class="cls-4" d="m182.9 18.2v-3.3c0-1.8-1-2.4-2.1-2.4-1 0-2 0.6-2.4 1.4v-5.5l-2.1 0.2v0.1c0.8 0.1 1 0.3 1 0.9v8.6c0 0.7-0.2 0.8-1 0.9v0.1h3v-0.1c-0.8-0.1-0.9-0.2-0.9-0.7v-3.9c0.3-0.9 0.9-1.4 1.8-1.4 1.1 0 1.6 0.7 1.6 1.9v3.4c0 0.5-0.2 0.6-1 0.7v0.1h3v-0.1c-0.8-0.1-0.9-0.2-0.9-0.9z"/>
-  <path class="cls-4" d="m188.3 12.4c-1.7 0-3.2 1.4-3.2 3.4s1.5 3.5 3.2 3.5c1.1 0 2-0.5 3-1.5h-0.2c-0.7 0.7-1.3 1.1-1.9 1.1-1.6 0-2.6-1.3-2.6-3.1v-0.3h4.7c0-1.7-1-3.1-3-3.1zm-1.7 2.8c0-1.4 0.7-2.4 1.7-2.4 1.1 0 1.6 1 1.5 2.4h-3.2z"/>
-  <path class="cls-4" d="m197.1 12.4c-0.9-0.2-1.8 0.7-1.8 1.8v-1.8l-2.2 0.4v0.1c0.8 0.1 1 0.4 1 0.9v4.4c0 0.7-0.2 0.8-1 0.9v0.1h3.2v-0.1c-0.8-0.1-1-0.2-1-0.9v-3.5c0.3-0.8 0.8-1.4 1.3-1.4 0.3 0 0.7 0.5 0.9 0.7 0.5-0.2 0.8-1.3-0.4-1.6z"/>
-  <path class="cls-4" d="m205.1 18.2c-0.2 0.4-0.4 0.6-0.7 0.6s-0.4-0.3-0.3-1l0.1-2.9c0-1.4-0.8-2.5-2.1-2.5-1.6 0-2.6 0.8-2.4 2l0.8-0.2c-0.2-0.9 0.4-1.5 1.3-1.5 1 0 1.4 0.8 1.4 1.9v0.8l-1.4 0.1c-1.5 0.2-2.6 0.9-2.5 2.1 0 1 0.8 1.7 1.8 1.7s1.8-0.5 2.1-1.1c0 0.8 0.4 1.1 1 1.1 0.5 0 1.1-0.2 1.4-0.9l-0.5-0.2zm-1.9-0.4c-0.3 0.6-0.9 1-1.5 1-0.7 0-1.3-0.5-1.3-1.4s0.6-1.6 1.9-1.7l1-0.1-0.1 2.2z"/>
-  <path class="cls-4" d="m210.5 12.4c-0.8 0-1.7 0.5-2.1 1.2v-1.2l-1.9 0.5v0.1c0.5 0.1 0.8 0.5 0.8 0.9v7.7c0 0.7-0.2 0.8-1 0.9v0.1h3.2v-0.1c-0.8-0.1-1.1-0.1-1.1-0.9v-2.9c0.4 0.4 1 0.6 1.7 0.6 1.9 0 3.3-1.3 3.3-3.5s-1.4-3.4-2.9-3.4zm-0.3 6.7c-0.9 0-1.7-0.7-1.7-1.6v-3.6c0.3-0.6 0.9-1.1 1.6-1.1 1.3 0 2 1.4 2 3.2 0 1.6-0.6 3.1-1.9 3.1z"/>
-  <path class="cls-4" d="m216.6 18.2v-5.7l-2 0.2v0.1c0.8 0.2 0.9 0.5 0.9 1v4.4c0 0.7-0.1 0.8-0.9 0.9v0.1h3v-0.1c-0.9-0.1-1-0.2-1-0.9z"/>
-  <path class="cls-4" d="m216 10.2c0.5 0 0.8-0.4 0.8-0.8s-0.3-0.8-0.8-0.8-0.7 0.4-0.7 0.8 0.3 0.8 0.7 0.8z"/>
-  <path class="cls-4" d="m224.5 15.5c0.1-1.7-0.9-3.1-2.6-3.1-1.5 0-3.1 1.4-3.1 3.4s1.4 3.5 3.1 3.5c1.1 0 2-0.5 2.4-1.1l-0.1-0.4c-0.4 0.6-1.2 1.1-1.9 1.1-1.4 0-2.2-1.3-2.2-3.1v-0.3h4.4zm-2.7-2.7c1.2 0 1.6 1 1.5 2.4h-3c0.1-1.4 0.7-2.4 1.5-2.4z"/>
-  <path class="cls-4" d="m86.6 37.3c1.7 0.2 2 0.4 2 1.7v4c-1 0.9-2.6 1.4-4.4 1.4-4.6 0-7.5-3.9-7.5-8.7 0-4.6 2.4-8.4 7.4-8.4 2.8 0 5.6 1.4 6.3 4.3h0.3v-3.7c-1.6-0.6-3.4-1.4-6.8-1.4-5.6 0-10.2 3.5-10.2 9.3 0 5.1 3.7 9.2 9.5 9.2 3.7 0 5.7-0.7 7.9-1.7v-4.3c0-1.2 0.5-1.5 1.8-1.6v-0.2h-6.3v0.1z"/>
-  <path class="cls-4" d="m107.4 36.3c2.2-0.4 3.7-1.9 3.7-4.7 0-2-1.8-4.7-6.1-4.7h-7.4v0.2c1.7 0.2 2 0.5 2 1.8v13.9c0 1.3-0.5 1.5-2 1.6v0.3h6.6v-0.2c-1.3-0.1-1.8-0.4-1.8-1.7v-6.1h2.6c2.3 2.9 3.7 8 7.6 8h2.4v-0.2c-2.7-0.4-4.6-6-7.6-8.2zm-3.6-0.1h-1.5v-8.6h1.9c3.1 0 4.1 2 4.1 4.1 0 3.1-1.7 4.5-4.5 4.5z"/>
-  <path class="cls-4" d="m135.2 42.7-6.8-15.8h-2.8l0.5 1.4-5.7 14.4c-0.5 1.2-1.3 1.6-2.5 1.7v0.2h5.1v-0.2c-1.4-0.2-2.3-0.6-1.6-2l1.5-3.6h7.6l1.6 3.9c0.5 1.4 0 1.7-1.5 1.7v0.2h6.7v-0.2c-1-0.1-1.6-0.5-2.1-1.7zm-11.8-4.7 3.2-8.6 3.5 8.6h-6.7z"/>
-  <path class="cls-4" d="m154.3 27.1c1.4 0.1 2.2 0.5 2.3 1.8v9.1c0 3.6-2 5.8-5.7 5.8-2.8 0-5.5-1.5-5.5-5.7v-9.2c0-1.3 0.7-1.6 1.9-1.7v-0.3h-6.6v0.2c1.4 0.1 2 0.5 2 1.8v9.2c0 5.1 3.6 6.8 7.5 6.8s7.1-2.3 7.2-6.9v-9.1c0-1.3 0.7-1.6 2.1-1.8v-0.2h-5.2v0.2z"/>
-  <path class="cls-4" d="m171.4 34.1c-1.6-0.6-3.9-1.5-3.9-3.7 0-1.9 1.5-3.1 3.2-3.1 2.3-0.1 4 1.3 4.8 3.9h0.2v-3.5c-1.1-0.5-2.6-1.2-4.6-1.2-3.5 0-6.1 1.8-6 5.1 0 2.9 2.5 4.2 5.1 5.2 1.7 0.6 4.2 1.7 4.2 4 0 1.9-1.4 3.3-3.8 3.3-2.5 0-4.9-1.6-5.4-4.4h-0.3l0.1 4c1.4 0.5 2.9 1.3 5.5 1.3 3.6 0 6.1-1.9 6.1-5.1 0-3.3-3.1-4.9-5.2-5.8z"/>
-  <path class="cls-4" d="m197.6 42.7-6.3-15.8h-3l0.5 1.4-5.7 14.4c-0.5 1.2-1.3 1.6-2.6 1.7v0.2h5.2v-0.2c-1.4-0.2-2.3-0.6-1.6-2l1.4-3.6h7.6l1.5 3.9c0.5 1.4 0 1.7-1.4 1.7v0.3h6.8v-0.3c-1.1-0.1-1.9-0.5-2.4-1.7zm-11.7-4.7 3.3-8.5 3.5 8.5h-6.8z"/>
-  <path class="cls-4" d="m223.6 42.8-0.7-13.9c0-1.3 0.7-1.6 1.8-1.7v-0.3h-3.7l-6.2 14.2-6.1-14.2h-4.2v0.2c1.2 0.3 1.9 0.5 1.9 1.8l-0.5 13.9c0 1.3-0.8 1.5-2.1 1.7v0.2h4.7v-0.2c-1.6-0.2-2-0.6-1.9-2l0.5-13.1 6.7 15.4h0.4l6.3-15.2 0.6 13.2c0.1 1.3-0.5 1.5-1.9 1.7v0.2h5.9v-0.2c-1.2-0.2-1.5-0.4-1.5-1.7z"/>
-  <path class="cls-5" d="m78.1 54.5h-2.6v-1.9h-0.9v4.6h0.6v-2.2h2.6v2.2h0.7v-4.6h-0.7l0.3 1.9z"/>
-  <path class="cls-5" d="m81.6 53.7c-0.7 0-1.3 0.4-1.3 1.1l0.6 0.1c0-0.3 0.3-0.7 0.7-0.7 0.5 0 0.8 0.3 0.8 0.8v0.2h-0.8c-0.9 0-1.5 0.4-1.5 1.1 0 0.8 0.5 1 1.2 1 0.6 0 1-0.3 1.1-0.6v0.5h0.7v-2.2c0-0.9-0.5-1.3-1.5-1.3zm0.8 2.4c0 0.5-0.3 0.7-0.9 0.7-0.4 0-0.8-0.1-0.8-0.5 0-0.5 0.3-0.7 0.9-0.7h0.8v0.5z"/>
-  <path class="cls-5" d="m86.9 55.7c0 0.6-0.4 1-1 1-0.4 0-0.7-0.3-0.7-0.9v-2.1h-0.6v2.2c0 0.9 0.6 1.4 1.3 1.4 0.6 0 1-0.2 1.2-0.6v0.5h0.5v-3.5h-0.7v2z"/>
-  <path class="cls-5" d="m90.4 55.1c-0.6-0.1-0.8-0.1-0.8-0.5 0-0.2 0.2-0.5 0.7-0.5 0.4 0 0.8 0.3 1 0.6l0.2-0.5c-0.2-0.3-0.6-0.5-1.2-0.5-0.8 0-1.4 0.4-1.4 1s0.5 0.9 1.3 1c0.5 0.1 0.8 0.3 0.8 0.6s-0.3 0.5-0.7 0.5c-0.5 0-0.8-0.2-1.1-0.5l-0.4 0.3c0.2 0.5 0.7 0.7 1.5 0.7 0.9 0 1.3-0.3 1.3-1s-0.3-1-1.2-1.2z"/>
-  <path class="cls-5" d="m94.7 53.6c-0.6 0-1 0.3-1.1 0.8v-2.1h-0.6v4.9h0.6v-0.6c0.2 0.5 0.6 0.7 1.1 0.7 0.9 0 1.6-0.7 1.6-1.8s-0.7-1.9-1.6-1.9zm-0.2 3.2c-0.6 0-1-0.5-1-1.3s0.4-1.3 1-1.3c0.7 0 1.1 0.5 1.1 1.3s-0.4 1.3-1.1 1.3z"/>
-  <path class="cls-5" d="m98.9 53.7c-0.9 0-1.6 0.7-1.6 1.8s0.7 1.8 1.6 1.8c0.7 0 1.3-0.2 1.5-0.7l-0.2-0.3c-0.3 0.3-0.6 0.5-1.1 0.5-0.7 0-1.1-0.4-1.1-1.2h2.5c0-1-0.4-1.9-1.6-1.9zm-0.9 1.5c0-0.6 0.4-1 0.9-1 0.6 0 0.9 0.4 0.9 1h-1.8z"/>
-  <path class="cls-5" d="m103.1 55.1c-0.6-0.1-0.8-0.1-0.8-0.5 0-0.2 0.2-0.5 0.7-0.5 0.4 0 0.8 0.3 1 0.6l0.2-0.5c-0.2-0.3-0.6-0.5-1.2-0.5-0.8 0-1.4 0.4-1.4 1s0.5 0.9 1.3 1c0.5 0.1 0.8 0.3 0.8 0.6s-0.3 0.5-0.7 0.5c-0.5 0-0.8-0.2-1.1-0.5l-0.3 0.3c0.2 0.5 0.7 0.7 1.5 0.7s1.3-0.3 1.3-1-0.5-1-1.3-1.2z"/>
-  <path class="cls-5" d="m107.9 55.7c0 0.6-0.4 1-1 1-0.4 0-0.7-0.3-0.7-0.9v-2.1h-0.6v2.2c0 0.9 0.5 1.4 1.2 1.4 0.6 0 1-0.2 1.2-0.6v0.5h0.6v-3.5h-0.7v2z"/>
-  <path class="cls-5" d="m111.6 56.8c-0.6 0-1.1-0.5-1.1-1.3 0-0.7 0.5-1.3 1.1-1.3 0.4 0 0.7 0.3 0.9 0.7l0.5-0.3c-0.3-0.7-0.8-0.9-1.4-0.9-1 0-1.8 0.8-1.8 1.8s0.8 1.8 1.8 1.8c0.7 0 1.2-0.3 1.4-0.9l-0.3-0.3c-0.3 0.5-0.6 0.7-1.1 0.7z"/>
-  <path class="cls-5" d="m116.1 53.6c-0.6 0-1 0.3-1.2 0.8v-2.1h-0.5v4.9h0.5v-1.9c0-0.6 0.5-1.1 1-1.1s0.7 0.4 0.7 1v2h0.6v-2.2c0-0.9-0.4-1.4-1.1-1.4z"/>
-  <path class="cls-5" d="m120.1 53.7c-0.9 0-1.6 0.7-1.6 1.8s0.6 1.8 1.6 1.8c0.6 0 1.3-0.2 1.5-0.7l-0.2-0.3c-0.4 0.3-0.7 0.5-1.2 0.5-0.6 0-1-0.4-1-1.2h2.4c0-1-0.4-1.9-1.5-1.9zm-0.9 1.5c0-0.6 0.4-1 0.9-1s0.9 0.4 0.9 1h-1.8z"/>
-  <path class="cls-5" d="m126.9 55.3c0 0.2 0.2 0.5 0.4 0.5s0.4-0.3 0.4-0.5c0-0.3-0.2-0.4-0.4-0.4-0.3 0-0.4 0.1-0.4 0.4z"/>
-  <path class="cls-5" d="m134.6 52.5h-1.6v4.6h0.6v-1.8h1.1c1.2 0 1.7-0.6 1.7-1.4s-0.5-1.4-1.8-1.4zm0 2.3h-1v-1.8h1c0.8 0 1 0.4 1 0.9 0.1 0.5-0.2 0.9-1 0.9z"/>
-  <path class="cls-5" d="m138.3 54.4v-0.7h-0.6v3.4h0.6v-1.7c0-0.8 0.4-1.2 0.9-1.2 0.2 0 0.3 0 0.4 0.2l0.1-0.7c-0.1-0.1-0.3-0.1-0.4-0.1-0.5 0-0.9 0.3-1 0.8z"/>
-  <path class="cls-5" d="m140.9 52.3c-0.2 0-0.4 0.2-0.4 0.4s0.2 0.4 0.4 0.4 0.4-0.2 0.4-0.4-0.2-0.4-0.4-0.4z"/>
-  <path class="cls-5" d="m141.1 53.7h-0.6v3.4h0.6v-3.4z"/>
-  <path class="cls-5" d="m144.1 56.6-1-2.9h-0.6l1.2 3.4h0.8l1.3-3.4h-0.8l-0.9 2.9z"/>
-  <path class="cls-5" d="m148.1 53.7c-0.7 0-1.4 0.4-1.4 1.1l0.6 0.1c0-0.3 0.3-0.7 0.8-0.7 0.4 0 0.7 0.3 0.7 0.8v0.2h-0.7c-0.9 0-1.6 0.4-1.5 1.2 0 0.7 0.6 0.9 1.2 0.9s1-0.3 1.1-0.6v0.4h0.5v-2.1c0.1-0.9-0.4-1.3-1.3-1.3zm0.8 2.4c0 0.5-0.4 0.7-1 0.7-0.4 0-0.7-0.1-0.7-0.5 0-0.5 0.3-0.7 0.9-0.7h0.8v0.5z"/>
-  <path class="cls-5" d="m152.1 52.7h-0.7v1h-0.7v0.4h0.6v2.2c0.1 0.7 0.4 0.9 1 0.9 0.2 0 0.4 0 0.5-0.1v-0.5c-0.1 0-0.2 0.1-0.3 0.1-0.4 0-0.6-0.1-0.6-0.6v-2h1v-0.5h-0.9v-0.9h0.1z"/>
-  <path class="cls-5" d="m156.1 53.6c-0.6 0-1 0.3-1.2 0.8v-0.7h-0.6v4.8h0.6v-1.9c0.3 0.4 0.7 0.7 1.2 0.7 0.8 0 1.5-0.7 1.5-1.8s-0.7-1.9-1.5-1.9zm-0.2 3.2c-0.6 0-1.1-0.4-1.1-1.3s0.5-1.3 1.1-1.3 1 0.5 1 1.3-0.4 1.3-1 1.3z"/>
-  <path class="cls-5" d="m160.3 53.7c-0.7 0-1.4 0.4-1.4 1.1l0.6 0.1c0-0.3 0.3-0.7 0.8-0.7 0.4 0 0.8 0.3 0.8 0.8v0.2h-0.8c-0.9 0-1.6 0.4-1.5 1.2 0 0.7 0.6 0.9 1.2 0.9 0.5 0 0.9-0.3 1.1-0.6v0.4h0.5v-2.1c0.1-0.9-0.4-1.3-1.3-1.3zm0.9 2.4c-0.1 0.5-0.5 0.7-1 0.7-0.4 0-0.7-0.1-0.7-0.5 0-0.5 0.3-0.7 0.9-0.7h0.8v0.5z"/>
-  <path class="cls-5" d="m164.2 52.7h-0.6v1h-0.6v0.4h0.6v2.2c0 0.7 0.4 0.9 1 0.9 0.2 0 0.3 0 0.5-0.1v-0.5c-0.2 0-0.3 0.1-0.4 0.1-0.3 0-0.4-0.1-0.4-0.6v-1.7h0.9v-0.7h-1v-1z"/>
-  <path class="cls-5" d="m166.8 52.3c-0.2 0-0.4 0.2-0.4 0.4s0.2 0.4 0.4 0.4 0.4-0.2 0.4-0.4-0.2-0.4-0.4-0.4z"/>
-  <path class="cls-5" d="m167.2 53.7h-0.6v3.4h0.6v-3.4z"/>
-  <path class="cls-5" d="m170.1 53.7c-0.9 0-1.6 0.7-1.6 1.8s0.6 1.8 1.6 1.8c0.6 0 1.3-0.2 1.5-0.7l-0.2-0.3c-0.4 0.3-0.7 0.5-1.2 0.5-0.6 0-1-0.4-1-1.2h2.5c0-1-0.5-1.9-1.6-1.9zm-0.9 1.5c0-0.6 0.4-1 0.9-1s0.9 0.4 0.9 1h-1.8z"/>
-  <path class="cls-5" d="m174.9 53.6c-0.6 0-1 0.3-1.2 0.8v-0.7h-0.6v3.5h0.6v-1.9c0-0.7 0.5-1.1 1-1.1s0.8 0.4 0.8 1v2h0.6v-2.2c0-0.9-0.5-1.4-1.2-1.4z"/>
-  <path class="cls-5" d="m178.3 52.7h-0.7v1h-0.6v0.4h0.6v2.2c0 0.7 0.5 0.9 1 0.9 0.2 0 0.4 0 0.5-0.1v-0.5c-0.1 0-0.3 0.1-0.4 0.1-0.3 0-0.4-0.1-0.4-0.6v-1.7h0.9v-0.7h-0.9v-1z"/>
-  <path class="cls-5" d="m181.7 53.7c-0.8 0-1.6 0.7-1.6 1.8s0.7 1.8 1.6 1.8c0.7 0 1.4-0.2 1.6-0.7l-0.2-0.3c-0.4 0.3-0.6 0.5-1.2 0.5s-1.1-0.4-1.1-1.2h2.5c0-1-0.5-1.9-1.6-1.9zm-0.9 1.5c0.1-0.6 0.5-1 0.9-1 0.6 0 0.9 0.4 0.9 1h-1.8z"/>
-  <path class="cls-5" d="m186.5 53.6c-0.6 0-1 0.3-1.1 0.8v-0.7h-0.7v3.5h0.6v-1.9c0-0.7 0.4-1.1 1-1.1 0.5 0 0.8 0.4 0.8 1v2h0.7v-2.2c0-0.9-0.5-1.4-1.3-1.4z"/>
-  <path class="cls-5" d="m193.6 55.3c0-0.3-0.2-0.4-0.4-0.4s-0.4 0.1 0 0.4c-0.4 0.2-0.2 0.5 0 0.5s0.4-0.3 0.4-0.5z"/>
-  <path class="cls-5" d="m202.1 55.8c0-0.4-0.3-1-0.9-1.1 0.4-0.1 1.3-2.2-0.3-2.2h-1.8v4.7h2c0.5 0 1-0.4 1-1.4zm-2.4-2.8h1.2c0.6 0 0.8 0.4 0.8 0.7 0 0.4-0.2 0.8-0.8 0.8h-1.2v-1.5zm1.3 3.6h-1.3v-1.7h1.3c0.6 0 0.9 0.4 0.9 0.8 0 0.5-0.3 0.9-0.9 0.9z"/>
-  <path class="cls-5" d="m205.5 56.8c-0.7 0-1.1-0.4-1.1-1.2h2.5c0-1-0.5-1.9-1.6-1.9-0.9 0-1.6 0.7-1.6 1.8s0.7 1.8 1.6 1.8c0.7 0 1.3-0.2 1.6-0.7l-0.3-0.3c-0.3 0.3-0.6 0.5-1.1 0.5zm-0.2-2.6c0.6 0 0.9 0.4 0.9 1h-1.8c0.1-0.6 0.4-1 0.9-1z"/>
-  <path class="cls-5" d="m208.4 52.3c-0.2 0-0.3 0.2-0.3 0.4s0.2 0.4 0.3 0.4c0.3 0 0.4-0.2 0.4-0.4s-0.1-0.4-0.4-0.4z"/>
-  <path class="cls-5" d="m208.7 53.7h-0.6v3.4h0.6v-3.4z"/>
-  <path class="cls-5" d="m212.1 53.6c-0.5 0-1 0.3-1.2 0.8v-2.1h-0.6v4.9h0.6v-1.9c0-0.6 0.5-1.1 1-1.1s0.7 0.4 0.7 1v2h0.6v-2.2c0-0.9-0.5-1.4-1.1-1.4z"/>
-  <path class="cls-5" d="m215.1 52.3c-0.3 0-0.4 0.2-0.4 0.4s0.2 0.4 0.4 0.4 0.4-0.2 0.4-0.4-0.2-0.4-0.4-0.4z"/>
-  <path class="cls-5" d="m215.4 53.7h-0.7v3.4h0.7v-3.4z"/>
-  <path class="cls-5" d="m217.4 52.3h-0.7v4.9h0.7v-4.9z"/>
-  <path class="cls-5" d="m218.9 53.2v0.5h-0.5v0.4h0.5v3h0.6v-3h0.8v-0.5h-0.8v-0.4c0-0.4 0.2-0.5 0.5-0.5h0.3l0.1-0.4c-0.1-0.1-0.3-0.1-0.5-0.1-0.6 0-1 0.4-1 1z"/>
-  <path class="cls-5" d="m222.7 56.8c-0.6 0-1-0.4-1-1.2h2.3c0-1-0.4-1.9-1.5-1.9-0.9 0-1.5 0.7-1.5 1.8s0.7 1.8 1.6 1.8c0.7 0 1.3-0.2 1.3-0.7l-0.2-0.3c-0.2 0.3-0.5 0.5-1 0.5zm-0.2-2.6c0.6 0 0.9 0.4 0.9 1h-1.7c0-0.6 0.4-1 0.8-1z"/>
-</svg></div>
-  <div class="header-right">
-    <h1>Therapeutische Trainingsbegleitung</h1>
-    <div class="tagline">Von der Behandlung zur&uuml;ck in einen belastbaren Alltag.</div>
-  </div>
-</div>
-
-<!-- INTRO -->
-<div class="intro-text">
-  <p>Viele Beschwerden kommen zur&uuml;ck &mdash; nicht wegen fehlender Behandlung, sondern weil im Alltag niemand mehr begleitet. Die Physiotherapie endet nach 45 oder 60 Minuten. Was danach kommt, entscheidet genauso &uuml;ber den Erfolg.</p>
-  <p>Ich bin kein Personal Trainer mit Trainerschein &mdash; ich bin Physiotherapeut mit medizinischem Blick, klinischer Berufserfahrung und eigenem Leistungssportbackground. Diese Verbindung macht den Unterschied.</p>
-</div>
-
-<!-- EXPERTISE -->
-<div class="expertise-section">
-  <div class="section-title">Meine Expertise</div>
-  <div class="expertise-grid">
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Leistungshandball im NLZ der Rhein-Neckar L&ouml;wen (Handball-Bundesliga)</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Kraft- &amp; Athletiktraining ab dem 13. Lebensjahr bei den Rhein-Neckar L&ouml;wen</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Technikschulung durch Trainer aus dem olympischen Gewichtheben</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Eigene Verletzungserfahrung &mdash; Training trotz und mit Einschr&auml;nkungen</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Qualifikation: Krankengymnastik am Ger&auml;t (KGG)</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Fortbildung beim langjährigen Physiotherapeuten der deutschen Fu&szlig;ballnationalmannschaft</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Stetige Weiterbildung in Therapie, Training und Sport</span></div>
-    <div class="expertise-item"><span class="expertise-dash">&ndash;</span><span>Jung und motiviert</span></div>
-  </div>
-</div>
-
-<!-- RED THREAD -->
-<div class="red-thread">Genau diese Kombination &mdash; medizinisches Fachwissen, eigene Verletzungserfahrung und Leistungssportbackground &mdash; ist der rote Faden hinter allem, was ich tue.</div>
-
-<!-- WAS SIE BEKOMMEN -->
-<div class="checklist-section">
-  <div class="section-title">Was Sie bekommen</div>
-  <div class="checklist-grid">
-    <div class="checklist-item"><span class="check-mark">&#10003;</span><span>4 pers&ouml;nliche Termine &agrave; 60 Min. pro Monat</span></div>
-    <div class="checklist-item"><span class="check-mark">&#10003;</span><span>Schriftlicher, individueller Trainingsplan</span></div>
-    <div class="checklist-item"><span class="check-mark">&#10003;</span><span>WhatsApp-Erreichbarkeit zwischen den Terminen</span></div>
-    <div class="checklist-item"><span class="check-mark">&#10003;</span><span>Monatliche Plananpassung</span></div>
-    <div class="checklist-item"><span class="check-mark">&#10003;</span><span>Fachwissen mit therapeutischem Hintergrund</span></div>
-    <div class="checklist-item"><span class="check-mark">&#10003;</span><span>Ern&auml;hrungsempfehlungen auf Wunsch**</span></div>
-    <div class="checklist-item"><span class="check-mark">&#10003;</span><span>Kostenloses Erstgespr&auml;ch zum Kennenlernen</span></div>
-    <div class="checklist-item"><span class="check-mark">&#10003;</span><span>Keine Vorauszahlung &mdash; monatlich k&uuml;ndbar</span></div>
-  </div>
-</div>
-
-<!-- TRAININGSINHALTE -->
-<div class="inhalt-section">
-  <div class="section-title">M&ouml;gliche Trainingsinhalte &mdash; Beispiel</div>
-  <div class="inhalt-grid">
-    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Kraft &amp; Muskelaufbau</span></div>
-    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Mobilit&auml;t &amp; Beweglichkeit</span></div>
-    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Koordination &amp; Balance</span></div>
-    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>R&uuml;cken &amp; Haltung</span></div>
-    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Ausdauer &amp; Kondition</span></div>
-    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Verletzungspr&auml;vention</span></div>
-    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Rehabilitation &amp; Wiederbelastung</span></div>
-    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Atemtechnik &amp; Entspannung</span></div>
-    <div class="inhalt-item"><span class="inhalt-dot">&ndash;</span><span>Alltagsbewegungen verbessern</span></div>
-  </div>
-  <div class="inhalt-note">Die genauen Inhalte sind frei w&auml;hlbar &mdash; das Beispiel zeigt, was m&ouml;glich ist.</div>
-</div>
-
-<!-- WIE ES ABLÄUFT -->
-<div class="flow-section">
-  <div class="section-title">Wie es abl&auml;uft</div>
-  <div class="flow-grid">
-    <div class="flow-step">
-      <div class="flow-step-label">Schritt 0 &middot; kostenlos</div>
-      <div class="flow-step-title">Erstgespr&auml;ch</div>
-      <div class="flow-step-text">Kennenlernen, Ihre Situation, Ihre Ziele &mdash; unverbindlich. Erst danach entscheiden Sie.</div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-step-label">Einheit 1</div>
-      <div class="flow-step-title">Analyse &amp; Planung</div>
-      <div class="flow-step-text">Bewegungsanalyse, Zieldefinition, Ern&auml;hrungsgrundlagen, individueller Trainingsplan.</div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-step-label">Einheiten 2&ndash;3</div>
-      <div class="flow-step-title">Pers&ouml;nliches Training</div>
-      <div class="flow-step-text">Abgestimmt auf Ihren K&ouml;rper und Ihr Ziel &mdash; kein Standard-Programm, kein Druck.</div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-step-label">Laufend</div>
-      <div class="flow-step-title">Begleitung &amp; Anpassung</div>
-      <div class="flow-step-text">WhatsApp zwischen Terminen, monatliche Plananpassung &mdash; damit der Fortschritt h&auml;lt.</div>
-    </div>
-  </div>
-</div>
-
-<!-- HONORAR -->
-<div class="honorar-section">
-  <div class="honorar-box">
-    <h3>Individuelles Programm auf Anfrage</h3>
-    <p>Umfang, Inhalte und Konditionen der therapeutischen Trainingsbegleitung werden nach einem unverbindlichen Erstgespr&auml;ch gemeinsam festgelegt. So entsteht ein Programm, das zu Ihrer Situation, Ihren Zielen und Ihrem Alltag passt.</p>
-  </div>
-</div>
-
-<!-- FAQ -->
-<div class="faq-section">
-  <div class="section-title">H&auml;ufige Fragen</div>
-  <dl class="faq-grid">
-    <div class="faq-item"><dt>F&uuml;r wen ist das geeignet?</dt><dd>F&uuml;r jeden, der sich langfristig besser bewegen m&ouml;chte &mdash; nach einer Verletzung, mitten in der Therapie oder pr&auml;ventiv. Keine Vorkenntnisse n&ouml;tig.</dd></div>
-    <div class="faq-item"><dt>Kann ich mit Schmerzen trainieren?</dt><dd>Ja &mdash; das Training wird an Ihren K&ouml;rper angepasst. Sie trainieren mit mir, nicht gegen Ihren K&ouml;rper. Bei akuten Beschwerden zuerst den Arzt aufsuchen.</dd></div>
-    <div class="faq-item"><dt>Wo findet das Training statt?</dt><dd>Individuell abgestimmt: bei Ihnen zu Hause, im Freien oder im Fitnessstudio &mdash; je nach Situation.</dd></div>
-    <div class="faq-item"><dt>Muss ich schon sportlich aktiv sein?</dt><dd>Nein. Wir starten dort, wo Sie stehen &mdash; ohne Druck, ohne Voraussetzungen.</dd></div>
-    <div class="faq-item"><dt>Wie l&auml;uft der Einstieg ab?</dt><dd>Kostenloses Erstgespr&auml;ch &mdash; kein Vertrag, keine Vorauszahlung. Erst nach der ersten Einheit entscheiden Sie.</dd></div>
-    <div class="faq-item"><dt>Wie lange l&auml;uft das Coaching?</dt><dd>Monatlich ohne Mindestlaufzeit. K&uuml;ndigung formlos per Nachricht, jederzeit m&ouml;glich.</dd></div>
-  </dl>
-</div>
-
-<!-- CTA -->
-<div class="cta-section">
-  <div class="cta-box">
-    <div class="cta-left">
-      <h3>Kostenloses Erstgespr&auml;ch</h3>
-      <p>Einfach anrufen oder eine Nachricht schicken &mdash; wir schauen gemeinsam, ob die Trainingsbegleitung zu Ihrer Situation passt. Kein Vertrag, kein Druck.</p>
-    </div>
-    <div class="cta-right">
-      <div class="cname">Nick Grausam</div>
-      <div class="cdetail">0176 4268 5146<br>info@physiotherapie-grausam.com</div>
-    </div>
-  </div>
-</div>
-
-<!-- LEGAL + FOOTNOTE -->
-<p class="legal"><strong>Rechtlicher Hinweis:</strong> Die Trainingsbegleitung ist eine pers&ouml;nliche Trainingsleistung &mdash; keine Heilbehandlung, keine Physiotherapie auf Verordnung und kein Ersatz f&uuml;r &auml;rztliche Behandlung. Bei akuten medizinischen Beschwerden bitte zun&auml;chst einen Arzt aufsuchen. Die konkrete Vereinbarung erfolgt vor Beginn der Leistung.</p>
-<p class="footnote">** Ern&auml;hrungsempfehlungen basieren auf pers&ouml;nlicher Erfahrung &mdash; kein Ersatz f&uuml;r ern&auml;hrungsmedizinische Fachberatung. Vollst&auml;ndig optional.</p>
-
-</body>
-</html>
+<body><main class="page">
+  <header class="top"><img class="logo" src="../logo.svg" alt="Physiotherapie Grausam"><div><div class="kicker">Mein Angebot</div><h1>Trainingstherapeutische<br>Begleitung</h1></div></header>
+  <section class="intro"><div><h2>Mehr Sicherheit im Alltag.<br>Mehr Vertrauen in deinen Körper.</h2><p>Individuelle Begleitung nach der Therapie oder als nächster Schritt zu deinem persönlichen Ziel.</p></div><div class="intro-card"><strong>Individuell abgestimmt</strong><span>auf deine Situation, dein Tempo und deinen Alltag.</span></div></section>
+  <div class="section-label">Was beinhaltet es?</div>
+  <section class="offer-grid">
+    <div class="offer"><b>Enger Austausch</b><span>Kurze Wege und persönliche Rückfragen zwischen den Terminen.</span></div>
+    <div class="offer"><b>Eigener Trainingsplan</b><span>Übungen, die zu deinem Ziel und deinem Alltag passen.</span></div>
+    <div class="offer"><b>Ernährungsempfehlung</b><span>Praktische Hinweise, wenn du sie für dein Ziel nutzen möchtest.</span></div>
+    <div class="offer"><b>Persönliche Begleitung</b><span>Auf Wunsch auch direkt vor Ort.</span></div>
+  </section>
+  <section class="two-col"><div class="panel"><h3>Das kann dein Ziel sein</h3><ul><li>kräftiger und belastbarer werden</li><li>Beweglichkeit und Sicherheit verbessern</li><li>nach einer Verletzung wieder einsteigen</li><li>im Alltag dauerhaft aktiv bleiben</li></ul></div><div class="panel"><h3>So starten wir</h3><div class="steps"><div class="step"><i>1</i><div><b>Kennenlernen</b><span>Wir sprechen über deine Situation und dein Ziel.</span></div></div><div class="step"><i>2</i><div><b>Plan erstellen</b><span>Du bekommst klare, machbare nächste Schritte.</span></div></div><div class="step"><i>3</i><div><b>Dranbleiben</b><span>Wir passen die Begleitung an deinen Fortschritt an.</span></div></div></div></div></section>
+  <section class="request"><div><strong>Individuell nach Anfrage</strong><span>Umfang, Inhalte und Konditionen besprechen wir persönlich.</span></div><a href="mailto:info@physiotherapie-grausam.com">Anfrage senden</a></section>
+  <footer class="foot"><span>Nick Grausam · Physiotherapie</span><span>0176 4268 5146 · info@physiotherapie-grausam.com</span></footer>
+  <p class="legal">Hinweis: Die Begleitung ist eine persönliche Trainingsleistung und kein Ersatz für ärztliche Behandlung oder Physiotherapie auf Verordnung. Bei akuten Beschwerden bitte zunächst ärztlichen Rat einholen.</p>
+</main></body></html>
