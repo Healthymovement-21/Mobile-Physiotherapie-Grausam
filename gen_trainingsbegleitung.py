@@ -3,7 +3,10 @@
 Generate Therapeutische-Trainingsbegleitung.pdf — 2 A4 pages.
 """
 import tempfile, os
-from weasyprint import HTML
+try:
+    from weasyprint import HTML
+except ImportError:
+    HTML = None
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="de">
@@ -59,17 +62,11 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 .flow-step-title { font-size: 9pt; font-weight: 700; margin-bottom: 4pt; line-height: 1.2; }
 .flow-step-text { font-size: 8.5pt; color: #555; line-height: 1.45; }
 
-/* PRICE */
-.price-section { margin-bottom: 5pt; }
-.price-block { background: #1a1a1a; color: #fff; padding: 13pt 16pt; display: flex; align-items: center; justify-content: space-between; gap: 14pt; }
-.price-left { display: flex; align-items: baseline; gap: 3pt; }
-.price-amount { font-size: 38pt; font-weight: 800; line-height: 1; letter-spacing: -2pt; }
-.price-currency { font-size: 20pt; font-weight: 700; align-self: flex-start; margin-top: 5pt; }
-.price-meta { margin-left: 8pt; }
-.price-per-month { font-size: 9pt; color: #bbb; }
-.price-per-hour { font-size: 8pt; color: #999; }
-.price-compare { font-size: 8.5pt; color: #bbb; border-left: 0.5pt solid #444; padding-left: 14pt; max-width: 175pt; line-height: 1.5; }
-.price-footnote { font-size: 6.5pt; color: #888; margin-top: 4pt; line-height: 1.3; margin-bottom: 17pt; }
+/* HONORAR */
+.honorar-section { margin-bottom: 17pt; }
+.honorar-box { border: 1pt solid #1a1a1a; padding: 13pt 16pt; }
+.honorar-box h3 { font-size: 12pt; margin-bottom: 5pt; }
+.honorar-box p { font-size: 9.5pt; color: #444; line-height: 1.55; }
 
 /* FAQ */
 .faq-section { margin-bottom: 17pt; }
@@ -186,21 +183,13 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
   </div>
 </div>
 
-<!-- PREIS -->
-<div class="price-section">
-  <div class="price-block">
-    <div class="price-left">
-      <div class="price-currency">&euro;</div>
-      <div class="price-amount">150</div>
-      <div class="price-meta">
-        <div class="price-per-month">pro Monat*</div>
-        <div class="price-per-hour">= 37,50 &euro;&nbsp;/ Stunde</div>
-      </div>
-    </div>
-    <div class="price-compare">Personal Trainer ohne medizinischen Hintergrund: 60&ndash;90&nbsp;&euro;&nbsp;/ Stunde. Hier: Fachwissen mit therapeutischem Hintergrund + pers&ouml;nliches Training + dauerhafte Begleitung.</div>
+<!-- HONORAR -->
+<div class="honorar-section">
+  <div class="honorar-box">
+    <h3>Individuelles Programm auf Anfrage</h3>
+    <p>Umfang, Inhalte und Konditionen der therapeutischen Trainingsbegleitung werden nach einem unverbindlichen Erstgespr&auml;ch gemeinsam festgelegt. So entsteht ein Programm, das zu Ihrer Situation, Ihren Zielen und Ihrem Alltag passt.</p>
   </div>
 </div>
-<div class="price-footnote">* Nettobetrag. Steuerliche Behandlung (Kleinunternehmerregelung &sect;&nbsp;19 UStG oder Regelbesteuerung) auf Anfrage. Nicht steuerbefreit nach &sect;&nbsp;4 Nr.&nbsp;14 UStG.</div>
 
 <!-- FAQ -->
 <div class="faq-section">
@@ -230,14 +219,16 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1
 </div>
 
 <!-- LEGAL + FOOTNOTE -->
-<p class="legal"><strong>Rechtlicher Hinweis:</strong> Die Trainingsbegleitung ist eine pers&ouml;nliche Trainingsleistung &mdash; keine Heilbehandlung, keine Physiotherapie auf Verordnung und kein Ersatz f&uuml;r &auml;rztliche Behandlung. Bei akuten medizinischen Beschwerden bitte zun&auml;chst einen Arzt aufsuchen. Nicht steuerbefreit nach &sect;&nbsp;4 Nr.&nbsp;14 UStG.</p>
+<p class="legal"><strong>Rechtlicher Hinweis:</strong> Die Trainingsbegleitung ist eine pers&ouml;nliche Trainingsleistung &mdash; keine Heilbehandlung, keine Physiotherapie auf Verordnung und kein Ersatz f&uuml;r &auml;rztliche Behandlung. Bei akuten medizinischen Beschwerden bitte zun&auml;chst einen Arzt aufsuchen. Die konkrete Vereinbarung erfolgt vor Beginn der Leistung.</p>
 <p class="footnote">** Ern&auml;hrungsempfehlungen basieren auf pers&ouml;nlicher Erfahrung &mdash; kein Ersatz f&uuml;r ern&auml;hrungsmedizinische Fachberatung. Vollst&auml;ndig optional.</p>
 
 </body>
 </html>"""
 
-OUTPUT_PATH = "/home/user/Mobile-Physiotherapie-Grausam/dokumente/Therapeutische-Trainingsbegleitung.pdf"
-LOGO_PATH   = "/home/user/Mobile-Physiotherapie-Grausam/logo.svg"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+OUTPUT_PATH = os.path.join(BASE_DIR, "dokumente", "Therapeutische-Trainingsbegleitung.pdf")
+HTML_OUTPUT_PATH = os.path.join(BASE_DIR, "dokumente", "Therapeutische-Trainingsbegleitung.html")
+LOGO_PATH   = os.path.join(BASE_DIR, "logo.svg")
 
 def main():
     with open(LOGO_PATH) as f:
@@ -254,16 +245,18 @@ def main():
         tmp = f.name
 
     try:
-        HTML(filename=tmp).write_pdf(OUTPUT_PATH)
-        print(f"Saved: {OUTPUT_PATH}")
+        with open(HTML_OUTPUT_PATH, "w", encoding="utf-8") as out:
+            out.write(html)
+        if HTML is not None:
+            HTML(filename=tmp).write_pdf(OUTPUT_PATH)
+            print(f"Saved: {OUTPUT_PATH}")
+        else:
+            print(f"Saved HTML source: {HTML_OUTPUT_PATH}")
     finally:
         os.unlink(tmp)
 
-    import fitz
-    doc = fitz.open(OUTPUT_PATH)
-    n = len(doc)
-    doc.close()
-    print(f"Pages: {n}")
+    if os.path.exists(OUTPUT_PATH):
+        print(f"PDF ready: {OUTPUT_PATH}")
 
 if __name__ == "__main__":
     main()

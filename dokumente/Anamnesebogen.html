@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anamnesebogen – Mobile Physiotherapie Grausam</title>
+<style>
+@page{size:A4;margin:16mm}*{box-sizing:border-box}body{font-family:Arial,sans-serif;color:#17211b;line-height:1.45;margin:0;font-size:12px}h1{font-size:22px;margin:0 0 4px}h2{font-size:14px;margin:22px 0 8px;border-bottom:1px solid #cfdad2;padding-bottom:5px;color:#24543b}.sub{color:#526159;margin:0 0 18px}.brand{border-bottom:2px solid #24543b;padding-bottom:12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}.field{border-bottom:1px solid #7d8b82;min-height:25px}.wide{grid-column:1/-1}.checks{display:grid;grid-template-columns:1fr 1fr;gap:7px 18px}.check{display:flex;gap:7px}.box{width:13px;height:13px;border:1px solid #526159;display:inline-block;flex:0 0 auto;margin-top:2px}.lines{height:58px;border-bottom:1px solid #7d8b82;background:repeating-linear-gradient(to bottom,transparent 0,transparent 27px,#cfd6d1 28px)}.notice{margin-top:18px;padding:10px 12px;background:#f1f6f2;border-left:3px solid #24543b;color:#3d4b43}.sig{display:grid;grid-template-columns:1fr 1fr;gap:35px;margin-top:28px}.print{position:fixed;right:20px;top:18px;border:0;background:#24543b;color:#fff;border-radius:4px;padding:9px 13px;cursor:pointer}@media print{.print{display:none}}
+</style>
+</head>
+<body>
+<button class="print" onclick="window.print()">Drucken / als PDF speichern</button>
+<header class="brand"><h1>Anamnesebogen</h1><p class="sub">Mobile Physiotherapie Grausam · Nick Grausam · bitte vor dem Ersttermin ausfüllen</p></header>
+<h2>Persönliche Angaben</h2>
+<div class="grid"><div class="field">Name, Vorname:</div><div class="field">Geburtsdatum:</div><div class="field">Telefon:</div><div class="field">E-Mail:</div><div class="field wide">Anschrift:</div></div>
+<h2>Aktuelles Anliegen</h2>
+<div class="grid"><div class="field wide">Was führt Sie zu mir?</div><div class="lines wide"></div><div class="field">Beginn der Beschwerden:</div><div class="field">Schmerz (0 = keiner, 10 = maximal):</div></div>
+<h2>Gesundheitliche Hinweise</h2>
+<div class="checks"><div class="check"><span class="box"></span>Operationen / Verletzungen</div><div class="check"><span class="box"></span>Herz-Kreislauf-Erkrankungen</div><div class="check"><span class="box"></span>Neurologische Erkrankungen</div><div class="check"><span class="box"></span>Osteoporose</div><div class="check"><span class="box"></span>Diabetes</div><div class="check"><span class="box"></span>Blutverdünnende Medikamente</div><div class="check"><span class="box"></span>Allergien / Unverträglichkeiten</div><div class="check"><span class="box"></span>Keine bekannten Besonderheiten</div></div>
+<div class="grid" style="margin-top:14px"><div class="field wide">Weitere Erkrankungen, Medikamente oder wichtige Hinweise:</div><div class="lines wide"></div></div>
+<h2>Therapieziele und Alltag</h2>
+<div class="grid"><div class="field wide">Was möchten Sie durch die Behandlung wieder besser können?</div><div class="lines wide"></div><div class="field wide">Was ist im Alltag besonders wichtig?</div><div class="lines wide"></div></div>
+<div class="notice"><strong>Hinweis:</strong> Der Anamnesebogen ersetzt kein ärztliches Gespräch. Bitte sprechen Sie akute oder unklare Beschwerden ärztlich ab und bringen Sie relevante Befunde sowie Ihren Medikamentenplan zum Termin mit.</div>
+<div class="sig"><div class="field">Ort, Datum</div><div class="field">Unterschrift</div></div>
+</body>
+</html>
