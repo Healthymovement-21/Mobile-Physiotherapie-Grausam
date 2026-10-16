@@ -1590,6 +1590,19 @@ footer .footer-legal a{padding:0!important;border:0!important;font-size:12px!imp
 footer .footer-legal a:hover{color:var(--brand-dark)!important;background:transparent!important;}
 footer .footer-copy{margin:0!important;white-space:nowrap;font-size:12px!important;color:var(--muted)!important;}
 @media(max-width:860px){
+  /* Mobile: ruhige, kompakte Kopfzeile statt schwebender Kapsel */
+  nav:not(.footer-legal){top:0!important;left:0!important;right:0!important;width:100%!important;height:64px!important;padding:0 18px!important;border-radius:0!important;background:rgba(251,252,250,.98)!important;border-bottom:1px solid var(--line)!important;box-shadow:none!important;backdrop-filter:blur(10px)!important;}
+  nav:not(.footer-legal) .nav-logo-img{height:39px!important;max-width:205px!important;}
+  nav:not(.footer-legal) .burger{min-height:42px!important;padding:6px 8px!important;}
+  .hero{padding:64px 7% 44px!important;}
+  .hero-content{padding:44px 0 0!important;}
+  .plz-sec{padding:30px 7% 40px!important;}
+  .visual-sec,.sec,.mehr-block,.mehr-hero,.abschluss,.dark-sec{padding-top:40px!important;padding-bottom:40px!important;}
+  footer{padding:30px 20px 20px!important;}
+  footer .footer-inner{margin-bottom:20px!important;}
+  footer .footer-legal{height:auto!important;min-height:0!important;position:static!important;width:auto!important;padding:0!important;margin:0!important;display:flex!important;justify-content:flex-start!important;gap:7px 16px!important;}
+  footer .footer-legal a{font-size:12px!important;line-height:1.4!important;}
+  footer .footer-copy{font-size:11px!important;}
   #leistungen .preis-group:first-of-type{padding-bottom:28px;margin-bottom:30px;}
   #leistungen .preistab{border-spacing:0 8px!important;}
   #leistungen .preistab thead th{padding-left:16px!important;padding-right:16px!important;}
