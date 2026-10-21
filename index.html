@@ -1907,8 +1907,8 @@ nav .nav-wordmark .brand-top{color:#fff!important;transform:translateX(-1px) ske
 nav .nav-wordmark .brand-bottom{color:#fff!important;font-size:1.1em;font-weight:400;transform:translateX(2px) skewX(-10deg);}
 @media(max-width:860px){nav .nav-wordmark{font-size:10px!important;}nav .nav-wordmark .brand-bottom{color:#fff!important;}}
 @media(max-width:860px){
-  nav:not(.footer-legal) .nav-logo{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%) scale(.88)!important;margin:0!important;opacity:0!important;visibility:hidden!important;transition:opacity .45s ease,transform .45s cubic-bezier(.22,.75,.25,1),visibility 0s linear .45s!important;}
-  nav:not(.footer-legal).nav-scrolled .nav-logo{transform:translate(-50%,-50%) scale(1)!important;opacity:1!important;visibility:visible!important;transition:opacity .45s ease,transform .45s cubic-bezier(.22,.75,.25,1),visibility 0s linear 0s!important;}
+  nav:not(.footer-legal) .nav-logo{display:flex!important;position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%) scale(.88)!important;margin:0!important;opacity:0!important;visibility:hidden!important;transition:opacity .45s ease,transform .45s cubic-bezier(.22,.75,.25,1),visibility 0s linear .45s!important;}
+  nav:not(.footer-legal).nav-scrolled .nav-logo{display:flex!important;transform:translate(-50%,-50%) scale(1)!important;opacity:1!important;visibility:visible!important;transition:opacity .45s ease,transform .45s cubic-bezier(.22,.75,.25,1),visibility 0s linear 0s!important;}
 }
 @media(min-width:861px){
   nav:not(.footer-legal) .nav-logo{width:190px!important;min-height:52px!important;}
