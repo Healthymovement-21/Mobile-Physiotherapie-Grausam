@@ -1854,6 +1854,7 @@ p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!impo
   .floating-brand-text{display:flex;flex-direction:column;align-items:center;font-family:'EB Garamond',Georgia,serif;font-size:clamp(23px,6.4vw,32px);font-weight:600;line-height:.7;letter-spacing:-.045em;text-transform:none;}
   .floating-brand-text .brand-top{position:relative;z-index:2;color:#c5a45a;transform:translateX(-3px);}
   .floating-brand-text .brand-bottom{position:relative;z-index:1;color:#15191d;transform:translateX(4px);font-size:1.12em;font-weight:400;letter-spacing:-.035em;}
+  .floating-brand.menu-open{opacity:0!important;visibility:hidden!important;}
   body.nav-is-scrolled .floating-brand{opacity:0!important;transform:translate(-50%,-12px)!important;}
 }
 </style>
@@ -2927,9 +2928,11 @@ function toggleOverlay(){
   const bd=document.getElementById('overlayBackdrop');
   const nav=document.querySelector('nav');
   const burger=document.getElementById('burgerBtn');
+  const brand=document.querySelector('.floating-brand');
   ov.classList.toggle('open');
   bd.classList.toggle('open');
   burger.classList.toggle('open');
+  brand.classList.toggle('menu-open',ov.classList.contains('open'));
   burger.setAttribute('aria-label',ov.classList.contains('open')?'Menü schließen':'Menü öffnen');
   document.body.style.overflow=ov.classList.contains('open')?'hidden':'';
   if(ov.classList.contains('open')){nav.classList.add('nav-white');}
