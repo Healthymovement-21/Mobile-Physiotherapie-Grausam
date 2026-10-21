@@ -1739,6 +1739,90 @@ footer .footer-copy{margin:0!important;white-space:nowrap;font-size:12px!importa
   .home-about-link{align-self:flex-start!important;color:#fff!important;text-decoration:none!important;font-size:13px!important;font-weight:700!important;border-bottom:1px solid rgba(255,255,255,.55)!important;padding-bottom:3px!important;}
 }
 </style>
+<style>
+/* ===== Sportopaedie-inspired neutral design system ===== */
+:root{
+  --ref-ink:#15181d;
+  --ref-muted:#73777e;
+  --ref-bg:#fff;
+  --ref-soft:#f1f1f1;
+  --ref-line:rgba(21,24,29,.12);
+  --ref-radius:26px;
+}
+body{
+  background:var(--ref-bg)!important;
+  color:var(--ref-ink)!important;
+  font-family:'Sora',system-ui,sans-serif!important;
+  font-size:16px!important;
+  line-height:1.55!important;
+}
+h1,h2,h3,.hero-title,.sec-title,.leist-hero-title,.visual-sec-title,.serif-h,.ueber-name,.abschluss-title{
+  font-family:'Sora',system-ui,sans-serif!important;
+  color:var(--ref-ink)!important;
+  font-weight:700!important;
+  letter-spacing:-.045em!important;
+}
+p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!important;}
+.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-muted)!important;}
+.page,.sec,.mehr-block,.mehr-hero,.abschluss,.dark-sec,.visual-sec{background:var(--ref-bg)!important;}
+.sec{padding:72px clamp(22px,6vw,88px)!important;max-width:1200px!important;margin:0 auto!important;}
+.sec-title,.visual-sec-title,.leist-hero-title{font-size:clamp(28px,5vw,54px)!important;line-height:1.05!important;margin-bottom:24px!important;}
+.eyebrow,.u-eyebrow,.visual-sec-label,.leist-hero-eye,.mehr-block-title,.preis-group-label{color:var(--ref-muted)!important;font-size:12px!important;font-weight:700!important;letter-spacing:.08em!important;text-transform:uppercase!important;}
+.btn,.btn-outline,.hero-link-primary,.u-btn,.nav-cta,.overlay-cta a,.btn-silver,.btn-wa{background:var(--ref-ink)!important;color:#fff!important;border:0!important;border-radius:999px!important;box-shadow:none!important;font-family:'Sora',system-ui,sans-serif!important;font-weight:600!important;}
+.btn:hover,.u-btn:hover,.nav-cta:hover,.overlay-cta a:hover,.btn-wa:hover{background:#2b3037!important;transform:none!important;opacity:1!important;}
+.btn-outline{background:transparent!important;color:var(--ref-ink)!important;border:1px solid var(--ref-ink)!important;}
+.hero-link-secondary{background:var(--ref-soft)!important;color:var(--ref-ink)!important;}
+.visual-sec{max-width:1200px!important;margin:0 auto!important;padding:32px clamp(22px,6vw,88px) 72px!important;}
+.visual-sec-img{display:block!important;width:100%!important;height:min(68vw,640px)!important;object-fit:cover!important;object-position:center 28%!important;border-radius:var(--ref-radius)!important;box-shadow:none!important;}
+.visual-sec-body{padding:42px 0 0!important;}
+.visual-sec-title{max-width:720px!important;}
+.u-card,.leist-card,.doc-card,.mehr-card,.tier,.plz-band,.coaching-price-block,.preistab-wrap,.leist-acc-list{background:var(--ref-soft)!important;border:0!important;border-radius:var(--ref-radius)!important;box-shadow:none!important;backdrop-filter:none!important;}
+.plz-band{margin:24px 0!important;padding:22px!important;}
+.photo-sec::before,.photo-sec::after,.sec-curves::before,.sec-curves::after{display:none!important;}
+@media(min-width:861px){
+  nav{top:18px!important;left:5%!important;right:5%!important;width:auto!important;height:68px!important;padding:0 24px!important;border-radius:999px!important;background:var(--ref-ink)!important;box-shadow:0 14px 34px rgba(21,24,29,.18)!important;backdrop-filter:none!important;}
+  nav .nav-logo-img{filter:brightness(0) invert(1)!important;max-height:40px!important;}
+  nav .nav-links a,nav .burger-label{color:#fff!important;}
+  nav .burger-lines span{background:#fff!important;}
+  nav .nav-cta{background:#fff!important;color:var(--ref-ink)!important;}
+  .hero{padding-top:120px!important;background:#fff!important;}
+}
+@media(max-width:860px){
+  .hero-content{padding-top:116px!important;}
+  .hero-title{font-size:clamp(32px,9vw,48px)!important;line-height:1.02!important;}
+  .hero-sub{font-size:16px!important;line-height:1.55!important;}
+  .sec{padding-top:56px!important;padding-bottom:56px!important;}
+  .visual-sec{padding:22px 22px 56px!important;}
+  .visual-sec-img{height:320px!important;border-radius:26px!important;}
+  .visual-sec-body{padding:28px 0 0!important;}
+  .home-about-card{margin-top:14px!important;}
+  .home-about-copy h2{font-size:26px!important;}
+  .home-about-copy p{color:rgba(255,255,255,.8)!important;}
+}
+/* Final mobile header correction: keep the logo in its existing slot without touching other layout. */
+@media(max-width:860px){
+  nav:not(.footer-legal) .nav-logo{
+    position:static!important;
+    order:0!important;
+    transform:none!important;
+    flex:0 1 clamp(96px,30vw,132px)!important;
+    width:clamp(96px,30vw,132px)!important;
+    min-width:0!important;
+    margin:0 auto 0 12px!important;
+    opacity:1!important;
+    visibility:visible!important;
+    transition:opacity .35s ease!important;
+  }
+  nav:not(.footer-legal) .nav-logo-img{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    max-width:none!important;
+    filter:brightness(0) invert(1)!important;
+  }
+  nav:not(.footer-legal) .nav-quick-actions{gap:10px!important;flex-shrink:0!important;}
+}
+</style>
 </head>
 <body>
 <div class="bg-green" aria-hidden="true"></div>
