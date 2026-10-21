@@ -1906,6 +1906,19 @@ nav .nav-wordmark{display:flex!important;flex-direction:column;align-items:cente
 nav .nav-wordmark .brand-top{color:var(--brand)!important;transform:translateX(-1px) skewX(-10deg);}
 nav .nav-wordmark .brand-bottom{color:var(--ink)!important;font-size:1.1em;font-weight:400;transform:translateX(2px) skewX(-10deg);}
 @media(max-width:860px){nav .nav-wordmark{font-size:10px!important;}nav .nav-wordmark .brand-bottom{color:#fff!important;}}
+@media(max-width:860px){
+  nav:not(.footer-legal) .nav-logo{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%) scale(.88)!important;margin:0!important;opacity:0!important;visibility:hidden!important;transition:opacity .45s ease,transform .45s cubic-bezier(.22,.75,.25,1),visibility 0s linear .45s!important;}
+  nav:not(.footer-legal).nav-scrolled .nav-logo{transform:translate(-50%,-50%) scale(1)!important;opacity:1!important;visibility:visible!important;transition:opacity .45s ease,transform .45s cubic-bezier(.22,.75,.25,1),visibility 0s linear 0s!important;}
+}
+@media(min-width:861px){
+  nav:not(.footer-legal) .nav-logo{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%) scale(.88)!important;margin:0!important;opacity:0!important;visibility:hidden!important;transition:opacity .45s ease,transform .45s cubic-bezier(.22,.75,.25,1),visibility 0s linear .45s!important;}
+  nav:not(.footer-legal).nav-scrolled .nav-logo{transform:translate(-50%,-50%) scale(1)!important;opacity:1!important;visibility:visible!important;transition:opacity .45s ease,transform .45s cubic-bezier(.22,.75,.25,1),visibility 0s linear 0s!important;}
+  .floating-brand{display:block!important;position:fixed!important;top:104px!important;left:50%!important;z-index:410!important;transform:translateX(-50%) scale(1)!important;pointer-events:none!important;opacity:1!important;transition:opacity .45s ease,transform .45s cubic-bezier(.22,.75,.25,1)!important;}
+  .floating-brand-text{display:flex!important;flex-direction:column;align-items:center;font-family:'DM Sans',system-ui,sans-serif;font-size:27px;font-weight:400;line-height:.74;letter-spacing:-.045em;white-space:nowrap;}
+  .floating-brand-text .brand-top{color:var(--brand)!important;transform:translateX(-3px) skewX(-10deg);}
+  .floating-brand-text .brand-bottom{color:var(--ink)!important;font-size:1.1em;font-weight:400;transform:translateX(4px) skewX(-10deg);}
+  body.nav-is-scrolled .floating-brand{opacity:0!important;transform:translate(-50%,-28px) scale(.72)!important;}
+}
 </style>
 </head>
 <body>
