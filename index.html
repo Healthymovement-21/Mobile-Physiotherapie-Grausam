@@ -553,6 +553,54 @@ nav .burger-lines span{background:#fff;}
   .coaching-price-block{grid-template-columns:1fr;gap:20px;}
   .coaching-incl ul{grid-template-columns:1fr;}
 }
+
+/* ===== Mobile-Header nach der neuen Referenz ===== */
+.nav-quick-actions{display:none;}
+.hero-brand{display:none;}
+@media(max-width:860px){
+  nav:not(.footer-legal){
+    top:18px!important;left:22px!important;right:22px!important;width:auto!important;
+    height:58px!important;padding:0 15px 0 18px!important;border-radius:999px!important;
+    background:#15191d!important;border:0!important;box-shadow:0 12px 28px rgba(18,25,22,.18)!important;
+    z-index:420!important;backdrop-filter:none!important;
+  }
+  nav:not(.footer-legal) .nav-logo{position:absolute;left:50%;transform:translateX(-50%);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;}
+  nav:not(.footer-legal).nav-scrolled .nav-logo{opacity:1;visibility:visible;}
+  nav:not(.footer-legal) .nav-logo-img{height:28px!important;max-width:160px!important;filter:brightness(0) invert(1)!important;}
+  nav:not(.footer-legal) .burger{order:-1;color:#fff!important;min-width:34px!important;width:34px!important;height:34px!important;padding:0!important;}
+  nav:not(.footer-legal) .burger-label{display:none!important;}
+  nav:not(.footer-legal) .burger-lines{gap:5px!important;}
+  nav:not(.footer-legal) .burger-lines span{width:22px!important;height:1.5px!important;background:#fff!important;}
+  .nav-quick-actions{display:flex;align-items:center;gap:14px;margin-left:auto;}
+  .nav-quick-actions a{display:inline-flex;align-items:center;justify-content:center;width:22px;height:30px;color:#fff!important;text-decoration:none!important;}
+  .nav-quick-actions svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.7;}
+  .hero{padding-top:96px!important;}
+  .hero-brand{display:block;position:absolute;top:92px;left:50%;z-index:4;transform:translate(-50%,0) scale(1);opacity:1;transition:opacity .35s ease,transform .35s ease;pointer-events:none;}
+  .hero-brand img{display:block;width:min(205px,55vw);height:auto;filter:brightness(0)!important;}
+  body.nav-is-scrolled .hero-brand{opacity:0;transform:translate(-50%,-12px) scale(.94);}
+  .overlay{top:88px!important;left:22px!important;right:22px!important;width:auto!important;max-height:0!important;border-radius:28px!important;background:rgba(249,250,248,.97)!important;box-shadow:0 20px 42px rgba(18,25,22,.20)!important;}
+  .overlay.open{max-height:calc(100vh - 112px)!important;overflow:auto!important;}
+  .overlay-links{padding:16px 22px 4px!important;}
+  .overlay-links li+li{border-top:0!important;}
+  .overlay-links a{padding:13px 0!important;color:#17211c!important;font-size:18px!important;font-weight:600!important;}
+  .overlay-links a::after{content:'›';margin-left:auto;color:#738078;font-size:26px;line-height:1;font-weight:400;}
+  .overlay-link-text{font-size:18px!important;}
+  .overlay-cta{width:auto!important;padding:12px 22px 22px!important;}
+  .overlay-cta a{width:100%!important;justify-content:center!important;background:#15191d!important;color:#fff!important;border-radius:999px!important;min-height:50px!important;padding:12px 18px!important;}
+  .overlay-cta a::after{color:#fff!important;}
+  .overlay-footer{display:none!important;}
+  .overlay-backdrop{background:rgba(28,34,31,.42)!important;backdrop-filter:blur(3px)!important;}
+
+  /* Kompakte Über-mich-Karte auf der Startseite */
+  .home-about-card{display:grid;grid-template-columns:42% 58%;margin:0 20px 8px;overflow:hidden;border-radius:24px;background:#15191d;color:#fff;box-shadow:0 16px 34px rgba(18,25,22,.16);}
+  .home-about-card img{width:100%;height:100%;min-height:230px;object-fit:cover;object-position:center top;display:block;}
+  .home-about-copy{padding:22px 18px 20px;display:flex;flex-direction:column;justify-content:center;}
+  .home-about-kicker{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9ca9a1;margin-bottom:9px;}
+  .home-about-copy h2{font-size:24px!important;line-height:1.05!important;color:#fff!important;margin:0 0 12px!important;}
+  .home-about-copy p{font-size:14px!important;line-height:1.45!important;color:rgba(255,255,255,.78)!important;margin:0 0 16px!important;}
+  .home-about-link{align-self:flex-start;color:#fff!important;text-decoration:none!important;font-size:13px;font-weight:700;border-bottom:1px solid rgba(255,255,255,.55);padding-bottom:3px;}
+}
+@media(min-width:861px){.home-about-card{display:none!important;}}
 @media(max-width:700px){
   .mehr-cards{grid-template-columns:1fr;}
 }
@@ -1648,6 +1696,49 @@ footer .footer-copy{margin:0!important;white-space:nowrap;font-size:12px!importa
   footer .footer-copy{white-space:normal!important;}
 }
 </style>
+<style>
+/* Final mobile overrides: keep the reference treatment above earlier theme layers. */
+@media(max-width:860px){
+  body{background:#fff!important;color:#17191d!important;}
+  .page{background:#fff!important;}
+  .hero{background:#fff!important;}
+  .hero-title,.sec-title,.visual-sec-title{color:#17191d!important;}
+  .hero-title span{background:none!important;-webkit-text-fill-color:#17191d!important;color:#17191d!important;}
+  nav:not(.footer-legal){top:18px!important;left:22px!important;right:22px!important;width:auto!important;height:58px!important;padding:0 15px 0 18px!important;border-radius:999px!important;background:#15191d!important;border:0!important;box-shadow:0 12px 28px rgba(18,25,22,.18)!important;backdrop-filter:none!important;}
+  nav:not(.footer-legal) .nav-logo{position:absolute!important;left:50%!important;transform:translateX(-50%)!important;opacity:0!important;visibility:hidden!important;transition:opacity .35s ease,visibility .35s ease!important;}
+  nav:not(.footer-legal).nav-scrolled .nav-logo{opacity:1!important;visibility:visible!important;}
+  nav:not(.footer-legal) .nav-logo-img{height:28px!important;max-width:160px!important;filter:brightness(0) invert(1)!important;}
+  nav:not(.footer-legal) .burger{order:-1!important;color:#fff!important;min-width:34px!important;width:34px!important;height:34px!important;padding:0!important;}
+  nav:not(.footer-legal) .burger-label{display:none!important;}
+  nav:not(.footer-legal) .burger-lines span{width:22px!important;height:1.5px!important;background:#fff!important;}
+  .nav-quick-actions{display:flex!important;align-items:center!important;gap:14px!important;margin-left:auto!important;}
+  .nav-quick-actions a{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:22px!important;height:30px!important;color:#fff!important;text-decoration:none!important;}
+  .nav-quick-actions svg{width:20px!important;height:20px!important;stroke:#f7f7f5!important;stroke-width:1.65!important;}
+  .hero{padding-top:96px!important;}
+  .hero-brand{display:block!important;position:absolute!important;top:92px!important;left:50%!important;z-index:4!important;transform:translate(-50%,0) scale(1)!important;opacity:1!important;transition:opacity .35s ease,transform .35s ease!important;pointer-events:none!important;}
+  .hero-brand img{display:block!important;width:min(205px,55vw)!important;height:auto!important;filter:brightness(0)!important;}
+  body.nav-is-scrolled .hero-brand{opacity:0!important;transform:translate(-50%,-12px) scale(.94)!important;}
+  .overlay{top:88px!important;left:22px!important;right:22px!important;width:auto!important;max-height:0!important;border-radius:28px!important;background:#f1f1f1!important;box-shadow:0 20px 42px rgba(18,25,22,.20)!important;}
+  .overlay.open{max-height:calc(100vh - 112px)!important;overflow:auto!important;}
+  .overlay-links{padding:16px 22px 4px!important;}
+  .overlay-links li+li{border-top:0!important;}
+  .overlay-links a{padding:13px 0!important;color:#73777d!important;font-size:18px!important;font-weight:600!important;}
+  .overlay-link-text{font-size:18px!important;}
+  .overlay-links a::after{content:'›';margin-left:auto;color:#738078;font-size:26px;line-height:1;font-weight:400;}
+  .overlay-cta{width:auto!important;padding:12px 22px 22px!important;}
+  .overlay-cta a{width:100%!important;justify-content:center!important;background:#15191d!important;color:#fff!important;border-radius:999px!important;min-height:50px!important;padding:12px 18px!important;}
+  .overlay-cta a::after{color:#fff!important;}
+  .overlay-footer{display:none!important;}
+  .overlay-backdrop{background:rgba(28,34,31,.42)!important;backdrop-filter:blur(3px)!important;}
+  .home-about-card{display:grid!important;grid-template-columns:42% 58%!important;margin:0 20px 8px!important;overflow:hidden!important;border-radius:24px!important;background:#15191d!important;color:#fff!important;box-shadow:0 16px 34px rgba(18,25,22,.16)!important;}
+  .home-about-card img{width:100%!important;height:100%!important;min-height:230px!important;object-fit:cover!important;object-position:center top!important;display:block!important;}
+  .home-about-copy{padding:22px 18px 20px!important;display:flex!important;flex-direction:column!important;justify-content:center!important;}
+  .home-about-kicker{font-size:11px!important;letter-spacing:.08em!important;text-transform:uppercase!important;color:#9ca9a1!important;margin-bottom:9px!important;}
+  .home-about-copy h2{font-size:24px!important;line-height:1.05!important;color:#fff!important;margin:0 0 12px!important;}
+  .home-about-copy p{font-size:14px!important;line-height:1.45!important;color:rgba(255,255,255,.78)!important;margin:0 0 16px!important;}
+  .home-about-link{align-self:flex-start!important;color:#fff!important;text-decoration:none!important;font-size:13px!important;font-weight:700!important;border-bottom:1px solid rgba(255,255,255,.55)!important;padding-bottom:3px!important;}
+}
+</style>
 </head>
 <body>
 <div class="bg-green" aria-hidden="true"></div>
@@ -1667,6 +1758,12 @@ footer .footer-copy{margin:0!important;white-space:nowrap;font-size:12px!importa
     <li><a href="#dokumente" onclick="show('dokumente');return false;">Dokumente</a></li>
   </ul>
   <button class="nav-cta" onclick="show('kontakt')">Termin anfragen</button>
+  <div class="nav-quick-actions" aria-label="Schnellkontakt">
+    <a href="tel:017642685146" aria-label="Anrufen"><i data-lucide="phone"></i></a>
+    <a href="mailto:info@physiotherapie-grausam.com" aria-label="E-Mail schreiben"><i data-lucide="mail"></i></a>
+    <a href="#kontakt" onclick="show('kontakt');return false;" aria-label="Kontakt"><i data-lucide="map-pin"></i></a>
+    <a href="#kontakt" onclick="show('kontakt');return false;" aria-label="Termin anfragen"><i data-lucide="calendar-days"></i></a>
+  </div>
 <button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span class="burger-lines"><span></span><span></span><span></span></span><span class="burger-label">Menü</span></button>
 </nav>
 
@@ -1813,6 +1910,7 @@ footer .footer-copy{margin:0!important;white-space:nowrap;font-size:12px!importa
 <!-- ═══ START ═══ -->
 <div class="page active" id="home">
   <div class="hero">
+    <div class="hero-brand" aria-hidden="true"><img src="logo.svg" alt=""></div>
     <div class="hero-img-wrap">
       <!-- Cinematischer Loop. Liegt hier ein echtes Video vor, ersetzt <video> die Bildebenen. -->
       <video class="hero-video" autoplay muted loop playsinline preload="none" poster="hero-a.jpg"></video>
@@ -1903,6 +2001,16 @@ footer .footer-copy{margin:0!important;white-space:nowrap;font-size:12px!importa
       <h2 class="visual-sec-title">Volle Aufmerksamkeit.<br>Bei dir zuhause.</h2>
     </div>
   </div>
+
+  <section class="home-about-card" aria-labelledby="home-about-title">
+    <img src="foto-3-800.jpg" srcset="foto-3-800.jpg 1x, foto-3-1600.jpg 2x" alt="Nick Grausam, Physiotherapeut" loading="lazy" width="800" height="1070">
+    <div class="home-about-copy">
+      <span class="home-about-kicker">Über mich</span>
+      <h2 id="home-about-title">Nick Grausam</h2>
+      <p>Physiotherapeut mit Zeit, Ruhe und einem klaren Blick auf das, was dir im Alltag wieder möglich werden soll.</p>
+      <a class="home-about-link" href="#ueber" onclick="show('ueber');return false;">Mehr über mich&nbsp; →</a>
+    </div>
+  </section>
 
 
 
@@ -2023,7 +2131,7 @@ footer .footer-copy{margin:0!important;white-space:nowrap;font-size:12px!importa
     <div class="prep-list">
       <div class="prep-item">
         <span class="prep-n">01</span>
-        <div><strong class="prep-t">Dokumente</strong><p>Halte bitte bereit <strong>Anamnesebogen</strong>, <strong>Behandlungsvertrag</strong> und <strong>Datenschutzerklärung</strong> ausgefüllt mit. Die Formulare findest du auf der <a href="javascript:void(0)" onclick="show('kontakt')" style="color:var(--text);font-weight:600;text-decoration:underline;">Termin-Seite</a>.</p></div>
+        <div><strong class="prep-t">Unterlagen</strong><p>Die erforderlichen Unterlagen bringe ich zum Ersttermin mit. Du musst sie nicht vorab herunterladen oder ausfüllen.</p></div>
       </div>
       <div class="prep-item">
         <span class="prep-n">02</span>
@@ -2365,66 +2473,7 @@ footer .footer-copy{margin:0!important;white-space:nowrap;font-size:12px!importa
 
     </div>
 
-    <!-- Dokumente -->
-    <div class="kontakt-docs">
-      <span class="eyebrow">Vor dem Ersttermin</span>
-      <h2 class="sec-title" style="margin-bottom:8px;">Dokumente</h2>
-      <p class="kontakt-docs-sub">Bitte ausdrucken, ausgefüllt bereithalten und zum Ersttermin bereitlegen.</p>
-      <div class="doc-cards">
-        <a href="dokumente/Anamnesebogen.html" target="_blank" rel="noopener" class="doc-card">
-          <div class="doc-card-ico"><i data-lucide="clipboard-list"></i></div>
-          <div class="doc-card-body">
-            <div class="doc-card-name">Anamnesebogen</div>
-            <div class="doc-card-meta">Formular · ausfüllen oder drucken</div>
-          </div>
-          <div class="doc-card-dl"><i data-lucide="download"></i></div>
-        </a>
-        <a href="dokumente/Behandlungsvertrag.pdf" download="Behandlungsvertrag.pdf" class="doc-card">
-          <div class="doc-card-ico"><i data-lucide="file-text"></i></div>
-          <div class="doc-card-body">
-            <div class="doc-card-name">Behandlungsvertrag</div>
-            <div class="doc-card-meta">PDF · Vor Ersttermin ausfüllen</div>
-          </div>
-          <div class="doc-card-dl"><i data-lucide="download"></i></div>
-        </a>
-        <a href="dokumente/Datenschutzerklaerung-Patienten.pdf" download="Datenschutzerklärung.pdf" class="doc-card">
-          <div class="doc-card-ico"><i data-lucide="shield"></i></div>
-          <div class="doc-card-body">
-            <div class="doc-card-name">Datenschutzerklärung</div>
-            <div class="doc-card-meta">PDF · Vor Ersttermin ausfüllen</div>
-          </div>
-          <div class="doc-card-dl"><i data-lucide="download"></i></div>
-        </a>
-      </div>
-    </div>
-
     <p class="kontakt-privacy">Deine Daten werden ausschließlich für die Terminorganisation verwendet und nicht an Dritte weitergegeben. Details in der <a href="javascript:void(0)" onclick="show('datenschutz')">Datenschutzerklärung</a>.</p>
-  </div>
-</div>
-
-<div class="page" id="dokumente">
-  <div class="leist-hero">
-    <div class="leist-hero-inner">
-      <span class="leist-hero-eye">Vor dem Ersttermin</span>
-      <h2 class="leist-hero-title">Dokumente</h2>
-    </div>
-  </div>
-  <div class="sec">
-    <div style="max-width:600px;border-top:1px solid var(--border);">
-      <a href="dokumente/Anamnesebogen.html" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 0;border-bottom:1px solid var(--border);text-decoration:none;">
-        <span style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;color:var(--text);font-weight:700;">Anamnesebogen <span style="color:var(--muted);font-weight:500;font-size:12.5px;">· Formular</span></span>
-        <i data-lucide="download" style="width:18px;height:18px;stroke:var(--accent-dark);stroke-width:2;fill:none;flex-shrink:0;"></i>
-      </a>
-      <a href="dokumente/Behandlungsvertrag.pdf" download="Behandlungsvertrag.pdf" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 0;border-bottom:1px solid var(--border);text-decoration:none;">
-        <span style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;color:var(--text);font-weight:700;">Behandlungsvertrag <span style="color:var(--muted);font-weight:500;font-size:12.5px;">· PDF</span></span>
-        <i data-lucide="download" style="width:18px;height:18px;stroke:var(--accent-dark);stroke-width:2;fill:none;flex-shrink:0;"></i>
-      </a>
-      <a href="dokumente/Datenschutzerklaerung-Patienten.pdf" download="Datenschutzerklärung.pdf" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 0;text-decoration:none;">
-        <span style="font-family:'DM Sans',system-ui,sans-serif;font-size:15px;color:var(--text);font-weight:700;">Datenschutzerklärung <span style="color:var(--muted);font-weight:500;font-size:12.5px;">· PDF</span></span>
-        <i data-lucide="download" style="width:18px;height:18px;stroke:var(--accent-dark);stroke-width:2;fill:none;flex-shrink:0;"></i>
-      </a>
-    </div>
-    <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;color:var(--muted);margin-top:12px;">Bitte vor dem Ersttermin ausfüllen und bereithalten.</p>
   </div>
 </div>
 
@@ -2593,7 +2642,7 @@ footer .footer-copy{margin:0!important;white-space:nowrap;font-size:12px!importa
     <p>Die Kommunikation (Terminbestätigung, Rechnungsversand, allgemeiner Schriftverkehr) erfolgt per E-Mail. Der Patient willigt ein, dass Kommunikation per E-Mail erfolgt, und nimmt zur Kenntnis, dass <strong>Standard-E-Mail nicht Ende-zu-Ende verschlüsselt</strong> ist und ein Restrisiko der Kenntnisnahme durch Dritte besteht. Die Einwilligung zur E-Mail-Kommunikation kann jederzeit widerrufen werden; der Widerruf hat keinen Einfluss auf das Behandlungsverhältnis.</p>
 
     <h3>8. Mitwirkungspflichten des Patienten</h3>
-    <p>Der Patient stellt sicher, dass die Hausbesuchsadresse korrekt angegeben ist und der Therapeut pünktlich Zugang erhält. Behandlungsvertrag, Datenschutzerklärung sowie ein ggf. erforderliches Rezept sind vollständig ausgefüllt zum Ersttermin bereitzuhalten.</p>
+    <p>Der Patient stellt sicher, dass die Hausbesuchsadresse korrekt angegeben ist und der Therapeut pünktlich Zugang erhält. Die erforderlichen Unterlagen werden zum Ersttermin mitgebracht; ein ggf. erforderliches Rezept ist bereitzuhalten.</p>
 
     <h3>9. Datenschutz</h3>
     <p>Die <a href="javascript:void(0)" onclick="show('datenschutz')" style="color:var(--text);text-decoration:underline;">Datenschutzerklärung</a> ist jederzeit auf dieser Website abrufbar und informiert vor Vertragsschluss über Zweck, Rechtsgrundlage, Empfänger und Speicherdauer der Datenverarbeitung. Gesundheitsdaten werden nur mit ausdrücklicher Einwilligung (Art. 9 Abs. 2 lit. a DSGVO) verarbeitet.</p>
@@ -2731,6 +2780,8 @@ function updateNav(){
   if(ov&&ov.classList.contains('open')){nav.classList.add('nav-white');return;}
   const homeActive=document.getElementById('home').classList.contains('active');
   const atTop=window.pageYOffset < (window.innerHeight*0.55);
+  nav.classList.toggle('nav-scrolled',!atTop || !homeActive);
+  document.body.classList.toggle('nav-is-scrolled',!atTop || !homeActive);
   if(homeActive && atTop){ nav.classList.remove('nav-white'); }
   else { nav.classList.add('nav-white'); }
   const activePage=document.querySelector('.page.active');
