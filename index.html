@@ -1828,10 +1828,9 @@ p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!impo
 /* Reference layout belongs on the dedicated About page, not on the homepage. */
 #ueber>.sec{max-width:none!important;padding:0!important;}
 .ueber-reference{max-width:none!important;margin:0!important;padding-top:0!important;background:#fff!important;}
-.ueber-reference-hero{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;position:relative!important;min-height:280px!important;height:clamp(280px,42vw,390px)!important;overflow:hidden!important;background:#eef1f0!important;border-radius:26px!important;}
-.ueber-reference-hero .ueber-img{position:relative!important;z-index:1!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important;border-radius:26px 0 0 26px!important;box-shadow:none!important;mix-blend-mode:normal!important;opacity:1!important;}
-.ueber-reference-hero::before{content:""!important;position:absolute!important;z-index:2!important;inset:0 50% 0 0!important;pointer-events:none!important;background:linear-gradient(180deg,rgba(255,255,255,0) 58%,rgba(255,255,255,.92) 100%)!important;}
-.ueber-reference-card{position:relative!important;z-index:2!important;left:auto!important;right:auto!important;bottom:auto!important;align-self:stretch!important;margin:0!important;padding:28px 30px 30px!important;border-radius:0 26px 26px 0!important;background:#15181d!important;color:#fff!important;box-shadow:none!important;display:flex!important;flex-direction:column!important;justify-content:center!important;}
+.ueber-reference-hero{position:relative!important;min-height:clamp(580px,88svh,780px)!important;height:auto!important;overflow:visible!important;background:#fff!important;border-radius:0!important;}
+.ueber-reference-hero .ueber-img{position:relative!important;z-index:1!important;width:100vw!important;height:clamp(580px,88svh,780px)!important;object-fit:cover!important;object-position:center center!important;border-radius:0!important;box-shadow:none!important;mix-blend-mode:normal!important;opacity:1!important;}
+.ueber-reference-card{position:absolute!important;z-index:2!important;left:24px!important;right:24px!important;bottom:-92px!important;margin:0!important;padding:28px 30px 30px!important;border-radius:26px!important;background:#15181d!important;color:#fff!important;box-shadow:0 16px 34px rgba(21,24,29,.16)!important;display:block!important;}
 .ueber-reference-card .ueber-role{margin:0 0 8px!important;color:#aeb3b9!important;font-size:12px!important;letter-spacing:.08em!important;text-transform:uppercase!important;}
 .ueber-reference-card .ueber-name{color:#fff!important;font-size:clamp(28px,5vw,48px)!important;line-height:1.02!important;margin:0 0 14px!important;}
 .ueber-reference-card p{color:rgba(255,255,255,.8)!important;font-size:16px!important;line-height:1.55!important;margin:0!important;max-width:620px!important;}
@@ -1840,12 +1839,12 @@ p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!impo
 .ueber-reference-body .ueber-text{max-width:none!important;gap:18px!important;}
 .ueber-reference-body .ueber-facts{max-width:none!important;margin-top:40px!important;}
 @media(max-width:600px){
-  .ueber-reference-hero{min-height:250px!important;height:250px!important;border-radius:24px!important;}
-  .ueber-reference-hero .ueber-img{height:100%!important;border-radius:24px 0 0 24px!important;object-position:center center!important;}
-  .ueber-reference-card{padding:20px 18px 20px!important;border-radius:0 24px 24px 0!important;}
+  .ueber-reference-hero{min-height:clamp(560px,82svh,720px)!important;height:auto!important;border-radius:0!important;}
+  .ueber-reference-hero .ueber-img{height:clamp(560px,82svh,720px)!important;border-radius:0!important;object-position:center center!important;}
+  .ueber-reference-card{left:22px!important;right:22px!important;bottom:-82px!important;padding:24px 22px 24px!important;border-radius:24px!important;}
   .ueber-reference-card .ueber-name{font-size:30px!important;}
   .ueber-reference-card p{font-size:15px!important;}
-  .ueber-reference-body{padding:72px 12px 0!important;}
+  .ueber-reference-body{padding:136px 12px 0!important;}
 }
 </style>
 </head>
