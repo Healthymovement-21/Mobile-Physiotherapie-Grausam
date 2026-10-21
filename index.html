@@ -1851,7 +1851,7 @@ p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!impo
 @media(max-width:860px){
   nav:not(.footer-legal) .nav-logo{display:none!important;}
   .floating-brand{display:block!important;position:fixed!important;top:92px!important;left:50%!important;z-index:410!important;transform:translateX(-50%)!important;pointer-events:none!important;opacity:1!important;transition:opacity .35s ease,transform .35s ease!important;}
-  .floating-brand img{display:block!important;width:54px!important;height:54px!important;filter:none!important;}
+  .floating-brand img{display:block!important;width:min(210px,58vw)!important;height:auto!important;filter:none!important;}
   body.nav-is-scrolled .floating-brand{opacity:0!important;transform:translate(-50%,-12px)!important;}
 }
 </style>
@@ -1882,7 +1882,7 @@ p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!impo
   </div>
 <button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span class="burger-lines"><span></span><span></span><span></span></span><span class="burger-label">Menü</span></button>
 </nav>
-<div class="floating-brand" aria-hidden="true"><img src="favicon.svg" alt=""></div>
+<div class="floating-brand" aria-hidden="true"><img src="logo-brand-v2.png" alt=""></div>
 
 <div class="overlay-backdrop" id="overlayBackdrop" onclick="toggleOverlay()"></div>
 <div class="overlay" id="overlay">
