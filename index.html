@@ -1852,17 +1852,6 @@ p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!impo
   .ueber-reference-card p{font-size:15px!important;}
   .ueber-reference-body{padding:136px 46px 0!important;}
 }
-/* Universal floating hero logo, matching the reference position below the dark navigation. */
-.floating-brand{display:none;}
-@media(max-width:860px){
-  nav:not(.footer-legal) .nav-logo{display:none!important;}
-  .floating-brand{display:block!important;position:fixed!important;top:94px!important;left:50%!important;z-index:410!important;transform:translateX(-50%) scale(1)!important;pointer-events:none!important;opacity:1!important;transition:opacity .45s ease,transform .45s cubic-bezier(.22,.75,.25,1)!important;text-align:center;white-space:nowrap;}
-  .floating-brand-text{display:flex;flex-direction:column;align-items:center;font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(18px,5vw,25px);font-weight:400;line-height:.74;letter-spacing:-.045em;text-transform:none;}
-  .floating-brand-text .brand-top{position:relative;z-index:2;color:#c5a45a;transform:translateX(-3px) skewX(-10deg);}
-  .floating-brand-text .brand-bottom{position:relative;z-index:1;color:#15191d;transform:translateX(4px) skewX(-10deg);font-size:1.1em;font-weight:400;letter-spacing:-.035em;}
-  .floating-brand.menu-open{opacity:0!important;visibility:hidden!important;}
-  body.nav-is-scrolled .floating-brand{opacity:0!important;transform:translate(-50%,-28px) scale(.72)!important;}
-}
 </style>
 <style>
 /* Finaler Farbabgleich: Weiß/Schwarz als Basis, Gold nur als Akzent */
@@ -1900,7 +1889,7 @@ h1,h2,h3,h4,h5,h6,.hero-title,.sec-title,.leist-hero-title,.visual-sec-title,.ab
 .nav-links a,.nav-cta,.btn,.btn-outline,.btn-wa,.btn-silver,.u-btn,.overlay-cta a,.hero-link{font-weight:400!important;}
 .eyebrow,.leist-hero-eye,.visual-sec-label,.phil-label,.mehr-block-title,.preis-group-label,.plz-label,.footer-col-title{font-weight:500!important;letter-spacing:.08em!important;}
 .card p,.dok-desc,.hero-sub,.sec-sub,.leist-hero-sub,.footer-contact-item,.footer-col-links a{font-weight:400!important;}
-.nav-wordmark,.floating-brand-text{font-weight:400!important;}.nav-wordmark .brand-bottom,.floating-brand-text .brand-bottom{font-weight:400!important;}
+.nav-wordmark{font-weight:400!important;}.nav-wordmark .brand-bottom{font-weight:400!important;}
 nav .nav-logo-img{display:none!important;}
 nav .nav-wordmark{display:flex!important;flex-direction:column;align-items:center;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;font-weight:400;line-height:.74;letter-spacing:-.045em;white-space:nowrap;}
 nav .nav-wordmark .brand-top{color:#fff!important;transform:translateX(-1px) skewX(-10deg);}
@@ -1915,11 +1904,53 @@ nav .nav-wordmark .brand-bottom{color:#fff!important;font-size:1.1em;font-weight
   nav:not(.footer-legal) .nav-wordmark{font-size:16px!important;line-height:.78!important;}
   nav:not(.footer-legal) .nav-logo{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%) scale(.88)!important;margin:0!important;opacity:0!important;visibility:hidden!important;transition:opacity .45s ease,transform .45s cubic-bezier(.22,.75,.25,1),visibility 0s linear .45s!important;}
   nav:not(.footer-legal).nav-scrolled .nav-logo{transform:translate(-50%,-50%) scale(1)!important;opacity:1!important;visibility:visible!important;transition:opacity .45s ease,transform .45s cubic-bezier(.22,.75,.25,1),visibility 0s linear 0s!important;}
-  .floating-brand{display:block!important;position:fixed!important;top:104px!important;left:50%!important;z-index:410!important;transform:translateX(-50%) scale(1)!important;pointer-events:none!important;opacity:1!important;transition:opacity .45s ease,transform .45s cubic-bezier(.22,.75,.25,1)!important;}
-  .floating-brand-text{display:flex!important;flex-direction:column;align-items:center;font-family:'DM Sans',system-ui,sans-serif;font-size:27px;font-weight:400;line-height:.74;letter-spacing:-.045em;white-space:nowrap;}
-  .floating-brand-text .brand-top{color:var(--brand)!important;transform:translateX(-3px) skewX(-10deg);}
-  .floating-brand-text .brand-bottom{color:var(--ink)!important;font-size:1.1em;font-weight:400;transform:translateX(4px) skewX(-10deg);}
-  body.nav-is-scrolled .floating-brand{opacity:0!important;transform:translate(-50%,-28px) scale(.72)!important;}
+}
+</style>
+<!-- Single-logo scroll transition: the same wordmark floats below the nav, then settles inside it. -->
+<style>
+nav:not(.footer-legal) .nav-logo{
+  position:fixed!important;
+  left:50%!important;
+  top:104px!important;
+  z-index:501!important;
+  display:flex!important;
+  width:190px!important;
+  min-height:52px!important;
+  margin:0!important;
+  align-items:center!important;
+  justify-content:center!important;
+  transform:translate(-50%,0) scale(1)!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  transition:top .45s cubic-bezier(.22,.75,.25,1),transform .45s cubic-bezier(.22,.75,.25,1)!important;
+}
+nav:not(.footer-legal) .nav-wordmark{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  font-family:'DM Sans',system-ui,sans-serif!important;
+  font-size:18px!important;
+  line-height:.78!important;
+  letter-spacing:-.045em!important;
+  white-space:nowrap!important;
+}
+nav:not(.footer-legal) .nav-wordmark .brand-top{color:#b89550!important;}
+nav:not(.footer-legal) .nav-wordmark .brand-bottom{color:#17191d!important;}
+nav:not(.footer-legal) .nav-logo-img{display:block!important;width:190px!important;height:auto!important;max-width:none!important;filter:none!important;}
+nav.nav-scrolled:not(.footer-legal){background:#15181d!important;border-color:#15181d!important;}
+nav.nav-scrolled:not(.footer-legal) .nav-logo{
+  top:52px!important;
+  transform:translate(-50%,-50%) scale(.92)!important;
+}
+nav.nav-scrolled:not(.footer-legal) .nav-wordmark .brand-top,
+nav.nav-scrolled:not(.footer-legal) .nav-wordmark .brand-bottom{color:#fff!important;}
+nav.nav-scrolled:not(.footer-legal) .nav-logo-img{filter:brightness(0) invert(1)!important;}
+@media(max-width:860px){
+  nav:not(.footer-legal) .nav-logo{top:94px!important;width:170px!important;}
+  nav:not(.footer-legal) .nav-logo-img{width:170px!important;}
+  nav:not(.footer-legal) .nav-wordmark{font-size:17px!important;}
+  nav.nav-scrolled:not(.footer-legal) .nav-logo{top:34px!important;transform:translate(-50%,-50%) scale(.9)!important;}
 }
 </style>
 </head>
@@ -1931,7 +1962,6 @@ nav .nav-wordmark .brand-bottom{color:#fff!important;font-size:1.1em;font-weight
 <nav>
   <span class="nav-logo" onclick="show('home')">
     <img src="logo.svg" alt="Mobile Physiotherapie Grausam" class="nav-logo-img">
-    <span class="nav-wordmark" aria-hidden="true"><span class="brand-top">Physiotherapie</span><span class="brand-bottom">Grausam</span></span>
   </span>
   <ul class="nav-links" id="navLinks">
     <li><a href="#leistungen" onclick="show('leistungen');return false;">Leistungen</a></li>
@@ -1950,7 +1980,6 @@ nav .nav-wordmark .brand-bottom{color:#fff!important;font-size:1.1em;font-weight
   </div>
 <button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span class="burger-lines"><span></span><span></span><span></span></span><span class="burger-label">Menü</span></button>
 </nav>
-<div class="floating-brand" aria-label="Physiotherapie Grausam"><div class="floating-brand-text"><span class="brand-top">Physiotherapie</span><span class="brand-bottom">Grausam</span></div></div>
 
 <div class="overlay-backdrop" id="overlayBackdrop" onclick="toggleOverlay()"></div>
 <div class="overlay" id="overlay">
@@ -2994,11 +3023,9 @@ function toggleOverlay(){
   const bd=document.getElementById('overlayBackdrop');
   const nav=document.querySelector('nav');
   const burger=document.getElementById('burgerBtn');
-  const brand=document.querySelector('.floating-brand');
   ov.classList.toggle('open');
   bd.classList.toggle('open');
   burger.classList.toggle('open');
-  brand.classList.toggle('menu-open',ov.classList.contains('open'));
   burger.setAttribute('aria-label',ov.classList.contains('open')?'Menü schließen':'Menü öffnen');
   document.body.style.overflow=ov.classList.contains('open')?'hidden':'';
   if(ov.classList.contains('open')){nav.classList.add('nav-white');}
