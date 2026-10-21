@@ -194,7 +194,7 @@ nav.nav-white .burger-label{color:var(--text);}
   .nav-cta{display:block;}
   .burger{display:none!important;}
 }
-.nav-logo{cursor:pointer;}
+  .nav-logo{cursor:pointer;}
 .burger{display:flex;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:8px 11px;min-width:44px;min-height:44px;align-items:center;justify-content:center;color:var(--text);}
 .burger-lines{display:flex;flex-direction:column;gap:5px;align-items:center;}
 .burger-lines span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform 0.3s,opacity 0.3s,background 0.3s;}
@@ -567,6 +567,11 @@ nav .burger-lines span{background:#fff;}
   nav:not(.footer-legal) .nav-logo{position:absolute;left:50%;transform:translateX(-50%);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;}
   nav:not(.footer-legal).nav-scrolled .nav-logo{opacity:1;visibility:visible;}
   nav:not(.footer-legal) .nav-logo-img{height:28px!important;max-width:160px!important;filter:brightness(0) invert(1)!important;}
+  nav:not(.footer-legal) .nav-logo-img{display:none!important;}
+  nav:not(.footer-legal) .nav-wordmark{display:flex!important;}
+  .nav-wordmark{display:none;flex-direction:column;align-items:center;font-family:'EB Garamond',Georgia,serif;font-size:13px;font-weight:600;line-height:.72;letter-spacing:-.04em;white-space:nowrap;}
+  .nav-wordmark .brand-top{color:#c5a45a;transform:translateX(-1px);}
+  .nav-wordmark .brand-bottom{color:#fff;font-size:1.12em;font-weight:400;transform:translateX(2px);}
   nav:not(.footer-legal) .burger{order:-1;color:#fff!important;min-width:34px!important;width:34px!important;height:34px!important;padding:0!important;}
   nav:not(.footer-legal) .burger-label{display:none!important;}
   nav:not(.footer-legal) .burger-lines{gap:5px!important;}
@@ -1867,6 +1872,7 @@ p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!impo
 <nav>
   <span class="nav-logo" onclick="show('home')">
     <img src="logo.svg" alt="Mobile Physiotherapie Grausam" class="nav-logo-img">
+    <span class="nav-wordmark" aria-hidden="true"><span class="brand-top">Physiotherapie</span><span class="brand-bottom">Grausam</span></span>
   </span>
   <ul class="nav-links" id="navLinks">
     <li><a href="#leistungen" onclick="show('leistungen');return false;">Leistungen</a></li>
