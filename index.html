@@ -1826,23 +1826,25 @@ p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!impo
   nav:not(.footer-legal) .nav-quick-actions svg{width:16px!important;height:16px!important;}
 }
 /* Reference layout belongs on the dedicated About page, not on the homepage. */
-.ueber-reference{max-width:1120px!important;margin:0 auto!important;padding-top:42px!important;}
-.ueber-reference-hero{position:relative!important;}
-.ueber-reference-hero .ueber-img{width:100%!important;height:clamp(360px,58vw,620px)!important;object-fit:cover!important;object-position:center top!important;border-radius:26px!important;box-shadow:none!important;}
-.ueber-reference-card{position:relative!important;z-index:2!important;margin:-92px 24px 0!important;padding:28px 30px 30px!important;border-radius:26px!important;background:#15181d!important;color:#fff!important;box-shadow:0 16px 34px rgba(21,24,29,.16)!important;}
+#ueber>.sec{max-width:none!important;padding:0!important;}
+.ueber-reference{max-width:none!important;margin:0!important;padding-top:0!important;}
+.ueber-reference-hero{position:relative!important;min-height:clamp(580px,88svh,780px)!important;overflow:visible!important;}
+.ueber-reference-hero .ueber-img{width:100vw!important;height:clamp(580px,88svh,780px)!important;object-fit:cover!important;object-position:center top!important;border-radius:0!important;box-shadow:none!important;}
+.ueber-reference-card{position:absolute!important;z-index:2!important;left:24px!important;right:24px!important;bottom:-92px!important;margin:0!important;padding:28px 30px 30px!important;border-radius:26px!important;background:#15181d!important;color:#fff!important;box-shadow:0 16px 34px rgba(21,24,29,.16)!important;}
 .ueber-reference-card .ueber-role{margin:0 0 8px!important;color:#aeb3b9!important;font-size:12px!important;letter-spacing:.08em!important;text-transform:uppercase!important;}
 .ueber-reference-card .ueber-name{color:#fff!important;font-size:clamp(28px,5vw,48px)!important;line-height:1.02!important;margin:0 0 14px!important;}
 .ueber-reference-card p{color:rgba(255,255,255,.8)!important;font-size:16px!important;line-height:1.55!important;margin:0!important;max-width:620px!important;}
-.ueber-reference-body{max-width:780px!important;padding:64px 24px 0!important;}
+.ueber-reference-body{max-width:780px!important;padding:150px 24px 0!important;}
 .ueber-reference-body>h3{font-size:clamp(30px,5vw,52px)!important;line-height:1.05!important;margin:0 0 28px!important;}
 .ueber-reference-body .ueber-text{max-width:none!important;gap:18px!important;}
 .ueber-reference-body .ueber-facts{max-width:none!important;margin-top:40px!important;}
 @media(max-width:600px){
-  .ueber-reference{padding-top:34px!important;}
-  .ueber-reference-card{margin:-82px 12px 0!important;padding:24px 22px 24px!important;}
+  .ueber-reference-hero{min-height:clamp(560px,82svh,720px)!important;}
+  .ueber-reference-hero .ueber-img{height:clamp(560px,82svh,720px)!important;}
+  .ueber-reference-card{left:22px!important;right:22px!important;bottom:-82px!important;padding:24px 22px 24px!important;}
   .ueber-reference-card .ueber-name{font-size:30px!important;}
   .ueber-reference-card p{font-size:15px!important;}
-  .ueber-reference-body{padding:48px 12px 0!important;}
+  .ueber-reference-body{padding:136px 12px 0!important;}
 }
 </style>
 </head>
