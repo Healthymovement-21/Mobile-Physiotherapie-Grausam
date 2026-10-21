@@ -1850,8 +1850,10 @@ p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!impo
 .floating-brand{display:none;}
 @media(max-width:860px){
   nav:not(.footer-legal) .nav-logo{display:none!important;}
-  .floating-brand{display:block!important;position:fixed!important;top:92px!important;left:50%!important;z-index:410!important;transform:translateX(-50%)!important;pointer-events:none!important;opacity:1!important;transition:opacity .35s ease,transform .35s ease!important;}
-  .floating-brand img{display:block!important;width:min(210px,58vw)!important;height:auto!important;filter:none!important;}
+  .floating-brand{display:block!important;position:fixed!important;top:94px!important;left:50%!important;z-index:410!important;transform:translateX(-50%)!important;pointer-events:none!important;opacity:1!important;transition:opacity .35s ease,transform .35s ease!important;text-align:center;white-space:nowrap;}
+  .floating-brand-text{display:flex;flex-direction:column;align-items:center;font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(18px,5.2vw,25px);font-weight:800;line-height:.78;letter-spacing:-.075em;text-transform:none;}
+  .floating-brand-text .brand-top{position:relative;z-index:2;color:#c5a45a;transform:translateX(-3px);}
+  .floating-brand-text .brand-bottom{position:relative;z-index:1;color:#15191d;transform:translateX(4px);font-size:1.08em;letter-spacing:-.085em;}
   body.nav-is-scrolled .floating-brand{opacity:0!important;transform:translate(-50%,-12px)!important;}
 }
 </style>
@@ -1882,7 +1884,7 @@ p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!impo
   </div>
 <button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span class="burger-lines"><span></span><span></span><span></span></span><span class="burger-label">Menü</span></button>
 </nav>
-<div class="floating-brand" aria-hidden="true"><img src="logo-brand-black-gold.png?v=1" alt=""></div>
+<div class="floating-brand" aria-label="Physiotherapie Grausam"><div class="floating-brand-text"><span class="brand-top">Physiotherapie</span><span class="brand-bottom">Grausam</span></div></div>
 
 <div class="overlay-backdrop" id="overlayBackdrop" onclick="toggleOverlay()"></div>
 <div class="overlay" id="overlay">
