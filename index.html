@@ -3440,6 +3440,23 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom {
   color:#fff!important;
   -webkit-text-fill-color:#fff!important;
 }
+/* Kompakte Laptopansicht: die beiden gewünschten Hauptpunkte stehen
+   direkt im schwarzen Header und bleiben weiß lesbar. */
+@media (min-width:561px) and (max-width:860px){
+  nav:not(.footer-legal) .burger{display:none!important;}
+  nav:not(.footer-legal) .nav-links{display:flex!important;gap:0!important;margin-left:auto!important;margin-right:10px!important;}
+  nav:not(.footer-legal) .nav-links li{display:none!important;}
+  nav:not(.footer-legal) .nav-links li:nth-child(2),
+  nav:not(.footer-legal) .nav-links li:nth-child(4){display:block!important;}
+  nav:not(.footer-legal) .nav-links a,
+  nav:not(.footer-legal).nav-white .nav-links a,
+  nav:not(.footer-legal).nav-scrolled .nav-links a{
+    color:#fff!important;
+    font-size:12px!important;
+    font-weight:500!important;
+    padding:6px 8px!important;
+  }
+}
 </style>
 </body>
 </html>
