@@ -4,7 +4,10 @@ Generate Preisgestaltung-Privatpatienten.pdf — 1 A4 page.
 Logo oben links (groß), Expertise direkt darunter, kein doppelter Footer.
 """
 import tempfile, os
-from weasyprint import HTML
+try:
+    from weasyprint import HTML
+except ImportError:
+    HTML = None
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="de">
@@ -92,8 +95,8 @@ table.ptable tfoot td.tp { text-align: right; font-size: 11pt; font-weight: 800;
 <div class="header">
   <div class="logo-wrap">LOGO_PLACEHOLDER</div>
   <div class="header-text">
-    <h1>Ihre Kosten als Privatpatient</h1>
-    <div class="tagline">Transparente Preise &mdash; was auf Sie zukommt und was erstattet wird.</div>
+    <h1>Ihre Behandlung als Privatpatient</h1>
+    <div class="tagline">Leistungen, Ablauf und wichtige Hinweise zur privaten Abrechnung.</div>
     <div><span class="badge">Nur f&uuml;r Privatversicherte &amp; Beihilfeberechtigte</span></div>
   </div>
 </div>
@@ -112,33 +115,33 @@ table.ptable tfoot td.tp { text-align: right; font-size: 11pt; font-weight: 800;
 <!-- INTRO -->
 <div class="intro">
   <p>Als Privatpatient oder Beihilfeberechtigter bezahlen Sie die Behandlung zun&auml;chst selbst &mdash; und reichen die Rechnung anschlie&szlig;end bei Ihrer Versicherung ein. Je nach Tarif erhalten Sie einen Gro&szlig;teil oder alle Kosten erstattet.</p>
-  <p>Diese &Uuml;bersicht zeigt, was eine typische Verordnung kostet und was bei Ihnen bleiben kann &mdash; <strong>damit es sp&auml;ter keine &Uuml;berraschungen gibt.</strong></p>
+  <p>Diese &Uuml;bersicht zeigt Ihnen die Leistungen und den Ablauf der privaten Abrechnung &mdash; <strong>damit Sie vor dem ersten Termin gut informiert sind.</strong></p>
 </div>
 
 <!-- HONORARE -->
 <div class="price-table-wrap">
-  <div class="section-title">Meine Honorare (pro Behandlung)</div>
+  <div class="section-title">Meine Leistungen</div>
   <table class="ptable">
-    <thead><tr><td style="width:35%;">Leistung</td><td style="width:40%;">Beschreibung</td><td style="width:25%;text-align:right;">Honorar</td></tr></thead>
+    <thead><tr><td style="width:38%;">Leistung</td><td style="width:62%;">Beschreibung</td></tr></thead>
     <tbody>
-      <tr><td class="lc">Krankengymnastik (KG)</td><td class="sc">Hausbesuch &middot; 30 Min.</td><td class="pc">29,70 &euro;</td></tr>
-      <tr><td class="lc">Manuelle Therapie (MT)</td><td class="sc">Hausbesuch &middot; 30 Min.</td><td class="pc">35,80 &euro;</td></tr>
-      <tr><td class="lc">Fahrtkostenpauschale</td><td class="sc">Pro Hausbesuch, pauschal</td><td class="pc">10,00 &euro;</td></tr>
+      <tr><td class="lc">Krankengymnastik (KG)</td><td class="sc">Hausbesuch &middot; individuelle physiotherapeutische Behandlung</td></tr>
+      <tr><td class="lc">Manuelle Therapie (MT)</td><td class="sc">Hausbesuch &middot; individuelle physiotherapeutische Behandlung</td></tr>
+      <tr><td class="lc">Fahrtkostenpauschale</td><td class="sc">Für die Anfahrt zum Hausbesuch</td></tr>
     </tbody>
   </table>
 </div>
 
 <!-- BEISPIELRECHNUNG -->
 <div class="price-table-wrap">
-  <div class="section-title">Beispielrechnung &mdash; typische Verordnung (6 Einheiten)</div>
+  <div class="section-title">Beispiel einer typischen Verordnung (6 Einheiten)</div>
   <table class="ptable">
-    <thead><tr><td style="width:40%;">Position</td><td style="width:30%;">Berechnung</td><td style="width:30%;text-align:right;">Betrag</td></tr></thead>
+    <thead><tr><td style="width:42%;">Position</td><td style="width:58%;">Umfang</td></tr></thead>
     <tbody>
-      <tr><td class="lc">6 &times; Krankengymnastik (KG)</td><td class="sc">6 &times; 29,70 &euro;</td><td class="pc">178,20 &euro;</td></tr>
-      <tr><td class="lc">6 &times; Manuelle Therapie (MT)</td><td class="sc">6 &times; 35,80 &euro;</td><td class="pc">214,80 &euro;</td></tr>
-      <tr><td class="lc">6 &times; Fahrtkostenpauschale</td><td class="sc">6 &times; 10,00 &euro;</td><td class="pc">60,00 &euro;</td></tr>
+      <tr><td class="lc">Krankengymnastik (KG)</td><td class="sc">6 Behandlungseinheiten</td></tr>
+      <tr><td class="lc">Manuelle Therapie (MT)</td><td class="sc">6 Behandlungseinheiten</td></tr>
+      <tr><td class="lc">Hausbesuche</td><td class="sc">6 Anfahrten</td></tr>
     </tbody>
-    <tfoot><tr><td class="tl" colspan="2">Gesamtbetrag (von Ihnen vorzustrecken)</td><td class="tp">452,00 &euro;</td></tr></tfoot>
+    <tfoot><tr><td class="tl" colspan="2">Die konkrete Abrechnung richtet sich nach der vereinbarten Leistung und Ihrem Versicherungsvertrag.</td></tr></tfoot>
   </table>
 </div>
 
@@ -148,27 +151,27 @@ table.ptable tfoot td.tp { text-align: right; font-size: 11pt; font-weight: 800;
   <div class="scenario-grid">
     <div class="scenario-box">
       <div class="scenario-label">Privatversicherung (z. B. 80%)</div>
-      <div class="scenario-coverage">~362 &euro;</div>
-      <div class="scenario-net">Erstattung durch PKV &middot; Eigenanteil ca. <strong>~90 &euro;</strong></div>
+      <div class="scenario-coverage">Tarifabh&auml;ngig</div>
+      <div class="scenario-net">Erstattung durch PKV &middot; Eigenanteil richtet sich nach Ihrem Tarif</div>
     </div>
     <div class="scenario-box">
       <div class="scenario-label">Beihilfe (70%) + erg&auml;nzende PKV</div>
-      <div class="scenario-coverage">~392 &euro;</div>
-      <div class="scenario-net">Kombiniert &middot; Eigenanteil ca. <strong>~60 &euro;</strong></div>
+      <div class="scenario-coverage">Tarifabh&auml;ngig</div>
+      <div class="scenario-net">Kombiniert &middot; Eigenanteil richtet sich nach Beihilfe und PKV</div>
     </div>
     <div class="scenario-box best">
       <div class="scenario-label">Beste Konstellation</div>
-      <div class="scenario-coverage">~392+ &euro;</div>
-      <div class="scenario-net">Vollst&auml;ndige Erstattung &middot; Eigenanteil kann auf <strong>~60 &euro;</strong> sinken*</div>
+      <div class="scenario-coverage">M&ouml;glich</div>
+      <div class="scenario-net">Vollst&auml;ndige Erstattung kann je nach Vertrag m&ouml;glich sein*</div>
     </div>
   </div>
-  <div class="scenario-note">* Fahrtkosten (60 &euro;) werden je nach Tarif erstattet oder nicht. Tats&auml;chliche Erstattung h&auml;ngt vom pers&ouml;nlichen Versicherungsvertrag ab.</div>
+  <div class="scenario-note">* Fahrtkosten werden je nach Tarif erstattet oder nicht. Die tats&auml;chliche Erstattung h&auml;ngt vom pers&ouml;nlichen Versicherungsvertrag ab.</div>
 </div>
 
 <!-- DISCLAIMER -->
 <div class="disclaimer-box">
   <div class="disclaimer-title">&#9888; Wichtig: Vorab informieren</div>
-  <p>Diese Betr&auml;ge sind Richtwerte &mdash; kein verbindliches Versprechen. Bitte kl&auml;ren Sie vor dem ersten Termin, ob und in welchem Umfang Ihre Versicherung Physiotherapie-Hausbesuche erstattet.</p>
+  <p>Die Erstattung ist tarifabh&auml;ngig und kein verbindliches Versprechen. Bitte kl&auml;ren Sie vor dem ersten Termin, ob und in welchem Umfang Ihre Versicherung Physiotherapie-Hausbesuche erstattet.</p>
   <p><strong>Fragen Sie Ihre Versicherung:</strong> Sind Hausbesuche erstattungsf&auml;hig? Ist eine Vorabgenehmigung n&ouml;tig? Wie hoch ist Ihr Erstattungssatz? Werden Fahrtkosten erstattet?</p>
 </div>
 
@@ -187,14 +190,15 @@ table.ptable tfoot td.tp { text-align: right; font-size: 11pt; font-weight: 800;
 
 <!-- LEGAL NOTE — kein doppelter Kontakt -->
 <div class="legal-note">
-  Alle Honorare sind Nettobetrag. Diese &Uuml;bersicht dient der Orientierung und ersetzt keine individuelle Auskunft Ihrer Krankenversicherung.
+  Diese &Uuml;bersicht dient der Orientierung und ersetzt keine individuelle Auskunft Ihrer Krankenversicherung.
 </div>
 
 </body>
 </html>"""
 
-OUTPUT_PATH = "/home/user/Mobile-Physiotherapie-Grausam/dokumente/Preisgestaltung-Privatpatienten.pdf"
-LOGO_PATH   = "/home/user/Mobile-Physiotherapie-Grausam/logo.svg"
+OUTPUT_PATH = "/Users/nickgrausam/.openclaw/workspace/Mobile-Physiotherapie-Grausam/dokumente/Preisgestaltung-Privatpatienten-ohne-Preise.pdf"
+HTML_OUTPUT_PATH = "/Users/nickgrausam/.openclaw/workspace/Mobile-Physiotherapie-Grausam/dokumente/Preisgestaltung-Privatpatienten-ohne-Preise.html"
+LOGO_PATH   = "/Users/nickgrausam/.openclaw/workspace/Mobile-Physiotherapie-Grausam/logo.svg"
 
 def main():
     with open(LOGO_PATH) as f:
@@ -211,18 +215,27 @@ def main():
         tmp = f.name
 
     try:
-        HTML(filename=tmp).write_pdf(OUTPUT_PATH)
-        print(f"Saved: {OUTPUT_PATH}")
+        with open(HTML_OUTPUT_PATH, "w", encoding="utf-8") as out:
+            out.write(html)
+        if HTML is not None:
+            HTML(filename=tmp).write_pdf(OUTPUT_PATH)
+            print(f"Saved: {OUTPUT_PATH}")
+        else:
+            print(f"Saved HTML for browser PDF rendering: {HTML_OUTPUT_PATH}")
     finally:
         os.unlink(tmp)
 
-    import fitz
-    doc = fitz.open(OUTPUT_PATH)
-    n = len(doc)
-    doc.close()
-    print(f"Pages: {n}")
-    if n != 1:
-        print(f"NOTE: expected 1, got {n} — adjust spacing")
+    if os.path.exists(OUTPUT_PATH):
+        try:
+            import fitz
+            doc = fitz.open(OUTPUT_PATH)
+            n = len(doc)
+            doc.close()
+            print(f"Pages: {n}")
+            if n != 1:
+                print(f"NOTE: expected 1, got {n} — adjust spacing")
+        except ImportError:
+            print("PDF page-count check skipped: fitz is not installed")
 
 if __name__ == "__main__":
     main()
