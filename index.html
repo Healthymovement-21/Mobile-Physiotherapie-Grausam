@@ -3228,7 +3228,6 @@ footer .footer-section-links a{
   text-decoration:none!important;
 }
 footer .footer-section-links a:hover{color:#fff!important;text-decoration:underline!important;background:transparent!important;}
-footer .footer-section-links a.footer-active{font-weight:700!important;text-decoration:none!important;}
 footer .footer-socials{display:flex!important;gap:18px!important;margin-top:22px!important;}
 footer .footer-socials span{display:inline-flex!important;color:#fff!important;}
 footer .footer-socials svg{width:18px!important;height:18px!important;stroke:currentColor!important;}
@@ -3450,11 +3449,9 @@ function updateNav(){
   else { nav.classList.add('nav-white'); }
   const activePage=document.querySelector('.page.active');
   if(activePage){
-    document.querySelectorAll('.overlay-links a, #navLinks a, .footer-section-links a').forEach(function(a){
+    document.querySelectorAll('.overlay-links a, #navLinks a').forEach(function(a){
       const oc=a.getAttribute('onclick')||'';
-      const active=oc.indexOf("'"+activePage.id+"'")!==-1;
-      a.classList.toggle('nav-active',active);
-      a.classList.toggle('footer-active',active && !!a.closest('.footer-section-links'));
+      a.classList.toggle('nav-active',oc.indexOf("'"+activePage.id+"'")!==-1);
     });
   }
 }
