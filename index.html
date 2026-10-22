@@ -3850,7 +3850,11 @@ nav:not(.footer-legal) .nav-wordmark .brand-bottom{
     right:22px!important;
     width:auto!important;
     height:58px!important;
-    transform:none!important;
+    -webkit-transform:translate3d(0,0,0)!important;
+    transform:translate3d(0,0,0)!important;
+    will-change:transform!important;
+    -webkit-backface-visibility:hidden!important;
+    backface-visibility:hidden!important;
     display:flex!important;
     opacity:1!important;
     visibility:visible!important;
