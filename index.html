@@ -2168,7 +2168,7 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
     <li><a href="#dokumente" onclick="show('dokumente');toggleOverlay();return false;"><span class="overlay-link-text">Dokumente</span></a></li>
   </ul>
   <div class="overlay-cta">
-    <a href="#kontakt" onclick="show('kontakt');toggleOverlay();return false;">Termin anfragen</a>
+    <a href="#kontakt" onclick="show('kontakt');toggleOverlay();return false;">Termin vereinbaren</a>
   </div>
   <div class="overlay-footer">
     <a href="tel:017642685146">0176 4268 5146</a>
@@ -3632,6 +3632,17 @@ nav:not(.footer-legal) .nav-wordmark .brand-bottom{
   .hero-brand,.hero-brand img{display:none!important;}
   .hero-content{padding-top:96px!important;}
   .overlay{top:calc(88px + env(safe-area-inset-top, 0px))!important;}
+}
+</style>
+<style>
+/* Mobile menu CTA: clear white label on the dark button. */
+@media(max-width:860px){
+  .overlay-cta a,
+  .overlay-cta a:hover,
+  .overlay-cta a::after{
+    color:#fff!important;
+    -webkit-text-fill-color:#fff!important;
+  }
 }
 </style>
 </body>
