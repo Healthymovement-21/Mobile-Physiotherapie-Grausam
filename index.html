@@ -3135,14 +3135,14 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
 <footer>
   <div class="footer-inner">
     <div>
-      <span class="footer-col-title">Kontakt</span>
+      <span class="footer-col-title">Privatsprechstunden</span>
       <p class="footer-contact-item" style="color:#fff!important;"><span class="f-ico-wrap"><i data-lucide="phone"></i></span><a style="color:#fff!important;" href="https://wa.me/4917642685146" target="_blank" rel="noopener">0176 4268 5146</a></p>
       <p class="footer-contact-item" style="color:#fff!important;"><span class="f-ico-wrap"><i data-lucide="mail"></i></span><a style="color:#fff!important;" href="mailto:info@physiotherapie-grausam.com">info@physiotherapie-grausam.com</a></p>
       <p class="footer-contact-item" style="color:#fff!important;"><span class="f-ico-wrap"><i data-lucide="map-pin"></i></span>Ausgewählte Orte · Raum HD–KA</p>
     </div>
     <div>
       <span class="footer-col-title">Allgemein</span>
-      <nav class="footer-section-links" aria-label="Seitenübersicht">
+      <div class="footer-section-links" aria-label="Seitenübersicht">
         <a href="javascript:void(0)" onclick="show('home')">Startseite</a>
         <a href="javascript:void(0)" onclick="show('standorte')">Standorte</a>
         <a href="javascript:void(0)" onclick="show('leistungen')">Leistungen</a>
@@ -3151,7 +3151,21 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
         <a href="javascript:void(0)" onclick="show('mehr')">Angebote</a>
         <a href="javascript:void(0)" onclick="show('faq')">FAQ</a>
         <a href="javascript:void(0)" onclick="show('kontakt')">Kontakt</a>
-      </nav>
+      </div>
+    </div>
+    <div>
+      <span class="footer-col-title">Service</span>
+      <div class="footer-section-links" aria-label="Service">
+        <a href="javascript:void(0)" onclick="show('kontakt')">Kontakt</a>
+        <a href="javascript:void(0)" onclick="show('datenschutz')">Datenschutz</a>
+        <a href="javascript:void(0)" onclick="show('impressum')">Impressum</a>
+        <a href="javascript:void(0)" onclick="show('cookie-policy')">Datenschutzeinstellungen</a>
+      </div>
+      <div class="footer-socials" aria-label="Social Media">
+        <span aria-hidden="true"><i data-lucide="instagram"></i></span>
+        <span aria-hidden="true"><i data-lucide="facebook"></i></span>
+        <span aria-hidden="true"><i data-lucide="youtube"></i></span>
+      </div>
     </div>
   </div>
   <div class="footer-bottom">
@@ -3162,7 +3176,10 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
       <a style="color:#fff!important;" href="javascript:void(0)" onclick="show('agb')">Behandlungsbedingungen</a>
       <a style="color:#fff!important;" href="javascript:void(0)" onclick="show('cookie-policy')">Cookies</a>
     </nav>
-    <p class="footer-copy">© 2026 Nick Grausam · Alle Rechte vorbehalten</p>
+    <div class="footer-copy-wrap">
+      <p class="footer-copy">© 2026 Nick Grausam · Alle Rechte vorbehalten</p>
+      <span class="footer-domain-pill">physiotherapie-grausam.com – Privat</span>
+    </div>
   </div>
 </footer>
 
@@ -3226,6 +3243,9 @@ footer .footer-section-links a{
   text-decoration:none!important;
 }
 footer .footer-section-links a:hover{color:#fff!important;text-decoration:underline!important;background:transparent!important;}
+footer .footer-socials{display:flex!important;gap:18px!important;margin-top:22px!important;}
+footer .footer-socials span{display:inline-flex!important;color:#fff!important;}
+footer .footer-socials svg{width:18px!important;height:18px!important;stroke:currentColor!important;}
 footer .f-ico-wrap{display:none!important;}
 footer .footer-bottom{
   max-width:1120px!important;
@@ -3251,11 +3271,13 @@ footer .footer-legal a{
 }
 footer .footer-legal a:hover{color:#fff!important;background:transparent!important;}
 footer .footer-copy{margin:0!important;color:#fff!important;font-family:'DM Sans',system-ui,sans-serif!important;font-size:14px!important;}
+footer .footer-copy-wrap{display:flex!important;align-items:center!important;gap:18px!important;flex-wrap:wrap!important;}
+footer .footer-domain-pill{display:inline-flex!important;align-items:center!important;padding:7px 14px!important;border-radius:999px!important;background:#090c0f!important;color:#fff!important;font-family:'DM Sans',system-ui,sans-serif!important;font-size:11px!important;line-height:1!important;white-space:nowrap!important;}
 @media(min-width:861px){
-  footer .footer-inner{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:64px!important;}
+  footer .footer-inner{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:48px!important;}
   footer .footer-bottom{display:grid!important;grid-template-columns:1fr auto!important;align-items:end!important;gap:30px!important;}
   footer .footer-legal{margin:0!important;}
-  footer .footer-copy{justify-self:end!important;}
+  footer .footer-copy-wrap{justify-self:end!important;justify-content:flex-end!important;}
 }
 </style>
 
