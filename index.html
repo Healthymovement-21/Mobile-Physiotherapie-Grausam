@@ -3573,27 +3573,7 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
 }
 </style>
 <script>
-/* Misst die echte Header-/Logo-Geometrie für unterschiedliche Mobilbreiten. */
-(function(){
-  function positionMobileLogo(){
-    if(window.innerWidth>860)return;
-    var nav=document.querySelector('nav:not(.footer-legal)');
-    var logo=nav&&nav.querySelector('.nav-logo');
-    if(!nav||!logo)return;
-    var navRect=nav.getBoundingClientRect();
-    var logoHeight=logo.getBoundingClientRect().height||34;
-    document.documentElement.style.setProperty('--mobile-logo-rest-top',(navRect.bottom+18)+'px');
-    document.documentElement.style.setProperty('--mobile-logo-header-top',(navRect.top+(navRect.height-logoHeight)/2)+'px');
-  }
-  window.addEventListener('resize',positionMobileLogo,{passive:true});
-  window.addEventListener('orientationchange',positionMobileLogo,{passive:true});
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(positionMobileLogo);
-  positionMobileLogo();
-})();
-</script>
-<script>
-/* Erzwingt ausschließlich auf Mobilgeräten die zwei gemessenen Logo-Ziele.
-   Inline-Variablen verhindern, dass ältere Header-Regeln die Position zurücksetzen. */
+/* Eine einzige gemessene Bewegung: feste Ruheposition, dann nur translateY in den Header. */
 (function(){
   function syncMobileLogo(){
     if(window.innerWidth>860)return;
@@ -3609,8 +3589,8 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
     logo.style.setProperty('position','fixed','important');
     logo.style.setProperty('left','50%','important');
     logo.style.setProperty('top',restTop+'px','important');
-    logo.style.setProperty('width','190px','important');
-    logo.style.setProperty('transform','translate(-50%,'+shift+'px) scale('+(scrolled?.9:1)+')','important');
+    logo.style.setProperty('width','250px','important');
+    logo.style.setProperty('transform','translate(-50%,'+shift+'px) scale(1)','important');
     logo.style.setProperty('opacity','1','important');
     logo.style.setProperty('visibility','visible','important');
   }
