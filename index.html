@@ -3463,7 +3463,7 @@ function show(id,push){
   document.getElementById(id).classList.add('active');
   sessionStorage.setItem('page',id);
   if(push!==false)history.pushState({page:id},'','#'+id);
-  window.scrollTo(0,0);
+  window.scrollTo({top:0,left:0,behavior:'auto'});
   setTimeout(()=>revealPage(id),30);
   updateNav();
 }
@@ -3521,7 +3521,7 @@ function toggleOverlay(){
     document.body.style.right='';
     document.body.style.width='';
     document.body.style.overflow='';
-    window.scrollTo(0,menuScrollY);
+    window.scrollTo({top:menuScrollY,left:0,behavior:'auto'});
   }
   if(ov.classList.contains('open')){nav.classList.add('nav-white');}
   else{updateNav();}
