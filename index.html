@@ -2560,40 +2560,35 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
   <div class="sec">
 
     <div class="leist-section">
+      <p class="leist-copy">Physiotherapie Grausam bietet physiotherapeutische Behandlungen für Privatpatienten, Beihilfeberechtigte und Selbstzahler an.</p>
 
-
-      <div class="gkv-red">Keine Abrechnung über die gesetzliche Krankenkasse (GKV). Behandlung nur für Privatpatienten, Beamte mit Beihilfe und Selbstzahler.</div>
-
-      <!-- BEHANDLUNGSANGEBOT -->
-      <div>
+      <div class="leist-copy-block">
         <h3 class="leist-acc-title">Abrechnungsfähige Leistungen</h3>
-        <div class="leist-acc-list">
-          <div class="leist-card">
-            <div class="leist-card-head"><div><div class="leist-name">Rezepte mit der Verordnung</div><div class="leist-abbr">KG · MT · MLD</div></div></div>
-          </div>
-        </div>
+        <ul class="leist-service-list">
+          <li>Krankengymnastik (KG)</li>
+          <li>Manuelle Therapie (MT)</li>
+          <li>Manuelle Lymphdrainage (MLD)</li>
+        </ul>
       </div>
 
+      <div class="leist-copy-block">
+        <h3 class="leist-acc-title">Privatpatienten und Beihilfeberechtigte</h3>
+        <h4 class="leist-copy-heading">Behandlung mit ärztlicher Privatverordnung</h4>
+        <p class="leist-copy">Die Behandlung erfolgt auf Grundlage einer ärztlichen Privatverordnung. Die Abrechnung richtet sich nach den verordneten Leistungen und der individuell vereinbarten Vergütung.</p>
+        <p class="leist-copy">Bitte klären Sie vor Behandlungsbeginn, in welchem Umfang Ihre private Krankenversicherung oder Beihilfestelle die Kosten übernimmt.</p>
+      </div>
 
-      <!-- INDIVIDUELLE KONDITIONEN -->
-      <div>
+      <div class="leist-copy-block">
+        <h3 class="leist-acc-title">Selbstzahler</h3>
+        <h4 class="leist-copy-heading">Individuelle physiotherapeutische Leistungen</h4>
+        <p class="leist-copy">Physiotherapeutische Leistungen und funktionelles Training können im Rahmen der rechtlichen Voraussetzungen auch ohne ärztliche Verordnung vereinbart werden.</p>
+        <p class="leist-copy">Der Umfang der Behandlung und die Vergütung richten sich nach der jeweiligen Leistung und werden vor Beginn der Behandlung transparent besprochen.</p>
+      </div>
 
-        <div class="preis-group">
-          <h3 class="preis-group-title">Privatpatienten &amp; Beihilfe<span class="preis-group-badge">· mit Rezept</span></h3>
-          <p class="preis-info-text">Sie bringen Ihr Rezept mit. Die konkrete Behandlung und das Honorar besprechen wir transparent und individuell vor dem ersten Termin.</p>
-        </div>
-
-        <div class="preis-group">
-          <span class="preis-group-label">Ohne Rezept</span>
-          <h3 class="preis-group-title">Selbstzahler<span class="preis-group-badge">· individuelle Vereinbarung</span></h3>
-          <p class="preis-info-text">Für Selbstzahler stelle ich ein passendes Angebot nach Ihrem Anliegen, dem Zeitumfang und dem gewünschten Ziel zusammen. Die Konditionen klären wir persönlich auf Anfrage.</p>
-          <a class="preis-gebuehren-link" href="javascript:void(0)" onclick="show('kontakt');return false;">Individuelle Anfrage stellen&nbsp;→</a>
-        </div>
-
-
-<div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;">
-          <a class="mehr-link" href="javascript:void(0)" onclick="show('ablauf')" style="margin-top:0;">Wie läuft es ab?</a>
-        </div>
+      <div class="leist-copy-block">
+        <h3 class="leist-acc-title">Abrechnung</h3>
+        <p class="leist-copy">Eine Abrechnung über die gesetzliche Krankenversicherung (GKV) ist nicht möglich.</p>
+        <a class="preis-gebuehren-link" href="javascript:void(0)" onclick="show('kontakt');return false;">Individuelle Anfrage stellen&nbsp;→</a>
       </div>
 
     </div>
@@ -3263,6 +3258,13 @@ a:not(.btn):not(.nav-cta):not(.btn-wa):not(.u-btn):not(.btn-silver){color:#17191
 #mehr .mehr-simple-list>div:nth-child(3),#mehr .mehr-simple-list>div:nth-child(4){border-top-color:#17191d!important;}
 .dark-sec{border-top-color:#d9dcdf!important;border-bottom-color:#d9dcdf!important;}
 .bg-green,.bg-pearl{opacity:0!important;}
+.leist-copy-block{max-width:760px!important;margin:0 0 42px!important;padding:0 0 34px!important;border-bottom:1px solid #d9dcdf!important;}
+.leist-copy-block:last-child{margin-bottom:0!important;border-bottom:0!important;padding-bottom:0!important;}
+.leist-copy{max-width:700px!important;margin:0 0 18px!important;color:#17191d!important;font-size:16px!important;line-height:1.7!important;}
+.leist-copy-heading{margin:0 0 12px!important;color:#17191d!important;font-size:19px!important;font-weight:600!important;line-height:1.3!important;}
+.leist-service-list{margin:0!important;padding:0!important;list-style:none!important;display:grid!important;gap:10px!important;}
+.leist-service-list li{position:relative!important;padding-left:22px!important;color:#17191d!important;font-size:16px!important;line-height:1.55!important;}
+.leist-service-list li::before{content:'›'!important;position:absolute!important;left:0!important;color:#17191d!important;font-weight:700!important;}
 </style>
 
 
