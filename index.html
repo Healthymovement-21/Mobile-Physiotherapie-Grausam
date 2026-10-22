@@ -1831,6 +1831,15 @@ p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!impo
   nav:not(.footer-legal) .nav-quick-actions a{width:19px!important;height:26px!important;}
   nav:not(.footer-legal) .nav-quick-actions svg{width:16px!important;height:16px!important;}
 }
+/* Beim geöffneten Menü bleibt der schwarze Header bestehen, aber die Wortmarke
+   verschwindet oben aus dem Weg. Im normalen Zustand bleibt die bestehende
+   Scroll-Logik unverändert. */
+body.menu-open nav:not(.footer-legal) .nav-logo,
+body.menu-open .hero-brand{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
 /* Reference layout belongs on the dedicated About page, not on the homepage. */
 #ueber>.sec{max-width:none!important;padding:0!important;}
 .ueber-reference{max-width:none!important;margin:0!important;padding-top:0!important;background:#fff!important;}
@@ -1840,10 +1849,13 @@ p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!impo
 .ueber-reference-card .ueber-role{margin:0 0 8px!important;color:#aeb3b9!important;font-size:12px!important;letter-spacing:.08em!important;text-transform:uppercase!important;}
 .ueber-reference-card .ueber-name{color:#fff!important;font-size:clamp(28px,5vw,48px)!important;line-height:1.02!important;margin:0 0 14px!important;}
 .ueber-reference-card p{color:rgba(255,255,255,.8)!important;font-size:16px!important;line-height:1.55!important;margin:0!important;max-width:620px!important;}
+.ueber-reference-card .ueber-profile-specialty{color:#fff!important;font-weight:600!important;margin-bottom:3px!important;}
+.ueber-reference-card .ueber-profile-treatment{color:rgba(255,255,255,.78)!important;font-size:15px!important;}
 .ueber-reference-body{max-width:780px!important;padding:72px 46px 0!important;}
 .ueber-reference-body>h3{font-size:clamp(30px,5vw,52px)!important;line-height:1.05!important;margin:0 0 28px!important;}
 .ueber-reference-body .ueber-text{max-width:none!important;gap:18px!important;}
 .ueber-reference-body .ueber-facts{max-width:none!important;margin-top:40px!important;}
+.ueber-reference-body .ueber-profile-section + .ueber-profile-section{margin-top:32px!important;}
 @media(max-width:600px){
   .ueber-reference-hero{min-height:clamp(560px,82svh,720px)!important;height:auto!important;border-radius:0!important;}
   .ueber-reference-hero .ueber-img{height:clamp(560px,82svh,720px)!important;border-radius:0!important;object-position:center center!important;}
@@ -1954,6 +1966,79 @@ nav.nav-scrolled:not(.footer-legal) .nav-logo-img{filter:brightness(0) invert(1)
   nav.nav-scrolled:not(.footer-legal) .nav-logo{top:34px!important;transform:translate(-50%,-50%) scale(.9)!important;}
 }
 </style>
+<style>
+/* Desktop-Header nach der Laptop-Referenz: feste schwarze Leiste,
+   Wortmarke links im Header, Navigation rechts. */
+@media(min-width:861px){
+  nav:not(.footer-legal){
+    top:0!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    height:72px!important;
+    padding:0 clamp(22px,5vw,72px)!important;
+    border-radius:0!important;
+    background:#15181d!important;
+    border:0!important;
+    box-shadow:0 8px 22px rgba(21,24,29,.14)!important;
+    backdrop-filter:none!important;
+  }
+  nav:not(.footer-legal) .nav-logo,
+  nav:not(.footer-legal).nav-scrolled .nav-logo{
+    position:static!important;
+    left:auto!important;
+    top:auto!important;
+    transform:none!important;
+    width:190px!important;
+    min-height:52px!important;
+    margin:0!important;
+    flex:0 0 190px!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+  nav:not(.footer-legal) .nav-wordmark,
+  nav:not(.footer-legal).nav-scrolled .nav-wordmark{
+    align-items:flex-start!important;
+    font-size:16px!important;
+  }
+  nav:not(.footer-legal) .nav-wordmark .brand-top{color:#fff!important;}
+  nav:not(.footer-legal) .nav-wordmark .brand-bottom{color:#fff!important;}
+  nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-top,
+  nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{color:#fff!important;}
+  .hero{padding-top:120px!important;}
+}
+</style>
+<style>
+/* Cookie-Hinweis als zentrales Auswahlfenster in der neutralen Header-Farbe. */
+#cookie-banner{
+  top:50%!important;
+  right:auto!important;
+  bottom:auto!important;
+  left:50%!important;
+  width:min(560px,calc(100vw - 32px))!important;
+  transform:translate(-50%,-50%)!important;
+  display:block!important;
+  padding:32px!important;
+  border-radius:24px!important;
+  background:#17191d!important;
+  color:#fff!important;
+  box-shadow:0 24px 70px rgba(0,0,0,.28)!important;
+}
+#cookie-banner .cookie-actions{
+  display:flex!important;
+  justify-content:flex-end!important;
+  align-items:center!important;
+  gap:10px!important;
+  margin-top:22px!important;
+}
+#cookie-banner .cookie-analytics{background:#fff!important;color:#17191d!important;}
+@media(min-width:861px){nav:not(.footer-legal) .nav-cta{display:none!important;}}
+@media(max-width:560px){
+  #cookie-banner .cookie-actions{flex-direction:column!important;align-items:stretch!important;}
+  #cookie-banner .cookie-actions button{width:100%!important;margin-left:0!important;}
+}
+</style>
 </head>
 <body>
 <div class="bg-green" aria-hidden="true"></div>
@@ -1972,7 +2057,6 @@ nav.nav-scrolled:not(.footer-legal) .nav-logo-img{filter:brightness(0) invert(1)
     <li><a href="#faq" onclick="show('faq');return false;">FAQ</a></li>
     <li><a href="#dokumente" onclick="show('dokumente');return false;">Dokumente</a></li>
   </ul>
-  <button class="nav-cta" onclick="show('kontakt')">Termin anfragen</button>
   <div class="nav-quick-actions" aria-label="Schnellkontakt">
     <a href="tel:017642685146" aria-label="Anrufen"><i data-lucide="phone"></i></a>
     <a href="mailto:info@physiotherapie-grausam.com" aria-label="E-Mail schreiben"><i data-lucide="mail"></i></a>
@@ -2358,23 +2442,26 @@ nav.nav-scrolled:not(.footer-legal) .nav-logo-img{filter:brightness(0) invert(1)
         <div class="ueber-reference-card">
           <div class="ueber-role">Physiotherapeut</div>
           <div class="ueber-name">Nick Grausam</div>
-          <p>Mobile Physiotherapie für Hausbesuche, Privatpatienten und Beihilfe.</p>
+          <p class="ueber-profile-specialty">Sport- &amp; Schmerztherapeut</p>
+          <p class="ueber-profile-treatment">Konservative und postoperative Behandlung</p>
         </div>
       </div>
       <div class="ueber-reference-body">
         <h3>Über mich</h3>
-        <div class="ueber-text">
-          <p>Ich bin Physiotherapeut und komme zu dir nach Hause. Angefangen hat das über den Sport. Handball, früh Kraft- und Techniktraining, später die Ausbildung an der BG&nbsp;Klinik Ludwigshafen.</p>
-          <p>Was ich dort gelernt habe und was mir im Sport wichtig wurde, gehört für mich zusammen. Behandeln allein reicht oft nicht. Es geht auch darum, wieder in Bewegung zu kommen und belastbar zu werden.</p>
-          <p>Ich nehme mir Zeit, frage nach und erkläre, was ich tue. Wenn etwas nicht funktioniert, sage ich das und wir gehen einen anderen Weg.</p>
-        </div>
-        <div class="ueber-facts">
-          <span class="u-eyebrow">Ausbildung &amp; Qualifikation</span>
+        <div class="ueber-facts ueber-profile-section">
+          <span class="u-eyebrow">Schwerpunkte</span>
           <ul>
-            <li>Staatlich anerkannter Physiotherapeut, BG&nbsp;Klinik Ludwigshafen</li>
-            <li>Abrechnungsberechtigt für KG, KGG, MLD und MT</li>
-            <li>Fortbildungen im Sportbereich, u.&nbsp;a. bei Thomas Armbrecht</li>
-            <li>Kinesio-Taping und Flossing</li>
+            <li>Konservative und postoperative Rehabilitation bei orthopädischen Erkrankungen und Sportverletzungen</li>
+            <li>Funktioneller Behandlungsansatz unter Berücksichtigung mechanischer, segmentaler und organischer Zusammenhänge</li>
+            <li>Funktionelles Aufbautraining und phasenadaptierte Belastungssteuerung</li>
+          </ul>
+        </div>
+        <div class="ueber-facts ueber-profile-section">
+          <span class="u-eyebrow">Lebenslauf</span>
+          <ul>
+            <li>Ausbildung an der BG Klinik Ludwigshafen</li>
+            <li>Abrechnungsfähige Fortbildungen: Manuelle Lymphdrainage (MLD), Krankengymnastik am Gerät (KGG), Manuelle Therapie (in Fortbildung)</li>
+            <li>Spezialisierung: Sport- und Schmerztherapie bei Thomas Armbrecht, Darmstadt – ehemaliger Physiotherapeut der deutschen Fußballnationalmannschaft</li>
           </ul>
         </div>
       </div>
@@ -3028,7 +3115,9 @@ function toggleOverlay(){
   bd.classList.toggle('open');
   burger.classList.toggle('open');
   burger.setAttribute('aria-label',ov.classList.contains('open')?'Menü schließen':'Menü öffnen');
-  document.body.style.overflow=ov.classList.contains('open')?'hidden':'';
+  const isOpen=ov.classList.contains('open');
+  document.body.classList.toggle('menu-open',isOpen);
+  document.body.style.overflow=isOpen?'hidden':'';
   if(ov.classList.contains('open')){nav.classList.add('nav-white');}
   else{updateNav();}
 }
