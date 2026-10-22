@@ -3783,6 +3783,23 @@ nav:not(.footer-legal) .nav-wordmark .brand-bottom{
 }
 </style>
 <style>
+/* Goldene Wortmarke bleibt in jedem mobilen Header-Zustand erhalten. */
+@media(max-width:860px){
+  nav:not(.footer-legal) .nav-wordmark .brand-top,
+  nav:not(.footer-legal).nav-white .nav-wordmark .brand-top,
+  nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-top,
+  body.menu-open nav:not(.footer-legal) .nav-wordmark .brand-top{
+    color:#b89550!important;
+    -webkit-text-fill-color:#b89550!important;
+  }
+  nav:not(.footer-legal) .nav-wordmark .brand-bottom,
+  nav:not(.footer-legal).nav-white .nav-wordmark .brand-bottom,
+  nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom,
+  body.menu-open nav:not(.footer-legal) .nav-wordmark .brand-bottom{
+    color:#fff!important;
+    -webkit-text-fill-color:#fff!important;
+  }
+}
 /* Menü-Pfeile direkt neben dem jeweiligen Eintrag wie in der Referenz. */
 @media(max-width:860px){
   .overlay-links a::after{
