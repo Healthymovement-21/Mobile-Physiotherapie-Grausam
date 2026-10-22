@@ -4185,5 +4185,107 @@ nav:not(.footer-legal).nav-white .nav-links a.nav-active{font-weight:400!importa
   .overlay-links a.nav-active .overlay-link-text{font-weight:600!important;color:#15181d!important;-webkit-text-fill-color:#15181d!important;}
 }
 </style>
+<style>
+/* MOBILE DESIGN SYSTEM — Sportopaedie-inspirierte Verfeinerung, Physiotherapie Grausam */
+@media (max-width:860px){
+  :root{
+    --m-ink:#17191d;
+    --m-muted:#70757b;
+    --m-surface:#f1f2f1;
+    --m-surface-soft:#f7f8f7;
+    --m-dark:#15191d;
+    --m-gold:#b89550;
+    --m-line:rgba(23,25,29,.10);
+    --m-radius:28px;
+    --m-gutter:20px;
+    --m-gap:24px;
+  }
+
+  html,body{overflow-x:hidden;background:#fff!important;color:var(--m-ink)!important;}
+  body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;}
+  .page{width:100%;overflow:hidden;}
+  .page > *{max-width:100%;}
+
+  /* Shared mobile type scale */
+  h1,h2,h3,h4,p,li{overflow-wrap:break-word;}
+  .hero-title{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:clamp(38px,10.5vw,50px)!important;line-height:1.05!important;font-weight:600!important;letter-spacing:-.045em!important;}
+  .hero-sub{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:clamp(17px,4.6vw,20px)!important;line-height:1.45!important;color:#70757b!important;}
+  .sec-title,.leist-hero-title,.visual-sec-title,.abschluss-title,.serif-h{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-weight:600!important;letter-spacing:-.035em!important;line-height:1.1!important;color:var(--m-ink)!important;}
+  .sec-title,.leist-hero-title{font-size:clamp(30px,8.5vw,42px)!important;}
+  .visual-sec-title{font-size:clamp(26px,7.4vw,36px)!important;}
+  .sec-sub,.visual-sec-desc,.home-intro-copy p,.leist-copy,.step-p,.prep-item p,.faq-a,.k-note{font-size:16px!important;line-height:1.58!important;color:var(--m-muted)!important;}
+  .eyebrow,.visual-sec-label,.leist-hero-eye,.u-eyebrow,.mehr-block-title,.preis-group-label{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:13px!important;line-height:1.3!important;letter-spacing:.12em!important;text-transform:uppercase!important;color:var(--m-gold)!important;font-weight:500!important;}
+
+  /* Header distribution remains branded but breathes like the reference. */
+  nav:not(.footer-legal){left:16px!important;right:16px!important;padding:0 20px!important;height:64px!important;}
+  nav:not(.footer-legal) .nav-actions{gap:13px!important;}
+  nav:not(.footer-legal) .nav-actions svg{width:20px!important;height:20px!important;stroke-width:1.7!important;}
+  nav:not(.footer-legal) .nav-wordmark{transform:scale(.92)!important;transform-origin:center!important;}
+
+  /* Calm, rounded content rhythm */
+  .hero{padding:86px var(--m-gutter) 54px!important;background:#fff!important;}
+  .hero-content{padding:52px 0 0!important;text-align:center!important;}
+  .hero-btns{gap:14px!important;margin-top:28px!important;}
+  .hero-btns a,.hero-btns button{min-height:54px!important;border-radius:999px!important;font-size:17px!important;font-weight:500!important;}
+  .glass-divider{display:none!important;}
+  .visual-sec,.sec,.mehr-block,.mehr-hero,.abschluss,.dark-sec{width:auto!important;max-width:none!important;margin:0 var(--m-gutter) var(--m-gap)!important;padding:30px 22px 32px!important;border-radius:var(--m-radius)!important;}
+  .visual-sec{display:flex!important;flex-direction:column!important;gap:22px!important;background:var(--m-surface)!important;}
+  .visual-sec-label{padding:0!important;}
+  .visual-sec picture{display:block!important;width:100%!important;}
+  .visual-sec-img,.ueber-img{width:100%!important;max-width:none!important;height:auto!important;border-radius:22px!important;box-shadow:none!important;}
+  .visual-sec-body{padding:0!important;text-align:left!important;}
+  .visual-sec-desc{margin:0 0 16px!important;}
+  .home-intro-copy p{margin:0 0 14px!important;}
+  .home-intro-copy h3{font-size:20px!important;margin:24px 0 10px!important;}
+  .treatment-list{padding-left:20px!important;margin:0!important;}
+  .treatment-list li{font-size:15px!important;line-height:1.5!important;color:var(--m-muted)!important;margin:0 0 8px!important;}
+  .photo-sec{background:var(--m-surface)!important;box-shadow:none!important;}
+  .photo-sec::before,.photo-sec::after{display:none!important;}
+  .dark-sec{background:var(--m-dark)!important;color:#fff!important;}
+  .dark-sec .sec-title,.dark-sec .sec-title-gold,.dark-sec .step-t{color:#fff!important;}
+  .dark-sec .sec-sub,.dark-sec .step-p{color:rgba(255,255,255,.68)!important;}
+  .sec-curves{background:var(--m-surface-soft)!important;border-radius:var(--m-radius)!important;margin:0 var(--m-gutter) var(--m-gap)!important;}
+
+  /* Reusable light cards and forms */
+  .u-card,.leist-card,.doc-card,.mehr-card,.tier,.plz-band,.coaching-price-block,.k-row,.faq-item,.ueber-reference-card{border-radius:20px!important;box-shadow:none!important;}
+  .mehr-cards{display:grid!important;grid-template-columns:1fr!important;gap:12px!important;}
+  .mehr-card{background:#fff!important;border:1px solid var(--m-line)!important;padding:20px!important;}
+  .plz-sec{background:transparent!important;padding:0!important;}
+  .plz-band{background:var(--m-surface)!important;border:0!important;padding:22px!important;margin:0!important;}
+  .plz-input{min-height:48px!important;border-radius:999px!important;background:#fff!important;border:1px solid var(--m-line)!important;}
+  .plz-btn{min-width:48px!important;min-height:48px!important;border-radius:999px!important;background:var(--m-dark)!important;}
+  .form input,.form select,.form textarea{min-height:50px!important;border-radius:14px!important;border:1px solid var(--m-line)!important;background:#fff!important;}
+  .form textarea{min-height:130px!important;}
+
+  /* Buttons share one quiet pill geometry. */
+  .btn,.btn-outline,.hero-link-primary,.u-btn,.nav-cta,.btn-silver,.btn-wa,.hero-link-secondary,.overlay-cta a{min-height:50px!important;border-radius:999px!important;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:16px!important;font-weight:500!important;letter-spacing:0!important;box-shadow:none!important;}
+  .btn,.u-btn,.btn-wa,.hero-link-primary,.overlay-cta a{background:var(--m-dark)!important;color:#fff!important;}
+  .btn-outline,.hero-link-secondary,.btn-silver{background:#fff!important;color:var(--m-ink)!important;border:1px solid var(--m-ink)!important;}
+
+  /* Mobile menu stays the reference component, with consistent spacing. */
+  .overlay,.overlay.open{left:16px!important;right:16px!important;top:calc(96px + env(safe-area-inset-top,0px))!important;max-height:calc(100dvh - 112px)!important;padding:24px 28px calc(20px + env(safe-area-inset-bottom,0px))!important;border-radius:32px!important;background:#e3e3e3!important;}
+  .overlay-links a,.overlay-link-text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:18px!important;line-height:1.3!important;font-weight:400!important;}
+  .overlay-links a{padding:9px 0!important;color:#797b7e!important;}
+  .overlay-links a.nav-active .overlay-link-text{font-weight:500!important;color:#15191d!important;}
+  .overlay-links a::after{margin-left:8px!important;font-size:20px!important;font-weight:300!important;color:#797b7e!important;}
+  .overlay-cta{padding:18px 0 0!important;}
+  .overlay-cta a{min-height:54px!important;font-size:18px!important;}
+
+  /* Reduce oversized legacy mobile spacing without changing content. */
+  .standorte-hero,.leist-hero{padding:106px var(--m-gutter) 28px!important;}
+  .standorte-body,.standorte-grid,.leist-section,.kontakt-grid,.faq-list,.prep-list{gap:16px!important;}
+  .abschluss,.mehr-hero{background:var(--m-surface)!important;}
+  .coaching-card{border-radius:22px!important;padding:22px!important;background:#fff!important;box-shadow:none!important;}
+  footer{margin-top:var(--m-gap)!important;padding:34px var(--m-gutter) 38px!important;border-radius:28px 28px 0 0!important;}
+}
+
+@media (max-width:360px){
+  nav:not(.footer-legal){left:12px!important;right:12px!important;padding:0 16px!important;}
+  nav:not(.footer-legal) .nav-actions{gap:9px!important;}
+  .hero,.visual-sec,.sec,.mehr-block,.mehr-hero,.abschluss,.dark-sec{margin-left:14px!important;margin-right:14px!important;}
+  .hero-title{font-size:35px!important;}
+  .hero-btns a,.hero-btns button{font-size:15px!important;}
+}
+</style>
 </body>
 </html>
