@@ -3206,6 +3206,7 @@ function toggleOverlay(){
   burger.setAttribute('aria-label',ov.classList.contains('open')?'Menü schließen':'Menü öffnen');
   const isOpen=ov.classList.contains('open');
   document.body.classList.toggle('menu-open',isOpen);
+  requestAnimationFrame(function(){window.dispatchEvent(new Event('scroll'));});
   document.body.style.overflow=isOpen?'hidden':'';
   if(ov.classList.contains('open')){nav.classList.add('nav-white');}
   else{updateNav();}
@@ -3582,7 +3583,7 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
     if(!nav||!logo)return;
     var navRect=nav.getBoundingClientRect();
     var height=logo.offsetHeight||34;
-    var scrolled=nav.classList.contains('nav-scrolled');
+    var scrolled=nav.classList.contains('nav-scrolled') || document.body.classList.contains('menu-open');
     var restTop=navRect.bottom+18;
     var headerTop=navRect.top+(navRect.height-height)/2;
     var shift=scrolled ? headerTop-restTop : 0;
