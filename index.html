@@ -3143,6 +3143,19 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
       <p class="footer-contact-item" style="color:#fff!important;"><span class="f-ico-wrap"><i data-lucide="mail"></i></span><a style="color:#fff!important;" href="mailto:info@physiotherapie-grausam.com">info@physiotherapie-grausam.com</a></p>
       <p class="footer-contact-item" style="color:#fff!important;"><span class="f-ico-wrap"><i data-lucide="map-pin"></i></span>Ausgewählte Orte · Raum HD–KA</p>
     </div>
+    <div>
+      <span class="footer-col-title">Allgemein</span>
+      <nav class="footer-section-links" aria-label="Seitenübersicht">
+        <a href="javascript:void(0)" onclick="show('home')">Startseite</a>
+        <a href="javascript:void(0)" onclick="show('standorte')">Standorte</a>
+        <a href="javascript:void(0)" onclick="show('leistungen')">Leistungen</a>
+        <a href="javascript:void(0)" onclick="show('ablauf')">Fragen zum Ablauf</a>
+        <a href="javascript:void(0)" onclick="show('ueber')">Über mich</a>
+        <a href="javascript:void(0)" onclick="show('mehr')">Angebote</a>
+        <a href="javascript:void(0)" onclick="show('faq')">FAQ</a>
+        <a href="javascript:void(0)" onclick="show('kontakt')">Kontakt</a>
+      </nav>
+    </div>
   </div>
   <div class="footer-bottom">
     <nav class="footer-legal" aria-label="Rechtliches">
@@ -3190,6 +3203,21 @@ footer .footer-contact-item,
 footer .footer-contact-item a,
 footer .footer-legal a,
 footer .footer-copy{color:#fff!important;}
+footer .footer-section-links{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  gap:8px!important;
+  margin:0!important;
+}
+footer .footer-section-links a{
+  color:#fff!important;
+  font-family:'DM Sans',system-ui,sans-serif!important;
+  font-size:16px!important;
+  line-height:1.45!important;
+  text-decoration:none!important;
+}
+footer .footer-section-links a:hover{color:#fff!important;text-decoration:underline!important;background:transparent!important;}
 footer .f-ico-wrap{display:none!important;}
 footer .footer-bottom{
   max-width:1120px!important;
