@@ -4342,6 +4342,25 @@ nav:not(.footer-legal).nav-white .nav-links a.nav-active{font-weight:400!importa
   .hero-title{font-size:35px!important;}
   .hero-btns a,.hero-btns button{font-size:15px!important;}
 }
+<style>
+/* Finaler Querformat-Abgleich: Header, Bild und Profilkarte bleiben getrennt. */
+@media (orientation: landscape) and (max-width: 1100px){
+  nav:not(.footer-legal),nav:not(.footer-legal).nav-white,nav:not(.footer-legal).nav-scrolled{top:0!important;left:0!important;right:0!important;width:100%!important;height:72px!important;padding:0 28px!important;border-radius:0!important;background:#15191d!important;border:0!important;box-shadow:0 8px 22px rgba(18,25,22,.16)!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:20px!important;}
+  nav:not(.footer-legal) .nav-logo,nav:not(.footer-legal).nav-scrolled .nav-logo{position:static!important;display:flex!important;flex:0 0 156px!important;width:156px!important;min-width:156px!important;height:auto!important;min-height:0!important;margin:0!important;transform:none!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;}
+  nav:not(.footer-legal) .nav-wordmark,nav:not(.footer-legal).nav-scrolled .nav-wordmark{display:flex!important;font-size:18px!important;line-height:.78!important;}
+  nav:not(.footer-legal) .nav-wordmark .brand-top{color:#b89550!important;-webkit-text-fill-color:#b89550!important;}
+  nav:not(.footer-legal) .nav-wordmark .brand-bottom{color:#fff!important;-webkit-text-fill-color:#fff!important;}
+  nav:not(.footer-legal) .nav-links{display:flex!important;flex:1 1 auto!important;min-width:0!important;justify-content:center!important;gap:0!important;}
+  nav:not(.footer-legal) .nav-links a{color:#fff!important;font-size:11px!important;font-weight:400!important;padding:6px 8px!important;white-space:nowrap!important;}
+  nav:not(.footer-legal) .nav-cta,nav:not(.footer-legal) .nav-quick-actions,nav:not(.footer-legal) .burger{display:none!important;}
+  .page{padding-top:72px!important;}
+  #ueber .ueber-reference-hero{min-height:calc(100svh - 72px)!important;height:calc(100svh - 72px)!important;background:#f7f7f5!important;}
+  #ueber .ueber-reference-hero .ueber-img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important;background:#f7f7f5!important;}
+  #ueber .ueber-reference-card{left:6%!important;right:auto!important;bottom:24px!important;width:min(480px,42vw)!important;padding:22px 24px!important;border-radius:18px!important;}
+  #ueber .ueber-reference-card .ueber-name{font-size:30px!important;}
+  #ueber .ueber-reference-card p{font-size:14px!important;}
+  #ueber .ueber-reference-body{padding-top:56px!important;}
+}
 </style>
 </body>
 </html>
