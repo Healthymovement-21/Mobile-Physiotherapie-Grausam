@@ -1931,13 +1931,15 @@ nav:not(.footer-legal) .nav-wordmark{
   align-items:center!important;
   font-family:'DM Sans',system-ui,sans-serif!important;
   font-size:18px!important;
+  font-weight:400!important;
   line-height:.78!important;
   letter-spacing:-.045em!important;
   white-space:nowrap!important;
 }
 nav:not(.footer-legal) .nav-wordmark .brand-top{color:#b89550!important;}
 nav:not(.footer-legal) .nav-wordmark .brand-bottom{color:#17191d!important;}
-nav:not(.footer-legal) .nav-logo-img{display:block!important;width:190px!important;height:auto!important;max-width:none!important;filter:none!important;}
+nav:not(.footer-legal) .nav-logo-img{display:none!important;}
+nav:not(.footer-legal) .nav-logo{left:calc(50% - 18px)!important;}
 nav.nav-scrolled:not(.footer-legal){background:#15181d!important;border-color:#15181d!important;}
 nav.nav-scrolled:not(.footer-legal) .nav-logo{
   top:52px!important;
@@ -1947,8 +1949,7 @@ nav.nav-scrolled:not(.footer-legal) .nav-wordmark .brand-top,
 nav.nav-scrolled:not(.footer-legal) .nav-wordmark .brand-bottom{color:#fff!important;}
 nav.nav-scrolled:not(.footer-legal) .nav-logo-img{filter:brightness(0) invert(1)!important;}
 @media(max-width:860px){
-  nav:not(.footer-legal) .nav-logo{top:94px!important;width:170px!important;}
-  nav:not(.footer-legal) .nav-logo-img{width:170px!important;}
+  nav:not(.footer-legal) .nav-logo{top:94px!important;width:170px!important;left:calc(50% - 10px)!important;}
   nav:not(.footer-legal) .nav-wordmark{font-size:17px!important;}
   nav.nav-scrolled:not(.footer-legal) .nav-logo{top:34px!important;transform:translate(-50%,-50%) scale(.9)!important;}
 }
@@ -1961,7 +1962,7 @@ nav.nav-scrolled:not(.footer-legal) .nav-logo-img{filter:brightness(0) invert(1)
 
 <nav>
   <span class="nav-logo" onclick="show('home')">
-    <img src="logo-brand-black-gold.png" alt="Physiotherapie Grausam" class="nav-logo-img">
+    <span class="nav-wordmark" aria-label="Physiotherapie Grausam"><span class="brand-top">Physiotherapie</span><span class="brand-bottom">Grausam</span></span>
   </span>
   <ul class="nav-links" id="navLinks">
     <li><a href="#leistungen" onclick="show('leistungen');return false;">Leistungen</a></li>
