@@ -3766,6 +3766,21 @@ nav:not(.footer-legal) .nav-wordmark .brand-bottom{
 }
 </style>
 <style>
+/* Mobile-Header endgültig fixieren: keine Positionsänderung beim Scrollen. */
+@media(max-width:860px){
+  nav:not(.footer-legal),
+  nav:not(.footer-legal).nav-white,
+  nav:not(.footer-legal).nav-scrolled{
+    position:fixed!important;
+    top:calc(18px + env(safe-area-inset-top, 0px))!important;
+    left:22px!important;
+    right:22px!important;
+    width:auto!important;
+    height:58px!important;
+    transform:none!important;
+    z-index:420!important;
+  }
+}
 /* Mobile menu CTA: clear white label on the dark button. */
 @media(max-width:860px){
   .overlay-cta a,
