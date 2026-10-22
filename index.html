@@ -2159,6 +2159,41 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
   .standorte-note{margin-top:22px;padding:16px;}
 }
 </style>
+<style>
+/* Standortliste nach der mobilen Referenz: weiß, schwarz, klare Pfeilzeilen. */
+.standorte-hero{padding:124px clamp(22px,6vw,88px) 0;background:#fff;border:0;}
+.standorte-eyebrow{display:none;}
+.standorte-title{font-family:'Sora',system-ui,sans-serif;font-size:clamp(30px,5vw,52px);font-weight:700;line-height:1.05;letter-spacing:-.045em;color:#15181d;}
+.standorte-intro{max-width:680px;margin:18px 0 0;color:#15181d;font-size:16px;line-height:1.55;}
+.standorte-body{padding:48px clamp(22px,6vw,88px) 76px;background:#fff;}
+.standorte-heading{max-width:780px;margin:0 0 34px;}
+.standorte-heading .eyebrow{display:block;margin:0;color:#15181d!important;font-family:'Sora',system-ui,sans-serif;font-size:clamp(24px,4vw,34px)!important;font-weight:700!important;letter-spacing:-.035em!important;text-transform:none!important;}
+.standorte-heading p{display:none;}
+.standorte-grid{display:flex;flex-direction:column;gap:0;background:transparent;border:0;max-width:780px;}
+.standorte-region{padding:0;background:#fff;}
+.standorte-region + .standorte-region{margin-top:44px;}
+.standorte-region h2{margin:0 0 20px;font-family:'Sora',system-ui,sans-serif;font-size:clamp(24px,4vw,34px);font-weight:700;line-height:1.1;letter-spacing:-.035em;color:#15181d;}
+.standorte-region ul{gap:17px;}
+.standorte-region li{padding-left:46px;font-family:'Sora',system-ui,sans-serif;font-size:clamp(16px,2.2vw,20px);font-weight:500;line-height:1.7;color:#15181d;}
+.standorte-region li::before{content:'›';left:0;top:-.02em;width:auto;height:auto;border-radius:0;background:transparent;color:#15181d;font-size:30px;font-weight:400;line-height:1;}
+.standorte-region li span{color:#15181d;font-size:inherit;}
+.standorte-note{max-width:780px;margin-top:46px;padding:0;background:#fff;border:0;border-radius:0;}
+.standorte-note svg{color:#15181d;}
+.standorte-note p{color:#15181d;font-family:'Sora',system-ui,sans-serif;font-size:14px;line-height:1.65;}
+@media(max-width:600px){
+  .standorte-hero{padding:124px 46px 0;}
+  .standorte-title{font-size:32px;}
+  .standorte-intro{font-size:15px;line-height:1.55;}
+  .standorte-body{padding:42px 46px 68px;}
+  .standorte-heading{margin-bottom:30px;}
+  .standorte-heading .eyebrow{font-size:24px!important;}
+  .standorte-region + .standorte-region{margin-top:42px;}
+  .standorte-region h2{font-size:24px;margin-bottom:18px;}
+  .standorte-region ul{gap:15px;}
+  .standorte-region li{padding-left:44px;font-size:17px;line-height:1.75;}
+  .standorte-note{margin-top:42px;}
+}
+</style>
 </head>
 <body>
 <div class="bg-green" aria-hidden="true"></div>
