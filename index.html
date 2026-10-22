@@ -3602,14 +3602,14 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
     var navRect=nav.getBoundingClientRect();
     var height=logo.offsetHeight||34;
     var scrolled=nav.classList.contains('nav-scrolled');
-    var top=scrolled
-      ? navRect.top+(navRect.height-height)/2
-      : navRect.bottom+18;
+    var restTop=navRect.bottom+18;
+    var headerTop=navRect.top+(navRect.height-height)/2;
+    var shift=scrolled ? headerTop-restTop : 0;
     logo.style.setProperty('position','fixed','important');
     logo.style.setProperty('left','50%','important');
-    logo.style.setProperty('top',top+'px','important');
+    logo.style.setProperty('top',restTop+'px','important');
     logo.style.setProperty('width','190px','important');
-    logo.style.setProperty('transform','translate(-50%,0) scale('+(scrolled?.9:1)+')','important');
+    logo.style.setProperty('transform','translate(-50%,'+shift+'px) scale('+(scrolled?.9:1)+')','important');
     logo.style.setProperty('opacity','1','important');
     logo.style.setProperty('visibility','visible','important');
   }
