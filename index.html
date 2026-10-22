@@ -3576,41 +3576,61 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
   .hero-brand,.hero-brand img{display:none!important;}
 }
 </style>
-<script>
-/* Eine einzige gemessene Bewegung: feste Ruheposition, dann nur translateY in den Header. */
-(function(){
-  function syncMobileLogo(){
-    if(window.innerWidth>860)return;
-    var nav=document.querySelector('nav:not(.footer-legal)');
-    var logo=nav&&nav.querySelector('.nav-logo');
-    if(!nav||!logo)return;
-    var navRect=nav.getBoundingClientRect();
-    var height=logo.offsetHeight||34;
-    var scrolled=nav.classList.contains('nav-scrolled') || document.body.classList.contains('menu-open');
-    var restTop=navRect.bottom+18;
-    var headerTop=navRect.top+(navRect.height-height)/2;
-    var shift=scrolled ? headerTop-restTop : 0;
-    logo.style.setProperty('position','fixed','important');
-    logo.style.setProperty('left','50%','important');
-    logo.style.setProperty('top',restTop+'px','important');
-    logo.style.setProperty('width','250px','important');
-    logo.style.setProperty('transform','translate(-50%,'+shift+'px) scale(1)','important');
-    logo.style.setProperty('opacity','1','important');
-    logo.style.setProperty('visibility','visible','important');
-  }
-  window.addEventListener('scroll',function(){requestAnimationFrame(syncMobileLogo)},{passive:true});
-  window.addEventListener('resize',syncMobileLogo,{passive:true});
-  window.addEventListener('orientationchange',syncMobileLogo,{passive:true});
-  setTimeout(syncMobileLogo,0);
-  setTimeout(syncMobileLogo,250);
-})();
-</script>
+<!-- Mobile logo remains in the header; no floating scroll clone. -->
 <style>
 /* Universelle Wortmarke: beide Zeilen bleiben in allen Header-Zuständen gleich groß. */
 nav:not(.footer-legal) .nav-wordmark .brand-top,
 nav:not(.footer-legal) .nav-wordmark .brand-bottom{
   font-size:1em!important;
   font-weight:400!important;
+}
+</style>
+<style>
+/* Final mobile geometry: one stable header state on every page and scroll position. */
+@media(max-width:860px){
+  nav:not(.footer-legal),
+  nav:not(.footer-legal).nav-white,
+  nav:not(.footer-legal).nav-scrolled{
+    top:calc(18px + env(safe-area-inset-top, 0px))!important;
+    height:58px!important;
+    transform:none!important;
+  }
+  nav:not(.footer-legal) .nav-logo,
+  nav:not(.footer-legal).nav-scrolled .nav-logo,
+  body.menu-open nav:not(.footer-legal) .nav-logo{
+    position:absolute!important;
+    left:50%!important;
+    top:50%!important;
+    width:auto!important;
+    min-width:0!important;
+    min-height:0!important;
+    flex:0 0 auto!important;
+    order:0!important;
+    margin:0!important;
+    transform:translate(-50%,-50%)!important;
+    display:flex!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+  nav:not(.footer-legal) .nav-wordmark,
+  nav:not(.footer-legal).nav-scrolled .nav-wordmark,
+  body.menu-open nav:not(.footer-legal) .nav-wordmark{
+    display:flex!important;
+    font-size:10px!important;
+    line-height:.78!important;
+    align-items:center!important;
+  }
+  nav:not(.footer-legal) .nav-wordmark .brand-top,
+  nav:not(.footer-legal) .nav-wordmark .brand-bottom,
+  nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-top,
+  nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
+    color:#fff!important;
+    -webkit-text-fill-color:#fff!important;
+  }
+  .hero-brand,.hero-brand img{display:none!important;}
+  .hero-content{padding-top:96px!important;}
+  .overlay{top:calc(88px + env(safe-area-inset-top, 0px))!important;}
 }
 </style>
 </body>
