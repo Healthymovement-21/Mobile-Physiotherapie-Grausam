@@ -3766,6 +3766,27 @@ nav:not(.footer-legal) .nav-wordmark .brand-bottom{
 }
 </style>
 <style>
+/* Geöffnete mobile Navigation: Header vollständig sichtbar, Menü nicht abschneiden. */
+@media(max-width:860px){
+  body.menu-open nav:not(.footer-legal),
+  body.menu-open nav:not(.footer-legal).nav-white,
+  body.menu-open nav:not(.footer-legal).nav-scrolled{
+    position:fixed!important;
+    top:calc(18px + env(safe-area-inset-top, 0px))!important;
+    left:22px!important;
+    right:22px!important;
+    width:auto!important;
+    height:58px!important;
+    overflow:visible!important;
+    z-index:1000!important;
+  }
+  body.menu-open .overlay{
+    top:calc(86px + env(safe-area-inset-top, 0px))!important;
+    max-height:calc(100dvh - 104px)!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+}
 /* Mobile-Header endgültig fixieren: keine Positionsänderung beim Scrollen. */
 @media(max-width:860px){
   nav:not(.footer-legal),
