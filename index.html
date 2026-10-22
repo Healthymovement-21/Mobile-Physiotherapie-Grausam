@@ -3473,6 +3473,17 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom {
   nav:not(.footer-legal).nav-scrolled .nav-links a{color:#fff!important;font-size:10px!important;padding:5px 6px!important;}
   nav:not(.footer-legal) .nav-quick-actions{display:none!important;}
 }
+/* Der finale Desktop-Header ist schwarz: alle Navigationspunkte und die
+   untere Logozeile benötigen deshalb ausdrücklich weißen Kontrast. */
+nav:not(.footer-legal) .nav-links a,
+nav:not(.footer-legal).nav-white .nav-links a,
+nav:not(.footer-legal).nav-scrolled .nav-links a,
+nav:not(.footer-legal) .nav-wordmark .brand-bottom,
+nav:not(.footer-legal).nav-white .nav-wordmark .brand-bottom,
+nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+}
 </style>
 </body>
 </html>
