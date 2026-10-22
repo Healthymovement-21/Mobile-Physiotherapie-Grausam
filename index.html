@@ -3458,6 +3458,21 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom {
   }
   nav:not(.footer-legal) .nav-quick-actions{display:none!important;}
 }
+/* Safari auf dem Mac kann durch Split View schmal wirken, bleibt aber eine
+   Maus-/Desktop-Ansicht: Navigation und Logo müssen dort sichtbar bleiben. */
+@media (hover:hover) and (pointer:fine) and (max-width:860px){
+  nav:not(.footer-legal) .burger{display:none!important;}
+  nav:not(.footer-legal) .nav-logo{flex:0 0 auto!important;margin-left:0!important;margin-right:4px!important;}
+  nav:not(.footer-legal) .nav-wordmark .brand-bottom,
+  nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{color:#fff!important;-webkit-text-fill-color:#fff!important;}
+  nav:not(.footer-legal) .nav-links{display:flex!important;flex:1 1 auto!important;min-width:0!important;gap:0!important;margin:0!important;overflow-x:auto!important;scrollbar-width:none!important;}
+  nav:not(.footer-legal) .nav-links::-webkit-scrollbar{display:none!important;}
+  nav:not(.footer-legal) .nav-links li{display:block!important;flex:0 0 auto!important;}
+  nav:not(.footer-legal) .nav-links a,
+  nav:not(.footer-legal).nav-white .nav-links a,
+  nav:not(.footer-legal).nav-scrolled .nav-links a{color:#fff!important;font-size:10px!important;padding:5px 6px!important;}
+  nav:not(.footer-legal) .nav-quick-actions{display:none!important;}
+}
 </style>
 </body>
 </html>
