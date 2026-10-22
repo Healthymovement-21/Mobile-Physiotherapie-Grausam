@@ -2138,19 +2138,18 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
     <span class="nav-wordmark" aria-label="Physiotherapie Grausam"><span class="brand-top">Physiotherapie</span><span class="brand-bottom">Grausam</span></span>
   </span>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#home" onclick="show('home');return false;">Start</a></li>
+    <li><a href="#home" onclick="show('home');return false;">Startseite</a></li>
     <li><a href="#leistungen" onclick="show('leistungen');return false;">Leistungen</a></li>
-    <li><a href="#ablauf" onclick="show('ablauf');return false;">Ablauf</a></li>
-    <li><a href="#mehr" onclick="show('mehr');return false;">Mein Angebot</a></li>
-    <li><a href="#ueber" onclick="show('ueber');return false;">Über mich</a></li>
+    <li><a href="#ablauf" onclick="show('ablauf');return false;">Fragen zum Ablauf</a></li>
+    <li><a href="#mehr" onclick="show('mehr');return false;">Angebote</a></li>
+    <li><a href="#ueber" onclick="show('ueber');return false;">Lebenslauf</a></li>
     <li><a href="#faq" onclick="show('faq');return false;">FAQ</a></li>
-    <li><a href="#dokumente" onclick="show('dokumente');return false;">Dokumente</a></li>
   </ul>
   <div class="nav-quick-actions" aria-label="Schnellkontakt">
     <a href="tel:017642685146" aria-label="Anrufen"><i data-lucide="phone"></i></a>
     <a href="mailto:info@physiotherapie-grausam.com" aria-label="E-Mail schreiben"><i data-lucide="mail"></i></a>
     <a href="#kontakt" onclick="show('kontakt');return false;" aria-label="Kontakt"><i data-lucide="map-pin"></i></a>
-    <a href="#kontakt" onclick="show('kontakt');return false;" aria-label="Termin anfragen"><i data-lucide="calendar-days"></i></a>
+    <a href="#kontakt" onclick="show('kontakt');return false;" aria-label="Termin vereinbaren"><i data-lucide="calendar-days"></i></a>
   </div>
 <button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span class="burger-lines"><span></span><span></span><span></span></span><span class="burger-label">Menü</span></button>
 </nav>
@@ -2159,16 +2158,15 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
 <div class="overlay" id="overlay">
   <button class="overlay-close" onclick="toggleOverlay()" aria-label="Menü schließen"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><line x1="2" y1="2" x2="16" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="2" x2="2" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
   <ul class="overlay-links">
-    <li><a href="#home" onclick="show('home');toggleOverlay();return false;"><span class="overlay-link-text">Start</span></a></li>
-    <li><a href="#ueber" onclick="show('ueber');toggleOverlay();return false;"><span class="overlay-link-text">Über mich</span></a></li>
-    <li><a href="#ablauf" onclick="show('ablauf');toggleOverlay();return false;"><span class="overlay-link-text">Ablauf</span></a></li>
+    <li><a href="#home" onclick="show('home');toggleOverlay();return false;"><span class="overlay-link-text">Startseite</span></a></li>
+    <li><a href="#ueber" onclick="show('ueber');toggleOverlay();return false;"><span class="overlay-link-text">Lebenslauf</span></a></li>
+    <li><a href="#ablauf" onclick="show('ablauf');toggleOverlay();return false;"><span class="overlay-link-text">Fragen zum Ablauf</span></a></li>
     <li><a href="#leistungen" onclick="show('leistungen');toggleOverlay();return false;"><span class="overlay-link-text">Leistungen</span></a></li>
-    <li><a href="#mehr" onclick="show('mehr');toggleOverlay();return false;"><span class="overlay-link-text">Mein Angebot</span></a></li>
+    <li><a href="#mehr" onclick="show('mehr');toggleOverlay();return false;"><span class="overlay-link-text">Angebote</span></a></li>
     <li><a href="#faq" onclick="show('faq');toggleOverlay();return false;"><span class="overlay-link-text">FAQ</span></a></li>
-    <li><a href="#dokumente" onclick="show('dokumente');toggleOverlay();return false;"><span class="overlay-link-text">Dokumente</span></a></li>
   </ul>
   <div class="overlay-cta">
-    <a href="#kontakt" onclick="show('kontakt');toggleOverlay();return false;" style="color:#fff!important;-webkit-text-fill-color:#fff!important;">Termin vereinbaren</a>
+    <a href="#kontakt" onclick="show('kontakt');toggleOverlay();return false;" style="color:#fff!important;-webkit-text-fill-color:#fff!important;">Termin vereinbaren <i data-lucide="calendar-days" aria-hidden="true"></i></a>
   </div>
   <div class="overlay-footer">
     <a href="tel:017642685146">0176 4268 5146</a>
@@ -3642,6 +3640,24 @@ nav:not(.footer-legal) .nav-wordmark .brand-bottom{
   .overlay-cta a::after{
     color:#fff!important;
     -webkit-text-fill-color:#fff!important;
+  }
+  .overlay-links a,
+  .overlay-links a:hover,
+  .overlay-link-text{
+    color:#777!important;
+    -webkit-text-fill-color:#777!important;
+  }
+  .overlay-links a::after{
+    content:'›'!important;
+    color:#777!important;
+    -webkit-text-fill-color:#777!important;
+  }
+  .overlay-cta a::after{content:none!important;}
+  .overlay-cta a svg{
+    width:20px!important;
+    height:20px!important;
+    stroke:#fff!important;
+    -webkit-text-fill-color:initial!important;
   }
 }
 </style>
