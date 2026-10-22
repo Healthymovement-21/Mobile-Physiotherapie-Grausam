@@ -3471,7 +3471,15 @@ function show(id,push){
   document.getElementById(id).classList.add('active');
   sessionStorage.setItem('page',id);
   if(push!==false)history.pushState({page:id},'','#'+id);
-  window.scrollTo({top:0,left:0,behavior:'auto'});
+  if('scrollRestoration' in history)history.scrollRestoration='manual';
+  const resetPageScroll=function(){
+    document.documentElement.scrollTop=0;
+    document.body.scrollTop=0;
+    window.scrollTo({top:0,left:0,behavior:'auto'});
+  };
+  resetPageScroll();
+  requestAnimationFrame(resetPageScroll);
+  setTimeout(resetPageScroll,0);
   revealPageInstant(id);
   updateNav();
 }
