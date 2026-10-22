@@ -2050,6 +2050,20 @@ nav.nav-scrolled:not(.footer-legal) .nav-logo-img{filter:brightness(0) invert(1)
   #cookie-banner .cookie-actions button{width:100%!important;margin-left:0!important;}
 }
 </style>
+<style>
+/* Schwarzer Desktop-Header: Navigation und Schnellkontakt immer weiß. */
+@media(min-width:861px){
+  nav:not(.footer-legal) .nav-links a,
+  nav:not(.footer-legal).nav-white .nav-links a,
+  nav:not(.footer-legal).nav-scrolled .nav-links a,
+  nav:not(.footer-legal) .nav-quick-actions a,
+  nav:not(.footer-legal).nav-white .nav-quick-actions a,
+  nav:not(.footer-legal).nav-scrolled .nav-quick-actions a{
+    color:#fff!important;
+  }
+  nav:not(.footer-legal) .nav-quick-actions svg{stroke:#fff!important;}
+}
+</style>
 </head>
 <body>
 <div class="bg-green" aria-hidden="true"></div>
