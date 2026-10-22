@@ -1831,6 +1831,17 @@ p,li,.hero-sub,.sec-sub,.ueber-text p,.leist-card-text{color:var(--ref-ink)!impo
   nav:not(.footer-legal) .nav-quick-actions a{width:19px!important;height:26px!important;}
   nav:not(.footer-legal) .nav-quick-actions svg{width:16px!important;height:16px!important;}
 }
+/* Mobile-Referenz: Die schwarze Leiste enthält nur Menü und Schnellkontakt-Icons.
+   Die Wortmarke bleibt außerhalb der Leiste und wird dort nicht eingeblendet. */
+@media(max-width:860px){
+  nav:not(.footer-legal) .nav-logo,
+  nav:not(.footer-legal).nav-scrolled .nav-logo{
+    display:none!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+}
 /* Beim geöffneten Menü bleibt der schwarze Header bestehen, aber die Wortmarke
    verschwindet oben aus dem Weg. Im normalen Zustand bleibt die bestehende
    Scroll-Logik unverändert. */
