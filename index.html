@@ -4341,6 +4341,104 @@ nav:not(.footer-legal).nav-white .nav-links a.nav-active{font-weight:400!importa
   .hero-title{font-size:35px!important;}
   .hero-btns a,.hero-btns button{font-size:15px!important;}
 }
+
+/* AUDIT PASS — gemeinsame mobile Geometrie für 320–430 px */
+@media (max-width:860px){
+  :root{
+    --m-gutter:clamp(18px,5.6vw,24px);
+    --m-gap:20px;
+    --m-radius:24px;
+    --m-radius-sm:18px;
+    --m-title:clamp(30px,8.2vw,38px);
+    --m-body:16px;
+    --m-line-height:1.58;
+  }
+
+  /* One predictable content rhythm across all public pages. */
+  .page{padding-top:0!important;}
+  .sec,.visual-sec,.mehr-block,.mehr-hero,.abschluss,.dark-sec,.photo-sec{
+    margin-left:var(--m-gutter)!important;
+    margin-right:var(--m-gutter)!important;
+    margin-bottom:var(--m-gap)!important;
+    border-radius:var(--m-radius)!important;
+  }
+  .sec,.mehr-block,.mehr-hero,.abschluss,.dark-sec,.photo-sec{padding:28px 22px 30px!important;}
+  .sec-title,.visual-sec-title,.leist-hero-title,.abschluss-title,.serif-h{
+    font-size:var(--m-title)!important;
+    line-height:1.1!important;
+    letter-spacing:-.035em!important;
+    margin-bottom:14px!important;
+  }
+  .sec-sub,.visual-sec-desc,.home-intro-copy p,.leist-copy,.step-p,.prep-item p,.faq-a,.k-note,
+  .mehr-card-desc,.kontakt-privacy{font-size:var(--m-body)!important;line-height:var(--m-line-height)!important;}
+  .eyebrow,.visual-sec-label,.leist-hero-eye,.u-eyebrow,.mehr-block-title,.preis-group-label{
+    font-size:12px!important;letter-spacing:.12em!important;line-height:1.3!important;margin-bottom:10px!important;
+  }
+
+  /* Same card language for image/text, FAQ, contact and offer components. */
+  .visual-sec,.photo-sec,.u-card,.leist-card,.doc-card,.mehr-card,.tier,.coaching-card,.k-row,.faq-item,.ueber-reference-card{
+    border-radius:var(--m-radius-sm)!important;
+    box-shadow:none!important;
+  }
+  .visual-sec{gap:20px!important;padding:22px!important;}
+  .visual-sec-img,.ueber-img{border-radius:18px!important;}
+  .mehr-cards{gap:12px!important;}
+  .mehr-card{padding:20px!important;}
+  .faq-item,.k-row{padding:0!important;}
+  .faq-q{min-height:58px!important;padding:17px 18px!important;font-size:16px!important;line-height:1.35!important;}
+  .k-row{padding:16px 18px!important;}
+
+  /* Keep the mobile header calm and proportionate at every requested width. */
+  nav:not(.footer-legal),nav:not(.footer-legal).nav-white,nav:not(.footer-legal).nav-scrolled{
+    left:var(--m-gutter)!important;right:var(--m-gutter)!important;height:64px!important;padding:0 16px!important;border-radius:999px!important;
+  }
+  nav:not(.footer-legal) .nav-quick-actions{gap:11px!important;}
+  nav:not(.footer-legal) .nav-quick-actions a{width:20px!important;height:28px!important;}
+  nav:not(.footer-legal) .nav-quick-actions svg{width:17px!important;height:17px!important;stroke-width:1.6!important;}
+  nav:not(.footer-legal) .burger{width:34px!important;min-width:34px!important;}
+  nav:not(.footer-legal) .nav-wordmark{transform:scale(.9)!important;}
+
+  /* The drawer uses the same outer gutter and radius as content cards. */
+  .overlay,.overlay.open{
+    left:var(--m-gutter)!important;right:var(--m-gutter)!important;top:96px!important;
+    max-height:calc(100dvh - 112px)!important;padding:22px 22px calc(18px + env(safe-area-inset-bottom,0px))!important;
+    border-radius:var(--m-radius)!important;
+  }
+  .overlay-links a,.overlay-link-text{font-size:18px!important;line-height:1.3!important;}
+  .overlay-links a{padding:9px 0!important;}
+  .overlay-cta{padding-top:16px!important;}
+
+  /* Standort groups remain explicit and readable; no place names are changed. */
+  .standorte-hero{padding:104px var(--m-gutter) 30px!important;background:#fff!important;}
+  .standorte-title{font-size:var(--m-title)!important;line-height:1.05!important;}
+  .standorte-body{padding:28px var(--m-gutter) 48px!important;}
+  .standorte-heading{margin-bottom:24px!important;}
+  .standorte-list-title{font-size:24px!important;line-height:1.12!important;}
+  .standorte-grid{gap:14px!important;}
+  .standorte-region{padding:20px!important;background:var(--m-surface)!important;border-radius:var(--m-radius-sm)!important;}
+  .standorte-region + .standorte-region{margin-top:0!important;}
+  .standorte-region h2{font-size:21px!important;line-height:1.2!important;margin-bottom:14px!important;}
+  .standorte-region ul{gap:10px!important;}
+  .standorte-region li{padding-left:24px!important;font-size:16px!important;line-height:1.45!important;}
+  .standorte-region li::before{font-size:22px!important;top:-.08em!important;}
+
+  /* Contact and forms share the same readable mobile column rhythm. */
+  .kontakt-grid{gap:24px!important;}
+  .kontakt-col-title{font-size:24px!important;line-height:1.15!important;margin-bottom:14px!important;}
+  .form-row{gap:14px!important;}
+  .fg{margin-bottom:14px!important;}
+  .fg input,.fg select,.fg textarea{font-size:16px!important;}
+  footer{margin:var(--m-gap) var(--m-gutter) 0!important;padding:30px 20px 34px!important;border-radius:var(--m-radius) var(--m-radius) 0 0!important;}
+}
+
+@media (max-width:360px){
+  :root{--m-gutter:16px;}
+  nav:not(.footer-legal){padding:0 13px!important;}
+  nav:not(.footer-legal) .nav-quick-actions{gap:8px!important;}
+  nav:not(.footer-legal) .nav-quick-actions svg{width:16px!important;height:16px!important;}
+  .sec,.visual-sec,.mehr-block,.mehr-hero,.abschluss,.dark-sec,.photo-sec{padding-left:18px!important;padding-right:18px!important;}
+  .overlay,.overlay.open{padding-left:18px!important;padding-right:18px!important;}
+}
 </style>
 </body>
 </html>
