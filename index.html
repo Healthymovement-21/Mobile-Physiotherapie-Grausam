@@ -2138,6 +2138,7 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
     <span class="nav-wordmark" aria-label="Physiotherapie Grausam"><span class="brand-top">Physiotherapie</span><span class="brand-bottom">Grausam</span></span>
   </span>
   <ul class="nav-links" id="navLinks">
+    <li><a href="#home" onclick="show('home');return false;">Start</a></li>
     <li><a href="#leistungen" onclick="show('leistungen');return false;">Leistungen</a></li>
     <li><a href="#ablauf" onclick="show('ablauf');return false;">Ablauf</a></li>
     <li><a href="#mehr" onclick="show('mehr');return false;">Mein Angebot</a></li>
@@ -3440,22 +3441,22 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom {
   color:#fff!important;
   -webkit-text-fill-color:#fff!important;
 }
-/* Kompakte Laptopansicht: die beiden gewünschten Hauptpunkte stehen
-   direkt im schwarzen Header und bleiben weiß lesbar. */
+/* Kompakte Laptopansicht: die vollständige Navigation bleibt im schwarzen
+   Header sichtbar, weiß und anklickbar. */
 @media (min-width:561px) and (max-width:860px){
   nav:not(.footer-legal) .burger{display:none!important;}
-  nav:not(.footer-legal) .nav-links{display:flex!important;gap:0!important;margin-left:auto!important;margin-right:10px!important;}
-  nav:not(.footer-legal) .nav-links li{display:none!important;}
-  nav:not(.footer-legal) .nav-links li:nth-child(2),
-  nav:not(.footer-legal) .nav-links li:nth-child(4){display:block!important;}
+  nav:not(.footer-legal) .nav-links{display:flex!important;gap:0!important;flex:1 1 auto!important;min-width:0!important;margin-left:8px!important;margin-right:8px!important;overflow-x:auto!important;scrollbar-width:none!important;}
+  nav:not(.footer-legal) .nav-links::-webkit-scrollbar{display:none!important;}
+  nav:not(.footer-legal) .nav-links li{display:block!important;flex:0 0 auto!important;}
   nav:not(.footer-legal) .nav-links a,
   nav:not(.footer-legal).nav-white .nav-links a,
   nav:not(.footer-legal).nav-scrolled .nav-links a{
     color:#fff!important;
-    font-size:12px!important;
+    font-size:11px!important;
     font-weight:500!important;
     padding:6px 8px!important;
   }
+  nav:not(.footer-legal) .nav-quick-actions{display:none!important;}
 }
 </style>
 </body>
