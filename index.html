@@ -3498,5 +3498,73 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
   top:.28em!important;
 }
 </style>
+<style>
+/* Mobile: ein einziges Logo mit fließendem Übergang unterhalb -> im Header. */
+@media (max-width:860px){
+  nav:not(.footer-legal) .nav-logo{
+    position:fixed!important;
+    left:50%!important;
+    top:var(--mobile-logo-rest-top,96px)!important;
+    z-index:501!important;
+    display:flex!important;
+    width:190px!important;
+    min-width:0!important;
+    min-height:0!important;
+    margin:0!important;
+    align-items:center!important;
+    justify-content:center!important;
+    transform:translate(-50%,0) scale(1)!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:none!important;
+    transition:top .48s cubic-bezier(.22,.75,.25,1),transform .48s cubic-bezier(.22,.75,.25,1)!important;
+  }
+  nav:not(.footer-legal).nav-scrolled .nav-logo{
+    top:var(--mobile-logo-header-top,32px)!important;
+    transform:translate(-50%,0) scale(.9)!important;
+  }
+  nav:not(.footer-legal) .nav-wordmark{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    font-size:17px!important;
+    line-height:.78!important;
+    letter-spacing:-.045em!important;
+    white-space:nowrap!important;
+  }
+  nav:not(.footer-legal) .nav-wordmark .brand-top{
+    color:#b89550!important;
+    -webkit-text-fill-color:#b89550!important;
+  }
+  nav:not(.footer-legal) .nav-wordmark .brand-bottom{
+    color:#17191d!important;
+    -webkit-text-fill-color:#17191d!important;
+  }
+  nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
+    color:#fff!important;
+    -webkit-text-fill-color:#fff!important;
+  }
+  .hero-brand,.hero-brand img{display:none!important;}
+}
+</style>
+<script>
+/* Misst die echte Header-/Logo-Geometrie für unterschiedliche Mobilbreiten. */
+(function(){
+  function positionMobileLogo(){
+    if(window.innerWidth>860)return;
+    var nav=document.querySelector('nav:not(.footer-legal)');
+    var logo=nav&&nav.querySelector('.nav-logo');
+    if(!nav||!logo)return;
+    var navRect=nav.getBoundingClientRect();
+    var logoHeight=logo.getBoundingClientRect().height||34;
+    document.documentElement.style.setProperty('--mobile-logo-rest-top',(navRect.bottom+18)+'px');
+    document.documentElement.style.setProperty('--mobile-logo-header-top',(navRect.top+(navRect.height-logoHeight)/2)+'px');
+  }
+  window.addEventListener('resize',positionMobileLogo,{passive:true});
+  window.addEventListener('orientationchange',positionMobileLogo,{passive:true});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(positionMobileLogo);
+  positionMobileLogo();
+})();
+</script>
 </body>
 </html>
