@@ -2064,6 +2064,42 @@ nav.nav-scrolled:not(.footer-legal) .nav-logo-img{filter:brightness(0) invert(1)
   nav:not(.footer-legal) .nav-quick-actions svg{stroke:#fff!important;}
 }
 </style>
+<style>
+/* Mobile-Referenz: Logo unter der schwarzen Header-Leiste, neutrale Typografie. */
+.mobile-brand-under-nav{display:none;}
+@media(max-width:860px){
+  .page{padding-top:0!important;}
+  .mobile-brand-under-nav{
+    display:flex!important;
+    height:154px!important;
+    padding:84px 24px 14px!important;
+    align-items:flex-end!important;
+    justify-content:center!important;
+    background:#fff!important;
+  }
+  .mobile-brand-under-nav img{
+    display:block!important;
+    width:min(244px,68vw)!important;
+    max-height:58px!important;
+    height:auto!important;
+    object-fit:contain!important;
+  }
+  .ueber-reference-body .ueber-facts{
+    border-top:0!important;
+    padding-top:0!important;
+  }
+  .ueber-reference-body .u-eyebrow{
+    color:var(--ink)!important;
+    font-size:22px!important;
+    line-height:1.15!important;
+    letter-spacing:-.035em!important;
+    text-transform:none!important;
+    margin-bottom:18px!important;
+  }
+  .ueber-reference-body .ueber-facts li::before{background:var(--ink)!important;}
+  .ueber-reference-body .ueber-profile-section + .ueber-profile-section{margin-top:42px!important;}
+}
+</style>
 </head>
 <body>
 <div class="bg-green" aria-hidden="true"></div>
@@ -2090,6 +2126,10 @@ nav.nav-scrolled:not(.footer-legal) .nav-logo-img{filter:brightness(0) invert(1)
   </div>
 <button class="burger" onclick="toggleOverlay()" aria-label="Menü öffnen" id="burgerBtn"><span class="burger-lines"><span></span><span></span><span></span></span><span class="burger-label">Menü</span></button>
 </nav>
+
+<div class="mobile-brand-under-nav" aria-label="Mobile Physiotherapie Grausam">
+  <img src="logo-brand-black-gold.png" alt="Mobile Physiotherapie Grausam">
+</div>
 
 <div class="overlay-backdrop" id="overlayBackdrop" onclick="toggleOverlay()"></div>
 <div class="overlay" id="overlay">
