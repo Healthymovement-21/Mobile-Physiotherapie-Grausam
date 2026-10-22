@@ -2021,6 +2021,42 @@ nav.nav-scrolled:not(.footer-legal) .nav-logo-img{filter:brightness(0) invert(1)
 }
 </style>
 <style>
+/* Final mobile header rule: the white wordmark stays inside the black header.
+   No standalone logo/image may appear below the header. */
+@media(max-width:860px){
+  nav:not(.footer-legal) .nav-logo,
+  nav:not(.footer-legal).nav-scrolled .nav-logo{
+    position:static!important;
+    left:auto!important;
+    top:auto!important;
+    transform:none!important;
+    width:auto!important;
+    min-width:0!important;
+    min-height:0!important;
+    margin:0!important;
+    flex:0 1 auto!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+  nav:not(.footer-legal) .nav-wordmark,
+  nav:not(.footer-legal).nav-scrolled .nav-wordmark{
+    display:flex!important;
+    font-size:10px!important;
+    align-items:center!important;
+  }
+  nav:not(.footer-legal) .nav-wordmark .brand-top,
+  nav:not(.footer-legal) .nav-wordmark .brand-bottom,
+  nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-top,
+  nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
+    color:#fff!important;
+  }
+  .hero-brand,
+  .hero-brand img{display:none!important;}
+  .hero-content{padding-top:72px!important;}
+}
+</style>
+<style>
 /* Cookie-Hinweis als zentrales Auswahlfenster in der neutralen Header-Farbe. */
 #cookie-banner{
   top:50%!important;
