@@ -4065,6 +4065,98 @@ nav:not(.footer-legal) .nav-wordmark .brand-bottom{
 }
 </style>
 <style>
+/* Mobile navigation reference alignment: sportopaedie.de proportions only. */
+@media(max-width:860px){
+  nav:not(.footer-legal),
+  nav:not(.footer-legal).nav-white,
+  nav:not(.footer-legal).nav-scrolled,
+  body.menu-open nav:not(.footer-legal),
+  body.menu-open nav:not(.footer-legal).nav-white,
+  body.menu-open nav:not(.footer-legal).nav-scrolled{
+    height:68px!important;
+    background:#15191d!important;
+    border:0!important;
+    border-radius:999px!important;
+  }
+  .overlay,
+  .overlay.open{
+    left:16px!important;
+    right:16px!important;
+    width:auto!important;
+    top:calc(102px + env(safe-area-inset-top, 0px))!important;
+    max-height:calc(100dvh - 118px)!important;
+    overflow:hidden!important;
+    background:#e3e3e3!important;
+    border-radius:36px!important;
+    box-shadow:0 18px 36px rgba(0,0,0,.18)!important;
+    padding:24px 28px calc(20px + env(safe-area-inset-bottom,0px))!important;
+  }
+  .overlay-links{
+    width:100%!important;
+    padding:0!important;
+  }
+  .overlay-links li,
+  .overlay-links li+li{border:0!important;}
+  .overlay-links a,
+  .overlay-links a:hover{
+    display:flex!important;
+    align-items:center!important;
+    gap:0!important;
+    padding:10px 0!important;
+    color:#797b7e!important;
+    -webkit-text-fill-color:#797b7e!important;
+    font-family:'Helvetica Neue',Helvetica,Arial,Candara,Segoe,'Segoe UI',sans-serif!important;
+    font-size:18px!important;
+    font-weight:500!important;
+    line-height:1.3!important;
+  }
+  .overlay-link-text{
+    font-family:'Helvetica Neue',Helvetica,Arial,Candara,Segoe,'Segoe UI',sans-serif!important;
+    font-size:18px!important;
+    font-weight:500!important;
+    line-height:1.3!important;
+  }
+  .overlay-links a.nav-active .overlay-link-text{
+    color:#15191d!important;
+    -webkit-text-fill-color:#15191d!important;
+    font-weight:600!important;
+  }
+  .overlay-links a::after{
+    content:'›'!important;
+    margin:0 0 0 10px!important;
+    color:#797b7e!important;
+    -webkit-text-fill-color:#797b7e!important;
+    font-size:21px!important;
+    font-weight:300!important;
+    line-height:1!important;
+  }
+  .overlay-links a.nav-active::after{content:none!important;}
+  .overlay-cta{
+    width:100%!important;
+    padding:18px 0 0!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+  .overlay-cta a,
+  .overlay-cta a:hover{
+    width:100%!important;
+    min-height:54px!important;
+    justify-content:center!important;
+    gap:10px!important;
+    padding:0 20px!important;
+    border-radius:999px!important;
+    background:#15191d!important;
+    color:#fff!important;
+    -webkit-text-fill-color:#fff!important;
+    font-family:'Helvetica Neue',Helvetica,Arial,Candara,Segoe,'Segoe UI',sans-serif!important;
+    font-size:18px!important;
+    font-weight:500!important;
+    line-height:1.3!important;
+  }
+  .overlay-cta a svg{width:20px!important;height:20px!important;stroke-width:1.8!important;}
+}
+</style>
+<style>
 /* Footer text stays white after the global link-color rules. */
 footer .footer-contact-item,
 footer .footer-contact-item a,
