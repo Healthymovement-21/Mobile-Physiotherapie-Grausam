@@ -2052,6 +2052,14 @@ nav.nav-scrolled:not(.footer-legal) .nav-logo-img{filter:brightness(0) invert(1)
 </style>
 <style>
 /* Schwarzer Desktop-Header: Navigation und Schnellkontakt immer weiß. */
+nav:not(.footer-legal) .nav-wordmark,
+nav:not(.footer-legal) .nav-wordmark .brand-top,
+nav:not(.footer-legal) .nav-wordmark .brand-bottom,
+nav:not(.footer-legal) .nav-links a,
+nav:not(.footer-legal).nav-white .nav-links a,
+nav:not(.footer-legal).nav-scrolled .nav-links a{
+  color:#fff!important;
+}
 @media(min-width:861px){
   nav:not(.footer-legal) .nav-links a,
   nav:not(.footer-legal).nav-white .nav-links a,
