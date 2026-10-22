@@ -3491,7 +3491,19 @@ function navigateFromMenu(id){
   // Menü zuerst schließen, damit Seitenwechsel und Scroll-Korrektur nicht
   // gleichzeitig mit dem geöffneten Drawer ausgeführt werden.
   const ov=document.getElementById('overlay');
-  if(ov && ov.classList.contains('open')) toggleOverlay();
+  const bd=document.getElementById('overlayBackdrop');
+  if(ov && ov.classList.contains('open')){
+    // Beim Navigieren darf der alte Drawer nicht noch über der neuen Seite
+    // ausfaden. Die normale Menüanimation bleibt beim manuellen Schließen
+    // unverändert bestehen.
+    ov.style.transition='none';
+    if(bd) bd.style.transition='none';
+    toggleOverlay();
+    requestAnimationFrame(function(){
+      ov.style.transition='';
+      if(bd) bd.style.transition='';
+    });
+  }
   show(id);
 }
 function toggleOverlay(){
