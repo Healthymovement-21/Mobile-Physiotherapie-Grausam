@@ -3809,6 +3809,14 @@ nav:not(.footer-legal) .nav-wordmark .brand-bottom{
 }
 /* Geöffnete mobile Navigation: Header vollständig sichtbar, Menü nicht abschneiden. */
 @media(max-width:860px){
+  html:has(body.menu-open){
+    overflow:hidden!important;
+    overscroll-behavior:none!important;
+  }
+  body.menu-open{
+    overscroll-behavior:none!important;
+    -webkit-overflow-scrolling:auto!important;
+  }
   body.menu-open nav:not(.footer-legal),
   body.menu-open nav:not(.footer-legal).nav-white,
   body.menu-open nav:not(.footer-legal).nav-scrolled{
@@ -3823,9 +3831,12 @@ nav:not(.footer-legal) .nav-wordmark .brand-bottom{
   }
   body.menu-open .overlay{
     top:calc(86px + env(safe-area-inset-top, 0px))!important;
-    max-height:calc(100dvh - 104px)!important;
-    overflow-y:auto!important;
-    -webkit-overflow-scrolling:touch!important;
+    bottom:calc(18px + env(safe-area-inset-bottom, 0px))!important;
+    height:calc(100svh - 104px)!important;
+    max-height:none!important;
+    overflow:hidden!important;
+    overscroll-behavior:none!important;
+    -webkit-overflow-scrolling:auto!important;
   }
 }
 /* Mobile-Header endgültig fixieren: keine Positionsänderung beim Scrollen. */
