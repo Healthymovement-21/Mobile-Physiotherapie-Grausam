@@ -3844,13 +3844,12 @@ nav:not(.footer-legal) .nav-wordmark .brand-bottom{
   nav:not(.footer-legal),
   nav:not(.footer-legal).nav-white,
   nav:not(.footer-legal).nav-scrolled{
-    position:sticky!important;
+    position:fixed!important;
     top:calc(18px + env(safe-area-inset-top, 0px))!important;
-    left:auto!important;
-    right:auto!important;
+    left:22px!important;
+    right:22px!important;
     width:auto!important;
     height:58px!important;
-    margin:18px 22px -76px!important;
     -webkit-transform:translate3d(0,0,0)!important;
     transform:translate3d(0,0,0)!important;
     will-change:transform!important;
@@ -3861,16 +3860,6 @@ nav:not(.footer-legal) .nav-wordmark .brand-bottom{
     visibility:visible!important;
     z-index:1000!important;
     isolation:isolate!important;
-  }
-  body.menu-open nav:not(.footer-legal),
-  body.menu-open nav:not(.footer-legal).nav-white,
-  body.menu-open nav:not(.footer-legal).nav-scrolled{
-    position:fixed!important;
-    top:calc(18px + env(safe-area-inset-top, 0px))!important;
-    left:22px!important;
-    right:22px!important;
-    width:auto!important;
-    margin:0!important;
   }
 }
 /* Mobile menu CTA: clear white label on the dark button. */
