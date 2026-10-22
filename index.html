@@ -3841,6 +3841,10 @@ nav:not(.footer-legal) .nav-wordmark .brand-bottom{
 }
 /* Mobile-Header endgültig fixieren: keine Positionsänderung beim Scrollen. */
 @media(max-width:860px){
+  html,
+  body{
+    overflow-x:clip!important;
+  }
   nav:not(.footer-legal),
   nav:not(.footer-legal).nav-white,
   nav:not(.footer-legal).nav-scrolled{
