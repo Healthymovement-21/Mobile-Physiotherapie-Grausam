@@ -3766,6 +3766,13 @@ nav:not(.footer-legal) .nav-wordmark .brand-bottom{
 }
 </style>
 <style>
+/* Menü-Pfeile direkt neben dem jeweiligen Eintrag wie in der Referenz. */
+@media(max-width:860px){
+  .overlay-links a::after{
+    margin-left:10px!important;
+    margin-right:0!important;
+  }
+}
 /* Geöffnete mobile Navigation: Header vollständig sichtbar, Menü nicht abschneiden. */
 @media(max-width:860px){
   body.menu-open nav:not(.footer-legal),
