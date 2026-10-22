@@ -3566,5 +3566,35 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
   positionMobileLogo();
 })();
 </script>
+<script>
+/* Erzwingt ausschließlich auf Mobilgeräten die zwei gemessenen Logo-Ziele.
+   Inline-Variablen verhindern, dass ältere Header-Regeln die Position zurücksetzen. */
+(function(){
+  function syncMobileLogo(){
+    if(window.innerWidth>860)return;
+    var nav=document.querySelector('nav:not(.footer-legal)');
+    var logo=nav&&nav.querySelector('.nav-logo');
+    if(!nav||!logo)return;
+    var navRect=nav.getBoundingClientRect();
+    var height=logo.offsetHeight||34;
+    var scrolled=nav.classList.contains('nav-scrolled');
+    var top=scrolled
+      ? navRect.top+(navRect.height-height)/2
+      : navRect.bottom+18;
+    logo.style.setProperty('position','fixed','important');
+    logo.style.setProperty('left','50%','important');
+    logo.style.setProperty('top',top+'px','important');
+    logo.style.setProperty('width','190px','important');
+    logo.style.setProperty('transform','translate(-50%,0) scale('+(scrolled?.9:1)+')','important');
+    logo.style.setProperty('opacity','1','important');
+    logo.style.setProperty('visibility','visible','important');
+  }
+  window.addEventListener('scroll',function(){requestAnimationFrame(syncMobileLogo)},{passive:true});
+  window.addEventListener('resize',syncMobileLogo,{passive:true});
+  window.addEventListener('orientationchange',syncMobileLogo,{passive:true});
+  setTimeout(syncMobileLogo,0);
+  setTimeout(syncMobileLogo,250);
+})();
+</script>
 </body>
 </html>
