@@ -242,6 +242,12 @@ nav .burger-lines span{background:#fff;}
 .burger.open .burger-lines span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 .burger.open .burger-label{opacity:0;}
 
+/* Dezenter Rücksprung zum Seitenanfang */
+.scroll-top{position:fixed;right:20px;bottom:24px;z-index:310;width:44px;height:44px;border:0;border-radius:50%;background:#15191d;color:#fff;font-family:Arial,sans-serif;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease;box-shadow:0 8px 20px rgba(21,25,29,.18);}
+.scroll-top.is-visible{opacity:1;visibility:visible;transform:translateY(0);}
+.scroll-top:focus-visible{outline:2px solid #b89550;outline-offset:3px;}
+@media(max-width:860px){.scroll-top{right:18px;bottom:calc(82px + env(safe-area-inset-bottom,0px));}}
+
 
 /* ── PAGES ── */
 .page{display:none;padding-top:80px;min-height:100vh;background:transparent;}
@@ -2244,6 +2250,8 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
   </div>
 </div>
 
+<button class="scroll-top" id="scrollTopBtn" type="button" aria-label="Nach oben">↑</button>
+
 <!-- ═══ STANDORTE ═══ -->
 <div class="page" id="standorte">
   <div class="standorte-hero">
@@ -3686,6 +3694,18 @@ function sendWeb3Form(e){
 }
 
 if(window.lucide) lucide.createIcons();
+
+const scrollTopBtn=document.getElementById('scrollTopBtn');
+function updateScrollTop(){
+  if(scrollTopBtn)scrollTopBtn.classList.toggle('is-visible',window.scrollY>window.innerHeight*.45);
+}
+window.addEventListener('scroll',updateScrollTop,{passive:true});
+if(scrollTopBtn)scrollTopBtn.addEventListener('click',function(){
+  document.documentElement.scrollTop=0;
+  document.body.scrollTop=0;
+  window.scrollTo({top:0,left:0,behavior:'auto'});
+});
+updateScrollTop();
 
 // Scroll animations
 const _io = new IntersectionObserver(entries=>{
