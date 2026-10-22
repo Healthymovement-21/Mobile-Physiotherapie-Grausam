@@ -3149,6 +3149,7 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
   </div>
   <div class="footer-bottom">
     <nav class="footer-legal" aria-label="Rechtliches">
+      <span class="footer-legal-heading">Rechtliches</span>
       <a href="javascript:void(0)" onclick="show('impressum')">Impressum</a>
       <a href="javascript:void(0)" onclick="show('datenschutz')">Datenschutz</a>
       <a href="javascript:void(0)" onclick="show('agb')">Behandlungsbedingungen</a>
@@ -3157,6 +3158,67 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
     <p class="footer-copy">© 2026 Nick Grausam · Alle Rechte vorbehalten</p>
   </div>
 </footer>
+
+<style>
+/* Fußzeile: dunkle, ruhige Stapelung nach der Referenz auf Mobilgeräten */
+footer{
+  background:#11171b!important;
+  border-top:0!important;
+  color:#fff!important;
+  padding:48px clamp(24px,6vw,88px) 28px!important;
+}
+footer .footer-inner{max-width:1120px!important;margin:0 auto 38px!important;display:block!important;}
+footer .footer-inner>div{max-width:440px!important;}
+footer .footer-col-title,
+footer .footer-legal-heading{
+  display:block!important;
+  margin:0 0 14px!important;
+  color:rgba(255,255,255,.58)!important;
+  font-size:12px!important;
+  font-weight:500!important;
+  letter-spacing:.02em!important;
+  text-transform:none!important;
+}
+footer .footer-contact-item{
+  display:block!important;
+  margin:0 0 9px!important;
+  padding:0!important;
+  color:rgba(255,255,255,.9)!important;
+  font-size:14px!important;
+  line-height:1.55!important;
+}
+footer .footer-contact-item a{color:rgba(255,255,255,.9)!important;}
+footer .f-ico-wrap{display:none!important;}
+footer .footer-bottom{
+  max-width:1120px!important;
+  margin:0 auto!important;
+  padding-top:30px!important;
+  border-top:1px solid rgba(255,255,255,.12)!important;
+  display:block!important;
+}
+footer .footer-legal{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  gap:8px!important;
+  margin:0 0 28px!important;
+}
+footer .footer-legal-heading{margin-bottom:6px!important;}
+footer .footer-legal a{
+  padding:0!important;
+  color:rgba(255,255,255,.9)!important;
+  font-size:14px!important;
+  line-height:1.45!important;
+}
+footer .footer-legal a:hover{color:#fff!important;background:transparent!important;}
+footer .footer-copy{margin:0!important;color:rgba(255,255,255,.42)!important;font-size:12px!important;}
+@media(min-width:861px){
+  footer .footer-inner{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:64px!important;}
+  footer .footer-bottom{display:grid!important;grid-template-columns:1fr auto!important;align-items:end!important;gap:30px!important;}
+  footer .footer-legal{margin:0!important;}
+  footer .footer-copy{justify-self:end!important;}
+}
+</style>
 
 
 <script src="js/lucide.min.js"></script>
