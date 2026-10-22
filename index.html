@@ -3523,6 +3523,7 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
   nav:not(.footer-legal).nav-white,
   nav:not(.footer-legal).nav-scrolled{
     background:#15191d!important;
+    overflow:visible!important;
   }
   nav:not(.footer-legal) .nav-logo{
     position:fixed!important;
@@ -3550,7 +3551,7 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
     display:flex!important;
     flex-direction:column!important;
     align-items:center!important;
-    font-size:17px!important;
+    font-size:20px!important;
     line-height:.78!important;
     letter-spacing:-.045em!important;
     white-space:nowrap!important;
@@ -3619,5 +3620,13 @@ nav:not(.footer-legal).nav-scrolled .nav-wordmark .brand-bottom{
   setTimeout(syncMobileLogo,250);
 })();
 </script>
+<style>
+/* Universelle Wortmarke: beide Zeilen bleiben in allen Header-Zuständen gleich groß. */
+nav:not(.footer-legal) .nav-wordmark .brand-top,
+nav:not(.footer-legal) .nav-wordmark .brand-bottom{
+  font-size:1em!important;
+  font-weight:400!important;
+}
+</style>
 </body>
 </html>
