@@ -3434,6 +3434,14 @@ function revealPage(id){
     el.classList.add('visible');
   });
 }
+function revealPageInstant(id){
+  const page=document.getElementById(id);
+  if(!page)return;
+  page.querySelectorAll('.reveal').forEach(function(el){
+    el.style.transitionDelay='0s';
+    el.classList.add('visible');
+  });
+}
 // Transparente Navi nur über dem Cinematic-Hero (Startseite, ganz oben)
 function updateNav(){
   const nav=document.querySelector('nav');
@@ -3464,7 +3472,7 @@ function show(id,push){
   sessionStorage.setItem('page',id);
   if(push!==false)history.pushState({page:id},'','#'+id);
   window.scrollTo({top:0,left:0,behavior:'auto'});
-  setTimeout(()=>revealPage(id),30);
+  revealPageInstant(id);
   updateNav();
 }
 window.addEventListener('popstate',function(e){
