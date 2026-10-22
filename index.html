@@ -3297,6 +3297,7 @@ setTimeout(()=>{
   updateNav();
 },80);
 
+var menuScrollY=0;
 function toggleOverlay(){
   const ov=document.getElementById('overlay');
   const bd=document.getElementById('overlayBackdrop');
@@ -3309,7 +3310,23 @@ function toggleOverlay(){
   const isOpen=ov.classList.contains('open');
   document.body.classList.toggle('menu-open',isOpen);
   requestAnimationFrame(function(){window.dispatchEvent(new Event('scroll'));});
-  document.body.style.overflow=isOpen?'hidden':'';
+  if(isOpen){
+    menuScrollY=window.pageYOffset||document.documentElement.scrollTop||0;
+    document.body.style.position='fixed';
+    document.body.style.top=(-menuScrollY)+'px';
+    document.body.style.left='0';
+    document.body.style.right='0';
+    document.body.style.width='100%';
+    document.body.style.overflow='hidden';
+  } else {
+    document.body.style.position='';
+    document.body.style.top='';
+    document.body.style.left='';
+    document.body.style.right='';
+    document.body.style.width='';
+    document.body.style.overflow='';
+    window.scrollTo(0,menuScrollY);
+  }
   if(ov.classList.contains('open')){nav.classList.add('nav-white');}
   else{updateNav();}
 }
