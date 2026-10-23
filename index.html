@@ -2548,12 +2548,18 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
 
   <div class="sec plz-sec home-plz-end">
     <div class="plz-band">
-      <span class="plz-band-label">Ihre Postleitzahl</span>
-      <div class="plz-form">
-        <input type="text" id="plzInput" class="plz-input" placeholder="Postleitzahl" maxlength="5" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPLZ()">
-        <button class="plz-btn" onclick="checkPLZ()" aria-label="Prüfen"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="plz-copy">
+        <span class="plz-band-label">Einzugsgebiet</span>
+        <strong>Liegt Ihre Adresse in meinem Einzugsgebiet?</strong>
+        <p>Geben Sie Ihre Postleitzahl ein – ich prüfe direkt, ob Hausbesuche an Ihrem Wohnort möglich sind.</p>
       </div>
-      <div id="plzResult" class="plz-result"></div>
+      <div class="plz-action">
+        <div class="plz-form">
+          <input type="text" id="plzInput" class="plz-input" placeholder="Postleitzahl" maxlength="5" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPLZ()">
+          <button class="plz-btn" onclick="checkPLZ()" aria-label="Postleitzahl prüfen"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div id="plzResult" class="plz-result"></div>
+      </div>
     </div>
   </div>
 
@@ -4962,6 +4968,86 @@ body:not(#roboto-override) .page:not(#home) ul{max-width:var(--layout-text);}
 @media(min-width:861px){
   body:not(#roboto-override) .page#home > .hero .hero-title{font-size:48px!important;}
   body:not(#roboto-override) .page#home > .visual-sec .visual-sec-title{font-size:38px!important;}
+}
+
+/* PLZ-Checker: ruhige, medizinische Formularansicht mit klarer Hierarchie. */
+body:not(#roboto-override) .page#home > .home-plz-end{
+  padding:48px var(--layout-gutter) 52px!important;
+  background:#f6f8f5!important;
+  border-top:1px solid #e1e7e1!important;
+  border-bottom:1px solid #e1e7e1!important;
+}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-band{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(300px,440px)!important;
+  align-items:center!important;
+  gap:48px!important;
+  max-width:980px!important;
+  padding:28px 32px!important;
+  background:#fff!important;
+  border:1px solid #dfe6df!important;
+  border-top:3px solid var(--brand)!important;
+  border-radius:10px!important;
+  box-shadow:0 8px 24px rgba(32,71,49,.06)!important;
+}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-copy{min-width:0!important;}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-band-label{
+  margin:0 0 10px!important;
+  color:var(--brand)!important;
+  font-size:11px!important;
+  font-weight:700!important;
+  letter-spacing:1.5px!important;
+  text-transform:uppercase!important;
+}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-copy strong{
+  display:block!important;
+  color:var(--ink)!important;
+  font-family:'DM Sans',system-ui,sans-serif!important;
+  font-size:clamp(20px,2.3vw,27px)!important;
+  font-weight:500!important;
+  letter-spacing:-.025em!important;
+  line-height:1.15!important;
+}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-copy p{
+  max-width:42ch!important;
+  margin:10px 0 0!important;
+  color:var(--muted)!important;
+  font-size:14px!important;
+  line-height:1.55!important;
+}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-action{min-width:0!important;}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-form{max-width:none!important;gap:10px!important;}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-input{
+  min-height:52px!important;
+  padding:0 16px!important;
+  background:#fff!important;
+  border:1px solid #cfdad1!important;
+  border-radius:7px!important;
+  color:var(--ink)!important;
+  font-size:16px!important;
+}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-input:focus{
+  border-color:var(--brand)!important;
+  box-shadow:0 0 0 3px rgba(35,107,74,.10)!important;
+}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-btn{
+  width:52px!important;
+  min-width:52px!important;
+  min-height:52px!important;
+  background:var(--brand)!important;
+  border:0!important;
+  border-radius:7px!important;
+  color:#fff!important;
+}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-btn:hover{background:var(--brand-dark)!important;}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-result{margin-top:12px!important;}
+@media(max-width:860px){
+  body:not(#roboto-override) .page#home > .home-plz-end{padding:36px var(--layout-gutter) 40px!important;}
+  body:not(#roboto-override) .page#home > .home-plz-end .plz-band{
+    grid-template-columns:1fr!important;
+    gap:24px!important;
+    padding:24px 20px!important;
+  }
 }
 </style>
 </body>
