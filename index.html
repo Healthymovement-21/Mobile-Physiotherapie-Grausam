@@ -32,7 +32,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=4">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/DMSans-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
 @font-face{font-family:'DM Sans';font-style:italic;font-weight:400;font-display:swap;src:url('fonts/DMSans-400italic-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
@@ -4389,6 +4389,129 @@ nav:not(.footer-legal).nav-white .nav-links a.nav-active{font-weight:400!importa
 <style id="global-roboto-condensed">
 /* Global typography: Roboto Condensed with a lighter regular weight. */
 body:not(#roboto-override),body:not(#roboto-override) *:not(#roboto-override),body:not(#roboto-override) *:not(#roboto-override)::before,body:not(#roboto-override) *:not(#roboto-override)::after{font-family:"Roboto Condensed",Arial,sans-serif!important;font-weight:400!important;}
+</style>
+<style id="physio-typography-system">
+/* Verbindliches Typografie- und Abstands-System nach der Sportopaedie-Referenz. */
+:root{
+  --type-family:"Roboto Condensed",Arial,sans-serif;
+  --type-regular:400;
+  --type-medium:500;
+  --type-semibold:600;
+  --type-bold:700;
+  --type-h1-mobile:34px;
+  --type-h2-mobile:28px;
+  --type-h3-mobile:23px;
+  --type-body-mobile:19px;
+  --type-small-mobile:16px;
+  --type-h1-desktop:48px;
+  --type-h2-desktop:38px;
+  --type-h3-desktop:28px;
+  --type-body-desktop:20px;
+  --type-heading-copy-gap:20px;
+  --type-paragraph-gap:24px;
+  --type-section-gap:64px;
+  --type-page-gutter:24px;
+  --type-text-max:760px;
+}
+
+body:not(#roboto-override) h1,
+body:not(#roboto-override) h2,
+body:not(#roboto-override) h3,
+body:not(#roboto-override) h4,
+body:not(#roboto-override) h5,
+body:not(#roboto-override) h6{
+  font-family:var(--type-family)!important;
+  font-weight:var(--type-bold)!important;
+  text-align:left!important;
+  max-width:var(--type-text-max);
+  margin-bottom:var(--type-heading-copy-gap)!important;
+}
+body:not(#roboto-override) h1{font-size:var(--type-h1-mobile)!important;line-height:1.15!important;letter-spacing:-.5px!important;}
+body:not(#roboto-override) h2{font-size:var(--type-h2-mobile)!important;line-height:1.2!important;letter-spacing:-.3px!important;}
+body:not(#roboto-override) h3{font-size:var(--type-h3-mobile)!important;line-height:1.25!important;letter-spacing:0!important;}
+body:not(#roboto-override) p,
+body:not(#roboto-override) li,
+body:not(#roboto-override) .hero-sub,
+body:not(#roboto-override) .sec-sub,
+body:not(#roboto-override) .sec-subtitle,
+body:not(#roboto-override) .leist-copy,
+body:not(#roboto-override) .visual-sec-desc,
+body:not(#roboto-override) .home-intro-copy p,
+body:not(#roboto-override) .step-p,
+body:not(#roboto-override) .faq-a,
+body:not(#roboto-override) .k-note{
+  font-family:var(--type-family)!important;
+  font-size:var(--type-body-mobile)!important;
+  font-weight:var(--type-regular)!important;
+  line-height:1.55!important;
+  letter-spacing:0!important;
+  text-align:left!important;
+  max-width:var(--type-text-max);
+  margin-bottom:var(--type-paragraph-gap)!important;
+}
+body:not(#roboto-override) strong,
+body:not(#roboto-override) b,
+body:not(#roboto-override) em strong,
+body:not(#roboto-override) .highlight{font-family:var(--type-family)!important;font-size:var(--type-body-mobile)!important;font-weight:var(--type-bold)!important;line-height:1.55!important;}
+body:not(#roboto-override) small,
+body:not(#roboto-override) .small,
+body:not(#roboto-override) .eyebrow,
+body:not(#roboto-override) .overlay-footer a,
+body:not(#roboto-override) .footer-copy,
+body:not(#roboto-override) .footer-legal a{font-family:var(--type-family)!important;font-size:var(--type-small-mobile)!important;font-weight:var(--type-regular)!important;line-height:1.4!important;}
+body:not(#roboto-override) nav:not(.footer-legal) a,
+body:not(#roboto-override) nav:not(.footer-legal) .nav-links a{font-family:var(--type-family)!important;font-size:18px!important;font-weight:var(--type-semibold)!important;line-height:1.2!important;}
+body:not(#roboto-override) button,
+body:not(#roboto-override) .btn,
+body:not(#roboto-override) .btn-outline,
+body:not(#roboto-override) .hero-btns a,
+body:not(#roboto-override) .hero-btns button,
+body:not(#roboto-override) .u-btn,
+body:not(#roboto-override) .btn-wa,
+body:not(#roboto-override) .overlay-cta a{font-family:var(--type-family)!important;font-size:17px!important;font-weight:var(--type-semibold)!important;line-height:1.2!important;}
+body:not(#roboto-override) input,
+body:not(#roboto-override) select,
+body:not(#roboto-override) textarea,
+body:not(#roboto-override) label{font-family:var(--type-family)!important;font-size:var(--type-body-mobile)!important;font-weight:var(--type-regular)!important;line-height:1.4!important;}
+
+/* Die Wortmarke bleibt als bestehendes Markenelement unverändert. */
+body:not(#roboto-override) nav:not(.footer-legal) .nav-wordmark,
+body:not(#roboto-override) nav:not(.footer-legal) .nav-wordmark *{font-family:"DM Sans",system-ui,sans-serif!important;font-weight:400!important;}
+
+@media(max-width:860px){
+  body:not(#roboto-override) .hero-content,
+  body:not(#roboto-override) .sec,
+  body:not(#roboto-override) .visual-sec,
+  body:not(#roboto-override) .mehr-block,
+  body:not(#roboto-override) .mehr-hero,
+  body:not(#roboto-override) .abschluss,
+  body:not(#roboto-override) .dark-sec,
+  body:not(#roboto-override) .kontakt-grid,
+  body:not(#roboto-override) .faq-list,
+  body:not(#roboto-override) .prep-list,
+  body:not(#roboto-override) .leist-section,
+  body:not(#roboto-override) footer{padding-left:var(--type-page-gutter)!important;padding-right:var(--type-page-gutter)!important;}
+  body:not(#roboto-override) .page > section + section{margin-top:var(--type-section-gap)!important;}
+  body:not(#roboto-override) .hero-content,
+  body:not(#roboto-override) .visual-sec-body{align-items:flex-start!important;text-align:left!important;}
+}
+@media(min-width:861px){
+  body:not(#roboto-override) h1{font-size:var(--type-h1-desktop)!important;}
+  body:not(#roboto-override) h2{font-size:var(--type-h2-desktop)!important;}
+  body:not(#roboto-override) h3{font-size:var(--type-h3-desktop)!important;}
+  body:not(#roboto-override) p,
+  body:not(#roboto-override) li,
+  body:not(#roboto-override) .hero-sub,
+  body:not(#roboto-override) .sec-sub,
+  body:not(#roboto-override) .leist-copy,
+  body:not(#roboto-override) .visual-sec-desc{font-size:var(--type-body-desktop)!important;}
+  body:not(#roboto-override) .hero-content,
+  body:not(#roboto-override) .sec > *,
+  body:not(#roboto-override) .visual-sec-body,
+  body:not(#roboto-override) .home-intro-copy,
+  body:not(#roboto-override) .leist-section > *,
+  body:not(#roboto-override) .faq-list > *{max-width:var(--type-text-max);}
+}
 </style>
 </body>
 </html>
