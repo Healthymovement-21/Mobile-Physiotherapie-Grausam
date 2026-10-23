@@ -4694,5 +4694,275 @@ body:not(#roboto-override) .ueber-profile-section + .ueber-profile-section{
   });
 })();
 </script>
+<style id="physio-layout-refinement">
+/*
+   Ruhige, klar gegliederte Seitenstruktur.
+   Nur Layout, Positionierung und Gruppierung — Inhalte und Funktionen bleiben
+   unverändert. Diese Regeln stehen bewusst zuletzt, damit ältere visuelle
+   Varianten nicht gegeneinander arbeiten.
+*/
+:root{
+  --layout-gutter:24px;
+  --layout-max:1120px;
+  --layout-text:760px;
+  --layout-section:56px;
+  --layout-copy:20px;
+  --layout-line:1.5;
+  --layout-border:#d9dcdf;
+  --layout-muted:#f4f5f4;
+  --layout-ink:#17191d;
+}
+
+body:not(#roboto-override){
+  background:#fff!important;
+  color:var(--layout-ink)!important;
+}
+body:not(#roboto-override) .page.active{
+  padding-top:84px!important;
+  background:#fff!important;
+}
+body:not(#roboto-override) .page.active > *{box-sizing:border-box;}
+body:not(#roboto-override) .page#home > .hero,
+body:not(#roboto-override) .page#home > .visual-sec,
+body:not(#roboto-override) .page#home > .sec,
+body:not(#roboto-override) .page#home > .dark-sec{
+  scroll-margin-top:96px;
+}
+
+/* Hero: klare erste Informationsebene, ohne überlagerte Bild-/Dekorflächen. */
+body:not(#roboto-override) .page#home > .hero{
+  min-height:0!important;
+  height:auto!important;
+  max-width:var(--layout-max)!important;
+  margin:0 auto!important;
+  padding:72px var(--layout-gutter) 64px!important;
+  background:#fff!important;
+  border:0!important;
+  overflow:visible!important;
+  display:block!important;
+}
+body:not(#roboto-override) .page#home > .hero .hero-img-wrap,
+body:not(#roboto-override) .page#home > .hero .liquid-glass,
+body:not(#roboto-override) .page#home > .hero .scroll-hint,
+body:not(#roboto-override) .page#home > .glass-divider{display:none!important;}
+body:not(#roboto-override) .page#home > .hero .hero-content{
+  max-width:780px!important;
+  margin:0!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  text-align:left!important;
+}
+body:not(#roboto-override) .page#home > .hero .hero-title{
+  max-width:780px!important;
+  margin:0 0 20px!important;
+  color:var(--layout-ink)!important;
+  text-shadow:none!important;
+}
+body:not(#roboto-override) .page#home > .hero .hero-title span{
+  color:var(--layout-ink)!important;
+  -webkit-text-fill-color:var(--layout-ink)!important;
+}
+body:not(#roboto-override) .page#home > .hero .hero-sub{
+  max-width:560px!important;
+  margin:0 0 28px!important;
+  color:#6c6c70!important;
+}
+body:not(#roboto-override) .page#home > .hero .hero-btns{
+  justify-content:flex-start!important;
+  align-items:flex-start!important;
+  gap:12px!important;
+  flex-wrap:wrap!important;
+  margin:0!important;
+}
+body:not(#roboto-override) .page#home > .hero .btn-wa,
+body:not(#roboto-override) .page#home > .hero .hero-link-secondary{
+  min-height:50px!important;
+  border-radius:999px!important;
+  box-shadow:none!important;
+}
+body:not(#roboto-override) .page#home > .hero .btn-wa{
+  background:var(--layout-ink)!important;
+  color:#fff!important;
+}
+body:not(#roboto-override) .page#home > .hero .hero-link-secondary{
+  background:#fff!important;
+  border:1px solid var(--layout-ink)!important;
+  color:var(--layout-ink)!important;
+}
+
+/* Originalfoto: unbeschnitten und ohne Filter/Overlay. */
+body:not(#roboto-override) .page#home > .visual-sec{
+  width:100%!important;
+  max-width:var(--layout-max)!important;
+  margin:0 auto!important;
+  padding:0 var(--layout-gutter) var(--layout-section)!important;
+  display:block!important;
+  background:#fff!important;
+}
+body:not(#roboto-override) .page#home > .visual-sec picture{
+  display:block!important;
+  width:100%!important;
+  max-width:820px!important;
+  margin:0 auto!important;
+}
+body:not(#roboto-override) .page#home > .visual-sec .visual-sec-img{
+  display:block!important;
+  width:100%!important;
+  max-width:820px!important;
+  height:auto!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  filter:none!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+body:not(#roboto-override) .page#home > .visual-sec .visual-sec-body{
+  max-width:var(--layout-text)!important;
+  margin:0 auto!important;
+  padding:48px 0 0!important;
+  text-align:left!important;
+}
+body:not(#roboto-override) .page#home > .visual-sec .visual-sec-title{
+  max-width:var(--layout-text)!important;
+  margin:0 0 var(--layout-copy)!important;
+}
+body:not(#roboto-override) .page#home > .visual-sec .home-intro-copy{
+  max-width:var(--layout-text)!important;
+  margin:0!important;
+  color:#6c6c70!important;
+}
+body:not(#roboto-override) .page#home > .visual-sec .home-intro-copy p{
+  margin:0 0 var(--layout-copy)!important;
+  line-height:var(--layout-line)!important;
+}
+body:not(#roboto-override) .page#home > .visual-sec .home-intro-copy h3{
+  margin:32px 0 24px!important;
+  color:var(--layout-ink)!important;
+}
+
+/* Gemeinsame Textzelle: Pfeil bleibt schmal, Text nie. */
+body:not(#roboto-override) .page#home .treatment-list{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:8px!important;
+  margin:0 0 0!important;
+  padding:0!important;
+}
+body:not(#roboto-override) .page#home .treatment-list li{
+  display:grid!important;
+  grid-template-columns:22px minmax(0,1fr)!important;
+  column-gap:14px!important;
+  align-items:start!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1.5!important;
+}
+body:not(#roboto-override) .page#home .treatment-list li::before{
+  position:static!important;
+  grid-column:1!important;
+  grid-row:1!important;
+  color:currentColor!important;
+}
+body:not(#roboto-override) .page#home .treatment-list li > .list-copy{
+  grid-column:2!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+}
+
+/* PLZ direkt nach den Behandlungsbereichen, als funktionaler Hellgrau-Bereich. */
+body:not(#roboto-override) .page#home > .home-plz-end{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:32px var(--layout-gutter) 34px!important;
+  background:var(--layout-muted)!important;
+  border:0!important;
+}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-band{
+  width:100%!important;
+  max-width:var(--layout-text)!important;
+  margin:0 auto!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-band-label{
+  display:block!important;
+  margin:0 0 12px!important;
+  color:var(--layout-ink)!important;
+  font-size:16px!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-form{max-width:440px!important;}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-input{
+  min-height:48px!important;
+  background:#fff!important;
+  color:var(--layout-ink)!important;
+  border:1px solid var(--layout-border)!important;
+  border-radius:8px!important;
+}
+body:not(#roboto-override) .page#home > .home-plz-end .plz-btn{
+  min-width:48px!important;
+  min-height:48px!important;
+  background:var(--layout-ink)!important;
+  color:#fff!important;
+  border:0!important;
+  border-radius:8px!important;
+}
+
+/* Nachfolgende Homepage-Abschnitte: gleicher Textfluss, keine künstlichen Höhen. */
+body:not(#roboto-override) .page#home > .sec,
+body:not(#roboto-override) .page#home > .dark-sec{
+  max-width:var(--layout-max)!important;
+  margin:0 auto!important;
+  padding:var(--layout-section) var(--layout-gutter)!important;
+  background:#fff!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+body:not(#roboto-override) .page#home > .sec.hidden{display:none!important;}
+body:not(#roboto-override) .page#home > .sec + .sec,
+body:not(#roboto-override) .page#home > .sec + .dark-sec,
+body:not(#roboto-override) .page#home > .dark-sec + .sec{margin-top:0!important;}
+
+/* Alle übrigen Seiten übernehmen dieselbe ruhige Achse und Sektionstaktung. */
+body:not(#roboto-override) .page:not(#home) .sec,
+body:not(#roboto-override) .page:not(#home) .dark-sec,
+body:not(#roboto-override) .page:not(#home) .mehr-block,
+body:not(#roboto-override) .page:not(#home) .mehr-hero{
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+body:not(#roboto-override) .page:not(#home) h1,
+body:not(#roboto-override) .page:not(#home) h2,
+body:not(#roboto-override) .page:not(#home) h3,
+body:not(#roboto-override) .page:not(#home) p,
+body:not(#roboto-override) .page:not(#home) ul{max-width:var(--layout-text);}
+
+@media(max-width:860px){
+  body:not(#roboto-override) .page.active{padding-top:68px!important;}
+  body:not(#roboto-override) .page#home > .hero{padding:52px var(--layout-gutter) 48px!important;}
+  body:not(#roboto-override) .page#home > .hero .hero-btns{flex-direction:column!important;align-items:stretch!important;}
+  body:not(#roboto-override) .page#home > .hero .hero-btns a,
+  body:not(#roboto-override) .page#home > .hero .hero-btns button{width:100%!important;}
+  body:not(#roboto-override) .page#home > .visual-sec{padding:0 var(--layout-gutter) 48px!important;}
+  body:not(#roboto-override) .page#home > .visual-sec .visual-sec-body{padding-top:32px!important;}
+  body:not(#roboto-override) .page#home > .home-plz-end{padding:28px var(--layout-gutter) 32px!important;}
+  body:not(#roboto-override) .page#home > .sec,
+  body:not(#roboto-override) .page#home > .dark-sec{padding:48px var(--layout-gutter)!important;}
+}
+
+@media(min-width:861px){
+  body:not(#roboto-override) .page#home > .hero .hero-title{font-size:48px!important;}
+  body:not(#roboto-override) .page#home > .visual-sec .visual-sec-title{font-size:38px!important;}
+}
+</style>
 </body>
 </html>
