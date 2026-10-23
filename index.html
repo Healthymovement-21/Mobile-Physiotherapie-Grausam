@@ -4797,7 +4797,7 @@ body:not(#roboto-override) .page#home > .visual-sec{
   width:100%!important;
   max-width:var(--layout-max)!important;
   margin:0 auto!important;
-  padding:0 var(--layout-gutter) 24px!important;
+  padding:0 var(--layout-gutter) var(--layout-section)!important;
   display:block!important;
   background:#fff!important;
 }
@@ -4878,7 +4878,7 @@ body:not(#roboto-override) .page#home > .home-plz-end{
   width:100%!important;
   max-width:none!important;
   margin:0!important;
-  padding:20px var(--layout-gutter) 24px!important;
+  padding:32px var(--layout-gutter) 34px!important;
   background:var(--layout-muted)!important;
   border:0!important;
 }
@@ -4952,21 +4952,11 @@ body:not(#roboto-override) .page:not(#home) ul{max-width:var(--layout-text);}
   body:not(#roboto-override) .page#home > .hero .hero-btns{flex-direction:column!important;align-items:stretch!important;}
   body:not(#roboto-override) .page#home > .hero .hero-btns a,
   body:not(#roboto-override) .page#home > .hero .hero-btns button{width:100%!important;}
-  body:not(#roboto-override) .page#home > .visual-sec{padding:0 var(--layout-gutter) 20px!important;}
+  body:not(#roboto-override) .page#home > .visual-sec{padding:0 var(--layout-gutter) 48px!important;}
   body:not(#roboto-override) .page#home > .visual-sec .visual-sec-body{padding-top:32px!important;}
-  body:not(#roboto-override) .page#home > .home-plz-end{padding:16px var(--layout-gutter) 24px!important;}
+  body:not(#roboto-override) .page#home > .home-plz-end{padding:28px var(--layout-gutter) 32px!important;}
   body:not(#roboto-override) .page#home > .sec,
   body:not(#roboto-override) .page#home > .dark-sec{padding:48px var(--layout-gutter)!important;}
-}
-
-@media(max-width:600px){
-  /* Der mobile Header bleibt sichtbar, nimmt aber am normalen Seitenfluss
-     teil, damit Überschriften beim Scrollen nicht darunter verschwinden. */
-  body:not(#roboto-override) nav:not(.footer-legal){
-    position:sticky!important;
-    top:0!important;
-  }
-  body:not(#roboto-override) .page.active{padding-top:0!important;}
 }
 
 @media(min-width:861px){
