@@ -4598,6 +4598,17 @@ body:not(#roboto-override) .standorte-region ul li::before{
   line-height:var(--list-line-height)!important;
   transform:none!important;
 }
+body:not(#roboto-override) .treatment-list li > .list-copy,
+body:not(#roboto-override) .leist-service-list li > .list-copy,
+body:not(#roboto-override) .ueber-facts ul li > .list-copy,
+body:not(#roboto-override) .standorte-region ul li > .list-copy{
+  grid-column:2!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  font:inherit!important;
+  line-height:inherit!important;
+}
 body:not(#roboto-override) #ueber .ueber-reference-body .ueber-facts li{
   font-family:var(--type-family)!important;
   font-size:var(--type-body-mobile)!important;
@@ -4671,5 +4682,17 @@ body:not(#roboto-override) .ueber-profile-section + .ueber-profile-section{
   }
 }
 </style>
+<script id="list-text-cell-fix">
+/* Direkte Listentexte in eine gemeinsame zweite Grid-Zelle legen. */
+(function(){
+  document.querySelectorAll('.treatment-list li,.leist-service-list li,.ueber-facts ul li,.standorte-region ul li').forEach(function(li){
+    if(li.querySelector(':scope > .list-copy')) return;
+    var copy=document.createElement('span');
+    copy.className='list-copy';
+    while(li.firstChild) copy.appendChild(li.firstChild);
+    li.appendChild(copy);
+  });
+})();
+</script>
 </body>
 </html>
