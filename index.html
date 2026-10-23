@@ -2611,9 +2611,9 @@ nav:not(.footer-legal).nav-scrolled .nav-links a{
     <p class="sec-sub"></p>
     <div class="ablauf-steps">
       <div class="ablauf-step"><div class="step-n">1</div><div class="step-t">Kontakt aufnehmen</div><p class="step-p">Per WhatsApp, Telefon oder E-Mail.</p></div>
-      <div class="ablauf-step"><div class="step-n">2</div><div class="step-t">Erstgespräch</div><p class="step-p">Ich melde mich zeitnah. Wir klären Ihr Anliegen und finden einen Termin.</p></div>
-      <div class="ablauf-step"><div class="step-n">3</div><div class="step-t">Ersttermin</div><p class="step-p">Zuerst Honorarvereinbarung und Formalitäten. Dann ausführliches Gespräch, Beratung und die erste Behandlung.</p></div>
-      <div class="ablauf-step"><div class="step-n">4</div><div class="step-t">Weitere Termine</div><p class="step-p">Die weiteren Termine stimmen wir individuell ab.</p></div>
+      <div class="ablauf-step"><div class="step-n">2</div><div class="step-t">Erstgespräch</div><p class="step-p">Wir melden uns zeitnah und besprechen einen Ersttermin.</p></div>
+      <div class="ablauf-step"><div class="step-n">3</div><div class="step-t">Ersttermin</div><p class="step-p">Untersuchung &amp; Beratung zum Behandlungsverlauf.</p></div>
+      <div class="ablauf-step"><div class="step-n">4</div><div class="step-t">Termine</div><p class="step-p">Planung des therapeutischen Ablaufs.</p></div>
     </div>
   </div>
 
@@ -4301,6 +4301,11 @@ nav:not(.footer-legal).nav-white .nav-links a.nav-active{font-weight:400!importa
   .dark-sec{background:var(--m-dark)!important;color:#fff!important;}
   .dark-sec .sec-title,.dark-sec .sec-title-gold,.dark-sec .step-t{color:#fff!important;}
   .dark-sec .sec-sub,.dark-sec .step-p{color:rgba(255,255,255,.68)!important;}
+  .ablauf-steps{grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:24px!important;row-gap:48px!important;margin-top:44px!important;}
+  .ablauf-step{min-width:0!important;padding:0!important;text-align:center!important;}
+  .ablauf-step .step-n{width:52px!important;height:52px!important;border-radius:50%!important;margin:0 auto 18px!important;}
+  .ablauf-step .step-t{font-size:18px!important;line-height:1.2!important;margin-bottom:10px!important;overflow-wrap:break-word!important;}
+  .ablauf-step .step-p{font-size:15px!important;line-height:1.55!important;overflow-wrap:anywhere!important;}
   .sec-curves{background:var(--m-surface-soft)!important;border-radius:var(--m-radius)!important;margin:0 var(--m-gutter) var(--m-gap)!important;}
 
   /* Reusable light cards and forms */
