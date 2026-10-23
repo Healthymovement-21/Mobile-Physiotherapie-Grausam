@@ -4568,6 +4568,9 @@ body:not(#roboto-override) .standorte-region ul li{
   min-width:0!important;
   margin:0!important;
   padding:0!important;
+  font-family:var(--type-family)!important;
+  font-size:var(--type-body-mobile)!important;
+  font-weight:var(--type-regular)!important;
   text-align:left!important;
   line-height:var(--list-line-height)!important;
 }
@@ -4647,6 +4650,14 @@ body:not(#roboto-override) .ueber-profile-section + .ueber-profile-section{
   body:not(#roboto-override) .standorte-region ul{
     margin-left:0!important;
     margin-right:0!important;
+  }
+}
+@media(min-width:861px){
+  body:not(#roboto-override) .treatment-list li,
+  body:not(#roboto-override) .leist-service-list li,
+  body:not(#roboto-override) .ueber-facts ul li,
+  body:not(#roboto-override) .standorte-region ul li{
+    font-size:var(--type-body-desktop)!important;
   }
 }
 </style>
