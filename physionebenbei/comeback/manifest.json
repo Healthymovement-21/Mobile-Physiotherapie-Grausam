@@ -1,0 +1,11 @@
+{
+  "name": "COMEBACK",
+  "short_name": "COMEBACK",
+  "lang": "de",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#06080d",
+  "theme_color": "#06080d",
+  "description": "Eigene Reha-Fortschritte dokumentieren.",
+  "icons": []
+}
