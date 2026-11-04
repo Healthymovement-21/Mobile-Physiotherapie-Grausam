@@ -1,7 +1,7 @@
-const CACHE = 'comeback-v2';
+const CACHE = 'comeback-v3';
 self.addEventListener('install', event => {
   self.skipWaiting();
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(['./', './index.html', './manifest.json'])));
+  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(['./', './index.html', './app.js', './styles.css', './water-bg.png', './manifest.json'])));
 });
 self.addEventListener('activate', event => {
   event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim()));
