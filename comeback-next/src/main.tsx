@@ -3,7 +3,7 @@ import {createRoot} from 'react-dom/client';
 import './styles.css';import './access.css';
 type Role='choose'|'patient'|'clinical';type Page='home'|'roadmap'|'training'|'progress'|'patients'|'record'|'profile'|'connection'|'library';
 type Goal={id:string;title:string;why:string;measure:string;target:string;done:boolean;confirmed:boolean};
-type Exercise={id:string;name:string;goal:string;sets:number;reps:string;frequency:string;intensity:string;phase?:string};
+type Exercise={id:string;name:string;goal:string;sets:number;reps:string;frequency:string;intensity:string;phase?:string;enabled?:boolean};
 type Checkin={id:string;date:string;painRest:number;painMove:number;painLoad:number;painAfter:number;painNight:number;swelling:string;extension:number;flexion:number;capacity:number;note:string;source:'patient'|'therapist'};
 type ClinicalNote={id:string;date:string;text:string;author:string};
 type Patient={id:string;name:string;date:string;phase:number;connected:boolean;token:string;clinic:string;lastCheckin:string;goals:Goal[];exercisePlan:Exercise[];checkins:Checkin[];uploads:string[];clinicalNotes?:ClinicalNote[];trainingDate?:string;completedExerciseIds?:string[]};
@@ -11,7 +11,7 @@ type Store={role:Role;profile:{name:string;date:string;dateType:string;language:
 type ScriptSection={id:string;title:string;eyebrow:string;summary:string;content:string[];tags:string[]};
 const phases=[['Prehab','Vor OP · 2–4 Wochen','Beweglichkeit und Ausgangskraft vorbereiten.'],['Frühe Phase','Woche 0–8 nach OP','Schutz, Streckung, Beugung und Quadrizeps-Aktivierung.'],['Mittlere Phase','Woche 8–16 nach OP','Kraft, Kontrolle und Kondition aufbauen.'],['Späte Phase','Monat 4–6+','Laufen, Bremsen und Landungen vorbereiten.'],['Return to Sport','Monat 6–12+','Sportartspezifisch und kriteriumsorientiert zurückkehren.']];
 const goals=():Goal[]=>[{id:'extension',title:'Vollständige Kniestreckung',why:'Unterstützt ein normales Gangbild und reduziert Ausweichbewegungen.',measure:'Gradmessung im Seitenvergleich',target:'0° Streckdefizit',done:false,confirmed:false},{id:'swelling',title:'Schwellung im Alltag kontrollieren',why:'Die Reaktion zeigt, ob die aktuelle Belastung verträglich ist.',measure:'Patientenbericht und Untersuchung',target:'Keine relevante Schwellung',done:false,confirmed:false},{id:'strength',title:'Quadrizeps aktivieren',why:'Kraft und Ansteuerung sind Grundlagen für sichere Belastung.',measure:'Krafttest und Seitenvergleich',target:'Individuelles Kraftkriterium',done:false,confirmed:false}];
-const exercises=():Exercise[]=>[{id:'e1',name:'Fersengleiten',goal:'swelling',sets:3,reps:'10 Wiederholungen',frequency:'täglich',intensity:'leicht · schmerzarm'},{id:'e2',name:'Quadrizeps-Anspannung',goal:'extension',sets:3,reps:'12 Wiederholungen',frequency:'5× / Woche',intensity:'kontrolliert'}];
+const exercises=():Exercise[]=>exerciseCatalog.map(x=>({...x,id:x.id,enabled:true}));
 const exerciseCatalog:Exercise[]=[
 {id:'cat-quad-set',name:'Quadrizeps-Anspannung (Quad Set)',goal:'Aktivierung',sets:3,reps:'10 × 10 Sekunden',frequency:'täglich',intensity:'kontrolliert',phase:'Prehab · früh'},
 {id:'cat-straight-leg',name:'Gerader Beinstrecker',goal:'Kraft',sets:3,reps:'10 Wiederholungen',frequency:'3× / Woche',intensity:'nur bei guter Kontrolle',phase:'früh'},
