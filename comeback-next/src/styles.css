@@ -194,3 +194,53 @@ body:before{background:linear-gradient(180deg,#171C20F0 0%,#171C20D9 45%,#171C20
 .pill{border-color:#C8F35D88;background:#C8F35D18;color:var(--lime)}
 .bottom-nav{background:#252C31F5;border-color:var(--line)}
 @media(max-width:520px){.app:not(.clinical-app) main:has(.status-card)>.status-card{padding:14px}.app:not(.clinical-app) main:has(.status-card)>.goal-summary{padding:14px}.status-card h2{font-size:20px}}
+
+/* Phase 2 · Frühe Phase: freundliche Sommer-Variante für Patient:innen.
+   Bewusst auf die aktive Phase begrenzt; Clinical und andere Phasen behalten
+   das bestehende COMEBACK-System. */
+.patient-v3.phase-two-summer{
+  --bg:#f7f3e9;--surface:#fffdf7;--card:#fffaf0;--raised:#f4ead8;
+  --text:#24433d;--muted:#6d8279;--lime:#2f8b79;--lime-soft:#2f8b7918;
+  --line:#24433d1c;--success:#2f8b79;--warn:#d88452;--critical:#c95f55;
+  color:var(--text);background:var(--bg)
+}
+.patient-v3.phase-two-summer:before{content:'';position:fixed;z-index:-1;inset:0;pointer-events:none;background:
+  radial-gradient(circle at 88% 5%,#f5c87955 0 10%,transparent 28%),
+  radial-gradient(circle at 4% 42%,#a6d7bc45 0 10%,transparent 30%),
+  linear-gradient(180deg,#fbf7ed 0%,#f7f3e9 56%,#f2ecdf 100%)}
+.phase-two-summer .topbar{background:#fffdf7e8;border-bottom-color:#24433d20}
+.phase-two-summer .brand-mark{border-color:var(--lime);color:var(--lime);background:#2f8b790d}
+.phase-two-summer .brand small,.phase-two-summer .header-profile{color:var(--muted)}
+.phase-two-summer h1,.phase-two-summer h2,.phase-two-summer h3,.phase-two-summer b{color:var(--text)}
+.phase-two-summer p,.phase-two-summer small{color:var(--muted)}
+.phase-two-summer .eyebrow{color:#c97943;letter-spacing:.12em}
+.phase-two-summer .phase-chip,.phase-two-summer .pill{border-color:#2f8b7940;background:#2f8b7912;color:var(--lime)}
+.phase-two-summer .status-card,.phase-two-summer .focus-section,.phase-two-summer .training-preview,
+.phase-two-summer .next-phase-card,.phase-two-summer .compact-note,.phase-two-summer .knowledge-card,
+.phase-two-summer .notice-card,.phase-two-summer .phase-plan-card,.phase-two-summer .phase-day,
+.phase-two-summer .week-plan,.phase-two-summer .exercise-card,.phase-two-summer .training-feedback-callout,
+.phase-two-summer .training-feedback-form,.phase-two-summer .training-history{background:#fffdf7e8;border-color:#24433d1c;box-shadow:0 10px 30px #876f4912}
+.phase-two-summer .status-card{border-top:3px solid #e8ae5a;background:linear-gradient(135deg,#fffdf7 0%,#fff6df 100%)}
+.phase-two-summer .status-card:before{content:'☀';float:right;color:#e8ae5a;font-size:28px;line-height:1}
+.phase-two-summer .rehab-status-compact>div{background:#f5ead9;border-color:#24433d18}
+.phase-two-summer .focus-section,.phase-two-summer .goal-summary{border-top:3px solid #8fc6a5}
+.phase-two-summer .goal-state-mark{border-color:#2f8b7960;color:var(--lime)}
+.phase-two-summer .goal-summary-row{border-top-color:#24433d18}
+.phase-two-summer .goal-summary-row .traffic.neutral{background:#d6a866}
+.phase-two-summer .goal-summary-row .traffic.grün,.phase-two-summer .focus-goal.confirmed .goal-state-mark{background:#2f8b7918;color:var(--success);border-color:#2f8b7960}
+.phase-two-summer .text-button,.phase-two-summer .knowledge-link{color:var(--lime)}
+.phase-two-summer .primary{background:var(--lime);border-color:var(--lime);color:#fffdf7;box-shadow:0 6px 14px #2f8b7930}
+.phase-two-summer .secondary{border-color:#2f8b7960;color:var(--lime);background:#fffdf780}
+.phase-two-summer .training-summary,.phase-two-summer .training-today-intro,.phase-two-summer .week-summary{background:#eef5e9;border-color:#2f8b7930}
+.phase-two-summer .training-summary strong,.phase-two-summer .training-today-intro strong,.phase-two-summer .week-summary strong{color:var(--lime)}
+.phase-two-summer .training-summary i,.phase-two-summer .training-today-intro i{background:#e8ae5a;box-shadow:none}
+.phase-two-summer .exercise-card.complete{background:#edf6ec;border-color:#74ae8a}
+.phase-two-summer .exercise-state{border-color:#2f8b7950;color:var(--lime)}
+.phase-two-summer .exercise-card.complete .exercise-state{background:var(--lime);color:#fff;border-color:var(--lime)}
+.phase-two-summer .bottom-nav{background:#fffdf7f5;border-color:#24433d20;box-shadow:0 8px 24px #876f4920}
+.phase-two-summer .bottom-nav button{color:var(--muted)}
+.phase-two-summer .bottom-nav button.active{color:var(--lime);box-shadow:inset 0 -2px 0 var(--lime)}
+.phase-two-summer input,.phase-two-summer select,.phase-two-summer textarea{background:#fffdf7!important;color:var(--text)!important;border-color:#24433d20!important}
+.phase-two-summer .phase-plan-head{border-bottom-color:#24433d18}
+.phase-two-summer .phase-criteria li::marker{color:#e8ae5a}
+@media(max-width:520px){.phase-two-summer .status-card:before{font-size:24px}.phase-two-summer .topbar{background:#fffdf7f2}}
