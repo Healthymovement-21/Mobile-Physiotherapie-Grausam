@@ -1,6 +1,7 @@
 import React,{useEffect,useMemo,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import './styles.css';import './access.css';
+import { backendConfigured, fetchPatientRecord, subscribeToPatientRecord, upsertPatientRecord } from './supabase';
 
 type Role='choose'|'patient'|'clinical';type Page='home'|'plan'|'training'|'progress'|'more'|'patients'|'record'|'profile'|'connection'|'library'|'notifications';
 type Phase={number:number;name:string;period:string;summary:string;goal:string;criteria:string[];days:string[];source?:string;gap?:string};
