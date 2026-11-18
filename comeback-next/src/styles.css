@@ -131,6 +131,16 @@ body{background:var(--bg);color:var(--text)}button,input,textarea,select{font-fa
 @media(max-width:520px){.patient-v3 main{padding:22px 14px 138px}.patient-v3 .topbar{padding:0 14px}.rehab-welcome{display:block}.phase-chip{display:inline-flex;margin-top:12px}.rehab-status-compact{grid-template-columns:1fr 1fr}.rehab-status-compact>div:first-child{grid-column:1/-1}.focus-section,.training-preview,.next-phase-card,.compact-note{padding:16px}.focus-goal{grid-template-columns:26px minmax(0,1fr);align-items:start}.focus-goal .text-button,.focus-goal .status-label{grid-column:2;text-align:left}.next-phase-card{grid-template-columns:1fr}.next-phase-card .secondary{grid-column:auto;width:100%;margin-top:0}.training-page-head p{font-size:12px}.training-counter{margin-top:3px}.training-tabs button{padding-left:12px;padding-right:12px}.patient-v3-nav{bottom:7px;width:calc(100% - 12px)}}
 @media(min-width:761px){.patient-v3 .bottom-nav{bottom:18px}.patient-v3 main{padding-bottom:130px}}
 
+/* COMEBACK script-first layout and restrained clinical palette */
+:root{--bg:#14181F;--surface:#1A2029;--card:#1F2530;--raised:#27303C;--text:#F2F4F7;--muted:#A9B1BD;--lime:#69B2FF;--lime-soft:#69B2FF1A;--line:#FFFFFF18;--success:#74D6B0;--warn:#F4BF69;--critical:#F07575;--shadow:none}
+html,body{background:var(--bg);color:var(--text)}
+body:before{background:linear-gradient(180deg,#14181FEE 0%,#14181FEE 100%),url('./comeback-rehab-bg.png') center/cover no-repeat;filter:saturate(.35)}
+.topbar{background:#14181FEE;border-bottom:1px solid var(--line)}
+.action-card,.patient-row,.workout,.reaction-card,.panel,.checkin,.document-card,.connection-card,.status-overview,.metric,.goal-card,.script-section,.script-search,.clinical-tools,.clinical-summary>div,.clinical-summary,.more-notifications,.record-comparison,.status-card,.task-card,.goal-summary,.notice-card,.knowledge-card,.phase-plan-card,.phase-day,.next-phase-card{background:var(--card);border-color:var(--line);box-shadow:none}
+.next-phase-card{align-items:start}.next-phase-card p{line-height:1.5}.next-phase-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.next-phase-actions .secondary{margin:0}.phase-days-left{display:block;margin-top:12px;color:var(--text);font-size:15px}.phase-timeline{display:block;height:5px;margin-top:12px;border-radius:99px;background:var(--lime);box-shadow:none}.home-phase-overview{margin-top:0}.home-phase-overview .secondary{min-height:44px;padding:10px 14px;font-size:12px}.home-phase-overview .text-button{min-height:44px}
+.task-section,.goal-summary,.knowledge-card,.notice-card{margin-top:24px}
+.bottom-nav{background:#1F2530F5;border-color:var(--line)}
+
 /* COMEBACK 4.0 · Graphit / Blau clinical system */
 :root{--bg:#06080D;--surface:#0E1218;--card:#0E1218;--raised:#151B24;--text:#F4F7FB;--muted:#AAB5C3;--lime:#69B2FF;--lime-soft:#69B2FF1A;--line:#FFFFFF12;--success:#51C69A;--warn:#F4BF69;--critical:#F07575;--shadow:0 18px 50px #0008}
 html,body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}body{position:relative;background:var(--bg);isolation:isolate}body:before{content:'';position:fixed;z-index:-1;inset:0;background:linear-gradient(180deg,#06080de8 0%,#06080dcc 36%,#06080df2 100%),url('./comeback-rehab-bg.png') center/cover no-repeat;filter:saturate(.82);pointer-events:none}
