@@ -133,7 +133,7 @@ body{background:var(--bg);color:var(--text)}button,input,textarea,select{font-fa
 
 /* COMEBACK 4.0 · Graphit / Blau clinical system */
 :root{--bg:#06080D;--surface:#0E1218;--card:#0E1218;--raised:#151B24;--text:#F4F7FB;--muted:#AAB5C3;--lime:#69B2FF;--lime-soft:#69B2FF1A;--line:#FFFFFF12;--success:#51C69A;--warn:#F4BF69;--critical:#F07575;--shadow:0 18px 50px #0008}
-html,body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}body{background:radial-gradient(circle at 50% -15%,#182538 0,#06080D 36rem)}
+html,body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}body{position:relative;background:var(--bg);isolation:isolate}body:before{content:'';position:fixed;z-index:-1;inset:0;background:linear-gradient(180deg,#06080de8 0%,#06080dcc 36%,#06080df2 100%),url('./comeback-rehab-bg.png') center/cover no-repeat;filter:saturate(.82);pointer-events:none}
 h1,h2,h3,.brand b,.primary,.secondary,.pill,.eyebrow,.bottom-nav button,.status-badge{font-family:'Barlow Condensed',Inter,sans-serif}h1,h2,h3{font-weight:700;letter-spacing:-.035em}p,.lead,small,input,select,textarea,button{font-family:Inter,system-ui,sans-serif}
 .app{padding-bottom:110px}.topbar{background:#06080de8;border-bottom:1px solid var(--line)}.brand-mark,.access-mark{border-color:var(--lime);color:var(--lime);border-radius:12px}.brand small{color:var(--muted)}
 .primary{background:var(--lime);border-color:var(--lime);color:#06101A}.secondary{background:transparent;border-color:#69B2FF88;color:var(--lime)}.primary:hover,.secondary:hover{box-shadow:0 8px 22px #69B2FF26;border-color:var(--lime)}
