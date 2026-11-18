@@ -169,3 +169,28 @@ input,select,textarea,.code-input,.clinical-tools input,.script-search input,.pr
 
 /* Keep mobile form controls above iOS Safari's automatic focus-zoom threshold. */
 @media(max-width:520px){input,select,textarea{font-size:16px!important}}
+
+/* Final refinement: keep the existing information architecture, but put the
+   phase goals immediately after the compact status on the patient home. */
+:root{--bg:#171C20;--surface:#20272C;--card:#252C31;--raised:#30383E;--text:#F7F9FA;--muted:#C3CCD1;--lime:#C8F35D;--lime-soft:#C8F35D1A;--line:#FFFFFF22;--success:#74D6B0;--warn:#F4BF69;--critical:#F07575;--shadow:none}
+html,body{background:var(--bg);color:var(--text)}
+body:before{background:linear-gradient(180deg,#171C20F0 0%,#171C20D9 45%,#171C20F5 100%),url('./comeback-rehab-bg.png') center/cover no-repeat;filter:saturate(.55)}
+.topbar{background:#171C20F0}
+.app:not(.clinical-app) main:has(.status-card){display:flex;flex-direction:column}
+.app:not(.clinical-app) main:has(.status-card)>.page-head{order:1}
+.app:not(.clinical-app) main:has(.status-card)>.status-card{order:2;margin-top:0;padding:16px 18px}
+.app:not(.clinical-app) main:has(.status-card)>.goal-summary{order:3;margin-top:14px;padding:16px 18px}
+.app:not(.clinical-app) main:has(.status-card)>.task-section{order:4;margin-top:14px}
+.app:not(.clinical-app) main:has(.status-card)>.next-phase-card{order:5;margin-top:14px}
+.app:not(.clinical-app) main:has(.status-card)>.notice-card{order:6;margin-top:14px}
+.app:not(.clinical-app) main:has(.status-card)>.knowledge-card,.app:not(.clinical-app) main:has(.status-card)>.insight{order:7}
+.status-card{border-top:1px solid var(--line);border-radius:14px;background:var(--card)}
+.status-card h2{font-size:22px;margin:4px 0}.status-card p{font-size:12px;color:var(--muted);margin:0}
+.goal-summary{border-top:2px solid #F7F9FA88;background:var(--card)}
+.goal-summary .section-heading{margin-bottom:6px}.goal-summary-row{min-height:48px;padding:9px 0;border-top:1px solid var(--line)}
+.goal-summary-row b{font-size:13px}.goal-summary-row small{color:var(--muted);font-size:11px}
+.next-phase-card{background:var(--card);border-color:var(--line)}
+.primary{background:var(--lime);border-color:var(--lime);color:#182015}.secondary{border-color:#C8F35D88;color:var(--lime)}
+.pill{border-color:#C8F35D88;background:#C8F35D18;color:var(--lime)}
+.bottom-nav{background:#252C31F5;border-color:var(--line)}
+@media(max-width:520px){.app:not(.clinical-app) main:has(.status-card)>.status-card{padding:14px}.app:not(.clinical-app) main:has(.status-card)>.goal-summary{padding:14px}.status-card h2{font-size:20px}}
